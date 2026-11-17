@@ -7,6 +7,9 @@
  *   "distance" -> points = miles flown x status multiplier
  *   "tiered"   -> custom per-dollar tiers (Allegiant)
  *
+ * cards (optional): co-branded credit cards and the extra points each earns
+ * per dollar charged to it for the ticket, taxes included.
+ *
  * Rates reflect publicly reported rules as of late 2026. Update them here
  * when a program changes; the rest of the app reads from this file.
  */
@@ -24,6 +27,14 @@ window.PROGRAMS = {
       { id: "platpro", name: "AAdvantage Platinum Pro", rate: 9 },
       { id: "exp", name: "AAdvantage Executive Platinum", rate: 11 }
     ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "citi-mileup", name: "Citi / AAdvantage MileUp", rate: 2 },
+      { id: "citi-platselect", name: "Citi / AAdvantage Platinum Select", rate: 2 },
+      { id: "barclays-red", name: "AAdvantage Aviator Red (Barclays)", rate: 2 },
+      { id: "citi-globe", name: "Citi / AAdvantage Globe", rate: 3 },
+      { id: "citi-exec", name: "Citi / AAdvantage Executive", rate: 4 }
+    ],
     note: "AAdvantage miles are earned on base fare and carrier-imposed fees. Government taxes do not earn miles. Earning is capped at 75,000 miles per ticket."
   },
   delta: {
@@ -39,6 +50,16 @@ window.PROGRAMS = {
       { id: "platinum", name: "Platinum Medallion", rate: 9 },
       { id: "diamond", name: "Diamond Medallion", rate: 11 }
     ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "blue", name: "Delta SkyMiles Blue Amex", rate: 2 },
+      { id: "gold", name: "Delta SkyMiles Gold Amex", rate: 2 },
+      { id: "gold-biz", name: "Delta SkyMiles Gold Business Amex", rate: 2 },
+      { id: "plat", name: "Delta SkyMiles Platinum Amex", rate: 3 },
+      { id: "plat-biz", name: "Delta SkyMiles Platinum Business Amex", rate: 3 },
+      { id: "reserve", name: "Delta SkyMiles Reserve Amex", rate: 3 },
+      { id: "reserve-biz", name: "Delta SkyMiles Reserve Business Amex", rate: 3 }
+    ],
     note: "SkyMiles are earned on base fare and carrier-imposed surcharges. Basic Economy fares earn no miles. Earning is capped at 75,000 miles per ticket."
   },
   united: {
@@ -53,6 +74,13 @@ window.PROGRAMS = {
       { id: "gold", name: "Premier Gold", rate: 8 },
       { id: "platinum", name: "Premier Platinum", rate: 9 },
       { id: "1k", name: "Premier 1K", rate: 11 }
+    ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "gateway", name: "United Gateway Card", rate: 2 },
+      { id: "explorer", name: "United Explorer Card", rate: 3 },
+      { id: "quest", name: "United Quest Card", rate: 4 },
+      { id: "club", name: "United Club Card", rate: 5 }
     ],
     note: "MileagePlus miles are earned on base fare and carrier-imposed surcharges. Taxes do not earn miles. Earning is capped at 75,000 miles per ticket."
   },
@@ -72,6 +100,14 @@ window.PROGRAMS = {
       { id: "alist", name: "A-List", multiplier: 1.25 },
       { id: "alistPref", name: "A-List Preferred", multiplier: 2 }
     ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "plus", name: "Southwest Rapid Rewards Plus", rate: 2 },
+      { id: "premier", name: "Southwest Rapid Rewards Premier", rate: 3 },
+      { id: "premier-biz", name: "Southwest Rapid Rewards Premier Business", rate: 3 },
+      { id: "priority", name: "Southwest Rapid Rewards Priority", rate: 4 },
+      { id: "perf-biz", name: "Southwest Rapid Rewards Performance Business", rate: 4 }
+    ],
     note: "Rapid Rewards points depend on fare type and are earned on base fare only. A-List adds a 25% bonus and A-List Preferred adds a 100% bonus."
   },
   alaska: {
@@ -85,6 +121,11 @@ window.PROGRAMS = {
       { id: "gold", name: "Atmos Gold", multiplier: 1.5 },
       { id: "platinum", name: "Atmos Platinum", multiplier: 2 },
       { id: "titanium", name: "Atmos Titanium", multiplier: 2.5 }
+    ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "ascent", name: "Atmos Rewards Ascent Visa Signature", rate: 3 },
+      { id: "summit", name: "Atmos Rewards Summit Visa Infinite", rate: 3 }
     ],
     note: "Atmos Rewards awards 1 point per mile flown on Alaska and Hawaiian, with elite bonuses of 25% to 150%. Fare class bonuses are not included. Members who chose spend-based or segment-based earning will see different results."
   },
@@ -106,6 +147,10 @@ window.PROGRAMS = {
       { id: "platinum", name: "Elite Platinum", rates: { basic: 7, bundle: 12 } },
       { id: "diamond", name: "Elite Diamond", rates: { basic: 11, bundle: 16 } }
     ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "frontier-mc", name: "Frontier Airlines World Mastercard", rate: 5 }
+    ],
     note: "For bookings made on or after September 1, 2026, Frontier Miles earns 1 to 11 miles per dollar on basic fares and 6 to 16 on bundles, depending on status. Frontier World Mastercard holders earn more."
   },
   jetblue: {
@@ -120,6 +165,13 @@ window.PROGRAMS = {
       { id: "mosaic3", name: "Mosaic 3", rate: 9 },
       { id: "mosaic4", name: "Mosaic 4", rate: 9 }
     ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "card", name: "JetBlue Card", rate: 3 },
+      { id: "plus", name: "JetBlue Plus Card", rate: 6 },
+      { id: "premier", name: "JetBlue Premier Card", rate: 6 },
+      { id: "biz", name: "JetBlue Business Card", rate: 6 }
+    ],
     note: "TrueBlue awards 3 base points per dollar plus a 3-point bonus for booking on jetblue.com or the JetBlue app. Mosaic members earn 3 more points per dollar. Blue Basic fares earn less."
   },
   allegiant: {
@@ -133,6 +185,10 @@ window.PROGRAMS = {
     ],
     statuses: [
       { id: "member", name: "Allways Rewards Member" }
+    ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "allways-visa", name: "Allways Rewards Visa", rate: 3 }
     ],
     note: "Allways Rewards has no elite status tiers. Members earn 1 point per dollar on the first $500 and 2 points per dollar above $500, excluding taxes and fees."
   },
@@ -153,7 +209,7 @@ window.PROGRAMS = {
       { id: "breezy3", name: "Breezy 3", multiplier: 1.5 },
       { id: "club", name: "Breezy Club", multiplier: 1.5 }
     ],
-    note: "BreezePoints depend on the bundle you buy. Breezy 1 adds a 25% boost and Breezy 2 adds 50%. Breezy 3 and Breezy Club are shown at the confirmed 50% boost, so their real totals may be higher."
+    note: "Breeze Easy Visa earning is not included because its per-dollar rate is not published clearly. BreezePoints depend on the bundle you buy. Breezy 1 adds a 25% boost and Breezy 2 adds 50%. Breezy 3 and Breezy Club are shown at the confirmed 50% boost, so their real totals may be higher."
   },
   hawaiian: {
     name: "Hawaiian Airlines | Atmos Rewards",
@@ -166,6 +222,12 @@ window.PROGRAMS = {
       { id: "gold", name: "Atmos Gold", multiplier: 1.5 },
       { id: "platinum", name: "Atmos Platinum", multiplier: 2 },
       { id: "titanium", name: "Atmos Titanium", multiplier: 2.5 }
+    ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "ascent", name: "Atmos Rewards Ascent Visa Signature", rate: 3 },
+      { id: "summit", name: "Atmos Rewards Summit Visa Infinite", rate: 3 },
+      { id: "hawaiian-mc", name: "Hawaiian Airlines World Elite Mastercard", rate: 3 }
     ],
     note: "HawaiianMiles is now part of Atmos Rewards, so Hawaiian flights earn 1 point per mile flown with elite bonuses of 25% to 150%. Neighbor Island flights earn a minimum of 500 points per segment, which this estimate does not apply."
   },
@@ -184,6 +246,15 @@ window.PROGRAMS = {
       { id: "75k", name: "Aeroplan 75K", rate: 5 },
       { id: "se", name: "Aeroplan Super Elite", rate: 6 }
     ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "td-vi", name: "TD Aeroplan Visa Infinite", rate: 1.5 },
+      { id: "cibc-vi", name: "CIBC Aeroplan Visa Infinite", rate: 1.5 },
+      { id: "td-priv", name: "TD Aeroplan Visa Infinite Privilege", rate: 2 },
+      { id: "cibc-priv", name: "CIBC Aeroplan Visa Infinite Privilege", rate: 2 },
+      { id: "amex", name: "American Express Aeroplan Card", rate: 2 },
+      { id: "amex-reserve", name: "American Express Aeroplan Reserve Card", rate: 3 }
+    ],
     note: "Since January 2026, Aeroplan earns points per Canadian dollar spent on base fare and carrier surcharges on Air Canada flights. Taxes do not earn. Elite members earn 2 to 6 points per dollar."
   },
   westjet: {
@@ -198,6 +269,11 @@ window.PROGRAMS = {
       { id: "silver", name: "Silver", rate: 3 },
       { id: "gold", name: "Gold", rate: 5 },
       { id: "platinum", name: "Platinum", rate: 8 }
+    ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "rbc-mc", name: "WestJet RBC Mastercard", rate: 1.5 },
+      { id: "rbc-we", name: "WestJet RBC World Elite Mastercard", rate: 2 }
     ],
     note: "WestJet Rewards earns points per Canadian dollar spent on WestJet flights, before taxes. Partner flights earn by distance and are not covered here."
   },
@@ -214,6 +290,11 @@ window.PROGRAMS = {
       { id: "platinum", name: "Platinum", rate: 8 },
       { id: "titanium", name: "Titanium", rate: 16 }
     ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "amex", name: "American Express Aeroméxico", rate: 2.4 },
+      { id: "amex-plat", name: "American Express Aeroméxico Platinum", rate: 4.8 }
+    ],
     note: "Aeroméxico Rewards earns 8 points per US dollar of base fare, excluding taxes. Enter the fare in US dollars. Titanium earns 8 more points per dollar. Bonuses for Silver, Gold, and Platinum were not confirmed, so those tiers are shown at the base rate."
   },
   viva: {
@@ -227,7 +308,7 @@ window.PROGRAMS = {
       { id: "silver", name: "Doters Silver", rate: 0.5 },
       { id: "gold", name: "Doters Gold", rate: 0.5 }
     ],
-    note: "Doters earns 1 point for every 2 Mexican pesos spent with Viva Aerobus, including bags and seats. Silver and Gold bonuses were not confirmed, so those levels are shown at the Green rate."
+    note: "HSBC Viva card earning is not included because its rate could not be confirmed. Doters earns 1 point for every 2 Mexican pesos spent with Viva Aerobus, including bags and seats. Silver and Gold bonuses were not confirmed, so those levels are shown at the Green rate."
   },
   volaris: {
     name: "Volaris | Altitude",
@@ -237,6 +318,12 @@ window.PROGRAMS = {
     method: "spend",
     statuses: [
       { id: "member", name: "Altitude Member", rate: 0.5 }
+    ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "invex0", name: "Volaris INVEX 0", rate: 0.75 },
+      { id: "invex", name: "Volaris INVEX", rate: 0.85 },
+      { id: "invex2", name: "Volaris INVEX 2", rate: 1 }
     ],
     note: "Altitude by Volaris earns 10 points for every 20 Mexican pesos spent on volaris.com or the app, excluding taxes and airport fees. It has no status tiers. Volaris INVEX cardholders earn more."
   }

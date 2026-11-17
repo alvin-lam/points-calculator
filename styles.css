@@ -91,6 +91,25 @@ button {
 }
 button:hover { filter: brightness(1.08); }
 
+fieldset.field { border: 0; padding: 0; margin: 0 0 16px; }
+legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
+.choice { display: flex; gap: 8px; }
+.choice label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-weight: 500;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  cursor: pointer;
+}
+.choice label:has(input:checked) { border-color: var(--accent); }
+.choice input { width: auto; margin: 0; accent-color: var(--accent); }
+
 .error { color: var(--error); margin: 0 0 12px; }
 
 .result { background: var(--result-bg); }

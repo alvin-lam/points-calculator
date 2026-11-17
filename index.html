@@ -63,6 +63,20 @@
         <small>This program awards points by distance, not by price.</small>
       </div>
 
+      <fieldset class="field" id="cardField" hidden>
+        <legend>Did you pay with the airline's co-branded credit card?</legend>
+        <div class="choice">
+          <label><input type="radio" name="usedCard" id="usedCardNo" value="no" checked> No</label>
+          <label><input type="radio" name="usedCard" id="usedCardYes" value="yes"> Yes</label>
+        </div>
+      </fieldset>
+
+      <div class="field" id="cardSelectField" hidden>
+        <label for="card">Which card?</label>
+        <select id="card"></select>
+        <small>Card points are earned on the full amount charged, taxes included.</small>
+      </div>
+
       <p id="error" class="error" role="alert" hidden></p>
       <button type="submit">Calculate points</button>
     </form>

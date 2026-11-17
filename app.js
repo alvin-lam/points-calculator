@@ -13,6 +13,11 @@
   var airfareEl = $("airfare");
   var taxesEl = $("taxes");
   var distanceEl = $("distance");
+  var cardField = $("cardField");
+  var cardSelectField = $("cardSelectField");
+  var cardEl = $("card");
+  var usedCardYes = $("usedCardYes");
+  var usedCardNo = $("usedCardNo");
   var errorEl = $("error");
   var resultEl = $("result");
 
@@ -70,10 +75,21 @@
       else fareTypeEl.selectedIndex = 1 < p.fareTypes.length ? 1 : 0;
     }
 
+    // Ask about a co-branded card only for programs with card data.
+    cardEl.innerHTML = "";
+    cardField.hidden = !p.cards;
+    if (p.cards) p.cards.forEach(function (c) { cardEl.appendChild(option(c.id, c.name)); });
+    if (!p.cards) usedCardNo.checked = true;
+    syncCardSelect();
+
     distanceField.hidden = p.method !== "distance";
     distanceEl.required = p.method === "distance";
     resultEl.hidden = true;
     errorEl.hidden = true;
+  }
+
+  function syncCardSelect() {
+    cardSelectField.hidden = cardField.hidden || !usedCardYes.checked;
   }
 
   function find(list, id) {
@@ -150,8 +166,15 @@
     var fareType = p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
     var r = calculate(p, status, fareType, airfare, distance);
 
-    $("resultProgram").textContent = p.name + " · " + status.name + (fareType ? " · " + fareType.name : "");
-    $("resultPoints").textContent = num.format(r.points);
+    // Card points come on top of flight points and are earned on the
+    // full charge, taxes included. The per-ticket cap does not apply.
+    var card = p.cards && usedCardYes.checked ? find(p.cards, cardEl.value) : null;
+    var cardPoints = card ? Math.floor((airfare + taxes) * card.rate) : 0;
+    var total = r.points + cardPoints;
+
+    $("resultProgram").textContent = p.name + " · " + status.name +
+      (fareType ? " · " + fareType.name : "") + (card ? " · " + card.name : "");
+    $("resultPoints").textContent = num.format(total);
     $("resultUnit").textContent = p.unit;
 
     var dl = $("breakdown");
@@ -160,10 +183,14 @@
     row(dl, "Taxes & fees", usd.format(taxes));
     row(dl, "Total trip cost", usd.format(airfare + taxes));
     if (p.method === "distance") row(dl, "Miles flown", num.format(distance));
-    row(dl, "Earning rate", r.rateLabel);
+    row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
+    if (card) {
+      row(dl, "Card earning", num.format(cardPoints) + " (" + num.format(card.rate) + " per " +
+        symbols[p.currency || "USD"] + " on " + usd.format(airfare + taxes) + ")");
+    }
     // Skip the value rows for programs without a reliable point value.
     if (p.centsPerPoint) {
-      var value = r.points * p.centsPerPoint / 100;
+      var value = total * p.centsPerPoint / 100;
       row(dl, "Approximate value", usd.format(value) + " (at " + p.centsPerPoint + "¢ each)");
       if (airfare + taxes > 0) {
         row(dl, "Return on total cost", (value / (airfare + taxes) * 100).toFixed(1) + "%");
@@ -177,4 +204,6 @@
   var yearEl = $("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   programEl.addEventListener("change", onProgramChange);
+  usedCardYes.addEventListener("change", syncCardSelect);
+  usedCardNo.addEventListener("change", syncCardSelect);
 })();
