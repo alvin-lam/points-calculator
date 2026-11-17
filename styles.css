@@ -129,8 +129,9 @@ footer p { font-size: 0.8rem; color: var(--muted); }
 
 .brand {
   font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
-  font-size: 2rem;
-  line-height: 1.1;
+  font-size: 75px;
+  line-height: 1;
+  text-wrap: balance;
   margin: 0 0 12px;
   color: var(--accent);
 }
@@ -145,3 +146,8 @@ header { text-align: center; }
 footer .copyright { text-align: center; }
 footer .copyright a { color: var(--accent); text-underline-offset: 2px; }
 footer .copyright a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Keep the 75px wordmark on one line on phones. */
+@media (max-width: 560px) {
+  .brand { font-size: 13vw; }
+}
