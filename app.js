@@ -26,7 +26,9 @@
     return o;
   }
 
-  Object.keys(PROGRAMS).forEach(function (key) {
+  Object.keys(PROGRAMS).sort(function (a, b) {
+    return PROGRAMS[a].name.localeCompare(PROGRAMS[b].name);
+  }).forEach(function (key) {
     programEl.appendChild(option(key, PROGRAMS[key].name));
   });
 
