@@ -9,7 +9,6 @@
   var shareBtn = document.getElementById("shareBtn");
   var iosSteps = document.getElementById("iosSteps");
   var dismissBtn = document.getElementById("installDismiss");
-  var footerLink = document.getElementById("installLink");
   if (!banner) return;
 
   var KEY = "installDismissedAt";
@@ -54,22 +53,17 @@
     return null;
   }
 
-  if (standalone) {
-    if (footerLink) footerLink.hidden = true;
-    return;
-  }
+  if (standalone) return;
 
   window.addEventListener("beforeinstallprompt", function (e) {
     e.preventDefault();
     deferred = e;
-    if (footerLink) footerLink.hidden = false;
     if (!recentlyDismissed()) show("prompt");
   });
 
   window.addEventListener("appinstalled", function () {
     deferred = null;
     hide(false);
-    if (footerLink) footerLink.hidden = true;
   });
 
   installBtn.addEventListener("click", function () {
@@ -88,18 +82,10 @@
 
   dismissBtn.addEventListener("click", function () { hide(true); });
 
-  if (footerLink) {
-    footerLink.addEventListener("click", function () {
-      var m = mode();
-      if (m) show(m);
-    });
-  }
-
   // iOS and share-only browsers never fire beforeinstallprompt, so offer
   // the manual route after the visitor has had a moment with the page.
   setTimeout(function () {
     var m = mode();
-    if (footerLink && m) footerLink.hidden = false;
     if (!deferred && m && !recentlyDismissed()) show(m);
   }, 4000);
 })();
