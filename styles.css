@@ -118,6 +118,10 @@ footer p { font-size: 0.8rem; color: var(--muted); }
 footer { border-top: 1px solid var(--border); margin-top: 8px; padding-top: 8px; }
 footer .copyright { font-family: "Instrument Serif", Georgia, serif; font-size: 1rem; color: var(--text); margin-bottom: 0; }
 header { text-align: center; }
+.brand a { color: inherit; text-decoration: none; }
+.brand a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.brand a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
 footer .copyright { text-align: center; }
 footer .copyright a { color: var(--accent); text-underline-offset: 2px; }
 footer .copyright a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
