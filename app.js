@@ -32,15 +32,16 @@
     USD: new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }),
     CAD: new Intl.NumberFormat("en-US", { style: "currency", currency: "CAD" }),
     MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" }),
+    AUD: new Intl.NumberFormat("en-US", { style: "currency", currency: "AUD" }),
     GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
     EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", GBP: "£", EUR: "€" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", GBP: "£", EUR: "€" };
   // Name of the currency's hundredth, for the point value label.
-  var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", GBP: "p", EUR: "¢" };
+  var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", GBP: "£", EUR: "€" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", GBP: "£", EUR: "€" };
 
   function option(value, label) {
     var o = document.createElement("option");

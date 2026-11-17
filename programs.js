@@ -603,6 +603,94 @@ window.PROGRAMS = {
   };
 })();
 
+/* Programs added November 2026. */
+(function () {
+  var P = window.PROGRAMS;
+
+  P.porter = {
+    name: "Porter Airlines | VIPorter",
+    country: "CA",
+    currency: "CAD",
+    unit: "points",
+    method: "spend",
+    statuses: [
+      { id: "member", name: "VIPorter Member", rate: 5 },
+      { id: "passport", name: "Passport", rate: 6 },
+      { id: "venture", name: "Venture", rate: 6 },
+      { id: "ascent", name: "Ascent", rate: 7 },
+      { id: "first", name: "First", rate: 7 }
+    ],
+    // Co-branded cards: extra points per Canadian dollar charged.
+    cards: [
+      { id: "bmo", name: "BMO VIPorter Mastercard", rate: 2 },
+      { id: "bmo-we", name: "BMO VIPorter World Elite Mastercard", rate: 3 }
+    ],
+    note: "VIPorter earns 5 to 7 points per Canadian dollar of the base fare by status, and Porter add-ons like seats and bags also earn. Taxes do not earn. The BMO card rates on Porter purchases differ between sources, so treat them as estimates."
+  };
+
+  P.finnair = {
+    name: "Finnair | Finnair Plus",
+    country: "FI",
+    currency: "EUR",
+    unit: "Avios",
+    method: "spend",
+    centsPerPoint: 1.0,
+    statuses: [
+      { id: "basic", name: "Basic", rate: 6 },
+      { id: "silver", name: "Silver", rate: 7 },
+      { id: "gold", name: "Gold", rate: 8 },
+      { id: "platinum", name: "Platinum", rate: 9 },
+      { id: "lumo", name: "Platinum Lumo", rate: 10 }
+    ],
+    note: "Finnair Plus earns 6 to 10 Avios per euro of the fare by status, on flights booked with Finnair. Taxes do not earn. Enter fares in euros."
+  };
+
+  P.virginaustralia = {
+    name: "Virgin Australia | Velocity",
+    country: "AU",
+    currency: "AUD",
+    unit: "Velocity Points",
+    method: "spend",
+    centsPerPoint: 1.0,
+    statuses: [
+      { id: "red", name: "Red", rate: 4 },
+      { id: "silver", name: "Silver", rate: 6 },
+      { id: "gold", name: "Gold", rate: 7 },
+      { id: "platinum", name: "Platinum", rate: 8 },
+      { id: "platinum-plus", name: "Platinum Plus", rate: 10 }
+    ],
+    note: "Velocity earns 4 points per Australian dollar of the fare on Virgin Australia flights. Silver, Gold, Platinum, and Platinum Plus earn a status bonus; this estimate uses 50%, 75%, 100%, and 150%, the rates Velocity publishes for holiday bookings, because the flight rates are not published. Taxes do not earn."
+  };
+
+  P.qatar = {
+    name: "Qatar Airways | Privilege Club",
+    country: "QA",
+    unit: "Avios",
+    method: "distance",
+    centsPerPoint: 1.2,
+    defaultFareType: "econ-conv",
+    // Share of the flight distance earned, by booking class.
+    fareTypes: [
+      { id: "first", name: "First Elite (F, A)", rate: 3 },
+      { id: "bus-elite", name: "Business Elite (C, J)", rate: 2 },
+      { id: "bus-comfort", name: "Business Comfort (I, D)", rate: 1.75 },
+      { id: "bus-classic", name: "Business Classic (R)", rate: 1.25 },
+      { id: "bus-lite", name: "Business Lite (P)", rate: 0.75 },
+      { id: "econ-comfort", name: "Economy Comfort (H, B, Y)", rate: 1 },
+      { id: "econ-conv", name: "Economy Convenience (S, V, L, M, K)", rate: 0.75 },
+      { id: "econ-classic", name: "Economy Classic (O, T, Q, N)", rate: 0.5 },
+      { id: "econ-lite", name: "Economy Lite (W)", rate: 0.25 }
+    ],
+    statuses: [
+      { id: "burgundy", name: "Burgundy", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1.25 },
+      { id: "gold", name: "Gold", multiplier: 1.75 },
+      { id: "platinum", name: "Platinum", multiplier: 2 }
+    ],
+    note: "Privilege Club earns a share of the miles flown set by booking class, from 25% in Economy Lite to 300% in First. Silver, Gold, and Platinum add 25%, 75%, and 100%."
+  };
+})();
+
 /* Groups shown as separators in the program menu: a country, or an
    airline group spanning countries. Programs without a country field
    belong to "US". */
@@ -615,5 +703,8 @@ window.COUNTRIES = [
   { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8} \u{1F1EE}\u{1F1EA} | Avios" },
   { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9} | Miles & More" },
   { id: "PT", label: "Portugal \u{1F1F5}\u{1F1F9}" },
-  { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" }
+  { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" },
+  { id: "AU", label: "Australia \u{1F1E6}\u{1F1FA}" },
+  { id: "FI", label: "Finland \u{1F1EB}\u{1F1EE}" },
+  { id: "QA", label: "Qatar \u{1F1F6}\u{1F1E6}" }
 ];
