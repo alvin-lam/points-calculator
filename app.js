@@ -143,5 +143,7 @@
     resultEl.hidden = false;
   });
 
+  var yearEl = $("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
   programEl.addEventListener("change", onProgramChange);
 })();

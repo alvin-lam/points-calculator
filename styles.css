@@ -106,3 +106,14 @@ button:hover { filter: brightness(1.08); }
 .note { font-size: 0.9rem; color: var(--muted); margin: 0; }
 
 footer p { font-size: 0.8rem; color: var(--muted); }
+
+.brand {
+  font-family: "Instrument Serif", Georgia, "Times New Roman", serif;
+  font-size: 2rem;
+  line-height: 1.1;
+  margin: 0 0 12px;
+  color: var(--accent);
+}
+
+footer { border-top: 1px solid var(--border); margin-top: 8px; padding-top: 8px; }
+footer .copyright { font-family: "Instrument Serif", Georgia, serif; font-size: 1rem; color: var(--text); margin-bottom: 0; }
