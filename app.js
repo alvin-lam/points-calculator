@@ -16,6 +16,8 @@
   var earnField = $("earnField");
   var earnEl = $("earnMethod");
   var segmentsField = $("segmentsField");
+  var zoneField = $("zoneField");
+  var zoneEl = $("zone");
   var segmentsEl = $("segments");
   var cardField = $("cardField");
   var cardSelectField = $("cardSelectField");
@@ -146,6 +148,8 @@
     if (!p.cards) usedCardNo.checked = true;
     syncCardSelect();
 
+    zoneEl.innerHTML = "";
+    if (p.zones) p.zones.forEach(function (z) { zoneEl.appendChild(option(z.id, z.name)); });
     earnEl.innerHTML = "";
     earnField.hidden = !p.earnMethods;
     if (p.earnMethods) p.earnMethods.forEach(function (m) { earnEl.appendChild(option(m.id, m.name)); });
@@ -178,6 +182,7 @@
     distanceField.hidden = m !== "distance";
     distanceEl.required = m === "distance";
     segmentsField.hidden = m !== "segments";
+    zoneField.hidden = m !== "zone";
     resultEl.hidden = true;
   }
 
@@ -191,7 +196,18 @@
     var points, rateLabel;
     var em = earnMethod(p);
 
-    if (em.id === "segments") {
+    if (em.id === "zone") {
+      // Fixed points by route band and fare, plus the status bonus.
+      var zone = find(p.zones, zoneEl.value);
+      var fi = p.fareTypes.indexOf(fareType);
+      var base = zone.points[fi];
+      if (base == null) return { error: fareType.name + " is not sold on this route." };
+      var bonusBase = fareType.premium && p.bonusBaseFare
+        ? zone.points[p.fareTypes.indexOf(find(p.fareTypes, p.bonusBaseFare))] : base;
+      var bonus = Math.round(bonusBase * (status.bonus || 0));
+      points = base + bonus;
+      rateLabel = bonus ? num.format(base) + " base + " + num.format(bonus) + " status bonus" : "fixed for this fare and route";
+    } else if (em.id === "segments") {
       var perSegment = em.perSegment * status.multiplier;
       points = segments * perSegment;
       rateLabel = num.format(perSegment) + " " + p.unit + " per segment";
@@ -271,6 +287,7 @@
     var fareType = p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
     var airline = selection().airline;
     var r = calculate(p, status, fareType, airfare, distance, airline, segments);
+    if (r.error) return showError(r.error);
 
     // Card points come on top of flight points and are earned on the
     // full charge, taxes included. The per-ticket cap does not apply.
@@ -297,6 +314,7 @@
     row(dl, "Total trip cost", usd.format(airfare + taxes));
     if (method === "distance") row(dl, "Miles flown", num.format(distance));
     if (method === "segments") row(dl, "Segments flown", num.format(segments));
+    if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
     row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {
       var cardMoney = foreignCard
