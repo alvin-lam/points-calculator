@@ -587,6 +587,47 @@ window.PROGRAMS = {
     note: "Finnair Plus earns 6 to 10 Avios per euro of the fare by status, on flights booked with Finnair. Taxes do not earn. Enter fares in euros."
   };
 
+  P.lifemiles = {
+    name: "Avianca | LifeMiles",
+    country: "CO",
+    unit: "LifeMiles",
+    method: "spend",
+    defaultFareType: "classic",
+    fareTypes: [
+      { id: "basic", name: "Basic or Light", rate: 3 },
+      { id: "classic", name: "Classic", rate: 6 },
+      { id: "flex", name: "Flex", rate: 8 },
+      { id: "business", name: "Business or Insignia", rate: 10 }
+    ],
+    statuses: [
+      { id: "red", name: "Red", multiplier: 1 },
+      { id: "red-plus", name: "Red Plus", multiplier: 1.1 },
+      { id: "silver", name: "Silver", multiplier: 1.2 },
+      { id: "gold", name: "Gold", multiplier: 1.6 },
+      { id: "diamond", name: "Diamond", multiplier: 1.8 }
+    ],
+    note: "LifeMiles earns on Avianca flights by the fare paid: 3, 6, 8, or 10 miles per US dollar by fare family, excluding taxes. Red Plus and Silver add 10% and 20%. Gold and Diamond are shown at 60% and 80%, but sources differ on those two."
+  };
+
+  P.norwegian = {
+    name: "Norwegian | Norwegian Reward",
+    country: "NO",
+    currency: "NOK",
+    unit: "CashPoints",
+    method: "spend",
+    rateAsPercent: true,
+    defaultFareType: "lowfare",
+    fareTypes: [
+      { id: "lowfare", name: "LowFare", rate: 0.01 },
+      { id: "lowfare-plus", name: "LowFare+", rate: 0.02 },
+      { id: "flex", name: "Flex", rate: 0.05 }
+    ],
+    statuses: [
+      { id: "member", name: "Norwegian Reward Member", multiplier: 1 }
+    ],
+    note: "Norwegian Reward pays CashPoints worth 1%, 2%, or 5% of the ticket price before taxes, by fare. One CashPoint is worth 1 Norwegian krone, so enter the fare in kroner. Members living in Norway, Sweden, Denmark, or Finland earn Spenn instead. Paying with a Bank Norwegian card raises LowFare to 3% and LowFare+ to 4%."
+  };
+
   P.virginaustralia = {
     name: "Virgin Australia | Velocity",
     country: "AU",
@@ -619,5 +660,7 @@ window.COUNTRIES = [
   { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8} \u{1F1EE}\u{1F1EA} | Avios" },
   { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9} | Miles & More" },
   { id: "AU", label: "Australia \u{1F1E6}\u{1F1FA}" },
+  { id: "CO", label: "Colombia \u{1F1E8}\u{1F1F4}" },
+  { id: "NO", label: "Norway \u{1F1F3}\u{1F1F4}" },
   { id: "FI", label: "Finland \u{1F1EB}\u{1F1EE}" }
 ];

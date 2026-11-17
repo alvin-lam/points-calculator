@@ -33,15 +33,16 @@
     CAD: new Intl.NumberFormat("en-US", { style: "currency", currency: "CAD" }),
     MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" }),
     AUD: new Intl.NumberFormat("en-US", { style: "currency", currency: "AUD" }),
+    NOK: new Intl.NumberFormat("en-US", { style: "currency", currency: "NOK" }),
     GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
     EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", GBP: "£", EUR: "€" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", GBP: "£", EUR: "€" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", GBP: "£", EUR: "€" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", GBP: "£", EUR: "€" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -222,7 +223,9 @@
       // Programs spanning several airlines can set their own elite rate.
       if (airline && status.elite && airline.eliteRate) rate = airline.eliteRate;
       points = airfare * rate;
-      rateLabel = num.format(rate) + " " + p.unit + " per " + symbols[p.currency || "USD"];
+      rateLabel = p.rateAsPercent
+        ? num.format(rate * 100) + "% of the fare"
+        : num.format(rate) + " " + p.unit + " per " + symbols[p.currency || "USD"];
     }
 
     points = Math.floor(points);
