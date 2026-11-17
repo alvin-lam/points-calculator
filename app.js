@@ -18,6 +18,8 @@
   var cardEl = $("card");
   var usedCardYes = $("usedCardYes");
   var usedCardNo = $("usedCardNo");
+  var cardChargeField = $("cardChargeField");
+  var cardChargeEl = $("cardCharge");
   var errorEl = $("error");
   var resultEl = $("result");
 
@@ -28,7 +30,9 @@
     MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" })
   };
   var symbols = { USD: "$", CAD: "CA$", MXN: "MX$" };
-  var moneyEls = document.querySelectorAll(".money");
+  var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
+  // Labels for a card billed in another currency than the fare.
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -90,6 +94,14 @@
 
   function syncCardSelect() {
     cardSelectField.hidden = cardField.hidden || !usedCardYes.checked;
+    var p = PROGRAMS[programEl.value];
+    var card = p && p.cards && !cardSelectField.hidden ? find(p.cards, cardEl.value) : null;
+    var foreign = card && card.currency && card.currency !== (p.currency || "USD");
+    cardChargeField.hidden = !foreign;
+    if (foreign) {
+      $("cardChargeCurrency").textContent = cardSymbols[card.currency];
+      $("cardChargeSymbol").textContent = cardSymbols[card.currency];
+    }
   }
 
   function find(list, id) {
@@ -169,7 +181,14 @@
     // Card points come on top of flight points and are earned on the
     // full charge, taxes included. The per-ticket cap does not apply.
     var card = p.cards && usedCardYes.checked ? find(p.cards, cardEl.value) : null;
-    var cardPoints = card ? Math.floor((airfare + taxes) * card.rate) : 0;
+    var cardCurrency = card && card.currency ? card.currency : (p.currency || "USD");
+    var foreignCard = cardCurrency !== (p.currency || "USD");
+    var charged = airfare + taxes;
+    if (foreignCard) {
+      charged = parseFloat(cardChargeEl.value);
+      if (!(charged > 0)) return showError("Please enter the amount charged to your card in " + cardSymbols[cardCurrency] + ".");
+    }
+    var cardPoints = card ? Math.floor(charged * card.rate) : 0;
     var total = r.points + cardPoints;
 
     $("resultProgram").textContent = p.name + " · " + status.name +
@@ -185,8 +204,11 @@
     if (p.method === "distance") row(dl, "Miles flown", num.format(distance));
     row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {
+      var cardMoney = foreignCard
+        ? cardSymbols[cardCurrency] + charged.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        : usd.format(charged);
       row(dl, "Card earning", num.format(cardPoints) + " (" + num.format(card.rate) + " per " +
-        symbols[p.currency || "USD"] + " on " + usd.format(airfare + taxes) + ")");
+        (foreignCard ? cardSymbols[cardCurrency] : symbols[p.currency || "USD"]) + " on " + cardMoney + ")");
     }
     // Skip the value rows for programs without a reliable point value.
     if (p.centsPerPoint) {
@@ -206,4 +228,5 @@
   programEl.addEventListener("change", onProgramChange);
   usedCardYes.addEventListener("change", syncCardSelect);
   usedCardNo.addEventListener("change", syncCardSelect);
+  cardEl.addEventListener("change", syncCardSelect);
 })();

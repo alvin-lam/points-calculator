@@ -77,6 +77,15 @@
         <small>Card points are earned on the full amount charged, taxes included.</small>
       </div>
 
+      <div class="field" id="cardChargeField" hidden>
+        <label for="cardCharge">Amount charged to card (<span id="cardChargeCurrency">US$</span>)</label>
+        <div class="money wide-fixed">
+          <span aria-hidden="true" id="cardChargeSymbol">US$</span>
+          <input id="cardCharge" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+        </div>
+        <small>This card earns in a different currency than the fare. Enter the total from your card statement.</small>
+      </div>
+
       <p id="error" class="error" role="alert" hidden></p>
       <button type="submit">Calculate points</button>
     </form>

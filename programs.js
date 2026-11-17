@@ -8,7 +8,9 @@
  *   "tiered"   -> custom per-dollar tiers (Allegiant)
  *
  * cards (optional): co-branded credit cards and the extra points each earns
- * per dollar charged to it for the ticket, taxes included.
+ * per dollar charged to it for the ticket, taxes included. A card with its
+ * own currency (e.g. a US card on a Canadian program) asks for the amount
+ * charged in that currency.
  *
  * Rates reflect publicly reported rules as of late 2026. Update them here
  * when a program changes; the rest of the app reads from this file.
@@ -192,6 +194,21 @@ window.PROGRAMS = {
     ],
     note: "Allways Rewards has no elite status tiers. Members earn 1 point per dollar on the first $500 and 2 points per dollar above $500, excluding taxes and fees."
   },
+  suncountry: {
+    name: "Sun Country Airlines | Sun Country Rewards",
+    unit: "points",
+    method: "spend",
+    centsPerPoint: 1.0,
+    statuses: [
+      { id: "member", name: "Sun Country Rewards Member", rate: 2 },
+      { id: "plus", name: "Plus", rate: 3 }
+    ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "visa", name: "Sun Country Visa Signature", rate: 3 }
+    ],
+    note: "Sun Country Rewards earns 2 points per dollar on Sun Country purchases, and Plus status adds 1 more. The Sun Country Visa Signature adds 3 points per dollar charged. Sun Country is merging with Allegiant, so these rules may change."
+  },
   breeze: {
     name: "Breeze Airways | Breezy Rewards",
     unit: "BreezePoints",
@@ -253,9 +270,10 @@ window.PROGRAMS = {
       { id: "td-priv", name: "TD Aeroplan Visa Infinite Privilege", rate: 2 },
       { id: "cibc-priv", name: "CIBC Aeroplan Visa Infinite Privilege", rate: 2 },
       { id: "amex", name: "American Express Aeroplan Card", rate: 2 },
-      { id: "amex-reserve", name: "American Express Aeroplan Reserve Card", rate: 3 }
+      { id: "amex-reserve", name: "American Express Aeroplan Reserve Card", rate: 3 },
+      { id: "chase", name: "Chase Aeroplan Card (US)", rate: 3, currency: "USD" }
     ],
-    note: "Since January 2026, Aeroplan earns points per Canadian dollar spent on base fare and carrier surcharges on Air Canada flights. Taxes do not earn. Elite members earn 2 to 6 points per dollar."
+    note: "Since January 2026, Aeroplan earns points per Canadian dollar spent on base fare and carrier surcharges on Air Canada flights. Taxes do not earn. Elite members earn 2 to 6 points per dollar. The US Chase Aeroplan Card earns per US dollar charged and includes automatic 25K status."
   },
   westjet: {
     name: "WestJet | WestJet Rewards",

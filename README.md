@@ -20,7 +20,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 - Alaska and Hawaiian both use Atmos Rewards, which earns by distance.
 - Allegiant earns 1 point per dollar up to $500 and 2 per dollar above that.
 
-- Co-branded card points are added on top of flight points. They are earned on the full amount charged, taxes included, and are not subject to the per-ticket cap. Breeze and Viva Aerobus have no card option because their card rates could not be confirmed.
+- Co-branded card points are added on top of flight points. They are earned on the full amount charged, taxes included, and are not subject to the per-ticket cap. A card billed in another currency than the fare, such as the US Chase Aeroplan Card, asks for the amount charged in its own currency. Breeze and Viva Aerobus have no card option because their card rates could not be confirmed.
 
 ## Updating rates
 
