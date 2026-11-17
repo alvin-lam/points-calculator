@@ -451,7 +451,7 @@ window.PROGRAMS = {
     note: "Miles & More earns award miles per euro of the fare, not by distance: 4 per euro for members. Frequent Traveller, Senator, and HON Circle earn 6 per euro on Lufthansa, SWISS, Austrian, Brussels, and ITA, and 5 on Eurowings and Discover. Taxes do not earn. Enter fares in euros. The US Barclays card earns per US dollar charged."
   };
 
-  /* Iberia Club covers Iberia and LEVEL flights. */
+  /* Iberia Club covers Iberia and LEVEL flights (both under IAG below). */
   var iberiaStatuses = [
     { id: "clasica", name: "Clásica", rate: 5 },
     { id: "plata", name: "Plata", rate: 6 },
@@ -466,7 +466,7 @@ window.PROGRAMS = {
     { id: "chase-ba", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
   ];
 
-  /* IAG: British Airways and Iberia in one program. Each airline brings
+  /* IAG: British Airways, Iberia, LEVEL, and Vueling in one program. Each airline brings
      its own loyalty program (currency, status levels, and cards). */
   var baClub = {
     currency: "GBP",
@@ -497,6 +497,23 @@ window.PROGRAMS = {
     cards: avioUsCards,
     note: "Iberia Club earns 5 to 8 Avios per euro of the fare by status, plus 2 more per euro on flights within Spain and between Spain and Latin America, which this estimate does not add. The Infinita rates are not confirmed by Iberia. Taxes do not earn."
   };
+  var levelClub = {
+    currency: "EUR",
+    statuses: iberiaStatuses,
+    cards: avioUsCards,
+    note: "LEVEL flights booked under an Iberia (IB) flight number earn Iberia Club Avios at the usual per-euro rates. Flights sold under LEVEL's own code earn only between Barcelona and Oakland, Los Angeles, Punta Cana, and Buenos Aires, through 31 December 2026."
+  };
+  var vuelingClub = {
+    currency: "EUR",
+    statuses: [
+      { id: "basic", name: "Basic", rate: 0 },
+      { id: "smart", name: "Smart", rate: 3 },
+      { id: "plus", name: "Plus", rate: 5 },
+      { id: "premium", name: "Premium", rate: 7 }
+    ],
+    cards: null,
+    note: "Since 2026, Vueling Club earns Avios on flights only from the Smart level up: 3, 5, or 7 Avios per euro of the fare. Earning starts after 3 flights or 200 euros spent in a year. Basic members earn no Avios on flights."
+  };
   P.iag = {
     name: "IAG | Avios",
     country: "IAG",
@@ -505,39 +522,15 @@ window.PROGRAMS = {
     centsPerPoint: 1.0,
     airlines: [
       { id: "ba", name: "British Airways \u{1F1EC}\u{1F1E7}", program: baClub },
-      { id: "ib", name: "Iberia \u{1F1EA}\u{1F1F8}", program: iberiaClub }
+      { id: "ib", name: "Iberia \u{1F1EA}\u{1F1F8}", program: iberiaClub },
+      { id: "level", name: "LEVEL \u{1F1EA}\u{1F1F8}", program: levelClub },
+      { id: "vy", name: "Vueling \u{1F1EA}\u{1F1F8}", program: vuelingClub }
     ],
     // Defaults before an airline is chosen (British Airways).
     currency: baClub.currency,
     statuses: baClub.statuses,
     cards: baClub.cards,
     note: baClub.note
-  };
-  P.level = {
-    name: "LEVEL | Iberia Club",
-    country: "ES",
-    currency: "EUR",
-    unit: "Avios",
-    method: "spend",
-    centsPerPoint: 1.0,
-    statuses: iberiaStatuses,
-    cards: avioUsCards,
-    note: "LEVEL flights booked under an Iberia (IB) flight number earn Iberia Club Avios at the usual per-euro rates. Flights sold under LEVEL's own code earn only between Barcelona and Oakland, Los Angeles, Punta Cana, and Buenos Aires, through 31 December 2026."
-  };
-  P.vueling = {
-    name: "Vueling | Vueling Club",
-    country: "ES",
-    currency: "EUR",
-    unit: "Avios",
-    method: "spend",
-    centsPerPoint: 1.0,
-    statuses: [
-      { id: "basic", name: "Basic", rate: 0 },
-      { id: "smart", name: "Smart", rate: 3 },
-      { id: "plus", name: "Plus", rate: 5 },
-      { id: "premium", name: "Premium", rate: 7 }
-    ],
-    note: "Since 2026, Vueling Club earns Avios on flights only from the Smart level up: 3, 5, or 7 Avios per euro of the fare. Earning starts after 3 flights or 200 euros spent in a year. Basic members earn no Avios on flights."
   };
 
   /* TAP Miles&Go: a share of miles flown, by fare and region. */
@@ -579,6 +572,5 @@ window.COUNTRIES = [
   { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8}" },
   { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9}" },
   { id: "PT", label: "Portugal \u{1F1F5}\u{1F1F9}" },
-  { id: "ES", label: "Spain \u{1F1EA}\u{1F1F8}" },
   { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" }
 ];
