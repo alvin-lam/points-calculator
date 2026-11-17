@@ -444,13 +444,138 @@ window.PROGRAMS = {
   }
 };
 
+/* Miles & More airlines share one rule set: award miles per euro on the
+   fare, with a higher rate for status members. */
+(function () {
+  var P = window.PROGRAMS;
+  var mmCard = { id: "barclays", name: "Miles & More World Elite Mastercard (US)", rate: 2, currency: "USD" };
+
+  function milesAndMore(name, country, statusRate, extraNote) {
+    return {
+      name: name + " | Miles & More",
+      country: country,
+      currency: "EUR",
+      unit: "miles",
+      method: "spend",
+      centsPerPoint: 1.0,
+      statuses: [
+        { id: "member", name: "Miles & More Member", rate: 4 },
+        { id: "ftl", name: "Frequent Traveller", rate: statusRate },
+        { id: "sen", name: "Senator", rate: statusRate },
+        { id: "hon", name: "HON Circle", rate: statusRate }
+      ],
+      // Co-branded card: extra miles per US dollar charged (fare + taxes).
+      cards: [mmCard],
+      note: "Miles & More earns award miles per euro of the fare, not by distance: 4 per euro for members and " +
+        statusRate + " for Frequent Traveller, Senator, and HON Circle. Taxes do not earn. Enter fares in euros. " +
+        "The US Barclays card earns per US dollar charged." + (extraNote ? " " + extraNote : "")
+    };
+  }
+
+  P.lufthansa = milesAndMore("Lufthansa", "DE", 6);
+  P.eurowings = milesAndMore("Eurowings", "DE", 5);
+  P.discover = milesAndMore("Discover Airlines", "DE", 5);
+  P.austrian = milesAndMore("Austrian Airlines", "AT", 6);
+  P.swiss = milesAndMore("SWISS", "CH", 6, "SWISS fares in Swiss francs earn at the euro equivalent.");
+  P.brussels = milesAndMore("Brussels Airlines", "BE", 6);
+  P.ita = milesAndMore("ITA Airways", "IT", 6,
+    "ITA Airways joined Miles & More on 1 April 2026, replacing Volare. ITA's own status rate has not been published, so it uses the Lufthansa rate.");
+
+  /* Iberia Club covers Iberia and LEVEL flights. */
+  var iberiaStatuses = [
+    { id: "clasica", name: "Clásica", rate: 5 },
+    { id: "plata", name: "Plata", rate: 6 },
+    { id: "oro", name: "Oro", rate: 7 },
+    { id: "platino", name: "Platino", rate: 8 },
+    { id: "infinita", name: "Infinita", rate: 9 },
+    { id: "infinita-prime", name: "Infinita Prime", rate: 9 }
+  ];
+  // Co-branded cards: extra Avios per US dollar charged (fare + taxes).
+  var avioUsCards = [
+    { id: "chase-iberia", name: "Chase Iberia Visa Signature (US)", rate: 3, currency: "USD" },
+    { id: "chase-ba", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
+  ];
+
+  P.iberia = {
+    name: "Iberia | Iberia Club",
+    country: "ES",
+    currency: "EUR",
+    unit: "Avios",
+    method: "spend",
+    centsPerPoint: 1.0,
+    statuses: iberiaStatuses,
+    cards: avioUsCards,
+    note: "Iberia Club earns 5 to 8 Avios per euro of the fare by status, plus 2 more per euro on flights within Spain and between Spain and Latin America, which this estimate does not add. The Infinita rates are not confirmed by Iberia. Taxes do not earn."
+  };
+  P.level = {
+    name: "LEVEL | Iberia Club",
+    country: "ES",
+    currency: "EUR",
+    unit: "Avios",
+    method: "spend",
+    centsPerPoint: 1.0,
+    statuses: iberiaStatuses,
+    cards: avioUsCards,
+    note: "LEVEL flights booked under an Iberia (IB) flight number earn Iberia Club Avios at the usual per-euro rates. Flights sold under LEVEL's own code earn only between Barcelona and Oakland, Los Angeles, Punta Cana, and Buenos Aires, through 31 December 2026."
+  };
+  P.vueling = {
+    name: "Vueling | Vueling Club",
+    country: "ES",
+    currency: "EUR",
+    unit: "Avios",
+    method: "spend",
+    centsPerPoint: 1.0,
+    statuses: [
+      { id: "basic", name: "Basic", rate: 0 },
+      { id: "smart", name: "Smart", rate: 3 },
+      { id: "plus", name: "Plus", rate: 5 },
+      { id: "premium", name: "Premium", rate: 7 }
+    ],
+    note: "Since 2026, Vueling Club earns Avios on flights only from the Smart level up: 3, 5, or 7 Avios per euro of the fare. Earning starts after 3 flights or 200 euros spent in a year. Basic members earn no Avios on flights."
+  };
+
+  /* TAP Miles&Go: a share of miles flown, by fare and region. */
+  P.tap = {
+    name: "TAP Air Portugal | Miles&Go",
+    country: "PT",
+    currency: "EUR",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "classic-eu",
+    fareTypes: [
+      { id: "discount", name: "Discount", rate: 0.2 },
+      { id: "basic", name: "Basic (intercontinental)", rate: 0.5 },
+      { id: "classic-eu", name: "Classic, Europe and North Africa", rate: 0.7 },
+      { id: "classic-ic", name: "Classic, intercontinental", rate: 1 },
+      { id: "plus-eu", name: "Plus, Europe and North Africa", rate: 1 },
+      { id: "plus-ic", name: "Plus, intercontinental", rate: 1.5 },
+      { id: "executive", name: "Executive", rate: 1.75 },
+      { id: "top-executive", name: "Top Executive", rate: 2 }
+    ],
+    statuses: [
+      { id: "member", name: "Miles&Go Member", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1 },
+      { id: "gold", name: "Gold", multiplier: 1 }
+    ],
+    note: "TAP Miles&Go earns a share of the miles flown set by fare and region. Executive rose from 150% to 175% in 2026. Silver and Gold bonuses could not be confirmed, so all levels use the base rates."
+  };
+})();
+
 /* Groups shown as separators in the program menu. Programs without a
    country field belong to "US". */
+// Pinned groups stay at the top in this order; the rest sort by name.
 window.COUNTRIES = [
-  { id: "US", label: "United States \u{1F1FA}\u{1F1F8}" },
-  { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}" },
-  { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}" },
-  { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" },
+  { id: "US", label: "United States \u{1F1FA}\u{1F1F8}", pinned: true },
+  { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}", pinned: true },
+  { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}", pinned: true },
+  { id: "AT", label: "Austria \u{1F1E6}\u{1F1F9}" },
+  { id: "BE", label: "Belgium \u{1F1E7}\u{1F1EA}" },
   { id: "FR", label: "France \u{1F1EB}\u{1F1F7}" },
-  { id: "NL", label: "Netherlands \u{1F1F3}\u{1F1F1}" }
+  { id: "DE", label: "Germany \u{1F1E9}\u{1F1EA}" },
+  { id: "IT", label: "Italy \u{1F1EE}\u{1F1F9}" },
+  { id: "NL", label: "Netherlands \u{1F1F3}\u{1F1F1}" },
+  { id: "PT", label: "Portugal \u{1F1F5}\u{1F1F9}" },
+  { id: "ES", label: "Spain \u{1F1EA}\u{1F1F8}" },
+  { id: "CH", label: "Switzerland \u{1F1E8}\u{1F1ED}" },
+  { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" }
 ];

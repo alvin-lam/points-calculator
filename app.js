@@ -46,7 +46,10 @@
   }
 
   // One <optgroup> per country, programs sorted by name inside each.
-  window.COUNTRIES.forEach(function (c) {
+  var pinned = window.COUNTRIES.filter(function (c) { return c.pinned; });
+  var others = window.COUNTRIES.filter(function (c) { return !c.pinned; })
+    .sort(function (a, b) { return a.label.localeCompare(b.label); });
+  pinned.concat(others).forEach(function (c) {
     var group = document.createElement("optgroup");
     group.label = c.label;
     Object.keys(PROGRAMS).filter(function (key) {

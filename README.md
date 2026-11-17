@@ -16,9 +16,10 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 
 - Points are earned on the airfare only. Taxes & fees are shown in the total cost but do not earn.
 - American, Delta, and United cap earning at 75,000 miles per ticket.
-- Air Canada and WestJet fares are entered in Canadian dollars (CA$). Viva Aerobus and Volaris fares are entered in Mexican pesos (MX$). British Airways and Virgin Atlantic fares are entered in pounds (£). Air France and KLM (Flying Blue) fares are entered in euros (€). Aeroméxico earns per US dollar, so its fare is entered in US dollars.
+- Air Canada and WestJet fares are entered in Canadian dollars (CA$). Viva Aerobus and Volaris fares are entered in Mexican pesos (MX$). British Airways and Virgin Atlantic fares are entered in pounds (£). Fares for the European airlines (Air France, KLM, Miles & More airlines, Iberia, LEVEL, Vueling, and TAP) are entered in euros (€). Aeroméxico earns per US dollar, so its fare is entered in US dollars.
 - Alaska and Hawaiian both use Atmos Rewards, which earns by distance.
-- Virgin Atlantic earns a share of the miles flown set by fare class, so it asks for the fare class and the miles flown.
+- Virgin Atlantic and TAP earn a share of the miles flown set by fare, so they ask for the fare and the miles flown.
+- The program menu keeps the United States, Canada, and Mexico at the top and sorts the other countries alphabetically.
 - United and Southwest also list their debit cards, grouped under Debit cards in the card menu.
 - Allegiant earns 1 point per dollar up to $500 and 2 per dollar above that.
 
