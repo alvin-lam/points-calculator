@@ -59,7 +59,7 @@
         <select id="fareType"></select>
       </div>
 
-      <div class="row">
+      <div class="row" id="fareFields">
         <div class="field">
           <label for="airfare">Airfare</label>
           <div class="money">
@@ -82,6 +82,12 @@
         <label for="distance">Miles flown</label>
         <input id="distance" type="number" inputmode="numeric" min="0" step="1" placeholder="e.g. 1,200">
         <small>This program awards points by distance, not by price.</small>
+      </div>
+
+      <div class="field" id="zoneField" hidden>
+        <label for="zone">Route and distance</label>
+        <select id="zone"></select>
+        <small>This program awards a fixed amount per flight for each route band.</small>
       </div>
 
       <div class="field" id="segmentsField" hidden>
@@ -110,7 +116,7 @@
           <span aria-hidden="true" id="cardChargeSymbol">US$</span>
           <input id="cardCharge" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
         </div>
-        <small>This card earns in a different currency than the fare. Enter the total from your card statement.</small>
+        <small id="cardChargeHint">This card earns in a different currency than the fare. Enter the total from your card statement.</small>
       </div>
 
       <p id="error" class="error" role="alert" hidden></p>

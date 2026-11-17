@@ -16,6 +16,9 @@
   var earnField = $("earnField");
   var earnEl = $("earnMethod");
   var segmentsField = $("segmentsField");
+  var zoneField = $("zoneField");
+  var fareFields = $("fareFields");
+  var zoneEl = $("zone");
   var segmentsEl = $("segments");
   var cardField = $("cardField");
   var cardSelectField = $("cardSelectField");
@@ -147,6 +150,8 @@
     if (!p.cards) usedCardNo.checked = true;
     syncCardSelect();
 
+    zoneEl.innerHTML = "";
+    if (p.zones) p.zones.forEach(function (z) { zoneEl.appendChild(option(z.id, z.name)); });
     earnEl.innerHTML = "";
     earnField.hidden = !p.earnMethods;
     if (p.earnMethods) p.earnMethods.forEach(function (m) { earnEl.appendChild(option(m.id, m.name)); });
@@ -155,15 +160,28 @@
     errorEl.hidden = true;
   }
 
+  // Distance, segment, and route-band earning do not depend on the price,
+  // so those programs skip the airfare and taxes fields.
+  function usesFare(method) {
+    return method !== "distance" && method !== "segments" && method !== "zone";
+  }
+
+  // The charge field shows when a card's points cannot come from the fare
+  // fields: the card bills in another currency, or no fare was entered.
   function syncCardSelect() {
     cardSelectField.hidden = cardField.hidden || !usedCardYes.checked;
     var p = current();
     var card = p && p.cards && !cardSelectField.hidden ? find(p.cards, cardEl.value) : null;
-    var foreign = card && card.currency && card.currency !== (p.currency || "USD");
-    cardChargeField.hidden = !foreign;
-    if (foreign) {
-      $("cardChargeCurrency").textContent = cardSymbols[card.currency];
-      $("cardChargeSymbol").textContent = cardSymbols[card.currency];
+    var foreign = !!(card && card.currency && card.currency !== (p.currency || "USD"));
+    var noFare = !!(card && !usesFare(earnMethod(p).id));
+    cardChargeField.hidden = !(foreign || noFare);
+    if (card) {
+      var code = card.currency || p.currency || "USD";
+      $("cardChargeCurrency").textContent = cardSymbols[code];
+      $("cardChargeSymbol").textContent = cardSymbols[code];
+      $("cardChargeHint").textContent = foreign
+        ? "This card earns in a different currency than the fare. Enter the total from your card statement."
+        : "Enter the total charged to your card for this ticket, taxes included.";
     }
   }
 
@@ -179,6 +197,10 @@
     distanceField.hidden = m !== "distance";
     distanceEl.required = m === "distance";
     segmentsField.hidden = m !== "segments";
+    zoneField.hidden = m !== "zone";
+    fareFields.hidden = !usesFare(m);
+    airfareEl.required = usesFare(m);
+    syncCardSelect();
     resultEl.hidden = true;
   }
 
@@ -192,7 +214,18 @@
     var points, rateLabel;
     var em = earnMethod(p);
 
-    if (em.id === "segments") {
+    if (em.id === "zone") {
+      // Fixed points by route band and fare, plus the status bonus.
+      var zone = find(p.zones, zoneEl.value);
+      var fi = p.fareTypes.indexOf(fareType);
+      var base = zone.points[fi];
+      if (base == null) return { error: fareType.name + " is not sold on this route." };
+      var bonusBase = fareType.premium && p.bonusBaseFare
+        ? zone.points[p.fareTypes.indexOf(find(p.fareTypes, p.bonusBaseFare))] : base;
+      var bonus = Math.round(bonusBase * (status.bonus || 0));
+      points = base + bonus;
+      rateLabel = bonus ? num.format(base) + " base + " + num.format(bonus) + " status bonus" : "fixed for this fare and route";
+    } else if (em.id === "segments") {
       var perSegment = em.perSegment * status.multiplier;
       points = segments * perSegment;
       rateLabel = num.format(perSegment) + " " + p.unit + " per segment";
@@ -201,7 +234,7 @@
       points = airfare * perDollar;
       rateLabel = num.format(perDollar) + " " + p.unit + " per " + symbols[p.currency || "USD"];
     } else if (p.method === "distance") {
-      // A distance program can also scale by fare class (fareType.rate).
+      // Some distance programs also scale by fare class (Virgin Atlantic).
       var perMile = (fareType ? fareType.rate : 1) * status.multiplier;
       points = distance * perMile;
       rateLabel = num.format(perMile) + " " + p.unit + " per mile flown";
@@ -257,13 +290,14 @@
     var p = current();
     if (!p) return showError("Please choose an airline program.");
 
-    var airfare = parseFloat(airfareEl.value);
-    var taxes = parseFloat(taxesEl.value) || 0;
     var distance = parseFloat(distanceEl.value);
     var segments = parseInt(segmentsEl.value, 10);
     var method = earnMethod(p).id;
+    var fareUsed = usesFare(method);
+    var airfare = fareUsed ? parseFloat(airfareEl.value) : 0;
+    var taxes = fareUsed ? (parseFloat(taxesEl.value) || 0) : 0;
 
-    if (!(airfare >= 0) || airfareEl.value === "") return showError("Please enter your airfare.");
+    if (fareUsed && (!(airfare >= 0) || airfareEl.value === "")) return showError("Please enter your airfare.");
     if (taxes < 0) return showError("Taxes and fees cannot be negative.");
     if (method === "distance" && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
     if (method === "segments" && !(segments > 0)) return showError("Please enter the number of segments flown.");
@@ -274,6 +308,7 @@
     var fareType = p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
     var airline = selection().airline;
     var r = calculate(p, status, fareType, airfare, distance, airline, segments);
+    if (r.error) return showError(r.error);
 
     // Card points come on top of flight points and are earned on the
     // full charge, taxes included. The per-ticket cap does not apply.
@@ -281,7 +316,7 @@
     var cardCurrency = card && card.currency ? card.currency : (p.currency || "USD");
     var foreignCard = cardCurrency !== (p.currency || "USD");
     var charged = airfare + taxes;
-    if (foreignCard) {
+    if (card && (foreignCard || !fareUsed)) {
       charged = parseFloat(cardChargeEl.value);
       if (!(charged > 0)) return showError("Please enter the amount charged to your card in " + cardSymbols[cardCurrency] + ".");
     }
@@ -295,18 +330,21 @@
 
     var dl = $("breakdown");
     dl.innerHTML = "";
-    row(dl, "Airfare", usd.format(airfare));
-    row(dl, "Taxes & fees", usd.format(taxes));
-    row(dl, "Total trip cost", usd.format(airfare + taxes));
+    if (fareUsed) {
+      row(dl, "Airfare", usd.format(airfare));
+      row(dl, "Taxes & fees", usd.format(taxes));
+      row(dl, "Total trip cost", usd.format(airfare + taxes));
+    }
     if (method === "distance") row(dl, "Miles flown", num.format(distance));
     if (method === "segments") row(dl, "Segments flown", num.format(segments));
+    if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
     row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {
-      var cardMoney = foreignCard
+      var cardMoney = foreignCard || !fareUsed
         ? cardSymbols[cardCurrency] + charged.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         : usd.format(charged);
       row(dl, "Card earning", num.format(cardPoints) + " (" + num.format(card.rate) + " per " +
-        (foreignCard ? cardSymbols[cardCurrency] : symbols[p.currency || "USD"]) + " on " + cardMoney + ")");
+        (foreignCard || !fareUsed ? cardSymbols[cardCurrency] : symbols[p.currency || "USD"]) + " on " + cardMoney + ")");
     }
     // Skip the value rows for programs without a reliable point value.
     if (p.centsPerPoint) {

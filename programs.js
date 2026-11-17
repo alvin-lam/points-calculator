@@ -6,6 +6,7 @@
  *                 fare type x status multiplier when fareTypes is present)
  *   "distance" -> points = miles flown x status multiplier
  *   "tiered"   -> custom per-dollar tiers (Allegiant)
+ *   "zone"     -> fixed points per fare and route band (Qantas)
  * earnMethods (optional): ways a member can choose to earn (Atmos Rewards):
  *   "distance", "price" (rate per dollar), or "segments" (perSegment).
  *   The status multiplier applies to each.
@@ -371,6 +372,39 @@ window.PROGRAMS = {
     ],
     note: "Altitude by Volaris earns 10 points for every 20 Mexican pesos spent on volaris.com or the app, excluding taxes and airport fees. It has no status tiers. Volaris INVEX cardholders earn more."
   },
+  virgin: {
+    name: "Virgin Atlantic | Flying Club",
+    country: "UK",
+    currency: "GBP",
+    unit: "Virgin Points",
+    method: "distance",
+    centsPerPoint: 1.0,
+    defaultFareType: "classic-mid",
+    // Share of miles flown earned as points, by fare class.
+    fareTypes: [
+      { id: "light", name: "Economy Light (T)", rate: 0.25 },
+      { id: "classic-low", name: "Economy Classic (O, N, X, Q, E)", rate: 0.5 },
+      { id: "classic-mid", name: "Economy Classic (L, U, M)", rate: 1 },
+      { id: "classic-high", name: "Economy Classic (Y, B, R)", rate: 1.5 },
+      { id: "delight", name: "Economy Delight (V)", rate: 1.5 },
+      { id: "premium-std", name: "Premium Standard (H, K)", rate: 1 },
+      { id: "premium-flex", name: "Premium Flexible (W, S)", rate: 2 },
+      { id: "upper-std", name: "Upper Class Standard (I, Z)", rate: 2 },
+      { id: "upper-flex", name: "Upper Class Flexible (J, C, D)", rate: 4 }
+    ],
+    statuses: [
+      { id: "red", name: "Red", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1.3 },
+      { id: "gold", name: "Gold", multiplier: 1.6 }
+    ],
+    // Co-branded cards: extra points per pound charged (fare + taxes).
+    cards: [
+      { id: "reward", name: "Virgin Atlantic Reward (UK)", rate: 1.5 },
+      { id: "reward-plus", name: "Virgin Atlantic Reward+ (UK)", rate: 3 },
+      { id: "red", name: "Virgin Red Rewards Mastercard (US)", rate: 3, currency: "USD" }
+    ],
+    note: "Flying Club earns a share of the miles flown set by fare class, and Silver and Gold add 30% and 60%. Premium and Upper Class rates differ between sources, so those are estimates. Card points are earned per pound charged, or per US dollar for the US card."
+  },
   flyingblue: {
     name: "Air France-KLM | Flying Blue",
     programName: "Flying Blue",
@@ -543,6 +577,31 @@ window.PROGRAMS = {
     note: baClub.note
   };
 
+  /* TAP Miles&Go: a share of miles flown, by fare and region. */
+  P.tap = {
+    name: "TAP Air Portugal | Miles&Go",
+    country: "PT",
+    currency: "EUR",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "classic-eu",
+    fareTypes: [
+      { id: "discount", name: "Discount", rate: 0.2 },
+      { id: "basic", name: "Basic (intercontinental)", rate: 0.5 },
+      { id: "classic-eu", name: "Classic, Europe and North Africa", rate: 0.7 },
+      { id: "classic-ic", name: "Classic, intercontinental", rate: 1 },
+      { id: "plus-eu", name: "Plus, Europe and North Africa", rate: 1 },
+      { id: "plus-ic", name: "Plus, intercontinental", rate: 1.5 },
+      { id: "executive", name: "Executive", rate: 1.75 },
+      { id: "top-executive", name: "Top Executive", rate: 2 }
+    ],
+    statuses: [
+      { id: "member", name: "Miles&Go Member", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1 },
+      { id: "gold", name: "Gold", multiplier: 1 }
+    ],
+    note: "TAP Miles&Go earns a share of the miles flown set by fare and region. Executive rose from 150% to 175% in 2026. Silver and Gold bonuses could not be confirmed, so all levels use the base rates."
+  };
 })();
 
 /* Programs added November 2026. */
@@ -645,7 +704,82 @@ window.PROGRAMS = {
     note: "Velocity earns 4 points per Australian dollar of the fare on Virgin Australia flights. Silver, Gold, Platinum, and Platinum Plus earn a status bonus; this estimate uses 50%, 75%, 100%, and 150%, the rates Velocity publishes for holiday bookings, because the flight rates are not published. Taxes do not earn."
   };
 
+  /* Qantas: fixed points per flight by route band and fare, from Qantas'
+     earning tables for Qantas-marketed flights (travel from 22 July 2025).
+     Each zone's points list follows the fareTypes order; null means the
+     fare is not sold on that route. */
+  P.qantas = {
+    name: "Qantas | Qantas Frequent Flyer",
+    country: "AU",
+    currency: "AUD",
+    unit: "Qantas Points",
+    method: "zone",
+    centsPerPoint: 1.0,
+    defaultFareType: "y",
+    fareTypes: [
+      { id: "disc-y", name: "Discount Economy" },
+      { id: "y", name: "Economy" },
+      { id: "flex-y", name: "Flexible Economy" },
+      { id: "disc-pe", name: "Discount Premium Economy", premium: true },
+      { id: "pe", name: "Premium Economy", premium: true },
+      { id: "flex-pe", name: "Flexible Premium Economy", premium: true },
+      { id: "disc-j", name: "Discount Business", premium: true },
+      { id: "j", name: "Business", premium: true },
+      { id: "flex-j", name: "Flexible Business", premium: true },
+      { id: "f", name: "First", premium: true }
+    ],
+    zones: [
+      { id: "dom-short", name: "Domestic Australia: 0 to 750 miles", points: [500, 500, 750, 750, 1125, 1250, null, 1750, 2000, 2250] },
+      { id: "dom-medium", name: "Domestic Australia: 751 to 1,500 miles", points: [875, 875, 1375, 1375, 1750, 1940, null, 2625, 2940, 3500] },
+      { id: "dom-long", name: "Domestic Australia: 1,501 miles and over", points: [1815, 1815, 2750, 2750, 3375, 3625, null, 4125, 4500, 5500] },
+      { id: "int-1", name: "International: 0 to 750 miles", points: [300, 450, 650, 650, 750, 850, 900, 975, 1050, 1200] },
+      { id: "int-2", name: "International: 751 to 1,500 miles", points: [550, 850, 1100, 1100, 1350, 1500, 1650, 1800, 1950, 2200] },
+      { id: "int-3", name: "International: 1,501 to 2,500 miles", points: [1100, 1650, 2200, 2200, 2750, 3050, 3300, 3575, 3850, 4400] },
+      { id: "int-4", name: "International: 2,501 to 3,500 miles", points: [1600, 2400, 3200, 3200, 4000, 4400, 4800, 5200, 5600, 6400] },
+      { id: "int-5", name: "International: 3,501 to 5,000 miles", points: [2450, 3700, 4900, 4900, 6150, 6750, 7350, 7975, 8600, 9800] },
+      { id: "int-6", name: "International: 5,001 to 6,500 miles", points: [2900, 4350, 5800, 5800, 7250, 8000, 8700, 9425, 10150, 11600] },
+      { id: "int-7", name: "International: 6,501 miles and over", points: [4000, 6000, 8000, 8000, 10000, 11000, 12000, 13000, 14000, 16000] }
+    ],
+    // The status bonus on premium cabins is figured on the Flexible
+    // Economy amount for the same route.
+    bonusBaseFare: "flex-y",
+    statuses: [
+      { id: "bronze", name: "Bronze", bonus: 0 },
+      { id: "silver", name: "Silver", bonus: 0.5 },
+      { id: "gold", name: "Gold", bonus: 0.75 },
+      { id: "platinum", name: "Platinum", bonus: 1 },
+      { id: "platinum-one", name: "Platinum One", bonus: 1 }
+    ],
+    note: "Qantas awards a fixed number of points per flight by fare and distance. Silver, Gold, and Platinum add 50%, 75%, and 100%; in Premium Economy, Business, and First the bonus is figured on the Flexible Economy amount. Some routes, such as Australia to New Zealand, the USA, or Europe, have their own tables; this estimate uses the general distance bands. A minimum points guarantee may raise short flights."
+  };
 
+  P.qatar = {
+    name: "Qatar Airways | Privilege Club",
+    country: "QA",
+    unit: "Avios",
+    method: "distance",
+    centsPerPoint: 1.2,
+    defaultFareType: "econ-conv",
+    // Share of the flight distance earned, by booking class.
+    fareTypes: [
+      { id: "first", name: "First Elite (F, A)", rate: 3 },
+      { id: "bus-elite", name: "Business Elite (C, J)", rate: 2 },
+      { id: "bus-comfort", name: "Business Comfort (I, D)", rate: 1.75 },
+      { id: "bus-classic", name: "Business Classic (R)", rate: 1.25 },
+      { id: "bus-lite", name: "Business Lite (P)", rate: 0.75 },
+      { id: "econ-comfort", name: "Economy Comfort (H, B, Y)", rate: 1 },
+      { id: "econ-conv", name: "Economy Convenience (S, V, L, M, K)", rate: 0.75 },
+      { id: "econ-classic", name: "Economy Classic (O, T, Q, N)", rate: 0.5 },
+      { id: "econ-lite", name: "Economy Lite (W)", rate: 0.25 }
+    ],
+    statuses: [
+      { id: "burgundy", name: "Burgundy", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1.25 },
+      { id: "gold", name: "Gold", multiplier: 1.75 },
+      { id: "platinum", name: "Platinum", multiplier: 2 }
+    ],
+    note: "Privilege Club earns a share of the miles flown set by booking class, from 25% in Economy Lite to 300% in First. Silver, Gold, and Platinum add 25%, 75%, and 100%."
+  };
 })();
 
 /* Groups shown as separators in the program menu: a country, or an
@@ -659,8 +793,11 @@ window.COUNTRIES = [
   { id: "AFKL", label: "Air France-KLM \u{1F1EB}\u{1F1F7} \u{1F1F3}\u{1F1F1} | Flying Blue" },
   { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8} \u{1F1EE}\u{1F1EA} | Avios" },
   { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9} | Miles & More" },
+  { id: "PT", label: "Portugal \u{1F1F5}\u{1F1F9}" },
+  { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" },
   { id: "AU", label: "Australia \u{1F1E6}\u{1F1FA}" },
   { id: "CO", label: "Colombia \u{1F1E8}\u{1F1F4}" },
   { id: "NO", label: "Norway \u{1F1F3}\u{1F1F4}" },
-  { id: "FI", label: "Finland \u{1F1EB}\u{1F1EE}" }
+  { id: "FI", label: "Finland \u{1F1EB}\u{1F1EE}" },
+  { id: "QA", label: "Qatar \u{1F1F6}\u{1F1E6}" }
 ];
