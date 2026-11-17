@@ -401,6 +401,83 @@ window.PROGRAMS = {
       { id: "red", name: "Virgin Red Rewards Mastercard (US)", rate: 3, currency: "USD" }
     ],
     note: "Flying Club earns a share of the miles flown set by fare class, and Silver and Gold add 30% and 60%. Premium and Upper Class rates differ between sources, so those are estimates. Card points are earned per pound charged, or per US dollar for the US card."
+  },
+  ana: {
+    name: "ANA | ANA Mileage Club",
+    country: "JP",
+    currency: "JPY",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "y-mid",
+    // Share of the flight distance earned, by booking class (international).
+    fareTypes: [
+      { id: "f", name: "First (F, A)", rate: 1.5 },
+      { id: "j", name: "Business (J)", rate: 1.5 },
+      { id: "c", name: "Business (C, D, Z)", rate: 1.25 },
+      { id: "p", name: "Business (P)", rate: 0.7 },
+      { id: "pe", name: "Premium Economy (G, E)", rate: 1 },
+      { id: "pe-low", name: "Premium Economy (N)", rate: 0.7 },
+      { id: "y", name: "Economy (Y, B, M)", rate: 1 },
+      { id: "y-mid", name: "Economy (U, H, Q)", rate: 0.7 },
+      { id: "y-low", name: "Economy (V, W, S)", rate: 0.5 },
+      { id: "y-lowest", name: "Economy (L, K)", rate: 0.3 }
+    ],
+    statuses: [
+      { id: "member", name: "ANA Mileage Club Member", multiplier: 1 },
+      { id: "bronze", name: "Bronze", multiplier: 1.4 },
+      { id: "platinum", name: "Platinum", multiplier: 1.9 },
+      { id: "diamond", name: "Diamond", multiplier: 2.15 }
+    ],
+    note: "ANA earns a share of the flight distance set by booking class. Bronze, Platinum, and Diamond add 40%, 90%, and 115% in the first status year, and more in later years or with an ANA Gold or Premium card. O, I, R, and X fares do not earn miles. Japanese ANA cards are not included."
+  },
+  jal: {
+    name: "Japan Airlines | JAL Mileage Bank",
+    country: "JP",
+    currency: "JPY",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "y-mid",
+    // Share of the flight distance earned, by booking class (international).
+    fareTypes: [
+      { id: "f", name: "First (F, A)", rate: 1.5 },
+      { id: "j", name: "Business (J, C, D, I)", rate: 1.25 },
+      { id: "x", name: "Business (X)", rate: 0.7 },
+      { id: "pe", name: "Premium Economy (W, R)", rate: 1 },
+      { id: "pe-low", name: "Premium Economy (E)", rate: 0.7 },
+      { id: "y", name: "Economy (Y, B)", rate: 1 },
+      { id: "y-mid", name: "Economy (H, K, M)", rate: 0.7 },
+      { id: "y-low", name: "Economy (L, V, S)", rate: 0.5 },
+      { id: "y-lowest", name: "Economy (O, G, Q, N)", rate: 0.3 }
+    ],
+    statuses: [
+      { id: "member", name: "JMB Member", multiplier: 1 },
+      { id: "jgc", name: "JAL Global Club", multiplier: 1.35 },
+      { id: "crystal", name: "JMB Crystal", multiplier: 1.55 },
+      { id: "sapphire", name: "JMB Sapphire", multiplier: 2.05 },
+      { id: "jgc-premier", name: "JGC Premier", multiplier: 2.05 },
+      { id: "diamond", name: "JMB Diamond", multiplier: 2.3 }
+    ],
+    note: "JAL earns a share of the flight distance set by booking class, and status adds a 35% to 130% mile-up bonus. Fare classes not listed do not earn miles. Japanese JAL cards are not included."
+  },
+  flyingblue: {
+    name: "Air France-KLM | Flying Blue",
+    country: "FRNL",
+    currency: "EUR",
+    unit: "Miles",
+    method: "spend",
+    centsPerPoint: 1.2,
+    statuses: [
+      { id: "explorer", name: "Explorer", rate: 4 },
+      { id: "silver", name: "Silver", rate: 6 },
+      { id: "gold", name: "Gold", rate: 7 },
+      { id: "platinum", name: "Platinum", rate: 8 },
+      { id: "ultimate", name: "Ultimate", rate: 9 }
+    ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "boa", name: "Air France KLM Visa Signature (US)", rate: 3, currency: "USD" }
+    ],
+    note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France and KLM, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged."
   }
 };
 
@@ -410,5 +487,7 @@ window.COUNTRIES = [
   { id: "US", label: "United States \u{1F1FA}\u{1F1F8}" },
   { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}" },
   { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}" },
-  { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" }
+  { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" },
+  { id: "FRNL", label: "France \u{1F1EB}\u{1F1F7} & the Netherlands \u{1F1F3}\u{1F1F1}" },
+  { id: "JP", label: "Japan \u{1F1EF}\u{1F1F5}" }
 ];

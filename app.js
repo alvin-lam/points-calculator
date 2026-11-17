@@ -28,14 +28,16 @@
     USD: new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }),
     CAD: new Intl.NumberFormat("en-US", { style: "currency", currency: "CAD" }),
     MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" }),
-    GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" })
+    GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
+    EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }),
+    JPY: new Intl.NumberFormat("en-US", { style: "currency", currency: "JPY" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", GBP: "£" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", GBP: "£", EUR: "€", JPY: "¥" };
   // Name of the currency's hundredth, for the point value label.
-  var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", GBP: "p" };
+  var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", GBP: "£" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", GBP: "£", EUR: "€", JPY: "¥" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -134,7 +136,7 @@
       // Some distance programs also scale by fare class (Virgin Atlantic).
       var perMile = (fareType ? fareType.rate : 1) * status.multiplier;
       points = distance * perMile;
-      rateLabel = num.format(perMile) + " " + p.unit + " per mile";
+      rateLabel = num.format(perMile) + " " + p.unit + " per mile flown";
     } else if (p.method === "tiered") {
       points = 0;
       var floor = 0;
