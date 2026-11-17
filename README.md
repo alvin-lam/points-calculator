@@ -20,7 +20,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 - Alaska and Hawaiian both use Atmos Rewards, which earns by distance.
 - Virgin Atlantic and TAP earn a share of the miles flown set by fare, so they ask for the fare and the miles flown.
 - The program menu keeps the United States, Canada, and Mexico at the top and sorts the other groups alphabetically.
-- Miles & More (Lufthansa Group), Flying Blue (Air France-KLM), and IAG are single programs. Each of their airlines is listed by name under the group in the program menu. For Miles & More, the airline sets the status earning rate. For IAG, the airline picks the loyalty program: British Airways Club in pounds, Iberia Club in euros (Iberia and LEVEL), or Vueling Club in euros, each with its own status levels and cards.
+- Miles & More (Lufthansa Group), Flying Blue (Air France-KLM), and IAG are single programs. Each of their airlines is listed by name under the group in the program menu. For Miles & More, the airline sets the status earning rate. For IAG, the airline picks the loyalty program: AerClub in euros, British Airways Club in pounds, Iberia Club in euros (Iberia and LEVEL), or Vueling Club in euros, each with its own status levels and cards.
 - United and Southwest also list their debit cards, grouped under Debit cards in the card menu.
 - Allegiant earns 1 point per dollar up to $500 and 2 per dollar above that.
 

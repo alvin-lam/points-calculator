@@ -469,7 +469,7 @@ window.PROGRAMS = {
     { id: "chase-ba", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
   ];
 
-  /* IAG: British Airways, Iberia, LEVEL, and Vueling in one program. Each airline brings
+  /* IAG: Aer Lingus, British Airways, Iberia, LEVEL, and Vueling in one program. Each airline brings
      its own loyalty program (currency, status levels, and cards). */
   var baClub = {
     programName: "British Airways Club",
@@ -521,6 +521,23 @@ window.PROGRAMS = {
     cards: null,
     note: "Since 2026, Vueling Club earns Avios on flights only from the Smart level up: 3, 5, or 7 Avios per euro of the fare. Earning starts after 3 flights or 200 euros spent in a year. Basic members earn no Avios on flights."
   };
+  var aerClub = {
+    programName: "AerClub",
+    currency: "EUR",
+    statuses: [
+      { id: "green", name: "Green", rate: 3 },
+      { id: "silver", name: "Silver", rate: 3.75 },
+      { id: "platinum", name: "Platinum", rate: 4.5 },
+      { id: "concierge", name: "Concierge", rate: 5.25 }
+    ],
+    // Co-branded cards: extra Avios per US dollar charged (fare + taxes).
+    cards: [
+      { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature (US)", rate: 3, currency: "USD" },
+      { id: "chase-ba", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" },
+      { id: "chase-iberia", name: "Chase Iberia Visa Signature (US)", rate: 3, currency: "USD" }
+    ],
+    note: "AerClub earns 3 Avios per euro of the Aer Lingus fare, excluding taxes, bags, and seats. Silver, Platinum, and Concierge add a 25%, 50%, or 75% tier bonus. Enter fares in euros. The US Chase cards earn per US dollar charged."
+  };
   P.iag = {
     name: "IAG | Avios",
     programName: "Avios",
@@ -529,6 +546,7 @@ window.PROGRAMS = {
     method: "spend",
     centsPerPoint: 1.0,
     airlines: [
+      { id: "ei", name: "Aer Lingus", program: aerClub },
       { id: "ba", name: "British Airways", program: baClub },
       { id: "ib", name: "Iberia", program: iberiaClub },
       { id: "level", name: "LEVEL", program: levelClub },
@@ -577,7 +595,7 @@ window.COUNTRIES = [
   { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}", pinned: true },
   { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}", pinned: true },
   { id: "AFKL", label: "Air France-KLM \u{1F1EB}\u{1F1F7} \u{1F1F3}\u{1F1F1}" },
-  { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8}" },
+  { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8} \u{1F1EE}\u{1F1EA}" },
   { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9}" },
   { id: "PT", label: "Portugal \u{1F1F5}\u{1F1F9}" },
   { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" }
