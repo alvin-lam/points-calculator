@@ -65,7 +65,7 @@
       var p = PROGRAMS[key];
       if ((p.country || "US") !== c.id) return;
       if (p.airlines) {
-        p.airlines.forEach(function (al) { choices.push([key + ":" + al.id, airlineLabel(p, al)]); });
+        p.airlines.forEach(function (al) { choices.push([key + ":" + al.id, al.name]); });
       } else {
         choices.push([key, p.name]);
       }

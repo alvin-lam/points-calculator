@@ -14,8 +14,8 @@
  * charged in that currency.
  *
  * airlines (optional): the operating airlines a program covers. Each one is
- * its own entry in the program menu, under the program's group, shown as
- * "Airline | programName". An airline's eliteRate replaces the rate of statuses marked
+ * its own entry in the program menu, listed by airline name under the
+ * group heading. The result card shows "Airline | programName". An airline's eliteRate replaces the rate of statuses marked
  * elite, and its note is added to the program note. An airline's program
  * object, when present, replaces program fields such as currency,
  * statuses, cards, and note (IAG).
@@ -594,9 +594,9 @@ window.COUNTRIES = [
   { id: "US", label: "United States \u{1F1FA}\u{1F1F8}", pinned: true },
   { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}", pinned: true },
   { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}", pinned: true },
-  { id: "AFKL", label: "Air France-KLM \u{1F1EB}\u{1F1F7} \u{1F1F3}\u{1F1F1}" },
-  { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8} \u{1F1EE}\u{1F1EA}" },
-  { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9}" },
+  { id: "AFKL", label: "Air France-KLM \u{1F1EB}\u{1F1F7} \u{1F1F3}\u{1F1F1} | Flying Blue" },
+  { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8} \u{1F1EE}\u{1F1EA} | Avios" },
+  { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9} | Miles & More" },
   { id: "PT", label: "Portugal \u{1F1F5}\u{1F1F9}" },
   { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" }
 ];
