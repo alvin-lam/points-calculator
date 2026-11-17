@@ -71,16 +71,32 @@
     });
   }
 
+  // The chosen program as it applies to the chosen airline. An airline can
+  // carry its own program fields (IAG: British Airways Club or Iberia Club).
+  function current() {
+    var p = PROGRAMS[programEl.value];
+    if (!p || !p.airlines) return p;
+    var al = find(p.airlines, airlineEl.value);
+    return al.program ? Object.assign({}, p, al.program) : p;
+  }
+
   function onProgramChange() {
     var p = PROGRAMS[programEl.value];
+    airlineEl.innerHTML = "";
+    if (!p) return;
+    airlineField.hidden = !p.airlines;
+    if (p.airlines) p.airlines.forEach(function (al) { airlineEl.appendChild(option(al.id, al.name)); });
+    applyProgram();
+  }
+
+  // Rebuilds the form for the current program and airline.
+  function applyProgram() {
+    var p = current();
     statusEl.innerHTML = "";
     fareTypeEl.innerHTML = "";
     if (!p) return;
 
     setCurrency(p.currency || "USD");
-    airlineEl.innerHTML = "";
-    airlineField.hidden = !p.airlines;
-    if (p.airlines) p.airlines.forEach(function (al) { airlineEl.appendChild(option(al.id, al.name)); });
     p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, s.name)); });
     statusEl.disabled = p.statuses.length < 2;
 
@@ -120,7 +136,7 @@
 
   function syncCardSelect() {
     cardSelectField.hidden = cardField.hidden || !usedCardYes.checked;
-    var p = PROGRAMS[programEl.value];
+    var p = current();
     var card = p && p.cards && !cardSelectField.hidden ? find(p.cards, cardEl.value) : null;
     var foreign = card && card.currency && card.currency !== (p.currency || "USD");
     cardChargeField.hidden = !foreign;
@@ -191,7 +207,7 @@
 
   form.addEventListener("submit", function (e) {
     e.preventDefault();
-    var p = PROGRAMS[programEl.value];
+    var p = current();
     if (!p) return showError("Please choose an airline program.");
 
     var airfare = parseFloat(airfareEl.value);
@@ -287,6 +303,7 @@
   var yearEl = $("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   programEl.addEventListener("change", onProgramChange);
+  airlineEl.addEventListener("change", applyProgram);
   usedCardYes.addEventListener("change", syncCardSelect);
   usedCardNo.addEventListener("change", syncCardSelect);
   cardEl.addEventListener("change", syncCardSelect);

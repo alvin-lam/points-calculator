@@ -15,7 +15,9 @@
  *
  * airlines (optional): the operating airlines a program covers. The visitor
  * picks one; an airline's eliteRate replaces the rate of statuses marked
- * elite, and its note is added to the program note.
+ * elite, and its note is added to the program note. An airline's program
+ * object, when present, replaces program fields such as currency,
+ * statuses, cards, and note (IAG).
  *
  * Rates reflect publicly reported rules as of late 2026. Update them here
  * when a program changes; the rest of the app reads from this file.
@@ -351,28 +353,6 @@ window.PROGRAMS = {
     ],
     note: "Altitude by Volaris earns 10 points for every 20 Mexican pesos spent on volaris.com or the app, excluding taxes and airport fees. It has no status tiers. Volaris INVEX cardholders earn more."
   },
-  britishairways: {
-    name: "British Airways | British Airways Club",
-    country: "UK",
-    currency: "GBP",
-    unit: "Avios",
-    method: "spend",
-    centsPerPoint: 1.0,
-    statuses: [
-      { id: "blue", name: "Blue", rate: 6 },
-      { id: "bronze", name: "Bronze", rate: 7 },
-      { id: "silver", name: "Silver", rate: 8 },
-      { id: "gold", name: "Gold", rate: 9 }
-    ],
-    // Co-branded cards: extra points per pound charged (fare + taxes).
-    // US cards earn per US dollar and ask for the US dollar charge.
-    cards: [
-      { id: "amex", name: "British Airways American Express (UK)", rate: 1 },
-      { id: "amex-pp", name: "British Airways American Express Premium Plus (UK)", rate: 3 },
-      { id: "chase", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
-    ],
-    note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier charges, by status. Taxes do not earn. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
-  },
   virgin: {
     name: "Virgin Atlantic | Flying Club",
     country: "UK",
@@ -486,9 +466,29 @@ window.PROGRAMS = {
     { id: "chase-ba", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
   ];
 
-  P.iberia = {
-    name: "Iberia | Iberia Club",
-    country: "ES",
+  /* IAG: British Airways and Iberia in one program. Each airline brings
+     its own loyalty program (currency, status levels, and cards). */
+  var baClub = {
+    currency: "GBP",
+    unit: "Avios",
+    method: "spend",
+    centsPerPoint: 1.0,
+    statuses: [
+      { id: "blue", name: "Blue", rate: 6 },
+      { id: "bronze", name: "Bronze", rate: 7 },
+      { id: "silver", name: "Silver", rate: 8 },
+      { id: "gold", name: "Gold", rate: 9 }
+    ],
+    // Co-branded cards: extra points per pound charged (fare + taxes).
+    // US cards earn per US dollar and ask for the US dollar charge.
+    cards: [
+      { id: "amex", name: "British Airways American Express (UK)", rate: 1 },
+      { id: "amex-pp", name: "British Airways American Express Premium Plus (UK)", rate: 3 },
+      { id: "chase", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
+    ],
+    note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier charges, by status. Taxes do not earn. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
+  };
+  var iberiaClub = {
     currency: "EUR",
     unit: "Avios",
     method: "spend",
@@ -496,6 +496,22 @@ window.PROGRAMS = {
     statuses: iberiaStatuses,
     cards: avioUsCards,
     note: "Iberia Club earns 5 to 8 Avios per euro of the fare by status, plus 2 more per euro on flights within Spain and between Spain and Latin America, which this estimate does not add. The Infinita rates are not confirmed by Iberia. Taxes do not earn."
+  };
+  P.iag = {
+    name: "IAG | Avios",
+    country: "IAG",
+    unit: "Avios",
+    method: "spend",
+    centsPerPoint: 1.0,
+    airlines: [
+      { id: "ba", name: "British Airways \u{1F1EC}\u{1F1E7}", program: baClub },
+      { id: "ib", name: "Iberia \u{1F1EA}\u{1F1F8}", program: iberiaClub }
+    ],
+    // Defaults before an airline is chosen (British Airways).
+    currency: baClub.currency,
+    statuses: baClub.statuses,
+    cards: baClub.cards,
+    note: baClub.note
   };
   P.level = {
     name: "LEVEL | Iberia Club",
@@ -560,6 +576,7 @@ window.COUNTRIES = [
   { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}", pinned: true },
   { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}", pinned: true },
   { id: "AFKL", label: "Air France-KLM \u{1F1EB}\u{1F1F7} \u{1F1F3}\u{1F1F1}" },
+  { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8}" },
   { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9}" },
   { id: "PT", label: "Portugal \u{1F1F5}\u{1F1F9}" },
   { id: "ES", label: "Spain \u{1F1EA}\u{1F1F8}" },
