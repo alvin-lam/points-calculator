@@ -18,8 +18,8 @@
  * charged in that currency.
  *
  * airlines (optional): the operating airlines a program covers. Each one is
- * its own entry in the program menu, listed by airline name under the
- * group heading. The result card shows "Airline | programName". An airline's eliteRate replaces the rate of statuses marked
+ * its own entry in the program menu, shown as "Airline | programName" under
+ * the airline's own country. An airline's eliteRate replaces the rate of statuses marked
  * elite, and its note is added to the program note. An airline's program
  * object, when present, replaces program fields such as currency,
  * statuses, cards, and note (IAG).
@@ -415,8 +415,8 @@ window.PROGRAMS = {
     centsPerPoint: 1.2,
     // The operating airline; both earn the same Flying Blue rates.
     airlines: [
-      { id: "af", name: "Air France" },
-      { id: "kl", name: "KLM" }
+      { id: "af", name: "Air France", country: "FR" },
+      { id: "kl", name: "KLM", country: "NL" }
     ],
     statuses: [
       { id: "explorer", name: "Explorer", rate: 4 },
@@ -449,14 +449,14 @@ window.PROGRAMS = {
     centsPerPoint: 1.0,
     // eliteRate: miles per euro for Frequent Traveller, Senator, and HON Circle.
     airlines: [
-      { id: "lh", name: "Lufthansa", eliteRate: 6 },
-      { id: "ew", name: "Eurowings", eliteRate: 5 },
-      { id: "de", name: "Discover Airlines", eliteRate: 5 },
-      { id: "os", name: "Austrian Airlines", eliteRate: 6 },
-      { id: "lx", name: "SWISS", eliteRate: 6,
+      { id: "lh", name: "Lufthansa", country: "DE", eliteRate: 6 },
+      { id: "ew", name: "Eurowings", country: "DE", eliteRate: 5 },
+      { id: "de", name: "Discover Airlines", country: "DE", eliteRate: 5 },
+      { id: "os", name: "Austrian Airlines", country: "AT", eliteRate: 6 },
+      { id: "lx", name: "SWISS", country: "CH", eliteRate: 6,
         note: "SWISS fares in Swiss francs earn at the euro equivalent." },
-      { id: "sn", name: "Brussels Airlines", eliteRate: 6 },
-      { id: "az", name: "ITA Airways", eliteRate: 6,
+      { id: "sn", name: "Brussels Airlines", country: "BE", eliteRate: 6 },
+      { id: "az", name: "ITA Airways", country: "IT", eliteRate: 6,
         note: "ITA Airways joined Miles & More on 1 April 2026, replacing Volare. ITA's own status rate has not been published, so it uses the Lufthansa rate." }
     ],
     statuses: [
@@ -564,11 +564,11 @@ window.PROGRAMS = {
     method: "spend",
     centsPerPoint: 1.0,
     airlines: [
-      { id: "ei", name: "Aer Lingus", program: aerClub },
-      { id: "ba", name: "British Airways", program: baClub },
-      { id: "ib", name: "Iberia", program: iberiaClub },
-      { id: "level", name: "LEVEL", program: levelClub },
-      { id: "vy", name: "Vueling", program: vuelingClub }
+      { id: "ei", name: "Aer Lingus", country: "IE", program: aerClub },
+      { id: "ba", name: "British Airways", country: "UK", program: baClub },
+      { id: "ib", name: "Iberia", country: "ES", program: iberiaClub },
+      { id: "level", name: "LEVEL", country: "ES", program: levelClub },
+      { id: "vy", name: "Vueling", country: "ES", program: vuelingClub }
     ],
     // Defaults before an airline is chosen (British Airways).
     currency: baClub.currency,
@@ -933,17 +933,22 @@ window.PROGRAMS = {
   };
 })();
 
-/* Groups shown as separators in the program menu: a country, or an
-   airline group spanning countries. Programs without a country field
-   belong to "US". */
+/* Countries shown as separators in the program menu. Programs and
+   airlines without a country field belong to "US". */
 // Pinned groups stay at the top in this order; the rest sort by name.
 window.COUNTRIES = [
   { id: "US", label: "United States \u{1F1FA}\u{1F1F8}", pinned: true },
   { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}", pinned: true },
   { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}", pinned: true },
-  { id: "AFKL", label: "Air France-KLM \u{1F1EB}\u{1F1F7} \u{1F1F3}\u{1F1F1} | Flying Blue" },
-  { id: "IAG", label: "IAG \u{1F1EC}\u{1F1E7} \u{1F1EA}\u{1F1F8} \u{1F1EE}\u{1F1EA} | Avios" },
-  { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9} | Miles & More" },
+  { id: "AT", label: "Austria \u{1F1E6}\u{1F1F9}" },
+  { id: "BE", label: "Belgium \u{1F1E7}\u{1F1EA}" },
+  { id: "FR", label: "France \u{1F1EB}\u{1F1F7}" },
+  { id: "DE", label: "Germany \u{1F1E9}\u{1F1EA}" },
+  { id: "IE", label: "Ireland \u{1F1EE}\u{1F1EA}" },
+  { id: "IT", label: "Italy \u{1F1EE}\u{1F1F9}" },
+  { id: "NL", label: "Netherlands \u{1F1F3}\u{1F1F1}" },
+  { id: "ES", label: "Spain \u{1F1EA}\u{1F1F8}" },
+  { id: "CH", label: "Switzerland \u{1F1E8}\u{1F1ED}" },
   { id: "PT", label: "Portugal \u{1F1F5}\u{1F1F9}" },
   { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" },
   { id: "AU", label: "Australia \u{1F1E6}\u{1F1FA}" },

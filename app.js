@@ -63,9 +63,9 @@
     return al.name + " | " + ((al.program && al.program.programName) || p.programName);
   }
 
-  // One <optgroup> per country or airline group. A program that covers
-  // several airlines (IAG, Air France-KLM, Lufthansa Group) lists each
-  // airline as its own choice, with the value "program:airline".
+  // One <optgroup> per country. A program that covers several airlines
+  // (Flying Blue, Miles & More, IAG) lists each airline under its own
+  // country, with the value "program:airline".
   // Choices sort by name inside each group.
   var pinned = window.COUNTRIES.filter(function (c) { return c.pinned; });
   var others = window.COUNTRIES.filter(function (c) { return !c.pinned; })
@@ -76,10 +76,12 @@
     var choices = [];
     Object.keys(PROGRAMS).forEach(function (key) {
       var p = PROGRAMS[key];
-      if ((p.country || "US") !== c.id) return;
       if (p.airlines) {
-        p.airlines.forEach(function (al) { choices.push([key + ":" + al.id, al.name]); });
-      } else {
+        // Each airline sits under its own country.
+        p.airlines.forEach(function (al) {
+          if ((al.country || p.country || "US") === c.id) choices.push([key + ":" + al.id, airlineLabel(p, al)]);
+        });
+      } else if ((p.country || "US") === c.id) {
         choices.push([key, p.name]);
       }
     });
