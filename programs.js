@@ -13,8 +13,8 @@
  * own currency (e.g. a US card on a Canadian program) asks for the amount
  * charged in that currency.
  *
- * airlines (optional): the operating airlines a program covers. The visitor
- * picks one; an airline's eliteRate replaces the rate of statuses marked
+ * airlines (optional): the operating airlines a program covers. Each one is
+ * its own entry in the program menu, under the program's group. An airline's eliteRate replaces the rate of statuses marked
  * elite, and its note is added to the program note. An airline's program
  * object, when present, replaces program fields such as currency,
  * statuses, cards, and note (IAG).
@@ -395,8 +395,8 @@ window.PROGRAMS = {
     centsPerPoint: 1.2,
     // The operating airline; both earn the same Flying Blue rates.
     airlines: [
-      { id: "af", name: "Air France \u{1F1EB}\u{1F1F7}" },
-      { id: "kl", name: "KLM \u{1F1F3}\u{1F1F1}" }
+      { id: "af", name: "Air France" },
+      { id: "kl", name: "KLM" }
     ],
     statuses: [
       { id: "explorer", name: "Explorer", rate: 4 },
@@ -428,14 +428,14 @@ window.PROGRAMS = {
     centsPerPoint: 1.0,
     // eliteRate: miles per euro for Frequent Traveller, Senator, and HON Circle.
     airlines: [
-      { id: "lh", name: "Lufthansa \u{1F1E9}\u{1F1EA}", eliteRate: 6 },
-      { id: "ew", name: "Eurowings \u{1F1E9}\u{1F1EA}", eliteRate: 5 },
-      { id: "de", name: "Discover Airlines \u{1F1E9}\u{1F1EA}", eliteRate: 5 },
-      { id: "os", name: "Austrian Airlines \u{1F1E6}\u{1F1F9}", eliteRate: 6 },
-      { id: "lx", name: "SWISS \u{1F1E8}\u{1F1ED}", eliteRate: 6,
+      { id: "lh", name: "Lufthansa", eliteRate: 6 },
+      { id: "ew", name: "Eurowings", eliteRate: 5 },
+      { id: "de", name: "Discover Airlines", eliteRate: 5 },
+      { id: "os", name: "Austrian Airlines", eliteRate: 6 },
+      { id: "lx", name: "SWISS", eliteRate: 6,
         note: "SWISS fares in Swiss francs earn at the euro equivalent." },
-      { id: "sn", name: "Brussels Airlines \u{1F1E7}\u{1F1EA}", eliteRate: 6 },
-      { id: "az", name: "ITA Airways \u{1F1EE}\u{1F1F9}", eliteRate: 6,
+      { id: "sn", name: "Brussels Airlines", eliteRate: 6 },
+      { id: "az", name: "ITA Airways", eliteRate: 6,
         note: "ITA Airways joined Miles & More on 1 April 2026, replacing Volare. ITA's own status rate has not been published, so it uses the Lufthansa rate." }
     ],
     statuses: [
@@ -521,10 +521,10 @@ window.PROGRAMS = {
     method: "spend",
     centsPerPoint: 1.0,
     airlines: [
-      { id: "ba", name: "British Airways \u{1F1EC}\u{1F1E7}", program: baClub },
-      { id: "ib", name: "Iberia \u{1F1EA}\u{1F1F8}", program: iberiaClub },
-      { id: "level", name: "LEVEL \u{1F1EA}\u{1F1F8}", program: levelClub },
-      { id: "vy", name: "Vueling \u{1F1EA}\u{1F1F8}", program: vuelingClub }
+      { id: "ba", name: "British Airways", program: baClub },
+      { id: "ib", name: "Iberia", program: iberiaClub },
+      { id: "level", name: "LEVEL", program: levelClub },
+      { id: "vy", name: "Vueling", program: vuelingClub }
     ],
     // Defaults before an airline is chosen (British Airways).
     currency: baClub.currency,

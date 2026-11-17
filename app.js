@@ -7,8 +7,6 @@
   var form = $("calc");
   var programEl = $("program");
   var statusEl = $("status");
-  var airlineField = $("airlineField");
-  var airlineEl = $("airline");
   var fareTypeEl = $("fareType");
   var fareTypeField = $("fareTypeField");
   var distanceField = $("distanceField");
@@ -47,20 +45,28 @@
     return o;
   }
 
-  // One <optgroup> per country, programs sorted by name inside each.
+  // One <optgroup> per country or airline group. A program that covers
+  // several airlines (IAG, Air France-KLM, Lufthansa Group) lists each
+  // airline as its own choice, with the value "program:airline".
+  // Choices sort by name inside each group.
   var pinned = window.COUNTRIES.filter(function (c) { return c.pinned; });
   var others = window.COUNTRIES.filter(function (c) { return !c.pinned; })
     .sort(function (a, b) { return a.label.localeCompare(b.label); });
   pinned.concat(others).forEach(function (c) {
     var group = document.createElement("optgroup");
     group.label = c.label;
-    Object.keys(PROGRAMS).filter(function (key) {
-      return (PROGRAMS[key].country || "US") === c.id;
-    }).sort(function (a, b) {
-      return PROGRAMS[a].name.localeCompare(PROGRAMS[b].name);
-    }).forEach(function (key) {
-      group.appendChild(option(key, PROGRAMS[key].name));
+    var choices = [];
+    Object.keys(PROGRAMS).forEach(function (key) {
+      var p = PROGRAMS[key];
+      if ((p.country || "US") !== c.id) return;
+      if (p.airlines) {
+        p.airlines.forEach(function (al) { choices.push([key + ":" + al.id, al.name]); });
+      } else {
+        choices.push([key, p.name]);
+      }
     });
+    choices.sort(function (a, b) { return a[1].localeCompare(b[1]); })
+      .forEach(function (ch) { group.appendChild(option(ch[0], ch[1])); });
     if (group.children.length) programEl.appendChild(group);
   });
 
@@ -71,21 +77,23 @@
     });
   }
 
+  // The chosen menu entry: a program, plus an airline for group programs.
+  function selection() {
+    var parts = programEl.value.split(":");
+    var p = PROGRAMS[parts[0]];
+    var airline = p && p.airlines ? find(p.airlines, parts[1]) : null;
+    return { program: p, airline: airline };
+  }
+
   // The chosen program as it applies to the chosen airline. An airline can
   // carry its own program fields (IAG: British Airways Club or Iberia Club).
   function current() {
-    var p = PROGRAMS[programEl.value];
-    if (!p || !p.airlines) return p;
-    var al = find(p.airlines, airlineEl.value);
-    return al.program ? Object.assign({}, p, al.program) : p;
+    var s = selection();
+    if (!s.program || !s.airline || !s.airline.program) return s.program;
+    return Object.assign({}, s.program, s.airline.program);
   }
 
   function onProgramChange() {
-    var p = PROGRAMS[programEl.value];
-    airlineEl.innerHTML = "";
-    if (!p) return;
-    airlineField.hidden = !p.airlines;
-    if (p.airlines) p.airlines.forEach(function (al) { airlineEl.appendChild(option(al.id, al.name)); });
     applyProgram();
   }
 
@@ -222,7 +230,7 @@
     var usd = money[p.currency || "USD"];
     var status = find(p.statuses, statusEl.value);
     var fareType = p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
-    var airline = p.airlines ? find(p.airlines, airlineEl.value) : null;
+    var airline = selection().airline;
     var r = calculate(p, status, fareType, airfare, distance, airline);
 
     // Card points come on top of flight points and are earned on the
@@ -303,7 +311,6 @@
   var yearEl = $("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   programEl.addEventListener("change", onProgramChange);
-  airlineEl.addEventListener("change", applyProgram);
   usedCardYes.addEventListener("change", syncCardSelect);
   usedCardNo.addEventListener("change", syncCardSelect);
   cardEl.addEventListener("change", syncCardSelect);
