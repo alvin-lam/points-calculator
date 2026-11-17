@@ -45,6 +45,11 @@
     return o;
   }
 
+  // "Airline | Program" for an airline inside a group program.
+  function airlineLabel(p, al) {
+    return al.name + " | " + ((al.program && al.program.programName) || p.programName);
+  }
+
   // One <optgroup> per country or airline group. A program that covers
   // several airlines (IAG, Air France-KLM, Lufthansa Group) lists each
   // airline as its own choice, with the value "program:airline".
@@ -60,7 +65,7 @@
       var p = PROGRAMS[key];
       if ((p.country || "US") !== c.id) return;
       if (p.airlines) {
-        p.airlines.forEach(function (al) { choices.push([key + ":" + al.id, al.name]); });
+        p.airlines.forEach(function (al) { choices.push([key + ":" + al.id, airlineLabel(p, al)]); });
       } else {
         choices.push([key, p.name]);
       }
@@ -246,7 +251,7 @@
     var cardPoints = card ? Math.floor(charged * card.rate) : 0;
     var total = r.points + cardPoints;
 
-    $("resultProgram").textContent = p.name + (airline ? " · " + airline.name : "") + " · " + status.name +
+    $("resultProgram").textContent = (airline ? airlineLabel(selection().program, airline) : p.name) + " · " + status.name +
       (fareType ? " · " + fareType.name : "") + (card ? " · " + card.name : "");
     $("resultPoints").textContent = num.format(total);
     $("resultUnit").textContent = p.unit;

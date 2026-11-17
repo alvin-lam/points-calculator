@@ -14,7 +14,8 @@
  * charged in that currency.
  *
  * airlines (optional): the operating airlines a program covers. Each one is
- * its own entry in the program menu, under the program's group. An airline's eliteRate replaces the rate of statuses marked
+ * its own entry in the program menu, under the program's group, shown as
+ * "Airline | programName". An airline's eliteRate replaces the rate of statuses marked
  * elite, and its note is added to the program note. An airline's program
  * object, when present, replaces program fields such as currency,
  * statuses, cards, and note (IAG).
@@ -388,6 +389,7 @@ window.PROGRAMS = {
   },
   flyingblue: {
     name: "Air France-KLM | Flying Blue",
+    programName: "Flying Blue",
     country: "AFKL",
     currency: "EUR",
     unit: "Miles",
@@ -421,6 +423,7 @@ window.PROGRAMS = {
 
   P.milesandmore = {
     name: "Lufthansa Group | Miles & More",
+    programName: "Miles & More",
     country: "LHG",
     currency: "EUR",
     unit: "miles",
@@ -469,6 +472,7 @@ window.PROGRAMS = {
   /* IAG: British Airways, Iberia, LEVEL, and Vueling in one program. Each airline brings
      its own loyalty program (currency, status levels, and cards). */
   var baClub = {
+    programName: "British Airways Club",
     currency: "GBP",
     unit: "Avios",
     method: "spend",
@@ -489,6 +493,7 @@ window.PROGRAMS = {
     note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier charges, by status. Taxes do not earn. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
   };
   var iberiaClub = {
+    programName: "Iberia Club",
     currency: "EUR",
     unit: "Avios",
     method: "spend",
@@ -498,12 +503,14 @@ window.PROGRAMS = {
     note: "Iberia Club earns 5 to 8 Avios per euro of the fare by status, plus 2 more per euro on flights within Spain and between Spain and Latin America, which this estimate does not add. The Infinita rates are not confirmed by Iberia. Taxes do not earn."
   };
   var levelClub = {
+    programName: "Iberia Club",
     currency: "EUR",
     statuses: iberiaStatuses,
     cards: avioUsCards,
     note: "LEVEL flights booked under an Iberia (IB) flight number earn Iberia Club Avios at the usual per-euro rates. Flights sold under LEVEL's own code earn only between Barcelona and Oakland, Los Angeles, Punta Cana, and Buenos Aires, through 31 December 2026."
   };
   var vuelingClub = {
+    programName: "Vueling Club",
     currency: "EUR",
     statuses: [
       { id: "basic", name: "Basic", rate: 0 },
@@ -516,6 +523,7 @@ window.PROGRAMS = {
   };
   P.iag = {
     name: "IAG | Avios",
+    programName: "Avios",
     country: "IAG",
     unit: "Avios",
     method: "spend",
