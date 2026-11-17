@@ -19,9 +19,10 @@
   var num = new Intl.NumberFormat("en-US");
   var money = {
     USD: new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }),
-    CAD: new Intl.NumberFormat("en-US", { style: "currency", currency: "CAD" })
+    CAD: new Intl.NumberFormat("en-US", { style: "currency", currency: "CAD" }),
+    MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" })
   };
-  var symbols = { USD: "$", CAD: "CA$" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$" };
   var moneyEls = document.querySelectorAll(".money");
 
   function option(value, label) {
@@ -98,7 +99,7 @@
     } else {
       var rate = fareType ? fareType.rate * status.multiplier : status.rate;
       points = airfare * rate;
-      rateLabel = num.format(rate) + " " + p.unit + " per $";
+      rateLabel = num.format(rate) + " " + p.unit + " per " + symbols[p.currency || "USD"];
     }
 
     points = Math.floor(points);
@@ -155,10 +156,13 @@
     row(dl, "Total trip cost", usd.format(airfare + taxes));
     if (p.method === "distance") row(dl, "Miles flown", num.format(distance));
     row(dl, "Earning rate", r.rateLabel);
-    var value = r.points * p.centsPerPoint / 100;
-    row(dl, "Approximate value", usd.format(value) + " (at " + p.centsPerPoint + "¢ each)");
-    if (airfare + taxes > 0) {
-      row(dl, "Return on total cost", (value / (airfare + taxes) * 100).toFixed(1) + "%");
+    // Skip the value rows for programs without a reliable point value.
+    if (p.centsPerPoint) {
+      var value = r.points * p.centsPerPoint / 100;
+      row(dl, "Approximate value", usd.format(value) + " (at " + p.centsPerPoint + "¢ each)");
+      if (airfare + taxes > 0) {
+        row(dl, "Return on total cost", (value / (airfare + taxes) * 100).toFixed(1) + "%");
+      }
     }
 
     $("resultNote").textContent = (r.capped ? "This trip hits the per-ticket earning cap. " : "") + p.note;

@@ -194,6 +194,45 @@ window.PROGRAMS = {
       { id: "platinum", name: "Platinum", rate: 8 }
     ],
     note: "WestJet Rewards earns points per Canadian dollar spent on WestJet flights, before taxes. Partner flights earn by distance and are not covered here."
+  },
+  aeromexico: {
+    name: "Aeroméxico | Aeroméxico Rewards",
+    country: "MX",
+    currency: "USD",
+    unit: "points",
+    method: "spend",
+    statuses: [
+      { id: "member", name: "Aeroméxico Rewards Member", rate: 8 },
+      { id: "silver", name: "Silver", rate: 8 },
+      { id: "gold", name: "Gold", rate: 8 },
+      { id: "platinum", name: "Platinum", rate: 8 },
+      { id: "titanium", name: "Titanium", rate: 16 }
+    ],
+    note: "Aeroméxico Rewards earns 8 points per US dollar of base fare, excluding taxes. Enter the fare in US dollars. Titanium earns 8 more points per dollar. Bonuses for Silver, Gold, and Platinum were not confirmed, so those tiers are shown at the base rate."
+  },
+  viva: {
+    name: "Viva Aerobus | Doters",
+    country: "MX",
+    currency: "MXN",
+    unit: "Doters points",
+    method: "spend",
+    statuses: [
+      { id: "green", name: "Doters Green", rate: 0.5 },
+      { id: "silver", name: "Doters Silver", rate: 0.5 },
+      { id: "gold", name: "Doters Gold", rate: 0.5 }
+    ],
+    note: "Doters earns 1 point for every 2 Mexican pesos spent with Viva Aerobus, including bags and seats. Silver and Gold bonuses were not confirmed, so those levels are shown at the Green rate."
+  },
+  volaris: {
+    name: "Volaris | Altitude",
+    country: "MX",
+    currency: "MXN",
+    unit: "altitude Points",
+    method: "spend",
+    statuses: [
+      { id: "member", name: "Altitude Member", rate: 0.5 }
+    ],
+    note: "Altitude by Volaris earns 10 points for every 20 Mexican pesos spent on volaris.com or the app, excluding taxes and airport fees. It has no status tiers. Volaris INVEX cardholders earn more."
   }
 };
 
@@ -201,5 +240,6 @@ window.PROGRAMS = {
    country field belong to "US". */
 window.COUNTRIES = [
   { id: "US", label: "United States \u{1F1FA}\u{1F1F8}" },
-  { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}" }
+  { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}" },
+  { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}" }
 ];

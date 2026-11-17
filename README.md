@@ -15,7 +15,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 
 - Points are earned on the airfare only. Taxes & fees are shown in the total cost but do not earn.
 - American, Delta, and United cap earning at 75,000 miles per ticket.
-- Air Canada and WestJet fares are entered in Canadian dollars (CA$).
+- Air Canada and WestJet fares are entered in Canadian dollars (CA$). Viva Aerobus and Volaris fares are entered in Mexican pesos (MX$). Aeroméxico earns per US dollar, so its fare is entered in US dollars.
 - Alaska and Hawaiian both use Atmos Rewards, which earns by distance.
 - Allegiant earns 1 point per dollar up to $500 and 2 per dollar above that.
 
