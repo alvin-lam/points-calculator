@@ -1,0 +1,152 @@
+/*
+ * Earning rules for each loyalty program.
+ *
+ * method:
+ *   "spend"    -> points = airfare x rate (rate comes from the status, or from
+ *                 fare type x status multiplier when fareTypes is present)
+ *   "distance" -> points = miles flown x status multiplier
+ *   "tiered"   -> custom per-dollar tiers (Allegiant)
+ *
+ * Rates reflect publicly reported rules as of late 2026. Update them here
+ * when a program changes; the rest of the app reads from this file.
+ */
+window.PROGRAMS = {
+  american: {
+    name: "American AAdvantage",
+    unit: "miles",
+    method: "spend",
+    cap: 75000,
+    centsPerPoint: 1.4,
+    statuses: [
+      { id: "member", name: "AAdvantage Member", rate: 5 },
+      { id: "gold", name: "AAdvantage Gold", rate: 7 },
+      { id: "platinum", name: "AAdvantage Platinum", rate: 8 },
+      { id: "platpro", name: "AAdvantage Platinum Pro", rate: 9 },
+      { id: "exp", name: "AAdvantage Executive Platinum", rate: 11 }
+    ],
+    note: "AAdvantage miles are earned on base fare and carrier-imposed fees. Government taxes do not earn miles. Earning is capped at 75,000 miles per ticket."
+  },
+  delta: {
+    name: "Delta SkyMiles",
+    unit: "miles",
+    method: "spend",
+    cap: 75000,
+    centsPerPoint: 1.2,
+    statuses: [
+      { id: "member", name: "SkyMiles Member", rate: 5 },
+      { id: "silver", name: "Silver Medallion", rate: 7 },
+      { id: "gold", name: "Gold Medallion", rate: 8 },
+      { id: "platinum", name: "Platinum Medallion", rate: 9 },
+      { id: "diamond", name: "Diamond Medallion", rate: 11 }
+    ],
+    note: "SkyMiles are earned on base fare and carrier-imposed surcharges. Basic Economy fares earn no miles. Earning is capped at 75,000 miles per ticket."
+  },
+  united: {
+    name: "United MileagePlus",
+    unit: "miles",
+    method: "spend",
+    cap: 75000,
+    centsPerPoint: 1.3,
+    statuses: [
+      { id: "member", name: "MileagePlus Member", rate: 5 },
+      { id: "silver", name: "Premier Silver", rate: 7 },
+      { id: "gold", name: "Premier Gold", rate: 8 },
+      { id: "platinum", name: "Premier Platinum", rate: 9 },
+      { id: "1k", name: "Premier 1K", rate: 11 }
+    ],
+    note: "MileagePlus miles are earned on base fare and carrier-imposed surcharges. Taxes do not earn miles. Earning is capped at 75,000 miles per ticket."
+  },
+  southwest: {
+    name: "Southwest Rapid Rewards",
+    unit: "points",
+    method: "spend",
+    centsPerPoint: 1.3,
+    fareTypes: [
+      { id: "basic", name: "Basic", rate: 2 },
+      { id: "choice", name: "Choice", rate: 6 },
+      { id: "choicePref", name: "Choice Preferred", rate: 8 },
+      { id: "choiceExtra", name: "Choice Extra", rate: 12 }
+    ],
+    statuses: [
+      { id: "member", name: "Rapid Rewards Member", multiplier: 1 },
+      { id: "alist", name: "A-List", multiplier: 1.25 },
+      { id: "alistPref", name: "A-List Preferred", multiplier: 2 }
+    ],
+    note: "Rapid Rewards points depend on fare type and are earned on base fare only. A-List adds a 25% bonus and A-List Preferred adds a 100% bonus."
+  },
+  alaska: {
+    name: "Alaska Atmos Rewards",
+    unit: "points",
+    method: "distance",
+    centsPerPoint: 1.4,
+    statuses: [
+      { id: "member", name: "Atmos Member", multiplier: 1 },
+      { id: "silver", name: "Atmos Silver", multiplier: 1.25 },
+      { id: "gold", name: "Atmos Gold", multiplier: 1.5 },
+      { id: "platinum", name: "Atmos Platinum", multiplier: 2 },
+      { id: "titanium", name: "Atmos Titanium", multiplier: 2.5 }
+    ],
+    note: "Atmos Rewards awards 1 point per mile flown on Alaska and Hawaiian, with elite bonuses of 25% to 150%. Fare class bonuses are not included. Members who chose spend-based or segment-based earning will see different results."
+  },
+  frontier: {
+    name: "Frontier Miles",
+    unit: "miles",
+    method: "spend",
+    centsPerPoint: 0.5,
+    statuses: [
+      { id: "member", name: "Frontier Miles Member", rate: 10 },
+      { id: "silver", name: "Silver", rate: 12 },
+      { id: "gold", name: "Gold", rate: 14 },
+      { id: "platinum", name: "Platinum", rate: 16 },
+      { id: "diamond", name: "Diamond", rate: 20 }
+    ],
+    note: "Frontier Miles are earned per dollar spent with Frontier. This estimate uses airfare only. Bundles and add-ons purchased from Frontier also earn."
+  },
+  jetblue: {
+    name: "JetBlue TrueBlue",
+    unit: "points",
+    method: "spend",
+    centsPerPoint: 1.3,
+    statuses: [
+      { id: "member", name: "TrueBlue Member", rate: 6 },
+      { id: "mosaic1", name: "Mosaic 1", rate: 9 },
+      { id: "mosaic2", name: "Mosaic 2", rate: 9 },
+      { id: "mosaic3", name: "Mosaic 3", rate: 9 },
+      { id: "mosaic4", name: "Mosaic 4", rate: 9 }
+    ],
+    note: "TrueBlue awards 3 base points per dollar plus a 3-point bonus for booking on jetblue.com or the JetBlue app. Mosaic members earn 3 more points per dollar. Blue Basic fares earn less."
+  },
+  allegiant: {
+    name: "Allegiant Allways Rewards",
+    unit: "points",
+    method: "tiered",
+    centsPerPoint: 1.0,
+    tiers: [
+      { upTo: 500, rate: 1 },
+      { upTo: Infinity, rate: 2 }
+    ],
+    statuses: [
+      { id: "member", name: "Allways Rewards Member" }
+    ],
+    note: "Allways Rewards has no elite status tiers. Members earn 1 point per dollar on the first $500 and 2 points per dollar above $500, excluding taxes and fees."
+  },
+  breeze: {
+    name: "Breeze Breezy Rewards",
+    unit: "BreezePoints",
+    method: "spend",
+    centsPerPoint: 1.0,
+    fareTypes: [
+      { id: "nice", name: "Nice", rate: 2 },
+      { id: "nicer", name: "Nicer", rate: 5 },
+      { id: "nicest", name: "Nicest", rate: 5 }
+    ],
+    statuses: [
+      { id: "member", name: "Breezy Rewards Member", multiplier: 1 },
+      { id: "breezy1", name: "Breezy 1", multiplier: 1.25 },
+      { id: "breezy2", name: "Breezy 2", multiplier: 1.5 },
+      { id: "breezy3", name: "Breezy 3", multiplier: 1.5 },
+      { id: "club", name: "Breezy Club", multiplier: 1.5 }
+    ],
+    note: "BreezePoints depend on the bundle you buy. Breezy 1 adds a 25% boost and Breezy 2 adds 50%. Breezy 3 and Breezy Club are shown at the confirmed 50% boost, so their real totals may be higher."
+  }
+};

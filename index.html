@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Airline Points Calculator</title>
+  <meta name="description" content="Estimate the airline points or miles you will earn on a flight.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <h1>Airline Points Calculator</h1>
+      <p class="lede">Pick your program and status, enter your fare, and see an estimate of what you will earn.</p>
+    </header>
+
+    <form id="calc" class="card" novalidate>
+      <div class="field">
+        <label for="program">Airline program</label>
+        <select id="program" required>
+          <option value="" disabled selected>Choose a program</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="status">Current status</label>
+        <select id="status" required disabled>
+          <option value="">Choose a program first</option>
+        </select>
+      </div>
+
+      <div class="field" id="fareTypeField" hidden>
+        <label for="fareType">Fare type</label>
+        <select id="fareType"></select>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="airfare">Airfare</label>
+          <div class="money">
+            <span aria-hidden="true">$</span>
+            <input id="airfare" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" required>
+          </div>
+          <small>Base fare plus carrier fees, before taxes.</small>
+        </div>
+        <div class="field">
+          <label for="taxes">Taxes &amp; fees</label>
+          <div class="money">
+            <span aria-hidden="true">$</span>
+            <input id="taxes" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+          <small>Government taxes and airport fees.</small>
+        </div>
+      </div>
+
+      <div class="field" id="distanceField" hidden>
+        <label for="distance">Miles flown</label>
+        <input id="distance" type="number" inputmode="numeric" min="0" step="1" placeholder="e.g. 1,200">
+        <small>This program awards points by distance, not by price.</small>
+      </div>
+
+      <p id="error" class="error" role="alert" hidden></p>
+      <button type="submit">Calculate points</button>
+    </form>
+
+    <section id="result" class="card result" hidden aria-live="polite">
+      <p class="eyebrow" id="resultProgram"></p>
+      <p class="big"><span id="resultPoints">0</span> <span id="resultUnit">points</span></p>
+      <dl class="breakdown" id="breakdown"></dl>
+      <p class="note" id="resultNote"></p>
+    </section>
+
+    <footer>
+      <p>Estimates only. Earning rules change often and promotions, credit cards, partner flights, and fare classes can change the result. Check your program's official terms before you rely on a number.</p>
+    </footer>
+  </main>
+  <script src="programs.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
