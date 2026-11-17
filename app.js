@@ -13,6 +13,10 @@
   var airfareEl = $("airfare");
   var taxesEl = $("taxes");
   var distanceEl = $("distance");
+  var earnField = $("earnField");
+  var earnEl = $("earnMethod");
+  var segmentsField = $("segmentsField");
+  var segmentsEl = $("segments");
   var cardField = $("cardField");
   var cardSelectField = $("cardSelectField");
   var cardEl = $("card");
@@ -141,8 +145,10 @@
     if (!p.cards) usedCardNo.checked = true;
     syncCardSelect();
 
-    distanceField.hidden = p.method !== "distance";
-    distanceEl.required = p.method === "distance";
+    earnEl.innerHTML = "";
+    earnField.hidden = !p.earnMethods;
+    if (p.earnMethods) p.earnMethods.forEach(function (m) { earnEl.appendChild(option(m.id, m.name)); });
+    syncEarnFields();
     resultEl.hidden = true;
     errorEl.hidden = true;
   }
@@ -159,16 +165,40 @@
     }
   }
 
+  // How the chosen program earns: its fixed method, or the member's choice.
+  function earnMethod(p) {
+    return p.earnMethods ? find(p.earnMethods, earnEl.value) : { id: p.method };
+  }
+
+  function syncEarnFields() {
+    var p = current();
+    if (!p) return;
+    var m = earnMethod(p).id;
+    distanceField.hidden = m !== "distance";
+    distanceEl.required = m === "distance";
+    segmentsField.hidden = m !== "segments";
+    resultEl.hidden = true;
+  }
+
   function find(list, id) {
     for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
     return list[0];
   }
 
   // Returns { points, rateLabel, capped }.
-  function calculate(p, status, fareType, airfare, distance, airline) {
+  function calculate(p, status, fareType, airfare, distance, airline, segments) {
     var points, rateLabel;
+    var em = earnMethod(p);
 
-    if (p.method === "distance") {
+    if (em.id === "segments") {
+      var perSegment = em.perSegment * status.multiplier;
+      points = segments * perSegment;
+      rateLabel = num.format(perSegment) + " " + p.unit + " per segment";
+    } else if (em.id === "price") {
+      var perDollar = em.rate * status.multiplier;
+      points = airfare * perDollar;
+      rateLabel = num.format(perDollar) + " " + p.unit + " per " + symbols[p.currency || "USD"];
+    } else if (p.method === "distance") {
       // Some distance programs also scale by fare class (Virgin Atlantic).
       var perMile = (fareType ? fareType.rate : 1) * status.multiplier;
       points = distance * perMile;
@@ -226,17 +256,20 @@
     var airfare = parseFloat(airfareEl.value);
     var taxes = parseFloat(taxesEl.value) || 0;
     var distance = parseFloat(distanceEl.value);
+    var segments = parseInt(segmentsEl.value, 10);
+    var method = earnMethod(p).id;
 
     if (!(airfare >= 0) || airfareEl.value === "") return showError("Please enter your airfare.");
     if (taxes < 0) return showError("Taxes and fees cannot be negative.");
-    if (p.method === "distance" && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
+    if (method === "distance" && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
+    if (method === "segments" && !(segments > 0)) return showError("Please enter the number of segments flown.");
 
     errorEl.hidden = true;
     var usd = money[p.currency || "USD"];
     var status = find(p.statuses, statusEl.value);
     var fareType = p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
     var airline = selection().airline;
-    var r = calculate(p, status, fareType, airfare, distance, airline);
+    var r = calculate(p, status, fareType, airfare, distance, airline, segments);
 
     // Card points come on top of flight points and are earned on the
     // full charge, taxes included. The per-ticket cap does not apply.
@@ -261,7 +294,8 @@
     row(dl, "Airfare", usd.format(airfare));
     row(dl, "Taxes & fees", usd.format(taxes));
     row(dl, "Total trip cost", usd.format(airfare + taxes));
-    if (p.method === "distance") row(dl, "Miles flown", num.format(distance));
+    if (method === "distance") row(dl, "Miles flown", num.format(distance));
+    if (method === "segments") row(dl, "Segments flown", num.format(segments));
     row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {
       var cardMoney = foreignCard
@@ -316,6 +350,7 @@
   var yearEl = $("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   programEl.addEventListener("change", onProgramChange);
+  earnEl.addEventListener("change", syncEarnFields);
   usedCardYes.addEventListener("change", syncCardSelect);
   usedCardNo.addEventListener("change", syncCardSelect);
   cardEl.addEventListener("change", syncCardSelect);

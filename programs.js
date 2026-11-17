@@ -6,6 +6,9 @@
  *                 fare type x status multiplier when fareTypes is present)
  *   "distance" -> points = miles flown x status multiplier
  *   "tiered"   -> custom per-dollar tiers (Allegiant)
+ * earnMethods (optional): ways a member can choose to earn (Atmos Rewards):
+ *   "distance", "price" (rate per dollar), or "segments" (perSegment).
+ *   The status multiplier applies to each.
  *
  * cards (optional): co-branded credit cards and the extra points each earns
  * per dollar charged to it for the ticket, taxes included. Cards marked
@@ -125,6 +128,13 @@ window.PROGRAMS = {
     name: "Alaska Airlines | Atmos Rewards",
     unit: "points",
     method: "distance",
+    // Members choose one way to earn for flights from 1 January 2027.
+    // Elite bonuses apply to all three.
+    earnMethods: [
+      { id: "distance", name: "Miles flown: 1 point per mile" },
+      { id: "price", name: "Price paid: 5 points per dollar", rate: 5 },
+      { id: "segments", name: "Segments flown: 500 points per segment", perSegment: 500 }
+    ],
     centsPerPoint: 1.4,
     statuses: [
       { id: "member", name: "Atmos Member", multiplier: 1 },
@@ -138,7 +148,7 @@ window.PROGRAMS = {
       { id: "ascent", name: "Atmos Rewards Ascent Visa Signature", rate: 3 },
       { id: "summit", name: "Atmos Rewards Summit Visa Infinite", rate: 3 }
     ],
-    note: "Atmos Rewards awards 1 point per mile flown on Alaska and Hawaiian, with elite bonuses of 25% to 150%. Fare class bonuses are not included. Members who chose spend-based or segment-based earning will see different results."
+    note: "Atmos Rewards members choose how they earn for flights departing on or after 1 January 2027: 1 point per mile flown, 5 points per dollar of the fare, or 500 points per segment. Silver, Gold, Platinum, and Titanium add 25% to 150%. Members who never chose keep earning by distance; new members default to price paid. Price paid excludes taxes, and Basic Economy fares may not qualify. Flights before 2027 earn by distance."
   },
   frontier: {
     name: "Frontier Airlines | Frontier Miles",
@@ -241,6 +251,13 @@ window.PROGRAMS = {
     name: "Hawaiian Airlines | Atmos Rewards",
     unit: "points",
     method: "distance",
+    // Members choose one way to earn for flights from 1 January 2027.
+    // Elite bonuses apply to all three.
+    earnMethods: [
+      { id: "distance", name: "Miles flown: 1 point per mile" },
+      { id: "price", name: "Price paid: 5 points per dollar", rate: 5 },
+      { id: "segments", name: "Segments flown: 500 points per segment", perSegment: 500 }
+    ],
     centsPerPoint: 1.4,
     statuses: [
       { id: "member", name: "Atmos Member", multiplier: 1 },
@@ -255,7 +272,7 @@ window.PROGRAMS = {
       { id: "summit", name: "Atmos Rewards Summit Visa Infinite", rate: 3 },
       { id: "hawaiian-mc", name: "Hawaiian Airlines World Elite Mastercard", rate: 3 }
     ],
-    note: "HawaiianMiles is now part of Atmos Rewards, so Hawaiian flights earn 1 point per mile flown with elite bonuses of 25% to 150%. Neighbor Island flights earn a minimum of 500 points per segment, which this estimate does not apply."
+    note: "HawaiianMiles is now part of Atmos Rewards. Members choose how they earn for flights departing on or after 1 January 2027: 1 point per mile flown, 5 points per dollar of the fare, or 500 points per segment. Silver, Gold, Platinum, and Titanium add 25% to 150%. With distance earning, Neighbor Island flights earn at least 500 points per segment, which this estimate does not apply. Flights before 2027 earn by distance."
   },
   aircanada: {
     name: "Air Canada | Aeroplan",

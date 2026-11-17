@@ -48,6 +48,12 @@
         </select>
       </div>
 
+      <div class="field" id="earnField" hidden>
+        <label for="earnMethod">How you earn</label>
+        <select id="earnMethod"></select>
+        <small>The way you chose in your account.</small>
+      </div>
+
       <div class="field" id="fareTypeField" hidden>
         <label for="fareType">Fare type</label>
         <select id="fareType"></select>
@@ -76,6 +82,12 @@
         <label for="distance">Miles flown</label>
         <input id="distance" type="number" inputmode="numeric" min="0" step="1" placeholder="e.g. 1,200">
         <small>This program awards points by distance, not by price.</small>
+      </div>
+
+      <div class="field" id="segmentsField" hidden>
+        <label for="segments">Segments flown</label>
+        <input id="segments" type="number" inputmode="numeric" min="1" step="1" placeholder="e.g. 2">
+        <small>Each takeoff and landing on one flight number counts as a segment.</small>
       </div>
 
       <fieldset class="field" id="cardField" hidden>
