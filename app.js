@@ -27,12 +27,15 @@
   var money = {
     USD: new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }),
     CAD: new Intl.NumberFormat("en-US", { style: "currency", currency: "CAD" }),
-    MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" })
+    MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" }),
+    GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", GBP: "£" };
+  // Name of the currency's hundredth, for the point value label.
+  var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", GBP: "p" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", GBP: "£" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -58,7 +61,7 @@
   function setCurrency(code) {
     moneyEls.forEach(function (el) {
       el.querySelector("span").textContent = symbols[code];
-      el.classList.toggle("wide", code !== "USD");
+      el.classList.toggle("wide", symbols[code].length > 1);
     });
   }
 
@@ -82,7 +85,21 @@
     // Ask about a co-branded card only for programs with card data.
     cardEl.innerHTML = "";
     cardField.hidden = !p.cards;
-    if (p.cards) p.cards.forEach(function (c) { cardEl.appendChild(option(c.id, c.name)); });
+    if (p.cards) {
+      // Group credit and debit cards when a program has both.
+      var debit = p.cards.filter(function (c) { return c.kind === "debit"; });
+      var credit = p.cards.filter(function (c) { return c.kind !== "debit"; });
+      [["Credit cards", credit], ["Debit cards", debit]].forEach(function (g) {
+        if (!g[1].length) return;
+        var parent = cardEl;
+        if (debit.length) {
+          parent = document.createElement("optgroup");
+          parent.label = g[0];
+          cardEl.appendChild(parent);
+        }
+        g[1].forEach(function (c) { parent.appendChild(option(c.id, c.name)); });
+      });
+    }
     if (!p.cards) usedCardNo.checked = true;
     syncCardSelect();
 
@@ -114,8 +131,10 @@
     var points, rateLabel;
 
     if (p.method === "distance") {
-      points = distance * status.multiplier;
-      rateLabel = num.format(status.multiplier) + " " + p.unit + " per mile";
+      // Some distance programs also scale by fare class (Virgin Atlantic).
+      var perMile = (fareType ? fareType.rate : 1) * status.multiplier;
+      points = distance * perMile;
+      rateLabel = num.format(perMile) + " " + p.unit + " per mile";
     } else if (p.method === "tiered") {
       points = 0;
       var floor = 0;
@@ -213,7 +232,7 @@
     // Skip the value rows for programs without a reliable point value.
     if (p.centsPerPoint) {
       var value = total * p.centsPerPoint / 100;
-      row(dl, "Approximate value", usd.format(value) + " (at " + p.centsPerPoint + "¢ each)");
+      row(dl, "Approximate value", usd.format(value) + " (at " + p.centsPerPoint + minorUnit[p.currency || "USD"] + " each)");
       if (airfare + taxes > 0) {
         row(dl, "Return on total cost", (value / (airfare + taxes) * 100).toFixed(1) + "%");
       }

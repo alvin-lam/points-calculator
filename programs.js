@@ -8,7 +8,8 @@
  *   "tiered"   -> custom per-dollar tiers (Allegiant)
  *
  * cards (optional): co-branded credit cards and the extra points each earns
- * per dollar charged to it for the ticket, taxes included. A card with its
+ * per dollar charged to it for the ticket, taxes included. Cards marked
+ * kind: "debit" are listed under Debit cards. A card with its
  * own currency (e.g. a US card on a Canadian program) asks for the amount
  * charged in that currency.
  *
@@ -81,7 +82,8 @@ window.PROGRAMS = {
       { id: "gateway", name: "United Gateway Card", rate: 2 },
       { id: "explorer", name: "United Explorer Card", rate: 3 },
       { id: "quest", name: "United Quest Card", rate: 4 },
-      { id: "club", name: "United Club Card", rate: 5 }
+      { id: "club", name: "United Club Card", rate: 5 },
+      { id: "debit", name: "United MileagePlus Debit Rewards Card", rate: 1, kind: "debit" }
     ],
     note: "MileagePlus miles are earned on base fare and carrier-imposed surcharges. Taxes do not earn miles. Earning is capped at 75,000 miles per ticket."
   },
@@ -107,7 +109,8 @@ window.PROGRAMS = {
       { id: "premier", name: "Southwest Rapid Rewards Premier", rate: 3 },
       { id: "premier-biz", name: "Southwest Rapid Rewards Premier Business", rate: 3 },
       { id: "priority", name: "Southwest Rapid Rewards Priority", rate: 4 },
-      { id: "perf-biz", name: "Southwest Rapid Rewards Performance Business", rate: 4 }
+      { id: "perf-biz", name: "Southwest Rapid Rewards Performance Business", rate: 4 },
+      { id: "debit", name: "Southwest Rapid Rewards Debit Card", rate: 1, kind: "debit" }
     ],
     note: "Rapid Rewards points depend on fare type and are earned on base fare only. A-List adds a 25% bonus and A-List Preferred adds a 100% bonus."
   },
@@ -343,6 +346,61 @@ window.PROGRAMS = {
       { id: "invex2", name: "Volaris INVEX 2", rate: 1 }
     ],
     note: "Altitude by Volaris earns 10 points for every 20 Mexican pesos spent on volaris.com or the app, excluding taxes and airport fees. It has no status tiers. Volaris INVEX cardholders earn more."
+  },
+  britishairways: {
+    name: "British Airways | British Airways Club",
+    country: "UK",
+    currency: "GBP",
+    unit: "Avios",
+    method: "spend",
+    centsPerPoint: 1.0,
+    statuses: [
+      { id: "blue", name: "Blue", rate: 6 },
+      { id: "bronze", name: "Bronze", rate: 7 },
+      { id: "silver", name: "Silver", rate: 8 },
+      { id: "gold", name: "Gold", rate: 9 }
+    ],
+    // Co-branded cards: extra points per pound charged (fare + taxes).
+    // US cards earn per US dollar and ask for the US dollar charge.
+    cards: [
+      { id: "amex", name: "British Airways American Express (UK)", rate: 1 },
+      { id: "amex-pp", name: "British Airways American Express Premium Plus (UK)", rate: 3 },
+      { id: "chase", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
+    ],
+    note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier charges, by status. Taxes do not earn. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
+  },
+  virgin: {
+    name: "Virgin Atlantic | Flying Club",
+    country: "UK",
+    currency: "GBP",
+    unit: "Virgin Points",
+    method: "distance",
+    centsPerPoint: 1.0,
+    defaultFareType: "classic-mid",
+    // Share of miles flown earned as points, by fare class.
+    fareTypes: [
+      { id: "light", name: "Economy Light (T)", rate: 0.25 },
+      { id: "classic-low", name: "Economy Classic (O, N, X, Q, E)", rate: 0.5 },
+      { id: "classic-mid", name: "Economy Classic (L, U, M)", rate: 1 },
+      { id: "classic-high", name: "Economy Classic (Y, B, R)", rate: 1.5 },
+      { id: "delight", name: "Economy Delight (V)", rate: 1.5 },
+      { id: "premium-std", name: "Premium Standard (H, K)", rate: 1 },
+      { id: "premium-flex", name: "Premium Flexible (W, S)", rate: 2 },
+      { id: "upper-std", name: "Upper Class Standard (I, Z)", rate: 2 },
+      { id: "upper-flex", name: "Upper Class Flexible (J, C, D)", rate: 4 }
+    ],
+    statuses: [
+      { id: "red", name: "Red", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1.3 },
+      { id: "gold", name: "Gold", multiplier: 1.6 }
+    ],
+    // Co-branded cards: extra points per pound charged (fare + taxes).
+    cards: [
+      { id: "reward", name: "Virgin Atlantic Reward (UK)", rate: 1.5 },
+      { id: "reward-plus", name: "Virgin Atlantic Reward+ (UK)", rate: 3 },
+      { id: "red", name: "Virgin Red Rewards Mastercard (US)", rate: 3, currency: "USD" }
+    ],
+    note: "Flying Club earns a share of the miles flown set by fare class, and Silver and Gold add 30% and 60%. Premium and Upper Class rates differ between sources, so those are estimates. Card points are earned per pound charged, or per US dollar for the US card."
   }
 };
 
@@ -351,5 +409,6 @@ window.PROGRAMS = {
 window.COUNTRIES = [
   { id: "US", label: "United States \u{1F1FA}\u{1F1F8}" },
   { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}" },
-  { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}" }
+  { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}" },
+  { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" }
 ];
