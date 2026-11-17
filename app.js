@@ -223,6 +223,36 @@
     resultEl.hidden = false;
   });
 
+  // Light/dark toggle. Starts from the device setting; a click picks the
+  // other theme and remembers it on this device.
+  var root = document.documentElement;
+  var toggle = $("themeToggle");
+  var systemDark = window.matchMedia("(prefers-color-scheme: dark)");
+  try { var saved = localStorage.getItem("theme"); if (saved) root.setAttribute("data-theme", saved); } catch (e) {}
+
+  function isDark() {
+    var t = root.getAttribute("data-theme");
+    return t ? t === "dark" : systemDark.matches;
+  }
+  function syncToggle() {
+    if (!toggle) return;
+    var dark = isDark();
+    toggle.classList.toggle("is-dark", dark);
+    toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", dark ? "#0f141c" : "#1f5fd1");
+  }
+  if (toggle) {
+    toggle.addEventListener("click", function () {
+      var next = isDark() ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      syncToggle();
+    });
+  }
+  if (systemDark.addEventListener) systemDark.addEventListener("change", syncToggle);
+  syncToggle();
+
   var yearEl = $("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   programEl.addEventListener("change", onProgramChange);
