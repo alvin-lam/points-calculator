@@ -6,7 +6,7 @@ A static web app that estimates the points or miles you earn on a flight.
 
 Open `index.html` in a browser. No build step or server is needed. It also works as-is on GitHub Pages.
 
-1. Choose an airline program.
+1. Choose an airline program (listed as "Airline | Program").
 2. Choose your current status (and fare type for Southwest and Breeze).
 3. Enter the airfare and the taxes & fees separately.
 4. For Alaska Atmos Rewards, enter the miles flown, since that program earns by distance.

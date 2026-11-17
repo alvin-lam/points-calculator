@@ -12,7 +12,7 @@
  */
 window.PROGRAMS = {
   american: {
-    name: "American AAdvantage",
+    name: "American Airlines | AAdvantage",
     unit: "miles",
     method: "spend",
     cap: 75000,
@@ -27,7 +27,7 @@ window.PROGRAMS = {
     note: "AAdvantage miles are earned on base fare and carrier-imposed fees. Government taxes do not earn miles. Earning is capped at 75,000 miles per ticket."
   },
   delta: {
-    name: "Delta SkyMiles",
+    name: "Delta Air Lines | SkyMiles",
     unit: "miles",
     method: "spend",
     cap: 75000,
@@ -42,7 +42,7 @@ window.PROGRAMS = {
     note: "SkyMiles are earned on base fare and carrier-imposed surcharges. Basic Economy fares earn no miles. Earning is capped at 75,000 miles per ticket."
   },
   united: {
-    name: "United MileagePlus",
+    name: "United Airlines | MileagePlus",
     unit: "miles",
     method: "spend",
     cap: 75000,
@@ -57,7 +57,7 @@ window.PROGRAMS = {
     note: "MileagePlus miles are earned on base fare and carrier-imposed surcharges. Taxes do not earn miles. Earning is capped at 75,000 miles per ticket."
   },
   southwest: {
-    name: "Southwest Rapid Rewards",
+    name: "Southwest Airlines | Rapid Rewards",
     unit: "points",
     method: "spend",
     centsPerPoint: 1.3,
@@ -75,7 +75,7 @@ window.PROGRAMS = {
     note: "Rapid Rewards points depend on fare type and are earned on base fare only. A-List adds a 25% bonus and A-List Preferred adds a 100% bonus."
   },
   alaska: {
-    name: "Alaska Atmos Rewards",
+    name: "Alaska Airlines | Atmos Rewards",
     unit: "points",
     method: "distance",
     centsPerPoint: 1.4,
@@ -89,7 +89,7 @@ window.PROGRAMS = {
     note: "Atmos Rewards awards 1 point per mile flown on Alaska and Hawaiian, with elite bonuses of 25% to 150%. Fare class bonuses are not included. Members who chose spend-based or segment-based earning will see different results."
   },
   frontier: {
-    name: "Frontier Miles",
+    name: "Frontier Airlines | Frontier Miles",
     unit: "miles",
     method: "spend",
     centsPerPoint: 0.5,
@@ -103,7 +103,7 @@ window.PROGRAMS = {
     note: "Frontier Miles are earned per dollar spent with Frontier. This estimate uses airfare only. Bundles and add-ons purchased from Frontier also earn."
   },
   jetblue: {
-    name: "JetBlue TrueBlue",
+    name: "JetBlue Airways | TrueBlue",
     unit: "points",
     method: "spend",
     centsPerPoint: 1.3,
@@ -117,7 +117,7 @@ window.PROGRAMS = {
     note: "TrueBlue awards 3 base points per dollar plus a 3-point bonus for booking on jetblue.com or the JetBlue app. Mosaic members earn 3 more points per dollar. Blue Basic fares earn less."
   },
   allegiant: {
-    name: "Allegiant Allways Rewards",
+    name: "Allegiant Air | Allways Rewards",
     unit: "points",
     method: "tiered",
     centsPerPoint: 1.0,
@@ -131,7 +131,7 @@ window.PROGRAMS = {
     note: "Allways Rewards has no elite status tiers. Members earn 1 point per dollar on the first $500 and 2 points per dollar above $500, excluding taxes and fees."
   },
   breeze: {
-    name: "Breeze Breezy Rewards",
+    name: "Breeze Airways | Breezy Rewards",
     unit: "BreezePoints",
     method: "spend",
     centsPerPoint: 1.0,
