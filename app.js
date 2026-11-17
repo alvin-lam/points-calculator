@@ -7,6 +7,8 @@
   var form = $("calc");
   var programEl = $("program");
   var statusEl = $("status");
+  var airlineField = $("airlineField");
+  var airlineEl = $("airline");
   var fareTypeEl = $("fareType");
   var fareTypeField = $("fareTypeField");
   var distanceField = $("distanceField");
@@ -76,6 +78,9 @@
     if (!p) return;
 
     setCurrency(p.currency || "USD");
+    airlineEl.innerHTML = "";
+    airlineField.hidden = !p.airlines;
+    if (p.airlines) p.airlines.forEach(function (al) { airlineEl.appendChild(option(al.id, al.name)); });
     p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, s.name)); });
     statusEl.disabled = p.statuses.length < 2;
 
@@ -131,7 +136,7 @@
   }
 
   // Returns { points, rateLabel, capped }.
-  function calculate(p, status, fareType, airfare, distance) {
+  function calculate(p, status, fareType, airfare, distance, airline) {
     var points, rateLabel;
 
     if (p.method === "distance") {
@@ -154,6 +159,8 @@
       var rate = fareType
         ? (status.rates ? status.rates[fareType.id] : fareType.rate * status.multiplier)
         : status.rate;
+      // Programs spanning several airlines can set their own elite rate.
+      if (airline && status.elite && airline.eliteRate) rate = airline.eliteRate;
       points = airfare * rate;
       rateLabel = num.format(rate) + " " + p.unit + " per " + symbols[p.currency || "USD"];
     }
@@ -199,7 +206,8 @@
     var usd = money[p.currency || "USD"];
     var status = find(p.statuses, statusEl.value);
     var fareType = p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
-    var r = calculate(p, status, fareType, airfare, distance);
+    var airline = p.airlines ? find(p.airlines, airlineEl.value) : null;
+    var r = calculate(p, status, fareType, airfare, distance, airline);
 
     // Card points come on top of flight points and are earned on the
     // full charge, taxes included. The per-ticket cap does not apply.
@@ -214,7 +222,7 @@
     var cardPoints = card ? Math.floor(charged * card.rate) : 0;
     var total = r.points + cardPoints;
 
-    $("resultProgram").textContent = p.name + " · " + status.name +
+    $("resultProgram").textContent = p.name + (airline ? " · " + airline.name : "") + " · " + status.name +
       (fareType ? " · " + fareType.name : "") + (card ? " · " + card.name : "");
     $("resultPoints").textContent = num.format(total);
     $("resultUnit").textContent = p.unit;
@@ -242,7 +250,7 @@
       }
     }
 
-    $("resultNote").textContent = (r.capped ? "This trip hits the per-ticket earning cap. " : "") + p.note;
+    $("resultNote").textContent = (r.capped ? "This trip hits the per-ticket earning cap. " : "") + p.note + (airline && airline.note ? " " + airline.note : "");
     resultEl.hidden = false;
   });
 

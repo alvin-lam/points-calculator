@@ -13,6 +13,10 @@
  * own currency (e.g. a US card on a Canadian program) asks for the amount
  * charged in that currency.
  *
+ * airlines (optional): the operating airlines a program covers. The visitor
+ * picks one; an airline's eliteRate replaces the rate of statuses marked
+ * elite, and its note is added to the program note.
+ *
  * Rates reflect publicly reported rules as of late 2026. Update them here
  * when a program changes; the rest of the app reads from this file.
  */
@@ -402,33 +406,18 @@ window.PROGRAMS = {
     ],
     note: "Flying Club earns a share of the miles flown set by fare class, and Silver and Gold add 30% and 60%. Premium and Upper Class rates differ between sources, so those are estimates. Card points are earned per pound charged, or per US dollar for the US card."
   },
-  airfrance: {
-    name: "Air France | Flying Blue",
-    country: "FR",
+  flyingblue: {
+    name: "Air France-KLM | Flying Blue",
+    country: "AFKL",
     currency: "EUR",
     unit: "Miles",
     method: "spend",
     centsPerPoint: 1.2,
-    statuses: [
-      { id: "explorer", name: "Explorer", rate: 4 },
-      { id: "silver", name: "Silver", rate: 6 },
-      { id: "gold", name: "Gold", rate: 7 },
-      { id: "platinum", name: "Platinum", rate: 8 },
-      { id: "ultimate", name: "Ultimate", rate: 9 }
+    // The operating airline; both earn the same Flying Blue rates.
+    airlines: [
+      { id: "af", name: "Air France \u{1F1EB}\u{1F1F7}" },
+      { id: "kl", name: "KLM \u{1F1F3}\u{1F1F1}" }
     ],
-    // Co-branded cards: extra points per dollar charged (fare + taxes).
-    cards: [
-      { id: "boa", name: "Air France KLM Visa Signature (US)", rate: 3, currency: "USD" }
-    ],
-    note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France and KLM, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged."
-  },
-  klm: {
-    name: "KLM | Flying Blue",
-    country: "NL",
-    currency: "EUR",
-    unit: "Miles",
-    method: "spend",
-    centsPerPoint: 1.2,
     statuses: [
       { id: "explorer", name: "Explorer", rate: 4 },
       { id: "silver", name: "Silver", rate: 6 },
@@ -444,42 +433,43 @@ window.PROGRAMS = {
   }
 };
 
-/* Miles & More airlines share one rule set: award miles per euro on the
-   fare, with a higher rate for status members. */
+/* Miles & More: one program across the Lufthansa Group airlines. Award
+   miles are earned per euro of the fare; status members earn more, and
+   how much more depends on the operating airline. */
 (function () {
   var P = window.PROGRAMS;
-  var mmCard = { id: "barclays", name: "Miles & More World Elite Mastercard (US)", rate: 2, currency: "USD" };
 
-  function milesAndMore(name, country, statusRate, extraNote) {
-    return {
-      name: name + " | Miles & More",
-      country: country,
-      currency: "EUR",
-      unit: "miles",
-      method: "spend",
-      centsPerPoint: 1.0,
-      statuses: [
-        { id: "member", name: "Miles & More Member", rate: 4 },
-        { id: "ftl", name: "Frequent Traveller", rate: statusRate },
-        { id: "sen", name: "Senator", rate: statusRate },
-        { id: "hon", name: "HON Circle", rate: statusRate }
-      ],
-      // Co-branded card: extra miles per US dollar charged (fare + taxes).
-      cards: [mmCard],
-      note: "Miles & More earns award miles per euro of the fare, not by distance: 4 per euro for members and " +
-        statusRate + " for Frequent Traveller, Senator, and HON Circle. Taxes do not earn. Enter fares in euros. " +
-        "The US Barclays card earns per US dollar charged." + (extraNote ? " " + extraNote : "")
-    };
-  }
-
-  P.lufthansa = milesAndMore("Lufthansa", "DE", 6);
-  P.eurowings = milesAndMore("Eurowings", "DE", 5);
-  P.discover = milesAndMore("Discover Airlines", "DE", 5);
-  P.austrian = milesAndMore("Austrian Airlines", "AT", 6);
-  P.swiss = milesAndMore("SWISS", "CH", 6, "SWISS fares in Swiss francs earn at the euro equivalent.");
-  P.brussels = milesAndMore("Brussels Airlines", "BE", 6);
-  P.ita = milesAndMore("ITA Airways", "IT", 6,
-    "ITA Airways joined Miles & More on 1 April 2026, replacing Volare. ITA's own status rate has not been published, so it uses the Lufthansa rate.");
+  P.milesandmore = {
+    name: "Lufthansa Group | Miles & More",
+    country: "LHG",
+    currency: "EUR",
+    unit: "miles",
+    method: "spend",
+    centsPerPoint: 1.0,
+    // eliteRate: miles per euro for Frequent Traveller, Senator, and HON Circle.
+    airlines: [
+      { id: "lh", name: "Lufthansa \u{1F1E9}\u{1F1EA}", eliteRate: 6 },
+      { id: "ew", name: "Eurowings \u{1F1E9}\u{1F1EA}", eliteRate: 5 },
+      { id: "de", name: "Discover Airlines \u{1F1E9}\u{1F1EA}", eliteRate: 5 },
+      { id: "os", name: "Austrian Airlines \u{1F1E6}\u{1F1F9}", eliteRate: 6 },
+      { id: "lx", name: "SWISS \u{1F1E8}\u{1F1ED}", eliteRate: 6,
+        note: "SWISS fares in Swiss francs earn at the euro equivalent." },
+      { id: "sn", name: "Brussels Airlines \u{1F1E7}\u{1F1EA}", eliteRate: 6 },
+      { id: "az", name: "ITA Airways \u{1F1EE}\u{1F1F9}", eliteRate: 6,
+        note: "ITA Airways joined Miles & More on 1 April 2026, replacing Volare. ITA's own status rate has not been published, so it uses the Lufthansa rate." }
+    ],
+    statuses: [
+      { id: "member", name: "Miles & More Member", rate: 4 },
+      { id: "ftl", name: "Frequent Traveller", rate: 6, elite: true },
+      { id: "sen", name: "Senator", rate: 6, elite: true },
+      { id: "hon", name: "HON Circle", rate: 6, elite: true }
+    ],
+    // Co-branded card: extra miles per US dollar charged (fare + taxes).
+    cards: [
+      { id: "barclays", name: "Miles & More World Elite Mastercard (US)", rate: 2, currency: "USD" }
+    ],
+    note: "Miles & More earns award miles per euro of the fare, not by distance: 4 per euro for members. Frequent Traveller, Senator, and HON Circle earn 6 per euro on Lufthansa, SWISS, Austrian, Brussels, and ITA, and 5 on Eurowings and Discover. Taxes do not earn. Enter fares in euros. The US Barclays card earns per US dollar charged."
+  };
 
   /* Iberia Club covers Iberia and LEVEL flights. */
   var iberiaStatuses = [
@@ -561,21 +551,17 @@ window.PROGRAMS = {
   };
 })();
 
-/* Groups shown as separators in the program menu. Programs without a
-   country field belong to "US". */
+/* Groups shown as separators in the program menu: a country, or an
+   airline group spanning countries. Programs without a country field
+   belong to "US". */
 // Pinned groups stay at the top in this order; the rest sort by name.
 window.COUNTRIES = [
   { id: "US", label: "United States \u{1F1FA}\u{1F1F8}", pinned: true },
   { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}", pinned: true },
   { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}", pinned: true },
-  { id: "AT", label: "Austria \u{1F1E6}\u{1F1F9}" },
-  { id: "BE", label: "Belgium \u{1F1E7}\u{1F1EA}" },
-  { id: "FR", label: "France \u{1F1EB}\u{1F1F7}" },
-  { id: "DE", label: "Germany \u{1F1E9}\u{1F1EA}" },
-  { id: "IT", label: "Italy \u{1F1EE}\u{1F1F9}" },
-  { id: "NL", label: "Netherlands \u{1F1F3}\u{1F1F1}" },
+  { id: "AFKL", label: "Air France-KLM \u{1F1EB}\u{1F1F7} \u{1F1F3}\u{1F1F1}" },
+  { id: "LHG", label: "Lufthansa Group \u{1F1E9}\u{1F1EA} \u{1F1E6}\u{1F1F9} \u{1F1E8}\u{1F1ED} \u{1F1E7}\u{1F1EA} \u{1F1EE}\u{1F1F9}" },
   { id: "PT", label: "Portugal \u{1F1F5}\u{1F1F9}" },
   { id: "ES", label: "Spain \u{1F1EA}\u{1F1F8}" },
-  { id: "CH", label: "Switzerland \u{1F1E8}\u{1F1ED}" },
   { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" }
 ];
