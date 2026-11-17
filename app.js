@@ -37,15 +37,19 @@
     MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" }),
     AUD: new Intl.NumberFormat("en-US", { style: "currency", currency: "AUD" }),
     NOK: new Intl.NumberFormat("en-US", { style: "currency", currency: "NOK" }),
+    MYR: new Intl.NumberFormat("en-US", { style: "currency", currency: "MYR" }),
+    SGD: new Intl.NumberFormat("en-US", { style: "currency", currency: "SGD" }),
+    JPY: new Intl.NumberFormat("en-US", { style: "currency", currency: "JPY" }),
+    HKD: new Intl.NumberFormat("en-US", { style: "currency", currency: "HKD" }),
     GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
     EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", GBP: "£", EUR: "€" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", GBP: "£", EUR: "€" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", GBP: "£", EUR: "€" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", GBP: "£", EUR: "€" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -235,7 +239,8 @@
       rateLabel = num.format(perDollar) + " " + p.unit + " per " + symbols[p.currency || "USD"];
     } else if (p.method === "distance") {
       // Some distance programs also scale by fare class (Virgin Atlantic).
-      var perMile = (fareType ? fareType.rate : 1) * status.multiplier;
+      // Some fares are excluded from the status bonus (KrisFlyer).
+      var perMile = (fareType ? fareType.rate : 1) * (fareType && fareType.noBonus ? 1 : status.multiplier);
       points = distance * perMile;
       rateLabel = num.format(perMile) + " " + p.unit + " per mile flown";
     } else if (p.method === "tiered") {

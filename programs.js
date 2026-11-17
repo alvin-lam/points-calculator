@@ -782,6 +782,157 @@ window.PROGRAMS = {
   };
 })();
 
+/* Asia: Japan, Hong Kong, Singapore, and Malaysia. */
+(function () {
+  var P = window.PROGRAMS;
+
+  P.ana = {
+    name: "ANA | ANA Mileage Club",
+    country: "JP",
+    currency: "JPY",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "y-mid",
+    // Share of the flight distance earned, by booking class (international).
+    fareTypes: [
+      { id: "f", name: "First (F, A)", rate: 1.5 },
+      { id: "j", name: "Business (J)", rate: 1.5 },
+      { id: "c", name: "Business (C, D, Z)", rate: 1.25 },
+      { id: "p", name: "Business (P)", rate: 0.7 },
+      { id: "pe", name: "Premium Economy (G, E)", rate: 1 },
+      { id: "pe-low", name: "Premium Economy (N)", rate: 0.7 },
+      { id: "y", name: "Economy (Y, B, M)", rate: 1 },
+      { id: "y-mid", name: "Economy (U, H, Q)", rate: 0.7 },
+      { id: "y-low", name: "Economy (V, W, S)", rate: 0.5 },
+      { id: "y-lowest", name: "Economy (L, K)", rate: 0.3 }
+    ],
+    statuses: [
+      { id: "member", name: "ANA Mileage Club Member", multiplier: 1 },
+      { id: "bronze", name: "Bronze", multiplier: 1.4 },
+      { id: "platinum", name: "Platinum", multiplier: 1.9 },
+      { id: "diamond", name: "Diamond", multiplier: 2.15 }
+    ],
+    note: "ANA earns a share of the flight distance set by booking class. Bronze, Platinum, and Diamond add 40%, 90%, and 115% in the first status year, and more in later years or with an ANA Gold or Premium card. O, I, R, and X fares do not earn miles. Japanese ANA cards are not included."
+  };
+
+  P.jal = {
+    name: "Japan Airlines | JAL Mileage Bank",
+    country: "JP",
+    currency: "JPY",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "y-mid",
+    // Share of the flight distance earned, by booking class (international).
+    fareTypes: [
+      { id: "f", name: "First (F, A)", rate: 1.5 },
+      { id: "j", name: "Business (J, C, D, I)", rate: 1.25 },
+      { id: "x", name: "Business (X)", rate: 0.7 },
+      { id: "pe", name: "Premium Economy (W, R)", rate: 1 },
+      { id: "pe-low", name: "Premium Economy (E)", rate: 0.7 },
+      { id: "y", name: "Economy (Y, B)", rate: 1 },
+      { id: "y-mid", name: "Economy (H, K, M)", rate: 0.7 },
+      { id: "y-low", name: "Economy (L, V, S)", rate: 0.5 },
+      { id: "y-lowest", name: "Economy (O, G, Q, N)", rate: 0.3 }
+    ],
+    statuses: [
+      { id: "member", name: "JMB Member", multiplier: 1 },
+      { id: "jgc", name: "JAL Global Club", multiplier: 1.35 },
+      { id: "crystal", name: "JMB Crystal", multiplier: 1.55 },
+      { id: "sapphire", name: "JMB Sapphire", multiplier: 2.05 },
+      { id: "jgc-premier", name: "JGC Premier", multiplier: 2.05 },
+      { id: "diamond", name: "JMB Diamond", multiplier: 2.3 }
+    ],
+    note: "JAL earns a share of the flight distance set by booking class, and status adds a 35% to 130% mile-up bonus. Fare classes not listed do not earn miles. Japanese JAL cards are not included."
+  };
+
+  P.cathay = {
+    name: "Cathay Pacific | Asia Miles",
+    country: "HK",
+    currency: "HKD",
+    unit: "Asia Miles",
+    method: "zone",
+    defaultFareType: "y-ess",
+    // Fixed Asia Miles per flight from Cathay's table effective 20 August 2025.
+    fareTypes: [
+      { id: "f", name: "First (F, A) Flex" },
+      { id: "j", name: "Business (J, C) Flex" },
+      { id: "d", name: "Business (D, P, I) Essential or Light" },
+      { id: "w", name: "Premium Economy (W, R) Flex" },
+      { id: "e", name: "Premium Economy (E) Essential" },
+      { id: "y-flex", name: "Economy (Y, B, H, K) Flex" },
+      { id: "y-ess", name: "Economy (Y, B, H, K) Essential" },
+      { id: "y-light", name: "Economy (Y, B, H, K) Light" },
+      { id: "m-flex", name: "Economy (M, L, V) Flex" },
+      { id: "m-ess", name: "Economy (M, L, V) Essential" },
+      { id: "m-light", name: "Economy (M, L, V) Light" },
+      { id: "s-flex", name: "Economy (S, N, Q, O) Flex" },
+      { id: "s-ess", name: "Economy (S, N, Q, O) Essential" },
+      { id: "s-light", name: "Economy (S, N, Q, O) Light" }
+    ],
+    // Each zone's points list follows the fareTypes order. Zones are
+    // measured from Hong Kong.
+    zones: [
+      { id: "ultra-short", name: "Ultra-short: 1 to 750 miles (Hanoi, Manila, Taipei)", points: [3500, 3000, 2500, 2500, 1500, 2500, 1500, 1000, 2000, 1000, 600, 1500, 500, 300] },
+      { id: "short1", name: "Short, Type 1: 751 to 2,750 miles (Beijing, Seoul, Singapore)", points: [4500, 4000, 3500, 3000, 2000, 3000, 2000, 1500, 2500, 1500, 1000, 2000, 1000, 600] },
+      { id: "short2", name: "Short, Type 2: 751 to 2,750 miles to Japan, India, Indonesia, Sri Lanka, Nepal, Bangladesh", points: [6000, 5000, 4500, 3500, 2500, 3500, 2500, 1800, 3000, 2000, 1200, 2500, 1500, 800] },
+      { id: "medium", name: "Medium: 2,751 to 5,000 miles (Dubai, Melbourne, Sydney)", points: [11000, 9000, 7500, 6000, 4500, 4800, 3800, 3000, 4200, 3200, 2200, 3200, 2200, 1500] },
+      { id: "long", name: "Long: 5,001 to 7,500 miles (London, Paris, San Francisco)", points: [16000, 13000, 10000, 8000, 6500, 7000, 6000, 4000, 6000, 5000, 3200, 3800, 2800, 1800] },
+      { id: "ultra-long", name: "Ultra-long: 7,501 miles or more (Chicago, New York, Toronto)", points: [18000, 15000, 12000, 10000, 8500, 9000, 7000, 5000, 8000, 6000, 4000, 4500, 3500, 2500] }
+    ],
+    statuses: [
+      { id: "green", name: "Green", bonus: 0 },
+      { id: "silver", name: "Silver", bonus: 0 },
+      { id: "gold", name: "Gold", bonus: 0 },
+      { id: "diamond", name: "Diamond", bonus: 0 }
+    ],
+    note: "Cathay Pacific awards a fixed number of Asia Miles per flight, set by fare type and distance zone from Hong Kong. Cathay's published table is the same for every status level. It covers flights marketed by Cathay Pacific and departing on or after 20 August 2025. Co-branded cards are not included."
+  };
+
+  P.krisflyer = {
+    name: "Singapore Airlines | KrisFlyer",
+    country: "SG",
+    currency: "SGD",
+    unit: "KrisFlyer miles",
+    method: "distance",
+    defaultFareType: "y-mid",
+    // Share of miles flown by booking class (chart dated 12 January 2026).
+    // noBonus fares do not get the 25% tier bonus.
+    fareTypes: [
+      { id: "f", name: "Suites or First (A, F)", rate: 2 },
+      { id: "j", name: "Business (C, J, Z)", rate: 1.5 },
+      { id: "j-low", name: "Business (D, U)", rate: 1.25 },
+      { id: "pe", name: "Premium Economy (S, T)", rate: 1.25 },
+      { id: "pe-low", name: "Premium Economy (R, L, P)", rate: 1 },
+      { id: "y", name: "Economy (B, E, Y)", rate: 1 },
+      { id: "y-mid", name: "Economy (H, M, W)", rate: 0.75 },
+      { id: "y-low", name: "Economy (K, N, Q, V, G)", rate: 0.5, noBonus: true }
+    ],
+    statuses: [
+      { id: "member", name: "KrisFlyer Member", multiplier: 1 },
+      { id: "elite-silver", name: "Elite Silver", multiplier: 1.25 },
+      { id: "elite-gold", name: "Elite Gold", multiplier: 1.25 },
+      { id: "pps", name: "PPS Club", multiplier: 1.25 },
+      { id: "solitaire", name: "Solitaire PPS Club", multiplier: 1.25 }
+    ],
+    note: "KrisFlyer earns a share of the miles flown set by booking class, from 50% to 200%. Elite Silver, Elite Gold, and PPS Club members get a 25% tier bonus, except on Economy K, N, Q, V, and G. Scoot flights do not get the tier bonus."
+  };
+
+  P.enrich = {
+    name: "Malaysia Airlines | Enrich",
+    country: "MY",
+    currency: "MYR",
+    unit: "Enrich Points",
+    method: "spend",
+    statuses: [
+      { id: "blue", name: "Blue", rate: 1.5 },
+      { id: "silver", name: "Silver", rate: 1.8 },
+      { id: "gold", name: "Gold", rate: 2.2 },
+      { id: "platinum", name: "Platinum", rate: 2.5 }
+    ],
+    note: "Since 1 January 2026, Enrich earns 1.5 to 2.5 points per ringgit spent on Malaysia Airlines and Firefly flights, by status. Enter fares in ringgit."
+  };
+})();
+
 /* Groups shown as separators in the program menu: a country, or an
    airline group spanning countries. Programs without a country field
    belong to "US". */
@@ -799,5 +950,9 @@ window.COUNTRIES = [
   { id: "CO", label: "Colombia \u{1F1E8}\u{1F1F4}" },
   { id: "NO", label: "Norway \u{1F1F3}\u{1F1F4}" },
   { id: "FI", label: "Finland \u{1F1EB}\u{1F1EE}" },
-  { id: "QA", label: "Qatar \u{1F1F6}\u{1F1E6}" }
+  { id: "QA", label: "Qatar \u{1F1F6}\u{1F1E6}" },
+  { id: "JP", label: "Japan \u{1F1EF}\u{1F1F5}" },
+  { id: "HK", label: "Hong Kong \u{1F1ED}\u{1F1F0}" },
+  { id: "SG", label: "Singapore \u{1F1F8}\u{1F1EC}" },
+  { id: "MY", label: "Malaysia \u{1F1F2}\u{1F1FE}" }
 ];

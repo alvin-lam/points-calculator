@@ -20,6 +20,8 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 - Alaska and Hawaiian both use Atmos Rewards. Members choose to earn 1 point per mile, 5 points per dollar, or 500 points per segment, with elite bonuses on each.
 - Virgin Atlantic, TAP, and Qatar Airways earn a share of the miles flown set by fare, so they ask for the fare class and the miles flown, not the price paid.
 - Qantas awards a fixed number of points per flight, so it asks for the fare and the route band, not the price paid. The table is Qantas' own, for travel from 22 July 2025.
+- ANA, JAL, and Singapore Airlines KrisFlyer earn a share of the miles flown by booking class, and Cathay Pacific awards a fixed amount by fare type and distance zone from Hong Kong, so none of them ask for the price paid.
+- Malaysia Airlines Enrich earns 1.5 to 2.5 points per ringgit (RM) by status.
 - Porter fares are entered in Canadian dollars, Finnair fares in euros, Virgin Australia fares in Australian dollars (A$), and Norwegian fares in Norwegian kroner (kr). Avianca LifeMiles earns per US dollar by fare family.
 - The program menu keeps the United States, Canada, and Mexico at the top and sorts the other groups alphabetically.
 - Miles & More (Lufthansa Group), Flying Blue (Air France-KLM), and IAG are single programs. Each of their airlines is listed by name under a group heading that names the program, such as "IAG | Avios". For Miles & More, the airline sets the status earning rate. For IAG, the airline picks the loyalty program: AerClub in euros, British Airways Club in pounds, Iberia Club in euros (Iberia and LEVEL), or Vueling Club in euros, each with its own status levels and cards.
