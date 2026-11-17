@@ -6,6 +6,7 @@
  *                 fare type x status multiplier when fareTypes is present)
  *   "distance" -> points = miles flown x status multiplier
  *   "tiered"   -> custom per-dollar tiers (Allegiant)
+ *   "zone"     -> fixed points per fare type and distance zone (Cathay)
  *
  * cards (optional): co-branded credit cards and the extra points each earns
  * per dollar charged to it for the ticket, taxes included. Cards marked
@@ -459,9 +460,9 @@ window.PROGRAMS = {
     ],
     note: "JAL earns a share of the flight distance set by booking class, and status adds a 35% to 130% mile-up bonus. Fare classes not listed do not earn miles. Japanese JAL cards are not included."
   },
-  flyingblue: {
-    name: "Air France-KLM | Flying Blue",
-    country: "FRNL",
+  airfrance: {
+    name: "Air France | Flying Blue",
+    country: "FR",
     currency: "EUR",
     unit: "Miles",
     method: "spend",
@@ -478,6 +479,67 @@ window.PROGRAMS = {
       { id: "boa", name: "Air France KLM Visa Signature (US)", rate: 3, currency: "USD" }
     ],
     note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France and KLM, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged."
+  },
+  klm: {
+    name: "KLM | Flying Blue",
+    country: "NL",
+    currency: "EUR",
+    unit: "Miles",
+    method: "spend",
+    centsPerPoint: 1.2,
+    statuses: [
+      { id: "explorer", name: "Explorer", rate: 4 },
+      { id: "silver", name: "Silver", rate: 6 },
+      { id: "gold", name: "Gold", rate: 7 },
+      { id: "platinum", name: "Platinum", rate: 8 },
+      { id: "ultimate", name: "Ultimate", rate: 9 }
+    ],
+    // Co-branded cards: extra points per dollar charged (fare + taxes).
+    cards: [
+      { id: "boa", name: "Air France KLM Visa Signature (US)", rate: 3, currency: "USD" }
+    ],
+    note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France and KLM, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged."
+  },
+  cathay: {
+    name: "Cathay Pacific | Asia Miles",
+    country: "HK",
+    currency: "HKD",
+    unit: "Asia Miles",
+    method: "zone",
+    defaultFareType: "y-ess",
+    // Fixed Asia Miles per flight from Cathay's table effective 20 August 2025.
+    // Each list follows the zone order below.
+    zones: [
+      { id: "ultra-short", name: "Ultra-short: 1 to 750 miles (Hanoi, Manila, Taipei)" },
+      { id: "short1", name: "Short, Type 1: 751 to 2,750 miles (Beijing, Seoul, Singapore)" },
+      { id: "short2", name: "Short, Type 2: 751 to 2,750 miles to Japan, India, Indonesia, Sri Lanka, Nepal, Bangladesh" },
+      { id: "medium", name: "Medium: 2,751 to 5,000 miles (Dubai, Melbourne, Sydney)" },
+      { id: "long", name: "Long: 5,001 to 7,500 miles (London, Paris, San Francisco)" },
+      { id: "ultra-long", name: "Ultra-long: 7,501 miles or more (Chicago, New York, Toronto)" }
+    ],
+    fareTypes: [
+      { id: "f", name: "First (F, A) Flex", miles: [3500, 4500, 6000, 11000, 16000, 18000] },
+      { id: "j", name: "Business (J, C) Flex", miles: [3000, 4000, 5000, 9000, 13000, 15000] },
+      { id: "d", name: "Business (D, P, I) Essential or Light", miles: [2500, 3500, 4500, 7500, 10000, 12000] },
+      { id: "w", name: "Premium Economy (W, R) Flex", miles: [2500, 3000, 3500, 6000, 8000, 10000] },
+      { id: "e", name: "Premium Economy (E) Essential", miles: [1500, 2000, 2500, 4500, 6500, 8500] },
+      { id: "y-flex", name: "Economy (Y, B, H, K) Flex", miles: [2500, 3000, 3500, 4800, 7000, 9000] },
+      { id: "y-ess", name: "Economy (Y, B, H, K) Essential", miles: [1500, 2000, 2500, 3800, 6000, 7000] },
+      { id: "y-light", name: "Economy (Y, B, H, K) Light", miles: [1000, 1500, 1800, 3000, 4000, 5000] },
+      { id: "m-flex", name: "Economy (M, L, V) Flex", miles: [2000, 2500, 3000, 4200, 6000, 8000] },
+      { id: "m-ess", name: "Economy (M, L, V) Essential", miles: [1000, 1500, 2000, 3200, 5000, 6000] },
+      { id: "m-light", name: "Economy (M, L, V) Light", miles: [600, 1000, 1200, 2200, 3200, 4000] },
+      { id: "s-flex", name: "Economy (S, N, Q, O) Flex", miles: [1500, 2000, 2500, 3200, 3800, 4500] },
+      { id: "s-ess", name: "Economy (S, N, Q, O) Essential", miles: [500, 1000, 1500, 2200, 2800, 3500] },
+      { id: "s-light", name: "Economy (S, N, Q, O) Light", miles: [300, 600, 800, 1500, 1800, 2500] }
+    ],
+    statuses: [
+      { id: "green", name: "Green", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1 },
+      { id: "gold", name: "Gold", multiplier: 1 },
+      { id: "diamond", name: "Diamond", multiplier: 1 }
+    ],
+    note: "Cathay Pacific awards a fixed number of Asia Miles per flight, set by fare type and distance zone from Hong Kong. Cathay's published table is the same for every status level. It covers flights marketed by Cathay Pacific and departing on or after 20 August 2025. Co-branded cards are not included."
   }
 };
 
@@ -488,6 +550,8 @@ window.COUNTRIES = [
   { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}" },
   { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}" },
   { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" },
-  { id: "FRNL", label: "France \u{1F1EB}\u{1F1F7} & the Netherlands \u{1F1F3}\u{1F1F1}" },
-  { id: "JP", label: "Japan \u{1F1EF}\u{1F1F5}" }
+  { id: "FR", label: "France \u{1F1EB}\u{1F1F7}" },
+  { id: "NL", label: "Netherlands \u{1F1F3}\u{1F1F1}" },
+  { id: "JP", label: "Japan \u{1F1EF}\u{1F1F5}" },
+  { id: "HK", label: "Hong Kong \u{1F1ED}\u{1F1F0}" }
 ];

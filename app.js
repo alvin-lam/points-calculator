@@ -13,6 +13,8 @@
   var airfareEl = $("airfare");
   var taxesEl = $("taxes");
   var distanceEl = $("distance");
+  var zoneField = $("zoneField");
+  var zoneEl = $("zone");
   var cardField = $("cardField");
   var cardSelectField = $("cardSelectField");
   var cardEl = $("card");
@@ -30,14 +32,15 @@
     MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" }),
     GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
     EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }),
-    JPY: new Intl.NumberFormat("en-US", { style: "currency", currency: "JPY" })
+    JPY: new Intl.NumberFormat("en-US", { style: "currency", currency: "JPY" }),
+    HKD: new Intl.NumberFormat("en-US", { style: "currency", currency: "HKD" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", GBP: "£", EUR: "€", JPY: "¥" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", GBP: "£", EUR: "€", JPY: "¥", HKD: "HK$" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", GBP: "£", EUR: "€", JPY: "¥" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", GBP: "£", EUR: "€", JPY: "¥", HKD: "HK$" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -105,6 +108,10 @@
     if (!p.cards) usedCardNo.checked = true;
     syncCardSelect();
 
+    zoneEl.innerHTML = "";
+    zoneField.hidden = !p.zones;
+    if (p.zones) p.zones.forEach(function (z) { zoneEl.appendChild(option(z.id, z.name)); });
+
     distanceField.hidden = p.method !== "distance";
     distanceEl.required = p.method === "distance";
     resultEl.hidden = true;
@@ -132,7 +139,12 @@
   function calculate(p, status, fareType, airfare, distance) {
     var points, rateLabel;
 
-    if (p.method === "distance") {
+    if (p.method === "zone") {
+      // Fixed amount per flight, looked up by fare type and zone.
+      var zi = Math.max(0, zoneEl.selectedIndex);
+      points = fareType.miles[zi] * status.multiplier;
+      rateLabel = "fixed for this fare and zone";
+    } else if (p.method === "distance") {
       // Some distance programs also scale by fare class (Virgin Atlantic).
       var perMile = (fareType ? fareType.rate : 1) * status.multiplier;
       points = distance * perMile;
@@ -223,6 +235,7 @@
     row(dl, "Taxes & fees", usd.format(taxes));
     row(dl, "Total trip cost", usd.format(airfare + taxes));
     if (p.method === "distance") row(dl, "Miles flown", num.format(distance));
+    if (p.method === "zone") row(dl, "Distance zone", p.zones[Math.max(0, zoneEl.selectedIndex)].name.split(":")[0]);
     row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {
       var cardMoney = foreignCard
