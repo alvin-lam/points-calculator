@@ -187,3 +187,5 @@ footer .copyright a:focus-visible { outline: 2px solid var(--accent); outline-of
   text-decoration: underline; text-underline-offset: 2px; cursor: pointer;
 }
 .linklike:focus-visible, .install button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.footer-icon { display: block; margin: 16px auto 8px; border-radius: 13px; }
