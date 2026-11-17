@@ -66,7 +66,8 @@
     fareTypeField.hidden = !p.fareTypes;
     if (p.fareTypes) {
       p.fareTypes.forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
-      fareTypeEl.selectedIndex = 1 < p.fareTypes.length ? 1 : 0;
+      if (p.defaultFareType) fareTypeEl.value = p.defaultFareType;
+      else fareTypeEl.selectedIndex = 1 < p.fareTypes.length ? 1 : 0;
     }
 
     distanceField.hidden = p.method !== "distance";
@@ -97,7 +98,11 @@
       });
       rateLabel = "1 per $ up to $500, 2 per $ above";
     } else {
-      var rate = fareType ? fareType.rate * status.multiplier : status.rate;
+      // A status can list its own rate per fare type (Frontier), or the
+      // fare type sets the rate and the status scales it (Southwest, Breeze).
+      var rate = fareType
+        ? (status.rates ? status.rates[fareType.id] : fareType.rate * status.multiplier)
+        : status.rate;
       points = airfare * rate;
       rateLabel = num.format(rate) + " " + p.unit + " per " + symbols[p.currency || "USD"];
     }

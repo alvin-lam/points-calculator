@@ -93,14 +93,20 @@ window.PROGRAMS = {
     unit: "miles",
     method: "spend",
     centsPerPoint: 0.5,
-    statuses: [
-      { id: "member", name: "Frontier Miles Member", rate: 10 },
-      { id: "silver", name: "Silver", rate: 12 },
-      { id: "gold", name: "Gold", rate: 14 },
-      { id: "platinum", name: "Platinum", rate: 16 },
-      { id: "diamond", name: "Diamond", rate: 20 }
+    defaultFareType: "basic",
+    fareTypes: [
+      { id: "basic", name: "Basic fare (no bundle)" },
+      { id: "bundle", name: "Bundle" }
     ],
-    note: "Frontier Miles are earned per dollar spent with Frontier. This estimate uses airfare only. Bundles and add-ons purchased from Frontier also earn."
+    // Rates for bookings made on or after September 1, 2026 (non-cardholders).
+    statuses: [
+      { id: "member", name: "Frontier Miles Member", rates: { basic: 1, bundle: 6 } },
+      { id: "silver", name: "Elite Silver", rates: { basic: 3, bundle: 8 } },
+      { id: "gold", name: "Elite Gold", rates: { basic: 5, bundle: 10 } },
+      { id: "platinum", name: "Elite Platinum", rates: { basic: 7, bundle: 12 } },
+      { id: "diamond", name: "Elite Diamond", rates: { basic: 11, bundle: 16 } }
+    ],
+    note: "For bookings made on or after September 1, 2026, Frontier Miles earns 1 to 11 miles per dollar on basic fares and 6 to 16 on bundles, depending on status. Frontier World Mastercard holders earn more."
   },
   jetblue: {
     name: "JetBlue Airways | TrueBlue",
