@@ -33,7 +33,6 @@ window.PROGRAMS = {
     cards: [
       { id: "citi-mileup", name: "Citi / AAdvantage MileUp", rate: 2 },
       { id: "citi-platselect", name: "Citi / AAdvantage Platinum Select", rate: 2 },
-      { id: "barclays-red", name: "AAdvantage Aviator Red (Barclays)", rate: 2 },
       { id: "citi-globe", name: "Citi / AAdvantage Globe", rate: 3 },
       { id: "citi-exec", name: "Citi / AAdvantage Executive", rate: 4 }
     ],
