@@ -8,6 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif&display=swap">
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#1f5fd1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Points Calc">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -99,10 +106,30 @@
 
     <footer>
       <p>Estimates only. Earning rules change often and promotions, credit cards, partner flights, and fare classes can change the result. Check your program's official terms before you rely on a number.</p>
+      <!-- install:start -->
+      <p class="install-link-row"><button type="button" class="linklike" id="installLink" hidden>Add this calculator to your home screen</button></p>
+      <!-- install:end -->
       <p class="copyright">&copy; <span id="year">2026</span> <a href="https://alltripsconsidered.com" target="_blank" rel="noopener">AllTripsConsidered.com</a>. All rights reserved.</p>
     </footer>
   </main>
+
+  <!-- install:start -->
+  <aside class="install" id="installBanner" hidden aria-label="Install app">
+    <img src="icons/apple-touch-icon.png" alt="" width="48" height="48">
+    <div class="install-text">
+      <p class="install-title">Add Points Calculator to your home screen</p>
+      <p class="install-sub" id="iosSteps" hidden>Tap <svg class="share-glyph" viewBox="0 0 24 24" aria-label="Share" role="img"><path d="M12 3v12M7 8l5-5 5 5M5 12v8h14v-8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Share, then <strong>Add to Home Screen</strong>.</p>
+    </div>
+    <div class="install-actions">
+      <button type="button" id="installBtn" hidden>Install</button>
+      <button type="button" id="shareBtn" hidden>Share</button>
+      <button type="button" class="ghost" id="installDismiss">Not now</button>
+    </div>
+  </aside>
+  <!-- install:end -->
+
   <script src="programs.js"></script>
   <script src="app.js"></script>
+  <!-- install:start --><script src="install.js"></script><!-- install:end -->
 </body>
 </html>
