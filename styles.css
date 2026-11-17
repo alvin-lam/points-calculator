@@ -76,6 +76,7 @@ select:focus, input:focus { outline: 2px solid var(--accent); outline-offset: 1p
   color: var(--muted); pointer-events: none;
 }
 .money input { padding-left: 26px; }
+.money.wide input { padding-left: 46px; }
 
 button {
   width: 100%;

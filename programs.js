@@ -148,5 +148,58 @@ window.PROGRAMS = {
       { id: "club", name: "Breezy Club", multiplier: 1.5 }
     ],
     note: "BreezePoints depend on the bundle you buy. Breezy 1 adds a 25% boost and Breezy 2 adds 50%. Breezy 3 and Breezy Club are shown at the confirmed 50% boost, so their real totals may be higher."
+  },
+  hawaiian: {
+    name: "Hawaiian Airlines | Atmos Rewards",
+    unit: "points",
+    method: "distance",
+    centsPerPoint: 1.4,
+    statuses: [
+      { id: "member", name: "Atmos Member", multiplier: 1 },
+      { id: "silver", name: "Atmos Silver", multiplier: 1.25 },
+      { id: "gold", name: "Atmos Gold", multiplier: 1.5 },
+      { id: "platinum", name: "Atmos Platinum", multiplier: 2 },
+      { id: "titanium", name: "Atmos Titanium", multiplier: 2.5 }
+    ],
+    note: "HawaiianMiles is now part of Atmos Rewards, so Hawaiian flights earn 1 point per mile flown with elite bonuses of 25% to 150%. Neighbor Island flights earn a minimum of 500 points per segment, which this estimate does not apply."
+  },
+  aircanada: {
+    name: "Air Canada | Aeroplan",
+    country: "CA",
+    currency: "CAD",
+    unit: "points",
+    method: "spend",
+    centsPerPoint: 1.5,
+    statuses: [
+      { id: "member", name: "Aeroplan Member", rate: 1 },
+      { id: "25k", name: "Aeroplan 25K", rate: 2 },
+      { id: "35k", name: "Aeroplan 35K", rate: 3 },
+      { id: "50k", name: "Aeroplan 50K", rate: 4 },
+      { id: "75k", name: "Aeroplan 75K", rate: 5 },
+      { id: "se", name: "Aeroplan Super Elite", rate: 6 }
+    ],
+    note: "Since January 2026, Aeroplan earns points per Canadian dollar spent on base fare and carrier surcharges on Air Canada flights. Taxes do not earn. Elite members earn 2 to 6 points per dollar."
+  },
+  westjet: {
+    name: "WestJet | WestJet Rewards",
+    country: "CA",
+    currency: "CAD",
+    unit: "WestJet points",
+    method: "spend",
+    centsPerPoint: 1.0,
+    statuses: [
+      { id: "teal", name: "Teal", rate: 1 },
+      { id: "silver", name: "Silver", rate: 3 },
+      { id: "gold", name: "Gold", rate: 5 },
+      { id: "platinum", name: "Platinum", rate: 8 }
+    ],
+    note: "WestJet Rewards earns points per Canadian dollar spent on WestJet flights, before taxes. Partner flights earn by distance and are not covered here."
   }
 };
+
+/* Groups shown as separators in the program menu. Programs without a
+   country field belong to "US". */
+window.COUNTRIES = [
+  { id: "US", label: "United States \u{1F1FA}\u{1F1F8}" },
+  { id: "CA", label: "Canada \u{1F1E8}\u{1F1E6}" }
+];

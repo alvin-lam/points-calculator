@@ -17,7 +17,12 @@
   var resultEl = $("result");
 
   var num = new Intl.NumberFormat("en-US");
-  var usd = new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" });
+  var money = {
+    USD: new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }),
+    CAD: new Intl.NumberFormat("en-US", { style: "currency", currency: "CAD" })
+  };
+  var symbols = { USD: "$", CAD: "CA$" };
+  var moneyEls = document.querySelectorAll(".money");
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -26,11 +31,26 @@
     return o;
   }
 
-  Object.keys(PROGRAMS).sort(function (a, b) {
-    return PROGRAMS[a].name.localeCompare(PROGRAMS[b].name);
-  }).forEach(function (key) {
-    programEl.appendChild(option(key, PROGRAMS[key].name));
+  // One <optgroup> per country, programs sorted by name inside each.
+  window.COUNTRIES.forEach(function (c) {
+    var group = document.createElement("optgroup");
+    group.label = c.label;
+    Object.keys(PROGRAMS).filter(function (key) {
+      return (PROGRAMS[key].country || "US") === c.id;
+    }).sort(function (a, b) {
+      return PROGRAMS[a].name.localeCompare(PROGRAMS[b].name);
+    }).forEach(function (key) {
+      group.appendChild(option(key, PROGRAMS[key].name));
+    });
+    if (group.children.length) programEl.appendChild(group);
   });
+
+  function setCurrency(code) {
+    moneyEls.forEach(function (el) {
+      el.querySelector("span").textContent = symbols[code];
+      el.classList.toggle("wide", code !== "USD");
+    });
+  }
 
   function onProgramChange() {
     var p = PROGRAMS[programEl.value];
@@ -38,6 +58,7 @@
     fareTypeEl.innerHTML = "";
     if (!p) return;
 
+    setCurrency(p.currency || "USD");
     p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, s.name)); });
     statusEl.disabled = p.statuses.length < 2;
 
@@ -118,6 +139,7 @@
     if (p.method === "distance" && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
 
     errorEl.hidden = true;
+    var usd = money[p.currency || "USD"];
     var status = find(p.statuses, statusEl.value);
     var fareType = p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
     var r = calculate(p, status, fareType, airfare, distance);
