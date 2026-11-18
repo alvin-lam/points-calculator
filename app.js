@@ -28,6 +28,8 @@
   var usedCardNo = $("usedCardNo");
   var cardChargeField = $("cardChargeField");
   var cardChargeEl = $("cardCharge");
+  var directField = $("directField");
+  var directYes = $("directYes");
   var cardmemberField = $("cardmemberField");
   var cardmemberYes = $("cardmemberYes");
   var cardmemberNo = $("cardmemberNo");
@@ -210,6 +212,10 @@
     // Some airlines name their carrier fee (Frontier: Carrier Interface Fee).
     $("carrierLabel").textContent = p.carrierLabel || "Carrier-imposed Fees";
     $("carrierHint").textContent = p.carrierHint || "Airline surcharges such as fuel fees (YQ/YR). Most programs count these toward earning.";
+    // A direct booking bonus question (JetBlue).
+    directField.hidden = !p.direct;
+    if (p.direct) $("directLegend").textContent = p.direct.question;
+    directYes.checked = true;
     // GoWild! Pass bookings (Frontier).
     gowildField.hidden = !p.gowild;
     if (!p.gowild && gowildYes.checked) { gowildNo.checked = true; syncGoWild(); }
@@ -398,6 +404,8 @@
       if (airline && status.elite && airline.eliteRate) rate = airline.eliteRate;
       // A status can add a flat amount per unit of currency (Air Europa, Xiamen).
       if (status.addRate) rate += status.addRate;
+      // Booking direct adds a bonus by fare type (JetBlue).
+      if (p.direct && fareType && directYes.checked) rate += p.direct.rates[fareType.id] || 0;
       // Some programs round the spend first (Fortune Wings: nearest HK$10,
       // with anything under HK$10 counted as HK$10).
       var spend = airfare;
@@ -496,7 +504,9 @@
       charged = parseFloat(cardChargeEl.value);
       if (!(charged > 0)) return showError("Please enter the amount charged to your card in " + cardSymbols[cardCurrency] + ".");
     }
-    var cardPoints = card ? Math.floor(charged * card.rate) : 0;
+    // A card's rate can depend on the fare type (Breeze Easy Visa).
+    var cardRate = card ? (card.rates && fareType && card.rates[fareType.id] != null ? card.rates[fareType.id] : card.rate) : 0;
+    var cardPoints = card ? Math.floor(charged * cardRate) : 0;
     var total = r.points + cardPoints;
 
     $("resultProgram").textContent = (airline ? airlineLabel(selection().program, airline) : p.name) + " · " + statusLabel(status) +
@@ -522,7 +532,7 @@
       var cardMoney = foreignCard || !fareUsed
         ? cardSymbols[cardCurrency] + charged.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         : usd.format(charged);
-      row(dl, "Card earning", num.format(cardPoints) + " (" + num.format(card.rate) + " per " +
+      row(dl, "Card earning", num.format(cardPoints) + " (" + num.format(cardRate) + " per " +
         (foreignCard || !fareUsed ? cardSymbols[cardCurrency] : symbols[p.currency || "USD"]) + " on " + cardMoney + ")");
     }
     // Skip the value rows for programs without a reliable point value.
@@ -577,6 +587,8 @@
   usedCardNo.addEventListener("change", syncCardSelect);
   cardmemberYes.addEventListener("change", syncCardmember);
   cardmemberNo.addEventListener("change", syncCardmember);
+  directYes.addEventListener("change", function () { resultEl.hidden = true; });
+  $("directNo").addEventListener("change", function () { resultEl.hidden = true; });
   gowildYes.addEventListener("change", syncGoWild);
   gowildNo.addEventListener("change", syncGoWild);
   cardEl.addEventListener("change", syncCardSelect);

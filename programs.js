@@ -198,13 +198,24 @@ window.PROGRAMS = {
     unit: "points",
     method: "spend",
     centsPerPoint: 1.3,
-    statuses: [
-      { id: "member", name: "TrueBlue Member", rate: 6 },
-      { id: "mosaic1", name: "Mosaic 1", rate: 9 },
-      { id: "mosaic2", name: "Mosaic 2", rate: 9 },
-      { id: "mosaic3", name: "Mosaic 3", rate: 9 },
-      { id: "mosaic4", name: "Mosaic 4", rate: 9 }
+    defaultFareType: "main",
+    fareTypes: [
+      { id: "main", name: "Main, EvenMore, BlueFirst, or Mint" },
+      { id: "base", name: "Base (Main Base, EvenMore Base, BlueFirst Base, Mint Base)" }
     ],
+    // Fare points plus the Mosaic bonus (3, 4, or 5 per dollar).
+    statuses: [
+      { id: "member", name: "TrueBlue Member", rates: { main: 3, base: 1 } },
+      { id: "mosaic1", name: "Mosaic 1", rates: { main: 6, base: 4 } },
+      { id: "mosaic2", name: "Mosaic 2", rates: { main: 6, base: 4 } },
+      { id: "mosaic3", name: "Mosaic 3", rates: { main: 7, base: 5 } },
+      { id: "mosaic4", name: "Mosaic 4", rates: { main: 8, base: 6 } }
+    ],
+    // Booking on jetblue.com or the JetBlue app adds a bonus by fare type.
+    direct: {
+      question: "Did you book on jetblue.com or the JetBlue app?",
+      rates: { main: 3, base: 1 }
+    },
     // Co-branded cards: extra points per dollar charged (fare + taxes).
     cards: [
       { id: "card", name: "JetBlue Card", rate: 3 },
@@ -212,7 +223,7 @@ window.PROGRAMS = {
       { id: "premier", name: "JetBlue Premier Card", rate: 6 },
       { id: "biz", name: "JetBlue Business Card", rate: 6 }
     ],
-    note: "TrueBlue awards 3 base points per dollar plus a 3-point bonus for booking on jetblue.com or the JetBlue app. Mosaic members earn 3 more points per dollar. Blue Basic fares earn less."
+    note: "TrueBlue earns per dollar of the pre-tax fare: 3 points on Main, EvenMore, BlueFirst, and Mint, or 1 on Base fares. Booking on jetblue.com or the JetBlue app adds 3 (1 on Base). Mosaic 1 and 2 add 3, Mosaic 3 adds 4, and Mosaic 4 adds 5. The JetBlue Card adds 3 and the Plus Card 6. Subscription bonuses are not included."
   },
   allegiant: {
     name: "Allegiant Air | Allways Rewards",
@@ -233,39 +244,32 @@ window.PROGRAMS = {
     ],
     note: "Allways Rewards has no elite status tiers. Members earn 1 point per dollar on the first $500 and 2 points per dollar above $500, excluding taxes and fees."
   },
-  suncountry: {
-    name: "Sun Country Airlines | Sun Country Rewards",
-    unit: "points",
-    method: "spend",
-    centsPerPoint: 1.0,
-    statuses: [
-      { id: "member", name: "Sun Country Rewards Member", rate: 2 },
-      { id: "plus", name: "Plus", rate: 3 }
-    ],
-    // Co-branded cards: extra points per dollar charged (fare + taxes).
-    cards: [
-      { id: "visa", name: "Sun Country Visa Signature", rate: 3 }
-    ],
-    note: "Sun Country Rewards earns 2 points per dollar on Sun Country purchases, and Plus status adds 1 more. The Sun Country Visa Signature adds 3 points per dollar charged. Sun Country is merging with Allegiant, so these rules may change."
-  },
   breeze: {
     name: "Breeze Airways | Breezy Rewards",
     unit: "BreezePoints",
     method: "spend",
     centsPerPoint: 1.0,
+    defaultFareType: "nice",
     fareTypes: [
+      { id: "noflex", name: "No Flex", rate: 1 },
       { id: "nice", name: "Nice", rate: 2 },
       { id: "nicer", name: "Nicer", rate: 5 },
       { id: "nicest", name: "Nicest", rate: 5 }
     ],
+    // 2026 status boosts: 25%, 50%, 75%, and 100%.
     statuses: [
       { id: "member", name: "Breezy Rewards Member", multiplier: 1 },
       { id: "breezy1", name: "Breezy 1", multiplier: 1.25 },
       { id: "breezy2", name: "Breezy 2", multiplier: 1.5 },
-      { id: "breezy3", name: "Breezy 3", multiplier: 1.5 },
-      { id: "club", name: "Breezy Club", multiplier: 1.5 }
+      { id: "breezy3", name: "Breezy 3", multiplier: 1.75 },
+      { id: "club", name: "Breezy Club", multiplier: 2 }
     ],
-    note: "Breeze Easy Visa earning is not included because its per-dollar rate is not published clearly. BreezePoints depend on the bundle you buy. Breezy 1 adds a 25% boost and Breezy 2 adds 50%. Breezy 3 and Breezy Club are shown at the confirmed 50% boost, so their real totals may be higher."
+    // The card's "when you buy" points match the fare: 1x No Flex, 2x Nice,
+    // 5x Nicer and Nicest, on the amount charged.
+    cards: [
+      { id: "breeze-easy", name: "Breeze Easy Visa Signature", rate: 5, rates: { noflex: 1, nice: 2, nicer: 5, nicest: 5 } }
+    ],
+    note: "BreezePoints depend on the fare you buy: 1 per dollar on No Flex, 2 on Nice, and 5 on Nicer and Nicest. Breezy 1, 2, 3, and Club add a 25%, 50%, 75%, or 100% boost. The Breeze Easy Visa Signature adds the same 1, 2, or 5 points per dollar again when you pay with it."
   },
   hawaiian: {
     name: "Hawaiian Airlines | Atmos Rewards",
@@ -311,12 +315,12 @@ window.PROGRAMS = {
     ],
     // Co-branded cards: extra points per dollar charged (fare + taxes).
     cards: [
-      { id: "td-vi", name: "TD Aeroplan Visa Infinite", rate: 1.5 },
-      { id: "cibc-vi", name: "CIBC Aeroplan Visa Infinite", rate: 1.5 },
-      { id: "td-priv", name: "TD Aeroplan Visa Infinite Privilege", rate: 2 },
-      { id: "cibc-priv", name: "CIBC Aeroplan Visa Infinite Privilege", rate: 2 },
-      { id: "amex", name: "American Express Aeroplan Card", rate: 2 },
-      { id: "amex-reserve", name: "American Express Aeroplan Reserve Card", rate: 3 },
+      { id: "td-vi", name: "TD Aeroplan Visa Infinite (CA)", rate: 1.5 },
+      { id: "cibc-vi", name: "CIBC Aeroplan Visa Infinite (CA)", rate: 1.5 },
+      { id: "td-priv", name: "TD Aeroplan Visa Infinite Privilege (CA)", rate: 2 },
+      { id: "cibc-priv", name: "CIBC Aeroplan Visa Infinite Privilege (CA)", rate: 2 },
+      { id: "amex", name: "American Express Aeroplan Card (CA)", rate: 2 },
+      { id: "amex-reserve", name: "American Express Aeroplan Reserve Card (CA)", rate: 3 },
       { id: "chase", name: "Chase Aeroplan Card (US)", rate: 3, currency: "USD" }
     ],
     note: "Since January 2026, Aeroplan earns points per Canadian dollar spent on base fare and carrier surcharges on Air Canada flights. Taxes do not earn. Elite members earn 2 to 6 points per dollar. The US Chase Aeroplan Card earns per US dollar charged and includes automatic 25K status."
@@ -353,11 +357,6 @@ window.PROGRAMS = {
       { id: "gold", name: "Gold", rate: 8 },
       { id: "platinum", name: "Platinum", rate: 8 },
       { id: "titanium", name: "Titanium", rate: 16 }
-    ],
-    // Co-branded cards: extra points per dollar charged (fare + taxes).
-    cards: [
-      { id: "amex", name: "American Express Aeroméxico", rate: 2.4 },
-      { id: "amex-plat", name: "American Express Aeroméxico Platinum", rate: 4.8 }
     ],
     note: "Aeroméxico Rewards earns 8 points per US dollar of base fare, excluding taxes. Enter the fare in US dollars. Titanium earns 8 more points per dollar. Bonuses for Silver, Gold, and Platinum were not confirmed, so those tiers are shown at the base rate."
   },
@@ -507,6 +506,7 @@ window.PROGRAMS = {
   ];
   // Co-branded cards: extra Avios per US dollar charged (fare + taxes).
   var avioUsCards = [
+    { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature (US)", rate: 3, currency: "USD" },
     { id: "chase-iberia", name: "Chase Iberia Visa Signature (US)", rate: 3, currency: "USD" },
     { id: "chase-ba", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
   ];
@@ -530,7 +530,9 @@ window.PROGRAMS = {
     cards: [
       { id: "amex", name: "British Airways American Express (UK)", rate: 1 },
       { id: "amex-pp", name: "British Airways American Express Premium Plus (UK)", rate: 3 },
-      { id: "chase", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
+      { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature (US)", rate: 3, currency: "USD" },
+      { id: "chase", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" },
+      { id: "chase-iberia", name: "Chase Iberia Visa Signature (US)", rate: 3, currency: "USD" }
     ],
     note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier charges, by status. Taxes do not earn. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
   };
