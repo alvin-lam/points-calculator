@@ -60,6 +60,12 @@
   }
 
   // "Airline | Program" for an airline inside a group program.
+  // "Status | Alliance tier" when the airline is in an alliance.
+  function statusLabel(s) {
+    var al = selection().airline;
+    return s.alliance && !(al && al.noAlliance) ? s.name + " | " + s.alliance : s.name;
+  }
+
   function airlineLabel(p, al) {
     return al.name + " | " + ((al.program && al.program.programName) || p.programName);
   }
@@ -126,7 +132,7 @@
     if (!p) return;
 
     setCurrency(p.currency || "USD");
-    p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, s.name)); });
+    p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, statusLabel(s))); });
     statusEl.disabled = p.statuses.length < 2;
 
     fareTypeField.hidden = !p.fareTypes;
@@ -336,7 +342,7 @@
     var cardPoints = card ? Math.floor(charged * card.rate) : 0;
     var total = r.points + cardPoints;
 
-    $("resultProgram").textContent = (airline ? airlineLabel(selection().program, airline) : p.name) + " · " + status.name +
+    $("resultProgram").textContent = (airline ? airlineLabel(selection().program, airline) : p.name) + " · " + statusLabel(status) +
       (fareType ? " · " + fareType.name : "") + (card ? " · " + card.name : "");
     $("resultPoints").textContent = num.format(total);
     $("resultUnit").textContent = p.unit;
