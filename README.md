@@ -28,6 +28,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 - Porter fares are entered in Canadian dollars, Finnair fares in euros, Virgin Australia fares in Australian dollars (A$), and Norwegian fares in Norwegian kroner (kr). Avianca LifeMiles earns per US dollar by fare family.
 - The program menu keeps the United States, Canada, and Mexico at the top and sorts the other countries alphabetically.
 - Miles & More (Lufthansa Group), Flying Blue (Air France-KLM), and IAG are single programs. Each of their airlines is listed under its own country as "Airline | Program", such as "Lufthansa | Miles & More" under Germany. For Miles & More, the airline sets the status earning rate. For IAG, the airline picks the loyalty program: AerClub in euros, British Airways Club in pounds, Iberia Club in euros (Iberia and LEVEL), or Vueling Club in euros, each with its own status levels and cards.
+- After a program is chosen, an Alliance line shows oneworld, Star Alliance, SkyTeam, or "Not part of an alliance" for the chosen airline.
 - Status levels show the matching alliance tier when the airline is in an alliance, such as "AAdvantage Gold | Ruby" (oneworld), "Premier Silver | Silver" (Star Alliance), or "Gold Medallion | Elite Plus" (SkyTeam).
 - United and Southwest also list their debit cards, grouped under Debit cards in the card menu.
 - Allegiant earns 1 point per dollar up to $500 and 2 per dollar above that.

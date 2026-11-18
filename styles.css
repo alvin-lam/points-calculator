@@ -67,6 +67,16 @@ h1 { font-size: 24px; margin: 0 0 4px; }
 .field { display: flex; flex-direction: column; margin-bottom: 16px; min-width: 0; }
 .field[hidden] { display: none; }
 label { font-weight: 600; margin-bottom: 6px; }
+.field-label { font-weight: 600; margin-bottom: 6px; }
+.static-value {
+  margin: 0;
+  padding: 10px 12px;
+  border: 1px dashed var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-weight: 500;
+}
+.static-value.none { color: var(--muted); font-weight: 400; }
 small { color: var(--muted); margin-top: 4px; font-size: 0.85rem; }
 
 

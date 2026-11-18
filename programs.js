@@ -1126,6 +1126,25 @@ window.PROGRAMS = {
     chinaairlines: { gold: "Elite", emerald: "Elite Plus", paragon: "Elite Plus" }
   };
 
+  // Alliance of each program, or of each airline for group programs.
+  // Anything not listed is not part of an alliance.
+  var ALLIANCES = {
+    oneworld: ["american", "alaska", "hawaiian", "iag:ba", "iag:ib", "finnair", "qatar",
+      "qantas", "cathay", "jal", "enrich"],
+    "Star Alliance": ["united", "aircanada", "milesandmore:lh", "milesandmore:lx",
+      "milesandmore:os", "milesandmore:sn", "milesandmore:az", "tap", "ana",
+      "krisflyer", "eva", "lifemiles"],
+    SkyTeam: ["delta", "aeromexico", "flyingblue:af", "flyingblue:kl", "virgin", "chinaairlines"]
+  };
+  Object.keys(ALLIANCES).forEach(function (name) {
+    ALLIANCES[name].forEach(function (key) {
+      var parts = key.split(":");
+      var target = P[parts[0]];
+      if (parts[1]) target = target.airlines.filter(function (a) { return a.id === parts[1]; })[0];
+      target.alliance = name;
+    });
+  });
+
   Object.keys(ALLIANCE_TIERS).forEach(function (key) {
     var parts = key.split(":");
     var p = P[parts[0]];

@@ -132,6 +132,13 @@
     fareTypeEl.innerHTML = "";
     if (!p) return;
 
+    // Show the alliance of the chosen airline (or program).
+    var sel = selection();
+    var alliance = sel.airline ? sel.airline.alliance : sel.program.alliance;
+    $("allianceValue").textContent = alliance || "Not part of an alliance";
+    $("allianceValue").classList.toggle("none", !alliance);
+    $("allianceField").hidden = false;
+
     setCurrency(p.currency || "USD");
     p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, statusLabel(s))); });
     statusEl.disabled = p.statuses.length < 2;
