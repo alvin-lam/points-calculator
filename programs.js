@@ -222,6 +222,8 @@ window.PROGRAMS = {
   allegiant: {
     name: "Allegiant Air | Allways Rewards",
     baseFareOnly: true,
+    carrierLabel: "Carrier Usage Charge",
+    carrierHint: "Allegiant's per-segment charge for booking online or by phone. It does not earn points.",
     unit: "points",
     method: "tiered",
     centsPerPoint: 1.0,
@@ -240,6 +242,8 @@ window.PROGRAMS = {
   },
   breeze: {
     name: "Breeze Airways | Breezy Rewards",
+    carrierLabel: "Technology Development Charge",
+    carrierHint: "Breeze's per-segment charge for booking online. It earns points like the fare.",
     unit: "BreezePoints",
     method: "spend",
     centsPerPoint: 1.0,
