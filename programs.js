@@ -153,6 +153,8 @@ window.PROGRAMS = {
   },
   frontier: {
     name: "Frontier Airlines | Frontier Miles",
+    // Ask for seats and bags bought on the booking; they earn like the fare.
+    addons: true,
     unit: "miles",
     method: "spend",
     centsPerPoint: 0.5,
@@ -186,7 +188,7 @@ window.PROGRAMS = {
       { id: "frontier-mc", name: "Frontier Airlines World Mastercard", rate: 5 },
       { id: "frontier-access", name: "Frontier Airlines Access Mastercard", rate: 5 }
     ],
-    note: "For bookings made on or after September 1, 2026, Frontier Miles earns 1 to 11 miles per dollar on basic fares and 6 to 16 on bundles, depending on status. GoWild! Pass fares earn 1 mile, and the Early Booking Fee earns at the status and fare type rate. Holders of a Frontier Airlines World or Access Mastercard earn 4 to 14 on basic fares and 12 to 22 on bundles however they pay, and paying with the card adds 5 miles per dollar. Frontier publishes the 5 for the World Mastercard; this estimate assumes the same for the Access card."
+    note: "For bookings made on or after September 1, 2026, Frontier Miles earns 1 to 11 miles per dollar on basic fares and 6 to 16 on bundles, depending on status, on the fare plus seats and bags. GoWild! Pass fares earn 1 mile, and the Early Booking Fee earns at the status and fare type rate. Holders of a Frontier Airlines World or Access Mastercard earn 4 to 14 on basic fares and 12 to 22 on bundles however they pay, and paying with the card adds 5 miles per dollar. Frontier publishes the 5 for the World Mastercard; this estimate assumes the same for the Access card."
   },
   jetblue: {
     name: "JetBlue Airways | TrueBlue",
@@ -221,6 +223,8 @@ window.PROGRAMS = {
   },
   allegiant: {
     name: "Allegiant Air | Allways Rewards",
+    // Ask for seats and bags bought on the booking; they earn like the fare.
+    addons: true,
     baseFareOnly: true,
     carrierLabel: "Carrier Usage Charge",
     carrierHint: "Allegiant's per-segment charge for booking online or by phone. It does not earn points.",
@@ -238,10 +242,12 @@ window.PROGRAMS = {
     cards: [
       { id: "allways-visa", name: "Allways Rewards Visa", rate: 3 }
     ],
-    note: "Allways Rewards has no elite status tiers. Members earn 1 point per dollar on the first $500 and 2 points per dollar above $500, excluding taxes and fees."
+    note: "Allways Rewards has no elite status tiers. Members earn 1 point per dollar on the first $500 of a booking and 2 points per dollar above $500, on the fare plus seats and bags, excluding taxes and fees."
   },
   breeze: {
     name: "Breeze Airways | Breezy Rewards",
+    // Ask for seats and bags bought on the booking; they earn like the fare.
+    addons: true,
     carrierLabel: "Technology Development Charge",
     carrierHint: "Breeze's per-segment charge for booking online. It earns points like the fare.",
     unit: "BreezePoints",
@@ -267,7 +273,7 @@ window.PROGRAMS = {
     cards: [
       { id: "breeze-easy", name: "Breeze Easy Visa Signature", rate: 5, rates: { noflex: 1, nice: 2, nicer: 5, nicest: 5 } }
     ],
-    note: "BreezePoints depend on the fare you buy: 1 per dollar on No Flex, 2 on Nice, and 5 on Nicer and Nicest. Breezy 1, 2, 3, and Club add a 25%, 50%, 75%, or 100% boost. The Breeze Easy Visa Signature adds the same 1, 2, or 5 points per dollar again when you pay with it."
+    note: "BreezePoints depend on the fare you buy: 1 per dollar on No Flex, 2 on Nice, and 5 on Nicer and Nicest, on the fare and add-ons such as seats and bags. Breezy 1, 2, 3, and Club add a 25%, 50%, 75%, or 100% boost. The Breeze Easy Visa Signature adds the same 1, 2, or 5 points per dollar again when you pay with it."
   },
   hawaiian: {
     name: "Hawaiian Airlines | Atmos Rewards",
@@ -312,13 +318,20 @@ window.PROGRAMS = {
       { id: "se", name: "Aeroplan Super Elite", rate: 6 }
     ],
     // Co-branded cards: extra points per dollar charged (fare + taxes).
+    // Sorted by tier, then issuer; Canadian issuers first, the US card last.
+    // Separator entries draw a "---" line between tiers.
     cards: [
-      { id: "td-vi", name: "TD Aeroplan Visa Infinite (CA)", rate: 1.5 },
-      { id: "cibc-vi", name: "CIBC Aeroplan Visa Infinite (CA)", rate: 1.5 },
-      { id: "td-priv", name: "TD Aeroplan Visa Infinite Privilege (CA)", rate: 2 },
-      { id: "cibc-priv", name: "CIBC Aeroplan Visa Infinite Privilege (CA)", rate: 2 },
+      { id: "cibc-visa", name: "CIBC Aeroplan Visa (CA)", rate: 1 },
+      { id: "td-plat", name: "TD Aeroplan Visa Platinum (CA)", rate: 1 },
+      { separator: true },
       { id: "amex", name: "American Express Aeroplan Card (CA)", rate: 2 },
+      { id: "cibc-vi", name: "CIBC Aeroplan Visa Infinite (CA)", rate: 1.5 },
+      { id: "td-vi", name: "TD Aeroplan Visa Infinite (CA)", rate: 1.5 },
+      { separator: true },
       { id: "amex-reserve", name: "American Express Aeroplan Reserve Card (CA)", rate: 3 },
+      { id: "cibc-priv", name: "CIBC Aeroplan Visa Infinite Privilege (CA)", rate: 2 },
+      { id: "td-priv", name: "TD Aeroplan Visa Infinite Privilege (CA)", rate: 2 },
+      { separator: true },
       { id: "chase", name: "Chase Aeroplan Card (US)", rate: 3, currency: "USD" }
     ],
     note: "Since January 2026, Aeroplan earns points per Canadian dollar spent on base fare and carrier surcharges on Air Canada flights. Taxes do not earn. Elite members earn 2 to 6 points per dollar. The US Chase Aeroplan Card earns per US dollar charged and includes automatic 25K status."
