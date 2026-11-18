@@ -437,6 +437,11 @@
     if (p.decimals) points = Math.round(points * 100) / 100;
     else if (em.id === "distance" && !p.roundUp) points = Math.round(points);
     else points = p.roundUp ? Math.ceil(points - 1e-9) : Math.floor(points);
+    // Some airlines guarantee a minimum per flight (Air Dolomiti: 125 miles).
+    if (p.minPoints && points < p.minPoints) {
+      points = p.minPoints;
+      rateLabel += ", raised to the " + num.format(p.minPoints) + " minimum per flight";
+    }
     var capped = false;
     if (p.cap && points > p.cap) {
       points = p.cap;
