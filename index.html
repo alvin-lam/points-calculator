@@ -59,6 +59,14 @@
         <small id="earnHint">The way you chose in your account.</small>
       </div>
 
+      <fieldset class="field" id="gowildField" hidden>
+        <legend>Did you book with the GoWild! Pass?</legend>
+        <div class="choice">
+          <label><input type="radio" name="gowild" id="gowildNo" value="no" checked> No</label>
+          <label><input type="radio" name="gowild" id="gowildYes" value="yes"> Yes</label>
+        </div>
+      </fieldset>
+
       <div class="field" id="fareTypeField" hidden>
         <label for="fareType" id="fareTypeLabel">Fare Type</label>
         <select id="fareType"></select>
@@ -69,14 +77,6 @@
         <div class="choice">
           <label><input type="radio" name="direct" id="directNo" value="no"> No</label>
           <label><input type="radio" name="direct" id="directYes" value="yes" checked> Yes</label>
-        </div>
-      </fieldset>
-
-      <fieldset class="field" id="gowildField" hidden>
-        <legend>Did you book with the GoWild! Pass?</legend>
-        <div class="choice">
-          <label><input type="radio" name="gowild" id="gowildNo" value="no" checked> No</label>
-          <label><input type="radio" name="gowild" id="gowildYes" value="yes"> Yes</label>
         </div>
       </fieldset>
 
@@ -97,14 +97,6 @@
           </div>
           <small>The fee for booking a GoWild! flight early. It earns miles by status and fare type.</small>
         </div>
-        <div class="field" id="carrierField">
-          <label for="carrierFees" id="carrierLabel">Carrier-imposed Fees</label>
-          <div class="money">
-            <span aria-hidden="true">$</span>
-            <input id="carrierFees" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
-          </div>
-          <small id="carrierHint">Airline surcharges such as fuel fees (YQ/YR). Most programs count these toward earning.</small>
-        </div>
         <div class="field" id="addonsField" hidden>
           <label for="addons" id="addonsLabel">Seats, Bags and/or Bundles</label>
           <div class="money">
@@ -113,8 +105,16 @@
           </div>
           <small id="addonsHint">Seat selection, carry-on and checked bags, or a bundle, bought on this booking. They earn points like the fare.</small>
         </div>
+        <div class="field" id="carrierField">
+          <label for="carrierFees" id="carrierLabel">Carrier-imposed Fees</label>
+          <div class="money">
+            <span aria-hidden="true">$</span>
+            <input id="carrierFees" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+          <small id="carrierHint">Fuel or other airline surcharges (YQ/YR), if any. Leave blank if none.</small>
+        </div>
         <div class="field">
-          <label for="taxes">Taxes &amp; Fees</label>
+          <label for="taxes">Taxes &amp; Airport Fees</label>
           <div class="money">
             <span aria-hidden="true">$</span>
             <input id="taxes" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">

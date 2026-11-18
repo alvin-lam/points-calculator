@@ -231,10 +231,15 @@
     if (!p.cards) usedCardNo.checked = true;
     // Some airlines name their carrier fee (Frontier: Carrier Interface Fee).
     $("carrierLabel").textContent = p.carrierLabel || "Carrier-imposed Fees";
-    $("carrierHint").textContent = p.carrierHint || "Airline surcharges such as fuel fees (YQ/YR). Most programs count these toward earning.";
+    $("carrierHint").textContent = p.carrierHint || "Fuel or other airline surcharges (YQ/YR), if any. Leave blank if none.";
     $("fareTypeLabel").textContent = p.fareTypeLabel || "Fare Type";
     // Seats and bags earn like the fare on some airlines (Frontier, Allegiant, Breeze).
     addonsField.hidden = !p.addons;
+    // Extras that do not earn sit after the carrier fees (IAG); extras that
+    // earn sit right after the fare (Frontier, Allegiant, Breeze, WestJet).
+    var carrierFieldEl = $("carrierField");
+    if (p.addonsNoEarn) carrierFieldEl.after(addonsField);
+    else carrierFieldEl.before(addonsField);
     // An airline can name its own extras (WestJet: upgrades, not bundles).
     $("addonsLabel").textContent = p.addonsLabel || "Seats, Bags and/or Bundles";
     $("addonsHint").textContent = p.addonsHint || "Seat selection, carry-on and checked bags, or a bundle, bought on this booking. They earn points like the fare.";
@@ -244,7 +249,8 @@
     directYes.checked = true;
     // GoWild! Pass bookings (Frontier).
     gowildField.hidden = !p.gowild;
-    if (!p.gowild && gowildYes.checked) { gowildNo.checked = true; syncGoWild(); }
+    if (!p.gowild && gowildYes.checked) gowildNo.checked = true;
+    syncGoWild();
     syncCardSelect();
 
     zoneEl.innerHTML = "";
@@ -336,7 +342,9 @@
     if (on) airfareEl.value = "0.01";
     else if (airfareEl.readOnly) airfareEl.value = "";
     airfareEl.readOnly = on;
-    $("carrierField").hidden = on;
+    // Hidden on GoWild bookings and for airlines without carrier surcharges.
+    var cp = current();
+    $("carrierField").hidden = on || !!(cp && cp.noCarrier);
     $("airfareHint").textContent = on
       ? "GoWild! fares are one cent and earn 1 mile."
       : "Base fare, before fees and taxes.";
@@ -488,14 +496,17 @@
     var method = earnMethod(p).id;
     var fareUsed = usesFare(method);
     var airfare = fareUsed ? parseFloat(airfareEl.value) : 0;
-    var carrier = fareUsed ? (parseFloat(carrierEl.value) || 0) : 0;
+    var carrier = fareUsed && !p.noCarrier ? (parseFloat(carrierEl.value) || 0) : 0;
     var taxes = fareUsed ? (parseFloat(taxesEl.value) || 0) : 0;
     // Most programs earn on the base fare plus carrier-imposed fees; a few
     // (Southwest, Allegiant) earn on the base fare only.
     // Seats and bags bought on the booking earn like the fare (p.addons).
     var addons = fareUsed && p.addons ? (parseFloat(addonsEl.value) || 0) : 0;
     if (addons < 0) return showError("Seats, bags and/or bundles cannot be negative.");
-    var earnBase = airfare + (p.baseFareOnly ? 0 : carrier) + addons;
+    // Some airlines list extras that do not earn (British Airways, Iberia,
+    // Aer Lingus); they still count toward the trip cost and card earning.
+    var earnAddons = p.addonsNoEarn ? 0 : addons;
+    var earnBase = airfare + (p.baseFareOnly ? 0 : carrier) + earnAddons;
     var tripCost = airfare + carrier + addons + taxes;
     // GoWild!: the fare earns 1 mile, and the Early Booking Fee earns at
     // the status and fare type rate. There are no carrier-imposed fees.
@@ -505,13 +516,13 @@
     if (gowild) {
       airfare = 0.01;
       carrier = 0;
-      earnBase = gowildFee + addons;
+      earnBase = gowildFee + earnAddons;
       tripCost = airfare + gowildFee + addons + taxes;
     }
 
     if (fareUsed && (!(airfare >= 0) || airfareEl.value === "")) return showError("Please enter your airfare.");
     if (carrier < 0) return showError("Carrier-imposed fees cannot be negative.");
-    if (taxes < 0) return showError("Taxes and fees cannot be negative.");
+    if (taxes < 0) return showError("Taxes and airport fees cannot be negative.");
     var routeFixed = method === "distance" && p.zones && find(p.zones, zoneEl.value).fixed;
     if (method === "distance" && !routeFixed && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
     if (method === "segments" && !(segments > 0)) return showError("Please enter the number of segments flown.");
@@ -553,9 +564,10 @@
     if (fareUsed) {
       row(dl, "Airfare", usd.format(airfare) + (gowild ? " (GoWild!)" : ""));
       if (gowild) row(dl, "GoWild Early Booking Fee", usd.format(gowildFee));
-      if (!gowild) row(dl, p.carrierLabel || "Carrier-imposed Fees", usd.format(carrier) + (p.baseFareOnly && carrier ? " (does not earn)" : ""));
-      if (p.addons) row(dl, p.addonsLabel || "Seats, Bags and/or Bundles", usd.format(addons));
-      row(dl, "Taxes & Fees", usd.format(taxes));
+      if (p.addons && !p.addonsNoEarn) row(dl, p.addonsLabel || "Seats, Bags and/or Bundles", usd.format(addons));
+      if (!gowild && !p.noCarrier) row(dl, p.carrierLabel || "Carrier-imposed Fees", usd.format(carrier) + (p.baseFareOnly && carrier ? " (does not earn)" : ""));
+      if (p.addons && p.addonsNoEarn) row(dl, p.addonsLabel, usd.format(addons) + (addons ? " (does not earn)" : ""));
+      row(dl, "Taxes & Airport Fees", usd.format(taxes));
       row(dl, "Total trip cost", usd.format(tripCost));
     }
     if (method === "distance" && !routeFixed) row(dl, "Miles flown", num.format(distance));

@@ -33,7 +33,17 @@
 window.PROGRAMS = {
   american: {
     name: "American Airlines | AAdvantage",
+    programName: "AAdvantage",
     unit: "miles",
+    // Fiji Airways uses AAdvantage and earns on the same ticket-price rates.
+    airlines: [
+      { id: "aa", name: "American Airlines", country: "US" },
+      { id: "fj", name: "Fiji Airways", country: "FJ", program: {
+          cap: null,
+          cards: null,
+          note: "Fiji Airways uses AAdvantage. Flights sold by Fiji Airways earn like American flights: 5 miles per US dollar of the base fare and carrier-imposed fees, with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Government taxes do not earn. LITE fares bought on or after 17 December 2025 earn nothing. Fiji fares are often priced in Fiji dollars, so enter the US dollar equivalent."
+        } }
+    ],
     method: "spend",
     cap: 75000,
     centsPerPoint: 1.4,
@@ -100,6 +110,8 @@ window.PROGRAMS = {
   },
   southwest: {
     name: "Southwest Airlines | Rapid Rewards",
+    // No carrier-imposed fees field: the airline adds none, or they never earn.
+    noCarrier: true,
     baseFareOnly: true,
     unit: "points",
     method: "spend",
@@ -192,6 +204,8 @@ window.PROGRAMS = {
   },
   jetblue: {
     name: "JetBlue Airways | TrueBlue",
+    // No carrier-imposed fees field: the airline adds none, or they never earn.
+    noCarrier: true,
     unit: "points",
     method: "spend",
     centsPerPoint: 1.3,
@@ -552,6 +566,11 @@ window.PROGRAMS = {
      its own loyalty program (currency, status levels, and cards). */
   var baClub = {
     programName: "British Airways Club",
+    // Extras are asked for but do not earn.
+    addons: true,
+    addonsNoEarn: true,
+    addonsLabel: "Seats, Bags and/or Upgrades",
+    addonsHint: "Seat selection, bags, and upgrades bought from British Airways. They earn Tier Points but no Avios.",
     currency: "GBP",
     unit: "Avios",
     method: "spend",
@@ -571,20 +590,30 @@ window.PROGRAMS = {
       { id: "chase", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" },
       { id: "chase-iberia", name: "Chase Iberia Visa Signature (US)", rate: 3, currency: "USD" }
     ],
-    note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier charges, by status. Taxes do not earn. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
+    note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier-imposed charges, by status. Taxes do not earn, and paid seats and bags earn Tier Points but no Avios. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
   };
   var iberiaClub = {
     programName: "Iberia Club",
+    // Extras are asked for but do not earn.
+    addons: true,
+    addonsNoEarn: true,
+    addonsLabel: "Seats, Bags and/or Upgrades",
+    addonsHint: "Seat selection, bags, and upgrades bought from Iberia. They do not earn Avios.",
     currency: "EUR",
     unit: "Avios",
     method: "spend",
     centsPerPoint: 1.0,
     statuses: iberiaStatuses,
     cards: avioUsCards,
-    note: "Iberia Club earns 5 to 8 Avios per euro of the fare by status, plus 2 more per euro on flights within Spain and between Spain and Latin America, which this estimate does not add. The Infinita rates are not confirmed by Iberia. Taxes do not earn."
+    note: "Iberia Club earns 5 to 8 Avios per euro of the fare and carrier surcharges by status, plus 2 more per euro on flights within Spain and between Spain and Latin America, which this estimate does not add. The Infinita rates are not confirmed by Iberia. Taxes, seats, and bags do not earn."
   };
   var levelClub = {
     programName: "Iberia Club",
+    // Extras are asked for but do not earn.
+    addons: true,
+    addonsNoEarn: true,
+    addonsLabel: "Seats, Bags and/or Upgrades",
+    addonsHint: "Seat selection, bags, and upgrades bought from LEVEL. They do not earn Avios.",
     currency: "EUR",
     statuses: iberiaStatuses,
     cards: avioUsCards,
@@ -600,10 +629,15 @@ window.PROGRAMS = {
       { id: "premium", name: "Premium", rate: 7 }
     ],
     cards: null,
-    note: "Since 2026, Vueling Club earns Avios on flights only from the Smart level up: 3, 5, or 7 Avios per euro of the fare. Earning starts after 3 flights or 200 euros spent in a year. Basic members earn no Avios on flights."
+    note: "Since 2026, Vueling Club earns Avios on flights only from the Smart level up: 3, 5, or 7 Avios per euro of the fare. Earning starts after 3 flights or 200 euros spent in a year. Basic members earn no Avios on flights. Vueling does not publish whether carrier charges, seats, or bags earn, so this estimate counts the fare and any carrier charges only."
   };
   var aerClub = {
     programName: "AerClub",
+    // Extras are asked for but do not earn.
+    addons: true,
+    addonsNoEarn: true,
+    addonsLabel: "Seats, Bags and/or Upgrades",
+    addonsHint: "Seat selection, bags, and upgrades bought from Aer Lingus. They do not earn Avios.",
     currency: "EUR",
     statuses: [
       { id: "green", name: "Green", rate: 3 },
@@ -617,7 +651,7 @@ window.PROGRAMS = {
       { id: "chase-ba", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" },
       { id: "chase-iberia", name: "Chase Iberia Visa Signature (US)", rate: 3, currency: "USD" }
     ],
-    note: "AerClub earns 3 Avios per euro of the Aer Lingus fare, excluding taxes, bags, and seats. Silver, Platinum, and Concierge add a 25%, 50%, or 75% tier bonus. Enter fares in euros. The US Chase cards earn per US dollar charged."
+    note: "AerClub earns 3 Avios per euro of the Aer Lingus fare and carrier charges, excluding government taxes, bags, and seats. Silver, Platinum, and Concierge add a 25%, 50%, or 75% tier bonus. Enter fares in euros. The US Chase cards earn per US dollar charged."
   };
   P.iag = {
     name: "IAG | Avios",
@@ -978,14 +1012,6 @@ window.PROGRAMS = {
     note: "EuroBonus pays a fixed number of points per one-way SAS flight, set by the route region and ticket type. Silver, Gold, and Diamond earn 25%, 50%, and 75% more Bonus points. Level points stay at the base amount. SK flights operated by SkyTeam partners earn by distance instead and are not covered here."
   };
 
-  /* Fiji Airways uses AAdvantage. Flights sold by Fiji Airways (FJ flight
-     numbers) earn on the ticket price at American's rates. */
-  P.fiji = Object.assign({}, P.american, {
-    name: "Fiji Airways | AAdvantage",
-    country: "FJ",
-    cards: null,
-    note: "Fiji Airways uses AAdvantage. Flights sold by Fiji Airways earn 5 to 11 miles per US dollar on the base fare and carrier-imposed fees, by status, like American flights. Government taxes do not earn. LITE fares bought on or after 17 December 2025 earn nothing. Fiji fares are often priced in Fiji dollars, so enter the US dollar equivalent. Earning is capped at 75,000 miles per ticket."
-  });
 
   /* Fortune Wings Club on Hong Kong Airlines, for tickets issued on or
      after 20 September 2025. Award points follow the HK$ spent, rounded to
@@ -1061,6 +1087,8 @@ window.PROGRAMS = {
      60,000 miles per segment. */
   P.latam = {
     name: "LATAM Airlines | LATAM Pass",
+    // No carrier-imposed fees field: the airline adds none, or they never earn.
+    noCarrier: true,
     country: "CL",
     currency: "USD",
     unit: "miles",
@@ -1695,7 +1723,6 @@ window.PROGRAMS = {
   var ALLIANCE_TIERS = {
     // oneworld
     american: { gold: "Ruby", platinum: "Sapphire", platpro: "Sapphire", exp: "Emerald" },
-    fiji: { gold: "Ruby", platinum: "Sapphire", platpro: "Sapphire", exp: "Emerald" },
     alaska: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
     hawaiian: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
     "iag:ba": { bronze: "Ruby", silver: "Sapphire", gold: "Emerald" },
@@ -1735,7 +1762,7 @@ window.PROGRAMS = {
   // Alliance of each program, or of each airline for group programs.
   // Anything not listed is not part of an alliance.
   var ALLIANCES = {
-    oneworld: ["american", "fiji", "alaska", "hawaiian", "iag:ba", "iag:ib", "finnair", "qatar",
+    oneworld: ["american:aa", "american:fj", "alaska", "hawaiian", "iag:ba", "iag:ib", "finnair", "qatar",
       "qantas", "cathay", "jal", "enrich"],
     "Star Alliance": ["united", "aircanada", "milesandmore:lh", "milesandmore:lx",
       "milesandmore:os", "milesandmore:sn", "milesandmore:az", "tap", "ana",
