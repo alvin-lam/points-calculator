@@ -418,10 +418,15 @@ window.PROGRAMS = {
     unit: "Miles",
     method: "spend",
     centsPerPoint: 1.2,
-    // The operating airline; both earn the same Flying Blue rates.
+    // The operating airline; all earn the same Flying Blue rates. Transavia
+    // is not in SkyTeam, and the US card's bonus is not confirmed for it.
     airlines: [
       { id: "af", name: "Air France", country: "FR" },
-      { id: "kl", name: "KLM", country: "NL" }
+      { id: "kl", name: "KLM", country: "NL" },
+      { id: "to", name: "Transavia France", country: "FR", noAlliance: true, program: { cards: null, note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Transavia, by status. Taxes do not earn. Enter fares in euros." },
+        note: "Transavia France earns on all fares, Basic included. Add your Flying Blue number to the booking." },
+      { id: "hv", name: "Transavia Netherlands", country: "NL", noAlliance: true, program: { cards: null, note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Transavia, by status. Taxes do not earn. Enter fares in euros." },
+        note: "Add your Flying Blue number to the booking. Transavia's older partner page says Netherlands Basic fares earn nothing; its current help page says all fares earn." }
     ],
     statuses: [
       { id: "explorer", name: "Explorer", rate: 4 },
@@ -434,7 +439,7 @@ window.PROGRAMS = {
     cards: [
       { id: "boa", name: "Air France KLM Visa Signature (US)", rate: 3, currency: "USD" }
     ],
-    note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France and KLM, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged."
+    note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France, KLM, and Transavia, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged."
   }
 };
 
