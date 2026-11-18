@@ -351,7 +351,7 @@
     dl.innerHTML = "";
     if (fareUsed) {
       row(dl, "Airfare", usd.format(airfare));
-      row(dl, "Taxes & fees", usd.format(taxes));
+      row(dl, "Taxes & Fees", usd.format(taxes));
       row(dl, "Total trip cost", usd.format(airfare + taxes));
     }
     if (method === "distance") row(dl, "Miles flown", num.format(distance));
