@@ -782,7 +782,7 @@ window.PROGRAMS = {
   };
 })();
 
-/* Asia: Japan, Hong Kong, Singapore, and Malaysia. */
+/* Asia and the Middle East: Japan, Hong Kong, the UAE, Singapore, and Malaysia. */
 (function () {
   var P = window.PROGRAMS;
 
@@ -888,6 +888,37 @@ window.PROGRAMS = {
     note: "Cathay Pacific awards a fixed number of Asia Miles per flight, set by fare type and distance zone from Hong Kong. Cathay's published table is the same for every status level. It covers flights marketed by Cathay Pacific and departing on or after 20 August 2025. Co-branded cards are not included."
   };
 
+  P.etihad = {
+    name: "Etihad Airways | Etihad Guest",
+    country: "AE",
+    currency: "USD",
+    unit: "Guest Miles",
+    method: "distance",
+    defaultFareType: "y-value",
+    // Share of the route's base distance earned, by fare brand, on tickets
+    // issued by Etihad (from the notes of Etihad's miles calculator).
+    fareTypes: [
+      { id: "y-basic", name: "Economy Basic", rate: 0.05 },
+      { id: "y-value", name: "Economy Value", rate: 0.35 },
+      { id: "y-comfort", name: "Economy Comfort", rate: 0.75 },
+      { id: "y-deluxe", name: "Economy Deluxe", rate: 1.25 },
+      { id: "j-value", name: "Business Value", rate: 1 },
+      { id: "j-comfort", name: "Business Comfort", rate: 1.5 },
+      { id: "j-deluxe", name: "Business Deluxe", rate: 2.5 },
+      { id: "f-comfort", name: "First Comfort", rate: 2 },
+      { id: "f-deluxe", name: "First Deluxe", rate: 3 }
+    ],
+    // The tier bonus is a share of the base distance added on top.
+    statuses: [
+      { id: "member", name: "Etihad Guest Member", bonus: 0 },
+      { id: "silver", name: "Silver", bonus: 0.25 },
+      { id: "gold", name: "Gold", bonus: 0.5 },
+      { id: "platinum", name: "Platinum", bonus: 1 },
+      { id: "emerald", name: "Emerald", bonus: 1 }
+    ],
+    note: "Etihad Guest earns a share of the route's base distance set by fare brand, from 5% in Economy Basic to 300% in First Deluxe. Silver, Gold, and Platinum or Emerald add 25%, 50%, or 100% of the base distance. Etihad's base distance for a route can differ slightly from the miles flown. Economy Basic earned 15% on tickets issued before 18 June 2026."
+  };
+
   P.krisflyer = {
     name: "Singapore Airlines | KrisFlyer",
     country: "SG",
@@ -959,5 +990,6 @@ window.COUNTRIES = [
   { id: "JP", label: "Japan \u{1F1EF}\u{1F1F5}" },
   { id: "HK", label: "Hong Kong \u{1F1ED}\u{1F1F0}" },
   { id: "SG", label: "Singapore \u{1F1F8}\u{1F1EC}" },
+  { id: "AE", label: "United Arab Emirates \u{1F1E6}\u{1F1EA}" },
   { id: "MY", label: "Malaysia \u{1F1F2}\u{1F1FE}" }
 ];

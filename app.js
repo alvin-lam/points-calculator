@@ -240,9 +240,13 @@
       points = airfare * perDollar;
       rateLabel = num.format(perDollar) + " " + p.unit + " per " + symbols[p.currency || "USD"];
     } else if (p.method === "distance") {
-      // Some distance programs also scale by fare class (Virgin Atlantic).
-      // Some fares are excluded from the status bonus (KrisFlyer).
-      var perMile = (fareType ? fareType.rate : 1) * (fareType && fareType.noBonus ? 1 : status.multiplier);
+      // A fare class can set the share of distance earned (Virgin Atlantic).
+      // Some fares are excluded from the status bonus (KrisFlyer). A status
+      // bonus can also be added on top of the fare share (Etihad).
+      var fareShare = fareType ? fareType.rate : 1;
+      var perMile = status.bonus != null
+        ? fareShare + status.bonus
+        : fareShare * (fareType && fareType.noBonus ? 1 : status.multiplier);
       points = distance * perMile;
       rateLabel = num.format(perMile) + " " + p.unit + " per mile flown";
     } else if (p.method === "tiered") {
