@@ -35,12 +35,17 @@ window.PROGRAMS = {
     name: "American Airlines | AAdvantage",
     programName: "AAdvantage",
     unit: "miles",
+    // Paid upgrades earn at the same rate as the ticket (since August 2024).
+    addons: true,
+    addonsLabel: "Paid Upgrades",
+    addonsHint: "The base price of a cabin upgrade bought from American. It earns miles at your status rate.",
     // Fiji Airways uses AAdvantage and earns on the same ticket-price rates.
     airlines: [
       { id: "aa", name: "American Airlines", country: "US" },
       { id: "fj", name: "Fiji Airways", country: "FJ", program: {
           cap: null,
           cards: null,
+          addons: false,
           note: "Fiji Airways uses AAdvantage. Flights sold by Fiji Airways earn like American flights: 5 miles per US dollar of the base fare and carrier-imposed fees, with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Government taxes do not earn. LITE fares bought on or after 17 December 2025 earn nothing. Fiji fares are often priced in Fiji dollars, so enter the US dollar equivalent."
         } }
     ],
@@ -61,10 +66,14 @@ window.PROGRAMS = {
       { id: "citi-globe", name: "Citi / AAdvantage Globe", rate: 3 },
       { id: "citi-exec", name: "Citi / AAdvantage Executive", rate: 4 }
     ],
-    note: "AAdvantage miles are earned on base fare and carrier-imposed fees. Government taxes do not earn miles. Earning is capped at 75,000 miles per ticket."
+    note: "AAdvantage miles are earned on base fare and carrier-imposed fees, and on paid upgrades at the same rate. Government taxes, bags, and seats do not earn miles. Earning is capped at 75,000 miles per ticket."
   },
   delta: {
     name: "Delta Air Lines | SkyMiles",
+    // Paid seat upgrades earn miles like the fare.
+    addons: true,
+    addonsLabel: "Paid Upgrades",
+    addonsHint: "The price of a seat upgrade bought from Delta, such as Comfort or First. It earns miles at your status rate.",
     unit: "miles",
     method: "spend",
     cap: 75000,
@@ -83,7 +92,7 @@ window.PROGRAMS = {
       { id: "plat", name: "Delta SkyMiles Platinum Amex", rate: 3 },
       { id: "reserve", name: "Delta SkyMiles Reserve Amex", rate: 3 }
     ],
-    note: "SkyMiles are earned on base fare and carrier-imposed surcharges. Basic Economy fares earn no miles. Earning is capped at 75,000 miles per ticket."
+    note: "SkyMiles are earned on base fare and carrier-imposed surcharges, and on paid seat upgrades. Basic Economy fares earn no miles. Earning is capped at 75,000 miles per ticket."
   },
   united: {
     name: "United Airlines | MileagePlus",
