@@ -235,6 +235,9 @@
     $("fareTypeLabel").textContent = p.fareTypeLabel || "Fare Type";
     // Seats and bags earn like the fare on some airlines (Frontier, Allegiant, Breeze).
     addonsField.hidden = !p.addons;
+    // An airline can name its own extras (WestJet: upgrades, not bundles).
+    $("addonsLabel").textContent = p.addonsLabel || "Seats, Bags and/or Bundles";
+    $("addonsHint").textContent = p.addonsHint || "Seat selection, carry-on and checked bags, or a bundle, bought on this booking. They earn points like the fare.";
     // A direct booking bonus question (JetBlue).
     directField.hidden = !p.direct;
     if (p.direct) $("directLegend").textContent = p.direct.question;
@@ -369,7 +372,7 @@
       var perDollar = em.rate * status.multiplier;
       points = airfare * perDollar;
       rateLabel = num.format(perDollar) + " " + p.unit + " per " + symbols[p.currency || "USD"];
-    } else if (p.method === "distance") {
+    } else if (em.id === "distance") {
       // What a fare earns: a share of the distance (a number), a share with a
       // minimum per flight ({ share, min }), or a fixed amount ({ fixed }).
       // With zones, fareType.earn lists one of these per zone; elite members
@@ -408,7 +411,7 @@
         if (minUsed) rateLabel += ", with the " + num.format(min) + " minimum per flight";
         if (minDistUsed) rateLabel += ", counted as the " + num.format(p.minDistance) + " km minimum";
       }
-    } else if (p.method === "tiered") {
+    } else if (em.id === "tiered") {
       points = 0;
       var floor = 0;
       p.tiers.forEach(function (t) {
@@ -551,7 +554,7 @@
       row(dl, "Airfare", usd.format(airfare) + (gowild ? " (GoWild!)" : ""));
       if (gowild) row(dl, "GoWild Early Booking Fee", usd.format(gowildFee));
       if (!gowild) row(dl, p.carrierLabel || "Carrier-imposed Fees", usd.format(carrier) + (p.baseFareOnly && carrier ? " (does not earn)" : ""));
-      if (p.addons) row(dl, "Seats, Bags and/or Bundles", usd.format(addons));
+      if (p.addons) row(dl, p.addonsLabel || "Seats, Bags and/or Bundles", usd.format(addons));
       row(dl, "Taxes & Fees", usd.format(taxes));
       row(dl, "Total trip cost", usd.format(tripCost));
     }
