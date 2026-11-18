@@ -179,6 +179,8 @@
     earnEl.innerHTML = "";
     earnField.hidden = !p.earnMethods;
     if (p.earnMethods) p.earnMethods.forEach(function (m) { earnEl.appendChild(option(m.id, m.name)); });
+    $("earnLabel").textContent = p.earnLabel || "How you earn";
+    $("earnHint").textContent = p.earnHint || "The way you chose in your account.";
     syncEarnFields();
     resultEl.hidden = true;
     errorEl.hidden = true;
@@ -228,6 +230,8 @@
     // A route type that pays a fixed amount needs no distance.
     var fixedZone = m === "distance" && p.zones && find(p.zones, zoneEl.value).fixed;
     if (fixedZone) { distanceField.hidden = true; distanceEl.required = false; }
+    // Some earning choices do not depend on the booking class (Sky Pearl).
+    fareTypeField.hidden = !p.fareTypes || !!earnMethod(p).noFareType;
     fareFields.hidden = !usesFare(m);
     airfareEl.required = usesFare(m);
     syncCardSelect();
@@ -282,6 +286,9 @@
         // Some programs count kilometres (PhoenixMiles); the input is miles.
         var dist = distance * (p.distanceFactor || 1);
         var unitName = p.distanceFactor ? "km" : "mile flown";
+        // A minimum distance per flight, before the class share (Sky Pearl).
+        var minDistUsed = p.minDistance && dist < p.minDistance;
+        if (minDistUsed) dist = p.minDistance;
         var base = dist * share;
         var minUsed = min != null && base < min;
         if (minUsed) base = min;
@@ -297,6 +304,7 @@
           rateLabel = num.format(share * mult) + " " + p.unit + " per " + unitName;
         }
         if (minUsed) rateLabel += ", with the " + num.format(min) + " minimum per flight";
+        if (minDistUsed) rateLabel += ", counted as the " + num.format(p.minDistance) + " km minimum";
       }
     } else if (p.method === "tiered") {
       points = 0;
@@ -329,7 +337,7 @@
     // Distance programs round to the nearest mile; spend programs round down
     // (or up, where the program says so). Airpoints keep two decimals.
     if (p.decimals) points = Math.round(points * 100) / 100;
-    else if (em.id === "distance") points = Math.round(points);
+    else if (em.id === "distance" && !p.roundUp) points = Math.round(points);
     else points = p.roundUp ? Math.ceil(points - 1e-9) : Math.floor(points);
     var capped = false;
     if (p.cap && points > p.cap) {
@@ -381,7 +389,7 @@
     errorEl.hidden = true;
     var usd = money[p.currency || "USD"];
     var status = find(p.statuses, statusEl.value);
-    var fareType = p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
+    var fareType = p.fareTypes && !earnMethod(p).noFareType ? find(p.fareTypes, fareTypeEl.value) : null;
     var airline = selection().airline;
     var r = calculate(p, status, fareType, earnBase, distance, airline, segments);
     if (r.error) return showError(r.error);
