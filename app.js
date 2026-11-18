@@ -59,14 +59,15 @@
     CNY: new Intl.NumberFormat("en-US", { style: "currency", currency: "CNY" }),
     NZD: new Intl.NumberFormat("en-US", { style: "currency", currency: "NZD" }),
     GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
-    EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" })
+    EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }),
+    BRL: new Intl.NumberFormat("en-US", { style: "currency", currency: "BRL" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -139,8 +140,15 @@
   // carry its own program fields (IAG: British Airways Club or Iberia Club).
   function current() {
     var s = selection();
-    if (!s.program || !s.airline || !s.airline.program) return s.program;
-    return Object.assign({}, s.program, s.airline.program);
+    var p = s.program;
+    if (p && s.airline && s.airline.program) p = Object.assign({}, p, s.airline.program);
+    // A fare type can set its own currency (GOL: reais within South
+    // America, US dollars elsewhere).
+    if (p && p.fareTypes) {
+      var ft = find(p.fareTypes, fareTypeEl.value);
+      if (ft && ft.currency) p = Object.assign({}, p, { currency: ft.currency });
+    }
+    return p;
   }
 
   function onProgramChange() {
@@ -181,6 +189,7 @@
       p.fareTypes.forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
       if (p.defaultFareType) fareTypeEl.value = p.defaultFareType;
       else fareTypeEl.selectedIndex = 1 < p.fareTypes.length ? 1 : 0;
+      setCurrency(current().currency || "USD");
     }
 
     // Ask about a co-branded card only for programs with card data.
@@ -223,6 +232,7 @@
     // Some airlines name their carrier fee (Frontier: Carrier Interface Fee).
     $("carrierLabel").textContent = p.carrierLabel || "Carrier-imposed Fees";
     $("carrierHint").textContent = p.carrierHint || "Airline surcharges such as fuel fees (YQ/YR). Most programs count these toward earning.";
+    $("fareTypeLabel").textContent = p.fareTypeLabel || "Fare Type";
     // Seats and bags earn like the fare on some airlines (Frontier, Allegiant, Breeze).
     addonsField.hidden = !p.addons;
     // A direct booking bonus question (JetBlue).
@@ -609,6 +619,12 @@
   usedCardNo.addEventListener("change", syncCardSelect);
   cardmemberYes.addEventListener("change", syncCardmember);
   cardmemberNo.addEventListener("change", syncCardmember);
+  // A fare type with its own currency updates the money symbols.
+  fareTypeEl.addEventListener("change", function () {
+    var p = current();
+    if (p) setCurrency(p.currency || "USD");
+    resultEl.hidden = true;
+  });
   directYes.addEventListener("change", function () { resultEl.hidden = true; });
   $("directNo").addEventListener("change", function () { resultEl.hidden = true; });
   gowildYes.addEventListener("change", syncGoWild);

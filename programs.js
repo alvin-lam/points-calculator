@@ -1001,6 +1001,59 @@ window.PROGRAMS = {
     note: "Fortune Wings Club earns 10 base points per 10 yuan of eligible spend on Hainan Airlines domestic flights, for flight dates from 28 March 2026, plus a status bonus of 1, 3, 6, or 8 points per 10 yuan for Select, Silver, Gold, and Platinum. The basic Fortune Wings tier earns no bonus. Spending is rounded to the nearest 10 yuan. Classes J, S, O, G, A, U, T, F, P, and B earn nothing. Earning is capped at 75,000 points per segment. Enter fares in yuan."
   };
 
+  /* GOL earns Smiles miles on the fare, by category: per real within South
+     America (Brazil included) and per US dollar elsewhere, for tickets
+     bought from 16 June 2026. Up to 60,000 miles per accrual. */
+  P.gol = {
+    name: "GOL | Smiles",
+    country: "BR",
+    currency: "BRL",
+    unit: "miles",
+    method: "spend",
+    cap: 60000,
+    fareTypeLabel: "Route",
+    defaultFareType: "sa",
+    fareTypes: [
+      { id: "sa", name: "Within South America, including Brazil (fare in R$)", currency: "BRL" },
+      { id: "intl", name: "To or from outside South America (fare in US$)", currency: "USD" }
+    ],
+    statuses: [
+      { id: "smiles", name: "Smiles", rates: { sa: 1, intl: 5 } },
+      { id: "prata", name: "Prata", rates: { sa: 2, intl: 8 } },
+      { id: "ouro", name: "Ouro", rates: { sa: 3, intl: 10 } },
+      { id: "diamante", name: "Diamante", rates: { sa: 5, intl: 11 } },
+      { id: "magno", name: "Magno", rates: { sa: 6, intl: 12 } }
+    ],
+    note: "Smiles earns on the GOL fare by category, for tickets bought from 16 June 2026: 1, 2, 3, 5, or 6 miles per real within South America, including Brazil, and 5, 8, 10, 11, or 12 miles per US dollar on other routes, for Smiles, Prata, Ouro, Diamante, and Magno. Earning is capped at 60,000 miles. Favorite Route bonuses are not included, and codeshare flights booked through another airline do not earn."
+  };
+
+  /* LATAM Pass: miles per US dollar of the base fare, by category and by
+     route type. Taxes, boarding fees, seats, and bags do not earn. Up to
+     60,000 miles per segment. */
+  P.latam = {
+    name: "LATAM Airlines | LATAM Pass",
+    country: "CL",
+    currency: "USD",
+    unit: "miles",
+    method: "spend",
+    baseFareOnly: true,
+    cap: 60000,
+    fareTypeLabel: "Route",
+    defaultFareType: "sa",
+    fareTypes: [
+      { id: "sa", name: "Domestic or within South America" },
+      { id: "intl", name: "To or from outside South America" }
+    ],
+    statuses: [
+      { id: "latam", name: "LATAM", rates: { sa: 3, intl: 5 } },
+      { id: "gold", name: "Gold", rates: { sa: 4, intl: 6 } },
+      { id: "platinum", name: "Platinum", rates: { sa: 7, intl: 9 } },
+      { id: "black", name: "Black", rates: { sa: 8, intl: 10 } },
+      { id: "black-sig", name: "Black Signature", rates: { sa: 9, intl: 12 } }
+    ],
+    note: "LATAM Pass earns miles per US dollar of the base fare on flights marketed by LATAM: 3, 4, 7, 8, or 9 on domestic flights and within South America, and 5, 6, 9, 10, or 12 outside South America, for LATAM, Gold, Platinum, Black, and Black Signature. Taxes, boarding fees, and extras such as bags and seats do not earn. Fares in other currencies convert to dollars at the IATA rate, so enter the US dollar equivalent. Earning is capped at 60,000 miles per segment."
+  };
+
   P.cathay = {
     name: "Cathay Pacific | Asia Miles",
     country: "HK",
@@ -1682,6 +1735,7 @@ window.COUNTRIES = [
   { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}", pinned: true },
   { id: "AT", label: "Austria \u{1F1E6}\u{1F1F9}" },
   { id: "BE", label: "Belgium \u{1F1E7}\u{1F1EA}" },
+  { id: "BR", label: "Brazil \u{1F1E7}\u{1F1F7}" },
   { id: "FJ", label: "Fiji \u{1F1EB}\u{1F1EF}" },
   { id: "SCAN", label: "Scandinavia \u{1F1E9}\u{1F1F0} \u{1F1F3}\u{1F1F4} \u{1F1F8}\u{1F1EA}" },
   { id: "FR", label: "France \u{1F1EB}\u{1F1F7}" },
@@ -1707,6 +1761,7 @@ window.COUNTRIES = [
   { id: "NZ", label: "New Zealand \u{1F1F3}\u{1F1FF}" },
   { id: "TR", label: "Türkiye \u{1F1F9}\u{1F1F7}" },
   { id: "KR", label: "South Korea \u{1F1F0}\u{1F1F7}" },
+  { id: "CL", label: "Chile \u{1F1E8}\u{1F1F1}" },
   { id: "CN", label: "China \u{1F1E8}\u{1F1F3}" },
   { id: "PL", label: "Poland \u{1F1F5}\u{1F1F1}" },
   { id: "HR", label: "Croatia \u{1F1ED}\u{1F1F7}" },
