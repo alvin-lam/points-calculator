@@ -41,15 +41,16 @@
     SGD: new Intl.NumberFormat("en-US", { style: "currency", currency: "SGD" }),
     JPY: new Intl.NumberFormat("en-US", { style: "currency", currency: "JPY" }),
     HKD: new Intl.NumberFormat("en-US", { style: "currency", currency: "HKD" }),
+    TWD: new Intl.NumberFormat("en-US", { style: "currency", currency: "TWD" }),
     GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
     EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", GBP: "£", EUR: "€" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", GBP: "£", EUR: "€" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", GBP: "£", EUR: "€" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", GBP: "£", EUR: "€" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -272,7 +273,8 @@
         : num.format(rate) + " " + p.unit + " per " + symbols[p.currency || "USD"];
     }
 
-    points = Math.floor(points);
+    // Distance programs round to the nearest mile; spend programs round down.
+    points = em.id === "distance" ? Math.round(points) : Math.floor(points);
     var capped = false;
     if (p.cap && points > p.cap) {
       points = p.cap;

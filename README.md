@@ -23,6 +23,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 - ANA, JAL, and Singapore Airlines KrisFlyer earn a share of the miles flown by booking class, and Cathay Pacific awards a fixed amount by fare type and distance zone from Hong Kong, so none of them ask for the price paid.
 - Malaysia Airlines Enrich earns 1.5 to 2.5 points per ringgit (RM) by status.
 - Etihad Guest earns a share of the route distance by fare brand, and adds a status bonus as a share of the distance.
+- EVA Air and China Airlines earn a share of the distance by booking class, so they ask for the class and the miles flown.
 - Porter fares are entered in Canadian dollars, Finnair fares in euros, Virgin Australia fares in Australian dollars (A$), and Norwegian fares in Norwegian kroner (kr). Avianca LifeMiles earns per US dollar by fare family.
 - The program menu keeps the United States, Canada, and Mexico at the top and sorts the other countries alphabetically.
 - Miles & More (Lufthansa Group), Flying Blue (Air France-KLM), and IAG are single programs. Each of their airlines is listed under its own country as "Airline | Program", such as "Lufthansa | Miles & More" under Germany. For Miles & More, the airline sets the status earning rate. For IAG, the airline picks the loyalty program: AerClub in euros, British Airways Club in pounds, Iberia Club in euros (Iberia and LEVEL), or Vueling Club in euros, each with its own status levels and cards.
