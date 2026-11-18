@@ -60,7 +60,7 @@
       </div>
 
       <div class="field" id="fareTypeField" hidden>
-        <label for="fareType">Fare type</label>
+        <label for="fareType">Fare Type</label>
         <select id="fareType"></select>
       </div>
 
@@ -124,6 +124,15 @@
         <input id="segments" type="number" inputmode="numeric" min="1" step="1" placeholder="e.g. 2">
         <small>Each takeoff and landing on one flight number counts as a segment.</small>
       </div>
+
+      <fieldset class="field" id="cardmemberField" hidden>
+        <legend id="cardmemberLegend">Are you a co-branded cardmember?</legend>
+        <div class="choice">
+          <label><input type="radio" name="cardmember" id="cardmemberNo" value="no" checked> No</label>
+          <label><input type="radio" name="cardmember" id="cardmemberYes" value="yes"> Yes</label>
+        </div>
+        <small id="cardmemberHint"></small>
+      </fieldset>
 
       <fieldset class="field" id="cardField" hidden>
         <legend>Did you pay with the airline's co-branded credit or debit card?</legend>

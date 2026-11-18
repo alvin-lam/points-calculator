@@ -28,6 +28,9 @@
   var usedCardNo = $("usedCardNo");
   var cardChargeField = $("cardChargeField");
   var cardChargeEl = $("cardCharge");
+  var cardmemberField = $("cardmemberField");
+  var cardmemberYes = $("cardmemberYes");
+  var cardmemberNo = $("cardmemberNo");
   var gowildField = $("gowildField");
   var gowildYes = $("gowildYes");
   var gowildNo = $("gowildNo");
@@ -178,7 +181,16 @@
 
     // Ask about a co-branded card only for programs with card data.
     cardEl.innerHTML = "";
-    cardField.hidden = !p.cards;
+    // Programs where holding the card raises the flight earn rate (Frontier)
+    // ask about it first; the payment question only follows a Yes.
+    cardmemberField.hidden = !p.cardmember;
+    if (p.cardmember) {
+      $("cardmemberLegend").textContent = p.cardmember.question;
+      $("cardmemberHint").textContent = p.cardmember.hint || "";
+    } else {
+      cardmemberNo.checked = true;
+    }
+    cardField.hidden = !p.cards || (!!p.cardmember && !cardmemberYes.checked);
     if (p.cards) {
       // Group credit and debit cards when a program has both.
       var debit = p.cards.filter(function (c) { return c.kind === "debit"; });
@@ -223,6 +235,18 @@
 
   // The charge field shows when a card's points cannot come from the fare
   // fields: the card bills in another currency, or no fare was entered.
+  function isCardmember(p) {
+    return !!(p && p.cardmember && cardmemberYes.checked);
+  }
+  function syncCardmember() {
+    var p = current();
+    if (!p) return;
+    cardField.hidden = !p.cards || (!!p.cardmember && !cardmemberYes.checked);
+    if (cardField.hidden) usedCardNo.checked = true;
+    syncCardSelect();
+    resultEl.hidden = true;
+  }
+
   function syncCardSelect() {
     cardSelectField.hidden = cardField.hidden || !usedCardYes.checked;
     var p = current();
@@ -368,7 +392,7 @@
       // A status can list its own rate per fare type (Frontier), or the
       // fare type sets the rate and the status scales it (Southwest, Breeze).
       var rate = fareType
-        ? (status.rates ? status.rates[fareType.id] : fareType.rate * status.multiplier)
+        ? (status.rates ? status.rates[fareType.id + (isCardmember(p) ? "Card" : "")] : fareType.rate * status.multiplier)
         : status.rate;
       // Programs spanning several airlines can set their own elite rate.
       if (airline && status.elite && airline.eliteRate) rate = airline.eliteRate;
@@ -476,7 +500,7 @@
     var total = r.points + cardPoints;
 
     $("resultProgram").textContent = (airline ? airlineLabel(selection().program, airline) : p.name) + " · " + statusLabel(status) +
-      (fareType ? " · " + fareType.name : "") + (card ? " · " + card.name : "");
+      (fareType ? " · " + fareType.name : "") + (isCardmember(p) ? " · Cardmember rate" : "") + (card ? " · " + card.name : "");
     $("resultPoints").textContent = num.format(total);
     $("resultUnit").textContent = p.unit;
 
@@ -551,6 +575,8 @@
   zoneEl.addEventListener("change", syncEarnFields);
   usedCardYes.addEventListener("change", syncCardSelect);
   usedCardNo.addEventListener("change", syncCardSelect);
+  cardmemberYes.addEventListener("change", syncCardmember);
+  cardmemberNo.addEventListener("change", syncCardmember);
   gowildYes.addEventListener("change", syncGoWild);
   gowildNo.addEventListener("change", syncGoWild);
   cardEl.addEventListener("change", syncCardSelect);
