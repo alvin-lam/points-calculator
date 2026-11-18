@@ -1089,6 +1089,554 @@ window.PROGRAMS = {
   };
 })();
 
+/* Alliance airlines added November 2026, from the airlines' published
+   earning tables (as collected on cwsi.net). */
+(function () {
+  var P = window.PROGRAMS;
+
+  /* Air New Zealand: fixed Airpoints per one-way flight by route group,
+     fare, and booking class (each zone's points follow fareTypes order). */
+  P.airnz = {
+    name: "Air New Zealand | Koru",
+    country: "NZ",
+    currency: "NZD",
+    unit: "Airpoints",
+    method: "zone",
+    decimals: true,
+    defaultFareType: "y",
+    zoneLabel: "Route group and fare",
+    zoneHint: "Air New Zealand pays a fixed number of Airpoints per one-way flight for each route group, fare, and booking class.",
+    fareTypes: [
+      { id: "c", name: "Business Premier (C)" },
+      { id: "d", name: "Business Premier (D)" },
+      { id: "z", name: "Business Premier (Z)" },
+      { id: "j", name: "Business Premier (J)" },
+      { id: "u", name: "Premium Economy (U)" },
+      { id: "e", name: "Premium Economy (E)" },
+      { id: "o", name: "Premium Economy (O)" },
+      { id: "a", name: "Premium Economy (A)" },
+      { id: "y", name: "Economy (Y)" },
+      { id: "b", name: "Economy (B)" },
+      { id: "m", name: "Economy (M)" },
+      { id: "h", name: "Economy (H)" },
+      { id: "q", name: "Economy (Q)" },
+      { id: "v", name: "Economy (V)" },
+      { id: "w", name: "Economy (W)" },
+      { id: "t", name: "Economy (T)" },
+      { id: "l", name: "Economy (L)" },
+      { id: "s", name: "Economy (S)" },
+      { id: "g", name: "Economy (G)" },
+      { id: "k", name: "Economy (K)" },
+      { id: "p", name: "Economy (P)" },
+      { id: "f", name: "Economy (F)" }
+    ],
+    zones: [
+      { id: "domestic-1-0", name: "Domestic 1: AKL to CHC, DUD, WLG, ZQN, Seat fare", points: [null, null, null, null, null, null, null, null, 14, 12, 10, 9, 8, 6, 5, 4, 3, 2, 2, 1, 1, 0] },
+      { id: "domestic-1-1", name: "Domestic 1: AKL to CHC, DUD, WLG, ZQN, Seat+Bag fare", points: [null, null, null, null, null, null, null, null, 14, 12, 10, 9, 8, 6, 5, 4, 3, 2, 2, 1, 1, 0] },
+      { id: "domestic-1-2", name: "Domestic 1: AKL to CHC, DUD, WLG, ZQN, Flexi Change fare", points: [null, null, null, null, null, null, null, null, 16, 14, 12, 11, 10, 8, 7, 6, 5, 4, 4, 3, 3, 0] },
+      { id: "domestic-1-3", name: "Domestic 1: AKL to CHC, DUD, WLG, ZQN, Flexi Refund fare", points: [null, null, null, null, null, null, null, null, 18, 16, 14, 13, 12, 10, 9, 8, 7, 6, 6, 5, 5, 0] },
+      { id: "domestic-2-0", name: "Domestic 2: AKL to BHE, GIS, KKE, NPE, NPL, NSN, PMR, ROT, TRG, TUO, ..., Seat fare", points: [null, null, null, null, null, null, null, null, 12, 10, 8, 7, 6, 5, 4, 3.5, 3, 2.5, 2, 1, 1, 0] },
+      { id: "domestic-2-1", name: "Domestic 2: AKL to BHE, GIS, KKE, NPE, NPL, NSN, PMR, ROT, TRG, TUO, ..., Seat+Bag fare", points: [null, null, null, null, null, null, null, null, 12, 10, 8, 7, 6, 5, 4, 3.5, 3, 2.5, 2, 1, 1, 0] },
+      { id: "domestic-2-2", name: "Domestic 2: AKL to BHE, GIS, KKE, NPE, NPL, NSN, PMR, ROT, TRG, TUO, ..., Flexi Change fare", points: [null, null, null, null, null, null, null, null, 14, 12, 10, 9, 8, 7, 6, 5.5, 5, 4.5, 4, 3, 3, 0] },
+      { id: "domestic-2-3", name: "Domestic 2: AKL to BHE, GIS, KKE, NPE, NPL, NSN, PMR, ROT, TRG, TUO, ..., Flexi Refund fare", points: [null, null, null, null, null, null, null, null, 16, 14, 12, 11, 10, 9, 8, 7.5, 7, 6.5, 6, 5, 5, 0] },
+      { id: "domestic-3-0", name: "Domestic 3: AKL to IVC, Seat fare", points: [null, null, null, null, null, null, null, null, 23, 20, 17, 15, 13, 11, 9, 7, 5, 4, 3, 2, 1.5, 0] },
+      { id: "domestic-3-1", name: "Domestic 3: AKL to IVC, Seat+Bag fare", points: [null, null, null, null, null, null, null, null, 23, 20, 17, 15, 13, 11, 9, 7, 5, 4, 3, 2, 1.5, 0] },
+      { id: "domestic-3-2", name: "Domestic 3: AKL to IVC, Flexi Change fare", points: [null, null, null, null, null, null, null, null, 25, 22, 19, 17, 15, 13, 11, 9, 7, 6, 5, 4, 3.5, 0] },
+      { id: "domestic-3-3", name: "Domestic 3: AKL to IVC, Flexi Refund fare", points: [null, null, null, null, null, null, null, null, 27, 24, 21, 19, 17, 15, 13, 11, 9, 8, 7, 6, 5.5, 0] },
+      { id: "tasman-1-0", name: "Tasman 1: AKL to BNE, HBA, MCY, MEL, OOL, SYD, Seat fare", points: [71, 58.4, 47.9, 40.1, 38.1, 25.1, 17.1, 14.1, 15.6, 12.2, 10.8, 8.9, 7.4, 5.9, 4.9, 4.2, 2.8, 2.1, 2, 1.7, 1.5, 0] },
+      { id: "tasman-1-1", name: "Tasman 1: AKL to BNE, HBA, MCY, MEL, OOL, SYD, Seat+Bag fare", points: [71, 58.4, 47.9, 40.1, 38.1, 25.1, 17.1, 14.1, 15.9, 12.3, 11.4, 9.6, 8.1, 6.6, 5.5, 4.8, 3.4, 2.6, 2.5, 2.2, 2, 0] },
+      { id: "tasman-1-2", name: "Tasman 1: AKL to BNE, HBA, MCY, MEL, OOL, SYD, The Works, Works Flexi fare", points: [71, 58.4, 47.9, 40.1, 38.1, 25.1, 17.1, 14.1, 24.7, 18.9, 17.6, 14.8, 12.7, 10.4, 8.6, 7.6, 5.8, 4.6, 3.8, 3.4, 3, 0] },
+      { id: "tasman-2-0", name: "Tasman 2: ADL to AKL, Seat fare", points: [110, 93, 83, 77, 61.8, 57.8, 53.8, 39.8, 18.5, 14.5, 12.5, 10.5, 8.5, 7.9, 6.9, 5, 4.9, 3, 2.8, 2.4, 2.1, 0] },
+      { id: "tasman-2-1", name: "Tasman 2: ADL to AKL, Seat+Bag fare", points: [110, 93, 83, 77, 61.8, 57.8, 53.8, 39.8, 19, 15, 13, 11, 9, 8, 7, 5.9, 5, 3, 2.8, 2.6, 2.4, 0] },
+      { id: "tasman-2-2", name: "Tasman 2: ADL to AKL, The Works, Works Flexi fare", points: [110, 93, 83, 77, 61.8, 57.8, 53.8, 39.8, 30, 25, 21, 18, 15, 13, 11, 10, 8, 5, 4.6, 4.3, 4, 0] },
+      { id: "tasman-3-0", name: "Tasman 3: AKL to PER, Seat fare", points: [153, 127, 113, 105, 93.1, 71.3, 57.3, 51.3, 24.9, 20.9, 17.9, 14.9, 12.9, 11.9, 10.9, 9.9, 8.9, 5.9, 5.3, 4.7, 4.2, 0] },
+      { id: "tasman-3-1", name: "Tasman 3: AKL to PER, Seat+Bag fare", points: [153, 127, 113, 105, 93.1, 71.3, 57.3, 51.3, 24.9, 20.9, 17.9, 14.9, 13.9, 11.9, 10.9, 9.9, 8.9, 5.9, 5.7, 5.3, 5, 0] },
+      { id: "tasman-3-2", name: "Tasman 3: AKL to PER, The Works, Works Flexi fare", points: [153, 127, 113, 105, 93.1, 71.3, 57.3, 51.3, 41.4, 35.6, 29.8, 25.9, 22.2, 19.2, 16.9, 15.5, 13.4, 13.1, 12.6, 12.1, 11.6, 0] },
+      { id: "pacific-islands-1-0", name: "Pacific Islands 1: AKL to APW, IUE, NAN, NOU, RAR, TBU, Seat fare", points: [70, 62, 42, 36.5, 29.5, 27.5, 25.5, 19.8, 14.6, 13.9, 12.3, 10.7, 9.5, 7.6, 6.6, 5.4, 4.5, 3.2, 6.6, 4.5, 3.2, 0] },
+      { id: "pacific-islands-1-1", name: "Pacific Islands 1: AKL to APW, IUE, NAN, NOU, RAR, TBU, Seat+Bag fare", points: [70, 62, 42, 36.5, 29.5, 27.5, 25.5, 19.8, 15.6, 15.3, 13.4, 11.6, 10.3, 8.2, 7.3, 6, 5.1, 3.8, 7.3, 5.1, 3.8, 0] },
+      { id: "pacific-islands-1-2", name: "Pacific Islands 1: AKL to APW, IUE, NAN, NOU, RAR, TBU, The Works, Works Flexi fare", points: [70, 62, 42, 36.5, 29.5, 27.5, 25.5, 19.8, 24.2, 22.4, 20, 17.4, 15.8, 12.7, 11.3, 9.4, 8.1, 6.1, 11.3, 8.1, 6.1, 0] },
+      { id: "pacific-islands-2-0", name: "Pacific Islands 2: AKL to PPT, Seat fare", points: [125, 97, 86, 80, 65, 60, 56, 43, 23.5, 19.9, 17.9, 13.9, 12.9, 11.9, 9.9, 8.9, 7.9, 4.9, 10.9, 8.9, 6, 0] },
+      { id: "pacific-islands-2-1", name: "Pacific Islands 2: AKL to PPT, Seat+Bag fare", points: [125, 97, 86, 80, 65, 60, 56, 43, 24.5, 19.9, 17.9, 14.9, 12.9, 11.9, 10.9, 8.9, 8.9, 5.9, 10.9, 8.9, 6.9, 0] },
+      { id: "pacific-islands-2-2", name: "Pacific Islands 2: AKL to PPT, The Works, Works Flexi fare", points: [125, 97, 86, 80, 65, 60, 56, 43, 36.3, 30.7, 28.7, 25, 23.6, 20.6, 16.7, 14.1, 12.4, 9.2, 16.7, 12.4, 9.2, 0] },
+      { id: "pacific-long-haul-1-0", name: "Pacific long haul 1: AKL to JFK", points: [526.9, 493.7, 411.7, 331.6, 213.3, 186.7, 149.1, 130, 110.7, 107.1, 89.3, 78.2, 59.3, 58.3, 52, 50.2, 48, 38.7, 20.5, 18.5, 15, 0] },
+      { id: "pacific-long-haul-2-0", name: "Pacific long haul 2: AKL to LAX, SFO", points: [457.4, 421.6, 370, 291.7, 169.2, 147.2, 135, 123.5, 83, 80.7, 72.8, 62.6, 56.9, 52.8, 42.5, 38.8, 37, 31.6, 17.6, 14.5, 13, 0] },
+      { id: "pacific-long-haul-3-0", name: "Pacific long haul 3: AKL to ORD", points: [506.9, 473.7, 391.7, 330, 184.1, 172, 140, 125, 101.7, 98.1, 80.3, 69.2, 50.3, 49.3, 43, 41.2, 39, 37, 18.7, 16.5, 12, null] },
+      { id: "pacific-long-haul-4-0", name: "Pacific long haul 4: AKL to YVR", points: [492.9, 428.5, 321.1, 231.5, 190.3, 152.8, 115.6, 93.3, 81.1, 75, 71.4, 62.7, 48.8, 47.3, 41.9, 40.9, 38, 33.3, 16.2, 16, 15, 0] },
+      { id: "pacific-long-haul-5-0", name: "Pacific long haul 5: AKL to HNL", points: [343, 294, 248, 206, 140, 109, 77, 62, 58, 46, 39, 32, 27, 23, 20, 18, 16, 15, 13, 12, 12, 0] },
+      { id: "pacific-long-haul-6-0", name: "Pacific long haul 6: AKL to IAH", points: [458, 425.8, 370.7, 290.5, 172.6, 158.9, 140, 129.8, 85.2, 82.3, 74.2, 64.6, 57.9, 51.3, 44.1, 42, 40, 32.7, 18.7, 16.5, 12, 0] },
+      { id: "asia-1-0", name: "Asia 1: AKL to DPS", points: [331, 189, 168, 133, 147, 93, 82, 72, 62, 45, 39, 33, 30, 27, 24, 22, 21, 19, 18, 18, 18, 0] },
+      { id: "asia-2-0", name: "Asia 2: AKL to HKG, PEK", points: [263, 239, 217, 196, 137, 122, 110, 90, 72, 62, 53, 48, 46, 44, 43, 42, 36, 34, 19, 15, 12, 0] },
+      { id: "asia-3-0", name: "Asia 3: AKL to ICN", points: [264, 224, 208, 177, 140, 125, 114, 83, 77, 66, 59, 54, 48, 44, 41, 40, 38, 34, 20, 18, 15, 0] },
+      { id: "asia-4-0", name: "Asia 4: AKL to PVG", points: [295, 237, 215, 194, 135, 120, 108, 88, 71, 61, 58, 53, 45, 43, 42, 40, 35, 33, 18.5, 14.5, 10, 0] },
+      { id: "asia-5-0", name: "Asia 5: AKL to SIN", points: [240, 216, 198, 186, 128, 114, 103, 82, 65, 56, 51, 48, 44, 41, 39, 37, 34, 32, 29, 24.5, 19.5, 0] },
+      { id: "asia-6-0", name: "Asia 6: AKL to TPE", points: [215, 187, 166, 152, 144, 126, 109, 66, 73, 63, 58, 53, 48, 43, 38.5, 36.5, 33.5, 31.5, 16.8, 15.8, 14, 0] },
+      { id: "japan-1-0", name: "Japan 1: AKL to NRT", points: [316, 269.8, 241.4, 219, 135, 122, 113.9, 83, 75.6, 64.4, 57.6, 53.1, 46, 45, 40, 38, 35, 32, 17.9, 14.9, 11.9, 0] }
+    ],
+    statuses: [
+      { id: "bronze", name: "Koru Bronze", bonus: 0 },
+      { id: "silver", name: "Koru Silver", bonus: 0 },
+      { id: "gold", name: "Koru Gold", bonus: 0 },
+      { id: "platinum", name: "Koru Platinum", bonus: 0 },
+      { id: "black", name: "Koru Black", bonus: 0 }
+    ],
+    note: "Koru pays a fixed number of Airpoints per one-way flight, set by route group, fare, and booking class; one Airpoint is worth NZ$1. Tiers earn bonus Status Points, not extra Airpoints. Domestic flights are Economy only. Class F (Grabaseat Greenlight) earns no Airpoints, and N, I, R, and X earn nothing."
+  };
+
+  P.turkish = {
+    name: "Turkish Airlines | Miles&Smiles",
+    country: "TR",
+    unit: "Miles",
+    method: "distance",
+    defaultFareType: "y-mid",
+    zoneLabel: "Route type",
+    zoneHint: "International flights earn a share of the distance; flights within Türkiye earn a fixed amount.",
+    zones: [
+      { id: "intl", name: "International" },
+      { id: "domestic", name: "Within Türkiye", fixed: true }
+    ],
+    fareTypes: [
+      { id: "j-high", name: "Business (C, D)", earn: [{ share: 1.5, min: 1500 }, { fixed: 1250 }], eliteEarn: [{ share: 1.75, min: 1750 }, { fixed: 1250 }] },
+      { id: "j", name: "Business (K, J, Z)", earn: [{ share: 1.35, min: 1350 }, { fixed: 1000 }], eliteEarn: [{ share: 1.6, min: 1600 }, { fixed: 1000 }] },
+      { id: "y-high", name: "Economy (Y, B)", earn: [{ share: 1.25, min: 1250 }, { fixed: 600 }] },
+      { id: "y-mid", name: "Economy (M, H, S, E, Q, A, O)", earn: [{ share: 1, min: 1000 }, { fixed: 600 }] },
+      { id: "y-low", name: "Economy (T, L, V, G)", earn: [{ share: 0.5, min: 500 }, { fixed: 300 }] },
+      { id: "y-lowest", name: "Economy (W, P, F, U)", earn: [{ share: 0.25, min: 250 }, { fixed: 150 }] }
+    ],
+    statuses: [
+      { id: "classic", name: "Classic" },
+      { id: "classic-plus", name: "Classic Plus", elite: true },
+      { id: "elite", name: "Elite", elite: true },
+      { id: "elite-plus", name: "Elite Plus", elite: true }
+    ],
+    note: "Miles&Smiles earns a share of the distance by booking class on international flights, with a minimum per flight, and a fixed amount within Türkiye. Classic Plus, Elite, and Elite Plus earn more in Business."
+  };
+
+  P.korean = {
+    name: "Korean Air | SKYPASS",
+    country: "KR",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "y",
+    fareTypes: [
+      { id: "f", name: "First (F)", rate: 2 },
+      { id: "j-flex", name: "Prestige Flex (J)", rate: 1.35 },
+      { id: "j", name: "Prestige Plus or Standard (C, D, I, R)", rate: 1.25 },
+      { id: "pe-v", name: "Premium (V)", rate: 1.1 },
+      { id: "pe-w", name: "Premium (W)", rate: 1 },
+      { id: "y", name: "Economy (Y, B, M, S, H, E, K, L, U)", rate: 1 },
+      { id: "y-low", name: "Economy (Q, T)", rate: 0.7 }
+    ],
+    statuses: [
+      { id: "member", name: "SKYPASS Member", multiplier: 1 },
+      { id: "morning-calm", name: "Morning Calm", multiplier: 1 },
+      { id: "morning-calm-select", name: "Morning Calm Select", multiplier: 1 },
+      { id: "million-miler", name: "Million Miler", multiplier: 1 }
+    ],
+    note: "SKYPASS earns the flight distance times the booking class percentage, from 70% to 200%, on Korean Air's current international fare table. Tiers add no bonus miles."
+  };
+
+  P.srilankan = {
+    name: "SriLankan Airlines | FlySmiLes",
+    country: "LK",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "y-value",
+    fareTypes: [
+      { id: "j-flex", name: "Business Flex (J)", rate: 2.25 },
+      { id: "j-semi", name: "Business Semi Flex (C)", rate: 2 },
+      { id: "j-value", name: "Business Value (D)", rate: 1.75 },
+      { id: "j-saver", name: "Business Saver (I)", rate: 1.5 },
+      { id: "y-flex", name: "Economy Flex (Y, B, P, H)", rate: 1.5 },
+      { id: "y-semi", name: "Economy Semi Flex (K, W, M, E)", rate: 1.25 },
+      { id: "y-value", name: "Economy Value (L, R, V, S)", rate: 1 },
+      { id: "y-saver", name: "Economy Saver (N, Q, O)", rate: 0.6 },
+      { id: "y-g", name: "Economy (G)", rate: 0.5 }
+    ],
+    statuses: [
+      { id: "blue", name: "Blue", multiplier: 1 },
+      { id: "classic", name: "Classic", multiplier: 1 },
+      { id: "gold", name: "Gold", multiplier: 1.15 },
+      { id: "platinum", name: "Platinum", multiplier: 1.25 }
+    ],
+    note: "FlySmiLes earns a share of the miles flown by booking class, from 50% to 225%. Gold and Platinum earn 15% and 25% more on SriLankan flights; FlySmiLes does not say what the bonus is taken of, so this estimate applies it to the class miles."
+  };
+
+  P.thai = {
+    name: "Thai Airways | Royal Orchid Plus",
+    country: "TH",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "y-mid",
+    fareTypes: [
+      { id: "f", name: "Royal First (F)", rate: { share: 2.5, min: 500 } },
+      { id: "f-p", name: "Royal First (P)", rate: { share: 2, min: 500 } },
+      { id: "j-high", name: "Royal Silk (C, D)", rate: { share: 1.5, min: 500 } },
+      { id: "j", name: "Royal Silk (J, Z)", rate: { share: 1.25, min: 500 } },
+      { id: "pe", name: "Premium Economy (A, U)", rate: { share: 1.1, min: 500 } },
+      { id: "y-high", name: "Economy (Y, B, M)", rate: { share: 1.1, min: 500 } },
+      { id: "y-mid", name: "Economy (H, Q, T)", rate: { share: 1, min: 500 } },
+      { id: "y-low", name: "Economy (K, S, V)", rate: { share: 0.75, min: 500 } },
+      { id: "y-g", name: "Economy (G)", rate: { share: 0.5, min: 500 } },
+      { id: "y-w", name: "Economy (W)", rate: { share: 0.25, min: 500 } },
+      { id: "none", name: "Economy (L) and award classes", rate: 0 }
+    ],
+    statuses: [
+      { id: "member", name: "Royal Orchid Plus Member", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1.05 },
+      { id: "gold", name: "Gold", multiplier: 1.1 },
+      { id: "platinum", name: "Platinum", multiplier: 1.2 }
+    ],
+    note: "Royal Orchid Plus earns a share of the miles flown by booking class, with at least 500 miles per flight in classes that earn. Silver, Gold, and Platinum add 5%, 10%, and 20% on international THAI flights only; this estimate applies it to the class miles."
+  };
+
+  /* PhoenixMiles: Air China and Shenzhen Airlines. Kilometres flown times the
+     class percentage, with a minimum per flight in km; the first value is for
+     flights within mainland China, the second for international ones. */
+  P.phoenix = {
+    name: "Air China Group | PhoenixMiles",
+    programName: "PhoenixMiles",
+    country: "CN",
+    unit: "PhoenixMiles",
+    method: "distance",
+    distanceFactor: 1.609344,
+    defaultFareType: "m",
+    zoneLabel: "Route type",
+    zoneHint: "PhoenixMiles counts kilometres; enter the distance in miles and the calculator converts it.",
+    zones: [
+      { id: "mainland", name: "Within mainland China" },
+      { id: "intl", name: "International and regional" }
+    ],
+    airlines: [
+      { id: "ca", name: "Air China" },
+      { id: "zh", name: "Shenzhen Airlines", program: { fareTypes: [
+          { id: "j", name: "Business (J)", earn: [{ share: 3, min: 800 }, { share: 2.5, min: 800 }] },
+          { id: "c", name: "Business (C)", earn: [{ share: 2, min: 800 }, { share: 2, min: 800 }] },
+          { id: "d", name: "Business (D)", earn: [{ share: 1.5, min: 800 }, { share: 1.5, min: 800 }] },
+          { id: "z", name: "Business (Z)", earn: [{ share: 1.25, min: 800 }, { share: 1.25, min: 800 }] },
+          { id: "r", name: "Business (R)", earn: [{ share: 1.1, min: 800 }, { share: 1.25, min: 800 }] },
+          { id: "g", name: "Premium Economy (G)", earn: [{ share: 1.1, min: 500 }, { share: 1.1, min: 500 }] },
+          { id: "e", name: "Premium Economy (E)", earn: [{ share: 0.9, min: 500 }, { share: 0.9, min: 500 }] },
+          { id: "y", name: "Economy (Y)", earn: [{ share: 1.1, min: 500 }, { share: 1.1, min: 500 }] },
+          { id: "b", name: "Economy (B)", earn: [{ share: 1, min: 500 }, { share: 1.1, min: 500 }] },
+          { id: "m", name: "Economy (M)", earn: [{ share: 1, min: 500 }, { share: 1, min: 500 }] },
+          { id: "u", name: "Economy (U)", earn: [{ share: 1, min: 500 }, { share: 0.75, min: 500 }] },
+          { id: "hqv", name: "Economy (H, Q, V)", earn: [{ share: 0.75, min: 500 }, { share: 0.75, min: 500 }] },
+          { id: "wst", name: "Economy (W, S, T)", earn: [{ share: 0.5, min: 500 }, { share: 0.5, min: 500 }] },
+          { id: "lpak", name: "Economy (L, P, A, K)", earn: [{ share: 0.25, min: 500 }, { share: 0.25, min: 500 }] }
+      ] } }
+    ],
+    fareTypes: [
+      { id: "f", name: "First (F)", earn: [{ share: 3, min: 1000 }, { share: 3, min: 1000 }] },
+      { id: "a", name: "First (A)", earn: [{ share: 2, min: 1000 }, { share: 2.5, min: 1000 }] },
+      { id: "j", name: "Business (J)", earn: [{ share: 3, min: 800 }, { share: 2.5, min: 800 }] },
+      { id: "c", name: "Business (C)", earn: [{ share: 2, min: 800 }, { share: 2, min: 800 }] },
+      { id: "d", name: "Business (D)", earn: [{ share: 1.5, min: 800 }, { share: 1.5, min: 800 }] },
+      { id: "z", name: "Business (Z)", earn: [{ share: 1.25, min: 800 }, { share: 1.25, min: 800 }] },
+      { id: "r", name: "Business (R)", earn: [{ share: 1.1, min: 800 }, { share: 1.25, min: 800 }] },
+      { id: "g", name: "Premium Economy (G)", earn: [{ share: 1.1, min: 500 }, { share: 1.1, min: 500 }] },
+      { id: "e", name: "Premium Economy (E)", earn: [{ share: 0.9, min: 500 }, { share: 0.9, min: 500 }] },
+      { id: "y", name: "Economy (Y)", earn: [{ share: 1.1, min: 500 }, { share: 1.1, min: 500 }] },
+      { id: "b", name: "Economy (B)", earn: [{ share: 1, min: 500 }, { share: 1.1, min: 500 }] },
+      { id: "m", name: "Economy (M)", earn: [{ share: 1, min: 500 }, { share: 1, min: 500 }] },
+      { id: "u", name: "Economy (U)", earn: [{ share: 1, min: 500 }, { share: 0.75, min: 500 }] },
+      { id: "hqv", name: "Economy (H, Q, V)", earn: [{ share: 0.75, min: 500 }, { share: 0.75, min: 500 }] },
+      { id: "wst", name: "Economy (W, S, T)", earn: [{ share: 0.5, min: 500 }, { share: 0.5, min: 500 }] },
+      { id: "lkp", name: "Economy (L, K, P)", earn: [{ share: 0.25, min: 500 }, { share: 0.25, min: 500 }] }
+    ],
+    statuses: [
+      { id: "member", name: "PhoenixMiles Member", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1.25 },
+      { id: "gold", name: "Gold", multiplier: 1.3 },
+      { id: "platinum", name: "Platinum", multiplier: 1.5 }
+    ],
+    note: "PhoenixMiles earns a share of the distance in kilometres by booking class, with a minimum per flight (500 km in Economy, 800 km in Business, 1,000 km in First). Silver, Gold, and Platinum earn 25%, 30%, and 50% extra; the airline does not say what the bonus is taken of, so this estimate applies it to the class miles."
+  };
+
+  P.airindia = {
+    name: "Air India Group | Maharaja Club",
+    programName: "Maharaja Club",
+    country: "IN",
+    currency: "INR",
+    unit: "Maharaja Points",
+    method: "spend",
+    ratePer: 100,
+    airlines: [
+      { id: "ai", name: "Air India" },
+      { id: "ix", name: "Air India Express", noAlliance: true, program: { baseFareOnly: true } }
+    ],
+    statuses: [
+      { id: "red", name: "Red", rate: 0.06 },
+      { id: "silver", name: "Silver", rate: 0.08 },
+      { id: "gold", name: "Gold", rate: 0.09 },
+      { id: "platinum", name: "Platinum", rate: 0.1 }
+    ],
+    note: "Maharaja Club earns per ₹100 of the base fare plus fuel surcharge on Air India (base fare only on Air India Express), by tier: 6, 8, 9, or 10 points. Booking on the Air India website or app adds 2 more per ₹100, which this estimate does not add. Enter fares in rupees."
+  };
+
+  P.aireuropa = {
+    name: "Air Europa | SUMA",
+    country: "ES",
+    currency: "EUR",
+    unit: "Suma Miles",
+    method: "spend",
+    roundUp: true,
+    centsPerPoint: 1.0,
+    defaultFareType: "y-eu",
+    fareTypes: [
+      { id: "y-eu", name: "Economy or Premium, Spain and Europe", rate: 5 },
+      { id: "y-am", name: "Economy or Premium, America", rate: 6 },
+      { id: "j-eu", name: "Business, Spain and Europe", rate: 8 },
+      { id: "j-am", name: "Business, America", rate: 9 }
+    ],
+    // The level bonus is a share of the base 5 Miles per euro.
+    statuses: [
+      { id: "suma", name: "Suma", multiplier: 1 },
+      { id: "silver", name: "Suma Silver", multiplier: 1, addRate: 2.5 },
+      { id: "gold", name: "Suma Gold", multiplier: 1, addRate: 3.75 },
+      { id: "platinum", name: "Suma Platinum", multiplier: 1, addRate: 5 }
+    ],
+    note: "SUMA earns per euro of the fare plus fuel surcharge: 5 in Spain and Europe, 6 on America flights, and 3 more in Business. Silver, Gold, and Platinum add 50%, 75%, or 100% of the base 5 per euro. Air Europa rounds up. Enter fares in euros."
+  };
+
+  P.copa = {
+    name: "Copa Airlines | ConnectMiles",
+    country: "PA",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "classic",
+    fareTypes: [
+      { id: "basic", name: "Economy Basic", rate: { share: 0.5, min: 500 } },
+      { id: "classic", name: "Economy Classic or Classic Flex", rate: { share: 1, min: 500 } },
+      { id: "full", name: "Economy Full", rate: { share: 1.75, min: 500 } },
+      { id: "j-promo", name: "Business Promo", rate: { share: 1.75, min: 500 } },
+      { id: "j-full", name: "Business Full", rate: { share: 3, min: 500 } }
+    ],
+    statuses: [
+      { id: "member", name: "ConnectMiles Member", multiplier: 1 },
+      { id: "silver", name: "PreferMember Silver", multiplier: 1.25 },
+      { id: "gold", name: "PreferMember Gold", multiplier: 1.5 },
+      { id: "platinum", name: "PreferMember Platinum", multiplier: 1.75 },
+      { id: "presidential", name: "PreferMember Presidential", multiplier: 2 }
+    ],
+    note: "ConnectMiles earns a share of the distance flown by fare family, from 50% to 300%, with at least 500 miles per flight. PreferMember Silver, Gold, Platinum, and Presidential add 25% to 100%."
+  };
+
+  P.ram = {
+    name: "Royal Air Maroc | Safar Flyer",
+    country: "MA",
+    unit: "Award Miles",
+    method: "distance",
+    defaultFareType: "classic",
+    fareTypes: [
+      { id: "essential", name: "Eco Essential", rate: 0.5 },
+      { id: "classic", name: "Eco Classic or Family Classic", rate: 1 },
+      { id: "flex", name: "Eco Flex", rate: 1.5 },
+      { id: "biz-classic", name: "Biz Classic", rate: 1.5 },
+      { id: "biz-flex", name: "Biz Flex", rate: 2 }
+    ],
+    statuses: [
+      { id: "blue", name: "Blue", multiplier: 1 },
+      { id: "silver", name: "Silver", multiplier: 1.5 },
+      { id: "gold", name: "Gold", multiplier: 1.75 },
+      { id: "platinum", name: "Platinum", multiplier: 2 }
+    ],
+    note: "Safar Flyer earns a share of the distance by fare family, from 50% to 200%. Silver, Gold, and Platinum add 50%, 75%, and 100% on Royal Air Maroc flights. Flights under 500 miles earn an unpublished minimum."
+  };
+
+  P.vietnam = {
+    name: "Vietnam Airlines | Lotusmiles",
+    country: "VN",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "y-classic",
+    zoneLabel: "Route type",
+    zoneHint: "Economy Classic and Lite earn less on international flights.",
+    zones: [
+      { id: "intl", name: "International" },
+      { id: "domestic", name: "Within Vietnam" }
+    ],
+    fareTypes: [
+      { id: "j-flex", name: "Business Flex (J, C)", earn: [2, 2] },
+      { id: "j-classic", name: "Business Classic (D, I)", earn: [1.5, 1.5] },
+      { id: "pe-flex", name: "Premium Economy Flex (W)", earn: [1.3, 1.3] },
+      { id: "pe-classic", name: "Premium Economy Classic (Z, U)", earn: [1.2, 1.2] },
+      { id: "y-flex", name: "Economy Flex (Y, M, B)", earn: [1.1, 1.1] },
+      { id: "y-classic", name: "Economy Classic (S, H, K, L)", earn: [0.65, 0.8] },
+      { id: "y-lite", name: "Economy Lite (Q, N)", earn: [0.25, 0.6] }
+    ],
+    statuses: [
+      { id: "silver", name: "Silver", multiplier: 1 },
+      { id: "titanium", name: "Titanium", multiplier: 1.3 },
+      { id: "gold", name: "Gold", multiplier: 1.5 },
+      { id: "platinum", name: "Platinum", multiplier: 2 },
+      { id: "million-miler", name: "Million Miler", multiplier: 2 }
+    ],
+    note: "Lotusmiles earns the distance flown times the fare family rate, for flights from 26 August 2026. Titanium, Gold, and Platinum or Million Miler add 30%, 50%, and 100%. Class Q earns as Economy Classic between Vietnam and Europe, Australia, the United States, or China."
+  };
+
+  P.chinaeastern = {
+    name: "China Eastern | Eastern Miles",
+    country: "CN",
+    currency: "CNY",
+    unit: "miles",
+    method: "spend",
+    defaultFareType: "direct",
+    // Miles per yuan of fare plus fuel surcharge, by level and sales channel.
+    fareTypes: [
+      { id: "direct", name: "Booked on the China Eastern app, website, or 95530" },
+      { id: "other", name: "Booked through another channel" }
+    ],
+    statuses: [
+      { id: "1-star", name: "1-star member", rates: { direct: 0.264, other: 0.24 } },
+      { id: "2-star", name: "2-star member", rates: { direct: 0.44, other: 0.4 } },
+      { id: "3-star", name: "3-star member", rates: { direct: 0.66, other: 0.6 } },
+      { id: "4-star", name: "4-star member", rates: { direct: 0.792, other: 0.72 } },
+      { id: "5-star", name: "5-star member", rates: { direct: 0.88, other: 0.8 } },
+      { id: "6-star", name: "6-star member", rates: { direct: 0.968, other: 0.88 } },
+      { id: "silver", name: "Silver card", rates: { direct: 1.056, other: 0.96 } },
+      { id: "gold", name: "Gold card", rates: { direct: 1.144, other: 1.04 } },
+      { id: "platinum", name: "Platinum card", rates: { direct: 1.232, other: 1.12 } }
+    ],
+    note: "Eastern Miles earns on the price paid, fare plus fuel surcharge, on China Eastern, Shanghai Airlines, and China United tickets: 0.24 to 1.232 miles per yuan by level and sales channel. Enter fares in yuan."
+  };
+
+  P.xiamen = {
+    name: "Xiamen Airlines | Egret Miles",
+    country: "CN",
+    currency: "CNY",
+    unit: "miles",
+    method: "spend",
+    roundUp: true,
+    defaultFareType: "y-other",
+    fareTypes: [
+      { id: "j", name: "First or Business", rate: 1 },
+      { id: "y-yw", name: "Economy (Y, W)", rate: 1 },
+      { id: "y-h-dom", name: "Economy (H), within China", rate: 1 },
+      { id: "y-h-intl", name: "Economy (H), international or regional", rate: 0.7 },
+      { id: "y-other", name: "Other Economy classes", rate: 0.7 }
+    ],
+    statuses: [
+      { id: "member", name: "Egret Member", multiplier: 1 },
+      { id: "silver", name: "Egret Silver", multiplier: 1, addRate: 0.2 },
+      { id: "gold", name: "Egret Gold", multiplier: 1, addRate: 0.3 },
+      { id: "platinum", name: "Egret Platinum", multiplier: 1, addRate: 0.4 },
+      { id: "diamond", name: "Egret Diamond", multiplier: 1, addRate: 0.5 }
+    ],
+    note: "Since 25 July 2026, Egret Miles earns on the base fare plus fuel surcharge in yuan, times the cabin multiplier (1.0 or 0.7) plus the tier multiplier (0.2 to 0.5). Miles are rounded up. Enter fares in yuan."
+  };
+
+  P.rj = {
+    name: "Royal Jordanian | Royal Club",
+    country: "JO",
+    unit: "Award Miles",
+    method: "distance",
+    defaultFareType: "y-plus",
+    fareTypes: [
+      { id: "y-saver", name: "Economy Saver (O, P, W)", rate: 0.5 },
+      { id: "y-plus", name: "Economy Plus (L, V, S, N, Q)", rate: 0.75 },
+      { id: "y-flexi", name: "Economy Flexi (Y, B, H, K, M)", rate: 1 },
+      { id: "j-saver", name: "Business Saver (I, Z)", rate: 1.5 },
+      { id: "j-plus", name: "Business Plus (C, D)", rate: 1.75 },
+      { id: "j-flexi", name: "Business Flexi (J)", rate: 2 }
+    ],
+    // Each tier adds 25% of the distance to the Bronze Sunbird rate.
+    statuses: [
+      { id: "bronze", name: "Bronze Sunbird", bonus: 0 },
+      { id: "silver", name: "Silver Jay", bonus: 0.25 },
+      { id: "gold", name: "Gold Sparrow", bonus: 0.5 },
+      { id: "platinum", name: "Platinum Hawk", bonus: 0.75 }
+    ],
+    note: "Royal Club earns the distance times a rate set by fare family and tier: 50% to 200% for Bronze Sunbird, plus 25%, 50%, or 75% for Silver Jay, Gold Sparrow, and Platinum Hawk."
+  };
+
+  P.aerolineas = {
+    name: "Aerolíneas Argentinas | Aerolíneas Plus",
+    country: "AR",
+    unit: "miles",
+    method: "distance",
+    defaultFareType: "ybm",
+    zoneLabel: "Route type",
+    zoneHint: "Regional means Bolivia, Brazil, Chile, Colombia, Paraguay, Peru, and Uruguay; International means the Dominican Republic, Mexico, the United States, and Europe.",
+    zones: [
+      { id: "intl", name: "International" },
+      { id: "regional", name: "Regional (South America)" },
+      { id: "domestic", name: "Within Argentina" }
+    ],
+    // Earn lists follow the zones order: international, regional, domestic.
+    fareTypes: [
+      { id: "jidc", name: "Fare basis starting J, I, D, or C", earn: [2, 1.5, null] },
+      { id: "ws", name: "Fare basis starting W or S", earn: [1.5, 1.5, 1.5] },
+      { id: "ybm", name: "Fare basis starting Y, B, or M", earn: [1.25, 1.25, 1] },
+      { id: "ulkh", name: "Fare basis starting U, L, K, or H", earn: [1, 1, 0.75] },
+      { id: "q", name: "Fare basis starting Q", earn: [1, 1, 0.25] },
+      { id: "vtne", name: "Fare basis starting V, T, N, or E", earn: [0.25, 0.25, 0.25] },
+      { id: "ra", name: "Fare basis starting R or A", earn: [0.25, 0.25, 0] },
+      { id: "g", name: "Fare basis starting G", earn: [0, 0, 0] }
+    ],
+    statuses: [
+      { id: "plus", name: "Aerolíneas Plus", multiplier: 1 },
+      { id: "oro", name: "Oro", multiplier: 1 },
+      { id: "platino", name: "Platino", multiplier: 1 },
+      { id: "diamante", name: "Diamante", multiplier: 1 }
+    ],
+    note: "Aerolíneas Plus earns a share of the distance flown, set by the first letter of the fare basis and the route type. Tiers add no bonus miles."
+  };
+
+  /* LOT and Croatia Airlines credit to Miles & More; they join that program
+     as airlines with their own earning tables. */
+  var mm = P.milesandmore;
+  mm.airlines.push(
+    { id: "lo", name: "LOT Polish Airlines", country: "PL", program: {
+        method: "distance",
+        defaultFareType: "y-mid",
+        zoneLabel: "Route type",
+        zoneHint: "Within Europe LOT pays a fixed amount per flight; outside Europe a share of the distance, with a minimum.",
+        zones: [
+          { id: "intl", name: "International (to or from outside Europe)" },
+          { id: "eu", name: "Between European countries", fixed: true },
+          { id: "dom", name: "Within one European country", fixed: true }
+        ],
+        // Earn lists follow the zones order.
+        fareTypes: [
+            { id: "j", name: "Business (C, D)", earn: [{ share: 2, min: 1000 }, { fixed: 2000 }, null] },
+            { id: "jz", name: "Business (F, Z)", earn: [{ share: 1.5, min: 750 }, { fixed: 1250 }, null] },
+            { id: "pe-p", name: "Premium Economy (P)", earn: [{ share: 1.6, min: 750 }, { fixed: 1350 }, null] },
+            { id: "pe-a", name: "Premium Economy (A)", earn: [{ share: 1.5, min: 750 }, { fixed: 1250 }, null] },
+            { id: "pe-r", name: "Premium Economy (R)", earn: [{ share: 1, min: 500 }, { fixed: 750 }, null] },
+            { id: "y-high", name: "Economy (Y, B)", earn: [{ share: 1.5, min: 750 }, { fixed: 1250 }, { fixed: 1000 }] },
+            { id: "y-m", name: "Economy (M)", earn: [{ share: 1, min: 500 }, { fixed: 1250 }, { fixed: 500 }] },
+            { id: "y-mid", name: "Economy (E, H, K)", earn: [{ share: 1, min: 500 }, { fixed: 750 }, { fixed: 500 }] },
+            { id: "y-q", name: "Economy (Q)", earn: [{ share: 1, min: 500 }, { fixed: 750 }, { fixed: 250 }] },
+            { id: "y-low", name: "Economy (G, S, T, V)", earn: [{ share: 0.5, min: 250 }, { fixed: 500 }, { fixed: 250 }] },
+            { id: "y-lowest", name: "Economy (L, O, U, W)", earn: [{ share: 0.25, min: 250 }, { fixed: 125 }, { fixed: 125 }] }
+        ],
+        note: "On LOT tickets (ticket number 080), Miles & More pays a fixed amount per flight within Europe and a share of the distance, with a minimum, outside Europe. Status members earn up to 25% more on LOT, but Miles & More does not publish how much, so this estimate leaves it out."
+      } },
+    { id: "ou", name: "Croatia Airlines", country: "HR", program: {
+        method: "zone",
+        defaultFareType: "y-mid",
+        zoneLabel: "Route type",
+        zoneHint: "Croatia Airlines pays a fixed amount per flight, whatever the distance.",
+        fareTypes: [
+            { id: "j", name: "Business (C, D)" },
+            { id: "jz", name: "Business (Z)" },
+            { id: "y-high", name: "Economy (B, Y)" },
+            { id: "y-m", name: "Economy (M)" },
+            { id: "y-mid", name: "Economy (A, F, H, J)" },
+            { id: "y-q", name: "Economy (G, O, Q)" },
+            { id: "y-low", name: "Economy (K, V)" },
+            { id: "y-sw", name: "Economy (S, W)" },
+            { id: "y-lowest", name: "Economy (E, L, P, T, U)" }
+        ],
+        zones: [
+          { id: "eu", name: "Between European countries", points: [2000, 1250, 1250, 1250, 750, 750, 500, 500, 125] },
+          { id: "dom", name: "Within Croatia", points: [1500, 750, 750, 500, 500, 250, 250, 125, 125] }
+        ],
+        note: "On Croatia Airlines, Miles & More pays a fixed amount per flight by booking class: one amount within Croatia and another between European countries. Status members earn up to 50% more, but Miles & More does not publish how much, so this estimate leaves it out."
+      } }
+  );
+})();
+
 /* Alliance tier matching each program status, shown as "Status | Tier".
    oneworld: Ruby, Sapphire, Emerald. Star Alliance: Silver, Gold.
    SkyTeam: Elite, Elite Plus. Airlines outside an alliance are left out,
@@ -1109,6 +1657,9 @@ window.PROGRAMS = {
     cathay: { silver: "Ruby", gold: "Sapphire", diamond: "Emerald" },
     jal: { crystal: "Ruby", jgc: "Sapphire", sapphire: "Sapphire", "jgc-premier": "Emerald", diamond: "Emerald" },
     enrich: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
+    srilankan: { classic: "Ruby", gold: "Sapphire", platinum: "Emerald" },
+    ram: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
+    rj: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     // Star Alliance
     united: { silver: "Silver", gold: "Gold", platinum: "Gold", "1k": "Gold" },
     aircanada: { "25k": "Silver", "35k": "Gold", "50k": "Gold", "75k": "Gold", se: "Gold" },
@@ -1118,23 +1669,37 @@ window.PROGRAMS = {
     krisflyer: { "elite-silver": "Silver", "elite-gold": "Gold", pps: "Gold", solitaire: "Gold" },
     eva: { silver: "Silver", gold: "Gold", diamond: "Gold" },
     lifemiles: { silver: "Silver", gold: "Gold", diamond: "Gold" },
+    airnz: { silver: "Silver", gold: "Gold", platinum: "Gold", black: "Gold" },
+    turkish: { "classic-plus": "Silver", elite: "Gold", "elite-plus": "Gold" },
+    thai: { silver: "Silver", gold: "Gold", platinum: "Gold" },
+    phoenix: { silver: "Silver", gold: "Gold", platinum: "Gold" },
+    airindia: { silver: "Silver", gold: "Gold", platinum: "Gold" },
+    copa: { silver: "Silver", gold: "Gold", platinum: "Gold", presidential: "Gold" },
     // SkyTeam
     delta: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus", diamond: "Elite Plus" },
     aeromexico: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus", titanium: "Elite Plus" },
     flyingblue: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus", ultimate: "Elite Plus" },
     virgin: { silver: "Elite", gold: "Elite Plus" },
-    chinaairlines: { gold: "Elite", emerald: "Elite Plus", paragon: "Elite Plus" }
+    chinaairlines: { gold: "Elite", emerald: "Elite Plus", paragon: "Elite Plus" },
+    korean: { "morning-calm": "Elite", "morning-calm-select": "Elite Plus", "million-miler": "Elite Plus" },
+    aireuropa: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus" },
+    vietnam: { titanium: "Elite", gold: "Elite", platinum: "Elite Plus", "million-miler": "Elite Plus" },
+    chinaeastern: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus" },
+    xiamen: { silver: "Elite", gold: "Elite", platinum: "Elite Plus", diamond: "Elite Plus" },
+    aerolineas: { oro: "Elite", platino: "Elite Plus", diamante: "Elite Plus" }
   };
 
   // Alliance of each program, or of each airline for group programs.
   // Anything not listed is not part of an alliance.
   var ALLIANCES = {
     oneworld: ["american", "alaska", "hawaiian", "iag:ba", "iag:ib", "finnair", "qatar",
-      "qantas", "cathay", "jal", "enrich"],
+      "qantas", "cathay", "jal", "enrich", "srilankan", "ram", "rj"],
     "Star Alliance": ["united", "aircanada", "milesandmore:lh", "milesandmore:lx",
       "milesandmore:os", "milesandmore:sn", "milesandmore:az", "tap", "ana",
-      "krisflyer", "eva", "lifemiles"],
-    SkyTeam: ["delta", "aeromexico", "flyingblue:af", "flyingblue:kl", "virgin", "chinaairlines"]
+      "krisflyer", "eva", "lifemiles", "airnz", "turkish", "thai", "phoenix:ca", "phoenix:zh",
+      "airindia:ai", "copa", "milesandmore:lo", "milesandmore:ou"],
+    SkyTeam: ["delta", "aeromexico", "flyingblue:af", "flyingblue:kl", "virgin", "chinaairlines",
+      "korean", "aireuropa", "vietnam", "chinaeastern", "xiamen", "aerolineas"]
   };
   Object.keys(ALLIANCES).forEach(function (name) {
     ALLIANCES[name].forEach(function (key) {
@@ -1190,5 +1755,19 @@ window.COUNTRIES = [
   { id: "SG", label: "Singapore \u{1F1F8}\u{1F1EC}" },
   { id: "TW", label: "Taiwan \u{1F1F9}\u{1F1FC}" },
   { id: "AE", label: "United Arab Emirates \u{1F1E6}\u{1F1EA}" },
+  { id: "NZ", label: "New Zealand \u{1F1F3}\u{1F1FF}" },
+  { id: "TR", label: "Türkiye \u{1F1F9}\u{1F1F7}" },
+  { id: "KR", label: "South Korea \u{1F1F0}\u{1F1F7}" },
+  { id: "LK", label: "Sri Lanka \u{1F1F1}\u{1F1F0}" },
+  { id: "TH", label: "Thailand \u{1F1F9}\u{1F1ED}" },
+  { id: "CN", label: "China \u{1F1E8}\u{1F1F3}" },
+  { id: "IN", label: "India \u{1F1EE}\u{1F1F3}" },
+  { id: "PA", label: "Panama \u{1F1F5}\u{1F1E6}" },
+  { id: "MA", label: "Morocco \u{1F1F2}\u{1F1E6}" },
+  { id: "VN", label: "Vietnam \u{1F1FB}\u{1F1F3}" },
+  { id: "PL", label: "Poland \u{1F1F5}\u{1F1F1}" },
+  { id: "HR", label: "Croatia \u{1F1ED}\u{1F1F7}" },
+  { id: "JO", label: "Jordan \u{1F1EF}\u{1F1F4}" },
+  { id: "AR", label: "Argentina \u{1F1E6}\u{1F1F7}" },
   { id: "MY", label: "Malaysia \u{1F1F2}\u{1F1FE}" }
 ];

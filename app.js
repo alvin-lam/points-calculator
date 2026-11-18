@@ -43,15 +43,18 @@
     JPY: new Intl.NumberFormat("en-US", { style: "currency", currency: "JPY" }),
     HKD: new Intl.NumberFormat("en-US", { style: "currency", currency: "HKD" }),
     TWD: new Intl.NumberFormat("en-US", { style: "currency", currency: "TWD" }),
+    INR: new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }),
+    CNY: new Intl.NumberFormat("en-US", { style: "currency", currency: "CNY" }),
+    NZD: new Intl.NumberFormat("en-US", { style: "currency", currency: "NZD" }),
     GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
     EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", GBP: "£", EUR: "€" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", GBP: "£", EUR: "€" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -218,7 +221,13 @@
     distanceField.hidden = m !== "distance";
     distanceEl.required = m === "distance";
     segmentsField.hidden = m !== "segments";
-    zoneField.hidden = m !== "zone";
+    var zoneUsed = m === "zone" || (m === "distance" && !!p.zones);
+    zoneField.hidden = !zoneUsed;
+    $("zoneLabel").textContent = p.zoneLabel || "Route and distance";
+    $("zoneHint").textContent = p.zoneHint || "This program awards a fixed amount per flight for each route band.";
+    // A route type that pays a fixed amount needs no distance.
+    var fixedZone = m === "distance" && p.zones && find(p.zones, zoneEl.value).fixed;
+    if (fixedZone) { distanceField.hidden = true; distanceEl.required = false; }
     fareFields.hidden = !usesFare(m);
     airfareEl.required = usesFare(m);
     syncCardSelect();
@@ -255,15 +264,40 @@
       points = airfare * perDollar;
       rateLabel = num.format(perDollar) + " " + p.unit + " per " + symbols[p.currency || "USD"];
     } else if (p.method === "distance") {
-      // A fare class can set the share of distance earned (Virgin Atlantic).
-      // Some fares are excluded from the status bonus (KrisFlyer). A status
-      // bonus can also be added on top of the fare share (Etihad).
-      var fareShare = fareType ? fareType.rate : 1;
-      var perMile = status.bonus != null
-        ? fareShare + status.bonus
-        : fareShare * (fareType && fareType.noBonus ? 1 : status.multiplier);
-      points = distance * perMile;
-      rateLabel = num.format(perMile) + " " + p.unit + " per mile flown";
+      // What a fare earns: a share of the distance (a number), a share with a
+      // minimum per flight ({ share, min }), or a fixed amount ({ fixed }).
+      // With zones, fareType.earn lists one of these per zone; elite members
+      // can have their own list (fareType.eliteEarn, Turkish Airlines).
+      var dZone = p.zones ? find(p.zones, zoneEl.value) : null;
+      var zi = dZone ? p.zones.indexOf(dZone) : 0;
+      var specs = fareType && status.elite && fareType.eliteEarn ? fareType.eliteEarn : (fareType && fareType.earn);
+      var spec = specs ? specs[zi] : (fareType ? fareType.rate : 1);
+      if (spec == null) return { error: fareType.name + " does not earn on this route." };
+      if (typeof spec === "object" && spec.fixed != null) {
+        points = spec.fixed;
+        rateLabel = "fixed for this fare and route";
+      } else {
+        var share = typeof spec === "object" ? spec.share : spec;
+        var min = typeof spec === "object" ? spec.min : null;
+        // Some programs count kilometres (PhoenixMiles); the input is miles.
+        var dist = distance * (p.distanceFactor || 1);
+        var unitName = p.distanceFactor ? "km" : "mile flown";
+        var base = dist * share;
+        var minUsed = min != null && base < min;
+        if (minUsed) base = min;
+        // A fare class can set the share of distance earned (Virgin Atlantic).
+        // Some fares are excluded from the status bonus (KrisFlyer). A status
+        // bonus can also be added on top of the fare share (Etihad).
+        if (status.bonus != null) {
+          points = base + dist * status.bonus;
+          rateLabel = num.format(share + status.bonus) + " " + p.unit + " per " + unitName;
+        } else {
+          var mult = fareType && fareType.noBonus ? 1 : (status.multiplier || 1);
+          points = base * mult;
+          rateLabel = num.format(share * mult) + " " + p.unit + " per " + unitName;
+        }
+        if (minUsed) rateLabel += ", with the " + num.format(min) + " minimum per flight";
+      }
     } else if (p.method === "tiered") {
       points = 0;
       var floor = 0;
@@ -281,14 +315,22 @@
         : status.rate;
       // Programs spanning several airlines can set their own elite rate.
       if (airline && status.elite && airline.eliteRate) rate = airline.eliteRate;
+      // A status can add a flat amount per unit of currency (Air Europa, Xiamen).
+      if (status.addRate) rate += status.addRate;
       points = airfare * rate;
+      var sym = symbols[p.currency || "USD"];
       rateLabel = p.rateAsPercent
         ? num.format(rate * 100) + "% of the fare"
-        : num.format(rate) + " " + p.unit + " per " + symbols[p.currency || "USD"];
+        : p.ratePer
+          ? num.format(rate * p.ratePer) + " " + p.unit + " per " + sym + p.ratePer
+          : num.format(rate) + " " + p.unit + " per " + sym;
     }
 
-    // Distance programs round to the nearest mile; spend programs round down.
-    points = em.id === "distance" ? Math.round(points) : Math.floor(points);
+    // Distance programs round to the nearest mile; spend programs round down
+    // (or up, where the program says so). Airpoints keep two decimals.
+    if (p.decimals) points = Math.round(points * 100) / 100;
+    else if (em.id === "distance") points = Math.round(points);
+    else points = p.roundUp ? Math.ceil(points - 1e-9) : Math.floor(points);
     var capped = false;
     if (p.cap && points > p.cap) {
       points = p.cap;
@@ -332,7 +374,8 @@
     if (fareUsed && (!(airfare >= 0) || airfareEl.value === "")) return showError("Please enter your airfare.");
     if (carrier < 0) return showError("Carrier-imposed fees cannot be negative.");
     if (taxes < 0) return showError("Taxes and fees cannot be negative.");
-    if (method === "distance" && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
+    var routeFixed = method === "distance" && p.zones && find(p.zones, zoneEl.value).fixed;
+    if (method === "distance" && !routeFixed && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
     if (method === "segments" && !(segments > 0)) return showError("Please enter the number of segments flown.");
 
     errorEl.hidden = true;
@@ -369,7 +412,8 @@
       row(dl, "Taxes & Fees", usd.format(taxes));
       row(dl, "Total trip cost", usd.format(tripCost));
     }
-    if (method === "distance") row(dl, "Miles flown", num.format(distance));
+    if (method === "distance" && !routeFixed) row(dl, "Miles flown", num.format(distance));
+    if (method === "distance" && p.zones) row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "segments") row(dl, "Segments flown", num.format(segments));
     if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
     row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
@@ -427,6 +471,7 @@
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   programEl.addEventListener("change", onProgramChange);
   earnEl.addEventListener("change", syncEarnFields);
+  zoneEl.addEventListener("change", syncEarnFields);
   usedCardYes.addEventListener("change", syncCardSelect);
   usedCardNo.addEventListener("change", syncCardSelect);
   cardEl.addEventListener("change", syncCardSelect);
