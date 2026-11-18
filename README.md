@@ -24,6 +24,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 - Malaysia Airlines Enrich earns 1.5 to 2.5 points per ringgit (RM) by status.
 - Etihad Guest earns a share of the route distance by fare brand, and adds a status bonus as a share of the distance.
 - EVA Air and China Airlines earn a share of the distance by booking class, so they ask for the class and the miles flown.
+- Icelandair awards fixed Saga Points per flight by fare and route, so it asks for the fare and the route.
 - Porter fares are entered in Canadian dollars, Finnair fares in euros, Virgin Australia fares in Australian dollars (A$), and Norwegian fares in Norwegian kroner (kr). Avianca LifeMiles earns per US dollar by fare family.
 - The program menu keeps the United States, Canada, and Mexico at the top and sorts the other countries alphabetically.
 - Miles & More (Lufthansa Group), Flying Blue (Air France-KLM), and IAG are single programs. Each of their airlines is listed under its own country as "Airline | Program", such as "Lufthansa | Miles & More" under Germany. For Miles & More, the airline sets the status earning rate. For IAG, the airline picks the loyalty program: AerClub in euros, British Airways Club in pounds, Iberia Club in euros (Iberia and LEVEL), or Vueling Club in euros, each with its own status levels and cards.

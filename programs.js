@@ -668,6 +668,35 @@ window.PROGRAMS = {
     note: "LifeMiles earns on Avianca flights by the fare paid: 3, 6, 8, or 10 miles per US dollar by fare family, excluding taxes. Red Plus and Silver add 10% and 20%. Gold and Diamond are shown at 60% and 80%, but sources differ on those two."
   };
 
+  P.icelandair = {
+    name: "Icelandair | Saga Club",
+    country: "IS",
+    unit: "Saga Points",
+    method: "zone",
+    defaultFareType: "standard",
+    // Fixed Saga Points per one-way flight, from Icelandair's fare types
+    // page. Each zone's points follow the fareTypes order.
+    fareTypes: [
+      { id: "light", name: "Economy Light" },
+      { id: "standard", name: "Economy Standard" },
+      { id: "flex", name: "Economy Flex" },
+      { id: "premium", name: "Saga Premium" },
+      { id: "premium-flex", name: "Saga Premium Flex" }
+    ],
+    zones: [
+      { id: "europe", name: "Iceland and Europe (one flight)", points: [850, 1700, 2550, 3400, 5100] },
+      { id: "north-america", name: "Iceland and North America (one flight)", points: [1200, 2400, 3600, 4800, 7200] },
+      { id: "via-iceland", name: "North America and Europe via Iceland (both flights)", points: [2050, 4100, 6150, 8200, 12300] }
+    ],
+    // Silver and Gold earn extra Tier Credits, not extra Saga Points.
+    statuses: [
+      { id: "blue", name: "Saga Blue", bonus: 0 },
+      { id: "silver", name: "Saga Silver", bonus: 0 },
+      { id: "gold", name: "Saga Gold", bonus: 0 }
+    ],
+    note: "Icelandair awards a fixed number of Saga Points per flight, set by fare and route. A trip between North America and Europe through Iceland earns both flights. Saga Silver and Gold add 10% or 20% Tier Credits toward status, not Saga Points. Icelandair has not updated this table in several years, so check a recent booking if the numbers look off."
+  };
+
   P.norwegian = {
     name: "Norwegian | Norwegian Reward",
     country: "NO",
@@ -1045,6 +1074,7 @@ window.COUNTRIES = [
   { id: "AU", label: "Australia \u{1F1E6}\u{1F1FA}" },
   { id: "CO", label: "Colombia \u{1F1E8}\u{1F1F4}" },
   { id: "NO", label: "Norway \u{1F1F3}\u{1F1F4}" },
+  { id: "IS", label: "Iceland \u{1F1EE}\u{1F1F8}" },
   { id: "FI", label: "Finland \u{1F1EB}\u{1F1EE}" },
   { id: "QA", label: "Qatar \u{1F1F6}\u{1F1E6}" },
   { id: "JP", label: "Japan \u{1F1EF}\u{1F1F5}" },
