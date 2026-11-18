@@ -975,7 +975,12 @@ window.PROGRAMS = {
       { id: "gold", name: "Gold", bonus: 0 },
       { id: "diamond", name: "Diamond", bonus: 0 }
     ],
-    note: "Cathay Pacific awards a fixed number of Asia Miles per flight, set by fare type and distance zone from Hong Kong. Cathay's published table is the same for every status level. It covers flights marketed by Cathay Pacific and departing on or after 20 August 2025. Co-branded cards are not included."
+    // US card (Synchrony): Asia Miles per US dollar on Cathay Pacific and
+    // HK Express purchases.
+    cards: [
+      { id: "cathay-wemc", name: "Cathay World Elite Mastercard (US)", rate: 3, currency: "USD" }
+    ],
+    note: "Cathay Pacific awards a fixed number of Asia Miles per flight, set by fare type and distance zone from Hong Kong. Cathay's published table is the same for every status level. It covers flights marketed by Cathay Pacific and departing on or after 20 August 2025. The US Cathay World Elite Mastercard adds 3 Asia Miles per US dollar charged for the ticket."
   };
 
   P.etihad = {
@@ -1288,7 +1293,13 @@ window.PROGRAMS = {
       { id: "morning-calm-select", name: "Morning Calm Select", multiplier: 1 },
       { id: "million-miler", name: "Million Miler", multiplier: 1 }
     ],
-    note: "SKYPASS earns the flight distance times the booking class percentage, from 70% to 200%, on Korean Air's current international fare table. Tiers add no bonus miles."
+    // US cards (U.S. Bank): miles per dollar on Korean Air tickets.
+    cards: [
+      { id: "skyblue", name: "SKYPASS SkyBlue Visa (US)", rate: 1 },
+      { id: "sig", name: "SKYPASS Visa Signature (US)", rate: 2 },
+      { id: "select", name: "SKYPASS Select Visa Signature (US)", rate: 3 }
+    ],
+    note: "SKYPASS earns the flight distance times the booking class percentage, from 70% to 200%, on Korean Air's current international fare table. Tiers add no bonus miles. The US SKYPASS cards add 1, 2, or 3 miles per dollar on Korean Air tickets charged to the SkyBlue Visa, Visa Signature, or Select Visa Signature."
   };
 
   P.srilankan = {
