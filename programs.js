@@ -70,11 +70,8 @@ window.PROGRAMS = {
     cards: [
       { id: "blue", name: "Delta SkyMiles Blue Amex", rate: 2 },
       { id: "gold", name: "Delta SkyMiles Gold Amex", rate: 2 },
-      { id: "gold-biz", name: "Delta SkyMiles Gold Business Amex", rate: 2 },
       { id: "plat", name: "Delta SkyMiles Platinum Amex", rate: 3 },
-      { id: "plat-biz", name: "Delta SkyMiles Platinum Business Amex", rate: 3 },
-      { id: "reserve", name: "Delta SkyMiles Reserve Amex", rate: 3 },
-      { id: "reserve-biz", name: "Delta SkyMiles Reserve Business Amex", rate: 3 }
+      { id: "reserve", name: "Delta SkyMiles Reserve Amex", rate: 3 }
     ],
     note: "SkyMiles are earned on base fare and carrier-imposed surcharges. Basic Economy fares earn no miles. Earning is capped at 75,000 miles per ticket."
   },
@@ -107,11 +104,12 @@ window.PROGRAMS = {
     unit: "points",
     method: "spend",
     centsPerPoint: 1.3,
+    // Points per dollar of base fare, from southwest.com (2026).
     fareTypes: [
       { id: "basic", name: "Basic", rate: 2 },
       { id: "choice", name: "Choice", rate: 6 },
-      { id: "choicePref", name: "Choice Preferred", rate: 8 },
-      { id: "choiceExtra", name: "Choice Extra", rate: 12 }
+      { id: "choicePref", name: "Choice Preferred", rate: 10 },
+      { id: "choiceExtra", name: "Choice Extra", rate: 14 }
     ],
     statuses: [
       { id: "member", name: "Rapid Rewards Member", multiplier: 1 },
@@ -122,12 +120,10 @@ window.PROGRAMS = {
     cards: [
       { id: "plus", name: "Southwest Rapid Rewards Plus", rate: 2 },
       { id: "premier", name: "Southwest Rapid Rewards Premier", rate: 3 },
-      { id: "premier-biz", name: "Southwest Rapid Rewards Premier Business", rate: 3 },
       { id: "priority", name: "Southwest Rapid Rewards Priority", rate: 4 },
-      { id: "perf-biz", name: "Southwest Rapid Rewards Performance Business", rate: 4 },
       { id: "debit", name: "Southwest Rapid Rewards Debit Card", rate: 1, kind: "debit" }
     ],
-    note: "Rapid Rewards points depend on fare type and are earned on base fare only. A-List adds a 25% bonus and A-List Preferred adds a 100% bonus."
+    note: "Rapid Rewards earns per dollar of base fare only: 2 points on Basic, 6 on Choice, 10 on Choice Preferred, and 14 on Choice Extra. A-List adds a 25% bonus and A-List Preferred adds a 100% bonus. From 1 January 2027, Choice Preferred drops to 8 and Choice Extra to 10."
   },
   alaska: {
     name: "Alaska Airlines | Atmos Rewards",
@@ -170,11 +166,11 @@ window.PROGRAMS = {
       { id: "bundle", name: "Bundle" }
     ],
     // Rates for bookings made on or after September 1, 2026. Holders of a
-    // Frontier Mastercard (World, Access, or Business) earn the higher
+    // Frontier Mastercard (World or Access) earn the higher
     // cardmember rate however they pay ("...Card" keys).
     cardmember: {
       question: "Are you a Frontier Airlines Mastercard cardmember?",
-      hint: "World, Access, or Business Mastercard. Cardmembers earn a higher rate on every booking, however they pay."
+      hint: "World or Access Mastercard. Cardmembers earn a higher rate on every booking, however they pay."
     },
     statuses: [
       { id: "member", name: "Frontier Miles Member", rates: { basic: 1, bundle: 6, basicCard: 4, bundleCard: 12 } },
@@ -184,14 +180,13 @@ window.PROGRAMS = {
       { id: "diamond", name: "Elite Diamond", rates: { basic: 11, bundle: 16, basicCard: 14, bundleCard: 22 } }
     ],
     // Paying with the card adds 5 miles per dollar on top. Frontier
-    // publishes this for the World Mastercard; the Access and Business
-    // cards are assumed to match.
+    // publishes this for the World Mastercard; the Access card is assumed
+    // to match.
     cards: [
       { id: "frontier-mc", name: "Frontier Airlines World Mastercard", rate: 5 },
-      { id: "frontier-access", name: "Frontier Airlines Access Mastercard", rate: 5 },
-      { id: "frontier-biz", name: "Frontier Airlines Business Mastercard", rate: 5 }
+      { id: "frontier-access", name: "Frontier Airlines Access Mastercard", rate: 5 }
     ],
-    note: "For bookings made on or after September 1, 2026, Frontier Miles earns 1 to 11 miles per dollar on basic fares and 6 to 16 on bundles, depending on status. GoWild! Pass fares earn 1 mile, and the Early Booking Fee earns at the status and fare type rate. Holders of a Frontier Airlines World, Access, or Business Mastercard earn 4 to 14 on basic fares and 12 to 22 on bundles however they pay, and paying with the card adds 5 miles per dollar. Frontier publishes the 5 for the World Mastercard; this estimate assumes the same for the Access and Business cards."
+    note: "For bookings made on or after September 1, 2026, Frontier Miles earns 1 to 11 miles per dollar on basic fares and 6 to 16 on bundles, depending on status. GoWild! Pass fares earn 1 mile, and the Early Booking Fee earns at the status and fare type rate. Holders of a Frontier Airlines World or Access Mastercard earn 4 to 14 on basic fares and 12 to 22 on bundles however they pay, and paying with the card adds 5 miles per dollar. Frontier publishes the 5 for the World Mastercard; this estimate assumes the same for the Access card."
   },
   jetblue: {
     name: "JetBlue Airways | TrueBlue",
@@ -220,8 +215,7 @@ window.PROGRAMS = {
     cards: [
       { id: "card", name: "JetBlue Card", rate: 3 },
       { id: "plus", name: "JetBlue Plus Card", rate: 6 },
-      { id: "premier", name: "JetBlue Premier Card", rate: 6 },
-      { id: "biz", name: "JetBlue Business Card", rate: 6 }
+      { id: "premier", name: "JetBlue Premier Card", rate: 6 }
     ],
     note: "TrueBlue earns per dollar of the pre-tax fare: 3 points on Main, EvenMore, BlueFirst, and Mint, or 1 on Base fares. Booking on jetblue.com or the JetBlue app adds 3 (1 on Base). Mosaic 1 and 2 add 3, Mosaic 3 adds 4, and Mosaic 4 adds 5. The JetBlue Card adds 3 and the Plus Card 6. Subscription bonuses are not included."
   },
@@ -382,13 +376,7 @@ window.PROGRAMS = {
     statuses: [
       { id: "member", name: "Altitude Member", rate: 0.5 }
     ],
-    // Co-branded cards: extra points per dollar charged (fare + taxes).
-    cards: [
-      { id: "invex0", name: "Volaris INVEX 0", rate: 0.75 },
-      { id: "invex", name: "Volaris INVEX", rate: 0.85 },
-      { id: "invex2", name: "Volaris INVEX 2", rate: 1 }
-    ],
-    note: "Altitude by Volaris earns 10 points for every 20 Mexican pesos spent on volaris.com or the app, excluding taxes and airport fees. It has no status tiers. Volaris INVEX cardholders earn more."
+    note: "Altitude by Volaris earns 10 points for every 20 Mexican pesos spent on volaris.com or the app, excluding taxes and airport fees. It has no status tiers."
   },
   virgin: {
     name: "Virgin Atlantic | Flying Club",
