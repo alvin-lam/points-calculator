@@ -24,6 +24,9 @@
  * object, when present, replaces program fields such as currency,
  * statuses, cards, and note (IAG).
  *
+ * baseFareOnly (optional): the program earns on the base fare only, not on
+ * carrier-imposed fees (Southwest, Allegiant). Others earn on both.
+ *
  * Rates reflect publicly reported rules as of late 2026. Update them here
  * when a program changes; the rest of the app reads from this file.
  */
@@ -100,6 +103,7 @@ window.PROGRAMS = {
   },
   southwest: {
     name: "Southwest Airlines | Rapid Rewards",
+    baseFareOnly: true,
     unit: "points",
     method: "spend",
     centsPerPoint: 1.3,
@@ -198,6 +202,7 @@ window.PROGRAMS = {
   },
   allegiant: {
     name: "Allegiant Air | Allways Rewards",
+    baseFareOnly: true,
     unit: "points",
     method: "tiered",
     centsPerPoint: 1.0,

@@ -59,14 +59,22 @@
         <select id="fareType"></select>
       </div>
 
-      <div class="row" id="fareFields">
+      <div id="fareFields">
         <div class="field">
           <label for="airfare">Airfare</label>
           <div class="money">
             <span aria-hidden="true">$</span>
             <input id="airfare" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" required>
           </div>
-          <small>Base fare plus carrier fees, before taxes.</small>
+          <small>Base fare, before fees and taxes.</small>
+        </div>
+        <div class="field">
+          <label for="carrierFees">Carrier-imposed Fees</label>
+          <div class="money">
+            <span aria-hidden="true">$</span>
+            <input id="carrierFees" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+          <small>Airline surcharges such as fuel fees (YQ/YR). Most programs count these toward earning.</small>
         </div>
         <div class="field">
           <label for="taxes">Taxes &amp; Fees</label>

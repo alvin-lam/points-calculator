@@ -11,6 +11,7 @@
   var fareTypeField = $("fareTypeField");
   var distanceField = $("distanceField");
   var airfareEl = $("airfare");
+  var carrierEl = $("carrierFees");
   var taxesEl = $("taxes");
   var distanceEl = $("distance");
   var earnField = $("earnField");
@@ -314,9 +315,15 @@
     var method = earnMethod(p).id;
     var fareUsed = usesFare(method);
     var airfare = fareUsed ? parseFloat(airfareEl.value) : 0;
+    var carrier = fareUsed ? (parseFloat(carrierEl.value) || 0) : 0;
     var taxes = fareUsed ? (parseFloat(taxesEl.value) || 0) : 0;
+    // Most programs earn on the base fare plus carrier-imposed fees; a few
+    // (Southwest, Allegiant) earn on the base fare only.
+    var earnBase = airfare + (p.baseFareOnly ? 0 : carrier);
+    var tripCost = airfare + carrier + taxes;
 
     if (fareUsed && (!(airfare >= 0) || airfareEl.value === "")) return showError("Please enter your airfare.");
+    if (carrier < 0) return showError("Carrier-imposed fees cannot be negative.");
     if (taxes < 0) return showError("Taxes and fees cannot be negative.");
     if (method === "distance" && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
     if (method === "segments" && !(segments > 0)) return showError("Please enter the number of segments flown.");
@@ -326,7 +333,7 @@
     var status = find(p.statuses, statusEl.value);
     var fareType = p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
     var airline = selection().airline;
-    var r = calculate(p, status, fareType, airfare, distance, airline, segments);
+    var r = calculate(p, status, fareType, earnBase, distance, airline, segments);
     if (r.error) return showError(r.error);
 
     // Card points come on top of flight points and are earned on the
@@ -334,7 +341,7 @@
     var card = p.cards && usedCardYes.checked ? find(p.cards, cardEl.value) : null;
     var cardCurrency = card && card.currency ? card.currency : (p.currency || "USD");
     var foreignCard = cardCurrency !== (p.currency || "USD");
-    var charged = airfare + taxes;
+    var charged = tripCost;
     if (card && (foreignCard || !fareUsed)) {
       charged = parseFloat(cardChargeEl.value);
       if (!(charged > 0)) return showError("Please enter the amount charged to your card in " + cardSymbols[cardCurrency] + ".");
@@ -351,8 +358,9 @@
     dl.innerHTML = "";
     if (fareUsed) {
       row(dl, "Airfare", usd.format(airfare));
+      row(dl, "Carrier-imposed Fees", usd.format(carrier) + (p.baseFareOnly && carrier ? " (does not earn)" : ""));
       row(dl, "Taxes & Fees", usd.format(taxes));
-      row(dl, "Total trip cost", usd.format(airfare + taxes));
+      row(dl, "Total trip cost", usd.format(tripCost));
     }
     if (method === "distance") row(dl, "Miles flown", num.format(distance));
     if (method === "segments") row(dl, "Segments flown", num.format(segments));
@@ -369,8 +377,8 @@
     if (p.centsPerPoint) {
       var value = total * p.centsPerPoint / 100;
       row(dl, "Approximate value", usd.format(value) + " (at " + p.centsPerPoint + minorUnit[p.currency || "USD"] + " each)");
-      if (airfare + taxes > 0) {
-        row(dl, "Return on total cost", (value / (airfare + taxes) * 100).toFixed(1) + "%");
+      if (tripCost > 0) {
+        row(dl, "Return on total cost", (value / tripCost * 100).toFixed(1) + "%");
       }
     }
 

@@ -65,12 +65,10 @@ h1 { font-size: 24px; margin: 0 0 4px; }
 }
 
 .field { display: flex; flex-direction: column; margin-bottom: 16px; min-width: 0; }
-.field[hidden], .row[hidden] { display: none; }
+.field[hidden] { display: none; }
 label { font-weight: 600; margin-bottom: 6px; }
 small { color: var(--muted); margin-top: 4px; font-size: 0.85rem; }
 
-.row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-@media (max-width: 480px) { .row { grid-template-columns: 1fr; gap: 0; } }
 
 select, input {
   width: 100%;
