@@ -979,6 +979,28 @@ window.PROGRAMS = {
     note: "Fortune Wings Club earns 10 base points per HK$10 of base fare and carrier surcharges on Hong Kong Airlines, for tickets issued on or after 20 September 2025, plus a status bonus of 1, 3, 6, or 8 points per HK$10 for Select, Silver, Gold, and Platinum. The basic Fortune Wings tier earns no bonus. Spending is rounded to the nearest HK$10. Classes R, G, O, E, A, F, and P earn nothing. Taxes do not earn, and codeshare and some special tickets follow other rules. Enter fares in Hong Kong dollars."
   };
 
+  /* Fortune Wings Club on Hainan Airlines domestic flights, for flight
+     dates from 28 March 2026. Same structure as Hong Kong Airlines: award
+     points follow the yuan spent, rounded to the nearest 10 yuan. */
+  P.hainan = {
+    name: "Hainan Airlines | Fortune Wings Club",
+    country: "CN",
+    currency: "CNY",
+    unit: "points",
+    method: "spend",
+    roundSpendTo: 10,
+    cap: 75000,
+    // 10 base points per 10 yuan, plus the status bonus per 10 yuan.
+    statuses: [
+      { id: "member", name: "Fortune Wings", rate: 1 },
+      { id: "select", name: "Select Card", rate: 1.1 },
+      { id: "silver", name: "Silver Card", rate: 1.3 },
+      { id: "gold", name: "Gold Card", rate: 1.6 },
+      { id: "platinum", name: "Platinum Card", rate: 1.8 }
+    ],
+    note: "Fortune Wings Club earns 10 base points per 10 yuan of eligible spend on Hainan Airlines domestic flights, for flight dates from 28 March 2026, plus a status bonus of 1, 3, 6, or 8 points per 10 yuan for Select, Silver, Gold, and Platinum. The basic Fortune Wings tier earns no bonus. Spending is rounded to the nearest 10 yuan. Classes J, S, O, G, A, U, T, F, P, and B earn nothing. Earning is capped at 75,000 points per segment. Enter fares in yuan."
+  };
+
   P.cathay = {
     name: "Cathay Pacific | Asia Miles",
     country: "HK",
