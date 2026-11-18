@@ -28,6 +28,11 @@
   var usedCardNo = $("usedCardNo");
   var cardChargeField = $("cardChargeField");
   var cardChargeEl = $("cardCharge");
+  var gowildField = $("gowildField");
+  var gowildYes = $("gowildYes");
+  var gowildNo = $("gowildNo");
+  var gowildFeeField = $("gowildFeeField");
+  var gowildFeeEl = $("gowildFee");
   var errorEl = $("error");
   var resultEl = $("result");
 
@@ -64,10 +69,17 @@
   }
 
   // "Airline | Program" for an airline inside a group program.
-  // "Status | Alliance tier" when the airline is in an alliance.
+  // "Status | Alliance tier" when the program is in an alliance. Airlines
+  // that share a program show its tier too (Transavia, Eurowings).
   function statusLabel(s) {
-    var al = selection().airline;
-    return s.alliance && !(al && al.noAlliance) ? s.name + " | " + s.alliance : s.name;
+    return s.alliance ? s.name + " | " + s.alliance : s.name;
+  }
+
+  // The alliance of a group program: its own, or that of its member airlines.
+  function programAlliance(prog) {
+    if (prog.alliance) return prog.alliance;
+    var member = (prog.airlines || []).filter(function (a) { return a.alliance; })[0];
+    return member ? member.alliance : null;
   }
 
   function airlineLabel(p, al) {
@@ -138,7 +150,18 @@
     // Show the alliance of the chosen airline (or program).
     var sel = selection();
     var alliance = sel.airline ? sel.airline.alliance : sel.program.alliance;
-    $("allianceValue").textContent = alliance || "Not part of an alliance";
+    // An airline outside the alliance that uses an alliance program's status
+    // levels (Transavia, LEVEL) says so; its own program (AerClub) does not.
+    var tiered = p.statuses.some(function (s) { return s.alliance; });
+    var shared = !alliance && sel.airline && tiered ? programAlliance(sel.program) : null;
+    var allianceEl = $("allianceValue");
+    allianceEl.textContent = alliance || "Not part of an alliance.";
+    if (shared) {
+      // The shared-program line goes on its own line.
+      allianceEl.appendChild(document.createElement("br"));
+      allianceEl.appendChild(document.createTextNode(airlineLabel(sel.program, sel.airline).split(" | ")[1] +
+        " status is recognized across " + shared + "."));
+    }
     $("allianceValue").classList.toggle("none", !alliance);
     $("allianceField").hidden = false;
 
@@ -172,6 +195,12 @@
       });
     }
     if (!p.cards) usedCardNo.checked = true;
+    // Some airlines name their carrier fee (Frontier: Carrier Interface Fee).
+    $("carrierLabel").textContent = p.carrierLabel || "Carrier-imposed Fees";
+    $("carrierHint").textContent = p.carrierHint || "Airline surcharges such as fuel fees (YQ/YR). Most programs count these toward earning.";
+    // GoWild! Pass bookings (Frontier).
+    gowildField.hidden = !p.gowild;
+    if (!p.gowild && gowildYes.checked) { gowildNo.checked = true; syncGoWild(); }
     syncCardSelect();
 
     zoneEl.innerHTML = "";
@@ -235,6 +264,26 @@
     fareFields.hidden = !usesFare(m);
     airfareEl.required = usesFare(m);
     syncCardSelect();
+    resultEl.hidden = true;
+  }
+
+  // A GoWild! booking: the fare is one cent and the Early Booking Fee earns
+  // at the status and fare type rate.
+  function goWildOn() {
+    var p = current();
+    return !!(p && p.gowild && gowildYes.checked);
+  }
+  function syncGoWild() {
+    var on = goWildOn();
+    gowildFeeField.hidden = !on;
+    // GoWild! fares are fixed at one cent and have no carrier-imposed fees.
+    if (on) airfareEl.value = "0.01";
+    else if (airfareEl.readOnly) airfareEl.value = "";
+    airfareEl.readOnly = on;
+    $("carrierField").hidden = on;
+    $("airfareHint").textContent = on
+      ? "GoWild! fares are one cent and earn 1 mile."
+      : "Base fare, before fees and taxes.";
     resultEl.hidden = true;
   }
 
@@ -325,7 +374,11 @@
       if (airline && status.elite && airline.eliteRate) rate = airline.eliteRate;
       // A status can add a flat amount per unit of currency (Air Europa, Xiamen).
       if (status.addRate) rate += status.addRate;
-      points = airfare * rate;
+      // Some programs round the spend first (Fortune Wings: nearest HK$10,
+      // with anything under HK$10 counted as HK$10).
+      var spend = airfare;
+      if (p.roundSpendTo && spend > 0) spend = Math.max(p.roundSpendTo, Math.round(spend / p.roundSpendTo) * p.roundSpendTo);
+      points = spend * rate;
       var sym = symbols[p.currency || "USD"];
       rateLabel = p.rateAsPercent
         ? num.format(rate * 100) + "% of the fare"
@@ -378,6 +431,17 @@
     // (Southwest, Allegiant) earn on the base fare only.
     var earnBase = airfare + (p.baseFareOnly ? 0 : carrier);
     var tripCost = airfare + carrier + taxes;
+    // GoWild!: the fare earns 1 mile, and the Early Booking Fee earns at
+    // the status and fare type rate. There are no carrier-imposed fees.
+    var gowild = fareUsed && goWildOn();
+    var gowildFee = gowild ? (parseFloat(gowildFeeEl.value) || 0) : 0;
+    if (gowildFee < 0) return showError("The GoWild Early Booking Fee cannot be negative.");
+    if (gowild) {
+      airfare = 0.01;
+      carrier = 0;
+      earnBase = gowildFee;
+      tripCost = airfare + gowildFee + taxes;
+    }
 
     if (fareUsed && (!(airfare >= 0) || airfareEl.value === "")) return showError("Please enter your airfare.");
     if (carrier < 0) return showError("Carrier-imposed fees cannot be negative.");
@@ -393,6 +457,10 @@
     var airline = selection().airline;
     var r = calculate(p, status, fareType, earnBase, distance, airline, segments);
     if (r.error) return showError(r.error);
+    if (gowild) {
+      r.rateLabel = "1 on the GoWild! fare + " + num.format(r.points) + " on the Early Booking Fee at " + r.rateLabel;
+      r.points += 1;
+    }
 
     // Card points come on top of flight points and are earned on the
     // full charge, taxes included. The per-ticket cap does not apply.
@@ -415,8 +483,9 @@
     var dl = $("breakdown");
     dl.innerHTML = "";
     if (fareUsed) {
-      row(dl, "Airfare", usd.format(airfare));
-      row(dl, "Carrier-imposed Fees", usd.format(carrier) + (p.baseFareOnly && carrier ? " (does not earn)" : ""));
+      row(dl, "Airfare", usd.format(airfare) + (gowild ? " (GoWild!)" : ""));
+      if (gowild) row(dl, "GoWild Early Booking Fee", usd.format(gowildFee));
+      if (!gowild) row(dl, p.carrierLabel || "Carrier-imposed Fees", usd.format(carrier) + (p.baseFareOnly && carrier ? " (does not earn)" : ""));
       row(dl, "Taxes & Fees", usd.format(taxes));
       row(dl, "Total trip cost", usd.format(tripCost));
     }
@@ -482,5 +551,7 @@
   zoneEl.addEventListener("change", syncEarnFields);
   usedCardYes.addEventListener("change", syncCardSelect);
   usedCardNo.addEventListener("change", syncCardSelect);
+  gowildYes.addEventListener("change", syncGoWild);
+  gowildNo.addEventListener("change", syncGoWild);
   cardEl.addEventListener("change", syncCardSelect);
 })();

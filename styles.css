@@ -90,6 +90,7 @@ select, input {
   padding: 10px 12px;
 }
 select:disabled { opacity: 0.6; }
+input[readonly] { color: var(--muted); cursor: not-allowed; }
 select:focus, input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
 
 .money { position: relative; }

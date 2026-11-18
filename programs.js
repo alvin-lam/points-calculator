@@ -160,6 +160,10 @@ window.PROGRAMS = {
     unit: "miles",
     method: "spend",
     centsPerPoint: 0.5,
+    // Ask whether the trip was booked with the GoWild! Pass.
+    gowild: true,
+    carrierLabel: "Carrier Interface Charge",
+    carrierHint: "Shown as CIC on your receipt. Frontier's per-segment charge for booking online or by phone. It earns miles like the fare.",
     defaultFareType: "basic",
     fareTypes: [
       { id: "basic", name: "Basic fare (no bundle)" },
@@ -177,7 +181,7 @@ window.PROGRAMS = {
     cards: [
       { id: "frontier-mc", name: "Frontier Airlines World Mastercard", rate: 5 }
     ],
-    note: "For bookings made on or after September 1, 2026, Frontier Miles earns 1 to 11 miles per dollar on basic fares and 6 to 16 on bundles, depending on status. Frontier World Mastercard holders earn more."
+    note: "For bookings made on or after September 1, 2026, Frontier Miles earns 1 to 11 miles per dollar on basic fares and 6 to 16 on bundles, depending on status. GoWild! Pass fares earn 1 mile, and the Early Booking Fee earns at the status and fare type rate. Frontier World Mastercard holders earn more."
   },
   jetblue: {
     name: "JetBlue Airways | TrueBlue",
@@ -884,6 +888,36 @@ window.PROGRAMS = {
     note: "JAL earns a share of the flight distance set by booking class, and status adds a 35% to 130% mile-up bonus. Fare classes not listed do not earn miles. Japanese JAL cards are not included."
   };
 
+  /* Fiji Airways uses AAdvantage. Flights sold by Fiji Airways (FJ flight
+     numbers) earn on the ticket price at American's rates. */
+  P.fiji = Object.assign({}, P.american, {
+    name: "Fiji Airways | AAdvantage",
+    country: "FJ",
+    cards: null,
+    note: "Fiji Airways uses AAdvantage. Flights sold by Fiji Airways earn 5 to 11 miles per US dollar on the base fare and carrier-imposed fees, by status, like American flights. Government taxes do not earn. LITE fares bought on or after 17 December 2025 earn nothing. Fiji fares are often priced in Fiji dollars, so enter the US dollar equivalent. Earning is capped at 75,000 miles per ticket."
+  });
+
+  /* Fortune Wings Club on Hong Kong Airlines, for tickets issued on or
+     after 20 September 2025. Award points follow the HK$ spent, rounded to
+     the nearest HK$10. Fare classes R, G, O, E, A, F, and P do not earn. */
+  P.hongkongairlines = {
+    name: "Hong Kong Airlines | Fortune Wings Club",
+    country: "HK",
+    currency: "HKD",
+    unit: "points",
+    method: "spend",
+    roundSpendTo: 10,
+    // 10 base points per HK$10, plus the status bonus per HK$10.
+    statuses: [
+      { id: "member", name: "Fortune Wings", rate: 1 },
+      { id: "select", name: "Select Card", rate: 1.1 },
+      { id: "silver", name: "Silver Card", rate: 1.3 },
+      { id: "gold", name: "Gold Card", rate: 1.6 },
+      { id: "platinum", name: "Platinum Card", rate: 1.8 }
+    ],
+    note: "Fortune Wings Club earns 10 base points per HK$10 of base fare and carrier surcharges on Hong Kong Airlines, for tickets issued on or after 20 September 2025, plus a status bonus of 1, 3, 6, or 8 points per HK$10 for Select, Silver, Gold, and Platinum. The basic Fortune Wings tier earns no bonus. Spending is rounded to the nearest HK$10. Classes R, G, O, E, A, F, and P earn nothing. Taxes do not earn, and codeshare and some special tickets follow other rules. Enter fares in Hong Kong dollars."
+  };
+
   P.cathay = {
     name: "Cathay Pacific | Asia Miles",
     country: "HK",
@@ -1366,8 +1400,7 @@ window.PROGRAMS = {
     method: "spend",
     ratePer: 100,
     airlines: [
-      { id: "ai", name: "Air India" },
-      { id: "ix", name: "Air India Express", noAlliance: true, program: { baseFareOnly: true } }
+      { id: "ai", name: "Air India" }
     ],
     statuses: [
       { id: "red", name: "Red", rate: 0.06 },
@@ -1375,7 +1408,7 @@ window.PROGRAMS = {
       { id: "gold", name: "Gold", rate: 0.09 },
       { id: "platinum", name: "Platinum", rate: 0.1 }
     ],
-    note: "Maharaja Club earns per ₹100 of the base fare plus fuel surcharge on Air India (base fare only on Air India Express), by tier: 6, 8, 9, or 10 points. Booking on the Air India website or app adds 2 more per ₹100, which this estimate does not add. Enter fares in rupees."
+    note: "Maharaja Club earns per ₹100 of the base fare plus fuel surcharge on Air India, by tier: 6, 8, 9, or 10 points. Booking on the Air India website or app adds 2 more per ₹100, which this estimate does not add. Enter fares in rupees."
   };
 
   P.aireuropa = {
@@ -1687,17 +1720,20 @@ window.PROGRAMS = {
 /* Alliance tier matching each program status, shown as "Status | Tier".
    oneworld: Ruby, Sapphire, Emerald. Star Alliance: Silver, Gold.
    SkyTeam: Elite, Elite Plus. Airlines outside an alliance are left out,
-   and an airline marked noAlliance (Eurowings, Discover) hides the tier.
+   and an airline that shares a program but is not a member (Eurowings,
+   Transavia) still shows the program's tier.
    Keys are program ids, or "program:airline" for group programs. */
 (function () {
   var P = window.PROGRAMS;
   var ALLIANCE_TIERS = {
     // oneworld
     american: { gold: "Ruby", platinum: "Sapphire", platpro: "Sapphire", exp: "Emerald" },
+    fiji: { gold: "Ruby", platinum: "Sapphire", platpro: "Sapphire", exp: "Emerald" },
     alaska: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
     hawaiian: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
     "iag:ba": { bronze: "Ruby", silver: "Sapphire", gold: "Emerald" },
     "iag:ib": { plata: "Ruby", oro: "Sapphire", platino: "Emerald", infinita: "Emerald", "infinita-prime": "Emerald" },
+    "iag:level": { plata: "Ruby", oro: "Sapphire", platino: "Emerald", infinita: "Emerald", "infinita-prime": "Emerald" },
     finnair: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", lumo: "Emerald" },
     qatar: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     qantas: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", "platinum-one": "Emerald" },
@@ -1739,7 +1775,7 @@ window.PROGRAMS = {
   // Alliance of each program, or of each airline for group programs.
   // Anything not listed is not part of an alliance.
   var ALLIANCES = {
-    oneworld: ["american", "alaska", "hawaiian", "iag:ba", "iag:ib", "finnair", "qatar",
+    oneworld: ["american", "fiji", "alaska", "hawaiian", "iag:ba", "iag:ib", "finnair", "qatar",
       "qantas", "cathay", "jal", "enrich", "srilankan", "ram", "rj"],
     "Star Alliance": ["united", "aircanada", "milesandmore:lh", "milesandmore:lx",
       "milesandmore:os", "milesandmore:sn", "milesandmore:az", "tap", "ana",
@@ -1782,6 +1818,7 @@ window.COUNTRIES = [
   { id: "MX", label: "Mexico \u{1F1F2}\u{1F1FD}", pinned: true },
   { id: "AT", label: "Austria \u{1F1E6}\u{1F1F9}" },
   { id: "BE", label: "Belgium \u{1F1E7}\u{1F1EA}" },
+  { id: "FJ", label: "Fiji \u{1F1EB}\u{1F1EF}" },
   { id: "FR", label: "France \u{1F1EB}\u{1F1F7}" },
   { id: "DE", label: "Germany \u{1F1E9}\u{1F1EA}" },
   { id: "IE", label: "Ireland \u{1F1EE}\u{1F1EA}" },

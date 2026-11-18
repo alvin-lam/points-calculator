@@ -64,6 +64,14 @@
         <select id="fareType"></select>
       </div>
 
+      <fieldset class="field" id="gowildField" hidden>
+        <legend>Did you book with the GoWild! Pass?</legend>
+        <div class="choice">
+          <label><input type="radio" name="gowild" id="gowildNo" value="no" checked> No</label>
+          <label><input type="radio" name="gowild" id="gowildYes" value="yes"> Yes</label>
+        </div>
+      </fieldset>
+
       <div id="fareFields">
         <div class="field">
           <label for="airfare">Airfare</label>
@@ -71,15 +79,23 @@
             <span aria-hidden="true">$</span>
             <input id="airfare" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" required>
           </div>
-          <small>Base fare, before fees and taxes.</small>
+          <small id="airfareHint">Base fare, before fees and taxes.</small>
         </div>
-        <div class="field">
-          <label for="carrierFees">Carrier-imposed Fees</label>
+        <div class="field" id="gowildFeeField" hidden>
+          <label for="gowildFee">GoWild Early Booking Fee</label>
+          <div class="money">
+            <span aria-hidden="true">$</span>
+            <input id="gowildFee" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          </div>
+          <small>The fee for booking a GoWild! flight early. It earns miles by status and fare type.</small>
+        </div>
+        <div class="field" id="carrierField">
+          <label for="carrierFees" id="carrierLabel">Carrier-imposed Fees</label>
           <div class="money">
             <span aria-hidden="true">$</span>
             <input id="carrierFees" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
           </div>
-          <small>Airline surcharges such as fuel fees (YQ/YR). Most programs count these toward earning.</small>
+          <small id="carrierHint">Airline surcharges such as fuel fees (YQ/YR). Most programs count these toward earning.</small>
         </div>
         <div class="field">
           <label for="taxes">Taxes &amp; Fees</label>
