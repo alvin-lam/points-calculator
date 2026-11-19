@@ -300,3 +300,51 @@ footer .copyright a:focus-visible { outline: 2px solid var(--accent); outline-of
   footer { margin-top: 32px; }
   footer > p:first-child { max-width: 720px; margin-left: auto; margin-right: auto; text-align: center; }
 }
+
+/* Shared look with the Schengen 90/180 Calculator (All Trips Considered). */
+.wrap { position: relative; }
+.brand {
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  margin: 0 0 6px;
+}
+.brand, header h1 { text-wrap: balance; }
+h1 { margin: 0 0 8px; }
+footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
+
+/* Light and dark mode button, upper right of the content column. */
+.theme-toggle {
+  position: absolute;
+  top: 16px;
+  right: max(16px, env(safe-area-inset-right, 0px));
+  box-shadow: none;
+  transition: background .2s, border-color .2s;
+}
+.theme-toggle:hover { border-color: var(--muted); color: var(--text); }
+.theme-toggle svg { width: 20px; height: 20px; fill: currentColor; stroke: currentColor; }
+.theme-toggle .icon-moon { stroke: none; }
+
+/* Back to top: a filled accent circle, as in the Schengen calculator. */
+.to-top {
+  right: max(20px, calc(env(safe-area-inset-right, 0px) + 16px));
+  bottom: max(20px, calc(env(safe-area-inset-bottom, 0px) + 16px));
+  width: 48px;
+  height: 48px;
+  border: 0;
+  background: var(--accent);
+  color: var(--accent-text);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .18);
+}
+.to-top:hover { filter: brightness(1.08); border-color: transparent; color: var(--accent-text); }
+.to-top:focus-visible { outline-offset: 3px; }
+.to-top svg { width: 22px; height: 22px; }
+
+@media (max-width: 680px) {
+  .wrap { padding-top: 68px; }
+  .theme-toggle { top: 14px; }
+}
+@media (min-width: 960px) {
+  .theme-toggle { top: 24px; right: 32px; }
+}
+/* The arrow stays white in both themes, as in the Schengen calculator. */
+.to-top, .to-top:hover { color: #ffffff; }
