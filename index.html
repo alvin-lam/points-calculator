@@ -183,6 +183,11 @@
       <button type="submit">Calculate points</button>
     </form>
 
+    <aside id="resultPlaceholder" class="card result-placeholder" aria-hidden="true">
+      <p class="eyebrow">Your estimate</p>
+      <p class="placeholder-text">Choose a program, enter your fare, and select Calculate points. Your points and the full breakdown will appear here.</p>
+    </aside>
+
     <section id="result" class="card result" hidden aria-live="polite">
       <p class="eyebrow" id="resultProgram"></p>
       <p class="big"><span id="resultPoints">0</span> <span id="resultUnit">points</span></p>
@@ -211,6 +216,10 @@
     </div>
   </aside>
   <!-- install:end -->
+
+  <button type="button" class="to-top" id="toTop" aria-label="Back to top" hidden>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
 
   <script src="programs.js"></script>
   <script src="app.js"></script>

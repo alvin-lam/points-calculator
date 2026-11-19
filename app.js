@@ -612,6 +612,10 @@
 
     $("resultNote").textContent = (r.capped ? "This trip hits the per-ticket earning cap. " : "") + p.note + (airline && airline.note ? " " + airline.note : "");
     resultEl.hidden = false;
+    // On a single-column (phone) layout, bring the result into view.
+    if (window.matchMedia("(max-width: 959px)").matches) {
+      resultEl.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+    }
   });
 
   // Light/dark toggle. Starts from the device setting; a click picks the
@@ -643,6 +647,21 @@
   }
   if (systemDark.addEventListener) systemDark.addEventListener("change", syncToggle);
   syncToggle();
+
+  // Back to top: appears after scrolling down, and scrolls smoothly unless
+  // the visitor prefers reduced motion.
+  var toTop = $("toTop");
+  if (toTop) {
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var syncToTop = function () { toTop.hidden = window.scrollY < 400; };
+    window.addEventListener("scroll", syncToTop, { passive: true });
+    syncToTop();
+    toTop.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: reduceMotion.matches ? "auto" : "smooth" });
+      var first = $("program");
+      if (first) first.focus({ preventScroll: true });
+    });
+  }
 
   var yearEl = $("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
