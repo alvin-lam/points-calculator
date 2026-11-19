@@ -1018,7 +1018,18 @@ window.PROGRAMS = {
       { id: "gold", name: "EuroBonus Gold", bonus: 0.5 },
       { id: "diamond", name: "EuroBonus Diamond", bonus: 0.75 }
     ],
-    note: "EuroBonus pays a fixed number of points per one-way SAS flight, set by the route region and ticket type. Silver, Gold, and Diamond earn 25%, 50%, and 75% more Bonus points. Level points stay at the base amount. SK flights operated by SkyTeam partners earn by distance instead and are not covered here."
+    // SAS Upgrade: a won online bid paid in cash adds points by route.
+    upgradeBonus: {
+      label: "Did you win an SAS Upgrade bid?",
+      hint: "Online bids paid in cash only. Upgrades bought at the gate earn nothing extra.",
+      options: [
+        { id: "none", name: "No upgrade" },
+        { id: "y-pe", name: "Economy to Premium Economy", points: { dom: 250, lh1: 1500, lh2: 1500, lh3: 1500 } },
+        { id: "y-j", name: "Economy to Business", points: { scan: 500, eu: 500, lh1: 3000, lh2: 3000, lh3: 3000 } },
+        { id: "pe-j", name: "Premium Economy to Business", points: { lh1: 1500, lh2: 1500, lh3: 1500 } }
+      ]
+    },
+    note: "EuroBonus pays a fixed number of points per one-way SAS flight, set by the route region and ticket type. Silver, Gold, and Diamond earn 25%, 50%, and 75% more Bonus points. Level points stay at the base amount. A won SAS Upgrade bid paid in cash adds 250 to 3,000 points by route. SK flights operated by SkyTeam partners earn by distance instead and are not covered here."
   };
 
 

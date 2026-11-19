@@ -28,6 +28,8 @@
   var usedCardNo = $("usedCardNo");
   var cardChargeField = $("cardChargeField");
   var cardChargeEl = $("cardCharge");
+  var upgradeField = $("upgradeField");
+  var upgradeEl = $("upgrade");
   var addonsField = $("addonsField");
   var addonsEl = $("addons");
   var directField = $("directField");
@@ -233,6 +235,14 @@
     $("carrierLabel").textContent = p.carrierLabel || "Carrier-imposed Fees";
     $("carrierHint").textContent = p.carrierHint || "Fuel or other airline surcharges (YQ/YR), if any. Leave blank if none.";
     $("fareTypeLabel").textContent = p.fareTypeLabel || "Fare Type";
+    // An optional upgrade bonus per route (SAS Upgrade bids).
+    upgradeEl.innerHTML = "";
+    upgradeField.hidden = !p.upgradeBonus;
+    if (p.upgradeBonus) {
+      $("upgradeLabel").textContent = p.upgradeBonus.label;
+      $("upgradeHint").textContent = p.upgradeBonus.hint || "";
+      p.upgradeBonus.options.forEach(function (o) { upgradeEl.appendChild(option(o.id, o.name)); });
+    }
     // Seats and bags earn like the fare on some airlines (Frontier, Allegiant, Breeze).
     addonsField.hidden = !p.addons;
     // Extras that do not earn sit after the carrier fees (IAG); extras that
@@ -372,6 +382,15 @@
       var bonus = Math.round(bonusBase * (status.bonus || 0));
       points = base + bonus;
       rateLabel = bonus ? num.format(base) + " base + " + num.format(bonus) + " status bonus" : "fixed for this fare and route";
+      // A won upgrade bid adds a fixed amount per route, plus the status bonus.
+      var up = p.upgradeBonus ? find(p.upgradeBonus.options, upgradeEl.value) : null;
+      if (up && up.points) {
+        var upBase = up.points[zone.id];
+        if (upBase == null) return { error: up.name + " is not offered on this route." };
+        var upPoints = upBase + Math.round(upBase * (status.bonus || 0));
+        points += upPoints;
+        rateLabel += ", plus " + num.format(upPoints) + " for the upgrade";
+      }
     } else if (em.id === "segments") {
       var perSegment = em.perSegment * status.multiplier;
       points = segments * perSegment;
@@ -630,6 +649,7 @@
   programEl.addEventListener("change", onProgramChange);
   earnEl.addEventListener("change", syncEarnFields);
   zoneEl.addEventListener("change", syncEarnFields);
+  upgradeEl.addEventListener("change", function () { resultEl.hidden = true; });
   usedCardYes.addEventListener("change", syncCardSelect);
   usedCardNo.addEventListener("change", syncCardSelect);
   cardmemberYes.addEventListener("change", syncCardmember);
