@@ -1,7 +1,7 @@
 {
   "name": "Airline Points Calculator | All Trips Considered",
   "short_name": "Points Calc",
-  "description": "Estimate the airline points or miles you will earn on a flight.",
+  "description": "Estimate the points or miles you will earn.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
