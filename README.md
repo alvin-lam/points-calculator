@@ -38,10 +38,11 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 
 ## Install and icons
 
+- Folder layout: `index.html` at the root, scripts in `js/` (`programs.js` for the earning data, `app.js` for the calculator, `install.js` for the install prompt), and styles in `css/styles.css`. `sw.js` stays at the root so it can serve the whole site offline.
 - `favicon.ico` and `icons/` hold the browser and home-screen icons. `manifest.webmanifest` and `sw.js` let the site install as an app and open offline.
-- `install.js` invites visitors to add the calculator to their home screen. Chrome, Edge, and Android get an Install button. iPhone and iPad get the Share, then Add to Home Screen steps. "Not now" hides it for 14 days.
+- `js/install.js` invites visitors to add the calculator to their home screen. Chrome, Edge, and Android get an Install button. iPhone and iPad get the Share, then Add to Home Screen steps. "Not now" hides it for 14 days.
 - Installing needs HTTPS, which GitHub Pages provides. When rates change, bump `CACHE` in `sw.js` so installed copies refresh their offline cache.
 
 ## Updating rates
 
-All earning rules, including co-branded card rates, live in `programs.js`. Edit the rates there when a program changes.
+All earning rules, including co-branded card rates, live in `js/programs.js`. Edit the rates there when a program changes.
