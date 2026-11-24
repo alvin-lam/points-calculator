@@ -43,6 +43,18 @@ function entries() {
   return out.sort((a, b) => a.slug.localeCompare(b.slug));
 }
 
+// Breadcrumb data so search results show Home > Airline.
+function breadcrumb(e, url) {
+  return '  <script type="application/ld+json">\n' + JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Airline Points Calculator", item: SITE },
+      { "@type": "ListItem", position: 2, name: e.airline + " Points Calculator", item: url }
+    ]
+  }, null, 2).replace(/^/gm, "  ") + "\n  </script>\n";
+}
+
 function page(html, e) {
   const title = e.airline + " Points Calculator: " + e.program + " | All Trips Considered";
   const desc = "Estimate the " + e.program + " points or miles you will earn on a " + e.airline +
@@ -58,8 +70,10 @@ function page(html, e) {
     .replace(/(<meta property="og:description" content=")[^"]*/, "$1" + esc(desc))
     .replace(/(<meta name="twitter:title" content=")[^"]*/, "$1" + esc(title))
     .replace(/(<meta name="twitter:description" content=")[^"]*/, "$1" + esc(desc))
-    .replace(/("name": ")Airline Points Calculator(")/, "$1" + esc(e.airline) + " Points Calculator$2")
+    .replace(/("name": ")Airline Points Calculator(")/, () => '"name": ' + JSON.stringify(e.airline + " Points Calculator"))
     .replace(/("url": ")[^"]*(")/, "$1" + url + "$2")
+    .replace(/("description": ")[^"]*(")/, () => '"description": ' + JSON.stringify(desc))
+    .replace(/  <\/script>\n/, "  </script>\n" + breadcrumb(e, url))
     .replace(/<script>\n    \/\/ Apply a saved theme/, '<script>window.PRESET_PROGRAM = "' + e.value + '";</script>\n  <script>\n    // Apply a saved theme');
 }
 

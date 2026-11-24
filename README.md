@@ -158,7 +158,7 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 | Report a correction | A footer link, by email or a simple form, so readers can report changed earning rules. |
 | Review schedule | A reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current. |
 | Visit counter | A privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so. |
-| "60+ programs" wording | The page titles, descriptions and preview image say "60+ programs" (73 entries today). Update the wording if the count passes 100. |
+| "70+ airlines" wording | The page titles, descriptions and preview image say "70+ airlines" (73 today, in 55 programs). Update the wording and remake the preview image (`tools/og-image.html`) if the count passes 100. |
 
 ### Watch
 
