@@ -7,8 +7,6 @@ const path = require("node:path");
 
 const ROOT = path.resolve(__dirname, "..");
 const DATA = path.join(ROOT, "data");
-const MONTHS = ["January", "February", "March", "April", "May", "June", "July",
-  "August", "September", "October", "November", "December"];
 
 // Loads and checks every program file. Throws with a clear message on the
 // first problem, so a bad file never reaches the site.
@@ -67,8 +65,8 @@ function compile() {
       if (m.color) BRAND_COLORS[key] = m.color;
       if (m.source) SOURCES[key] = m.source;
       if (m.code) AIRLINE_CODES[key] = m.code;
-      const [y, mo] = p.reviewed.split("-");
-      REVIEWED[key] = MONTHS[Number(mo) - 1] + " " + y;
+      // Stored as YYYY-MM; the page shows it in the visitor's language.
+      REVIEWED[key] = p.reviewed;
     });
   });
   require(path.join(DATA, "alliances.js"))(PROGRAMS);

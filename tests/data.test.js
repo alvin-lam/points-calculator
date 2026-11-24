@@ -50,7 +50,7 @@ test("every menu entry has an https source", () => {
 
 test("every menu entry has a review month", () => {
   for (const e of entries) {
-    assert.match(window.REVIEWED[e.value] || "", /^[A-Z][a-z]+ \d{4}$/, e.value + " has no review month");
+    assert.match(window.REVIEWED[e.value] || "", /^\d{4}-(0[1-9]|1[0-2])$/, e.value + " has no review month");
   }
 });
 

@@ -45,26 +45,47 @@
   var errorEl = $("error");
   var resultEl = $("result");
 
-  var num = new Intl.NumberFormat("en-US");
-  var money = {
-    USD: new Intl.NumberFormat("en-US", { style: "currency", currency: "USD" }),
-    CAD: new Intl.NumberFormat("en-US", { style: "currency", currency: "CAD" }),
-    MXN: new Intl.NumberFormat("en-US", { style: "currency", currency: "MXN" }),
-    AUD: new Intl.NumberFormat("en-US", { style: "currency", currency: "AUD" }),
-    NOK: new Intl.NumberFormat("en-US", { style: "currency", currency: "NOK" }),
-    MYR: new Intl.NumberFormat("en-US", { style: "currency", currency: "MYR" }),
-    SGD: new Intl.NumberFormat("en-US", { style: "currency", currency: "SGD" }),
-    JPY: new Intl.NumberFormat("en-US", { style: "currency", currency: "JPY" }),
-    HKD: new Intl.NumberFormat("en-US", { style: "currency", currency: "HKD" }),
-    TWD: new Intl.NumberFormat("en-US", { style: "currency", currency: "TWD" }),
-    INR: new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }),
-    THB: new Intl.NumberFormat("en-US", { style: "currency", currency: "THB" }),
-    CNY: new Intl.NumberFormat("en-US", { style: "currency", currency: "CNY" }),
-    NZD: new Intl.NumberFormat("en-US", { style: "currency", currency: "NZD" }),
-    GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
-    EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }),
-    BRL: new Intl.NumberFormat("en-US", { style: "currency", currency: "BRL" })
-  };
+  // Numbers, money and dates follow the device's language and region.
+  var LOCALE = (navigator.languages && navigator.languages[0]) || navigator.language || "en-US";
+  var num = new Intl.NumberFormat(LOCALE);
+  var money = {};
+  ["USD", "CAD", "MXN", "AUD", "NOK", "MYR", "SGD", "JPY", "HKD", "TWD", "INR", "THB", "CNY", "NZD", "GBP", "EUR", "BRL"].forEach(function (c) {
+    money[c] = new Intl.NumberFormat(LOCALE, { style: "currency", currency: c });
+  });
+  // Distance unit: kilometres where the region uses them; miles in the
+  // US, the UK, Liberia and Myanmar. Airlines still count miles, so a
+  // distance entered in kilometres is converted before earning.
+  var KM_PER_MILE = 1.609344;
+  var useKm = (function () {
+    try {
+      var region = new Intl.Locale(LOCALE).maximize().region;
+      return ["US", "GB", "LR", "MM"].indexOf(region) === -1;
+    } catch (e) { return false; }
+  })();
+  distanceEl.addEventListener("input", function () { delete distanceEl.dataset.miles; });
+  if (useKm) {
+    document.querySelector('label[for="distance"]').textContent = "Kilometres flown";
+    distanceEl.placeholder = "e.g. " + num.format(2000);
+    var hint = $("distanceHint");
+    if (hint) hint.textContent = "This program awards points by distance, not by price. Enter airports to fill this in, or type the kilometres yourself. Airlines count miles, so it is converted.";
+  }
+  function distText(miles) {
+    return useKm
+      ? num.format(Math.round(miles * KM_PER_MILE)) + " km (" + num.format(miles) + " miles)"
+      : num.format(miles) + " miles";
+  }
+  // Fills the distance box from a known mileage, in the device's unit,
+  // and keeps the exact miles for the calculation.
+  function setDistanceMiles(miles) {
+    distanceEl.value = useKm ? Math.round(miles * KM_PER_MILE) : miles;
+    distanceEl.dataset.miles = miles;
+  }
+  function reviewedText(ym) {
+    if (!ym) return "recently";
+    var parts = ym.split("-");
+    return new Date(Number(parts[0]), Number(parts[1]) - 1, 1).toLocaleDateString(LOCALE, { year: "numeric", month: "long" });
+  }
+
   var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
@@ -550,7 +571,10 @@
     var p = current();
     if (!p) return showError("Please choose an airline program.");
 
-    var distance = parseFloat(distanceEl.value);
+    // Distance in miles: the exact figure when it came from an airport or
+    // route lookup, otherwise the typed value (converted from km if needed).
+    var distance = distanceEl.dataset.miles ? Number(distanceEl.dataset.miles)
+      : parseFloat(distanceEl.value) / (useKm ? KM_PER_MILE : 1);
     var segments = parseInt(segmentsEl.value, 10);
     var method = earnMethod(p).id;
     var fareUsed = usesFare(method);
@@ -634,14 +658,14 @@
       row(dl, "Taxes & Airport Fees", usd.format(taxes));
       row(dl, "Total trip cost", usd.format(tripCost));
     }
-    if (method === "distance" && !routeFixed) row(dl, "Miles flown", num.format(distance));
+    if (method === "distance" && !routeFixed) row(dl, "Distance flown", distText(Math.round(distance)));
     if (method === "distance" && p.zones) row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "segments") row(dl, "Segments flown", num.format(segments));
     if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
     row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {
       var cardMoney = foreignCard || !fareUsed
-        ? cardSymbols[cardCurrency] + charged.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
+        ? cardSymbols[cardCurrency] + charged.toLocaleString(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         : usd.format(charged);
       row(dl, "Card earning", num.format(cardPoints) + " (" + num.format(cardRate) + " per " +
         (foreignCard || !fareUsed ? cardSymbols[cardCurrency] : symbols[p.currency || "USD"]) + " on " + cardMoney + ")");
@@ -661,7 +685,7 @@
     var srcUrl = srcMap[programEl.value] || srcMap[programEl.value.split(":")[0]];
     var srcEl = $("resultSource");
     var reviewed = (window.REVIEWED || {})[programEl.value];
-    srcEl.textContent = "Rules last reviewed " + (reviewed || "recently") + ".";
+    srcEl.textContent = "Rules last reviewed " + reviewedText(reviewed) + ".";
     if (srcUrl) {
       var host = srcUrl.replace(/^https?:\/\//, "").split("/")[0].replace(/^www\./, "");
       var a = document.createElement("a");
@@ -820,7 +844,7 @@
     routeSelect.innerHTML = "";
     routeSelect.appendChild(option("", "Another route (enter airports below)"));
     p.routes.list.forEach(function (r) {
-      routeSelect.appendChild(option(r[0], r[1] + " (" + r[0] + "), " + num.format(r[2]) + " mi"));
+      routeSelect.appendChild(option(r[0], r[1] + " (" + r[0] + "), " + (useKm ? num.format(Math.round(r[2] * KM_PER_MILE)) + " km" : num.format(r[2]) + " mi")));
     });
     $("routeLabel").textContent = "Route to or from " + p.routes.fromCity + " (" + p.routes.from + ")";
   }
@@ -830,8 +854,8 @@
     if (!r) return;
     fromAirport.value = p.routes.from;
     toAirport.value = r[0];
-    distanceEl.value = r[2];
-    airportResult.textContent = p.routes.from + " " + p.routes.fromCity + " \u2194 " + r[0] + " " + r[1] + ": " + num.format(r[2]) + " miles (the airline's published distance).";
+    setDistanceMiles(r[2]);
+    airportResult.textContent = p.routes.from + " " + p.routes.fromCity + " \u2194 " + r[0] + " " + r[1] + ": " + distText(r[2]) + " (the airline's published distance).";
     resultEl.hidden = true;
   });
 
@@ -847,15 +871,15 @@
     var published = routeMiles(current(), r.from, r.to);
     if (routeSelect) routeSelect.value = published != null ? (r.from === current().routes.from ? r.to : r.from) : "";
     if (published != null) {
-      distanceEl.value = published;
+      setDistanceMiles(published);
       airportResult.textContent = r.from + " " + (A[r.from][2] || A[r.from][3]) + " \u2192 " + r.to + " " + (A[r.to][2] || A[r.to][3]) +
-        ": " + num.format(published) + " miles (the airline's published distance).";
+        ": " + distText(published) + " (the airline's published distance).";
       resultEl.hidden = true;
       return;
     }
-    distanceEl.value = r.miles;
+    setDistanceMiles(r.miles);
     airportResult.textContent = r.from + " " + (A[r.from][2] || A[r.from][3]) + " \u2192 " + r.to + " " + (A[r.to][2] || A[r.to][3]) +
-      ": " + num.format(r.miles) + " miles (great-circle distance; airlines may count slightly differently).";
+      ": " + distText(r.miles) + " (great-circle distance; airlines may count slightly differently).";
     resultEl.hidden = true;
   }
   [fromAirport, toAirport].forEach(function (el) {

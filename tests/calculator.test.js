@@ -118,6 +118,27 @@ test("a Copa route fills in Copa's published miles", { skip }, async () => {
   assert.strictEqual(await page.$eval("#routeSelect", (s) => s.value), "MVD");
 });
 
+test("a metric-region device enters and shows kilometres", { skip }, async () => {
+  const ctx = await browser.newContext({ locale: "de-DE" });
+  const p = await ctx.newPage();
+  await p.goto(PAGE);
+  await p.evaluate(() => { const s = document.getElementById("program"); s.value = "copa"; s.dispatchEvent(new Event("change")); });
+  assert.strictEqual(await p.textContent('label[for="distance"]'), "Kilometres flown");
+  await p.selectOption("#fareType", "full");
+  await p.selectOption("#routeSelect", "KIN");
+  // 634 miles is shown as 1,020 km, and earning still uses the exact miles.
+  assert.strictEqual(await p.inputValue("#distance"), "1020");
+  await p.click("#calc button[type=submit]");
+  assert.strictEqual(await p.textContent("#resultPoints"), "1.110");
+  // A typed distance in kilometres is converted to miles.
+  await p.selectOption("#fareType", "classic");
+  await p.fill("#distance", "1609");
+  await p.click("#calc button[type=submit]");
+  assert.strictEqual(await p.textContent("#resultPoints"), "1.000");
+  assert.match(await p.textContent("#resultSource"), /November 2026/);
+  await ctx.close();
+});
+
 test("airport codes fill in the miles", { skip }, async () => {
   await reset();
   await pickProgram("qatar");
