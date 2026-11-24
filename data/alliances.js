@@ -53,7 +53,7 @@ module.exports = function applyAlliances(P) {
     "Star Alliance": ["united", "aircanada", "milesandmore:lh", "milesandmore:lx",
       "milesandmore:os", "milesandmore:sn", "milesandmore:az", "tap", "ana",
       "krisflyer", "eva", "lifemiles", "airnz", "turkish", "phoenix:ca",
-      "milesandmore:lo", "milesandmore:ou", "copa"],
+      "milesandmore:lo", "milesandmore:ou", "copa", "aegean"],
     SkyTeam: ["delta", "aeromexico", "flyingblue:af", "flyingblue:kl", "virgin", "chinaairlines",
       "korean", "aireuropa", "chinaeastern", "xiamen", "sas"]
   };

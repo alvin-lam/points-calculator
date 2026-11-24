@@ -12,6 +12,7 @@ module.exports = [
   { id: "SCAN", label: "Scandinavia \u{1F1E9}\u{1F1F0} \u{1F1F3}\u{1F1F4} \u{1F1F8}\u{1F1EA}" },
   { id: "FR", label: "France \u{1F1EB}\u{1F1F7}" },
   { id: "DE", label: "Germany \u{1F1E9}\u{1F1EA}" },
+  { id: "GR", label: "Greece \u{1F1EC}\u{1F1F7}" },
   { id: "IE", label: "Ireland \u{1F1EE}\u{1F1EA}" },
   { id: "IT", label: "Italy \u{1F1EE}\u{1F1F9}" },
   { id: "NL", label: "Netherlands \u{1F1F3}\u{1F1F1}" },
