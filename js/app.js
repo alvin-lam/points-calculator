@@ -85,11 +85,14 @@
   function countedText(p, miles) {
     if (p.distanceFactor) {
       var km = Math.round(miles * p.distanceFactor);
-      return num.format(km) + " km, the unit " + (p.programName || "this program") + " counts" +
-        (useKm ? "" : " (" + num.format(Math.round(miles)) + " miles)");
+      return num.format(km) + " km" + (useKm ? "" : " (" + num.format(Math.round(miles)) + " miles)");
     }
-    return num.format(Math.round(miles)) + " miles, the unit " + (p.programName || "this program") + " counts" +
-      (useKm ? " (" + num.format(Math.round(miles * KM_PER_MILE)) + " km)" : "");
+    return num.format(Math.round(miles)) + " miles" + (useKm ? " (" + num.format(Math.round(miles * KM_PER_MILE)) + " km)" : "");
+  }
+  // "1 mile", "1 point": singular only for plain English units.
+  function unitFor(n, unit) {
+    if (n !== 1) return unit;
+    return unit === "miles" ? "mile" : unit === "points" ? "point" : unit;
   }
   function reviewedText(ym) {
     if (!ym) return "recently";
@@ -501,11 +504,11 @@
         // bonus can also be added on top of the fare share (Etihad).
         if (status.bonus != null) {
           points = base + dist * status.bonus;
-          rateLabel = num.format(share + status.bonus) + " " + p.unit + " per " + unitName;
+          rateLabel = num.format(share + status.bonus) + " " + unitFor(share + status.bonus, p.unit) + " per " + unitName;
         } else {
           var mult = fareType && fareType.noBonus ? 1 : (status.multiplier || 1);
           points = base * mult;
-          rateLabel = num.format(share * mult) + " " + p.unit + " per " + unitName;
+          rateLabel = num.format(share * mult) + " " + unitFor(share * mult, p.unit) + " per " + unitName;
         }
         if (minUsed) rateLabel += ", with the " + num.format(min) + " minimum per flight";
         if (minDistUsed) rateLabel += ", counted as the " + num.format(p.minDistance) + " km minimum";

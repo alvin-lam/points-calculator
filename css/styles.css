@@ -92,6 +92,9 @@ select, input {
   border-radius: 8px;
   padding: 10px 12px;
 }
+/* Same height and text inset for menus, text boxes and the airline box. */
+select, input:not([type="radio"]):not([type="checkbox"]) { min-height: 46px; box-sizing: border-box; line-height: 1.4; }
+select { padding-left: 8px; }
 select:disabled { opacity: 0.6; }
 input[readonly] { color: var(--muted); cursor: not-allowed; }
 select:focus, input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
@@ -147,7 +150,9 @@ legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
   display: grid; grid-template-columns: auto 1fr; gap: 6px 16px; margin: 0 0 16px;
 }
 .breakdown dt { color: var(--muted); }
-.breakdown dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.breakdown dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; overflow-wrap: anywhere; }
+/* On phones, keep the floating back-to-top button clear of the last lines. */
+@media (max-width: 959px) { .result { padding-bottom: 72px; } }
 
 .note { font-size: 0.9rem; color: var(--muted); margin: 0; }
 

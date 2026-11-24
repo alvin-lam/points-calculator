@@ -45,7 +45,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
   - `js/airports.js`: about 3,200 airports with scheduled service, from [OurAirports](https://ourairports.com/data/) (public domain). It loads only when a distance-based program is chosen.
   - `js/install.js`: the install prompt.
 - `favicon.ico` and `icons/` hold the browser and home-screen icons. `manifest.webmanifest` and `sw.js` let the site install as an app and open offline.
-- `js/install.js` invites visitors to add the calculator to their home screen. Chrome, Edge, and Android get an Install button. iPhone and iPad get the Share, then Add to Home Screen steps. "Not now" hides it for 14 days.
+- `js/install.js` invites visitors to add the calculator to their home screen. Chrome, Edge, and Android get an Install button. iPhone and iPad get the Share, then Add to Home Screen steps. Other phones and tablets whose browser has no install button (such as Firefox or Samsung Internet) are reminded to use the browser menu's Add to Home Screen. "Not now" hides it for 14 days.
 - Installing needs HTTPS, which GitHub Pages provides. When rates change, bump `CACHE` in `sw.js` so installed copies refresh their offline cache.
 
 ## Updating rates

@@ -159,8 +159,22 @@ test("miles and kilometre devices earn the same on mile- and km-based programs",
     const us = await run("en-US", program, from, to);
     const de = await run("de-DE", program, from, to);
     assert.strictEqual(de.pts, us.pts, program + " differs by device unit");
-    assert.match(us.row, new RegExp(unit + ", the unit"), program + " should say it counts " + unit);
+    assert.match(us.row, new RegExp("Distance flown[0-9,]+ " + unit), program + " should show " + unit + " first");
   }
+});
+
+test("a phone browser without an install button is reminded to Add to Home Screen", { skip }, async () => {
+  const ctx = await browser.newContext({
+    viewport: { width: 390, height: 800 }, isMobile: true, hasTouch: true,
+    userAgent: "Mozilla/5.0 (Android 14; Mobile; rv:132.0) Gecko/132.0 Firefox/132.0"
+  });
+  const p = await ctx.newPage();
+  await p.goto(PAGE);
+  await p.waitForSelector("#installBanner:not([hidden])", { timeout: 8000 });
+  assert.ok(await p.isVisible("#menuSteps"));
+  assert.ok(!(await p.isVisible("#iosSteps")));
+  assert.match(await p.textContent("#menuSteps"), /Add to Home Screen/);
+  await ctx.close();
 });
 
 test("airport codes fill in the miles", { skip }, async () => {
