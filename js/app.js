@@ -58,18 +58,19 @@
     HKD: new Intl.NumberFormat("en-US", { style: "currency", currency: "HKD" }),
     TWD: new Intl.NumberFormat("en-US", { style: "currency", currency: "TWD" }),
     INR: new Intl.NumberFormat("en-IN", { style: "currency", currency: "INR" }),
+    THB: new Intl.NumberFormat("en-US", { style: "currency", currency: "THB" }),
     CNY: new Intl.NumberFormat("en-US", { style: "currency", currency: "CNY" }),
     NZD: new Intl.NumberFormat("en-US", { style: "currency", currency: "NZD" }),
     GBP: new Intl.NumberFormat("en-GB", { style: "currency", currency: "GBP" }),
     EUR: new Intl.NumberFormat("en-IE", { style: "currency", currency: "EUR" }),
     BRL: new Intl.NumberFormat("en-US", { style: "currency", currency: "BRL" })
   };
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$" };
 
   function option(value, label) {
     var o = document.createElement("option");

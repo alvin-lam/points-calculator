@@ -39,5 +39,7 @@ module.exports = [
   { id: "CN", label: "China \u{1F1E8}\u{1F1F3}" },
   { id: "PL", label: "Poland \u{1F1F5}\u{1F1F1}" },
   { id: "HR", label: "Croatia \u{1F1ED}\u{1F1F7}" },
+  { id: "IN", label: "India \u{1F1EE}\u{1F1F3}" },
+  { id: "TH", label: "Thailand \u{1F1F9}\u{1F1ED}" },
   { id: "MY", label: "Malaysia \u{1F1F2}\u{1F1FE}" }
 ];
