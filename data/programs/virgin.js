@@ -25,9 +25,9 @@ const rules = {
   ],
   // Co-branded cards: extra points per pound charged (fare + taxes).
   cards: [
-    { id: "reward", name: "Virgin Atlantic Reward (UK)", rate: 1.5 },
-    { id: "reward-plus", name: "Virgin Atlantic Reward+ (UK)", rate: 3 },
-    { id: "red", name: "Virgin Red Rewards Mastercard (US)", rate: 3, currency: "USD" }
+    { id: "reward", name: "Virgin Atlantic Reward", rate: 1.5, bank: "Virgin Money (UK)" },
+    { id: "reward-plus", name: "Virgin Atlantic Reward+", rate: 3, bank: "Virgin Money (UK)" },
+    { id: "red", name: "Virgin Red Rewards Mastercard", rate: 3, currency: "USD", bank: "Synchrony (US)" }
   ],
   note: "Flying Club earns a share of the miles flown set by fare class, and Silver and Gold add 30% and 60%. Premium and Upper Class rates differ between sources, so those are estimates. Card points are earned per pound charged, or per US dollar for the US card."
 };

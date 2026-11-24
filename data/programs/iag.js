@@ -9,9 +9,9 @@ var iberiaStatuses = [
 ];
 // Co-branded cards: extra Avios per US dollar charged (fare + taxes).
 var avioUsCards = [
-  { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature (US)", rate: 3, currency: "USD" },
-  { id: "chase-iberia", name: "Chase Iberia Visa Signature (US)", rate: 3, currency: "USD" },
-  { id: "chase-ba", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" }
+  { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
+  { id: "chase-iberia", name: "Chase Iberia Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
+  { id: "chase-ba", name: "Chase British Airways Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" }
 ];
 
 /* IAG: Aer Lingus, British Airways, Iberia, LEVEL, and Vueling in one program. Each airline brings
@@ -36,11 +36,11 @@ var baClub = {
   // Co-branded cards: extra points per pound charged (fare + taxes).
   // US cards earn per US dollar and ask for the US dollar charge.
   cards: [
-    { id: "amex", name: "British Airways American Express (UK)", rate: 1 },
-    { id: "amex-pp", name: "British Airways American Express Premium Plus (UK)", rate: 3 },
-    { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature (US)", rate: 3, currency: "USD" },
-    { id: "chase", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" },
-    { id: "chase-iberia", name: "Chase Iberia Visa Signature (US)", rate: 3, currency: "USD" }
+    { id: "amex", name: "British Airways American Express", rate: 1, bank: "American Express (UK)" },
+    { id: "amex-pp", name: "British Airways American Express Premium Plus", rate: 3, bank: "American Express (UK)" },
+    { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
+    { id: "chase", name: "Chase British Airways Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
+    { id: "chase-iberia", name: "Chase Iberia Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" }
   ],
   note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier-imposed charges, by status. Taxes do not earn, and paid seats and bags earn Tier Points but no Avios. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
 };
@@ -99,9 +99,9 @@ var aerClub = {
   ],
   // Co-branded cards: extra Avios per US dollar charged (fare + taxes).
   cards: [
-    { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature (US)", rate: 3, currency: "USD" },
-    { id: "chase-ba", name: "Chase British Airways Visa Signature (US)", rate: 3, currency: "USD" },
-    { id: "chase-iberia", name: "Chase Iberia Visa Signature (US)", rate: 3, currency: "USD" }
+    { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
+    { id: "chase-ba", name: "Chase British Airways Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
+    { id: "chase-iberia", name: "Chase Iberia Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" }
   ],
   note: "AerClub earns 3 Avios per euro of the Aer Lingus fare and carrier charges, excluding government taxes, bags, and seats. Silver, Platinum, and Concierge add a 25%, 50%, or 75% tier bonus. Enter fares in euros. The US Chase cards earn per US dollar charged."
 };

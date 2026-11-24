@@ -17,8 +17,8 @@ const rules = {
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "rbc-mc", name: "WestJet RBC Mastercard", rate: 1.5 },
-    { id: "rbc-we", name: "WestJet RBC World Elite Mastercard", rate: 2 }
+    { id: "rbc-mc", name: "WestJet RBC Mastercard", rate: 1.5, bank: "RBC (Canada)" },
+    { id: "rbc-we", name: "WestJet RBC World Elite Mastercard", rate: 2, bank: "RBC (Canada)" }
   ],
   note: "WestJet Rewards earns points per Canadian dollar spent on WestJet flights, before taxes, and on seat selection, baggage, and upgrades. Partner flights earn by distance and are not covered here."
 };

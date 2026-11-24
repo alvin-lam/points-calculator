@@ -25,9 +25,9 @@ const rules = {
   },
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "card", name: "JetBlue Card", rate: 3 },
-    { id: "plus", name: "JetBlue Plus Card", rate: 6 },
-    { id: "premier", name: "JetBlue Premier Card", rate: 6 }
+    { id: "card", name: "JetBlue Card", rate: 3, bank: "Barclays (US)" },
+    { id: "plus", name: "JetBlue Plus Card", rate: 6, bank: "Barclays (US)" },
+    { id: "premier", name: "JetBlue Premier Card", rate: 6, bank: "Barclays (US)" }
   ],
   note: "TrueBlue earns per dollar of the pre-tax fare: 3 points on Main, EvenMore, BlueFirst, and Mint, or 1 on Base fares. Booking on jetblue.com or the JetBlue app adds 3 (1 on Base). Mosaic 1 and 2 add 3, Mosaic 3 adds 4, and Mosaic 4 adds 5. The JetBlue Card adds 3 and the Plus Card 6. Subscription bonuses are not included."
 };

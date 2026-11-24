@@ -32,8 +32,8 @@ const rules = {
   // publishes this for the World Mastercard; the Access card is assumed
   // to match.
   cards: [
-    { id: "frontier-mc", name: "Frontier Airlines World Mastercard", rate: 5 },
-    { id: "frontier-access", name: "Frontier Airlines Access Mastercard", rate: 5 }
+    { id: "frontier-mc", name: "Frontier Airlines World Mastercard", rate: 5, bank: "Barclays (US)" },
+    { id: "frontier-access", name: "Frontier Airlines Access Mastercard", rate: 5, bank: "Barclays (US)" }
   ],
   note: "For bookings made on or after September 1, 2026, Frontier Miles earns 1 to 11 miles per dollar on basic fares and 6 to 16 on bundles, depending on status, on the fare plus seats and bags. GoWild! Pass fares earn 1 mile, and the Early Booking Fee earns at the status and fare type rate. Holders of a Frontier Airlines World or Access Mastercard earn 4 to 14 on basic fares and 12 to 22 on bundles however they pay, and paying with the card adds 5 miles per dollar. Frontier publishes the 5 for the World Mastercard; this estimate assumes the same for the Access card."
 };

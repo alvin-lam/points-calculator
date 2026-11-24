@@ -60,7 +60,7 @@ const rules = {
   ],
   // Co-branded card: extra miles per US dollar charged (fare + taxes).
   cards: [
-    { id: "barclays", name: "Miles & More World Elite Mastercard (US)", rate: 2, currency: "USD" }
+    { id: "barclays", name: "Miles & More World Elite Mastercard", rate: 2, currency: "USD", bank: "Barclays (US)" }
   ],
   note: "Miles & More earns award miles per euro of the fare, not by distance: 4 per euro for members. Frequent Traveller, Senator, and HON Circle earn 6 per euro on Lufthansa, SWISS, Austrian, Brussels, and Air Dolomiti, and 5 on Eurowings and Discover. Eurowings and Air Dolomiti flights earn at least 125 miles. Taxes do not earn. Enter fares in euros. The US Barclays card earns per US dollar charged."
 };

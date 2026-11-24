@@ -17,7 +17,7 @@ const rules = {
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "allways-visa", name: "Allways Rewards Visa", rate: 3 }
+    { id: "allways-visa", name: "Allways Rewards Visa", rate: 3, bank: "Bank of America (US)" }
   ],
   note: "Allways Rewards has no elite status tiers. Members earn 1 point per dollar on the first $500 of a booking and 2 points per dollar above $500, on the fare plus seats and bags, excluding taxes and fees."
 };

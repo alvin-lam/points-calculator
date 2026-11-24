@@ -25,7 +25,7 @@ const rules = {
   // The card's "when you buy" points match the fare: 1x No Flex, 2x Nice,
   // 5x Nicer and Nicest, on the amount charged.
   cards: [
-    { id: "breeze-easy", name: "Breeze Easy Visa Signature", rate: 5, rates: { noflex: 1, nice: 2, nicer: 5, nicest: 5 } }
+    { id: "breeze-easy", name: "Breeze Easy Visa Signature", rate: 5, rates: { noflex: 1, nice: 2, nicer: 5, nicest: 5, bank: "Barclays (US)" } }
   ],
   note: "BreezePoints depend on the fare you buy: 1 per dollar on No Flex, 2 on Nice, and 5 on Nicer and Nicest, on the fare and add-ons such as seats and bags. Breezy 1, 2, 3, and Club add a 25%, 50%, 75%, or 100% boost. The Breeze Easy Visa Signature adds the same 1, 2, or 5 points per dollar again when you pay with it."
 };

@@ -13,8 +13,8 @@ const rules = {
   ],
   // Co-branded cards: extra points per Canadian dollar charged.
   cards: [
-    { id: "bmo", name: "BMO VIPorter Mastercard", rate: 2 },
-    { id: "bmo-we", name: "BMO VIPorter World Elite Mastercard", rate: 3 }
+    { id: "bmo", name: "BMO VIPorter Mastercard", rate: 2, bank: "BMO (Canada)" },
+    { id: "bmo-we", name: "BMO VIPorter World Elite Mastercard", rate: 3, bank: "BMO (Canada)" }
   ],
   note: "VIPorter earns 5 to 7 points per Canadian dollar of the base fare by status, and Porter add-ons like seats and bags also earn. Taxes do not earn. The BMO card rates on Porter purchases differ between sources, so treat them as estimates."
 };

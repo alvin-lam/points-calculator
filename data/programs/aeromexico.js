@@ -14,7 +14,7 @@ const rules = {
   // Co-branded card: extra points per US dollar charged for Aeroméxico tickets
   // bought from Aeroméxico (U.S. Bank AeroMexico Visa Signature).
   cards: [
-    { id: "usbank-visa", name: "AeroMexico Visa Signature (US)", rate: 2, currency: "USD" }
+    { id: "usbank-visa", name: "AeroMexico Visa Signature", rate: 2, currency: "USD", bank: "U.S. Bank (US)" }
   ],
   note: "Aeroméxico Rewards earns 8 points per US dollar of base fare, excluding taxes. Enter the fare in US dollars. Titanium earns 8 more points per dollar. Bonuses for Silver, Gold, and Platinum were not confirmed, so those tiers are shown at the base rate. The U.S. Bank AeroMexico Visa Signature earns 2 more points per dollar on tickets bought from Aeroméxico."
 };

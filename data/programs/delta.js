@@ -17,10 +17,10 @@ const rules = {
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "blue", name: "Delta SkyMiles Blue Amex", rate: 2 },
-    { id: "gold", name: "Delta SkyMiles Gold Amex", rate: 2 },
-    { id: "plat", name: "Delta SkyMiles Platinum Amex", rate: 3 },
-    { id: "reserve", name: "Delta SkyMiles Reserve Amex", rate: 3 }
+    { id: "blue", name: "Delta SkyMiles Blue Amex", rate: 2, bank: "American Express (US)" },
+    { id: "gold", name: "Delta SkyMiles Gold Amex", rate: 2, bank: "American Express (US)" },
+    { id: "plat", name: "Delta SkyMiles Platinum Amex", rate: 3, bank: "American Express (US)" },
+    { id: "reserve", name: "Delta SkyMiles Reserve Amex", rate: 3, bank: "American Express (US)" }
   ],
   note: "SkyMiles are earned on base fare and carrier-imposed surcharges, and on paid seat upgrades. Basic Economy fares earn no miles. Earning is capped at 75,000 miles per ticket."
 };

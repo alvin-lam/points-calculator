@@ -19,9 +19,9 @@ const rules = {
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "ascent", name: "Atmos Rewards Ascent Visa Signature", rate: 3 },
-    { id: "summit", name: "Atmos Rewards Summit Visa Infinite", rate: 3 },
-    { id: "hawaiian-mc", name: "Hawaiian Airlines World Elite Mastercard", rate: 3 }
+    { id: "ascent", name: "Atmos Rewards Ascent Visa Signature", rate: 3, bank: "Bank of America (US)" },
+    { id: "summit", name: "Atmos Rewards Summit Visa Infinite", rate: 3, bank: "Bank of America (US)" },
+    { id: "hawaiian-mc", name: "Hawaiian Airlines World Elite Mastercard", rate: 3, bank: "Barclays (US)" }
   ],
   note: "HawaiianMiles is now part of Atmos Rewards. Members choose how they earn for flights departing on or after 1 January 2027: 1 point per mile flown, 5 points per dollar of the fare, or 500 points per segment. Silver, Gold, Platinum, and Titanium add 25% to 150%. With distance earning, Neighbor Island flights earn at least 500 points per segment, which this estimate does not apply. Flights before 2027 earn by distance."
 };

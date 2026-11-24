@@ -41,7 +41,7 @@ const rules = {
   // US card (Synchrony): Asia Miles per US dollar on Cathay Pacific and
   // HK Express purchases.
   cards: [
-    { id: "cathay-wemc", name: "Cathay World Elite Mastercard (US)", rate: 3, currency: "USD" }
+    { id: "cathay-wemc", name: "Cathay World Elite Mastercard", rate: 3, currency: "USD", bank: "Synchrony (US)" }
   ],
   note: "Cathay Pacific awards a fixed number of Asia Miles per flight, set by fare type and distance zone from Hong Kong. Cathay's published table is the same for every status level. It covers flights marketed by Cathay Pacific and departing on or after 20 August 2025. The US Cathay World Elite Mastercard adds 3 Asia Miles per US dollar charged for the ticket."
 };

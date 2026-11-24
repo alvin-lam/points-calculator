@@ -28,10 +28,10 @@ const rules = {
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "citi-mileup", name: "Citi / AAdvantage MileUp", rate: 2 },
-    { id: "citi-platselect", name: "Citi / AAdvantage Platinum Select", rate: 2 },
-    { id: "citi-globe", name: "Citi / AAdvantage Globe", rate: 3 },
-    { id: "citi-exec", name: "Citi / AAdvantage Executive", rate: 4 }
+    { id: "citi-mileup", name: "Citi / AAdvantage MileUp", rate: 2, bank: "Citi (US)" },
+    { id: "citi-platselect", name: "Citi / AAdvantage Platinum Select", rate: 2, bank: "Citi (US)" },
+    { id: "citi-globe", name: "Citi / AAdvantage Globe", rate: 3, bank: "Citi (US)" },
+    { id: "citi-exec", name: "Citi / AAdvantage Executive", rate: 4, bank: "Citi (US)" }
   ],
   note: "AAdvantage miles are earned on base fare and carrier-imposed fees, and on paid upgrades at the same rate. Government taxes, bags, and seats do not earn miles. Earning is capped at 75,000 miles per ticket."
 };

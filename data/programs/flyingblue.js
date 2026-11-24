@@ -25,7 +25,7 @@ const rules = {
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "boa", name: "Air France KLM Visa Signature (US)", rate: 3, currency: "USD" }
+    { id: "boa", name: "Air France KLM Visa Signature", rate: 3, currency: "USD", bank: "Bank of America (US)" }
   ],
   note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France, KLM, and Transavia, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged."
 };

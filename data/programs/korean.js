@@ -21,9 +21,9 @@ const rules = {
   ],
   // US cards (U.S. Bank): miles per dollar on Korean Air tickets.
   cards: [
-    { id: "skyblue", name: "SKYPASS SkyBlue Visa (US)", rate: 1 },
-    { id: "sig", name: "SKYPASS Visa Signature (US)", rate: 2 },
-    { id: "select", name: "SKYPASS Select Visa Signature (US)", rate: 3 }
+    { id: "skyblue", name: "SKYPASS SkyBlue Visa", rate: 1, bank: "U.S. Bank (US)" },
+    { id: "sig", name: "SKYPASS Visa Signature", rate: 2, bank: "U.S. Bank (US)" },
+    { id: "select", name: "SKYPASS Select Visa Signature", rate: 3, bank: "U.S. Bank (US)" }
   ],
   note: "SKYPASS earns the flight distance times the booking class percentage, from 70% to 200%, on Korean Air's current international fare table. Tiers add no bonus miles. The US SKYPASS cards add 1, 2, or 3 miles per dollar on Korean Air tickets charged to the SkyBlue Visa, Visa Signature, or Select Visa Signature."
 };

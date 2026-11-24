@@ -13,10 +13,10 @@ const rules = {
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "gateway", name: "United Gateway Card", rate: 2 },
-    { id: "explorer", name: "United Explorer Card", rate: 3 },
-    { id: "quest", name: "United Quest Card", rate: 4 },
-    { id: "club", name: "United Club Card", rate: 5 },
+    { id: "gateway", name: "United Gateway Card", rate: 2, bank: "Chase (US)" },
+    { id: "explorer", name: "United Explorer Card", rate: 3, bank: "Chase (US)" },
+    { id: "quest", name: "United Quest Card", rate: 4, bank: "Chase (US)" },
+    { id: "club", name: "United Club Card", rate: 5, bank: "Chase (US)" },
     { id: "debit", name: "United MileagePlus Debit Rewards Card", rate: 1, kind: "debit" }
   ],
   note: "MileagePlus miles are earned on base fare and carrier-imposed surcharges. Taxes do not earn miles. Earning is capped at 75,000 miles per ticket."

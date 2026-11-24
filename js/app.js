@@ -283,13 +283,16 @@
       [["Credit cards", credit], ["Debit cards", debit]].forEach(function (g) {
         if (!g[1].length) return;
         var parent = cardEl;
-        if (debit.length) {
+        var byBank = g[0] === "Credit cards" && g[1].some(function (c) { return c.bank; });
+        if (debit.length && !byBank) {
           parent = document.createElement("optgroup");
           parent.label = g[0];
           cardEl.appendChild(parent);
         }
         // Cards with a bank are grouped under that bank, in listed order.
-        if (g[1].some(function (c) { return c.bank; })) {
+        // (Debit cards keep their own "Debit cards" heading.)
+        if (g[0] === "Credit cards" && g[1].some(function (c) { return c.bank; })) {
+          parent = cardEl;
           var groups = {};
           g[1].forEach(function (c) {
             if (c.separator) return;

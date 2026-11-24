@@ -19,8 +19,8 @@ const rules = {
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "ascent", name: "Atmos Rewards Ascent Visa Signature", rate: 3 },
-    { id: "summit", name: "Atmos Rewards Summit Visa Infinite", rate: 3 }
+    { id: "ascent", name: "Atmos Rewards Ascent Visa Signature", rate: 3, bank: "Bank of America (US)" },
+    { id: "summit", name: "Atmos Rewards Summit Visa Infinite", rate: 3, bank: "Bank of America (US)" }
   ],
   note: "Atmos Rewards members choose how they earn for flights departing on or after 1 January 2027: 1 point per mile flown, 5 points per dollar of the fare, or 500 points per segment. Silver, Gold, Platinum, and Titanium add 25% to 150%. Members who never chose keep earning by distance; new members default to price paid. Price paid excludes taxes, and Basic Economy fares may not qualify. Flights before 2027 earn by distance."
 };
