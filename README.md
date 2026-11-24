@@ -154,3 +154,4 @@ Expected results under the quoted rates: ATH–FCO 2,500 / 1,800 / 600 (all mini
 
 - Sun Country Rewards: merging into Allegiant Allways Rewards, likely by about May 2028. Not added for that reason.
 - Asiana Club: merging into Korean Air SKYPASS. Not added for that reason.
+- Air Transat Staria credit cards: Desjardins and Visa plan cards that earn Staria points, launching later in 2027. Fees and earning rates are not yet published. Add them to the Air Transat entry once they launch.
