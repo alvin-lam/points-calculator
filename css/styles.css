@@ -424,3 +424,51 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
 .route-wrap { margin-bottom: 14px; }
 .route-wrap select { margin-top: 6px; }
 .route-wrap small { display: block; margin-top: 4px; }
+
+/* Travel Tools: links to the other All Trips Considered sites. Colors come
+   from the app's theme, so light and dark mode follow the Appearance setting.
+   Square-cornered buttons on wide screens; a plain list on phones. */
+.travel-tools {
+  --tt-text: var(--text);
+  --tt-muted: var(--muted);
+  --tt-border: var(--border);
+  --tt-bg: var(--card);
+  --tt-hover: var(--bg);
+  --tt-accent: var(--site-accent);
+  margin: 20px 0 0;
+}
+.travel-tools h2 {
+  margin: 0 0 10px; font-size: .8rem; font-weight: 600; letter-spacing: .06em;
+  text-transform: uppercase; text-align: center; color: var(--tt-muted);
+}
+.travel-tools ul {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px;
+}
+.travel-tools a {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  min-height: 84px; padding: 12px 8px; text-align: center; text-decoration: none;
+  color: var(--tt-text); background: var(--tt-bg);
+  border: 1px solid var(--tt-border); border-radius: 0;
+  transition: border-color .15s, background .15s;
+}
+.travel-tools a:hover { border-color: var(--tt-accent); background: var(--tt-hover); }
+.travel-tools a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.travel-tools .tt-emoji { font-size: 1.4rem; line-height: 1; }
+.travel-tools .tt-name { font-weight: 600; font-size: .9rem; }
+.travel-tools .tt-arrow { font-size: .75rem; color: var(--tt-muted); }
+.travel-tools a[aria-current="page"] { border-color: var(--tt-accent); box-shadow: inset 0 0 0 1px var(--tt-accent); cursor: default; }
+.travel-tools a[aria-current="page"] .tt-arrow { color: var(--tt-accent); font-weight: 600; }
+
+@media (max-width: 700px) {
+  .travel-tools h2 { text-align: left; }
+  .travel-tools ul { display: block; border-top: 1px solid var(--tt-border); }
+  .travel-tools a {
+    flex-direction: row; justify-content: flex-start; gap: 12px; min-height: 48px;
+    padding: 12px 4px; text-align: left; background: none;
+    border: 0; border-bottom: 1px solid var(--tt-border);
+  }
+  .travel-tools a:hover { background: var(--tt-hover); }
+  .travel-tools .tt-name { flex: 1; font-size: 1rem; }
+  .travel-tools a[aria-current="page"] { box-shadow: none; border-color: var(--tt-border); }
+}
