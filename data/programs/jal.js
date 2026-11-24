@@ -25,7 +25,13 @@ const rules = {
     { id: "jgc-premier", name: "JGC Premier", multiplier: 2.05 },
     { id: "diamond", name: "JMB Diamond", multiplier: 2.3 }
   ],
-  note: "JAL earns a share of the flight distance set by booking class, and status adds a 35% to 130% mile-up bonus. Fare classes not listed do not earn miles. Japanese JAL cards are not included."
+  // US co-branded card (First National Bank of Omaha): extra miles per US
+  // dollar charged for tickets bought directly from JAL.
+  cards: [
+    { id: "fnbo-basic", name: "JAL USA Card Basic Rewards", rate: 0.5, currency: "USD", bank: "First National Bank of Omaha (US)" },
+    { id: "fnbo-premium", name: "JAL USA Card Premium Rewards", rate: 2, currency: "USD", bank: "First National Bank of Omaha (US)" }
+  ],
+  note: "JAL earns a share of the flight distance set by booking class, and status adds a 35% to 130% mile-up bonus. Fare classes not listed do not earn miles. The US JAL USA Card earns 2 more miles per US dollar on JAL purchases with Premium Rewards, or 1 per 2 dollars with Basic Rewards. Only tickets bought directly from JAL count. Japanese JAL cards are not included."
 };
 
 module.exports = {
@@ -35,5 +41,10 @@ module.exports = {
   code: "JL",
   color: "#CC0000",
   source: "https://www.jal.co.jp/jp/en/jmb/earn/travel/flight/jal.html",
+  // Worked from the published rates: a ¥150,000 Economy (Y) fare on a
+  // 3,000-mile flight, charged as US$1,000 to the Basic Rewards card (the first card listed).
+  examples: [
+    { name: "JAL Economy (Y) with the JAL USA Card Basic", input: { fare: "y", radios: { usedCard: "Yes" }, fields: { distance: 3000, cardCharge: 1000 } }, expect: 3500 }
+  ],
   rules
 };

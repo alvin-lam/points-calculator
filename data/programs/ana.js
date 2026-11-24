@@ -24,7 +24,12 @@ const rules = {
     { id: "platinum", name: "Platinum", multiplier: 1.9 },
     { id: "diamond", name: "Diamond", multiplier: 2.15 }
   ],
-  note: "ANA earns a share of the flight distance set by booking class. Bronze, Platinum, and Diamond add 40%, 90%, and 115% in the first status year, and more in later years or with an ANA Gold or Premium card. O, I, R, and X fares do not earn miles. Japanese ANA cards are not included."
+  // US co-branded card (First National Bank of Omaha): extra miles per US
+  // dollar charged for ANA purchases.
+  cards: [
+    { id: "fnbo-plus", name: "ANA Card U.S.A. Plus", rate: 2, currency: "USD", bank: "First National Bank of Omaha (US)" }
+  ],
+  note: "ANA earns a share of the flight distance set by booking class. Bronze, Platinum, and Diamond add 40%, 90%, and 115% in the first status year, and more in later years or with an ANA Gold or Premium card. O, I, R, and X fares do not earn miles. The US ANA Card U.S.A. Plus earns 2 more miles per US dollar on ANA purchases. Japanese ANA cards are not included."
 };
 
 module.exports = {
