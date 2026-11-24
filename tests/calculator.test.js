@@ -102,6 +102,22 @@ test("a program page opens on its own program", { skip }, async () => {
   await reset();
 });
 
+test("a Copa route fills in Copa's published miles", { skip }, async () => {
+  await reset();
+  await pickProgram("copa");
+  await page.selectOption("#fareType", "full");
+  await page.selectOption("#routeSelect", "KIN");
+  assert.strictEqual(await page.inputValue("#distance"), "634");
+  await page.click("#calc button[type=submit]");
+  assert.strictEqual(await page.textContent("#resultPoints"), "1,110");
+  // Typing the airports in either direction uses the same figure.
+  await page.selectOption("#routeSelect", "");
+  await page.fill("#fromAirport", "MVD");
+  await page.fill("#toAirport", "PTY");
+  await page.waitForFunction(() => document.getElementById("distance").value === "3385");
+  assert.strictEqual(await page.$eval("#routeSelect", (s) => s.value), "MVD");
+});
+
 test("airport codes fill in the miles", { skip }, async () => {
   await reset();
   await pickProgram("qatar");

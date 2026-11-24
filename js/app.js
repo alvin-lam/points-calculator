@@ -370,6 +370,7 @@
     fareFields.hidden = !usesFare(m);
     // Load the airport list once a distance-based program is chosen.
     if (!distanceField.hidden) ensureAirports();
+    syncRoutes();
     airfareEl.required = usesFare(m);
     syncCardSelect();
     resultEl.hidden = true;
@@ -795,6 +796,42 @@
     s.onerror = function () { airportsLoading = false; airportResult.textContent = "The airport list could not load. Enter the miles yourself."; };
     document.head.appendChild(s);
   }
+  // Published route distances (Copa): a menu of routes, and the same
+  // figures used when the two airports typed match a listed route.
+  var routeWrap = $("routeWrap"), routeSelect = $("routeSelect");
+  function routeMiles(p, a, b) {
+    if (!p || !p.routes) return null;
+    var other = a === p.routes.from ? b : (b === p.routes.from ? a : null);
+    if (!other) return null;
+    var hit = p.routes.list.filter(function (r) { return r[0] === other; })[0];
+    return hit ? hit[2] : null;
+  }
+  function syncRoutes() {
+    routeWrap = $("routeWrap"); routeSelect = $("routeSelect");
+    var p = current();
+    var show = !!(p && p.routes) && !distanceField.hidden;
+    routeWrap.hidden = !show;
+    if (!show) return;
+    if (routeSelect.dataset.program === programEl.value) return;
+    routeSelect.dataset.program = programEl.value;
+    routeSelect.innerHTML = "";
+    routeSelect.appendChild(option("", "Another route (enter airports below)"));
+    p.routes.list.forEach(function (r) {
+      routeSelect.appendChild(option(r[0], r[1] + " (" + r[0] + "), " + num.format(r[2]) + " mi"));
+    });
+    $("routeLabel").textContent = "Route to or from " + p.routes.fromCity + " (" + p.routes.from + ")";
+  }
+  routeSelect.addEventListener("change", function () {
+    var p = current();
+    var r = p && p.routes ? p.routes.list.filter(function (x) { return x[0] === routeSelect.value; })[0] : null;
+    if (!r) return;
+    fromAirport.value = p.routes.from;
+    toAirport.value = r[0];
+    distanceEl.value = r[2];
+    airportResult.textContent = p.routes.from + " " + p.routes.fromCity + " \u2194 " + r[0] + " " + r[1] + ": " + num.format(r[2]) + " miles (the airline's published distance).";
+    resultEl.hidden = true;
+  });
+
   function updateAirportDistance() {
     var from = fromAirport.value, to = toAirport.value;
     if (!from.trim() || !to.trim()) { airportResult.textContent = ""; return; }
@@ -804,6 +841,15 @@
     if (unknown.length) { airportResult.textContent = "Use a three-letter airport code, such as JFK or DOH."; return; }
     var r = D.airportMiles(window.AIRPORTS, from, to);
     var A = window.AIRPORTS;
+    var published = routeMiles(current(), r.from, r.to);
+    if (routeSelect) routeSelect.value = published != null ? (r.from === current().routes.from ? r.to : r.from) : "";
+    if (published != null) {
+      distanceEl.value = published;
+      airportResult.textContent = r.from + " " + (A[r.from][2] || A[r.from][3]) + " \u2192 " + r.to + " " + (A[r.to][2] || A[r.to][3]) +
+        ": " + num.format(published) + " miles (the airline's published distance).";
+      resultEl.hidden = true;
+      return;
+    }
     distanceEl.value = r.miles;
     airportResult.textContent = r.from + " " + (A[r.from][2] || A[r.from][3]) + " \u2192 " + r.to + " " + (A[r.to][2] || A[r.to][3]) +
       ": " + num.format(r.miles) + " miles (great-circle distance; airlines may count slightly differently).";

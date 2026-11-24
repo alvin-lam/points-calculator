@@ -414,3 +414,8 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
 /* Rules review date and source under each result. */
 .source-line { margin-top: 10px; font-size: 0.85rem; }
 .source-line a { color: var(--accent); }
+
+/* Published route list (Copa), above the airport lookup. */
+.route-wrap { margin-bottom: 14px; }
+.route-wrap select { margin-top: 6px; }
+.route-wrap small { display: block; margin-top: 4px; }
