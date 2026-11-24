@@ -13,6 +13,8 @@ const rules = {
   method: "distance",
   zoneLabel: "Route",
   zoneHint: "Aegean awards a fixed number of miles per flight for each fare and booking class.",
+  // Tier bonuses apply to the fixed miles.
+  bonusOnFixed: true,
   zones: [
     { id: "domestic", name: "Domestic (within Greece)", fixed: true }
   ],

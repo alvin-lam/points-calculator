@@ -448,8 +448,10 @@
       var spec = specs ? specs[zi] : (fareType ? fareType.rate : 1);
       if (spec == null) return { error: fareType.name + " does not earn on this route." };
       if (typeof spec === "object" && spec.fixed != null) {
-        points = spec.fixed;
-        rateLabel = "fixed for this fare and route";
+        // Some programs add the status bonus to fixed amounts (Aegean).
+        var fixedMult = p.bonusOnFixed ? (status.multiplier || 1) : 1;
+        points = spec.fixed * fixedMult;
+        rateLabel = "fixed for this fare and route" + (fixedMult !== 1 ? ", plus " + Math.round((fixedMult - 1) * 100) + "% status bonus" : "");
       } else {
         var share = typeof spec === "object" ? spec.share : spec;
         var min = typeof spec === "object" ? spec.min : null;
