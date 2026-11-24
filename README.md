@@ -98,6 +98,11 @@ Programs and data still to add. Each needs an official, complete earning table b
 | Philippine Airlines | Mabuhay Miles | Asia | The earning table for Philippine Airlines' own flights. Only the codeshare table is published. |
 | Air Tahiti Nui | Club Tiare | Oceania | The percentage earned by each booking class. Status bonuses (Silver 50%, Gold 75%) and non-earning classes (O, X, U, I, F, R) are known. |
 | Jetstar | Qantas Frequent Flyer | Oceania | Which Jetstar fares earn and at what rate. Qantas' and Jetstar's pages disagree, and the late-2025 Frequent Flyer Extra option changes the rules. Would join the Qantas entry. |
+| Ethiopian Airlines | ShebaMiles | Africa | The accrual table for Ethiopian's own flights and the tier bonuses. The website is blocked here. The only published table found (25% to 100% for economy classes) appears to be for tier activity, not award miles. |
+| Royal Air Maroc | Safar Flyer | Africa | Which earning table is current. Its site shows a booking-class version (Business J, C, D, I 200%; Economy Y, B 120%; other economy classes 100%) and a newer fare-family version (Eco Essential reported at 50%). Tier bonuses reported as Silver 50%, Gold 75%, Platinum 100%. The website is blocked here. |
+| EgyptAir | EgyptAir Plus | Africa | EgyptAir Plus's own accrual table. Only partner programs' tables for EgyptAir flights were found, and they disagree. |
+| Kenya Airways | Asante Rewards | Africa | The earning chart. Points depend on route, fare type and cabin, with a reported 500-point minimum per sector, but no table was found. The website is blocked here. |
+| South African Airways | Voyager | Africa | Which rule applies to SAA's own flights: one mile per R1.60 of fare and carrier fees (reported by a fare-chart site), or class-based percentages (a Thai Airways table effective 1 July 2026). The website is blocked here. |
 
 ### Programs to complete
 
