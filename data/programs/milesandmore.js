@@ -20,6 +20,8 @@ const rules = {
     { id: "lx", name: "SWISS", country: "CH", eliteRate: 6,
       note: "SWISS fares in Swiss francs earn at the euro equivalent." },
     { id: "sn", name: "Brussels Airlines", country: "BE", eliteRate: 6 },
+    { id: "wk", name: "Edelweiss", country: "CH", eliteRate: 6, noAlliance: true,
+      note: "Edelweiss earns on spend only when the ticket price is available to Miles & More." },
     { id: "en", name: "Air Dolomiti", country: "IT", eliteRate: 6, noAlliance: true,
       program: { minPoints: 125 },
       note: "Air Dolomiti tickets (ticket number 101) and Lufthansa tickets earn at least 125 miles per flight. Air Dolomiti's own status rate has not been published, so it uses the Lufthansa rate." },
@@ -143,6 +145,7 @@ module.exports = {
     os: { code: "OS", color: "#E30613" },
     lx: { code: "LX", color: "#E2001A" },
     sn: { code: "SN", color: "#002A5C" },
+    wk: { code: "WK", color: "#B3122E", source: "https://travel-dealz.com/?p=99681" },
     en: { code: "EN", color: "#0A2E6B" },
     az: { code: "AZ", color: "#0047BB", source: "https://cwsi.net/calc/az/" },
     lo: { code: "LO", color: "#11397E", source: "https://cwsi.net/fares/lot-polish-airlines/" },
@@ -150,6 +153,8 @@ module.exports = {
   },
   // Published examples. The browser tests check each one.
   examples: [
+    { name: "Edelweiss, member", airline: "wk", input: { status: "member", fields: { airfare: 500 } }, expect: 2000 },
+    { name: "Edelweiss, Senator", airline: "wk", input: { status: "sen", fields: { airfare: 500 } }, expect: 3000 },
     // Miles & More: EUR 2,000 earns 8,000, or 12,000 with status.
     { name: "Lufthansa, member", airline: "lh", input: { status: "member", fields: { airfare: 2000 } }, expect: 8000 },
     { name: "Lufthansa, Senator", airline: "lh", input: { status: "sen", fields: { airfare: 2000 } }, expect: 12000 },
