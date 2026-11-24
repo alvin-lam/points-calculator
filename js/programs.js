@@ -1892,3 +1892,92 @@ window.BRAND_COLORS = {
   "phoenix:ca": "#E30613", aireuropa: "#0E2F69",
   chinaeastern: "#1C3F94", chinasouthern: "#006CB7", xiamen: "#0D4A8F"
 };
+
+/* Two-letter airline codes, so the airline search finds "AA", "LH", and so
+   on. Keys are menu values, as in BRAND_COLORS. */
+window.AIRLINE_CODES = {
+  "american:aa": "AA", "american:fj": "FJ", delta: "DL", united: "UA",
+  southwest: "WN", alaska: "AS", hawaiian: "HA", frontier: "F9",
+  jetblue: "B6", allegiant: "G4", breeze: "MX", aircanada: "AC",
+  westjet: "WS", porter: "PD", aeromexico: "AM", viva: "VB",
+  volaris: "Y4", virgin: "VS",
+  "flyingblue:af": "AF", "flyingblue:kl": "KL", "flyingblue:to": "TO",
+  "flyingblue:hv": "HV", "milesandmore:lh": "LH", "milesandmore:ew": "EW",
+  "milesandmore:de": "4Y", "milesandmore:os": "OS", "milesandmore:lx": "LX",
+  "milesandmore:sn": "SN", "milesandmore:en": "EN", "milesandmore:az": "AZ",
+  "milesandmore:lo": "LO", "milesandmore:ou": "OU", "iag:ei": "EI",
+  "iag:ba": "BA", "iag:ib": "IB", "iag:vy": "VY", tap: "TP",
+  finnair: "AY", lifemiles: "AV", icelandair: "FI", norwegian: "DY",
+  virginaustralia: "VA", qantas: "QF", qatar: "QR", ana: "NH", jal: "JL",
+  sas: "SK", hongkongairlines: "HX", hainan: "HU", gol: "G3",
+  latam: "LA", cathay: "CX", etihad: "EY", eva: "BR",
+  chinaairlines: "CI", starlux: "JX", krisflyer: "SQ", enrich: "MH",
+  airnz: "NZ", turkish: "TK", korean: "KE", "phoenix:ca": "CA",
+  aireuropa: "UX", chinaeastern: "MU", chinasouthern: "CZ", xiamen: "MF"
+};
+
+/* Where each program's earning rules come from, shown under every result
+   with the month the rules were last reviewed. Keys are menu values; a
+   program id covers all of its airlines unless an airline has its own
+   entry. "cwsi.net" pages republish the airline's own published tables. */
+window.RULES_REVIEWED = "November 2026";
+window.SOURCES = {
+  "american:aa": "https://www.aa.com/i18n/aadvantage-program/miles/earn/earn-miles-on-american.jsp",
+  "american:fj": "https://www.aa.com/i18n/travel-info/partner-airlines/fiji-airways.html",
+  delta: "https://www.delta.com/us/en/skymiles/overview",
+  united: "https://www.united.com/en/us/fly/mileageplus.html",
+  southwest: "https://www.southwest.com/rapid-rewards/points/how-to-earn/",
+  alaska: "https://www.alaskaair.com/",
+  hawaiian: "https://www.hawaiianairlines.com/",
+  frontier: "https://www.flyfrontier.com/frontiermiles/terms-and-conditions/",
+  jetblue: "https://www.jetblue.com/trueblue/earning-points",
+  allegiant: "https://www.allegiantair.com/",
+  breeze: "https://www.flybreeze.com/",
+  aircanada: "https://www.aircanada.com/ca/en/aco/home/aeroplan/earn/air-canada.html",
+  westjet: "https://www.westjet.com/en-us/rewards/tiers/teal",
+  porter: "https://www.flyporter.com/",
+  aeromexico: "https://www.aeromexicorewards.com/",
+  viva: "https://www.doters.com/",
+  volaris: "https://www.volaris.com/",
+  virgin: "https://www.virginatlantic.com/",
+  flyingblue: "https://www.flyingblue.com/",
+  milesandmore: "https://www.miles-and-more.com/row/en/program/flight-benefits/calculate-flight-miles.html",
+  "milesandmore:az": "https://cwsi.net/calc/az/",
+  "milesandmore:lo": "https://cwsi.net/fares/lot-polish-airlines/",
+  "milesandmore:ou": "https://cwsi.net/fares/croatia-airlines/",
+  "iag:ei": "https://www.aerlingus.com/aerclub/collecting-avios/collect-avios-in-the-air/",
+  "iag:ba": "https://www.britishairways.com/",
+  "iag:ib": "https://www.iberia.com/",
+  "iag:level": "https://www.iberia.com/",
+  "iag:vy": "https://www.vueling.com/",
+  tap: "https://www.flytap.com/",
+  finnair: "https://www.finnair.com/",
+  lifemiles: "https://www.lifemiles.com/",
+  icelandair: "https://www.icelandair.com/",
+  norwegian: "https://www.norwegian.com/",
+  virginaustralia: "https://www.velocityfrequentflyer.com/",
+  qantas: "https://www.qantas.com/",
+  qatar: "https://www.qatarairways.com/",
+  ana: "https://www.ana.co.jp/",
+  jal: "https://www.jal.co.jp/",
+  sas: "https://www.flysas.com/us-en/eurobonus/partners/airlines/scandinavian-airlines/",
+  hongkongairlines: "https://content.hongkongairlines.com/en_HK/FFP/earn/earn_hx",
+  hainan: "https://ffp.hnair.com/FFPClub/en/hqjf/hkjl/gszl/201809/t20180908_25301.html",
+  gol: "https://www.smiles.com.br/gol-linhas-aereas-inteligentes",
+  latam: "https://latampass.latam.com/us/en/tickets",
+  cathay: "https://www.cathaypacific.com/",
+  etihad: "https://www.etihad.com/",
+  eva: "https://www.evaair.com/",
+  chinaairlines: "https://www.china-airlines.com/",
+  starlux: "https://www.starlux-airlines.com/en-US/cosmile/my-cosmile/mileage-accrual",
+  krisflyer: "https://www.singaporeair.com/",
+  enrich: "https://www.malaysiaairlines.com/",
+  airnz: "https://cwsi.net/fares/air-new-zealand/",
+  turkish: "https://cwsi.net/fares/turkish-airlines/",
+  korean: "https://cwsi.net/fares/korean-air/",
+  phoenix: "https://cwsi.net/fares/air-china/",
+  aireuropa: "https://cwsi.net/fares/air-europa/",
+  chinaeastern: "https://cwsi.net/fares/china-eastern/",
+  chinasouthern: "https://www.csair.com/mcms/mcmsNewSite/mowenglish/cn/#/skypearl/earning/hkgs/zgnfhkgs",
+  xiamen: "https://cwsi.net/fares/xiamen-airlines/"
+};

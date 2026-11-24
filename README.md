@@ -38,7 +38,12 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 
 ## Install and icons
 
-- Folder layout: `index.html` at the root, scripts in `js/` (`programs.js` for the earning data, `app.js` for the calculator, `install.js` for the install prompt), and styles in `css/styles.css`. `sw.js` stays at the root so it can serve the whole site offline.
+- Folder layout: `index.html` at the root, scripts in `js/`, styles in `css/styles.css`, and tests in `tests/`. `sw.js` stays at the root so it can serve the whole site offline.
+  - `js/programs.js`: the earning data, brand colors, airline codes, and the source and review month for each program.
+  - `js/app.js`: the calculator, airline search, airport lookup, and Appearance panel.
+  - `js/distance.js`: great-circle distance between two airports.
+  - `js/airports.js`: about 3,200 airports with scheduled service, from [OurAirports](https://ourairports.com/data/) (public domain). It loads only when a distance-based program is chosen.
+  - `js/install.js`: the install prompt.
 - `favicon.ico` and `icons/` hold the browser and home-screen icons. `manifest.webmanifest` and `sw.js` let the site install as an app and open offline.
 - `js/install.js` invites visitors to add the calculator to their home screen. Chrome, Edge, and Android get an Install button. iPhone and iPad get the Share, then Add to Home Screen steps. "Not now" hides it for 14 days.
 - Installing needs HTTPS, which GitHub Pages provides. When rates change, bump `CACHE` in `sw.js` so installed copies refresh their offline cache.
@@ -46,3 +51,15 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 ## Updating rates
 
 All earning rules, including co-branded card rates, live in `js/programs.js`. Edit the rates there when a program changes.
+
+## Tests
+
+The data and distance checks need only Node 18 or later. The calculator checks open the page in a headless browser with Playwright, and are skipped if it is not installed.
+
+```bash
+npm install --prefix tests
+npx --prefix tests playwright install chromium
+node --test tests/*.test.js
+```
+
+When a program's rules change, update `js/programs.js`, change `RULES_REVIEWED` if the review date moves, and add or adjust a case in `tests/calculator.test.js` using the airline's own published example.

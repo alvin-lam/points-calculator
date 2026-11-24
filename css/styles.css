@@ -374,3 +374,43 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
   .appearance-panel { position: fixed; left: 0; right: 0; top: auto; bottom: 0; width: auto; max-height: 80vh; border-radius: 16px 16px 0 0; padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
   .appearance-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, .35); }
 }
+
+/* Airline program combobox: type to filter, then choose from the list. */
+.combo { position: relative; }
+.combo-input {
+  padding-right: 36px;
+  background-image: linear-gradient(45deg, transparent 50%, var(--muted) 50%), linear-gradient(135deg, var(--muted) 50%, transparent 50%);
+  background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%;
+  background-size: 5px 5px;
+  background-repeat: no-repeat;
+}
+.combo-list {
+  position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 4px);
+  max-height: 320px; overflow-y: auto; margin: 0; padding: 4px 0; list-style: none;
+  background: var(--card); color: var(--text);
+  border: 1px solid var(--border); border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+}
+.combo-group {
+  padding: 8px 12px 4px; font-size: .78rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .04em; color: var(--muted);
+}
+.combo-list [role="option"] { padding: 8px 12px 8px 20px; cursor: pointer; }
+.combo-list [role="option"]:hover, .combo-list [role="option"].active { background: var(--accent); color: var(--accent-text); }
+.combo-list [role="option"].current { font-weight: 600; }
+.combo-empty { padding: 10px 12px; color: var(--muted); }
+
+/* Airport fields for distance-based programs. */
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.airport-row { display: flex; align-items: center; gap: 8px; }
+.airport-input { flex: 1; min-width: 0; margin: 0; font-weight: 400; }
+.airport-input input { text-transform: uppercase; }
+.airport-input input::placeholder { text-transform: none; }
+.airport-arrow { color: var(--muted); flex: none; }
+.airport-result { margin: 6px 0 12px; }
+.airport-result:empty { margin: 0 0 8px; }
+.distance-label { margin-top: 4px; }
+
+/* Rules review date and source under each result. */
+.source-line { margin-top: 10px; font-size: 0.85rem; }
+.source-line a { color: var(--accent); }

@@ -98,30 +98,64 @@
 
   // One <optgroup> per country. A program that covers several airlines
   // (Flying Blue, Miles & More, IAG) lists each airline under its own
-  // country, with the value "program:airline".
-  // Choices sort by name inside each group.
+  // country, with the value "program:airline". Choices sort by name inside
+  // each group. A search filter keeps only matching choices.
   var pinned = window.COUNTRIES.filter(function (c) { return c.pinned; });
   var others = window.COUNTRIES.filter(function (c) { return !c.pinned; })
     .sort(function (a, b) { return a.label.localeCompare(b.label); });
-  pinned.concat(others).forEach(function (c) {
-    var group = document.createElement("optgroup");
-    group.label = c.label;
-    var choices = [];
-    Object.keys(PROGRAMS).forEach(function (key) {
-      var p = PROGRAMS[key];
-      if (p.airlines) {
-        // Each airline sits under its own country.
-        p.airlines.forEach(function (al) {
-          if ((al.country || p.country || "US") === c.id) choices.push([key + ":" + al.id, airlineLabel(p, al)]);
-        });
-      } else if ((p.country || "US") === c.id) {
-        choices.push([key, p.name]);
-      }
+  var countryOrder = pinned.concat(others);
+  var CODES = window.AIRLINE_CODES || {};
+  function searchText(value, label, country, p) {
+    // Grouped airlines match on their own name, program, and code, not the
+    // group's name ("Lufthansa Group"), so "luft" finds only Lufthansa.
+    var group = value.indexOf(":") === -1 ? (p.name || "") : "";
+    return [label, country.label, CODES[value] || "", p.programName || "", group].join(" ").toLowerCase();
+  }
+  // Choices that match a search, grouped by country in menu order.
+  function collect(filter) {
+    var words = String(filter || "").toLowerCase().split(/\s+/).filter(Boolean);
+    var groups = [];
+    countryOrder.forEach(function (c) {
+      var choices = [];
+      Object.keys(PROGRAMS).forEach(function (key) {
+        var p = PROGRAMS[key];
+        var add = function (value, label) {
+          var text = searchText(value, label, c, p);
+          // A two-letter code matches only as a whole code (so "AA" does not
+          // match every name with a double a).
+          var ok = words.every(function (w) {
+            if (w.length === 2 && CODES[value] && CODES[value].toLowerCase() === w) return true;
+            return text.indexOf(w) !== -1;
+          });
+          if (ok) choices.push([value, label]);
+        };
+        if (p.airlines) {
+          // Each airline sits under its own country.
+          p.airlines.forEach(function (al) {
+            if ((al.country || p.country || "US") === c.id) add(key + ":" + al.id, airlineLabel(p, al));
+          });
+        } else if ((p.country || "US") === c.id) {
+          add(key, p.name);
+        }
+      });
+      choices.sort(function (a, b) { return a[1].localeCompare(b[1]); });
+      if (choices.length) groups.push({ label: c.label, items: choices });
     });
-    choices.sort(function (a, b) { return a[1].localeCompare(b[1]); })
-      .forEach(function (ch) { group.appendChild(option(ch[0], ch[1])); });
-    if (group.children.length) programEl.appendChild(group);
-  });
+    return groups;
+  }
+  // The hidden select holds the chosen program for the rest of the app.
+  function buildMenu() {
+    programEl.innerHTML = "";
+    programEl.appendChild(option("", "Choose a program"));
+    collect("").forEach(function (g) {
+      var group = document.createElement("optgroup");
+      group.label = g.label;
+      g.items.forEach(function (ch) { group.appendChild(option(ch[0], ch[1])); });
+      programEl.appendChild(group);
+    });
+    programEl.value = "";
+  }
+  buildMenu();
 
   function setCurrency(code) {
     moneyEls.forEach(function (el) {
@@ -334,6 +368,8 @@
     // Some earning choices do not depend on the booking class (Sky Pearl).
     fareTypeField.hidden = !p.fareTypes || !!earnMethod(p).noFareType;
     fareFields.hidden = !usesFare(m);
+    // Load the airport list once a distance-based program is chosen.
+    if (!distanceField.hidden) ensureAirports();
     airfareEl.required = usesFare(m);
     syncCardSelect();
     resultEl.hidden = true;
@@ -611,11 +647,166 @@
     }
 
     $("resultNote").textContent = (r.capped ? "This trip hits the per-ticket earning cap. " : "") + p.note + (airline && airline.note ? " " + airline.note : "");
+    // When the rules were last reviewed, and where they come from.
+    var srcMap = window.SOURCES || {};
+    var srcUrl = srcMap[programEl.value] || srcMap[programEl.value.split(":")[0]];
+    var srcEl = $("resultSource");
+    srcEl.textContent = "Rules last reviewed " + (window.RULES_REVIEWED || "recently") + ".";
+    if (srcUrl) {
+      var host = srcUrl.replace(/^https?:\/\//, "").split("/")[0].replace(/^www\./, "");
+      var a = document.createElement("a");
+      a.href = srcUrl; a.target = "_blank"; a.rel = "noopener"; a.textContent = host;
+      srcEl.appendChild(document.createTextNode(" Source: "));
+      srcEl.appendChild(a);
+      if (host === "cwsi.net") srcEl.appendChild(document.createTextNode(", which republishes the airline\u2019s own table"));
+      srcEl.appendChild(document.createTextNode("."));
+    }
     resultEl.hidden = false;
     // On a single-column (phone) layout, bring the result into view.
     if (window.matchMedia("(max-width: 959px)").matches) {
       resultEl.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
     }
+  });
+
+  // Airline program combobox: one box to type in and choose from. Typing
+  // filters a dropdown list; a click or Enter chooses an entry.
+  var searchEl = $("programSearch");
+  var listEl = $("programList");
+  var searchStatus = $("programSearchStatus");
+  var active = -1;
+  function chosenLabel() {
+    var o = programEl.selectedOptions[0];
+    return o && o.value ? o.textContent : "";
+  }
+  function listItems() { return listEl.querySelectorAll('[role="option"]'); }
+  function setActive(i) {
+    var items = listItems();
+    if (!items.length) { active = -1; searchEl.removeAttribute("aria-activedescendant"); return; }
+    active = (i + items.length) % items.length;
+    items.forEach(function (el, n) { el.classList.toggle("active", n === active); el.setAttribute("aria-selected", n === active ? "true" : "false"); });
+    searchEl.setAttribute("aria-activedescendant", items[active].id);
+    items[active].scrollIntoView({ block: "nearest" });
+  }
+  function openList(filter) {
+    var groups = collect(filter);
+    var q = String(filter || "").trim();
+    listEl.innerHTML = "";
+    var n = 0;
+    groups.forEach(function (g) {
+      var head = document.createElement("li");
+      head.className = "combo-group";
+      head.setAttribute("role", "presentation");
+      head.textContent = g.label;
+      listEl.appendChild(head);
+      g.items.forEach(function (ch) {
+        var li = document.createElement("li");
+        li.id = "programOpt" + n++;
+        li.setAttribute("role", "option");
+        li.dataset.value = ch[0];
+        li.textContent = ch[1];
+        if (ch[0] === programEl.value) li.classList.add("current");
+        listEl.appendChild(li);
+      });
+    });
+    if (!n) {
+      var none = document.createElement("li");
+      none.className = "combo-empty";
+      none.setAttribute("role", "presentation");
+      none.textContent = "No airline or program matches \u201c" + q + "\u201d.";
+      listEl.appendChild(none);
+    }
+    searchStatus.textContent = q ? (n === 1 ? "1 match." : n + " matches.") : "";
+    listEl.hidden = false;
+    searchEl.setAttribute("aria-expanded", "true");
+    active = -1;
+    if (q && n) setActive(0);
+  }
+  function closeList() {
+    listEl.hidden = true;
+    searchEl.setAttribute("aria-expanded", "false");
+    searchEl.removeAttribute("aria-activedescendant");
+    active = -1;
+  }
+  function choose(value) {
+    var changed = programEl.value !== value;
+    programEl.value = value;
+    searchEl.value = chosenLabel();
+    searchStatus.textContent = "";
+    closeList();
+    if (changed) programEl.dispatchEvent(new Event("change"));
+  }
+  if (searchEl) {
+    searchEl.addEventListener("focus", function () { searchEl.select(); openList(""); });
+    searchEl.addEventListener("click", function () { if (listEl.hidden) openList(""); });
+    searchEl.addEventListener("input", function () { openList(searchEl.value); });
+    searchEl.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") { e.preventDefault(); if (listEl.hidden) openList(searchEl.value); setActive(active + 1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); if (listEl.hidden) openList(searchEl.value); setActive(active - 1); }
+      else if (e.key === "Enter") {
+        if (!listEl.hidden) {
+          e.preventDefault();
+          var items = listItems();
+          var pick = items[active >= 0 ? active : 0];
+          if (pick) choose(pick.dataset.value);
+        }
+      } else if (e.key === "Escape") { closeList(); searchEl.value = chosenLabel(); }
+    });
+    searchEl.addEventListener("blur", function () {
+      // Let a click on the list finish first.
+      setTimeout(function () { closeList(); searchEl.value = chosenLabel(); searchStatus.textContent = ""; }, 150);
+    });
+    listEl.addEventListener("mousedown", function (e) {
+      var li = e.target.closest('[role="option"]');
+      e.preventDefault();
+      if (li) choose(li.dataset.value);
+    });
+    // Keep the box in step when the program changes another way.
+    programEl.addEventListener("change", function () { if (document.activeElement !== searchEl) searchEl.value = chosenLabel(); });
+  }
+
+  // Airport lookup for distance-based programs. The airport list loads the
+  // first time it is needed, so other visitors never download it.
+  var fromAirport = $("fromAirport"), toAirport = $("toAirport");
+  var airportResult = $("airportResult"), airportList = $("airportList");
+  var airportsLoading = false;
+  function fillAirportList() {
+    if (!window.AIRPORTS || airportList.children.length) return;
+    var frag = document.createDocumentFragment();
+    Object.keys(window.AIRPORTS).forEach(function (code) {
+      var o = document.createElement("option");
+      o.value = window.Distance.airportLabel(code, window.AIRPORTS[code]);
+      frag.appendChild(o);
+    });
+    airportList.appendChild(frag);
+  }
+  function ensureAirports() {
+    if (window.AIRPORTS) { fillAirportList(); return; }
+    if (airportsLoading) return;
+    airportsLoading = true;
+    var s = document.createElement("script");
+    s.src = "js/airports.js";
+    s.onload = function () { fillAirportList(); updateAirportDistance(); };
+    s.onerror = function () { airportsLoading = false; airportResult.textContent = "The airport list could not load. Enter the miles yourself."; };
+    document.head.appendChild(s);
+  }
+  function updateAirportDistance() {
+    var from = fromAirport.value, to = toAirport.value;
+    if (!from.trim() || !to.trim()) { airportResult.textContent = ""; return; }
+    if (!window.AIRPORTS) { airportResult.textContent = "Loading airports\u2026"; return; }
+    var D = window.Distance;
+    var unknown = [from, to].filter(function (v) { var c = D.parseCode(v); return !c || !window.AIRPORTS[c]; });
+    if (unknown.length) { airportResult.textContent = "Use a three-letter airport code, such as JFK or DOH."; return; }
+    var r = D.airportMiles(window.AIRPORTS, from, to);
+    var A = window.AIRPORTS;
+    distanceEl.value = r.miles;
+    airportResult.textContent = r.from + " " + (A[r.from][2] || A[r.from][3]) + " \u2192 " + r.to + " " + (A[r.to][2] || A[r.to][3]) +
+      ": " + num.format(r.miles) + " miles (great-circle distance; airlines may count slightly differently).";
+    resultEl.hidden = true;
+  }
+  [fromAirport, toAirport].forEach(function (el) {
+    el.addEventListener("focus", ensureAirports);
+    el.addEventListener("input", updateAirportDistance);
+    el.addEventListener("change", updateAirportDistance);
   });
 
   // Light and dark mode. "System" follows the device; Light and Dark
@@ -666,11 +857,11 @@
     var c = hexToRgb(brand), white = [255, 255, 255], ink = [15, 20, 28];
     var accent, accentText, resultBg;
     if (isDark()) {
-      accent = adjust(c, white, ink, 4.5);
+      accent = adjust(c, white, ink, 4.6);
       accentText = contrast(accent, ink) >= contrast(accent, white) ? "#0f141c" : "#ffffff";
       resultBg = mix([24, 33, 48], c, 0.12);
     } else {
-      accent = adjust(c, [0, 0, 0], [244, 246, 249], 4.5);
+      accent = adjust(c, [0, 0, 0], [244, 246, 249], 4.6);
       accentText = "#ffffff";
       resultBg = mix(white, c, 0.08);
     }

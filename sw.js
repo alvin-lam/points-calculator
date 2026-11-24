@@ -1,8 +1,8 @@
 // Network first, so rate updates show up right away. The cache is a
 // fallback that lets the calculator open without a connection.
-var CACHE = "points-calc-v89";
+var CACHE = "points-calc-v91";
 var SHELL = [
-  "./", "index.html", "css/styles.css", "js/programs.js", "js/app.js", "js/install.js",
+  "./", "index.html", "css/styles.css", "js/programs.js", "js/distance.js", "js/app.js", "js/install.js", "js/airports.js",
   "manifest.webmanifest", "favicon.ico", "icons/icon-192.png"
 ];
 
