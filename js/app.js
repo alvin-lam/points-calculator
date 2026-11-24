@@ -961,4 +961,31 @@
   gowildYes.addEventListener("change", syncGoWild);
   gowildNo.addEventListener("change", syncGoWild);
   cardEl.addEventListener("change", syncCardSelect);
+
+  // Remember the last program and status on this device, and restore them
+  // on the next visit. Nothing leaves the browser.
+  function saveChoice() {
+    try {
+      if (programEl.value) localStorage.setItem("lastProgram", programEl.value);
+      if (statusEl.value) localStorage.setItem("lastStatus", statusEl.value);
+    } catch (e) {}
+  }
+  programEl.addEventListener("change", function () {
+    try { localStorage.removeItem("lastStatus"); } catch (e) {}
+    saveChoice();
+  });
+  statusEl.addEventListener("change", saveChoice);
+  try {
+    var lastProgram = localStorage.getItem("lastProgram");
+    var lastStatus = localStorage.getItem("lastStatus");
+    if (lastProgram && !programEl.value && programEl.querySelector('option[value="' + lastProgram.replace(/"/g, "") + '"]')) {
+      programEl.value = lastProgram;
+      programEl.dispatchEvent(new Event("change"));
+      if (lastStatus && statusEl.querySelector('option[value="' + lastStatus.replace(/"/g, "") + '"]')) {
+        statusEl.value = lastStatus;
+        statusEl.dispatchEvent(new Event("change"));
+        localStorage.setItem("lastStatus", lastStatus);
+      }
+    }
+  } catch (e) {}
 })();

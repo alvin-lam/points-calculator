@@ -46,6 +46,8 @@ async function calc(o) {
 // Clear money fields between cases so one case cannot leak into the next.
 async function reset() {
   await page.goto(PAGE);
+  await page.evaluate(() => { localStorage.removeItem("lastProgram"); localStorage.removeItem("lastStatus"); });
+  await page.goto(PAGE);
 }
 
 const cases = [
@@ -120,6 +122,16 @@ test("airline box filters a dropdown and chooses a match", { skip }, async () =>
   await page.fill("#programSearch", "qatar");
   await page.click("#programList [role=option]");
   assert.strictEqual(await page.$eval("#program", (s) => s.value), "qatar");
+});
+
+test("the last program and status come back on the next visit", { skip }, async () => {
+  await reset();
+  await pickProgram("milesandmore:lh");
+  await page.selectOption("#status", "sen");
+  await page.goto(PAGE);
+  assert.strictEqual(await page.$eval("#program", (s) => s.value), "milesandmore:lh");
+  assert.strictEqual(await page.$eval("#status", (s) => s.value), "sen");
+  assert.match(await page.inputValue("#programSearch"), /Lufthansa/);
 });
 
 test("airport codes fill in the miles", { skip }, async () => {
