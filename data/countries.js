@@ -21,6 +21,7 @@ module.exports = [
   { id: "UK", label: "United Kingdom \u{1F1EC}\u{1F1E7}" },
   { id: "AU", label: "Australia \u{1F1E6}\u{1F1FA}" },
   { id: "CO", label: "Colombia \u{1F1E8}\u{1F1F4}" },
+  { id: "PA", label: "Panama \u{1F1F5}\u{1F1E6}" },
   { id: "NO", label: "Norway \u{1F1F3}\u{1F1F4}" },
   { id: "IS", label: "Iceland \u{1F1EE}\u{1F1F8}" },
   { id: "FI", label: "Finland \u{1F1EB}\u{1F1EE}" },

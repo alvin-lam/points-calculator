@@ -560,7 +560,8 @@
     if (addons < 0) return showError("Seats, bags and/or bundles cannot be negative.");
     // Some airlines list extras that do not earn (British Airways, Iberia,
     // Aer Lingus); they still count toward the trip cost and card earning.
-    var earnAddons = p.addonsNoEarn ? 0 : addons;
+    // An addonsRate means extras earn their own flat rate (Air Transat).
+    var earnAddons = p.addonsNoEarn || p.addonsRate ? 0 : addons;
     var earnBase = airfare + (p.baseFareOnly ? 0 : carrier) + earnAddons;
     var tripCost = airfare + carrier + addons + taxes;
     // GoWild!: the fare earns 1 mile, and the Early Booking Fee earns at
@@ -589,6 +590,10 @@
     var airline = selection().airline;
     var r = calculate(p, status, fareType, earnBase, distance, airline, segments);
     if (r.error) return showError(r.error);
+    if (p.addonsRate && addons) {
+      r.points += Math.round(addons * p.addonsRate);
+      r.rateLabel += " + " + p.addonsRate + " per " + (p.currency === "CAD" ? "dollar" : "unit") + " on seats and bags";
+    }
     if (gowild) {
       r.rateLabel = "1 on the GoWild! fare + " + num.format(r.points) + " on the Early Booking Fee" + (addons ? " and seats, bags and/or bundles" : "") + " at " + r.rateLabel;
       r.points += 1;
