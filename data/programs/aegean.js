@@ -1,7 +1,8 @@
 /* Aegean Miles+Bonus: a fixed number of miles per flight by fare family
    and booking class (Aegean and Olympic Air, bookings from 17 May 2023).
    Only domestic flights within Greece are included so far; the
-   international table and status bonuses are still to be added. */
+   international table is still to be added. Status adds extra award
+   miles (Aegean's Tiers & Benefits page). */
 const L = "L, W, V, O, Q, K, J, S, E, H, F";
 const rules = {
   name: "Aegean Airlines | Miles+Bonus",
@@ -31,9 +32,13 @@ const rules = {
     { id: "light-u", name: "Light (U, P, T)", earn: [{ fixed: 100 }] }
   ],
   statuses: [
-    { id: "member", name: "Miles+Bonus Member", multiplier: 1 }
+    // Extra award miles on Aegean and Olympic Air flights, by tier.
+    { id: "blue", name: "Blue", multiplier: 1 },
+    { id: "silver", name: "Silver", multiplier: 1.1 },
+    { id: "gold", name: "Gold", multiplier: 1.2 },
+    { id: "platinum", name: "Platinum", multiplier: 1.3 }
   ],
-  note: "Miles+Bonus awards a fixed number of miles per domestic flight, from 100 on Light (U, P, T) to 1,200 in Business. Booking classes I, X, N and R earn nothing. Registered Together ForFamilies accounts earn 20% more. Status bonuses are not included."
+  note: "Miles+Bonus awards a fixed number of miles per domestic flight, from 100 on Light (U, P, T) to 1,200 in Business. Booking classes I, X, N and R earn nothing. Registered Together ForFamilies accounts earn 20% more. Silver earns 10% more award miles, Gold 20% and Platinum 30%."
 };
 
 module.exports = {
@@ -46,6 +51,7 @@ module.exports = {
   // From Aegean's domestic earning table.
   examples: [
     { name: "Aegean domestic Business", input: { fare: "business", zone: "domestic" }, expect: 1200 },
+    { name: "Aegean domestic Comfort Flex (Y), Gold", input: { fare: "comfort-y", status: "gold", zone: "domestic" }, expect: 1200 },
     { name: "Aegean domestic Light (U, P, T)", input: { fare: "light-u", zone: "domestic" }, expect: 100 }
   ],
   rules

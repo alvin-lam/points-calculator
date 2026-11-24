@@ -20,6 +20,7 @@ module.exports = function applyAlliances(P) {
     jal: { crystal: "Ruby", jgc: "Sapphire", sapphire: "Sapphire", "jgc-premier": "Emerald", diamond: "Emerald" },
     enrich: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     // Star Alliance
+    aegean: { silver: "Silver", gold: "Gold", platinum: "Gold" },
     thai: { silver: "Silver", gold: "Gold", platinum: "Gold" },
     airindia: { silver: "Silver", gold: "Gold", platinum: "Gold" },
     copa: { silver: "Silver", gold: "Gold", platinum: "Gold", presidential: "Gold" },
