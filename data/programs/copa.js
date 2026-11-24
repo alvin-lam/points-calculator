@@ -1,7 +1,6 @@
 /* Copa ConnectMiles: a share of the distance flown by fare family, with at
-   least 500 miles per flight (copaair.com, tickets flown from 2024). The
-   page does not publish PreferProgram elite bonuses, so only the member
-   rate is offered. */
+   least 500 miles per flight (copaair.com, tickets flown from 2024). PreferMember
+   status adds 25% to 100% more award miles. */
 const rules = {
   name: "Copa Airlines | ConnectMiles",
   programName: "ConnectMiles",
@@ -125,9 +124,15 @@ const rules = {
   // Flights under 500 miles count as 500 before the fare family share.
   minDistance: 500,
   statuses: [
-    { id: "member", name: "ConnectMiles Member", multiplier: 1 }
+    // PreferMember bonus on award miles, on Copa and Copa Colombia flights.
+    // It does not count toward status qualification.
+    { id: "member", name: "ConnectMiles Member", multiplier: 1 },
+    { id: "silver", name: "Silver", multiplier: 1.25 },
+    { id: "gold", name: "Gold", multiplier: 1.5 },
+    { id: "platinum", name: "Platinum", multiplier: 1.75 },
+    { id: "presidential", name: "Presidential Platinum", multiplier: 2 }
   ],
-  note: "ConnectMiles earns a share of the distance flown by fare family: 300% on Business Full, 175% on Business Promo and Economy Full, 100% on Economy Classic and Classic Flex, and 50% on Economy Basic. Flights under 500 miles count as 500, and every flight earns at least 500 miles. Classes G, I, N, P, X and Z earn nothing. PreferProgram elite bonuses are not published, so they are not included."
+  note: "ConnectMiles earns a share of the distance flown by fare family: 300% on Business Full, 175% on Business Promo and Economy Full, 100% on Economy Classic and Classic Flex, and 50% on Economy Basic. Flights under 500 miles count as 500, and every flight earns at least 500 miles. Classes G, I, N, P, X and Z earn nothing. PreferMember status adds 25% (Silver), 50% (Gold), 75% (Platinum), or 100% (Presidential Platinum) more award miles. The bonus does not count toward status."
 };
 
 module.exports = {
@@ -144,6 +149,7 @@ module.exports = {
     { name: "Copa PTY-MVD Business Full", input: { fare: "business-full", fields: { distance: 3385 } }, expect: 10155 },
     { name: "Copa Economy Classic, 1,000 miles", input: { fare: "classic", fields: { distance: 1000 } }, expect: 1000 },
     { name: "Copa Business Full, 1,000 miles", input: { fare: "business-full", fields: { distance: 1000 } }, expect: 3000 },
+    { name: "Copa PTY-KIN Economy Classic, Gold", input: { fare: "classic", status: "gold", fields: { distance: 634 } }, expect: 951 },
     { name: "Copa Economy Basic raised to the minimum", input: { fare: "basic", fields: { distance: 600 } }, expect: 500 }
   ],
   rules

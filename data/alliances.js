@@ -20,6 +20,7 @@ module.exports = function applyAlliances(P) {
     jal: { crystal: "Ruby", jgc: "Sapphire", sapphire: "Sapphire", "jgc-premier": "Emerald", diamond: "Emerald" },
     enrich: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     // Star Alliance
+    copa: { silver: "Silver", gold: "Gold", platinum: "Gold", presidential: "Gold" },
     united: { silver: "Silver", gold: "Gold", platinum: "Gold", "1k": "Gold" },
     aircanada: { "25k": "Silver", "35k": "Gold", "50k": "Gold", "75k": "Gold", se: "Gold" },
     milesandmore: { ftl: "Silver", sen: "Gold", hon: "Gold" },
