@@ -21,13 +21,12 @@ const rules = {
     { id: "eco-standard", name: "Eco Standard", rate: 5 },
     { id: "eco-flex", name: "Eco Flex", rate: 7 },
     { id: "club-standard", name: "Club Standard", rate: 5 },
-    { id: "club-flex", name: "Club Flex", rate: 7 },
-    { id: "package", name: "Transat package (flight and hotel)", rate: 1 }
+    { id: "club-flex", name: "Club Flex", rate: 7 }
   ],
   statuses: [
     { id: "member", name: "Staria Member", multiplier: 1 }
   ],
-  note: "Staria earns per Canadian dollar of fare, before taxes and airport fees: 3 points on Eco Budget, 5 on Eco Standard and Club Standard, and 7 on Eco Flex and Club Flex. Transat packages earn 1 point per dollar. Extras bought before the airport earn 5 points per dollar. Only flights booked on Air Transat's Canadian website earn."
+  note: "Staria earns per Canadian dollar of fare, before taxes and airport fees: 3 points on Eco Budget, 5 on Eco Standard and Club Standard, and 7 on Eco Flex and Club Flex. Extras bought before the airport earn 5 points per dollar. Only flights booked on Air Transat's Canadian website earn."
 };
 
 module.exports = {
