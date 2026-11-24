@@ -618,35 +618,121 @@
     }
   });
 
-  // Light/dark toggle. Starts from the device setting; a click picks the
-  // other theme and remembers it on this device.
+  // Light and dark mode. "System" follows the device; Light and Dark
+  // override it and are remembered on this device.
   var root = document.documentElement;
-  var toggle = $("themeToggle");
   var systemDark = window.matchMedia("(prefers-color-scheme: dark)");
-  try { var saved = localStorage.getItem("theme"); if (saved) root.setAttribute("data-theme", saved); } catch (e) {}
+  var mode = "system";
+  try { var saved = localStorage.getItem("theme"); if (saved === "light" || saved === "dark") mode = saved; } catch (e) {}
+  function applyMode() {
+    if (mode === "system") root.removeAttribute("data-theme"); else root.setAttribute("data-theme", mode);
+  }
+  function isDark() { return mode === "system" ? systemDark.matches : mode === "dark"; }
 
-  function isDark() {
-    var t = root.getAttribute("data-theme");
-    return t ? t === "dark" : systemDark.matches;
+  // Airline colors: the accent always follows the selected airline's brand
+  // color, adjusted so text stays readable: darker in light mode (white text
+  // on buttons), lighter in dark mode.
+  function hexToRgb(h) { h = h.replace("#", ""); return [0, 2, 4].map(function (i) { return parseInt(h.substr(i, 2), 16); }); }
+  function rgbToHex(c) { return "#" + c.map(function (v) { return ("0" + Math.round(v).toString(16)).slice(-2); }).join(""); }
+  function mix(a, b, w) { return a.map(function (v, i) { return v * (1 - w) + b[i] * w; }); }
+  function luminance(c) {
+    var s = c.map(function (v) { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); });
+    return 0.2126 * s[0] + 0.7152 * s[1] + 0.0722 * s[2];
   }
-  function syncToggle() {
-    if (!toggle) return;
-    var dark = isDark();
-    toggle.classList.toggle("is-dark", dark);
-    toggle.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+  function contrast(a, b) {
+    var x = luminance(a), y = luminance(b);
+    return (Math.max(x, y) + 0.05) / (Math.min(x, y) + 0.05);
+  }
+  // Shift a color toward black or white until it meets the contrast target.
+  function adjust(c, toward, against, target) {
+    var w = 0, out = c;
+    while (contrast(out, against) < target && w < 1) { w += 0.05; out = mix(c, toward, w); }
+    return out;
+  }
+  function brandFor() {
+    var v = programEl.value;
+    var map = window.BRAND_COLORS || {};
+    return map[v] || map[v.split(":")[0]] || null;
+  }
+  function applyAirlineColors() {
+    var style = root.style;
+    var brand = brandFor();
     var meta = document.querySelector('meta[name="theme-color"]');
-    if (meta) meta.setAttribute("content", dark ? "#0f141c" : "#1f5fd1");
+    if (!brand) {
+      ["--accent", "--accent-text", "--result-bg", "--to-top-text"].forEach(function (n) { style.removeProperty(n); });
+      if (meta) meta.setAttribute("content", isDark() ? "#0f141c" : "#1f5fd1");
+      return;
+    }
+    var c = hexToRgb(brand), white = [255, 255, 255], ink = [15, 20, 28];
+    var accent, accentText, resultBg;
+    if (isDark()) {
+      accent = adjust(c, white, ink, 4.5);
+      accentText = contrast(accent, ink) >= contrast(accent, white) ? "#0f141c" : "#ffffff";
+      resultBg = mix([24, 33, 48], c, 0.12);
+    } else {
+      accent = adjust(c, [0, 0, 0], [244, 246, 249], 4.5);
+      accentText = "#ffffff";
+      resultBg = mix(white, c, 0.08);
+    }
+    style.setProperty("--accent", rgbToHex(accent));
+    style.setProperty("--accent-text", accentText);
+    style.setProperty("--result-bg", rgbToHex(resultBg));
+    style.setProperty("--to-top-text", accentText);
+    if (meta) meta.setAttribute("content", isDark() ? "#0f141c" : rgbToHex(accent));
   }
-  if (toggle) {
-    toggle.addEventListener("click", function () {
-      var next = isDark() ? "light" : "dark";
-      root.setAttribute("data-theme", next);
-      try { localStorage.setItem("theme", next); } catch (e) {}
-      syncToggle();
+
+  // The Appearance panel, laid out as in My Maps.
+  var appearanceBtn = $("appearanceToggle");
+  var appearancePanel = $("appearancePanel");
+  var appearanceBackdrop = $("appearanceBackdrop");
+  var modeBtns = appearancePanel ? Array.prototype.slice.call(appearancePanel.querySelectorAll(".mode-switch button")) : [];
+  function syncAppearance() {
+    modeBtns.forEach(function (b) { b.setAttribute("aria-checked", String(b.dataset.mode === mode)); });
+    if (appearanceBtn) {
+      var label = "Appearance: " + (mode === "system" ? "system mode" : mode + " mode");
+      appearanceBtn.setAttribute("aria-label", label);
+      appearanceBtn.setAttribute("title", label);
+    }
+    applyAirlineColors();
+  }
+  function openPanel() {
+    appearancePanel.hidden = false;
+    if (appearanceBackdrop) appearanceBackdrop.hidden = false;
+    appearanceBtn.setAttribute("aria-expanded", "true");
+    (appearancePanel.querySelector('[aria-checked="true"]') || modeBtns[0]).focus();
+  }
+  function closePanel(focusBtn) {
+    appearancePanel.hidden = true;
+    if (appearanceBackdrop) appearanceBackdrop.hidden = true;
+    appearanceBtn.setAttribute("aria-expanded", "false");
+    if (focusBtn) appearanceBtn.focus();
+  }
+  if (appearanceBtn && appearancePanel) {
+    modeBtns.forEach(function (b, i) {
+      b.addEventListener("click", function () {
+        mode = b.dataset.mode;
+        try { if (mode === "system") localStorage.removeItem("theme"); else localStorage.setItem("theme", mode); } catch (e) {}
+        applyMode();
+        syncAppearance();
+      });
+      // Arrow keys move between the three choices.
+      b.addEventListener("keydown", function (e) {
+        var step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 1, ArrowUp: -1 }[e.key];
+        if (!step) return;
+        e.preventDefault();
+        modeBtns[Math.min(modeBtns.length - 1, Math.max(0, i + step))].focus();
+      });
     });
+    appearanceBtn.addEventListener("click", function (e) { e.stopPropagation(); if (appearancePanel.hidden) openPanel(); else closePanel(false); });
+    appearancePanel.addEventListener("click", function (e) { e.stopPropagation(); });
+    $("appearanceClose").addEventListener("click", function () { closePanel(true); });
+    document.addEventListener("click", function () { if (!appearancePanel.hidden) closePanel(false); });
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !appearancePanel.hidden) closePanel(true); });
   }
-  if (systemDark.addEventListener) systemDark.addEventListener("change", syncToggle);
-  syncToggle();
+  if (systemDark.addEventListener) systemDark.addEventListener("change", syncAppearance);
+  programEl.addEventListener("change", applyAirlineColors);
+  applyMode();
+  syncAppearance();
 
   // Back to top: appears after scrolling down, and scrolls smoothly unless
   // the visitor prefers reduced motion.

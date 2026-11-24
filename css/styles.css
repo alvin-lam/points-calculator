@@ -5,6 +5,7 @@
   --muted: #5b6678;
   --border: #d7dde6;
   --accent: #1f5fd1;
+  --site-accent: #1f5fd1;
   --accent-text: #ffffff;
   --error: #b42318;
   --result-bg: #eef4ff;
@@ -19,6 +20,7 @@
     --muted: #9aa6b8;
     --border: #2c3a50;
     --accent: #6b9cff;
+    --site-accent: #6b9cff;
     --accent-text: #0f141c;
     --error: #ff8a80;
     --result-bg: #1c2a42;
@@ -32,6 +34,7 @@
   --muted: #9aa6b8;
   --border: #2c3a50;
   --accent: #6b9cff;
+  --site-accent: #6b9cff;
   --accent-text: #0f141c;
   --error: #ff8a80;
   --result-bg: #1c2a42;
@@ -156,7 +159,7 @@ footer p { font-size: 0.8rem; color: var(--muted); }
   line-height: 1;
   text-wrap: balance;
   margin: 0 0 12px;
-  color: var(--accent);
+  color: var(--site-accent);
 }
 
 footer { border-top: 1px solid var(--border); margin-top: 8px; padding-top: 8px; }
@@ -166,7 +169,7 @@ header { text-align: center; }
 .brand a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 footer .copyright { text-align: center; }
-footer .copyright a { color: var(--accent); text-decoration: none; }
+footer .copyright a { color: var(--site-accent); text-decoration: none; }
 footer .copyright a:hover { opacity: 0.8; }
 footer .copyright a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -227,9 +230,6 @@ footer .copyright a:focus-visible { outline: 2px solid var(--accent); outline-of
 .theme-toggle:hover { filter: none; border-color: var(--accent); color: var(--accent); }
 .theme-toggle:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .theme-toggle svg { width: 20px; height: 20px; }
-.theme-toggle .icon-sun { display: none; }
-.theme-toggle.is-dark .icon-sun { display: block; }
-.theme-toggle.is-dark .icon-moon { display: none; }
 
 /* Back-to-top button in the lower-right corner, shown after scrolling. */
 .to-top {
@@ -322,7 +322,6 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
 }
 .theme-toggle:hover { border-color: var(--muted); color: var(--text); }
 .theme-toggle svg { width: 20px; height: 20px; fill: currentColor; stroke: currentColor; }
-.theme-toggle .icon-moon { stroke: none; }
 
 /* Back to top: a filled accent circle, as in the Schengen calculator. */
 .to-top {
@@ -347,4 +346,31 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
   .theme-toggle { top: 24px; right: 32px; }
 }
 /* The arrow stays white in both themes, as in the Schengen calculator. */
-.to-top, .to-top:hover { color: #ffffff; }
+.to-top, .to-top:hover { color: var(--to-top-text, #ffffff); }
+
+/* Radio choices: outline the whole option on keyboard focus, not the dot. */
+.choice input:focus { outline: none; }
+.choice label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Appearance panel, as in My Maps: one button for light or dark mode. */
+.appearance-wrap { position: absolute; top: 16px; right: max(16px, env(safe-area-inset-right, 0px)); z-index: 25; }
+.appearance-wrap .theme-toggle { position: static; }
+.theme-toggle svg { fill: currentColor; }
+.appearance-panel { position: absolute; right: 0; top: calc(100% + 8px); width: 360px; max-height: calc(100vh - 80px); overflow: auto; padding: 16px; background: var(--card); border: 1px solid var(--border); border-radius: 14px; box-shadow: 0 12px 32px rgba(0, 0, 0, .18); }
+.appearance-panel[hidden], .appearance-backdrop[hidden] { display: none; }
+.appearance-panel h2 { font-size: 1rem; margin: 0 0 12px; }
+.appearance-panel .section-label { margin: 0 0 8px; font-size: .75rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.appearance-close { position: absolute; top: 10px; right: 10px; width: 32px; height: 32px; padding: 0; border: 0; border-radius: 8px; background: none; color: var(--muted); font-size: 1.4rem; font-weight: 400; line-height: 1; cursor: pointer; }
+.appearance-close:hover, .appearance-close:focus-visible { background: var(--bg); color: var(--text); outline: none; filter: none; }
+.mode-switch { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; }
+.mode-switch button { display: flex; align-items: center; justify-content: center; gap: 6px; min-height: 36px; width: auto; padding: 0 6px; font: inherit; font-weight: 600; font-size: .9rem; border: 0; border-radius: 7px; background: none; color: var(--muted); cursor: pointer; }
+.mode-switch button:hover { filter: none; color: var(--text); }
+.mode-switch button[aria-checked="true"] { background: var(--card); color: var(--text); box-shadow: 0 1px 3px rgba(0, 0, 0, .15); }
+.mode-switch button:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.mode-switch svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 680px) { .appearance-wrap { top: 14px; } }
+@media (min-width: 960px) { .appearance-wrap { top: 24px; right: 32px; } }
+@media (max-width: 600px) {
+  .appearance-panel { position: fixed; left: 0; right: 0; top: auto; bottom: 0; width: auto; max-height: 80vh; border-radius: 16px 16px 0 0; padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+  .appearance-backdrop { position: fixed; inset: 0; background: rgba(0, 0, 0, .35); }
+}

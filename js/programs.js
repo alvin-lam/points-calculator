@@ -1857,3 +1857,38 @@ window.COUNTRIES = [
   { id: "HR", label: "Croatia \u{1F1ED}\u{1F1F7}" },
   { id: "MY", label: "Malaysia \u{1F1F2}\u{1F1FE}" }
 ];
+
+/* Each airline's main brand color, used by the "Match airline" appearance
+   option. Keys are menu values: a program id, or "program:airline" for
+   group programs. The app adjusts each color so text stays readable in
+   light and dark mode. Colors are close approximations of each airline's
+   published brand color. */
+window.BRAND_COLORS = {
+  "american:aa": "#0078D2", "american:fj": "#1E3A5F",
+  delta: "#003A70", united: "#005DAA", southwest: "#304CB2",
+  alaska: "#01426A", hawaiian: "#413691", frontier: "#00965E",
+  jetblue: "#0033A0", allegiant: "#0057B8", breeze: "#00A3E0",
+  aircanada: "#D52B1E", westjet: "#00A3AD", porter: "#002856",
+  aeromexico: "#0B2343", viva: "#00A850", volaris: "#A12A8B",
+  virgin: "#DA0530",
+  "flyingblue:af": "#002157", "flyingblue:kl": "#00A1DE",
+  "flyingblue:to": "#00B26B", "flyingblue:hv": "#00B26B",
+  "milesandmore:lh": "#05164D", "milesandmore:ew": "#A6004D",
+  "milesandmore:de": "#0B2265", "milesandmore:os": "#E30613",
+  "milesandmore:lx": "#E2001A", "milesandmore:sn": "#002A5C",
+  "milesandmore:en": "#0A2E6B", "milesandmore:az": "#0047BB",
+  "milesandmore:lo": "#11397E", "milesandmore:ou": "#0D2C6C",
+  "iag:ei": "#006272", "iag:ba": "#075AAA", "iag:ib": "#D7192D",
+  "iag:level": "#003C71", "iag:vy": "#FFCC00",
+  tap: "#00843D", finnair: "#0B1560", lifemiles: "#E30613",
+  icelandair: "#003A7D", norwegian: "#D81939",
+  virginaustralia: "#C8102E", qantas: "#E40000", qatar: "#5C0632",
+  ana: "#13448F", jal: "#CC0000", sas: "#1E2D82",
+  hongkongairlines: "#8E1B3E", hainan: "#D91E18",
+  gol: "#FF7020", latam: "#1B0088", cathay: "#006564",
+  etihad: "#BD8B13", eva: "#00704A", chinaairlines: "#D6006E",
+  starlux: "#8B6E3C", krisflyer: "#0A2F6B", enrich: "#1F4E9C",
+  airnz: "#111111", turkish: "#C70A0C", korean: "#0064DE",
+  "phoenix:ca": "#E30613", aireuropa: "#0E2F69",
+  chinaeastern: "#1C3F94", chinasouthern: "#006CB7", xiamen: "#0D4A8F"
+};
