@@ -139,6 +139,17 @@ Expected results under the quoted rates: ATH–FCO 2,500 / 1,800 / 600 (all mini
 - Europe: airBaltic Club, Pegasus BolBol, Volotea, Binter.
 - Oceania: Air Niugini Destinations, Aircalin.
 
+### Site improvements
+
+| Item | What it involves |
+|---|---|
+| Google Search Console | Submit `https://points.alltripsconsidered.com/sitemap.xml` so the program pages are indexed in days rather than weeks. Needs the site owner's Google account. |
+| Automatic tests on GitHub | A GitHub Actions workflow that runs `node --test tests/*.test.js` (with Playwright) on every push and blocks a merge to `prod` if any test fails. |
+| Report a correction | A footer link, by email or a simple form, so readers can report changed earning rules. |
+| Review schedule | A reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current. |
+| Visit counter | A privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so. |
+| "60+ programs" wording | The page titles, descriptions and preview image say "60+ programs" (73 entries today). Update the wording if the count passes 100. |
+
 ### Watch
 
 - Sun Country Rewards: merging into Allegiant Allways Rewards, likely by about May 2028. Not added for that reason.
