@@ -16,19 +16,17 @@ const rules = {
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   // Sorted by tier, then issuer; Canadian issuers first, the US card last.
   // Separator entries draw a "---" line between tiers.
+  // Grouped by issuing bank, then from entry level to premium.
   cards: [
-    { id: "cibc-visa", name: "CIBC Aeroplan Visa (CA)", rate: 1 },
-    { id: "td-plat", name: "TD Aeroplan Visa Platinum (CA)", rate: 1 },
-    { separator: true },
-    { id: "amex", name: "American Express Aeroplan Card (CA)", rate: 2 },
-    { id: "cibc-vi", name: "CIBC Aeroplan Visa Infinite (CA)", rate: 1.5 },
-    { id: "td-vi", name: "TD Aeroplan Visa Infinite (CA)", rate: 1.5 },
-    { separator: true },
-    { id: "amex-reserve", name: "American Express Aeroplan Reserve Card (CA)", rate: 3 },
-    { id: "cibc-priv", name: "CIBC Aeroplan Visa Infinite Privilege (CA)", rate: 2 },
-    { id: "td-priv", name: "TD Aeroplan Visa Infinite Privilege (CA)", rate: 2 },
-    { separator: true },
-    { id: "chase", name: "Chase Aeroplan Card (US)", rate: 3, currency: "USD" }
+    { id: "amex", name: "American Express Aeroplan Card", rate: 2, bank: "American Express (Canada)" },
+    { id: "amex-reserve", name: "American Express Aeroplan Reserve Card", rate: 3, bank: "American Express (Canada)" },
+    { id: "cibc-visa", name: "CIBC Aeroplan Visa", rate: 1, bank: "CIBC (Canada)" },
+    { id: "cibc-vi", name: "CIBC Aeroplan Visa Infinite", rate: 1.5, bank: "CIBC (Canada)" },
+    { id: "cibc-priv", name: "CIBC Aeroplan Visa Infinite Privilege", rate: 2, bank: "CIBC (Canada)" },
+    { id: "td-plat", name: "TD Aeroplan Visa Platinum", rate: 1, bank: "TD (Canada)" },
+    { id: "td-vi", name: "TD Aeroplan Visa Infinite", rate: 1.5, bank: "TD (Canada)" },
+    { id: "td-priv", name: "TD Aeroplan Visa Infinite Privilege", rate: 2, bank: "TD (Canada)" },
+    { id: "chase", name: "Chase Aeroplan Card", rate: 3, currency: "USD", bank: "Chase (US)" }
   ],
   note: "Since January 2026, Aeroplan earns points per Canadian dollar spent on base fare and carrier surcharges on Air Canada flights. Taxes do not earn. Elite members earn 2 to 6 points per dollar. The US Chase Aeroplan Card earns per US dollar charged and includes automatic 25K status."
 };

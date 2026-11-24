@@ -288,6 +288,21 @@
           parent.label = g[0];
           cardEl.appendChild(parent);
         }
+        // Cards with a bank are grouped under that bank, in listed order.
+        if (g[1].some(function (c) { return c.bank; })) {
+          var groups = {};
+          g[1].forEach(function (c) {
+            if (c.separator) return;
+            var label = c.bank || "Other";
+            if (!groups[label]) {
+              groups[label] = document.createElement("optgroup");
+              groups[label].label = label;
+              parent.appendChild(groups[label]);
+            }
+            groups[label].appendChild(option(c.id, c.name));
+          });
+          return;
+        }
         g[1].forEach(function (c) {
           // A separator entry draws a "---" line that cannot be chosen.
           if (c.separator) {
