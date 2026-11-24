@@ -17,7 +17,12 @@ const rules = {
     { id: "gold", name: "Gold", multiplier: 1.6 },
     { id: "diamond", name: "Diamond", multiplier: 1.8 }
   ],
-  note: "LifeMiles earns on Avianca flights by the fare paid: 3, 6, 8, or 10 miles per US dollar by fare family, excluding taxes. Red Plus and Silver add 10% and 20%. Gold and Diamond are shown at 60% and 80%, but sources differ on those two."
+  // Co-branded card: extra LifeMiles per US dollar charged for Avianca
+  // purchases made directly with Avianca (Banco Popular Avianca Vuela Visa).
+  cards: [
+    { id: "vuela-visa", name: "Avianca Vuela Visa (US)", rate: 3, currency: "USD" }
+  ],
+  note: "LifeMiles earns on Avianca flights by the fare paid: 3, 6, 8, or 10 miles per US dollar by fare family, excluding taxes. Red Plus and Silver add 10% and 20%. Gold and Diamond are shown at 60% and 80%, but sources differ on those two. The US Avianca Vuela Visa earns 3 more LifeMiles per dollar on Avianca purchases made directly with Avianca."
 };
 
 module.exports = {
