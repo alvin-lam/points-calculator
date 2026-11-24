@@ -32,7 +32,9 @@
     return {
       from: from,
       to: to,
-      miles: Math.round(greatCircleMiles(airports[from], airports[to]))
+      miles: Math.round(greatCircleMiles(airports[from], airports[to])),
+      // Unrounded, so programs that count kilometres are not rounded twice.
+      exact: greatCircleMiles(airports[from], airports[to])
     };
   }
 

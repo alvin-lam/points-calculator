@@ -76,9 +76,20 @@
   }
   // Fills the distance box from a known mileage, in the device's unit,
   // and keeps the exact miles for the calculation.
-  function setDistanceMiles(miles) {
+  function setDistanceMiles(miles, exact) {
     distanceEl.value = useKm ? Math.round(miles * KM_PER_MILE) : miles;
-    distanceEl.dataset.miles = miles;
+    distanceEl.dataset.miles = exact != null ? exact : miles;
+  }
+  // The distance the airline counts, in the airline's own unit. Most
+  // programs count miles; a few count kilometres (distanceFactor).
+  function countedText(p, miles) {
+    if (p.distanceFactor) {
+      var km = Math.round(miles * p.distanceFactor);
+      return num.format(km) + " km, the unit " + (p.programName || "this program") + " counts" +
+        (useKm ? "" : " (" + num.format(Math.round(miles)) + " miles)");
+    }
+    return num.format(Math.round(miles)) + " miles, the unit " + (p.programName || "this program") + " counts" +
+      (useKm ? " (" + num.format(Math.round(miles * KM_PER_MILE)) + " km)" : "");
   }
   function reviewedText(ym) {
     if (!ym) return "recently";
@@ -658,7 +669,7 @@
       row(dl, "Taxes & Airport Fees", usd.format(taxes));
       row(dl, "Total trip cost", usd.format(tripCost));
     }
-    if (method === "distance" && !routeFixed) row(dl, "Distance flown", distText(Math.round(distance)));
+    if (method === "distance" && !routeFixed) row(dl, "Distance flown", countedText(p, distance));
     if (method === "distance" && p.zones) row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "segments") row(dl, "Segments flown", num.format(segments));
     if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
@@ -877,7 +888,7 @@
       resultEl.hidden = true;
       return;
     }
-    setDistanceMiles(r.miles);
+    setDistanceMiles(r.miles, r.exact);
     airportResult.textContent = r.from + " " + (A[r.from][2] || A[r.from][3]) + " \u2192 " + r.to + " " + (A[r.to][2] || A[r.to][3]) +
       ": " + distText(r.miles) + " (great-circle distance; airlines may count slightly differently).";
     resultEl.hidden = true;

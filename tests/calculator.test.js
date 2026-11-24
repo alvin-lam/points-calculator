@@ -139,6 +139,30 @@ test("a metric-region device enters and shows kilometres", { skip }, async () =>
   await ctx.close();
 });
 
+test("miles and kilometre devices earn the same on mile- and km-based programs", { skip }, async () => {
+  const run = async (locale, program, from, to) => {
+    const ctx = await browser.newContext({ locale });
+    const p = await ctx.newPage();
+    await p.goto(PAGE);
+    await p.evaluate((v) => { const s = document.getElementById("program"); s.value = v; s.dispatchEvent(new Event("change")); }, program);
+    await p.fill("#fromAirport", from);
+    await p.fill("#toAirport", to);
+    await p.waitForFunction(() => document.getElementById("distance").value !== "");
+    await p.click("#calc button[type=submit]");
+    const pts = Number((await p.textContent("#resultPoints")).replace(/[^0-9]/g, ""));
+    const row = await p.textContent("#breakdown");
+    await ctx.close();
+    return { pts, row };
+  };
+  // Copa counts miles; Air China (PhoenixMiles) counts kilometres.
+  for (const [program, from, to, unit] of [["copa", "PTY", "MIA", "miles"], ["phoenix:ca", "PEK", "PVG", "km"]]) {
+    const us = await run("en-US", program, from, to);
+    const de = await run("de-DE", program, from, to);
+    assert.strictEqual(de.pts, us.pts, program + " differs by device unit");
+    assert.match(us.row, new RegExp(unit + ", the unit"), program + " should say it counts " + unit);
+  }
+});
+
 test("airport codes fill in the miles", { skip }, async () => {
   await reset();
   await pickProgram("qatar");
