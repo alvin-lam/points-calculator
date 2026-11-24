@@ -50,56 +50,15 @@ async function reset() {
   await page.goto(PAGE);
 }
 
-const cases = [
-  // Southwest: southwest.com "How to Earn Points" ($200 base fare examples).
-  ["Southwest Basic, member", { program: "southwest", status: "member", fare: "basic", fields: { airfare: 200 } }, 400],
-  ["Southwest Choice Extra, member", { program: "southwest", status: "member", fare: "choiceExtra", fields: { airfare: 200 } }, 2800],
-  ["Southwest Choice Preferred, A-List", { program: "southwest", status: "alist", fare: "choicePref", fields: { airfare: 200 } }, 2500],
-  ["Southwest Choice Extra, A-List Preferred", { program: "southwest", status: "alistPref", fare: "choiceExtra", fields: { airfare: 200 } }, 5600],
-  // Miles & More: EUR 2,000 earns 8,000, or 12,000 with status.
-  ["Lufthansa, member", { program: "milesandmore:lh", status: "member", fields: { airfare: 2000 } }, 8000],
-  ["Lufthansa, Senator", { program: "milesandmore:lh", status: "sen", fields: { airfare: 2000 } }, 12000],
-  ["Air Dolomiti minimum", { program: "milesandmore:en", status: "member", fields: { airfare: 9, carrierFees: 20 } }, 125],
-  ["Eurowings minimum", { program: "milesandmore:ew", status: "member", fields: { airfare: 19, carrierFees: 5 } }, 125],
-  ["Eurowings status rate", { program: "milesandmore:ew", status: "ftl", fields: { airfare: 100, carrierFees: 20 } }, 600],
-  ["ITA within Italy, class M", { program: "milesandmore:az", fare: "m", zone: "dom" }, 500],
-  ["ITA Rome to Tokyo, class J", { program: "milesandmore:az", fare: "j", zone: "intl", fields: { distance: 6155 } }, 12310],
-  // LATAM Pass: Platinum, US$400 international fare.
-  ["LATAM Platinum international", { program: "latam", status: "platinum", fare: "intl", fields: { airfare: 400 } }, 3600],
-  // GOL Smiles.
-  ["GOL Diamante within South America", { program: "gol", status: "diamante", fare: "sa", fields: { airfare: 800 } }, 4000],
-  ["GOL Magno cap", { program: "gol", status: "magno", fare: "intl", fields: { airfare: 6000 } }, 60000],
-  // SAS EuroBonus (SAS's own table).
-  ["SAS Standard within Europe", { program: "sas", status: "member", fare: "std-high", zone: "eu" }, 1000],
-  ["SAS Business Flex within Europe, Gold", { program: "sas", status: "gold", fare: "pflex-cdz", zone: "eu" }, 4500],
-  ["SAS with an Economy to Business bid", { program: "sas", status: "member", fare: "std-high", zone: "eu", upgrade: "y-j" }, 1500],
-  // China Southern's worked examples.
-  ["China Southern ticket 784, Silver", { program: "chinasouthern", earn: "price", status: "silver", fields: { airfare: 4870.87 } }, 4677],
-  ["China Southern other ticket, 500 km minimum", { program: "chinasouthern", earn: "distance", status: "silver", fare: "pbmh", fields: { distance: 216.86 } }, 600],
-  // Fortune Wings Club.
-  ["Hong Kong Airlines, Fortune Wings", { program: "hongkongairlines", status: "member", fields: { airfare: 2000, carrierFees: 300 } }, 2300],
-  ["Hong Kong Airlines, Select", { program: "hongkongairlines", status: "select", fields: { airfare: 2000, carrierFees: 300 } }, 2530],
-  ["Hainan Airlines, Silver", { program: "hainan", status: "silver", fields: { airfare: 1088, carrierFees: 30 } }, 1456],
-  // Breeze: a Breezy 2 member on a US$200 Nicest fare.
-  ["Breeze Breezy 2 Nicest", { program: "breeze", status: "breezy2", fare: "nicest", fields: { airfare: 200 } }, 1500],
-  // JetBlue TrueBlue table.
-  ["JetBlue member, direct", { program: "jetblue", status: "member", fare: "main", radios: { direct: "Yes" }, fields: { airfare: 100 } }, 600],
-  ["JetBlue member, not direct", { program: "jetblue", status: "member", fare: "main", radios: { direct: "No" }, fields: { airfare: 100 } }, 300],
-  // Frontier: seats and bags earn like the fare; GoWild fare earns 1 mile.
-  ["Frontier with CIC and bags", { program: "frontier", status: "member", fare: "basic", fields: { airfare: 80, carrierFees: 20, addons: 60 } }, 160],
-  ["Frontier GoWild, Gold cardmember bundle", { program: "frontier", status: "gold", fare: "bundle", radios: { gowild: "Yes", cardmember: "Yes" }, fields: { gowildFee: 50, addons: 40 } }, 1441],
-  // Allegiant: 1 point per dollar to $500, 2 above; the CUC does not earn.
-  ["Allegiant over $500", { program: "allegiant", fields: { airfare: 450, carrierFees: 25, addons: 100 } }, 600],
-  // WestJet: seats, bags, and upgrades earn at the status rate.
-  ["WestJet Platinum with extras", { program: "westjet", status: "platinum", fields: { airfare: 200, addons: 100 } }, 2400],
-  // British Airways: extras are listed but do not earn Avios.
-  ["British Airways extras do not earn", { program: "iag:ba", status: "blue", fields: { airfare: 200, carrierFees: 100, addons: 80 } }, 1800],
-  // AAdvantage: paid upgrades earn at the status rate; Fiji earns like American.
-  ["American Gold with an upgrade", { program: "american:aa", status: "gold", fields: { airfare: 300, addons: 200 } }, 3500],
-  ["Fiji Airways Executive Platinum", { program: "american:fj", status: "exp", fields: { airfare: 600, carrierFees: 100 } }, 7700],
-  // Atmos Rewards by distance, Gold +50%.
-  ["Alaska by distance, Gold", { program: "alaska", earn: "distance", status: "gold", fields: { distance: 1000 } }, 1500]
-];
+// Published examples live with each program in data/programs/<program>.js.
+const { programs } = require("../tools/build.js").compile();
+const cases = [];
+for (const p of programs) {
+  for (const e of p.examples || []) {
+    const program = e.airline ? p.id + ":" + e.airline : p.id;
+    cases.push([e.name, Object.assign({ program }, e.input), e.expect]);
+  }
+}
 
 for (const [name, input, expected] of cases) {
   test(name, { skip }, async () => {

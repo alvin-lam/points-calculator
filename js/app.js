@@ -651,7 +651,8 @@
     var srcMap = window.SOURCES || {};
     var srcUrl = srcMap[programEl.value] || srcMap[programEl.value.split(":")[0]];
     var srcEl = $("resultSource");
-    srcEl.textContent = "Rules last reviewed " + (window.RULES_REVIEWED || "recently") + ".";
+    var reviewed = (window.REVIEWED || {})[programEl.value];
+    srcEl.textContent = "Rules last reviewed " + (reviewed || "recently") + ".";
     if (srcUrl) {
       var host = srcUrl.replace(/^https?:\/\//, "").split("/")[0].replace(/^www\./, "");
       var a = document.createElement("a");

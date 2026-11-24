@@ -1,4 +1,4 @@
-// Checks on the program data in js/programs.js. No browser needed:
+// Checks on the program data (built from data/ into js/programs.js). No browser needed:
 //   node --test tests/
 const test = require("node:test");
 const assert = require("node:assert");
@@ -46,7 +46,12 @@ test("every menu entry has an https source", () => {
     const s = lookup(window.SOURCES, e.value);
     assert.match(s || "", /^https:\/\//, e.value + " has no source");
   }
-  assert.ok(window.RULES_REVIEWED, "RULES_REVIEWED is not set");
+});
+
+test("every menu entry has a review month", () => {
+  for (const e of entries) {
+    assert.match(window.REVIEWED[e.value] || "", /^[A-Z][a-z]+ \d{4}$/, e.value + " has no review month");
+  }
 });
 
 test("airline codes are two characters", () => {
@@ -86,3 +91,13 @@ test("distance earn lists have one value per zone", () => {
     }
   }
 });
+
+test("js/programs.js matches the files in data/", () => {
+  const fs = require("node:fs");
+  const path = require("node:path");
+  const { compile, render } = require("../tools/build.js");
+  const built = render(compile());
+  const onDisk = fs.readFileSync(path.join(__dirname, "..", "js/programs.js"), "utf8");
+  assert.strictEqual(onDisk, built, "js/programs.js is out of date. Run: node tools/build.js");
+});
+

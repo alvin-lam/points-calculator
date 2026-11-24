@@ -1,5 +1,5 @@
 // Checks that the program pages, sitemap and robots file match the
-// current data. If this fails, run: node tools/build-pages.js
+// current data. If this fails, run: node tools/build.js
 const test = require("node:test");
 const assert = require("node:assert");
 const fs = require("node:fs");

@@ -1,15 +1,12 @@
 // Builds the search-engine files from index.html and js/programs.js:
 //   - one page per program at /airlines/<slug>/ with its own title and description
 //   - sitemap.xml and robots.txt
-// Run after changing programs or index.html:  node tools/build-pages.js
+// tools/build.js runs this after it rebuilds js/programs.js.
 const fs = require("node:fs");
 const path = require("node:path");
 
 const ROOT = path.resolve(__dirname, "..");
 const SITE = "https://points.alltripsconsidered.com/";
-global.window = {};
-require(path.join(ROOT, "js/programs.js"));
-const PROGRAMS = window.PROGRAMS;
 
 function slugify(s) {
   return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
@@ -21,6 +18,7 @@ function esc(s) {
 
 // Every menu entry: its value, airline name, and program name.
 function entries() {
+  const PROGRAMS = require("./build.js").compile().PROGRAMS;
   const out = [];
   Object.keys(PROGRAMS).forEach((key) => {
     const p = PROGRAMS[key];
@@ -76,9 +74,7 @@ function build() {
   return { list, files };
 }
 
-module.exports = { build, slugify };
-
-if (require.main === module) {
+function main() {
   const { list, files } = build();
   // Start clean so a removed program leaves no stale page behind.
   fs.rmSync(path.join(ROOT, "airlines"), { recursive: true, force: true });
@@ -88,3 +84,7 @@ if (require.main === module) {
   });
   console.log("Wrote " + list.length + " program pages, sitemap.xml and robots.txt.");
 }
+
+module.exports = { build, slugify, main };
+
+if (require.main === module) main();
