@@ -1051,6 +1051,30 @@
     });
   }
 
+  // Travel Tools: mark the link whose site matches this page's address.
+  // The markup marks Points Calculator; this keeps it right if the footer
+  // is reused or the site is opened from another address.
+  (function () {
+    var links = document.querySelectorAll(".travel-tools a");
+    if (!links.length) return;
+    var here = location.hostname.replace(/^www\./, "");
+    var match = null;
+    links.forEach(function (a) { if (a.hostname.replace(/^www\./, "") === here) match = a; });
+    if (!match) return;
+    links.forEach(function (a) {
+      var tag = a.querySelector(".tt-arrow");
+      if (a === match) {
+        a.setAttribute("aria-current", "page");
+        tag.textContent = "YOU ARE HERE";
+        tag.removeAttribute("aria-hidden");
+      } else {
+        a.removeAttribute("aria-current");
+        tag.textContent = "\u2192";
+        tag.setAttribute("aria-hidden", "true");
+      }
+    });
+  })();
+
   var yearEl = $("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   programEl.addEventListener("change", onProgramChange);
