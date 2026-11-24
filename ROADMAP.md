@@ -17,9 +17,30 @@ Programs and data still to add. Each needs an official, complete earning table b
 
 | Airline | What is missing |
 |---|---|
-| Aegean Airlines | The International earning table (only Domestic is built). Confirm the tier bonuses (read as Silver 10%, Gold 20%, Platinum 30% from a low-resolution screenshot). |
+| Aegean Airlines | The International earning table (only Domestic is built). International flights earn a share of the distance with a minimum per flight, but sources disagree on the rates (see below). Confirm the tier bonuses (read as Silver 10%, Gold 20%, Platinum 30% from a low-resolution screenshot). |
 | Copa Airlines | Whether Copa rounds before or after the PreferMember bonus (can differ by one mile). |
 | Edelweiss | An official Miles & More source for its rates (the current source is Travel-Dealz). |
+
+### Aegean international: routes to verify
+
+Run each route in Aegean's miles calculator as a Blue member, and note the miles for every fare family (Business, Business Basic, Comfort Flex, Flex, Light) and Aegean's distance if shown.
+
+| Route | Great-circle distance |
+|---|---|
+| Athens (ATH) to Larnaca (LCA) | 578 miles |
+| Athens (ATH) to Rome (FCO) | 675 miles |
+| Athens (ATH) to Tel Aviv (TLV) | 742 miles |
+| Athens (ATH) to Paris (CDG) | 1,310 miles |
+| Athens (ATH) to London (LHR) | 1,508 miles |
+| Athens (ATH) to New York (JFK) | 4,929 miles |
+
+Rates to test:
+
+- Quoted from Aegean's page: Business 250% (minimum 2,500), Comfort Flex 200% (minimum 1,800), Light 75% (minimum 600). Business Basic and Flex unknown.
+- A guide's example implies Light earns 50%, not 75%.
+- An older review says Business 150% and full-fare Economy 125%; likely outdated.
+
+Expected results under the quoted rates: ATH–FCO 2,500 / 1,800 / 600 (all minimums); ATH–LHR 3,770 / 3,016 / 1,131; ATH–JFK 12,323 / 9,858 / 3,697 (Business / Comfort Flex / Light). Light at 50% would give 754 on LHR and 2,465 on JFK.
 
 ## Lower priority
 
