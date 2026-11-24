@@ -975,17 +975,23 @@
     saveChoice();
   });
   statusEl.addEventListener("change", saveChoice);
-  try {
-    var lastProgram = localStorage.getItem("lastProgram");
-    var lastStatus = localStorage.getItem("lastStatus");
+  function stored(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  (function restoreChoice() {
+    var lastProgram = stored("lastProgram");
+    var lastStatus = stored("lastStatus");
+    // A program page (such as /airlines/united-airlines/) always opens on its own program.
+    if (window.PRESET_PROGRAM) {
+      if (window.PRESET_PROGRAM !== lastProgram) lastStatus = null;
+      lastProgram = window.PRESET_PROGRAM;
+    }
     if (lastProgram && !programEl.value && programEl.querySelector('option[value="' + lastProgram.replace(/"/g, "") + '"]')) {
       programEl.value = lastProgram;
       programEl.dispatchEvent(new Event("change"));
       if (lastStatus && statusEl.querySelector('option[value="' + lastStatus.replace(/"/g, "") + '"]')) {
         statusEl.value = lastStatus;
         statusEl.dispatchEvent(new Event("change"));
-        localStorage.setItem("lastStatus", lastStatus);
+        saveChoice();
       }
     }
-  } catch (e) {}
+  })();
 })();

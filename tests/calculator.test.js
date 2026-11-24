@@ -134,6 +134,15 @@ test("the last program and status come back on the next visit", { skip }, async 
   assert.match(await page.inputValue("#programSearch"), /Lufthansa/);
 });
 
+test("a program page opens on its own program", { skip }, async () => {
+  await reset();
+  await pickProgram("united");
+  await page.goto(PAGE.replace(/index\.html$/, "airlines/lufthansa/index.html"));
+  assert.strictEqual(await page.$eval("#program", (s) => s.value), "milesandmore:lh");
+  assert.match(await page.inputValue("#programSearch"), /Lufthansa/);
+  await reset();
+});
+
 test("airport codes fill in the miles", { skip }, async () => {
   await reset();
   await pickProgram("qatar");

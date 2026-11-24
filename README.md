@@ -63,3 +63,15 @@ node --test tests/*.test.js
 ```
 
 When a program's rules change, update `js/programs.js`, change `RULES_REVIEWED` if the review date moves, and add or adjust a case in `tests/calculator.test.js` using the airline's own published example.
+
+## Search engines and sharing
+
+- Each program has its own page at `/airlines/<name>/` (for example `/airlines/lufthansa/`). The page opens the calculator with that program chosen and has its own title and description.
+- These pages, `sitemap.xml` and `robots.txt` are generated. After changing `index.html` or `js/programs.js`, run:
+
+```bash
+node tools/build-pages.js
+```
+
+- The tests fail if the generated files are out of date.
+- `icons/og-image.png` is the preview image shown when a link is shared. Its source is `tools/og-image.html`.
