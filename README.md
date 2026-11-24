@@ -139,6 +139,16 @@ Expected results under the quoted rates: ATH–FCO 2,500 / 1,800 / 600 (all mini
 - Europe: airBaltic Club, Pegasus BolBol, Volotea, Binter.
 - Oceania: Air Niugini Destinations, Aircalin.
 
+### Credit cards to add
+
+Each card needs its current earning rate on airline purchases, confirmed from the issuer, before it is added. Cards are grouped by issuing bank in the card menu.
+
+| Cards | Programs | Notes |
+|---|---|---|
+| US business cards | United (Chase), Delta (American Express), Southwest (Chase), American (Citi), Alaska and Hawaiian (Bank of America), JetBlue (Barclays) | Most earn the same extra miles on airline purchases as the personal cards. Adding all of them lengthens the card menus, so consider adding only those whose airline rate differs. |
+| Canadian business cards | Air Canada (CIBC, TD, American Express) | Aeroplan business versions of the existing Canadian cards. |
+| US or home-market cards for programs with none | Qantas, Virgin Australia (Velocity), Singapore Airlines (KrisFlyer), Malaysia Airlines (Enrich), Cathay Pacific (home market), Thai, Air India, Qatar, Etihad, Turkish and other non-US programs | Add a US-issued card where one exists; otherwise the airline's home-market cards, with the card amount in that market's currency. |
+
 ### Site improvements
 
 | Item | What it involves |
