@@ -1,0 +1,170 @@
+{
+  "aircanada": {
+    "file": "icons/airlines/aircanada.svg",
+    "title": "Air Canada",
+    "hex": "#F01428",
+    "source": "https://www.aircanada.com"
+  },
+  "phoenix:ca": {
+    "file": "icons/airlines/airchina.svg",
+    "title": "Air China",
+    "hex": "#E30E17",
+    "source": "https://www.airchina.com.cn/en/investor_relations"
+  },
+  "flyingblue:af": {
+    "file": "icons/airlines/airfrance.svg",
+    "title": "Air France",
+    "hex": "#002157",
+    "source": "https://www.airfrance.fr"
+  },
+  "airindia": {
+    "file": "icons/airlines/airindia.svg",
+    "title": "Air India",
+    "hex": "#DA0E29",
+    "source": "https://www.airindia.com"
+  },
+  "transat": {
+    "file": "icons/airlines/airtransat.svg",
+    "title": "Air Transat",
+    "hex": "#172B54",
+    "source": "https://www.airtransat.com"
+  },
+  "american:aa": {
+    "file": "icons/airlines/americanairlines.svg",
+    "title": "American Airlines",
+    "hex": "#0078D2",
+    "source": "https://news.aa.com"
+  },
+  "ana": {
+    "file": "icons/airlines/ana.svg",
+    "title": "ANA",
+    "hex": "#13448F",
+    "source": "https://www.ana.co.jp/en/eur/the-ana-experience/brand"
+  },
+  "lifemiles": {
+    "file": "icons/airlines/avianca.svg",
+    "title": "avianca",
+    "hex": "#FF0000",
+    "source": "https://www.avianca.com"
+  },
+  "iag:ba": {
+    "file": "icons/airlines/britishairways.svg",
+    "title": "British Airways",
+    "hex": "#2E5C99",
+    "source": "https://www.britishairways.com"
+  },
+  "chinaeastern": {
+    "file": "icons/airlines/chinaeasternairlines.svg",
+    "title": "China Eastern Airlines",
+    "hex": "#1A2477",
+    "source": "https://uk.ceair.com/newCMS/uk/en/content/en_Footer/Support/201904/t20190404_5763.html"
+  },
+  "chinasouthern": {
+    "file": "icons/airlines/chinasouthernairlines.svg",
+    "title": "China Southern Airlines",
+    "hex": "#008BCB",
+    "source": "https://www.csair.com/en/about/investor/yejibaogao/2020/"
+  },
+  "copa": {
+    "file": "icons/airlines/copaairlines.svg",
+    "title": "Copa Airlines",
+    "hex": "#0032A0",
+    "source": "https://www.copaair.com"
+  },
+  "delta": {
+    "file": "icons/airlines/delta.svg",
+    "title": "Delta",
+    "hex": "#003366",
+    "source": "https://news.delta.com/delta-air-lines-logos-brand-guidelines"
+  },
+  "etihad": {
+    "file": "icons/airlines/etihadairways.svg",
+    "title": "Etihad Airways",
+    "hex": "#BD8B13",
+    "source": "https://www.etihad.com/en-ie/manage/duty-free"
+  },
+  "iag:ib": {
+    "file": "icons/airlines/iberia.svg",
+    "title": "Iberia",
+    "hex": "#D7192D",
+    "source": "https://iberia.com"
+  },
+  "jal": {
+    "file": "icons/airlines/japanairlines.svg",
+    "title": "Japan Airlines",
+    "hex": "#C00000",
+    "source": "https://www.jal.co.jp"
+  },
+  "jetblue": {
+    "file": "icons/airlines/jetblue.svg",
+    "title": "JetBlue",
+    "hex": "#001E59",
+    "source": "https://www.jetblue.com"
+  },
+  "flyingblue:kl": {
+    "file": "icons/airlines/klm.svg",
+    "title": "KLM",
+    "hex": "#00A1DE",
+    "source": "https://www.klm.com"
+  },
+  "milesandmore:lo": {
+    "file": "icons/airlines/lotpolishairlines.svg",
+    "title": "LOT Polish Airlines",
+    "hex": "#11397E",
+    "source": "https://www.lot.com/us/en/kaleidoscope-inflight-magazine"
+  },
+  "milesandmore:lh": {
+    "file": "icons/airlines/lufthansa.svg",
+    "title": "Lufthansa",
+    "hex": "#05164D",
+    "source": "https://www.lufthansa.com"
+  },
+  "norwegian": {
+    "file": "icons/airlines/norwegian.svg",
+    "title": "Norwegian",
+    "hex": "#D81939",
+    "source": "https://www.norwegian.com/ie/travel-info/on-board/in-flight-entertainment/magazine/"
+  },
+  "qantas": {
+    "file": "icons/airlines/qantas.svg",
+    "title": "Qantas",
+    "hex": "#E40000",
+    "source": "https://www.qantas.com"
+  },
+  "qatar": {
+    "file": "icons/airlines/qatarairways.svg",
+    "title": "Qatar Airways",
+    "hex": "#5C0D34",
+    "source": "https://www.qatarairways.com/press-releases/en-WW/media_kits"
+  },
+  "krisflyer": {
+    "file": "icons/airlines/singaporeairlines.svg",
+    "title": "Singapore Airlines",
+    "hex": "#F99F1C",
+    "source": "https://www.singaporeair.com"
+  },
+  "southwest": {
+    "file": "icons/airlines/southwestairlines.svg",
+    "title": "Southwest Airlines",
+    "hex": "#304CB2",
+    "source": "https://www.southwest.com"
+  },
+  "turkish": {
+    "file": "icons/airlines/turkishairlines.svg",
+    "title": "Turkish Airlines",
+    "hex": "#C70A0C",
+    "source": "https://www.turkishairlines.com/en-int/press-room/logo-archive/index.html"
+  },
+  "united": {
+    "file": "icons/airlines/unitedairlines.svg",
+    "title": "United Airlines",
+    "hex": "#002244",
+    "source": "https://www.united.com"
+  },
+  "virgin": {
+    "file": "icons/airlines/virginatlantic.svg",
+    "title": "Virgin Atlantic",
+    "hex": "#DA0530",
+    "source": "https://www.virginatlantic.com"
+  }
+}
