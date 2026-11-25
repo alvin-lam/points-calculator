@@ -289,12 +289,14 @@
           parent.label = g[0];
           cardEl.appendChild(parent);
         }
-        // Cards with a bank are grouped under that bank, in listed order.
+        // Cards with a bank are grouped under that bank.
         // (Debit cards keep their own "Debit cards" heading.)
         if (g[0] === "Credit cards" && g[1].some(function (c) { return c.bank; })) {
           parent = cardEl;
           var groups = {};
-          g[1].forEach(function (c) {
+          // US-issued cards first, then home-market cards, each in listed order.
+          var isUS = function (c) { return /\(US\)$/.test(c.bank || ""); };
+          g[1].filter(isUS).concat(g[1].filter(function (c) { return !isUS(c); })).forEach(function (c) {
             if (c.separator) return;
             var label = c.bank || "Other";
             if (!groups[label]) {

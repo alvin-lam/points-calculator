@@ -263,6 +263,25 @@ test("the Appearance panel lists airline colors and remembers the choice", { ski
   await ctx.close();
 });
 
+test("US-issued cards come first in every card menu", { skip }, async () => {
+  await reset();
+  const bad = await page.evaluate(() => {
+    const out = [];
+    for (const opt of document.querySelectorAll("#program option[value]")) {
+      if (!opt.value) continue;
+      const s = document.getElementById("program");
+      s.value = opt.value;
+      s.dispatchEvent(new Event("change"));
+      const labels = [...document.querySelectorAll("#card optgroup")].map((g) => g.label).filter((l) => l !== "Debit cards");
+      const firstHome = labels.findIndex((l) => !/\(US\)$/.test(l));
+      const lastUS = labels.map((l) => /\(US\)$/.test(l)).lastIndexOf(true);
+      if (firstHome !== -1 && lastUS > firstHome) out.push(opt.value + ": " + labels.join(", "));
+    }
+    return out;
+  });
+  assert.deepStrictEqual(bad, []);
+});
+
 test("airport codes fill in the miles", { skip }, async () => {
   await reset();
   await pickProgram("qatar");
