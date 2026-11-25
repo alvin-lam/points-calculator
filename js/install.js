@@ -15,7 +15,8 @@
   if (!banner) return;
 
   var KEY = "installDismissedAt";
-  var WAIT_DAYS = 14;
+  // "Close" hides the banner for 24 hours.
+  var WAIT_MS = 24 * 60 * 60 * 1000;
   var deferred = null;
 
   if ("serviceWorker" in navigator && location.protocol === "https:") {
@@ -31,7 +32,7 @@
   function recentlyDismissed() {
     try {
       var t = Number(localStorage.getItem(KEY));
-      return t && Date.now() - t < WAIT_DAYS * 864e5;
+      return t && Date.now() - t < WAIT_MS;
     } catch (e) { return false; }
   }
 

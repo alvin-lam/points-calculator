@@ -174,6 +174,15 @@ test("a phone browser without an install button is reminded to Add to Home Scree
   assert.ok(await p.isVisible("#menuSteps"));
   assert.ok(!(await p.isVisible("#iosSteps")));
   assert.match(await p.textContent("#menuSteps"), /Add to Home Screen/);
+  // "Close" hides it for 24 hours, then it can come back.
+  assert.strictEqual((await p.textContent("#installDismiss")).trim(), "Close");
+  await p.click("#installDismiss");
+  await p.reload();
+  await p.waitForTimeout(4500);
+  assert.ok(await p.isHidden("#installBanner"), "banner should stay hidden after Close");
+  await p.evaluate(() => localStorage.setItem("installDismissedAt", String(Date.now() - 25 * 3600 * 1000)));
+  await p.reload();
+  await p.waitForSelector("#installBanner:not([hidden])", { timeout: 8000 });
   await ctx.close();
 });
 
