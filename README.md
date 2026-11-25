@@ -174,7 +174,8 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 |---|---|---|
 | US business cards | United (Chase), Delta (American Express), Southwest (Chase), American (Citi), Alaska and Hawaiian (Bank of America), JetBlue (Barclays) | Most earn the same extra miles on airline purchases as the personal cards. Adding all of them lengthens the card menus, so consider adding only those whose airline rate differs. |
 | Canadian business cards | Air Canada (CIBC, TD, American Express) | Aeroplan business versions of the existing Canadian cards. |
-| US or home-market cards for programs with none | Qantas, Virgin Australia (Velocity), Singapore Airlines (KrisFlyer), Malaysia Airlines (Enrich), Cathay Pacific (home market), Thai, Air India, Qatar, Etihad, Turkish and other non-US programs | Add a US-issued card where one exists; otherwise the airline's home-market cards, with the card amount in that market's currency. |
+| Home-market cards still to research | Velocity (Virgin Australia), Korean Air (Korea), ANA and JAL (Japan), EVA Air and China Airlines and STARLUX (Taiwan), Thai, Air India, Malaysia Airlines (Enrich), Iberia (Spain), SAS, Norwegian, Finnair, Icelandair, TAP, Aegean, LifeMiles (Colombia), Smiles (Brazil), Aeroméxico, Volaris and Viva (Mexico), and the Chinese airlines (Air China, China Eastern, China Southern, Hainan, Xiamen) | Add a US-issued card first where one exists, then home-market cards in that market's currency. Add only cards with a published rate on the airline's own purchases. Many markets (Japan, Korea, China) have dozens of cards. |
+| Future US cards | Any program in the calculator | Check for new US co-branded cards from time to time. Recent launches: Etihad (FNBO, November 2026), Turkish (2024), Qatar and LATAM (Cardless, 2024). |
 
 ### Site improvements
 
@@ -188,6 +189,7 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 
 ### Watch
 
+- Miles & More credit cards (Germany): earn 1 mile per €2 everywhere, with no bonus on Lufthansa tickets, so they are not added. Add them if a Lufthansa purchase bonus appears.
 - Sun Country Rewards: merging into Allegiant Allways Rewards, likely by about May 2028. Not added for that reason.
 - Asiana Club: merging into Korean Air SKYPASS. Not added for that reason.
 - Air Transat Staria credit cards: Desjardins and Visa plan cards that earn Staria points, launching later in 2027. Fees and earning rates are not yet published. Add them to the Air Transat entry once they launch.
