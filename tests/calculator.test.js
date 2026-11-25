@@ -238,9 +238,13 @@ test("the Appearance panel lists airline colors and remembers the choice", { ski
   const accent = () => p.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--accent").trim().toLowerCase());
   const united = await accent();
   await p.click("#appearanceToggle");
-  // Match my airline, Classic blue, then every airline once.
+  // Match my airline, then every airline once (no Classic blue).
   const rows = await p.$$eval('#schemeList input[name="scheme"]', (r) => r.map((x) => x.value));
-  assert.deepStrictEqual(rows.slice(0, 2), ["auto", "classic"]);
+  assert.strictEqual(rows[0], "auto");
+  assert.ok(!rows.includes("classic"));
+  // The wordmark title follows the color scheme.
+  const title = await p.evaluate(() => getComputedStyle(document.querySelector(".brand a")).color);
+  assert.strictEqual(title, await p.evaluate(() => { const d = document.createElement("i"); d.style.color = "var(--accent)"; document.body.append(d); const c = getComputedStyle(d).color; d.remove(); return c; }));
   assert.ok(rows.length > 60, "airline list is too short: " + rows.length);
   assert.match(await p.textContent("#schemeList"), /Now: United Airlines/);
   // Pin Delta's color: it stays while another airline is chosen, and after a reload.

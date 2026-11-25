@@ -960,17 +960,16 @@
     return out;
   }
   // Color choice from the Appearance panel: "auto" follows the selected
-  // airline, "classic" is the site's own blue, and a menu value pins that
-  // airline's color. Saved on this device and checked before use.
+  // airline, and a menu value pins that airline's color. Saved on this
+  // device and checked before use.
   var BRANDS = window.BRAND_COLORS || {};
   function brandOf(v) { return v ? (BRANDS[v] || BRANDS[v.split(":")[0]] || null) : null; }
   var colorChoice = "auto";
   try {
     var savedColor = localStorage.getItem("color");
-    if (savedColor === "classic" || (savedColor && brandOf(savedColor))) colorChoice = savedColor;
+    if (savedColor && brandOf(savedColor)) colorChoice = savedColor;
   } catch (e) {}
   function brandFor() {
-    if (colorChoice === "classic") return null;
     if (colorChoice !== "auto") return brandOf(colorChoice);
     return brandOf(programEl.value);
   }
@@ -979,7 +978,7 @@
     var brand = brandFor();
     var meta = document.querySelector('meta[name="theme-color"]');
     if (!brand) {
-      ["--accent", "--accent-text", "--result-bg", "--to-top-text"].forEach(function (n) { style.removeProperty(n); });
+      ["--accent", "--accent-text", "--result-bg", "--to-top-text", "--site-accent"].forEach(function (n) { style.removeProperty(n); });
       if (meta) meta.setAttribute("content", isDark() ? "#0f141c" : "#1f5fd1");
       return;
     }
@@ -995,6 +994,8 @@
       resultBg = mix(white, c, 0.08);
     }
     style.setProperty("--accent", rgbToHex(accent));
+    // The wordmark title (and other --site-accent text) follows the color too.
+    style.setProperty("--site-accent", rgbToHex(accent));
     style.setProperty("--accent-text", accentText);
     style.setProperty("--result-bg", rgbToHex(resultBg));
     style.setProperty("--to-top-text", accentText);
@@ -1048,8 +1049,7 @@
     var current = brandOf(programEl.value);
     var currentName = programEl.value ? programEl.selectedOptions[0].textContent.split(" | ")[0] : "";
     schemeList.appendChild(schemeRow("auto", "Match my airline", current || "#1f5fd1",
-      "Now: " + (currentName && current ? currentName : "Classic blue")));
-    schemeList.appendChild(schemeRow("classic", "Classic blue", "#1f5fd1"));
+      "Now: " + (currentName && current ? currentName : "no airline chosen yet")));
     schemeList.appendChild(el("p", "scheme-subhead", "Airlines"));
     airlineColors().forEach(function (a) { schemeList.appendChild(schemeRow(a.id, a.name, a.color)); });
   }
