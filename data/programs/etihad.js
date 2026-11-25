@@ -26,7 +26,13 @@ const rules = {
     { id: "platinum", name: "Platinum", bonus: 1 },
     { id: "emerald", name: "Emerald", bonus: 1 }
   ],
-  note: "Etihad Guest earns a share of the route's base distance set by fare brand, from 5% in Economy Basic to 300% in First Deluxe. Silver, Gold, and Platinum or Emerald add 25%, 50%, or 100% of the base distance. Etihad's base distance for a route can differ slightly from the miles flown. Economy Basic earned 15% on tickets issued before 18 June 2026."
+  // US co-branded cards (First National Bank of Omaha, launched November
+  // 2026): extra miles per US dollar charged for Etihad purchases.
+  cards: [
+    { id: "fnbo-visa", name: "Etihad Guest Visa Signature", rate: 3, currency: "USD", bank: "First National Bank of Omaha (US)" },
+    { id: "fnbo-premier", name: "Etihad Guest Premier Visa Signature", rate: 5, currency: "USD", bank: "First National Bank of Omaha (US)" }
+  ],
+  note: "Etihad Guest earns a share of the route's base distance set by fare brand, from 5% in Economy Basic to 300% in First Deluxe. Silver, Gold, and Platinum or Emerald add 25%, 50%, or 100% of the base distance. Etihad's base distance for a route can differ slightly from the miles flown. Economy Basic earned 15% on tickets issued before 18 June 2026. The US Etihad Guest Visa Signature earns 3 more miles per dollar on Etihad purchases, and the Premier Visa Signature earns 5."
 };
 
 module.exports = {
