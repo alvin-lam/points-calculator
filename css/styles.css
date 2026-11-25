@@ -292,9 +292,10 @@ footer .copyright a:focus-visible { outline: 2px solid var(--accent); outline-of
   .wrap > header, .wrap > footer { grid-column: 1 / -1; }
   .wrap > header { margin-bottom: 8px; }
   #calc { grid-column: 1; grid-row: 2; margin-bottom: 0; }
+  /* The result column spans only the form's row, so the sticky panel
+     stops at the bottom of the form instead of sliding over the footer. */
+  .result-col { grid-column: 2; grid-row: 2; align-self: stretch; }
   #result, .result-placeholder {
-    grid-column: 2;
-    grid-row: 2;
     position: sticky;
     top: 24px;
     margin-bottom: 0;
