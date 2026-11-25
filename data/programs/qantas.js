@@ -45,7 +45,12 @@ const rules = {
     { id: "platinum", name: "Platinum", bonus: 1 },
     { id: "platinum-one", name: "Platinum One", bonus: 1 }
   ],
-  note: "Qantas awards a fixed number of points per flight by fare and distance. Silver, Gold, and Platinum add 50%, 75%, and 100%; in Premium Economy, Business, and First the bonus is figured on the Flexible Economy amount. Some routes, such as Australia to New Zealand, the USA, or Europe, have their own tables; this estimate uses the general distance bands. A minimum points guarantee may raise short flights."
+  // Australian co-branded card (American Express): Qantas Points per
+  // Australian dollar charged for selected Qantas products and services.
+  cards: [
+    { id: "amex-ultimate", name: "Qantas American Express Ultimate Card", rate: 2.25, bank: "American Express (Australia)" }
+  ],
+  note: "Qantas awards a fixed number of points per flight by fare and distance. Silver, Gold, and Platinum add 50%, 75%, and 100%; in Premium Economy, Business, and First the bonus is figured on the Flexible Economy amount. Some routes, such as Australia to New Zealand, the USA, or Europe, have their own tables; this estimate uses the general distance bands. A minimum points guarantee may raise short flights. The Australian Qantas American Express Ultimate Card earns 2.25 points per Australian dollar on selected Qantas purchases."
 };
 
 module.exports = {

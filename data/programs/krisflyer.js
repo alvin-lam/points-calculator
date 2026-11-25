@@ -24,7 +24,12 @@ const rules = {
     { id: "pps", name: "PPS Club", multiplier: 1.25 },
     { id: "solitaire", name: "Solitaire PPS Club", multiplier: 1.25 }
   ],
-  note: "KrisFlyer earns a share of the miles flown set by booking class, from 50% to 200%. Elite Silver, Elite Gold, and PPS Club members get a 25% tier bonus, except on Economy K, N, Q, V, and G. Scoot flights do not get the tier bonus."
+  // Singapore co-branded card (UOB): KrisFlyer miles per Singapore dollar
+  // charged for Singapore Airlines, Scoot and KrisShop purchases.
+  cards: [
+    { id: "uob-kf", name: "KrisFlyer UOB Credit Card", rate: 3, bank: "UOB (Singapore)" }
+  ],
+  note: "KrisFlyer earns a share of the miles flown set by booking class, from 50% to 200%. Elite Silver, Elite Gold, and PPS Club members get a 25% tier bonus, except on Economy K, N, Q, V, and G. Scoot flights do not get the tier bonus. The Singapore KrisFlyer UOB Credit Card earns 3 miles per Singapore dollar on Singapore Airlines purchases."
 };
 
 module.exports = {

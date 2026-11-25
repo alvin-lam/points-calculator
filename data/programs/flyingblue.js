@@ -25,9 +25,12 @@ const rules = {
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
-    { id: "boa", name: "Air France KLM Visa Signature", rate: 3, currency: "USD", bank: "Bank of America (US)" }
+    { id: "boa", name: "Air France KLM Visa Signature", rate: 3, currency: "USD", bank: "Bank of America (US)" },
+    // Dutch cards: Miles per euro charged at Air France and KLM.
+    { id: "amex-nl-gold", name: "Flying Blue American Express Gold Card", rate: 1.5, bank: "American Express (Netherlands)" },
+    { id: "amex-nl-platinum", name: "Flying Blue American Express Platinum Card", rate: 2, bank: "American Express (Netherlands)" }
   ],
-  note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France, KLM, and Transavia, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged."
+  note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France, KLM, and Transavia, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged. The Dutch American Express Gold and Platinum cards earn 1.5 and 2 Miles per euro at Air France and KLM."
 };
 
 module.exports = {
