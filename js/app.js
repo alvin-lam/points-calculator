@@ -1055,22 +1055,20 @@
   // The markup marks Points Calculator; this keeps it right if the footer
   // is reused or the site is opened from another address.
   (function () {
-    var links = document.querySelectorAll(".travel-tools a");
+    var links = document.querySelectorAll(".quick-links a");
     if (!links.length) return;
     var here = location.hostname.replace(/^www\./, "");
     var match = null;
     links.forEach(function (a) { if (a.hostname.replace(/^www\./, "") === here) match = a; });
     if (!match) return;
     links.forEach(function (a) {
-      var tag = a.querySelector(".tt-arrow");
+      var tag = a.querySelector(".ql-arrow");
       if (a === match) {
         a.setAttribute("aria-current", "page");
-        tag.textContent = "YOU ARE HERE";
-        tag.removeAttribute("aria-hidden");
+        tag.textContent = "You are here";
       } else {
         a.removeAttribute("aria-current");
-        tag.textContent = "\u2192";
-        tag.setAttribute("aria-hidden", "true");
+        tag.textContent = "\u203a";
       }
     });
   })();
