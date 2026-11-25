@@ -84,7 +84,14 @@ const rules = {
     { id: "platinum", name: "Koru Platinum", bonus: 0 },
     { id: "black", name: "Koru Black", bonus: 0 }
   ],
-  note: "Koru pays a fixed number of Airpoints per one-way flight, set by route group, fare, and booking class; one Airpoint is worth NZ$1. Tiers earn bonus Status Points, not extra Airpoints. Domestic flights are Economy only. Class F (Grabaseat Greenlight) earns no Airpoints, and N, I, R, and X earn nothing."
+  // New Zealand cards: Airpoints Dollars per NZ dollar charged. None has
+  // a higher rate for Air New Zealand purchases.
+  cards: [
+    { id: "amex-airpoints", name: "American Express Airpoints Card", rate: 1 / 100, per: 100, bank: "American Express (New Zealand)" },
+    { id: "amex-airpoints-plat", name: "American Express Airpoints Platinum Card", rate: 1 / 70, per: 70, bank: "American Express (New Zealand)" },
+    { id: "anz-airpoints-plat", name: "ANZ Airpoints Visa Platinum", rate: 1 / 110, per: 110, bank: "ANZ (New Zealand)" }
+  ],
+  note: "Koru pays a fixed number of Airpoints per one-way flight, set by route group, fare, and booking class; one Airpoint is worth NZ$1. Tiers earn bonus Status Points, not extra Airpoints. Domestic flights are Economy only. Class F (Grabaseat Greenlight) earns no Airpoints, and N, I, R, and X earn nothing. Airpoints credit cards earn 1 Airpoints Dollar per NZ$100 (American Express Airpoints Card), NZ$70 (American Express Airpoints Platinum) or NZ$110 (ANZ Airpoints Visa Platinum) charged."
 };
 
 module.exports = {

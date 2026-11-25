@@ -671,7 +671,8 @@
     }
     // A card's rate can depend on the fare type (Breeze Easy Visa).
     var cardRate = card ? (card.rates && fareType && card.rates[fareType.id] != null ? card.rates[fareType.id] : card.rate) : 0;
-    var cardPoints = card ? Math.floor(charged * cardRate) : 0;
+    // Programs that count in fractions (Airpoints Dollars) keep two decimals.
+    var cardPoints = card ? (p.decimals ? Math.floor(charged * cardRate * 100) / 100 : Math.floor(charged * cardRate)) : 0;
     var total = r.points + cardPoints;
 
     $("resultProgram").textContent = (airline ? airlineLabel(selection().program, airline) : p.name) + " · " + statusLabel(status) +
@@ -699,8 +700,10 @@
       var cardMoney = foreignCard || !fareUsed
         ? cardSymbols[cardCurrency] + charged.toLocaleString(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         : usd.format(charged);
-      row(dl, "Card earning", num.format(cardPoints) + " (" + num.format(cardRate) + " per " +
-        (foreignCard || !fareUsed ? cardSymbols[cardCurrency] : symbols[p.currency || "USD"]) + " on " + cardMoney + ")");
+      var sym = foreignCard || !fareUsed ? cardSymbols[cardCurrency] : symbols[p.currency || "USD"];
+      // A card can state its rate as "1 per N" (Airpoints: 1 per NZ$70).
+      row(dl, "Card earning", num.format(cardPoints) + " (" +
+        (card.per ? "1 per " + sym + num.format(card.per) : num.format(cardRate) + " per " + sym) + " on " + cardMoney + ")");
     }
     // Skip the value rows for programs without a reliable point value.
     if (p.centsPerPoint) {
