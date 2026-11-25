@@ -24,7 +24,12 @@ const rules = {
     { id: "elite", name: "Elite", elite: true },
     { id: "elite-plus", name: "Elite Plus", elite: true }
   ],
-  note: "Miles&Smiles earns a share of the distance by booking class on international flights, with a minimum per flight, and a fixed amount within Türkiye. Classic Plus, Elite, and Elite Plus earn more in Business."
+  // US co-branded card (First Electronic Bank, serviced by Imprint): extra
+  // miles per US dollar charged for Turkish Airlines purchases.
+  cards: [
+    { id: "imprint-premier", name: "Miles&Smiles Premier Visa Signature", rate: 3, currency: "USD", bank: "First Electronic Bank (US)" }
+  ],
+  note: "Miles&Smiles earns a share of the distance by booking class on international flights, with a minimum per flight, and a fixed amount within Türkiye. Classic Plus, Elite, and Elite Plus earn more in Business. The US Miles&Smiles Premier Visa Signature earns 3 more miles per dollar on Turkish Airlines purchases."
 };
 
 module.exports = {

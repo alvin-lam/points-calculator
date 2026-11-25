@@ -25,7 +25,13 @@ const rules = {
     { id: "black", name: "Black", rates: { sa: 8, intl: 10 } },
     { id: "black-sig", name: "Black Signature", rates: { sa: 9, intl: 12 } }
   ],
-  note: "LATAM Pass earns miles per US dollar of the base fare on flights marketed by LATAM: 3, 4, 7, 8, or 9 on domestic flights and within South America, and 5, 6, 9, 10, or 12 outside South America, for LATAM, Gold, Platinum, Black, and Black Signature. Taxes, boarding fees, and extras such as bags and seats do not earn. Fares in other currencies convert to dollars at the IATA rate, so enter the US dollar equivalent. Earning is capped at 60,000 miles per segment."
+  // US co-branded cards (Cardless): extra miles per US dollar charged for
+  // LATAM purchases.
+  cards: [
+    { id: "cardless-mc", name: "LATAM Airlines Mastercard", rate: 3, currency: "USD", bank: "Cardless (US)" },
+    { id: "cardless-we", name: "LATAM Airlines World Elite Mastercard", rate: 4, currency: "USD", bank: "Cardless (US)" }
+  ],
+  note: "LATAM Pass earns miles per US dollar of the base fare on flights marketed by LATAM: 3, 4, 7, 8, or 9 on domestic flights and within South America, and 5, 6, 9, 10, or 12 outside South America, for LATAM, Gold, Platinum, Black, and Black Signature. Taxes, boarding fees, and extras such as bags and seats do not earn. Fares in other currencies convert to dollars at the IATA rate, so enter the US dollar equivalent. Earning is capped at 60,000 miles per segment. The US LATAM Airlines Mastercard earns 3 more miles per dollar on LATAM purchases, and the World Elite Mastercard earns 4."
 };
 
 module.exports = {

@@ -23,7 +23,13 @@ const rules = {
     { id: "gold", name: "Gold", multiplier: 1.75 },
     { id: "platinum", name: "Platinum", multiplier: 2 }
   ],
-  note: "Privilege Club earns a share of the miles flown set by booking class, from 25% in Economy Lite to 300% in First. Silver, Gold, and Platinum add 25%, 75%, and 100%."
+  // US co-branded cards (Cardless): extra Avios per US dollar charged for
+  // Qatar Airways purchases.
+  cards: [
+    { id: "cardless-signature", name: "Qatar Airways Privilege Club Visa Signature", rate: 4, currency: "USD", bank: "Cardless (US)" },
+    { id: "cardless-infinite", name: "Qatar Airways Privilege Club Visa Infinite", rate: 5, currency: "USD", bank: "Cardless (US)" }
+  ],
+  note: "Privilege Club earns a share of the miles flown set by booking class, from 25% in Economy Lite to 300% in First. Silver, Gold, and Platinum add 25%, 75%, and 100%. The US Privilege Club Visa Signature earns 4 more Avios per dollar on Qatar Airways purchases, and the Visa Infinite earns 5."
 };
 
 module.exports = {
