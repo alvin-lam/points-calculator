@@ -221,11 +221,41 @@ test("the security policy blocks nothing the pages use", { skip }, async () => {
   await p.waitForFunction(() => document.getElementById("distance").value !== "");
   await p.click("#calc button[type=submit]");
   await p.click("#appearanceToggle");
-  await p.click('[data-mode="dark"]');
+  await p.click('input[name="mode"][value="dark"] + span');
   // The fonts load from this site, not Google.
   const fontsFromSite = await p.evaluate(() => performance.getEntriesByType("resource").filter((r) => /woff2/.test(r.name)).every((r) => r.name.startsWith(location.origin)));
   assert.ok(fontsFromSite, "fonts must load from this site");
   assert.deepStrictEqual(problems, []);
+  await ctx.close();
+});
+
+test("the Appearance panel lists airline colors and remembers the choice", { skip }, async () => {
+  const ctx = await browser.newContext();
+  const p = await ctx.newPage();
+  await p.goto(PAGE);
+  const choose = (v) => p.evaluate((v) => { const s = document.getElementById("program"); s.value = v; s.dispatchEvent(new Event("change")); }, v);
+  await choose("united");
+  const accent = () => p.evaluate(() => getComputedStyle(document.documentElement).getPropertyValue("--accent").trim().toLowerCase());
+  const united = await accent();
+  await p.click("#appearanceToggle");
+  // Match my airline, Classic blue, then every airline once.
+  const rows = await p.$$eval('#schemeList input[name="scheme"]', (r) => r.map((x) => x.value));
+  assert.deepStrictEqual(rows.slice(0, 2), ["auto", "classic"]);
+  assert.ok(rows.length > 60, "airline list is too short: " + rows.length);
+  assert.match(await p.textContent("#schemeList"), /Now: United Airlines/);
+  // Pin Delta's color: it stays while another airline is chosen, and after a reload.
+  await p.click('#schemeList input[value="delta"] ~ .scheme-name');
+  const delta = await accent();
+  assert.notStrictEqual(delta, united);
+  await choose("southwest");
+  assert.strictEqual(await accent(), delta);
+  await p.reload();
+  assert.strictEqual(await p.evaluate(() => localStorage.getItem("color")), "delta");
+  // Back to Match my airline.
+  await p.click("#appearanceToggle");
+  await p.click('#schemeList input[value="auto"] ~ .scheme-name');
+  await choose("united");
+  assert.strictEqual(await accent(), united);
   await ctx.close();
 });
 
@@ -275,7 +305,7 @@ test("the chosen mode is remembered", { skip }, async () => {
   const p = await ctx.newPage();
   await p.goto(PAGE);
   await p.click("#appearanceToggle");
-  await p.click('[data-mode="dark"]');
+  await p.click('input[name="mode"][value="dark"] + span');
   await p.reload();
   assert.strictEqual(await p.evaluate(() => document.documentElement.getAttribute("data-theme")), "dark");
   await ctx.close();

@@ -959,10 +959,20 @@
     while (contrast(out, against) < target && w < 1) { w += 0.05; out = mix(c, toward, w); }
     return out;
   }
+  // Color choice from the Appearance panel: "auto" follows the selected
+  // airline, "classic" is the site's own blue, and a menu value pins that
+  // airline's color. Saved on this device and checked before use.
+  var BRANDS = window.BRAND_COLORS || {};
+  function brandOf(v) { return v ? (BRANDS[v] || BRANDS[v.split(":")[0]] || null) : null; }
+  var colorChoice = "auto";
+  try {
+    var savedColor = localStorage.getItem("color");
+    if (savedColor === "classic" || (savedColor && brandOf(savedColor))) colorChoice = savedColor;
+  } catch (e) {}
   function brandFor() {
-    var v = programEl.value;
-    var map = window.BRAND_COLORS || {};
-    return map[v] || map[v.split(":")[0]] || null;
+    if (colorChoice === "classic") return null;
+    if (colorChoice !== "auto") return brandOf(colorChoice);
+    return brandOf(programEl.value);
   }
   function applyAirlineColors() {
     var style = root.style;
@@ -991,52 +1001,98 @@
     if (meta) meta.setAttribute("content", isDark() ? "#0f141c" : rgbToHex(accent));
   }
 
-  // The Appearance panel, laid out as in My Maps.
+  // The Appearance panel, from the All Trips Considered template: Mode
+  // (Auto, Light, Dark) and a Color list of airline colors.
   var appearanceBtn = $("appearanceToggle");
   var appearancePanel = $("appearancePanel");
-  var appearanceBackdrop = $("appearanceBackdrop");
-  var modeBtns = appearancePanel ? Array.prototype.slice.call(appearancePanel.querySelectorAll(".mode-switch button")) : [];
+  var schemeList = $("schemeList");
+  var modeHint = $("modeHint");
+  function el(tag, cls, text) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    if (text !== undefined) e.textContent = text;
+    return e;
+  }
+  // Every airline in the menu, by name, with its brand color.
+  function airlineColors() {
+    var seen = {}, out = [];
+    collect("").forEach(function (g) {
+      g.items.forEach(function (it) {
+        var name = it[1].split(" | ")[0];
+        var color = brandOf(it[0]);
+        if (!color || seen[name]) return;
+        seen[name] = true;
+        out.push({ id: it[0], name: name, color: color });
+      });
+    });
+    return out.sort(function (x, y) { return x.name.localeCompare(y.name); });
+  }
+  function schemeRow(id, name, color, now) {
+    var row = el("label", "scheme-option");
+    var input = el("input");
+    input.type = "radio"; input.name = "scheme"; input.value = id;
+    var label = el("span", "scheme-name", name);
+    if (now) label.appendChild(el("small", "scheme-now", now));
+    var swatch = el("span", "scheme-swatch");
+    swatch.setAttribute("aria-hidden", "true");
+    var i = el("i");
+    i.style.background = color;
+    swatch.appendChild(i);
+    var check = el("span", "scheme-check", "\u2713");
+    check.setAttribute("aria-hidden", "true");
+    row.append(input, swatch, label, check);
+    return row;
+  }
+  function renderSchemes() {
+    schemeList.replaceChildren();
+    var current = brandOf(programEl.value);
+    var currentName = programEl.value ? programEl.selectedOptions[0].textContent.split(" | ")[0] : "";
+    schemeList.appendChild(schemeRow("auto", "Match my airline", current || "#1f5fd1",
+      "Now: " + (currentName && current ? currentName : "Classic blue")));
+    schemeList.appendChild(schemeRow("classic", "Classic blue", "#1f5fd1"));
+    schemeList.appendChild(el("p", "scheme-subhead", "Airlines"));
+    airlineColors().forEach(function (a) { schemeList.appendChild(schemeRow(a.id, a.name, a.color)); });
+  }
   function syncAppearance() {
-    modeBtns.forEach(function (b) { b.setAttribute("aria-checked", String(b.dataset.mode === mode)); });
-    if (appearanceBtn) {
-      var label = "Appearance: " + (mode === "system" ? "system mode" : mode + " mode");
-      appearanceBtn.setAttribute("aria-label", label);
-      appearanceBtn.setAttribute("title", label);
-    }
+    var m = mode === "system" ? "auto" : mode;
+    appearancePanel.querySelectorAll('input[name="mode"]').forEach(function (r) { r.checked = r.value === m; });
+    schemeList.querySelectorAll('input[name="scheme"]').forEach(function (r) { r.checked = r.value === colorChoice; });
+    modeHint.textContent = m === "auto"
+      ? "Follows your device, which is set to " + (systemDark.matches ? "dark" : "light") + " right now."
+      : m === "light" ? "Always light, whatever your device is set to." : "Always dark, whatever your device is set to.";
+    appearanceBtn.setAttribute("aria-label", "Appearance");
     applyAirlineColors();
   }
   function openPanel() {
+    renderSchemes();
+    syncAppearance();
     appearancePanel.hidden = false;
-    if (appearanceBackdrop) appearanceBackdrop.hidden = false;
     appearanceBtn.setAttribute("aria-expanded", "true");
-    (appearancePanel.querySelector('[aria-checked="true"]') || modeBtns[0]).focus();
+    var checked = appearancePanel.querySelector('input[name="mode"]:checked');
+    if (checked) checked.focus();
   }
   function closePanel(focusBtn) {
+    if (appearancePanel.hidden) return;
     appearancePanel.hidden = true;
-    if (appearanceBackdrop) appearanceBackdrop.hidden = true;
     appearanceBtn.setAttribute("aria-expanded", "false");
     if (focusBtn) appearanceBtn.focus();
   }
   if (appearanceBtn && appearancePanel) {
-    modeBtns.forEach(function (b, i) {
-      b.addEventListener("click", function () {
-        mode = b.dataset.mode;
-        try { if (mode === "system") localStorage.removeItem("theme"); else localStorage.setItem("theme", mode); } catch (e) {}
+    appearancePanel.addEventListener("change", function (e) {
+      if (e.target.name === "mode") {
+        mode = e.target.value === "auto" ? "system" : e.target.value;
+        try { if (mode === "system") localStorage.removeItem("theme"); else localStorage.setItem("theme", mode); } catch (err) {}
         applyMode();
-        syncAppearance();
-      });
-      // Arrow keys move between the three choices.
-      b.addEventListener("keydown", function (e) {
-        var step = { ArrowRight: 1, ArrowLeft: -1, ArrowDown: 1, ArrowUp: -1 }[e.key];
-        if (!step) return;
-        e.preventDefault();
-        modeBtns[Math.min(modeBtns.length - 1, Math.max(0, i + step))].focus();
-      });
+      }
+      if (e.target.name === "scheme") {
+        colorChoice = e.target.value;
+        try { if (colorChoice === "auto") localStorage.removeItem("color"); else localStorage.setItem("color", colorChoice); } catch (err) {}
+      }
+      syncAppearance();
     });
     appearanceBtn.addEventListener("click", function (e) { e.stopPropagation(); if (appearancePanel.hidden) openPanel(); else closePanel(false); });
     appearancePanel.addEventListener("click", function (e) { e.stopPropagation(); });
-    $("appearanceClose").addEventListener("click", function () { closePanel(true); });
-    document.addEventListener("click", function () { if (!appearancePanel.hidden) closePanel(false); });
+    document.addEventListener("click", function () { closePanel(false); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !appearancePanel.hidden) closePanel(true); });
   }
   if (systemDark.addEventListener) systemDark.addEventListener("change", syncAppearance);
