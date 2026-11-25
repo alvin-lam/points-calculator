@@ -7,17 +7,34 @@ const path = require("node:path");
 
 let chromium = null;
 try { ({ chromium } = require("playwright")); } catch (e) { /* skipped below */ }
-const PAGE = "file://" + path.resolve(__dirname, "..", "index.html");
+// Served over HTTP (not file://) so fetch and the security policy behave as
+// they do on the live site.
+const http = require("node:http");
+const fs = require("node:fs");
+const ROOT = path.resolve(__dirname, "..");
+const TYPES = { html: "text/html", js: "text/javascript", json: "application/json", css: "text/css",
+  png: "image/png", ico: "image/x-icon", woff2: "font/woff2", webmanifest: "application/manifest+json", xml: "application/xml", txt: "text/plain" };
+let server, PAGE;
 const skip = chromium ? false : "Playwright is not installed (npm install --prefix tests)";
 
 let browser, page;
 test.before(async () => {
   if (skip) return;
+  server = http.createServer((req, res) => {
+    let p = decodeURIComponent(new URL(req.url, "http://x").pathname);
+    if (p.endsWith("/")) p += "index.html";
+    const f = path.join(ROOT, p);
+    if (!f.startsWith(ROOT) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); return res.end(); }
+    res.writeHead(200, { "Content-Type": TYPES[f.split(".").pop()] || "application/octet-stream" });
+    fs.createReadStream(f).pipe(res);
+  });
+  await new Promise((r) => server.listen(0, "127.0.0.1", r));
+  PAGE = "http://127.0.0.1:" + server.address().port + "/index.html";
   browser = await chromium.launch();
   page = await browser.newPage();
   await page.goto(PAGE);
 });
-test.after(async () => { if (browser) await browser.close(); });
+test.after(async () => { if (browser) await browser.close(); if (server) server.close(); });
 
 // Fill the form and return the points shown, as a number.
 async function pickProgram(value) {
@@ -183,6 +200,32 @@ test("a phone browser without an install button is reminded to Add to Home Scree
   await p.evaluate(() => localStorage.setItem("installDismissedAt", String(Date.now() - 25 * 3600 * 1000)));
   await p.reload();
   await p.waitForSelector("#installBanner:not([hidden])", { timeout: 8000 });
+  await ctx.close();
+});
+
+test("the security policy blocks nothing the pages use", { skip }, async () => {
+  const ctx = await browser.newContext();
+  const p = await ctx.newPage();
+  const problems = [];
+  p.on("console", (m) => { if (/Content Security Policy|Trusted Type|Refused to/i.test(m.text())) problems.push(m.text()); });
+  p.on("pageerror", (e) => problems.push(e.message));
+  await p.addInitScript(() => document.addEventListener("securitypolicyviolation", (e) => console.error("Refused to: " + e.violatedDirective + " " + e.blockedURI)));
+  for (const url of [PAGE, PAGE.replace(/index\.html$/, "airlines/copa-airlines/index.html"), PAGE.replace(/index\.html$/, "privacy.html")]) {
+    await p.goto(url);
+    await p.waitForLoadState("networkidle");
+  }
+  // Exercise the airport fetch, the route menu, a result and the Appearance panel.
+  await p.goto(PAGE.replace(/index\.html$/, "airlines/copa-airlines/index.html"));
+  await p.fill("#fromAirport", "PTY");
+  await p.fill("#toAirport", "MIA");
+  await p.waitForFunction(() => document.getElementById("distance").value !== "");
+  await p.click("#calc button[type=submit]");
+  await p.click("#appearanceToggle");
+  await p.click('[data-mode="dark"]');
+  // The fonts load from this site, not Google.
+  const fontsFromSite = await p.evaluate(() => performance.getEntriesByType("resource").filter((r) => /woff2/.test(r.name)).every((r) => r.name.startsWith(location.origin)));
+  assert.ok(fontsFromSite, "fonts must load from this site");
+  assert.deepStrictEqual(problems, []);
   await ctx.close();
 });
 

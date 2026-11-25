@@ -28,7 +28,7 @@ test("page addresses are unique and readable", () => {
 test("each page names its program and presets it", () => {
   list.forEach((e) => {
     const html = files["airlines/" + e.slug + "/index.html"];
-    assert.ok(html.includes('window.PRESET_PROGRAM = "' + e.value + '"'), e.slug);
+    assert.ok(html.includes('data-preset="' + e.value + '"'), e.slug);
     assert.ok(html.includes("/airlines/" + e.slug + "/"), e.slug + " canonical");
   });
   assert.ok(fs.existsSync(path.join(ROOT, "icons/og-image.png")));

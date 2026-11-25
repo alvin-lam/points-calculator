@@ -5,7 +5,7 @@ const path = require("node:path");
 
 const D = require(path.join(__dirname, "..", "js", "distance.js"));
 global.window = {};
-require(path.join(__dirname, "..", "js", "airports.js"));
+global.window.AIRPORTS = require(path.join(__dirname, "..", "js", "airports.json"));
 const A = window.AIRPORTS;
 
 // Published great-circle distances, in statute miles, with a small tolerance

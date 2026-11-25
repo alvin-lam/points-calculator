@@ -20,7 +20,15 @@
   var deferred = null;
 
   if ("serviceWorker" in navigator && location.protocol === "https:") {
-    navigator.serviceWorker.register("sw.js").catch(function () {});
+    // Trusted Types is enforced, so the worker URL goes through a policy
+    // named "sw" (allowed in the Content-Security-Policy) that accepts only sw.js.
+    var swUrl = "sw.js";
+    if (window.trustedTypes && trustedTypes.createPolicy) {
+      swUrl = trustedTypes.createPolicy("sw", {
+        createScriptURL: function (u) { if (u !== "sw.js") throw new TypeError("blocked"); return u; }
+      }).createScriptURL("sw.js");
+    }
+    navigator.serviceWorker.register(swUrl).catch(function () {});
   }
 
   var standalone = window.matchMedia("(display-mode: standalone)").matches || navigator.standalone === true;

@@ -42,7 +42,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
   - `js/programs.js`: the earning data the browser loads, generated from `data/` (see Program data below).
   - `js/app.js`: the calculator, airline search, airport lookup, and Appearance panel.
   - `js/distance.js`: great-circle distance between two airports.
-  - `js/airports.js`: about 3,200 airports with scheduled service, from [OurAirports](https://ourairports.com/data/) (public domain). It loads only when a distance-based program is chosen.
+  - `js/airports.json`: about 3,200 airports with scheduled service, from [OurAirports](https://ourairports.com/data/) (public domain). It is fetched only when a distance-based program is chosen.
   - `js/install.js`: the install prompt.
 - `favicon.ico` and `icons/` hold the browser and home-screen icons. `manifest.webmanifest` and `sw.js` let the site install as an app and open offline.
 - `js/install.js` invites visitors to add the calculator to their home screen. Chrome, Edge, and Android get an Install button. iPhone and iPad get the Share, then Add to Home Screen steps. Other phones and tablets whose browser has no install button (such as Firefox or Samsung Internet) are reminded to use the browser menu's Add to Home Screen. "Close" hides it for 24 hours.
@@ -83,6 +83,33 @@ node tools/build.js
 ```
 
 - See `data/README.md` for the fields and for how to add a program. The tests fail if the generated files are out of date.
+
+## Security
+
+The site follows the All Trips Considered template (`atc-pwa-template`).
+
+- **No inline code or styles, and no third-party requests.** Scripts, styles, fonts and data load only from this site. The Instrument Serif font is self-hosted in `fonts/` (SIL Open Font License, `fonts/OFL.txt`).
+- **Content-Security-Policy.** Every page carries the policy as a `<meta>` tag. It forbids inline scripts, `eval` and outside resources.
+- **Trusted Types are enforced.** The browser blocks `innerHTML`, `insertAdjacentHTML`, `document.write` and script URLs. Build the interface with `textContent`, `createElement` and `replaceChildren()`. The only allowed policy is `sw`, which accepts nothing but `sw.js` so the service worker can register.
+- **Saved values are checked** against known options before use, and the airport list is plain JSON fetched from this site.
+- `tests/calculator.test.js` loads the pages under the policy and fails on any blocked resource.
+
+### Headers to set in Cloudflare
+
+GitHub Pages cannot send custom headers, so they are added by Cloudflare. The `points` DNS record must be **Proxied** (orange cloud), with SSL/TLS set to **Full (strict)**. In Cloudflare, go to Rules, then Transform Rules, then Modify Response Header. Create a rule for hostname `points.alltripsconsidered.com` that sets these headers:
+
+| Header | Value |
+|---|---|
+| Content-Security-Policy | `default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; require-trusted-types-for 'script'; trusted-types sw; upgrade-insecure-requests` |
+| Strict-Transport-Security | `max-age=63072000; includeSubDomains` |
+| X-Content-Type-Options | `nosniff` |
+| X-Frame-Options | `DENY` |
+| Referrer-Policy | `strict-origin-when-cross-origin` |
+| Permissions-Policy | `camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()` |
+| Cross-Origin-Opener-Policy | `same-origin` |
+| Cross-Origin-Resource-Policy | `same-origin` |
+
+The header policy matches the `<meta>` one, plus `frame-ancestors 'none'`, which only works as a header. `base-uri` is `'self'` rather than the template's `'none'` because the program pages use `<base>`. Add `preload` to the HSTS header only when every `alltripsconsidered.com` subdomain is permanently HTTPS-only.
 
 ## Roadmap
 

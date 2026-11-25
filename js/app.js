@@ -181,7 +181,7 @@
   }
   // The hidden select holds the chosen program for the rest of the app.
   function buildMenu() {
-    programEl.innerHTML = "";
+    programEl.replaceChildren();
     programEl.appendChild(option("", "Choose a program"));
     collect("").forEach(function (g) {
       var group = document.createElement("optgroup");
@@ -230,8 +230,8 @@
   // Rebuilds the form for the current program and airline.
   function applyProgram() {
     var p = current();
-    statusEl.innerHTML = "";
-    fareTypeEl.innerHTML = "";
+    statusEl.replaceChildren();
+    fareTypeEl.replaceChildren();
     if (!p) return;
 
     // Show the alliance of the chosen airline (or program).
@@ -265,7 +265,7 @@
     }
 
     // Ask about a co-branded card only for programs with card data.
-    cardEl.innerHTML = "";
+    cardEl.replaceChildren();
     // Programs where holding the card raises the flight earn rate (Frontier)
     // ask about it first; the payment question only follows a Yes.
     cardmemberField.hidden = !p.cardmember;
@@ -324,7 +324,7 @@
     $("carrierHint").textContent = p.carrierHint || "Fuel or other airline surcharges (YQ/YR), if any. Leave blank if none.";
     $("fareTypeLabel").textContent = p.fareTypeLabel || "Fare Type";
     // An optional upgrade bonus per route (SAS Upgrade bids).
-    upgradeEl.innerHTML = "";
+    upgradeEl.replaceChildren();
     upgradeField.hidden = !p.upgradeBonus;
     if (p.upgradeBonus) {
       $("upgradeLabel").textContent = p.upgradeBonus.label;
@@ -351,9 +351,9 @@
     syncGoWild();
     syncCardSelect();
 
-    zoneEl.innerHTML = "";
+    zoneEl.replaceChildren();
     if (p.zones) p.zones.forEach(function (z) { zoneEl.appendChild(option(z.id, z.name)); });
-    earnEl.innerHTML = "";
+    earnEl.replaceChildren();
     earnField.hidden = !p.earnMethods;
     if (p.earnMethods) p.earnMethods.forEach(function (m) { earnEl.appendChild(option(m.id, m.name)); });
     $("earnLabel").textContent = p.earnLabel || "How you earn";
@@ -680,7 +680,7 @@
     $("resultUnit").textContent = p.unit;
 
     var dl = $("breakdown");
-    dl.innerHTML = "";
+    dl.replaceChildren();
     if (fareUsed) {
       row(dl, "Airfare", usd.format(airfare) + (gowild ? " (GoWild!)" : ""));
       if (gowild) row(dl, "GoWild Early Booking Fee", usd.format(gowildFee));
@@ -756,7 +756,7 @@
   function openList(filter) {
     var groups = collect(filter);
     var q = String(filter || "").trim();
-    listEl.innerHTML = "";
+    listEl.replaceChildren();
     var n = 0;
     groups.forEach(function (g) {
       var head = document.createElement("li");
@@ -849,11 +849,19 @@
     if (window.AIRPORTS) { fillAirportList(); return; }
     if (airportsLoading) return;
     airportsLoading = true;
-    var s = document.createElement("script");
-    s.src = "js/airports.js";
-    s.onload = function () { fillAirportList(); updateAirportDistance(); };
-    s.onerror = function () { airportsLoading = false; airportResult.textContent = "The airport list could not load. Enter the miles yourself."; };
-    document.head.appendChild(s);
+    // Data only (JSON), fetched from this site; no script is loaded.
+    fetch("js/airports.json", { credentials: "same-origin" })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) {
+        if (!data || typeof data !== "object") throw new Error("bad data");
+        window.AIRPORTS = data;
+        fillAirportList();
+        updateAirportDistance();
+      })
+      .catch(function () {
+        airportsLoading = false;
+        airportResult.textContent = "The airport list could not load. Enter the miles yourself.";
+      });
   }
   // Published route distances (Copa): a menu of routes, and the same
   // figures used when the two airports typed match a listed route.
@@ -873,7 +881,7 @@
     if (!show) return;
     if (routeSelect.dataset.program === programEl.value) return;
     routeSelect.dataset.program = programEl.value;
-    routeSelect.innerHTML = "";
+    routeSelect.replaceChildren();
     routeSelect.appendChild(option("", "Another route (enter airports below)"));
     p.routes.list.forEach(function (r) {
       routeSelect.appendChild(option(r[0], r[1] + " (" + r[0] + "), " + (useKm ? num.format(Math.round(r[2] * KM_PER_MILE)) + " km" : num.format(r[2]) + " mi")));
@@ -1113,9 +1121,10 @@
     var lastProgram = stored("lastProgram");
     var lastStatus = stored("lastStatus");
     // A program page (such as /airlines/united-airlines/) always opens on its own program.
-    if (window.PRESET_PROGRAM) {
-      if (window.PRESET_PROGRAM !== lastProgram) lastStatus = null;
-      lastProgram = window.PRESET_PROGRAM;
+    var preset = document.documentElement.getAttribute("data-preset");
+    if (preset) {
+      if (preset !== lastProgram) lastStatus = null;
+      lastProgram = preset;
     }
     if (lastProgram && !programEl.value && programEl.querySelector('option[value="' + lastProgram.replace(/"/g, "") + '"]')) {
       programEl.value = lastProgram;

@@ -74,7 +74,7 @@ function page(html, e) {
     .replace(/("url": ")[^"]*(")/, "$1" + url + "$2")
     .replace(/("description": ")[^"]*(")/, () => '"description": ' + JSON.stringify(desc))
     .replace(/  <\/script>\n/, "  </script>\n" + breadcrumb(e, url))
-    .replace(/<script>\n    \/\/ Apply a saved theme/, '<script>window.PRESET_PROGRAM = "' + e.value + '";</script>\n  <script>\n    // Apply a saved theme');
+    .replace(/<html lang="en">/, '<html lang="en" data-preset="' + esc(e.value) + '">');
 }
 
 function build() {
@@ -83,7 +83,7 @@ function build() {
   const files = {};
   list.forEach((e) => { files["airlines/" + e.slug + "/index.html"] = page(html, e); });
   files["sitemap.xml"] = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    ["", ...list.map((e) => "airlines/" + e.slug + "/")].map((p) => "  <url><loc>" + SITE + p + "</loc></url>").join("\n") + "\n</urlset>\n";
+    ["", "privacy.html", ...list.map((e) => "airlines/" + e.slug + "/")].map((p) => "  <url><loc>" + SITE + p + "</loc></url>").join("\n") + "\n</urlset>\n";
   files["robots.txt"] = "User-agent: *\nAllow: /\n\nSitemap: " + SITE + "sitemap.xml\n";
   return { list, files };
 }
