@@ -284,14 +284,16 @@
     var shared = alliance ? null
       : (sel.airline && tiered ? programAlliance(sel.program) : (sel.program.sharedAlliance || null));
     var allianceEl = $("allianceValue");
-    allianceEl.textContent = alliance || "Not part of an alliance.";
+    // A non-member that shares an alliance airline's program names that
+    // alliance ("Not part of Star Alliance."); others say "an alliance".
+    allianceEl.textContent = alliance || (shared ? "Not part of " + shared + "." : "Not part of an alliance.");
     if (shared) {
       var progName = sel.airline ? airlineLabel(sel.program, sel.airline).split(" | ")[1] : (sel.program.statusProgramName || sel.program.programName || "");
       var airName = sel.airline ? sel.airline.name : sel.program.name.split(" | ")[0];
       // The shared-program line goes on its own line.
       allianceEl.appendChild(document.createElement("br"));
       allianceEl.appendChild(document.createTextNode(progName + " status is recognized on " + shared +
-        " member airlines. " + airName + " is not a member, so " + shared + " benefits are not guaranteed on its flights."));
+        " member airlines, but " + shared + " benefits are not guaranteed on " + airName + " flights."));
     }
     $("allianceValue").classList.toggle("none", !alliance);
     $("allianceField").hidden = false;
