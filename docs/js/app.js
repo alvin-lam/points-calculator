@@ -190,6 +190,20 @@
       choices.sort(function (a, b) { return a[1].localeCompare(b[1]); });
       if (choices.length) groups.push({ label: c.label, items: choices });
     });
+    // A search that is exactly an airline's IATA code ("EW", "LL", "4Y")
+    // lists that airline first, in its own group above the country groups.
+    if (words.length === 1 && words[0].length === 2) {
+      var top = [];
+      groups = groups.map(function (g) {
+        var rest = g.items.filter(function (ch) {
+          var hit = CODES[ch[0]] && CODES[ch[0]].toLowerCase() === words[0];
+          if (hit) top.push(ch);
+          return !hit;
+        });
+        return { label: g.label, items: rest };
+      }).filter(function (g) { return g.items.length; });
+      if (top.length) groups.unshift({ label: "Airline code " + words[0].toUpperCase(), items: top });
+    }
     return groups;
   }
   // The hidden select holds the chosen program for the rest of the app.
