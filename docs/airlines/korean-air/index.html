@@ -293,7 +293,7 @@
       </div>
 
       <fieldset class="field" id="cardField" hidden>
-        <legend>Did you pay with the airline's co-branded credit or debit card?</legend>
+        <legend id="cardLegend">Did you pay with the airline's co-branded credit or debit card?</legend>
         <div class="choice">
           <label><input type="radio" name="usedCard" id="usedCardNo" value="no" checked> No</label>
           <label><input type="radio" name="usedCard" id="usedCardYes" value="yes"> Yes</label>
@@ -303,7 +303,7 @@
       <div class="field" id="cardSelectField" hidden>
         <label for="card">Which card?</label>
         <select id="card"></select>
-        <small>Card points are earned on the full amount charged, taxes included.</small>
+        <small id="cardSelectHint">Card points are earned on the full amount charged, taxes included.</small>
       </div>
 
       <div class="field" id="cardChargeField" hidden>

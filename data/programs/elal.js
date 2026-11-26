@@ -37,14 +37,16 @@ const rules = {
     { id: "platinum", name: "Platinum", multiplier: 11 },
     { id: "top-platinum", name: "Top Platinum", multiplier: 12 }
   ],
+  // FLY CARD holders earn bonus points on eligible flights however they
+  // pay; El Al's page gives no rate for points on card spending.
+  cardQuestion: "Do you hold an EL AL FLY CARD?",
+  cardHint: "FLY CARD holders earn bonus points on eligible flights, however they pay for the ticket.",
+  cards: [
+    { id: "flycard", name: "FLY CARD or FLY CARD PREMIUM SELECT (+10%)", flightBonusPct: 0.1, bonusName: "FLY CARD bonus", bank: "Isracard or CAL (Israel)" },
+    { id: "flycard-premium", name: "FLY CARD PREMIUM (+20%)", flightBonusPct: 0.2, bonusName: "FLY CARD PREMIUM bonus", bank: "Isracard or CAL (Israel)" }
+  ],
   // Bonus points on eligible flights, each on the base points.
   extras: [
-    { id: "flycard", label: "Do you hold a FLY CARD?", hint: "FLY CARD holders earn bonus points on eligible flights, however they pay.",
-      options: [
-        { id: "none", name: "No" },
-        { id: "flycard", name: "FLY CARD or FLY CARD PREMIUM SELECT (+10%)", pct: 0.1, bonusName: "FLY CARD bonus" },
-        { id: "premium", name: "FLY CARD PREMIUM (+20%)", pct: 0.2, bonusName: "FLY CARD PREMIUM bonus" }
-      ] },
     { id: "executive", label: "Are you an EL AL EXECUTIVE Circle member?", hint: "EXECUTIVE Circle members earn 20% more points on El Al flights in Premium and Business. Most members can answer No.",
       options: [
         { id: "no", name: "No" },

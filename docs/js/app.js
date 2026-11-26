@@ -146,7 +146,9 @@
     // Grouped airlines match on their own name, program, and code, not the
     // group's name ("Lufthansa Group"), so "luft" finds only Lufthansa.
     var group = value.indexOf(":") === -1 ? (p.name || "") : "";
-    return [label, country.label, CODES[value] || "", p.programName || "", group].join(" ").toLowerCase();
+    // The airline name without spaces too, so "elal" finds "El Al".
+    var compact = label.split(" | ")[0].replace(/\s+/g, "");
+    return [label, compact, country.label, CODES[value] || "", p.programName || "", group].join(" ").toLowerCase();
   }
   // Whether a typed word is one of the country's two- or three-letter
   // ISO codes (or "UK"), compared without regard to case.
@@ -192,6 +194,22 @@
       choices.sort(function (a, b) { return a[1].localeCompare(b[1]); });
       if (choices.length) groups.push({ label: c.label, items: choices });
     });
+    // A search that starts an airline's name ("El Al", "united") lists
+    // that airline first, in a "Best match" group.
+    var q = words.join(" ");
+    if (q.length >= 3) {
+      var best = [];
+      groups = groups.map(function (g) {
+        var rest = g.items.filter(function (ch) {
+          var name = ch[1].split(" | ")[0].toLowerCase();
+          var hit = name.indexOf(q) === 0 || name.replace(/\s+/g, "").indexOf(q.replace(/\s+/g, "")) === 0;
+          if (hit && !best.some(function (t) { return t[0] === ch[0]; })) best.push(ch);
+          return !hit;
+        });
+        return { label: g.label, items: rest };
+      }).filter(function (g) { return g.items.length; });
+      if (best.length) groups.unshift({ label: "Best match", items: best });
+    }
     // A search that is exactly an airline's IATA code ("EW", "LL", "4Y")
     // lists that airline first, in its own group above the country groups.
     if (words.length === 1 && words[0].length === 2) {
@@ -359,6 +377,9 @@
   function extraBonuses(p, fareType) {
     var out = [];
     if (fareType && fareType.bonusPct) out.push({ name: fareType.bonusName || fareType.name, pct: fareType.bonusPct });
+    // A card can add a percentage to the flight points (El Al FLY CARD).
+    var heldCard = p.cards && usedCardYes.checked ? find(p.cards, cardEl.value) : null;
+    if (heldCard && heldCard.flightBonusPct) out.push({ name: heldCard.bonusName || heldCard.name, pct: heldCard.flightBonusPct });
     (p.extras || []).forEach(function (x) {
       var el = $("extra-" + x.id);
       var o = el ? find(x.options, el.value) : null;
@@ -457,6 +478,10 @@
     cardEl.replaceChildren();
     // Programs where holding the card raises the flight earn rate (Frontier)
     // ask about it first; the payment question only follows a Yes.
+    // A program can word the card question its own way (El Al: holding a
+    // FLY CARD earns a bonus however you pay).
+    $("cardLegend").textContent = p.cardQuestion || "Did you pay with the airline's co-branded credit or debit card?";
+    $("cardSelectHint").textContent = p.cardHint || "Card points are earned on the full amount charged, taxes included.";
     cardmemberField.hidden = !p.cardmember;
     if (p.cardmember) {
       $("cardmemberLegend").textContent = p.cardmember.question;
@@ -986,7 +1011,7 @@
     } else if (method === "zone" && p.zones.length > 1) row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "cardOnly") row(dl, "Flight earning", p.flightLabel ? p.flightLabel.charAt(0).toUpperCase() + p.flightLabel.slice(1) : "Not estimated");
     else row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
-    if (card) {
+    if (card && (card.rate || card.tiers || card.rates)) {
       var cardMoney = foreignCard || !fareUsed
         ? cardSymbols[cardCurrency] + charged.toLocaleString(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         : usd.format(charged);
