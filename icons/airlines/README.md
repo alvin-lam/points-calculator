@@ -1,6 +1,6 @@
 # Airline and alliance logos
 
-Logos for 73 airlines and 2 alliances in the calculator. `index.json` maps each calculator menu value (for example `united`, `milesandmore:lh` or `alliance:oneworld`) to its file, name, source and license.
+Logos for 73 airlines and 3 alliances in the calculator. `index.json` maps each calculator menu value (for example `united`, `milesandmore:lh` or `alliance:oneworld`) to its file, name, source and license.
 
 ## Sources
 
@@ -23,4 +23,4 @@ Every logo is a trademark of its airline or alliance. The licenses above cover c
 
 ## Status badges
 
-Official files supplied by the site owner, keyed as `status:<alliance>:<tier>`: oneworld Emerald, Sapphire and Ruby (the "Priority" badges), and Star Alliance Gold and Silver. SkyTeam Elite and Elite Plus are still needed.
+Official files supplied by the site owner, keyed as `status:<alliance>:<tier>`: oneworld Emerald, Sapphire and Ruby (the "Priority" badges), Star Alliance Gold and Silver, and SkyTeam Elite Plus. SkyTeam Elite is still needed.

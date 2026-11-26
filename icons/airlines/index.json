@@ -595,5 +595,17 @@
     "title": "Copa Airlines (white)",
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file"
+  },
+  "status:skyteam:elite-plus": {
+    "file": "icons/airlines/skyteam-elite-plus.png",
+    "title": "SkyTeam Elite Plus",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "alliance:star": {
+    "file": "icons/airlines/star-alliance.png",
+    "title": "Star Alliance",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
   }
 }
