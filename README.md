@@ -103,9 +103,9 @@ docs/js/theme-boot.js             Applies the saved light or dark mode before th
 docs/css/styles.css               Calculator styles
 docs/css/privacy.css              Privacy page styles
 docs/fonts/                       Instrument Serif font files and OFL.txt
-docs/icons/                       Favicons, app icons and og-image.png (link preview image)
+docs/icons/                       App icons, browser tab icons (tabicon-32.png and tabicon-192.png, the All Trips Considered artwork) and og-image.png (link preview image)
 docs/icons/airlines/              Airline, alliance and status badge logos (see its README.md)
-docs/favicon.ico                  Browser icon
+docs/favicon.ico                  Favicon: the app icon
 docs/manifest.webmanifest         App name, icons and colors for installing
 docs/sw.js                        Service worker: offline cache
 docs/sitemap.xml                  Sitemap with each page's review month (generated)
