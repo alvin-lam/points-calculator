@@ -234,6 +234,12 @@
         <small id="cardmemberHint"></small>
       </fieldset>
 
+      <div class="field flight-estimate" id="flightEstimateField" hidden>
+        <p class="flight-estimate-title">Miles for the flight itself</p>
+        <p id="flightEstimateText"></p>
+        <a id="flightEstimateLink" class="flight-estimate-link" target="_blank" rel="noopener"></a>
+      </div>
+
       <fieldset class="field" id="cardField" hidden>
         <legend>Did you pay with the airline's co-branded credit or debit card?</legend>
         <div class="choice">
@@ -276,6 +282,7 @@
       <p class="eyebrow" id="resultProgram"></p>
       <p class="big"><span id="resultPoints">0</span> <span id="resultUnit">points</span></p>
       <dl class="breakdown" id="breakdown"></dl>
+      <p class="note flight-estimate-result" id="resultFlightEstimate" hidden></p>
       <p class="note" id="resultNote"></p>
       <p class="note source-line" id="resultSource"></p>
     </section>

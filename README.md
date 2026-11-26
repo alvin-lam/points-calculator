@@ -38,7 +38,7 @@ Live site: https://points.alltripsconsidered.com/
 - ANA, JAL, and Singapore Airlines KrisFlyer earn a share of the miles flown by booking class. Cathay Pacific awards a fixed amount by fare type and distance zone from Hong Kong. None of them ask for the price paid.
 - Malaysia Airlines Enrich earns 1.5 to 2.5 points per ringgit (RM) by status.
 - Etihad Guest earns a share of the route distance by fare brand, and adds a status bonus as a share of the distance.
-- Emirates is listed for its US co-branded credit cards only. Emirates publishes no earning table, so the calculator asks for the amount charged to the card, shows the card's miles (3 per dollar on Emirates purchases) and marks the flight's own miles as not estimated. Programs like this use `method: "cardOnly"`.
+- Emirates is listed for its US co-branded credit cards only. Emirates publishes no earning table, so the calculator asks for the amount charged to the card, shows the card's miles (3 per dollar on Emirates purchases) and marks the flight's own miles as not estimated. The form and the result link to Emirates' Skywards Miles Calculator for the flight. Programs like this use `method: "cardOnly"` and a `flightCalculator` link.
 - EVA Air, China Airlines, and STARLUX earn a share of the distance by booking class, so they ask for the class and the miles flown.
 - Icelandair awards fixed Saga Points per flight by fare and route, so it asks for the fare and the route.
 - Allegiant earns 1 point per dollar up to $500 and 2 per dollar above that.

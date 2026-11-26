@@ -157,6 +157,12 @@ legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
 .choice input { width: auto; margin: 0; accent-color: var(--accent); }
 
 .error { color: var(--error); margin: 0 0 12px; }
+.flight-estimate { display: grid; gap: 6px; padding: 12px 14px; border-radius: 10px; background: var(--result-bg); }
+.flight-estimate[hidden] { display: none; }
+.flight-estimate p { margin: 0; font-size: 0.95rem; }
+.flight-estimate-title { font-weight: 600; }
+.flight-estimate-link { font-weight: 600; justify-self: start; }
+.flight-estimate-result { margin-bottom: 8px; }
 
 .result { background: var(--result-bg); }
 .result-logo { display: flex; align-items: center; justify-content: center; width: fit-content; max-width: 100%; margin: 0 auto 14px; padding: 8px 14px; border-radius: 10px; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06); }
@@ -428,7 +434,7 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
 
 /* Rules review date and source under each result. */
 .source-line { margin-top: 10px; font-size: 0.85rem; }
-.source-line a { color: var(--accent); }
+.source-line a, .flight-estimate a, .flight-estimate-result a { color: var(--accent); }
 
 /* Published route list (Copa), above the airport lookup. */
 .route-wrap { margin-bottom: 14px; }

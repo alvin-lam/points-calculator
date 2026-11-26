@@ -15,7 +15,13 @@ const rules = {
     { id: "barclays-rewards", name: "Emirates Skywards Rewards World Elite Mastercard", rate: 3, currency: "USD", bank: "Barclays (US)" },
     { id: "barclays-premium", name: "Emirates Skywards Premium World Elite Mastercard", rate: 3, currency: "USD", bank: "Barclays (US)" }
   ],
-  note: "Emirates is listed for its co-branded credit cards only. Emirates publishes no earning table for its flights, so the miles for the flight itself are not estimated; use Emirates' own miles calculator for those. Both US Emirates Skywards World Elite Mastercards from Barclays earn 3 Skywards Miles per dollar on eligible Emirates purchases."
+  // Emirates' own calculator, shown in the form and with the result.
+  flightCalculator: {
+    url: "https://www.emirates.com/us/english/skywards/miles-calculator/",
+    label: "Emirates' Skywards Miles Calculator",
+    text: "Emirates publishes no earning table, so this calculator counts only your card's miles. To estimate the Skywards Miles for your flight, enter your route and fare on Emirates' own calculator."
+  },
+  note: "Emirates is listed for its co-branded credit cards only. Emirates publishes no earning table for its flights, so the miles for the flight itself are not estimated here. Both US Emirates Skywards World Elite Mastercards from Barclays earn 3 Skywards Miles per dollar on eligible Emirates purchases."
 };
 
 module.exports = {

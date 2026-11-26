@@ -234,6 +234,17 @@
     fareTypeEl.replaceChildren();
     if (!p) return;
 
+    // Programs without an earning table can point to the airline's own
+    // miles calculator for the flight (Emirates).
+    var ext = p.flightCalculator;
+    $("flightEstimateField").hidden = !ext;
+    if (ext) {
+      $("flightEstimateText").textContent = ext.text;
+      var extLink = $("flightEstimateLink");
+      extLink.href = ext.url;
+      extLink.textContent = ext.label + " \u2197";
+    }
+
     // Show the alliance of the chosen airline (or program).
     var sel = selection();
     var alliance = sel.airline ? sel.airline.alliance : sel.program.alliance;
@@ -765,6 +776,15 @@
       }
     }
 
+    var extResult = $("resultFlightEstimate");
+    extResult.replaceChildren();
+    extResult.hidden = !p.flightCalculator;
+    if (p.flightCalculator) {
+      var extA = document.createElement("a");
+      extA.href = p.flightCalculator.url; extA.target = "_blank"; extA.rel = "noopener";
+      extA.textContent = p.flightCalculator.label;
+      extResult.append("For the miles on the flight itself, use ", extA, ".");
+    }
     $("resultNote").textContent = (r.capped ? "This trip hits the per-ticket earning cap. " : "") + p.note + (airline && airline.note ? " " + airline.note : "");
     // When the rules were last reviewed, and where they come from.
     var srcMap = window.SOURCES || {};
