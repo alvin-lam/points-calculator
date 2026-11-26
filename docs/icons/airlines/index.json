@@ -440,7 +440,7 @@
     "author": "Austrian Airlines AG",
     "square": "icons/airlines/square/austrian-airlines-logo-2018.png",
     "circle": "icons/airlines/circle/austrian-airlines-logo-2018.png",
-    "iconSource": "App Store icon of \"Austrian\" by Lufthansa Group Digital Hangar GmbH; background flattened to a solid color"
+    "iconSource": "Built from the chevron in Austrian Airlines' official 2018 logo (vector), centered on white"
   },
   "milesandmore:sn": {
     "file": "icons/airlines/brussels-airlines-logo-2021.svg",
@@ -450,7 +450,7 @@
     "author": "Brussels Airlines",
     "square": "icons/airlines/square/brussels-airlines-logo-2021.png",
     "circle": "icons/airlines/circle/brussels-airlines-logo-2021.png",
-    "iconSource": "App Store icon of \"Brussels Airlines\" by Lufthansa Group Digital Hangar GmbH; background flattened to a solid color"
+    "iconSource": "Built from the dots in Brussels Airlines' official 2021 logo (vector), centered on white"
   },
   "milesandmore:wk": {
     "file": "icons/airlines/edelweiss.png",
@@ -536,7 +536,7 @@
     "author": "Swiss International Air Lines",
     "square": "icons/airlines/square/swiss-international-air-lines-logo-2011.png",
     "circle": "icons/airlines/circle/swiss-international-air-lines-logo-2011.png",
-    "iconSource": "App Store icon of \"SWISS\" by Lufthansa Group Digital Hangar GmbH"
+    "iconSource": "Built from the tail in SWISS's official logo (vector), centered on white"
   },
   "latam": {
     "file": "icons/airlines/latam-logo-v-indigo.svg",

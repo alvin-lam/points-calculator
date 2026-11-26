@@ -32,9 +32,10 @@ The same icons are used in light and dark mode. On the result, logos sit on a wh
 ## How the icons were made
 
 - **Official app icons.** Most icons come from the airline's official app: the Apple App Store icon, or an app icon supplied by the site owner. `iconSource` in `index.json` names the app. Seasonal or promotional icons (such as a "Black Friday" band) were not used, or the promotion was removed.
+- **Icons built from official logos.** Where an app icon was shaded, cropped or hard to read at small sizes, the square, circle and menu icons were rebuilt from the mark in the airline's official vector logo: Aer Lingus (2022 shamrock), Iberia (wing, from iberia.com, on Iberia red #D8192D), Austrian (chevron), SWISS (tail), Brussels Airlines (dots), Croatia Airlines (checkered mark, from croatiaairlines.com), LOT (crane roundel), Jetstar (star) and Scoot (wordmark on yellow). `iconSource` in `index.json` says which.
 - **Symbols cut from the full logo.** Airlines without a usable app icon use the symbol from their full logo, centered on white.
 - **Cleanup.** Rounded corners and built-in frames were removed, and gradient backgrounds were flattened to one solid color.
-- **Centering.** Each mark is optically centered: placed by a balance of its outer edges and where its shape is heaviest. Marks whose official artwork runs off the edge (ANA, Allegiant, Copa, Croatia, Delta, Etihad, Finnair, LEVEL, Qatar, SAS and United) are left as designed.
+- **Centering.** Each mark is optically centered: placed by a balance of its outer edges and where its shape is heaviest. Marks whose official artwork runs off the edge (ANA, Allegiant, Copa, Delta, Etihad, Finnair, LEVEL, Qatar, SAS and United) are left as designed.
 
 When you replace a full logo or icon, rebuild the matching `menu/` or `small/` copy so the site shows the change, and remake `logo-sheet.png`.
 
