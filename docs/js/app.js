@@ -956,7 +956,14 @@
       extA.textContent = p.flightCalculator.label;
       extResult.append("For the miles on the flight itself, use ", extA, ".");
     }
-    $("resultNote").textContent = (r.capped ? "This trip hits the per-ticket earning cap. " : "") + p.note + (airline && airline.note ? " " + airline.note : "");
+    // One sentence per line, so the rules are easy to scan.
+    var noteText = (r.capped ? "This trip hits the per-ticket earning cap. " : "") + p.note + (airline && airline.note ? " " + airline.note : "");
+    var noteEl = $("resultNote");
+    noteEl.replaceChildren();
+    noteSentences(noteText).forEach(function (line, i) {
+      if (i) noteEl.appendChild(document.createElement("br"));
+      noteEl.appendChild(document.createTextNode(line));
+    });
     // When the rules were last reviewed, and where they come from.
     var srcMap = window.SOURCES || {};
     var srcUrl = srcMap[programEl.value] || srcMap[programEl.value.split(":")[0]];
@@ -990,6 +997,20 @@
       if (!listEl.hidden) openList(searchEl.value === chosenLabel() ? "" : searchEl.value);
     })
     .catch(function () { /* The menu works without logos. */ });
+
+  // Splits a note into sentences at ". " before a capital letter or digit,
+  // but not after abbreviations such as "U.S." or "vs.".
+  function noteSentences(text) {
+    var parts = String(text || "").split(/([.!?])\s+(?=[A-Z0-9"\u201c(])/);
+    var out = [];
+    for (var i = 0; i < parts.length; i += 2) {
+      var piece = parts[i] + (parts[i + 1] || "");
+      var prev = out[out.length - 1];
+      if (prev && /(\bU\.S\.|\bU\.K\.|\bvs\.|\be\.g\.|\bi\.e\.)$/.test(prev)) out[out.length - 1] = prev + " " + piece;
+      else out.push(piece);
+    }
+    return out.filter(Boolean);
+  }
 
   // Shows a small logo image, or hides it when there is none.
   function setBadge(img, info, label) {
