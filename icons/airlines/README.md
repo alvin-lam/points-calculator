@@ -1,31 +1,50 @@
 # Airline and alliance logos
 
-Logos for 73 airlines and 3 alliances in the calculator. `index.json` maps each calculator menu value (for example `united`, `milesandmore:lh` or `alliance:oneworld`) to its file, name, source and license.
+Logos and icons for the 73 airlines in the calculator, the 3 alliances (oneworld, SkyTeam and Star Alliance) and 7 alliance status badges. `index.json` maps each key to its files, name, source and license.
+
+## Keys
+
+- An airline uses its calculator menu value, for example `united`, `american:aa` or `milesandmore:lh`.
+- An alliance uses `alliance:oneworld`, `alliance:skyteam` or `alliance:star`.
+- A status badge uses `status:<alliance>:<tier>`, for example `status:star:gold` or `status:skyteam:elite-plus`.
+
+## Files for each key
+
+| Field in `index.json` | Folder | What it is |
+|---|---|---|
+| `file` | this folder | The full logo (the wordmark with its symbol), PNG or SVG. |
+| `square` | `square/` | A 512 by 512 square icon with square corners and a flat, single-color background. |
+| `circle` | `circle/` | The same icon cut to a circle, transparent outside. |
+
+The site itself loads two smaller copies, listed in `js/logos.json`:
+
+- `menu/`: 64 by 64 copies of the circular icons, shown at 24 pixels beside each airline in the program menu.
+- `small/`: the full logos (and the alliance logos and status badges) shrunk to 96 pixels tall, shown on the result.
+
+The same icons are used in light and dark mode. On the result, logos sit on a white panel so they stay readable in dark mode.
+
+## How the icons were made
+
+- **Official app icons.** Most icons come from the airline's official app: the Apple App Store icon, or an app icon supplied by the site owner. `iconSource` in `index.json` names the app. Seasonal or promotional icons (such as a "Black Friday" band) were not used, or the promotion was removed.
+- **Symbols cut from the full logo.** Airlines without a usable app icon use the symbol from their full logo, centered on white.
+- **Cleanup.** Rounded corners and built-in frames were removed, and gradient backgrounds were flattened to one solid color.
+- **Centering.** Each mark is optically centered: placed by a balance of its outer edges and where its shape is heaviest. Marks whose official artwork runs off the edge (ANA, Allegiant, Copa, Croatia, Delta, Etihad, Finnair, LEVEL, Qatar, SAS and United) are left as designed.
+
+When you replace a full logo or icon, rebuild the matching `menu/` or `small/` copy so the site shows the change.
 
 ## Sources
 
-0. **Official files supplied by the site owner** from airline and alliance media kits. Each airline, alliance and status level has one logo; extra versions and program logos are not kept.
+- **Official files supplied by the site owner** (41 full logos), from airline and alliance media kits, including the status badges. The SkyTeam Elite badge was made for this site from the official Elite Plus badge by removing the word PLUS. The ITA Airways logo was taken from its app screen and recolored from white to blue.
+- **Wikimedia Commons** (41 full logos). Each file page is linked in `index.json`. 27 are marked public domain on Commons; for the others, check the license on the file page.
+- **The airline's own website** (1 full logo): Frontier, recolored to Frontier green.
 
-1. **Simple Icons** (4 single-color SVGs, to be replaced with official or Wikimedia Commons versions): from [Simple Icons](https://simpleicons.org) version 16.38.1, released under CC0 1.0 (see `LICENSE.md`). They have no color set; give them a `fill` or use them as a CSS mask.
-2. **The airline's own website** (2 PNGs): Hong Kong Airlines and Frontier. The Frontier file is the white version, for dark backgrounds.
-3. **Wikimedia Commons** (49 SVGs): each file page is listed in `index.json`. The first 32 were confirmed public domain on Commons; the 15 added later replaced Simple Icons logos, and their license should be confirmed on each file page (Commons only hosts freely licensed files).
+`LICENSE.md` holds the license text for any remaining files from third-party icon sets.
 
 ## Trademarks
 
-Every logo is a trademark of its airline or alliance. The licenses above cover copyright in the files, not the trademarks. Use the logos only to identify each airline, and never in a way that suggests the airline or alliance endorses or sponsors this site.
+Every logo, icon and badge is a trademark of its airline or alliance. The licenses above cover copyright in the files, not the trademarks. Use them only to identify each airline or alliance, and never in a way that suggests the airline or alliance endorses or sponsors this site.
 
-## Still missing
+## Could be improved
 
-- SkyTeam Elite and Elite Plus status badges: none found on Commons.
-
-- Chosen on Commons but not downloaded (Wikimedia rate-limited the requests): Star Alliance for light backgrounds.
-- No suitable file found: Fiji Airways, Hainan Airlines, LEVEL, Malaysia Airlines, Virgin Australia.
-
-## Status badges
-
-Official files supplied by the site owner, keyed as `status:<alliance>:<tier>`: oneworld Emerald, Sapphire and Ruby (the "Priority" badges), Star Alliance Gold and Silver, SkyTeam Elite Plus, and SkyTeam Elite. The Elite badge was made for this site from the Elite Plus file by removing the word PLUS.
-
-## Square and circular icons
-
-Each airline, alliance and status badge also has a 512 by 512 square icon (`square/`) and a circular icon with a transparent outside (`circle/`). `index.json` links them through the `square` and `circle` fields. Most use the airline's official app icon: from the Apple App Store, or supplied by the site owner. `iconSource` in `index.json` names the app. The rest were made from the full logo, with the symbol cut out and centered on white. Airlines whose logo is only a wordmark use the whole wordmark until an official icon file is supplied.
-
+- **Small source files.** Edelweiss, LOT, Hawaiian, China Airlines and Aeromexico icons came from small images and look soft at large sizes. Official SVG or large PNG files would sharpen them.
+- **Wordmark-only icons.** Etihad, Air France, Discover, ANA, SAS, GOL, KLM, jetBlue and Allegiant use their app icon or wordmark rather than a separate symbol.

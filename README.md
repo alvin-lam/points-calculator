@@ -11,6 +11,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 3. Enter the airfare, the carrier-imposed fees, and the taxes & fees separately. Programs that earn by distance or route (Virgin Atlantic, TAP, Qatar, Qantas, and Atmos Rewards when earning by miles or segments) skip these fields.
 4. For Alaska or Hawaiian (Atmos Rewards), choose how you earn: miles flown, price paid, or segments flown. Then enter the miles or segments if asked.
 5. Say whether you paid with the airline's co-branded credit card, and if so, which one. For distance-based programs, enter the amount charged to the card so its points can be added.
+6. The result shows the airline's logo, then one line each for the airline, the membership level with its alliance status (for example "Premier Gold | Star Alliance Gold"), the fare type and the card used. Members with alliance status see their tier badge; basic members of an alliance airline see the alliance logo.
 
 ## How it calculates
 
@@ -44,7 +45,8 @@ Open `index.html` in a browser. No build step or server is needed. It also works
   - `js/distance.js`: great-circle distance between two airports.
   - `js/airports.json`: about 3,200 airports with scheduled service, from [OurAirports](https://ourairports.com/data/) (public domain). It is fetched only when a distance-based program is chosen.
   - `js/install.js`: the install prompt.
-- `favicon.ico` and `icons/` hold the browser and home-screen icons. `manifest.webmanifest` and `sw.js` let the site install as an app and open offline.
+- `favicon.ico` and `icons/` hold the browser and home-screen icons.
+- `icons/airlines/` holds a full logo, a square icon and a circular icon for every airline, alliance and alliance status badge (see `icons/airlines/README.md`). `js/logos.json` lists the small copies the site loads: a circular icon beside each airline in the program menu, and on the result the airline's logo plus either the alliance logo (basic members) or the alliance status badge. The calculator works without them if they fail to load. `manifest.webmanifest` and `sw.js` let the site install as an app and open offline.
 - `js/install.js` invites visitors to add the calculator to their home screen. Chrome, Edge, and Android get an Install button. iPhone and iPad get the Share, then Add to Home Screen steps. Other phones and tablets whose browser has no install button (such as Firefox or Samsung Internet) are reminded to use the browser menu's Add to Home Screen. "Close" hides it for 24 hours.
 - Installing needs HTTPS, which GitHub Pages provides. When rates change, bump `CACHE` in `sw.js` so installed copies refresh their offline cache.
 
