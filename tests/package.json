@@ -1,7 +1,0 @@
-{
-  "private": true,
-  "description": "Test tools for the Airline Points Calculator. Run the tests from the repository root with: node --test tests/",
-  "devDependencies": {
-    "playwright": "^1.48.0"
-  }
-}

@@ -1,5 +1,5 @@
 /* Great-circle distance between two airports, for programs that earn by
-   distance. Works in the browser (window.Distance) and in Node for tests. */
+   distance. Works in the browser (window.Distance) and in Node. */
 (function (root) {
   "use strict";
 
