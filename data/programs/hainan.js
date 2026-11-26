@@ -26,7 +26,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "HU",
-  color: "#D91E18",
+  color: "#E60012",
   source: "https://ffp.hnair.com/FFPClub/en/hqjf/hkjl/gszl/201809/t20180908_25301.html",
   // Published examples. The browser tests check each one.
   examples: [

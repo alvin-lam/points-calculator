@@ -30,7 +30,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "AV",
-  color: "#E30613",
+  color: "#E30617",
   source: "https://helpcenter.lifemiles.com/hc/en-us/articles/15775435987227-Miles-accrual-with-avianca",
   rules
 };
