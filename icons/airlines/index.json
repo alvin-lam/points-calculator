@@ -3,416 +3,544 @@
     "file": "icons/airlines/air-canada-logo.svg",
     "title": "Air Canada logo",
     "source": "https://commons.wikimedia.org/wiki/File:Air_Canada_logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/air-canada-logo.png",
+    "circle": "icons/airlines/circle/air-canada-logo.png"
   },
   "phoenix:ca": {
     "file": "icons/airlines/air-china.png",
     "title": "Air China",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/air-china.png",
+    "circle": "icons/airlines/circle/air-china.png"
   },
   "flyingblue:af": {
     "file": "icons/airlines/air-france-logo.svg",
     "title": "Air France Logo",
     "source": "https://commons.wikimedia.org/wiki/File:Air_France_Logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/air-france-logo.png",
+    "circle": "icons/airlines/circle/air-france-logo.png"
   },
   "airindia": {
     "file": "icons/airlines/air-india.svg",
     "title": "Air India",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/air-india.png",
+    "circle": "icons/airlines/circle/air-india.png"
   },
   "transat": {
     "file": "icons/airlines/air-transat-logo.svg",
     "title": "Air Transat logo",
     "source": "https://commons.wikimedia.org/wiki/File:Air_Transat_logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/air-transat-logo.png",
+    "circle": "icons/airlines/circle/air-transat-logo.png"
   },
   "american:aa": {
     "file": "icons/airlines/american-airlines.png",
     "title": "American Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/american-airlines.png",
+    "circle": "icons/airlines/circle/american-airlines.png"
   },
   "ana": {
     "file": "icons/airlines/all-nippon-airways-logo.svg",
     "title": "All Nippon Airways Logo",
     "source": "https://commons.wikimedia.org/wiki/File:All_Nippon_Airways_Logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/all-nippon-airways-logo.png",
+    "circle": "icons/airlines/circle/all-nippon-airways-logo.png"
   },
   "lifemiles": {
     "file": "icons/airlines/avianca.svg",
     "title": "Avianca",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/avianca.png",
+    "circle": "icons/airlines/circle/avianca.png"
   },
   "iag:ba": {
     "file": "icons/airlines/british-airways.png",
     "title": "British Airways",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/british-airways.png",
+    "circle": "icons/airlines/circle/british-airways.png"
   },
   "chinaeastern": {
     "file": "icons/airlines/china-eastern-airlines.png",
     "title": "China Eastern Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/china-eastern-airlines.png",
+    "circle": "icons/airlines/circle/china-eastern-airlines.png"
   },
   "chinasouthern": {
     "file": "icons/airlines/china-southern-airlines.png",
     "title": "China Southern Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/china-southern-airlines.png",
+    "circle": "icons/airlines/circle/china-southern-airlines.png"
   },
   "copa": {
     "file": "icons/airlines/copa-airlines.svg",
     "title": "Copa Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/copa-airlines.png",
+    "circle": "icons/airlines/circle/copa-airlines.png"
   },
   "delta": {
     "file": "icons/airlines/delta-logo.svg",
     "title": "Delta logo",
     "source": "https://commons.wikimedia.org/wiki/File:Delta_logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/delta-logo.png",
+    "circle": "icons/airlines/circle/delta-logo.png"
   },
   "etihad": {
     "file": "icons/airlines/etihad-airways-logo.svg",
     "title": "Etihad-airways-logo",
     "source": "https://commons.wikimedia.org/wiki/File:Etihad-airways-logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/etihad-airways-logo.png",
+    "circle": "icons/airlines/circle/etihad-airways-logo.png"
   },
   "iag:ib": {
     "file": "icons/airlines/logotipo-de-iberia.svg",
     "title": "Logotipo de Iberia",
     "source": "https://commons.wikimedia.org/wiki/File:Logotipo_de_Iberia.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/logotipo-de-iberia.png",
+    "circle": "icons/airlines/circle/logotipo-de-iberia.png"
   },
   "jal": {
     "file": "icons/airlines/japan-airlines.png",
     "title": "Japan Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/japan-airlines.png",
+    "circle": "icons/airlines/circle/japan-airlines.png"
   },
   "jetblue": {
     "file": "icons/airlines/jetblue-airways-logo.svg",
     "title": "JetBlue Airways Logo",
     "source": "https://commons.wikimedia.org/wiki/File:JetBlue_Airways_Logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/jetblue-airways-logo.png",
+    "circle": "icons/airlines/circle/jetblue-airways-logo.png"
   },
   "flyingblue:kl": {
     "file": "icons/airlines/klm-logo.svg",
     "title": "KLM logo",
     "source": "https://commons.wikimedia.org/wiki/File:KLM_logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/klm-logo.png",
+    "circle": "icons/airlines/circle/klm-logo.png"
   },
   "milesandmore:lo": {
     "file": "icons/airlines/lot-polish-airlines.svg",
     "title": "LOT Polish Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/lot-polish-airlines.png",
+    "circle": "icons/airlines/circle/lot-polish-airlines.png"
   },
   "milesandmore:lh": {
     "file": "icons/airlines/lufthansa-logo-2018.svg",
     "title": "Lufthansa Logo 2018",
     "source": "https://commons.wikimedia.org/wiki/File:Lufthansa_Logo_2018.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/lufthansa-logo-2018.png",
+    "circle": "icons/airlines/circle/lufthansa-logo-2018.png"
   },
   "norwegian": {
     "file": "icons/airlines/norwegian-logo-2024.svg",
     "title": "Norwegian Logo 2024",
     "source": "https://commons.wikimedia.org/wiki/File:Norwegian_Logo_2024.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Norwegian Air Shuttle ASA"
+    "author": "Norwegian Air Shuttle ASA",
+    "square": "icons/airlines/square/norwegian-logo-2024.png",
+    "circle": "icons/airlines/circle/norwegian-logo-2024.png"
   },
   "qantas": {
     "file": "icons/airlines/qantas.png",
     "title": "Qantas",
     "source": "Official file supplied by the site owner (airline or alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/qantas.png",
+    "circle": "icons/airlines/circle/qantas.png"
   },
   "qatar": {
     "file": "icons/airlines/qatar-airways-logo.svg",
     "title": "Qatar Airways logo",
     "source": "https://commons.wikimedia.org/wiki/File:Qatar_Airways_logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/qatar-airways-logo.png",
+    "circle": "icons/airlines/circle/qatar-airways-logo.png"
   },
   "krisflyer": {
     "file": "icons/airlines/singapore-airlines-logo.svg",
     "title": "Singapore Airlines Logo",
     "source": "https://commons.wikimedia.org/wiki/File:Singapore_Airlines_Logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/singapore-airlines-logo.png",
+    "circle": "icons/airlines/circle/singapore-airlines-logo.png"
   },
   "southwest": {
     "file": "icons/airlines/southwest-airlines-logo-2014.svg",
     "title": "Southwest Airlines logo 2014",
     "source": "https://commons.wikimedia.org/wiki/File:Southwest_Airlines_logo_2014.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/southwest-airlines-logo-2014.png",
+    "circle": "icons/airlines/circle/southwest-airlines-logo-2014.png"
   },
   "turkish": {
     "file": "icons/airlines/turkish-airlines-logo-2019-compact.svg",
     "title": "Turkish Airlines logo 2019 compact",
     "source": "https://commons.wikimedia.org/wiki/File:Turkish_Airlines_logo_2019_compact.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/turkish-airlines-logo-2019-compact.png",
+    "circle": "icons/airlines/circle/turkish-airlines-logo-2019-compact.png"
   },
   "united": {
     "file": "icons/airlines/united-airlines.png",
     "title": "United Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/united-airlines.png",
+    "circle": "icons/airlines/circle/united-airlines.png"
   },
   "virgin": {
     "file": "icons/airlines/virgin-atlantic-logo.svg",
     "title": "Virgin Atlantic logo",
     "source": "https://commons.wikimedia.org/wiki/File:Virgin_Atlantic_logo.svg",
-    "license": "Wikimedia Commons (see file page)"
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/virgin-atlantic-logo.png",
+    "circle": "icons/airlines/circle/virgin-atlantic-logo.png"
   },
   "aegean": {
     "file": "icons/airlines/aegean-airlines.svg",
     "title": "Aegean Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/aegean-airlines.png",
+    "circle": "icons/airlines/circle/aegean-airlines.png"
   },
   "aeromexico": {
     "file": "icons/airlines/aerom-xico-wordmark-2024.svg",
     "title": "Aeroméxico wordmark 2024",
     "source": "https://commons.wikimedia.org/wiki/File:Aerom%C3%A9xico_wordmark_2024.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Aerovías de México, S.A. de C.V."
+    "author": "Aerovías de México, S.A. de C.V.",
+    "square": "icons/airlines/square/aerom-xico-wordmark-2024.png",
+    "circle": "icons/airlines/circle/aerom-xico-wordmark-2024.png"
   },
   "aireuropa": {
     "file": "icons/airlines/air-europa-logo-2015.svg",
     "title": "Air Europa Logo (2015)",
     "source": "https://commons.wikimedia.org/wiki/File:Air_Europa_Logo_(2015).svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Air Europa"
+    "author": "Air Europa",
+    "square": "icons/airlines/square/air-europa-logo-2015.png",
+    "circle": "icons/airlines/circle/air-europa-logo-2015.png"
   },
   "airnz": {
     "file": "icons/airlines/air-new-zealand-logo.svg",
     "title": "Air New Zealand logo",
     "source": "https://commons.wikimedia.org/wiki/File:Air_New_Zealand_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Air New Zealand"
+    "author": "Air New Zealand",
+    "square": "icons/airlines/square/air-new-zealand-logo.png",
+    "circle": "icons/airlines/circle/air-new-zealand-logo.png"
   },
   "alaska": {
     "file": "icons/airlines/alaska-airlines-logo.svg",
     "title": "Alaska Airlines Logo",
     "source": "https://commons.wikimedia.org/wiki/File:Alaska_Airlines_Logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "The original uploader was KUsam at English Wikipedia."
+    "author": "The original uploader was KUsam at English Wikipedia.",
+    "square": "icons/airlines/square/alaska-airlines-logo.png",
+    "circle": "icons/airlines/circle/alaska-airlines-logo.png"
   },
   "allegiant": {
     "file": "icons/airlines/allegiant-air-logo.svg",
     "title": "Allegiant Air logo",
     "source": "https://commons.wikimedia.org/wiki/File:Allegiant_Air_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Allegiant Air"
+    "author": "Allegiant Air",
+    "square": "icons/airlines/square/allegiant-air-logo.png",
+    "circle": "icons/airlines/circle/allegiant-air-logo.png"
   },
   "cathay": {
     "file": "icons/airlines/cathay-pacific-ltd-logo.svg",
     "title": "Cathay Pacific Ltd. logo",
     "source": "https://commons.wikimedia.org/wiki/File:Cathay_Pacific_Ltd._logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Cathay Pacific"
+    "author": "Cathay Pacific",
+    "square": "icons/airlines/square/cathay-pacific-ltd-logo.png",
+    "circle": "icons/airlines/circle/cathay-pacific-ltd-logo.png"
   },
   "chinaairlines": {
     "file": "icons/airlines/china-airlines-wordmark.svg",
     "title": "China Airlines wordmark",
     "source": "https://commons.wikimedia.org/wiki/File:China_Airlines_wordmark.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "China Airlines"
+    "author": "China Airlines",
+    "square": "icons/airlines/square/china-airlines-wordmark.png",
+    "circle": "icons/airlines/circle/china-airlines-wordmark.png"
   },
   "eva": {
     "file": "icons/airlines/logo-eva-air.svg",
     "title": "Logo EVA Air",
     "source": "https://commons.wikimedia.org/wiki/File:Logo_EVA_Air.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "EVA Air"
+    "author": "EVA Air",
+    "square": "icons/airlines/square/logo-eva-air.png",
+    "circle": "icons/airlines/circle/logo-eva-air.png"
   },
   "finnair": {
     "file": "icons/airlines/finnair-logo.svg",
     "title": "Finnair Logo",
     "source": "https://commons.wikimedia.org/wiki/File:Finnair_Logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Finnair, Mikael Kivelä"
+    "author": "Finnair, Mikael Kivelä",
+    "square": "icons/airlines/square/finnair-logo.png",
+    "circle": "icons/airlines/circle/finnair-logo.png"
   },
   "flyingblue:to": {
     "file": "icons/airlines/transavia-2025-logo.svg",
     "title": "Transavia 2025 logo",
     "source": "https://commons.wikimedia.org/wiki/File:Transavia_2025_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Transavia Airlines C.V. / Transavia France S.A.S."
+    "author": "Transavia Airlines C.V. / Transavia France S.A.S.",
+    "square": "icons/airlines/square/transavia-2025-logo.png",
+    "circle": "icons/airlines/circle/transavia-2025-logo.png"
   },
   "flyingblue:hv": {
     "file": "icons/airlines/transavia-2025-logo.svg",
     "title": "Transavia 2025 logo",
     "source": "https://commons.wikimedia.org/wiki/File:Transavia_2025_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Transavia Airlines C.V. / Transavia France S.A.S."
+    "author": "Transavia Airlines C.V. / Transavia France S.A.S.",
+    "square": "icons/airlines/square/transavia-2025-logo.png",
+    "circle": "icons/airlines/circle/transavia-2025-logo.png"
   },
   "gol": {
     "file": "icons/airlines/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.svg",
     "title": "Gol Linhas Aéreas Inteligentes logo (2015, without the slogan)",
     "source": "https://commons.wikimedia.org/wiki/File:Gol_Linhas_A%C3%A9reas_Inteligentes_logo_(2015,_without_the_slogan).svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Gol Linhas Aéreas Inteligentes"
+    "author": "Gol Linhas Aéreas Inteligentes",
+    "square": "icons/airlines/square/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.png",
+    "circle": "icons/airlines/circle/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.png"
   },
   "hawaiian": {
     "file": "icons/airlines/hawaiian-airlines-2017-wordmark.svg",
     "title": "Hawaiian Airlines 2017 wordmark",
     "source": "https://commons.wikimedia.org/wiki/File:Hawaiian_Airlines_2017_wordmark.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Hawaiian Airlines, Inc."
+    "author": "Hawaiian Airlines, Inc.",
+    "square": "icons/airlines/square/hawaiian-airlines-2017-wordmark.png",
+    "circle": "icons/airlines/circle/hawaiian-airlines-2017-wordmark.png"
   },
   "iag:ei": {
     "file": "icons/airlines/aer-lingus-2022-logo.svg",
     "title": "Aer Lingus 2022 logo",
     "source": "https://commons.wikimedia.org/wiki/File:Aer_Lingus_2022_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Unknown authorUnknown author"
+    "author": "Unknown authorUnknown author",
+    "square": "icons/airlines/square/aer-lingus-2022-logo.png",
+    "circle": "icons/airlines/circle/aer-lingus-2022-logo.png"
   },
   "icelandair": {
     "file": "icons/airlines/icelandairlogo.svg",
     "title": "Icelandairlogo",
     "source": "https://commons.wikimedia.org/wiki/File:Icelandairlogo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Icelandair"
+    "author": "Icelandair",
+    "square": "icons/airlines/square/icelandairlogo.png",
+    "circle": "icons/airlines/circle/icelandairlogo.png"
   },
   "korean": {
     "file": "icons/airlines/korean-air-2025.svg",
     "title": "Korean Air 2025",
     "source": "https://commons.wikimedia.org/wiki/File:Korean_Air_2025.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Korean Air (designed by Lippincott)"
+    "author": "Korean Air (designed by Lippincott)",
+    "square": "icons/airlines/square/korean-air-2025.png",
+    "circle": "icons/airlines/circle/korean-air-2025.png"
   },
   "milesandmore:ew": {
     "file": "icons/airlines/eurowings-logo-2026.svg",
     "title": "Eurowings Logo 2026",
     "source": "https://commons.wikimedia.org/wiki/File:Eurowings_Logo_2026.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Eurowings GmbH"
+    "author": "Eurowings GmbH",
+    "square": "icons/airlines/square/eurowings-logo-2026.png",
+    "circle": "icons/airlines/circle/eurowings-logo-2026.png"
   },
   "milesandmore:de": {
     "file": "icons/airlines/logo-discover-airlines.svg",
     "title": "Logo Discover Airlines",
     "source": "https://commons.wikimedia.org/wiki/File:Logo_Discover_Airlines.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Discover Airlines"
+    "author": "Discover Airlines",
+    "square": "icons/airlines/square/logo-discover-airlines.png",
+    "circle": "icons/airlines/circle/logo-discover-airlines.png"
   },
   "milesandmore:os": {
     "file": "icons/airlines/austrian-airlines-logo-2018.svg",
     "title": "Austrian Airlines Logo 2018",
     "source": "https://commons.wikimedia.org/wiki/File:Austrian_Airlines_Logo_2018.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Austrian Airlines AG"
+    "author": "Austrian Airlines AG",
+    "square": "icons/airlines/square/austrian-airlines-logo-2018.png",
+    "circle": "icons/airlines/circle/austrian-airlines-logo-2018.png"
   },
   "milesandmore:sn": {
     "file": "icons/airlines/brussels-airlines-logo-2021.svg",
     "title": "Brussels airlines logo 2021",
     "source": "https://commons.wikimedia.org/wiki/File:Brussels_airlines_logo_2021.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Brussels Airlines"
+    "author": "Brussels Airlines",
+    "square": "icons/airlines/square/brussels-airlines-logo-2021.png",
+    "circle": "icons/airlines/circle/brussels-airlines-logo-2021.png"
   },
   "milesandmore:wk": {
     "file": "icons/airlines/edelweiss.png",
     "title": "Edelweiss",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/edelweiss.png",
+    "circle": "icons/airlines/circle/edelweiss.png"
   },
   "milesandmore:en": {
     "file": "icons/airlines/air-dolomiti-logo.svg",
     "title": "Air Dolomiti logo",
     "source": "https://commons.wikimedia.org/wiki/File:Air_Dolomiti_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Air Dolomiti"
+    "author": "Air Dolomiti",
+    "square": "icons/airlines/square/air-dolomiti-logo.png",
+    "circle": "icons/airlines/circle/air-dolomiti-logo.png"
   },
   "milesandmore:az": {
     "file": "icons/airlines/ita-airways-logo.svg",
     "title": "ITA Airways Logo",
     "source": "https://commons.wikimedia.org/wiki/File:ITA_Airways_Logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "ITA Airways"
+    "author": "ITA Airways",
+    "square": "icons/airlines/square/ita-airways-logo.png",
+    "circle": "icons/airlines/circle/ita-airways-logo.png"
   },
   "sas": {
     "file": "icons/airlines/scandinavian-airlines-logo.svg",
     "title": "Scandinavian Airlines logo",
     "source": "https://commons.wikimedia.org/wiki/File:Scandinavian_Airlines_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Scandinavian Airlines"
+    "author": "Scandinavian Airlines",
+    "square": "icons/airlines/square/scandinavian-airlines-logo.png",
+    "circle": "icons/airlines/circle/scandinavian-airlines-logo.png"
   },
   "tap": {
     "file": "icons/airlines/tap-air-portugal-logo.svg",
     "title": "TAP Air Portugal logo",
     "source": "https://commons.wikimedia.org/wiki/File:TAP_Air_Portugal_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Unknown authorUnknown author"
+    "author": "Unknown authorUnknown author",
+    "square": "icons/airlines/square/tap-air-portugal-logo.png",
+    "circle": "icons/airlines/circle/tap-air-portugal-logo.png"
   },
   "thai": {
     "file": "icons/airlines/thai-airways-logo.svg",
     "title": "Thai Airways logo",
     "source": "https://commons.wikimedia.org/wiki/File:Thai_Airways_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Thai Airways"
+    "author": "Thai Airways",
+    "square": "icons/airlines/square/thai-airways-logo.png",
+    "circle": "icons/airlines/circle/thai-airways-logo.png"
   },
   "westjet": {
     "file": "icons/airlines/westjetlogo2018.svg",
     "title": "WestJetLogo2018",
     "source": "https://commons.wikimedia.org/wiki/File:WestJetLogo2018.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "WestJet"
+    "author": "WestJet",
+    "square": "icons/airlines/square/westjetlogo2018.png",
+    "circle": "icons/airlines/circle/westjetlogo2018.png"
   },
   "alliance:oneworld": {
     "file": "icons/airlines/oneworld-logo.svg",
     "title": "Oneworld logo",
     "source": "https://commons.wikimedia.org/wiki/File:Oneworld_logo.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "http://www.oneworld.com/"
+    "author": "http://www.oneworld.com/",
+    "square": "icons/airlines/square/oneworld-logo.png",
+    "circle": "icons/airlines/circle/oneworld-logo.png"
   },
   "milesandmore:lx": {
     "file": "icons/airlines/swiss-international-air-lines-logo-2011.svg",
     "title": "Swiss International Air Lines Logo 2011",
     "source": "https://commons.wikimedia.org/wiki/File:Swiss_International_Air_Lines_Logo_2011.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Swiss International Air Lines"
+    "author": "Swiss International Air Lines",
+    "square": "icons/airlines/square/swiss-international-air-lines-logo-2011.png",
+    "circle": "icons/airlines/circle/swiss-international-air-lines-logo-2011.png"
   },
   "latam": {
     "file": "icons/airlines/latam-logo-v-indigo.svg",
     "title": "Latam-logo -v (Indigo)",
     "source": "https://commons.wikimedia.org/wiki/File:Latam-logo_-v_(Indigo).svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Sao Paolo, Santiago and Madrid offices of Interbrand [1]\n\nvector file: Mliu92"
+    "author": "Sao Paolo, Santiago and Madrid offices of Interbrand [1]\n\nvector file: Mliu92",
+    "square": "icons/airlines/square/latam-logo-v-indigo.png",
+    "circle": "icons/airlines/circle/latam-logo-v-indigo.png"
   },
   "iag:vy": {
     "file": "icons/airlines/logo-vueling.svg",
     "title": "Logo Vueling",
     "source": "https://commons.wikimedia.org/wiki/File:Logo_Vueling.svg",
     "license": "Public domain (Wikimedia Commons)",
-    "author": "Vueling Airlines SA"
+    "author": "Vueling Airlines SA",
+    "square": "icons/airlines/square/logo-vueling.png",
+    "circle": "icons/airlines/circle/logo-vueling.png"
   },
   "hongkongairlines": {
     "file": "icons/airlines/hong-kong-airlines.png",
     "title": "Hong Kong Airlines",
     "source": "https://www.hongkongairlines.com/portal/hka_logo.png",
-    "license": "Airline's own website (trademark of Hong Kong Airlines)"
+    "license": "Airline's own website (trademark of Hong Kong Airlines)",
+    "square": "icons/airlines/square/hong-kong-airlines.png",
+    "circle": "icons/airlines/circle/hong-kong-airlines.png"
   },
   "frontier": {
     "file": "icons/airlines/frontier-airlines.png",
     "title": "Frontier Airlines",
     "source": "https://www.flyfrontier.com/ (white logo recolored to Frontier green #006643, the site's brand color)",
-    "license": "Airline's own website (trademark of Frontier Airlines)"
+    "license": "Airline's own website (trademark of Frontier Airlines)",
+    "square": "icons/airlines/square/frontier-airlines.png",
+    "circle": "icons/airlines/circle/frontier-airlines.png"
   },
   "breeze": {
     "file": "icons/airlines/breeze-airways.png",
     "title": "Breeze Airways",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/breeze-airways.png",
+    "circle": "icons/airlines/circle/breeze-airways.png"
   },
   "milesandmore:ou": {
     "file": "icons/airlines/croatia-airlines.svg",
     "title": "Croatia Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/croatia-airlines.png",
+    "circle": "icons/airlines/circle/croatia-airlines.png"
   },
   "status:oneworld:emerald": {
     "file": "icons/airlines/oneworld-emerald.png",
@@ -448,67 +576,89 @@
     "file": "icons/airlines/skyteam.png",
     "title": "SkyTeam",
     "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of SkyTeam; official logo file"
+    "license": "Trademark of SkyTeam; official logo file",
+    "square": "icons/airlines/square/skyteam.png",
+    "circle": "icons/airlines/circle/skyteam.png"
   },
   "american:fj": {
     "file": "icons/airlines/fiji-airways.png",
     "title": "Fiji Airways",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/fiji-airways.png",
+    "circle": "icons/airlines/circle/fiji-airways.png"
   },
   "iag:level": {
     "file": "icons/airlines/level.png",
     "title": "LEVEL",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/level.png",
+    "circle": "icons/airlines/circle/level.png"
   },
   "enrich": {
     "file": "icons/airlines/malaysia-airlines.png",
     "title": "Malaysia Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/malaysia-airlines.png",
+    "circle": "icons/airlines/circle/malaysia-airlines.png"
   },
   "porter": {
     "file": "icons/airlines/porter-airlines.png",
     "title": "Porter Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/porter-airlines.png",
+    "circle": "icons/airlines/circle/porter-airlines.png"
   },
   "starlux": {
     "file": "icons/airlines/starlux-airlines.png",
     "title": "STARLUX Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/starlux-airlines.png",
+    "circle": "icons/airlines/circle/starlux-airlines.png"
   },
   "virginaustralia": {
     "file": "icons/airlines/virgin-australia.png",
     "title": "Virgin Australia",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/virgin-australia.png",
+    "circle": "icons/airlines/circle/virgin-australia.png"
   },
   "viva": {
     "file": "icons/airlines/viva-aerobus.png",
     "title": "Viva Aerobus",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/viva-aerobus.png",
+    "circle": "icons/airlines/circle/viva-aerobus.png"
   },
   "volaris": {
     "file": "icons/airlines/volaris.png",
     "title": "Volaris",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/volaris.png",
+    "circle": "icons/airlines/circle/volaris.png"
   },
   "xiamen": {
     "file": "icons/airlines/xiamen-airlines.png",
     "title": "Xiamen Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/xiamen-airlines.png",
+    "circle": "icons/airlines/circle/xiamen-airlines.png"
   },
   "hainan": {
     "file": "icons/airlines/hainan-airlines.png",
     "title": "Hainan Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/hainan-airlines.png",
+    "circle": "icons/airlines/circle/hainan-airlines.png"
   },
   "status:skyteam:elite-plus": {
     "file": "icons/airlines/skyteam-elite-plus.png",
@@ -520,7 +670,9 @@
     "file": "icons/airlines/star-alliance.png",
     "title": "Star Alliance",
     "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/star-alliance.png",
+    "circle": "icons/airlines/circle/star-alliance.png"
   },
   "status:skyteam:elite": {
     "file": "icons/airlines/skyteam-elite.png",

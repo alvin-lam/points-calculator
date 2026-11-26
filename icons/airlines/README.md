@@ -24,3 +24,7 @@ Every logo is a trademark of its airline or alliance. The licenses above cover c
 ## Status badges
 
 Official files supplied by the site owner, keyed as `status:<alliance>:<tier>`: oneworld Emerald, Sapphire and Ruby (the "Priority" badges), Star Alliance Gold and Silver, SkyTeam Elite Plus, and SkyTeam Elite. The Elite badge was made for this site from the Elite Plus file by removing the word PLUS.
+
+## Square and circular icons
+
+Each airline and alliance also has a 512 by 512 square icon (`square/`) and a circular icon with a transparent outside (`circle/`). `index.json` links them through the `square` and `circle` fields. They were made from the full logo: the symbol was cut out and centered on white. Airlines whose logo is only a wordmark use the whole wordmark until an official icon file is supplied.
