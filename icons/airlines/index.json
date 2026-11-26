@@ -606,5 +606,11 @@
     "title": "Star Alliance",
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of its owner; official logo file"
+  },
+  "alliance:star@stacked-white": {
+    "file": "icons/airlines/star-alliance-stacked-white.png",
+    "title": "Star Alliance (stacked, on black)",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
   }
 }
