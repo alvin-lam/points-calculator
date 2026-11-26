@@ -4,7 +4,7 @@ A static web app that estimates the points or miles you earn on a flight.
 
 ## Use
 
-Open `index.html` in a browser. No build step or server is needed. It also works as-is on GitHub Pages.
+Open `docs/index.html` in a browser. No build step or server is needed. GitHub Pages publishes the `docs/` folder of the `prod` branch (**Settings > Pages > Deploy from a branch**, folder `/docs`).
 
 1. Choose an airline program.
 2. Choose your current status (and fare type for Southwest, Breeze, Frontier, Avianca, and Norwegian).
@@ -39,7 +39,7 @@ Open `index.html` in a browser. No build step or server is needed. It also works
 
 ## Install and icons
 
-- Folder layout: `index.html` at the root, scripts in `js/`, and styles in `css/styles.css`. `sw.js` stays at the root so it can serve the whole site offline.
+- Folder layout: everything the site serves lives in `docs/`, with `index.html` at its top, scripts in `docs/js/`, and styles in `docs/css/styles.css`. `sw.js` stays at the top of `docs/` so it can serve the whole site offline. Program data (`data/`) and build scripts (`tools/`) stay at the repository root and are not published. Other paths in this README for site files are relative to `docs/`.
   - `js/programs.js`: the earning data the browser loads, generated from `data/` (see Program data below).
   - `js/app.js`: the calculator, airline search, airport lookup, and Appearance panel.
   - `js/distance.js`: great-circle distance between two airports.
