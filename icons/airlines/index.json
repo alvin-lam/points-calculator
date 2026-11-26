@@ -6,7 +6,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/air-canada-logo.png",
     "circle": "icons/airlines/circle/air-canada-logo.png",
-    "iconSource": "App Store icon of \"Air Canada + Aeroplan\" by Air Canada"
+    "iconSource": "App Store icon of \"Air Canada + Aeroplan\" by Air Canada",
+    "squareDark": "icons/airlines/square-dark/air-canada-logo.png",
+    "circleDark": "icons/airlines/circle-dark/air-canada-logo.png"
   },
   "phoenix:ca": {
     "file": "icons/airlines/air-china.png",
@@ -15,7 +17,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/air-china.png",
     "circle": "icons/airlines/circle/air-china.png",
-    "iconSource": "App Store icon of \"Air China\" by Air China Limited"
+    "iconSource": "App Store icon of \"Air China\" by Air China Limited",
+    "squareDark": "icons/airlines/square-dark/air-china.png",
+    "circleDark": "icons/airlines/circle-dark/air-china.png"
   },
   "flyingblue:af": {
     "file": "icons/airlines/air-france-logo.svg",
@@ -24,7 +28,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/air-france-logo.png",
     "circle": "icons/airlines/circle/air-france-logo.png",
-    "iconSource": "App Store icon of \"Air France - Book a flight\" by AIR FRANCE"
+    "iconSource": "App Store icon of \"Air France - Book a flight\" by AIR FRANCE",
+    "squareDark": "icons/airlines/square-dark/air-france-logo.png",
+    "circleDark": "icons/airlines/circle-dark/air-france-logo.png"
   },
   "airindia": {
     "file": "icons/airlines/air-india.svg",
@@ -33,7 +39,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/air-india.png",
     "circle": "icons/airlines/circle/air-india.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Official logo; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/air-india.png",
+    "circleDark": "icons/airlines/circle-dark/air-india.png"
   },
   "transat": {
     "file": "icons/airlines/air-transat-logo.svg",
@@ -42,7 +50,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/air-transat-logo.png",
     "circle": "icons/airlines/circle/air-transat-logo.png",
-    "iconSource": "App Store icon of \"Air Transat\" by Transat"
+    "iconSource": "App Store icon of \"Air Transat\" by Transat",
+    "squareDark": "icons/airlines/square-dark/air-transat-logo.png",
+    "circleDark": "icons/airlines/circle-dark/air-transat-logo.png"
   },
   "american:aa": {
     "file": "icons/airlines/american-airlines.png",
@@ -51,7 +61,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/american-airlines.png",
     "circle": "icons/airlines/circle/american-airlines.png",
-    "iconSource": "App Store icon of \"American Airlines\" by American Airlines, Inc."
+    "iconSource": "App Store icon of \"American Airlines\" by American Airlines, Inc.",
+    "squareDark": "icons/airlines/square-dark/american-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/american-airlines.png"
   },
   "ana": {
     "file": "icons/airlines/all-nippon-airways-logo.svg",
@@ -60,7 +72,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/all-nippon-airways-logo.png",
     "circle": "icons/airlines/circle/all-nippon-airways-logo.png",
-    "iconSource": "App Store icon of \"ANA\" by All Nippon Airways"
+    "iconSource": "App Store icon of \"ANA\" by All Nippon Airways",
+    "squareDark": "icons/airlines/square-dark/all-nippon-airways-logo.png",
+    "circleDark": "icons/airlines/circle-dark/all-nippon-airways-logo.png"
   },
   "lifemiles": {
     "file": "icons/airlines/avianca.svg",
@@ -69,7 +83,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/avianca.png",
     "circle": "icons/airlines/circle/avianca.png",
-    "iconSource": "App Store icon of \"avianca: flights & deals\" by Aerovias del Continente Americano, S.A.; background flattened to a solid color"
+    "iconSource": "App Store icon of \"avianca: flights & deals\" by Aerovias del Continente Americano, S.A.; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/avianca.png",
+    "circleDark": "icons/airlines/circle-dark/avianca.png"
   },
   "iag:ba": {
     "file": "icons/airlines/british-airways.png",
@@ -78,7 +94,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/british-airways.png",
     "circle": "icons/airlines/circle/british-airways.png",
-    "iconSource": "App Store icon of \"British Airways\" by British Airways Plc; background flattened to a solid color"
+    "iconSource": "App Store icon of \"British Airways\" by British Airways Plc; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/british-airways.png",
+    "circleDark": "icons/airlines/circle-dark/british-airways.png"
   },
   "chinaeastern": {
     "file": "icons/airlines/china-eastern-airlines.png",
@@ -86,7 +104,9 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/china-eastern-airlines.png",
-    "circle": "icons/airlines/circle/china-eastern-airlines.png"
+    "circle": "icons/airlines/circle/china-eastern-airlines.png",
+    "squareDark": "icons/airlines/square-dark/china-eastern-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/china-eastern-airlines.png"
   },
   "chinasouthern": {
     "file": "icons/airlines/china-southern-airlines.png",
@@ -95,7 +115,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/china-southern-airlines.png",
     "circle": "icons/airlines/circle/china-southern-airlines.png",
-    "iconSource": "App Store icon of \"China Southern Airlines\" by China Southern Airlines Company Limited"
+    "iconSource": "App Store icon of \"China Southern Airlines\" by China Southern Airlines Company Limited",
+    "squareDark": "icons/airlines/square-dark/china-southern-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/china-southern-airlines.png"
   },
   "copa": {
     "file": "icons/airlines/copa-airlines.svg",
@@ -104,7 +126,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/copa-airlines.png",
     "circle": "icons/airlines/circle/copa-airlines.png",
-    "iconSource": "App Store icon of \"Copa Airlines\" by Compania Panamena De Aviacion, S.A."
+    "iconSource": "App Store icon of \"Copa Airlines\" by Compania Panamena De Aviacion, S.A.",
+    "squareDark": "icons/airlines/square-dark/copa-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/copa-airlines.png"
   },
   "delta": {
     "file": "icons/airlines/delta-logo.svg",
@@ -113,7 +137,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/delta-logo.png",
     "circle": "icons/airlines/circle/delta-logo.png",
-    "iconSource": "App Store icon of \"Fly Delta\" by Delta Air Lines, Inc"
+    "iconSource": "App Store icon of \"Fly Delta\" by Delta Air Lines, Inc",
+    "squareDark": "icons/airlines/square-dark/delta-logo.png",
+    "circleDark": "icons/airlines/circle-dark/delta-logo.png"
   },
   "etihad": {
     "file": "icons/airlines/etihad-airways-logo.svg",
@@ -122,7 +148,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/etihad-airways-logo.png",
     "circle": "icons/airlines/circle/etihad-airways-logo.png",
-    "iconSource": "App Store icon of \"Etihad\" by Etihad Airways P.J.S.C"
+    "iconSource": "App Store icon of \"Etihad\" by Etihad Airways P.J.S.C",
+    "squareDark": "icons/airlines/square-dark/etihad-airways-logo.png",
+    "circleDark": "icons/airlines/circle-dark/etihad-airways-logo.png"
   },
   "iag:ib": {
     "file": "icons/airlines/logotipo-de-iberia.svg",
@@ -131,7 +159,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/logotipo-de-iberia.png",
     "circle": "icons/airlines/circle/logotipo-de-iberia.png",
-    "iconSource": "App Store icon of \"Iberia\" by IBERIA, LINEAS AEREAS DE ESPANA, SOCIEDAD ANONIMA OPERADORA"
+    "iconSource": "App Store icon of \"Iberia\" by IBERIA, LINEAS AEREAS DE ESPANA, SOCIEDAD ANONIMA OPERADORA",
+    "squareDark": "icons/airlines/square-dark/logotipo-de-iberia.png",
+    "circleDark": "icons/airlines/circle-dark/logotipo-de-iberia.png"
   },
   "jal": {
     "file": "icons/airlines/japan-airlines.png",
@@ -140,7 +170,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/japan-airlines.png",
     "circle": "icons/airlines/circle/japan-airlines.png",
-    "iconSource": "App Store icon of \"Japan Airlines\" by Japan Airlines Co., Ltd."
+    "iconSource": "App Store icon of \"Japan Airlines\" by Japan Airlines Co., Ltd.",
+    "squareDark": "icons/airlines/square-dark/japan-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/japan-airlines.png"
   },
   "jetblue": {
     "file": "icons/airlines/jetblue-airways-logo.svg",
@@ -149,7 +181,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/jetblue-airways-logo.png",
     "circle": "icons/airlines/circle/jetblue-airways-logo.png",
-    "iconSource": "App Store icon of \"JetBlue\" by JetBlue Airways Corporation; background flattened to a solid color"
+    "iconSource": "App Store icon of \"JetBlue\" by JetBlue Airways Corporation; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/jetblue-airways-logo.png",
+    "circleDark": "icons/airlines/circle-dark/jetblue-airways-logo.png"
   },
   "flyingblue:kl": {
     "file": "icons/airlines/klm-logo.svg",
@@ -158,7 +192,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/klm-logo.png",
     "circle": "icons/airlines/circle/klm-logo.png",
-    "iconSource": "App Store icon of \"KLM - Book a flight\" by Koninklijke Luchtvaart Maatschappij N.V.; background flattened to a solid color"
+    "iconSource": "App Store icon of \"KLM - Book a flight\" by Koninklijke Luchtvaart Maatschappij N.V.; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/klm-logo.png",
+    "circleDark": "icons/airlines/circle-dark/klm-logo.png"
   },
   "milesandmore:lo": {
     "file": "icons/airlines/lot-polish-airlines.svg",
@@ -166,7 +202,9 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/lot-polish-airlines.png",
-    "circle": "icons/airlines/circle/lot-polish-airlines.png"
+    "circle": "icons/airlines/circle/lot-polish-airlines.png",
+    "squareDark": "icons/airlines/square-dark/lot-polish-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/lot-polish-airlines.png"
   },
   "milesandmore:lh": {
     "file": "icons/airlines/lufthansa-logo-2018.svg",
@@ -175,7 +213,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/lufthansa-logo-2018.png",
     "circle": "icons/airlines/circle/lufthansa-logo-2018.png",
-    "iconSource": "App Store icon of \"Lufthansa\" by Lufthansa Group Digital Hangar GmbH"
+    "iconSource": "App Store icon of \"Lufthansa\" by Lufthansa Group Digital Hangar GmbH",
+    "squareDark": "icons/airlines/square-dark/lufthansa-logo-2018.png",
+    "circleDark": "icons/airlines/circle-dark/lufthansa-logo-2018.png"
   },
   "norwegian": {
     "file": "icons/airlines/norwegian-logo-2024.svg",
@@ -185,7 +225,9 @@
     "author": "Norwegian Air Shuttle ASA",
     "square": "icons/airlines/square/norwegian-logo-2024.png",
     "circle": "icons/airlines/circle/norwegian-logo-2024.png",
-    "iconSource": "App Store icon of \"Norwegian Travel Assistant\" by Norwegian Air Shuttle ASA"
+    "iconSource": "App Store icon of \"Norwegian Travel Assistant\" by Norwegian Air Shuttle ASA",
+    "squareDark": "icons/airlines/square-dark/norwegian-logo-2024.png",
+    "circleDark": "icons/airlines/circle-dark/norwegian-logo-2024.png"
   },
   "qantas": {
     "file": "icons/airlines/qantas.png",
@@ -194,7 +236,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/qantas.png",
     "circle": "icons/airlines/circle/qantas.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Official logo; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/qantas.png",
+    "circleDark": "icons/airlines/circle-dark/qantas.png"
   },
   "qatar": {
     "file": "icons/airlines/qatar-airways-logo.svg",
@@ -203,7 +247,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/qatar-airways-logo.png",
     "circle": "icons/airlines/circle/qatar-airways-logo.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Official logo; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/qatar-airways-logo.png",
+    "circleDark": "icons/airlines/circle-dark/qatar-airways-logo.png"
   },
   "krisflyer": {
     "file": "icons/airlines/singapore-airlines.png",
@@ -212,7 +258,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/singapore-airlines.png",
     "circle": "icons/airlines/circle/singapore-airlines.png",
-    "iconSource": "App Store icon of \"Singapore Airlines\" by Singapore Airlines Limited"
+    "iconSource": "App Store icon of \"Singapore Airlines\" by Singapore Airlines Limited",
+    "squareDark": "icons/airlines/square-dark/singapore-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/singapore-airlines.png"
   },
   "southwest": {
     "file": "icons/airlines/southwest-airlines-logo-2014.svg",
@@ -221,7 +269,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/southwest-airlines-logo-2014.png",
     "circle": "icons/airlines/circle/southwest-airlines-logo-2014.png",
-    "iconSource": "Heart from the official Southwest logo, on white"
+    "iconSource": "Heart from the official Southwest logo, on white",
+    "squareDark": "icons/airlines/square-dark/southwest-airlines-logo-2014.png",
+    "circleDark": "icons/airlines/circle-dark/southwest-airlines-logo-2014.png"
   },
   "turkish": {
     "file": "icons/airlines/turkish-airlines-logo-2019-compact.svg",
@@ -230,7 +280,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/turkish-airlines-logo-2019-compact.png",
     "circle": "icons/airlines/circle/turkish-airlines-logo-2019-compact.png",
-    "iconSource": "App Store icon of \"Turkish Airlines: Book Flights\" by Turkish Airlines"
+    "iconSource": "App Store icon of \"Turkish Airlines: Book Flights\" by Turkish Airlines",
+    "squareDark": "icons/airlines/square-dark/turkish-airlines-logo-2019-compact.png",
+    "circleDark": "icons/airlines/circle-dark/turkish-airlines-logo-2019-compact.png"
   },
   "united": {
     "file": "icons/airlines/united-airlines.png",
@@ -239,7 +291,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/united-airlines.png",
     "circle": "icons/airlines/circle/united-airlines.png",
-    "iconSource": "App Store icon of \"United Airlines\" by United Air Lines"
+    "iconSource": "App Store icon of \"United Airlines\" by United Air Lines",
+    "squareDark": "icons/airlines/square-dark/united-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/united-airlines.png"
   },
   "virgin": {
     "file": "icons/airlines/virgin-atlantic-logo.svg",
@@ -248,7 +302,9 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/virgin-atlantic-logo.png",
     "circle": "icons/airlines/circle/virgin-atlantic-logo.png",
-    "iconSource": "App Store icon of \"Virgin Atlantic\" by Virgin Atlantic Airways Limited; background flattened to a solid color"
+    "iconSource": "App Store icon of \"Virgin Atlantic\" by Virgin Atlantic Airways Limited; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/virgin-atlantic-logo.png",
+    "circleDark": "icons/airlines/circle-dark/virgin-atlantic-logo.png"
   },
   "aegean": {
     "file": "icons/airlines/aegean-airlines.svg",
@@ -257,7 +313,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/aegean-airlines.png",
     "circle": "icons/airlines/circle/aegean-airlines.png",
-    "iconSource": "App Store icon of \"Aegean Airlines\" by Aegean Airlines S.A."
+    "iconSource": "App Store icon of \"Aegean Airlines\" by Aegean Airlines S.A.",
+    "squareDark": "icons/airlines/square-dark/aegean-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/aegean-airlines.png"
   },
   "aeromexico": {
     "file": "icons/airlines/aeromexico.png",
@@ -266,7 +324,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/aeromexico.png",
     "circle": "icons/airlines/circle/aeromexico.png",
-    "iconSource": "App Store icon of \"Aeroméxico\" by Aerovias de Mexico, S.A. de C.V."
+    "iconSource": "App Store icon of \"Aeroméxico\" by Aerovias de Mexico, S.A. de C.V.",
+    "squareDark": "icons/airlines/square-dark/aeromexico.png",
+    "circleDark": "icons/airlines/circle-dark/aeromexico.png"
   },
   "aireuropa": {
     "file": "icons/airlines/air-europa-logo-2015.svg",
@@ -276,7 +336,9 @@
     "author": "Air Europa",
     "square": "icons/airlines/square/air-europa-logo-2015.png",
     "circle": "icons/airlines/circle/air-europa-logo-2015.png",
-    "iconSource": "App Store icon of \"AirEuropa for mobile\" by Globalia Servicios Corporativos SL; background flattened to a solid color"
+    "iconSource": "App Store icon of \"AirEuropa for mobile\" by Globalia Servicios Corporativos SL; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/air-europa-logo-2015.png",
+    "circleDark": "icons/airlines/circle-dark/air-europa-logo-2015.png"
   },
   "airnz": {
     "file": "icons/airlines/air-new-zealand-logo.svg",
@@ -286,7 +348,9 @@
     "author": "Air New Zealand",
     "square": "icons/airlines/square/air-new-zealand-logo.png",
     "circle": "icons/airlines/circle/air-new-zealand-logo.png",
-    "iconSource": "App Store icon of \"Air NZ\" by Air New Zealand"
+    "iconSource": "App Store icon of \"Air NZ\" by Air New Zealand",
+    "squareDark": "icons/airlines/square-dark/air-new-zealand-logo.png",
+    "circleDark": "icons/airlines/circle-dark/air-new-zealand-logo.png"
   },
   "alaska": {
     "file": "icons/airlines/alaska-airlines-logo.svg",
@@ -295,7 +359,9 @@
     "license": "Public domain (Wikimedia Commons)",
     "author": "The original uploader was KUsam at English Wikipedia.",
     "square": "icons/airlines/square/alaska-airlines.png",
-    "circle": "icons/airlines/circle/alaska-airlines.png"
+    "circle": "icons/airlines/circle/alaska-airlines.png",
+    "squareDark": "icons/airlines/square-dark/alaska-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/alaska-airlines.png"
   },
   "allegiant": {
     "file": "icons/airlines/allegiant-air-logo.svg",
@@ -305,7 +371,9 @@
     "author": "Allegiant Air",
     "square": "icons/airlines/square/allegiant-air-logo.png",
     "circle": "icons/airlines/circle/allegiant-air-logo.png",
-    "iconSource": "App Store icon of \"Allegiant\" by Allegiant Travel Company"
+    "iconSource": "App Store icon of \"Allegiant\" by Allegiant Travel Company",
+    "squareDark": "icons/airlines/square-dark/allegiant-air-logo.png",
+    "circleDark": "icons/airlines/circle-dark/allegiant-air-logo.png"
   },
   "cathay": {
     "file": "icons/airlines/cathay-pacific-ltd-logo.svg",
@@ -314,7 +382,9 @@
     "license": "Public domain (Wikimedia Commons)",
     "author": "Cathay Pacific",
     "square": "icons/airlines/square/cathay-pacific-ltd-logo.png",
-    "circle": "icons/airlines/circle/cathay-pacific-ltd-logo.png"
+    "circle": "icons/airlines/circle/cathay-pacific-ltd-logo.png",
+    "squareDark": "icons/airlines/square-dark/cathay-pacific-ltd-logo.png",
+    "circleDark": "icons/airlines/circle-dark/cathay-pacific-ltd-logo.png"
   },
   "chinaairlines": {
     "file": "icons/airlines/china-airlines.png",
@@ -323,7 +393,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/china-airlines.png",
     "circle": "icons/airlines/circle/china-airlines.png",
-    "iconSource": "App Store icon of \"China Airlines App\" by China Airlines Ltd.; background flattened to a solid color"
+    "iconSource": "App Store icon of \"China Airlines App\" by China Airlines Ltd.; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/china-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/china-airlines.png"
   },
   "eva": {
     "file": "icons/airlines/logo-eva-air.svg",
@@ -333,7 +405,9 @@
     "author": "EVA Air",
     "square": "icons/airlines/square/logo-eva-air.png",
     "circle": "icons/airlines/circle/logo-eva-air.png",
-    "iconSource": "App Store icon of \"EVA AIR\" by EVA AIRWAYS CORP."
+    "iconSource": "App Store icon of \"EVA AIR\" by EVA AIRWAYS CORP.",
+    "squareDark": "icons/airlines/square-dark/logo-eva-air.png",
+    "circleDark": "icons/airlines/circle-dark/logo-eva-air.png"
   },
   "finnair": {
     "file": "icons/airlines/finnair-logo.svg",
@@ -343,7 +417,9 @@
     "author": "Finnair, Mikael Kivelä",
     "square": "icons/airlines/square/finnair-logo.png",
     "circle": "icons/airlines/circle/finnair-logo.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Official logo; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/finnair-logo.png",
+    "circleDark": "icons/airlines/circle-dark/finnair-logo.png"
   },
   "flyingblue:to": {
     "file": "icons/airlines/transavia-2025-logo.svg",
@@ -353,7 +429,9 @@
     "author": "Transavia Airlines C.V. / Transavia France S.A.S.",
     "square": "icons/airlines/square/transavia-2025-logo.png",
     "circle": "icons/airlines/circle/transavia-2025-logo.png",
-    "iconSource": "App Store icon of \"Transavia\" by Transavia Airlines C.V."
+    "iconSource": "App Store icon of \"Transavia\" by Transavia Airlines C.V.",
+    "squareDark": "icons/airlines/square-dark/transavia-2025-logo.png",
+    "circleDark": "icons/airlines/circle-dark/transavia-2025-logo.png"
   },
   "flyingblue:hv": {
     "file": "icons/airlines/transavia-2025-logo.svg",
@@ -363,7 +441,9 @@
     "author": "Transavia Airlines C.V. / Transavia France S.A.S.",
     "square": "icons/airlines/square/transavia-2025-logo.png",
     "circle": "icons/airlines/circle/transavia-2025-logo.png",
-    "iconSource": "App Store icon of \"Transavia\" by Transavia Airlines C.V."
+    "iconSource": "App Store icon of \"Transavia\" by Transavia Airlines C.V.",
+    "squareDark": "icons/airlines/square-dark/transavia-2025-logo.png",
+    "circleDark": "icons/airlines/circle-dark/transavia-2025-logo.png"
   },
   "gol": {
     "file": "icons/airlines/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.svg",
@@ -372,7 +452,9 @@
     "license": "Public domain (Wikimedia Commons)",
     "author": "Gol Linhas Aéreas Inteligentes",
     "square": "icons/airlines/square/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.png",
-    "circle": "icons/airlines/circle/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.png"
+    "circle": "icons/airlines/circle/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.png",
+    "squareDark": "icons/airlines/square-dark/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.png",
+    "circleDark": "icons/airlines/circle-dark/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.png"
   },
   "hawaiian": {
     "file": "icons/airlines/hawaiian-airlines.png",
@@ -380,7 +462,9 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/hawaiian-airlines.png",
-    "circle": "icons/airlines/circle/hawaiian-airlines.png"
+    "circle": "icons/airlines/circle/hawaiian-airlines.png",
+    "squareDark": "icons/airlines/square-dark/hawaiian-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/hawaiian-airlines.png"
   },
   "iag:ei": {
     "file": "icons/airlines/aer-lingus-2022-logo.svg",
@@ -390,7 +474,9 @@
     "author": "Unknown authorUnknown author",
     "square": "icons/airlines/square/aer-lingus-2022-logo.png",
     "circle": "icons/airlines/circle/aer-lingus-2022-logo.png",
-    "iconSource": "App Store icon of \"Aer Lingus\" by Aer Lingus"
+    "iconSource": "App Store icon of \"Aer Lingus\" by Aer Lingus",
+    "squareDark": "icons/airlines/square-dark/aer-lingus-2022-logo.png",
+    "circleDark": "icons/airlines/circle-dark/aer-lingus-2022-logo.png"
   },
   "icelandair": {
     "file": "icons/airlines/icelandairlogo.svg",
@@ -400,7 +486,9 @@
     "author": "Icelandair",
     "square": "icons/airlines/square/icelandairlogo.png",
     "circle": "icons/airlines/circle/icelandairlogo.png",
-    "iconSource": "App Store icon of \"Icelandair\" by Icelandair ehf"
+    "iconSource": "App Store icon of \"Icelandair\" by Icelandair ehf",
+    "squareDark": "icons/airlines/square-dark/icelandairlogo.png",
+    "circleDark": "icons/airlines/circle-dark/icelandairlogo.png"
   },
   "korean": {
     "file": "icons/airlines/korean-air-2025.svg",
@@ -410,7 +498,9 @@
     "author": "Korean Air (designed by Lippincott)",
     "square": "icons/airlines/square/korean-air-2025.png",
     "circle": "icons/airlines/circle/korean-air-2025.png",
-    "iconSource": "App Store icon of \"Korean Air My\" by Korean Air Lines Co., Ltd"
+    "iconSource": "App Store icon of \"Korean Air My\" by Korean Air Lines Co., Ltd",
+    "squareDark": "icons/airlines/square-dark/korean-air-2025.png",
+    "circleDark": "icons/airlines/circle-dark/korean-air-2025.png"
   },
   "milesandmore:ew": {
     "file": "icons/airlines/eurowings-logo-2026.svg",
@@ -420,7 +510,9 @@
     "author": "Eurowings GmbH",
     "square": "icons/airlines/square/eurowings-logo-2026.png",
     "circle": "icons/airlines/circle/eurowings-logo-2026.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Official logo; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/eurowings-logo-2026.png",
+    "circleDark": "icons/airlines/circle-dark/eurowings-logo-2026.png"
   },
   "milesandmore:de": {
     "file": "icons/airlines/logo-discover-airlines.svg",
@@ -429,7 +521,9 @@
     "license": "Public domain (Wikimedia Commons)",
     "author": "Discover Airlines",
     "square": "icons/airlines/square/logo-discover-airlines.png",
-    "circle": "icons/airlines/circle/logo-discover-airlines.png"
+    "circle": "icons/airlines/circle/logo-discover-airlines.png",
+    "squareDark": "icons/airlines/square-dark/logo-discover-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/logo-discover-airlines.png"
   },
   "milesandmore:os": {
     "file": "icons/airlines/austrian-airlines-logo-2018.svg",
@@ -439,7 +533,9 @@
     "author": "Austrian Airlines AG",
     "square": "icons/airlines/square/austrian-airlines-logo-2018.png",
     "circle": "icons/airlines/circle/austrian-airlines-logo-2018.png",
-    "iconSource": "App Store icon of \"Austrian\" by Lufthansa Group Digital Hangar GmbH; background flattened to a solid color"
+    "iconSource": "App Store icon of \"Austrian\" by Lufthansa Group Digital Hangar GmbH; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/austrian-airlines-logo-2018.png",
+    "circleDark": "icons/airlines/circle-dark/austrian-airlines-logo-2018.png"
   },
   "milesandmore:sn": {
     "file": "icons/airlines/brussels-airlines-logo-2021.svg",
@@ -449,7 +545,9 @@
     "author": "Brussels Airlines",
     "square": "icons/airlines/square/brussels-airlines-logo-2021.png",
     "circle": "icons/airlines/circle/brussels-airlines-logo-2021.png",
-    "iconSource": "App Store icon of \"Brussels Airlines\" by Lufthansa Group Digital Hangar GmbH; background flattened to a solid color"
+    "iconSource": "App Store icon of \"Brussels Airlines\" by Lufthansa Group Digital Hangar GmbH; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/brussels-airlines-logo-2021.png",
+    "circleDark": "icons/airlines/circle-dark/brussels-airlines-logo-2021.png"
   },
   "milesandmore:wk": {
     "file": "icons/airlines/edelweiss.png",
@@ -457,7 +555,9 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/edelweiss.png",
-    "circle": "icons/airlines/circle/edelweiss.png"
+    "circle": "icons/airlines/circle/edelweiss.png",
+    "squareDark": "icons/airlines/square-dark/edelweiss.png",
+    "circleDark": "icons/airlines/circle-dark/edelweiss.png"
   },
   "milesandmore:en": {
     "file": "icons/airlines/air-dolomiti-logo.svg",
@@ -466,7 +566,9 @@
     "license": "Public domain (Wikimedia Commons)",
     "author": "Air Dolomiti",
     "square": "icons/airlines/square/air-dolomiti-logo.png",
-    "circle": "icons/airlines/circle/air-dolomiti-logo.png"
+    "circle": "icons/airlines/circle/air-dolomiti-logo.png",
+    "squareDark": "icons/airlines/square-dark/air-dolomiti-logo.png",
+    "circleDark": "icons/airlines/circle-dark/air-dolomiti-logo.png"
   },
   "milesandmore:az": {
     "file": "icons/airlines/ita-airways.png",
@@ -475,7 +577,9 @@
     "license": "Trademark of its owner; official logo artwork",
     "author": "ITA Airways",
     "square": "icons/airlines/square/ita-airways-logo.png",
-    "circle": "icons/airlines/circle/ita-airways-logo.png"
+    "circle": "icons/airlines/circle/ita-airways-logo.png",
+    "squareDark": "icons/airlines/square-dark/ita-airways-logo.png",
+    "circleDark": "icons/airlines/circle-dark/ita-airways-logo.png"
   },
   "sas": {
     "file": "icons/airlines/scandinavian-airlines-logo.svg",
@@ -485,7 +589,9 @@
     "author": "Scandinavian Airlines",
     "square": "icons/airlines/square/scandinavian-airlines-logo.png",
     "circle": "icons/airlines/circle/scandinavian-airlines-logo.png",
-    "iconSource": "App Store icon of \"SAS – Scandinavian Airlines\" by SAS AB"
+    "iconSource": "App Store icon of \"SAS – Scandinavian Airlines\" by SAS AB",
+    "squareDark": "icons/airlines/square-dark/scandinavian-airlines-logo.png",
+    "circleDark": "icons/airlines/circle-dark/scandinavian-airlines-logo.png"
   },
   "tap": {
     "file": "icons/airlines/tap-air-portugal-logo.svg",
@@ -495,7 +601,9 @@
     "author": "Unknown authorUnknown author",
     "square": "icons/airlines/square/tap-air-portugal-logo.png",
     "circle": "icons/airlines/circle/tap-air-portugal-logo.png",
-    "iconSource": "App Store icon of \"TAP Air Portugal\" by Transportes Aereos Portugueses S.A."
+    "iconSource": "App Store icon of \"TAP Air Portugal\" by Transportes Aereos Portugueses S.A.",
+    "squareDark": "icons/airlines/square-dark/tap-air-portugal-logo.png",
+    "circleDark": "icons/airlines/circle-dark/tap-air-portugal-logo.png"
   },
   "thai": {
     "file": "icons/airlines/thai-airways-logo.svg",
@@ -505,7 +613,9 @@
     "author": "Thai Airways",
     "square": "icons/airlines/square/thai-airways-logo.png",
     "circle": "icons/airlines/circle/thai-airways-logo.png",
-    "iconSource": "App Store icon of \"Thai Airways\" by Thai Airways International Public Company Limited"
+    "iconSource": "App Store icon of \"Thai Airways\" by Thai Airways International Public Company Limited",
+    "squareDark": "icons/airlines/square-dark/thai-airways-logo.png",
+    "circleDark": "icons/airlines/circle-dark/thai-airways-logo.png"
   },
   "westjet": {
     "file": "icons/airlines/westjetlogo2018.svg",
@@ -515,7 +625,9 @@
     "author": "WestJet",
     "square": "icons/airlines/square/westjetlogo2018.png",
     "circle": "icons/airlines/circle/westjetlogo2018.png",
-    "iconSource": "App Store icon of \"WestJet\" by WestJet Airlines Ltd"
+    "iconSource": "App Store icon of \"WestJet\" by WestJet Airlines Ltd",
+    "squareDark": "icons/airlines/square-dark/westjetlogo2018.png",
+    "circleDark": "icons/airlines/circle-dark/westjetlogo2018.png"
   },
   "alliance:oneworld": {
     "file": "icons/airlines/oneworld-logo.svg",
@@ -525,7 +637,9 @@
     "author": "http://www.oneworld.com/",
     "square": "icons/airlines/square/oneworld-logo.png",
     "circle": "icons/airlines/circle/oneworld-logo.png",
-    "iconSource": "App Store icon of \"Fly Oneworld\" by oneworld Management Company"
+    "iconSource": "App Store icon of \"Fly Oneworld\" by oneworld Management Company",
+    "squareDark": "icons/airlines/square-dark/oneworld-logo.png",
+    "circleDark": "icons/airlines/circle-dark/oneworld-logo.png"
   },
   "milesandmore:lx": {
     "file": "icons/airlines/swiss-international-air-lines-logo-2011.svg",
@@ -535,7 +649,9 @@
     "author": "Swiss International Air Lines",
     "square": "icons/airlines/square/swiss-international-air-lines-logo-2011.png",
     "circle": "icons/airlines/circle/swiss-international-air-lines-logo-2011.png",
-    "iconSource": "App Store icon of \"SWISS\" by Lufthansa Group Digital Hangar GmbH"
+    "iconSource": "App Store icon of \"SWISS\" by Lufthansa Group Digital Hangar GmbH",
+    "squareDark": "icons/airlines/square-dark/swiss-international-air-lines-logo-2011.png",
+    "circleDark": "icons/airlines/circle-dark/swiss-international-air-lines-logo-2011.png"
   },
   "latam": {
     "file": "icons/airlines/latam-logo-v-indigo.svg",
@@ -545,7 +661,9 @@
     "author": "Sao Paolo, Santiago and Madrid offices of Interbrand [1]\n\nvector file: Mliu92",
     "square": "icons/airlines/square/latam-logo-v-indigo.png",
     "circle": "icons/airlines/circle/latam-logo-v-indigo.png",
-    "iconSource": "Mark from the App Store icon of \"LATAM: Flights, Hotels, Cars\" by LATAM Airlines Group S.A., set on solid LATAM indigo"
+    "iconSource": "Mark from the App Store icon of \"LATAM: Flights, Hotels, Cars\" by LATAM Airlines Group S.A., set on solid LATAM indigo",
+    "squareDark": "icons/airlines/square-dark/latam-logo-v-indigo.png",
+    "circleDark": "icons/airlines/circle-dark/latam-logo-v-indigo.png"
   },
   "iag:vy": {
     "file": "icons/airlines/logo-vueling.svg",
@@ -554,7 +672,9 @@
     "license": "Public domain (Wikimedia Commons)",
     "author": "Vueling Airlines SA",
     "square": "icons/airlines/square/logo-vueling.png",
-    "circle": "icons/airlines/circle/logo-vueling.png"
+    "circle": "icons/airlines/circle/logo-vueling.png",
+    "squareDark": "icons/airlines/square-dark/logo-vueling.png",
+    "circleDark": "icons/airlines/circle-dark/logo-vueling.png"
   },
   "hongkongairlines": {
     "file": "icons/airlines/hong-kong-airlines.png",
@@ -563,7 +683,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/hong-kong-airlines.png",
     "circle": "icons/airlines/circle/hong-kong-airlines.png",
-    "iconSource": "App Store icon of \"Hong Kong Airlines\" by Hong Kong Airlines Ltd."
+    "iconSource": "App Store icon of \"Hong Kong Airlines\" by Hong Kong Airlines Ltd.",
+    "squareDark": "icons/airlines/square-dark/hong-kong-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/hong-kong-airlines.png"
   },
   "frontier": {
     "file": "icons/airlines/frontier-airlines.png",
@@ -572,7 +694,9 @@
     "license": "Airline's own website (trademark of Frontier Airlines)",
     "square": "icons/airlines/square/frontier-airlines.png",
     "circle": "icons/airlines/circle/frontier-airlines.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Official logo; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/frontier-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/frontier-airlines.png"
   },
   "breeze": {
     "file": "icons/airlines/breeze-airways.png",
@@ -581,7 +705,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/breeze-airways.png",
     "circle": "icons/airlines/circle/breeze-airways.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Official logo; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/breeze-airways.png",
+    "circleDark": "icons/airlines/circle-dark/breeze-airways.png"
   },
   "milesandmore:ou": {
     "file": "icons/airlines/croatia-airlines.svg",
@@ -590,7 +716,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/croatia-airlines.png",
     "circle": "icons/airlines/circle/croatia-airlines.png",
-    "iconSource": "App Store icon of \"Croatia Airlines\" by Croatia Airlines, Croatian Airline Company, d.d."
+    "iconSource": "App Store icon of \"Croatia Airlines\" by Croatia Airlines, Croatian Airline Company, d.d.",
+    "squareDark": "icons/airlines/square-dark/croatia-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/croatia-airlines.png"
   },
   "status:oneworld:emerald": {
     "file": "icons/airlines/oneworld-emerald.png",
@@ -598,7 +726,9 @@
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/oneworld-emerald.png",
-    "circle": "icons/airlines/circle/oneworld-emerald.png"
+    "circle": "icons/airlines/circle/oneworld-emerald.png",
+    "squareDark": "icons/airlines/square-dark/oneworld-emerald.png",
+    "circleDark": "icons/airlines/circle-dark/oneworld-emerald.png"
   },
   "status:oneworld:sapphire": {
     "file": "icons/airlines/oneworld-sapphire.png",
@@ -606,7 +736,9 @@
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/oneworld-sapphire.png",
-    "circle": "icons/airlines/circle/oneworld-sapphire.png"
+    "circle": "icons/airlines/circle/oneworld-sapphire.png",
+    "squareDark": "icons/airlines/square-dark/oneworld-sapphire.png",
+    "circleDark": "icons/airlines/circle-dark/oneworld-sapphire.png"
   },
   "status:oneworld:ruby": {
     "file": "icons/airlines/oneworld-ruby.png",
@@ -614,7 +746,9 @@
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/oneworld-ruby.png",
-    "circle": "icons/airlines/circle/oneworld-ruby.png"
+    "circle": "icons/airlines/circle/oneworld-ruby.png",
+    "squareDark": "icons/airlines/square-dark/oneworld-ruby.png",
+    "circleDark": "icons/airlines/circle-dark/oneworld-ruby.png"
   },
   "status:star:gold": {
     "file": "icons/airlines/star-alliance-gold.png",
@@ -622,7 +756,9 @@
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/star-alliance-gold.png",
-    "circle": "icons/airlines/circle/star-alliance-gold.png"
+    "circle": "icons/airlines/circle/star-alliance-gold.png",
+    "squareDark": "icons/airlines/square-dark/star-alliance-gold.png",
+    "circleDark": "icons/airlines/circle-dark/star-alliance-gold.png"
   },
   "status:star:silver": {
     "file": "icons/airlines/star-alliance-silver.png",
@@ -630,7 +766,9 @@
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/star-alliance-silver.png",
-    "circle": "icons/airlines/circle/star-alliance-silver.png"
+    "circle": "icons/airlines/circle/star-alliance-silver.png",
+    "squareDark": "icons/airlines/square-dark/star-alliance-silver.png",
+    "circleDark": "icons/airlines/circle-dark/star-alliance-silver.png"
   },
   "alliance:skyteam": {
     "file": "icons/airlines/skyteam.png",
@@ -638,7 +776,9 @@
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of SkyTeam; official logo file",
     "square": "icons/airlines/square/skyteam.png",
-    "circle": "icons/airlines/circle/skyteam.png"
+    "circle": "icons/airlines/circle/skyteam.png",
+    "squareDark": "icons/airlines/square-dark/skyteam.png",
+    "circleDark": "icons/airlines/circle-dark/skyteam.png"
   },
   "american:fj": {
     "file": "icons/airlines/fiji-airways.png",
@@ -646,7 +786,9 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/fiji-airways.png",
-    "circle": "icons/airlines/circle/fiji-airways.png"
+    "circle": "icons/airlines/circle/fiji-airways.png",
+    "squareDark": "icons/airlines/square-dark/fiji-airways.png",
+    "circleDark": "icons/airlines/circle-dark/fiji-airways.png"
   },
   "iag:level": {
     "file": "icons/airlines/level.png",
@@ -654,7 +796,9 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/level.png",
-    "circle": "icons/airlines/circle/level.png"
+    "circle": "icons/airlines/circle/level.png",
+    "squareDark": "icons/airlines/square-dark/level.png",
+    "circleDark": "icons/airlines/circle-dark/level.png"
   },
   "enrich": {
     "file": "icons/airlines/malaysia-airlines.png",
@@ -663,7 +807,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/malaysia-airlines.png",
     "circle": "icons/airlines/circle/malaysia-airlines.png",
-    "iconSource": "App Store icon of \"Malaysia Airlines\" by MALAYSIA AIRLINES BERHAD"
+    "iconSource": "App Store icon of \"Malaysia Airlines\" by MALAYSIA AIRLINES BERHAD",
+    "squareDark": "icons/airlines/square-dark/malaysia-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/malaysia-airlines.png"
   },
   "porter": {
     "file": "icons/airlines/porter-airlines.png",
@@ -672,7 +818,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/porter-airlines.png",
     "circle": "icons/airlines/circle/porter-airlines.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Official logo; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/porter-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/porter-airlines.png"
   },
   "starlux": {
     "file": "icons/airlines/starlux-airlines.png",
@@ -681,7 +829,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/starlux-airlines.png",
     "circle": "icons/airlines/circle/starlux-airlines.png",
-    "iconSource": "App Store icon of \"STARLUX\" by STARLUX Airlines Co., Ltd."
+    "iconSource": "App Store icon of \"STARLUX\" by STARLUX Airlines Co., Ltd.",
+    "squareDark": "icons/airlines/square-dark/starlux-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/starlux-airlines.png"
   },
   "virginaustralia": {
     "file": "icons/airlines/virgin-australia.png",
@@ -690,7 +840,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/virgin-australia.png",
     "circle": "icons/airlines/circle/virgin-australia.png",
-    "iconSource": "App Store icon of \"Virgin Australia\" by VIRGIN AUSTRALIA HOLDINGS PTY LIMITED"
+    "iconSource": "App Store icon of \"Virgin Australia\" by VIRGIN AUSTRALIA HOLDINGS PTY LIMITED",
+    "squareDark": "icons/airlines/square-dark/virgin-australia.png",
+    "circleDark": "icons/airlines/circle-dark/virgin-australia.png"
   },
   "viva": {
     "file": "icons/airlines/viva-aerobus.png",
@@ -699,7 +851,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/viva-aerobus.png",
     "circle": "icons/airlines/circle/viva-aerobus.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Official logo; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/viva-aerobus.png",
+    "circleDark": "icons/airlines/circle-dark/viva-aerobus.png"
   },
   "volaris": {
     "file": "icons/airlines/volaris.png",
@@ -708,7 +862,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/volaris.png",
     "circle": "icons/airlines/circle/volaris.png",
-    "iconSource": "App Store icon of \"Volaris\" by Concesionaria Vuela Compania de Aviacion, S.A.P.I. de C.V.; background flattened to a solid color"
+    "iconSource": "App Store icon of \"Volaris\" by Concesionaria Vuela Compania de Aviacion, S.A.P.I. de C.V.; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/volaris.png",
+    "circleDark": "icons/airlines/circle-dark/volaris.png"
   },
   "xiamen": {
     "file": "icons/airlines/xiamen-airlines.png",
@@ -716,7 +872,9 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/xiamen-airlines.png",
-    "circle": "icons/airlines/circle/xiamen-airlines.png"
+    "circle": "icons/airlines/circle/xiamen-airlines.png",
+    "squareDark": "icons/airlines/square-dark/xiamen-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/xiamen-airlines.png"
   },
   "hainan": {
     "file": "icons/airlines/hainan-airlines.png",
@@ -725,7 +883,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/hainan-airlines.png",
     "circle": "icons/airlines/circle/hainan-airlines.png",
-    "iconSource": "App Store icon of \"Hainan Airlines\" by Hainan Airlines Holding Co., Ltd.; background flattened to a solid color"
+    "iconSource": "App Store icon of \"Hainan Airlines\" by Hainan Airlines Holding Co., Ltd.; background flattened to a solid color",
+    "squareDark": "icons/airlines/square-dark/hainan-airlines.png",
+    "circleDark": "icons/airlines/circle-dark/hainan-airlines.png"
   },
   "status:skyteam:elite-plus": {
     "file": "icons/airlines/skyteam-elite-plus.png",
@@ -733,7 +893,9 @@
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/skyteam-elite-plus.png",
-    "circle": "icons/airlines/circle/skyteam-elite-plus.png"
+    "circle": "icons/airlines/circle/skyteam-elite-plus.png",
+    "squareDark": "icons/airlines/square-dark/skyteam-elite-plus.png",
+    "circleDark": "icons/airlines/circle-dark/skyteam-elite-plus.png"
   },
   "alliance:star": {
     "file": "icons/airlines/star-alliance.png",
@@ -742,7 +904,9 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/star-alliance.png",
     "circle": "icons/airlines/circle/star-alliance.png",
-    "iconSource": "App Store icon of \"Star Alliance\" by Star Alliance Services GmbH"
+    "iconSource": "App Store icon of \"Star Alliance\" by Star Alliance Services GmbH",
+    "squareDark": "icons/airlines/square-dark/star-alliance.png",
+    "circleDark": "icons/airlines/circle-dark/star-alliance.png"
   },
   "status:skyteam:elite": {
     "file": "icons/airlines/skyteam-elite.png",
@@ -750,6 +914,8 @@
     "source": "Made for this site from the official SkyTeam Elite Plus badge (supplied by the site owner): the word ELITE was kept and PLUS removed",
     "license": "Trademark of SkyTeam; adapted from an official badge",
     "square": "icons/airlines/square/skyteam-elite.png",
-    "circle": "icons/airlines/circle/skyteam-elite.png"
+    "circle": "icons/airlines/circle/skyteam-elite.png",
+    "squareDark": "icons/airlines/square-dark/skyteam-elite.png",
+    "circleDark": "icons/airlines/circle-dark/skyteam-elite.png"
   }
 }
