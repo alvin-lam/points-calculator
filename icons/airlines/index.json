@@ -287,13 +287,12 @@
     "circle": "icons/airlines/circle/cathay-pacific-ltd-logo.png"
   },
   "chinaairlines": {
-    "file": "icons/airlines/china-airlines-wordmark.svg",
-    "title": "China Airlines wordmark",
-    "source": "https://commons.wikimedia.org/wiki/File:China_Airlines_wordmark.svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "China Airlines",
-    "square": "icons/airlines/square/china-airlines-wordmark.png",
-    "circle": "icons/airlines/circle/china-airlines-wordmark.png"
+    "file": "icons/airlines/china-airlines.png",
+    "title": "China Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/china-airlines.png",
+    "circle": "icons/airlines/circle/china-airlines.png"
   },
   "eva": {
     "file": "icons/airlines/logo-eva-air.svg",
