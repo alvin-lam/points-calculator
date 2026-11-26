@@ -960,9 +960,11 @@
     var noteText = (r.capped ? "This trip hits the per-ticket earning cap. " : "") + p.note + (airline && airline.note ? " " + airline.note : "");
     var noteEl = $("resultNote");
     noteEl.replaceChildren();
-    noteSentences(noteText).forEach(function (line, i) {
-      if (i) noteEl.appendChild(document.createElement("br"));
-      noteEl.appendChild(document.createTextNode(line));
+    // A numbered list, one sentence per item.
+    noteSentences(noteText).forEach(function (line) {
+      var li = document.createElement("li");
+      li.textContent = line;
+      noteEl.appendChild(li);
     });
     // When the rules were last reviewed, and where they come from.
     var srcMap = window.SOURCES || {};

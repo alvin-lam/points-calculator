@@ -191,6 +191,10 @@ legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
 @media (max-width: 959px) { .result { padding-bottom: 72px; } }
 
 .note { font-size: 0.9rem; color: var(--muted); margin: 0; }
+/* The result note: one numbered sentence per line. */
+.note-list { padding-left: 1.6em; }
+.note-list li { margin: 0 0 2px; padding-left: 2px; }
+.note-list li::marker { color: var(--muted); font-variant-numeric: tabular-nums; }
 
 footer p { font-size: 0.8rem; color: var(--muted); }
 
