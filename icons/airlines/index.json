@@ -160,11 +160,10 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "united": {
-    "file": "icons/airlines/unitedairlines.svg",
+    "file": "icons/airlines/united-airlines.png",
     "title": "United Airlines",
-    "hex": "#002244",
-    "source": "https://www.united.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "virgin": {
     "file": "icons/airlines/virgin-atlantic-logo.svg",
@@ -572,6 +571,18 @@
   "viva": {
     "file": "icons/airlines/viva-aerobus.png",
     "title": "Viva Aerobus",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "volaris": {
+    "file": "icons/airlines/volaris.png",
+    "title": "Volaris",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "xiamen": {
+    "file": "icons/airlines/xiamen-airlines.png",
+    "title": "Xiamen Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file"
   }
