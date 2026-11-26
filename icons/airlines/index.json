@@ -6,11 +6,10 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "phoenix:ca": {
-    "file": "icons/airlines/airchina.svg",
+    "file": "icons/airlines/air-china.png",
     "title": "Air China",
-    "hex": "#E30E17",
-    "source": "https://www.airchina.com.cn/en/investor_relations",
-    "license": "CC0 1.0 (Simple Icons)"
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "flyingblue:af": {
     "file": "icons/airlines/air-france-logo.svg",
@@ -19,11 +18,10 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "airindia": {
-    "file": "icons/airlines/airindia.svg",
+    "file": "icons/airlines/air-india.png",
     "title": "Air India",
-    "hex": "#DA0E29",
-    "source": "https://www.airindia.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "transat": {
     "file": "icons/airlines/air-transat-logo.svg",
@@ -466,5 +464,11 @@
     "title": "Star Alliance (white, for dark backgrounds)",
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of Star Alliance; official logo file"
+  },
+  "breeze": {
+    "file": "icons/airlines/breeze-airways.png",
+    "title": "Breeze Airways",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   }
 }
