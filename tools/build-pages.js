@@ -18,7 +18,8 @@ function esc(s) {
 
 // Every menu entry: its value, airline name, and program name.
 function entries() {
-  const PROGRAMS = require("./build.js").compile().PROGRAMS;
+  const compiled = require("./build.js").compile();
+  const PROGRAMS = compiled.PROGRAMS;
   const out = [];
   Object.keys(PROGRAMS).forEach((key) => {
     const p = PROGRAMS[key];
@@ -27,11 +28,18 @@ function entries() {
         value: key + ":" + al.id,
         airline: al.name,
         program: (al.program && al.program.programName) || p.programName,
+        alliance: al.alliance || null,
       }));
     } else {
       const [airline, program] = p.name.split(" | ");
-      out.push({ value: key, airline, program: program || p.programName || airline });
+      out.push({ value: key, airline, program: program || p.programName || airline, alliance: p.alliance || null });
     }
+  });
+  const logos = JSON.parse(fs.readFileSync(path.join(ROOT, "icons/airlines/index.json"), "utf8"));
+  out.forEach((e) => {
+    e.code = compiled.AIRLINE_CODES[e.value] || null;
+    e.reviewed = compiled.REVIEWED[e.value] || null;
+    e.icon = logos[e.value] ? logos[e.value].square : null;
   });
   const seen = {};
   out.forEach((e) => {
@@ -55,10 +63,20 @@ function breadcrumb(e, url) {
   }, null, 2).replace(/^/gm, "  ") + "\n  </script>\n";
 }
 
+// The airline itself, with its code, alliance and logo, for search engines.
+function airlineData(e) {
+  const a = { "@type": "Airline", name: e.airline };
+  if (e.code) a.iataCode = e.code;
+  if (e.icon) a.logo = SITE + e.icon;
+  if (e.alliance) a.memberOf = { "@type": "Organization", name: e.alliance };
+  return a;
+}
+
 function page(html, e) {
   const title = e.airline + " Points Calculator: " + e.program + " | All Trips Considered";
-  const desc = "Estimate the " + e.program + " points or miles you will earn on a " + e.airline +
-    " flight. Choose your status and fare, and see the result in seconds.";
+  const desc = "Estimate the " + e.program + " points or miles you will earn on a " + e.airline + " flight" +
+    (e.alliance ? ", with your " + e.alliance + " status" : "") +
+    ". Choose your status, fare and card. Free, no sign-up.";
   const url = SITE + "airlines/" + e.slug + "/";
   return html
     .replace(/<head>/, '<head>\n  <base href="../../">')
@@ -73,8 +91,15 @@ function page(html, e) {
     .replace(/("name": ")Airline Points Calculator(")/, () => '"name": ' + JSON.stringify(e.airline + " Points Calculator"))
     .replace(/("url": ")[^"]*(")/, "$1" + url + "$2")
     .replace(/("description": ")[^"]*(")/, () => '"description": ' + JSON.stringify(desc))
+    .replace(/("applicationCategory": ")/, () => '"about": ' + JSON.stringify(airlineData(e)) + ',\n    "applicationCategory": "')
+    .replace(/(<meta property="og:image:alt" content=")[^"]*/, "$1" + esc(e.airline + " Points Calculator by All Trips Considered: " + e.program + ", free, no sign-up"))
     .replace(/  <\/script>\n/, "  </script>\n" + breadcrumb(e, url))
     .replace(/<html lang="en">/, '<html lang="en" data-preset="' + esc(e.value) + '">');
+}
+
+// The most recent review month across all programs, for the home page.
+function latest(list) {
+  return list.map((e) => e.reviewed).filter(Boolean).sort().pop() || null;
 }
 
 function build() {
@@ -83,7 +108,8 @@ function build() {
   const files = {};
   list.forEach((e) => { files["airlines/" + e.slug + "/index.html"] = page(html, e); });
   files["sitemap.xml"] = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
-    ["", "privacy.html", ...list.map((e) => "airlines/" + e.slug + "/")].map((p) => "  <url><loc>" + SITE + p + "</loc></url>").join("\n") + "\n</urlset>\n";
+    [{ p: "", m: latest(list) }, { p: "privacy.html" }, ...list.map((e) => ({ p: "airlines/" + e.slug + "/", m: e.reviewed }))]
+      .map((u) => "  <url><loc>" + SITE + u.p + "</loc>" + (u.m ? "<lastmod>" + u.m + "-01</lastmod>" : "") + "</url>").join("\n") + "\n</urlset>\n";
   files["robots.txt"] = "User-agent: *\nAllow: /\n\nSitemap: " + SITE + "sitemap.xml\n";
   return { list, files };
 }
