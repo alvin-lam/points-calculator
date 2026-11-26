@@ -31,4 +31,4 @@ Each airline, alliance and status badge also has a 512 by 512 square icon (`squa
 
 ## Light and dark icons
 
-`square/`, `circle/` and `menu/` hold the icons for light mode. `square-dark/`, `circle-dark/` and `menu-dark/` hold the dark-mode versions, linked in `index.json` as `squareDark` and `circleDark` and in `js/logos.json` as `iconDark`. Icons on a colored background are the same in both modes. Icons on white get the site's dark card color (#182130) behind the mark; white areas inside a mark stay white, and a few dark line marks (Finnair, Qatar, Aegean, SkyTeam and similar) turn white so they stay visible.
+`square/`, `circle/` and `menu/` hold the icons for light mode. `square-dark/`, `circle-dark/` and `menu-dark/` hold the dark-mode versions, linked in `index.json` as `squareDark` and `circleDark` and in `js/logos.json` as `iconDark`. Icons that already sit on a colored background are the same in both modes. Icons on white are inverted for dark mode: the background takes the airline's brand color (from `BRAND_COLORS`) and the mark turns white, or near-black on a light brand color. Alliances and status badges use the alliance or tier color.
