@@ -402,61 +402,6 @@
     "source": "https://www.flyfrontier.com/ (white logo recolored to Frontier green #006643, the site's brand color)",
     "license": "Airline's own website (trademark of Frontier Airlines)"
   },
-  "american:aa@white": {
-    "file": "icons/airlines/american-airlines-white.png",
-    "title": "American Airlines (white, for dark backgrounds)",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
-  },
-  "american:aa@stacked": {
-    "file": "icons/airlines/american-airlines-stacked.png",
-    "title": "American Airlines (stacked)",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
-  },
-  "american:aa@stacked-white": {
-    "file": "icons/airlines/american-airlines-stacked-white.png",
-    "title": "American Airlines (stacked, white)",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
-  },
-  "program:aadvantage": {
-    "file": "icons/airlines/aadvantage.png",
-    "title": "AAdvantage",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
-  },
-  "program:aadvantage@white": {
-    "file": "icons/airlines/aadvantage-white.png",
-    "title": "AAdvantage (white)",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
-  },
-  "program:avios": {
-    "file": "icons/airlines/avios.png",
-    "title": "Avios",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
-  },
-  "alliance:oneworld@members": {
-    "file": "icons/airlines/oneworld-members.png",
-    "title": "oneworld member airlines (Aer Lingus, American Airlines, British Airways, Finnair, Iberia, LEVEL)",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademarks of their owners; official logo file",
-    "use": "oneworld status"
-  },
-  "frontier@white": {
-    "file": "icons/airlines/frontier-airlines-white.png",
-    "title": "Frontier Airlines (white, for dark backgrounds)",
-    "source": "https://www.flyfrontier.com/",
-    "license": "Airline's own website (trademark of Frontier Airlines)"
-  },
-  "alliance:star@white": {
-    "file": "icons/airlines/star-alliance-white.png",
-    "title": "Star Alliance (white, for dark backgrounds)",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of Star Alliance; official logo file"
-  },
   "breeze": {
     "file": "icons/airlines/breeze-airways.png",
     "title": "Breeze Airways",
@@ -517,30 +462,6 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file"
   },
-  "alliance:skyteam@stacked": {
-    "file": "icons/airlines/skyteam-stacked.png",
-    "title": "SkyTeam (stacked, navy)",
-    "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of SkyTeam; official logo file"
-  },
-  "alliance:skyteam@stacked-blue": {
-    "file": "icons/airlines/skyteam-stacked-blue.png",
-    "title": "SkyTeam (stacked, blue)",
-    "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of SkyTeam; official logo file"
-  },
-  "alliance:skyteam@stacked-black": {
-    "file": "icons/airlines/skyteam-stacked-black.png",
-    "title": "SkyTeam (stacked, black)",
-    "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of SkyTeam; official logo file"
-  },
-  "alliance:skyteam@stacked-reverse": {
-    "file": "icons/airlines/skyteam-stacked-reverse.png",
-    "title": "SkyTeam (stacked, white on blue)",
-    "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of SkyTeam; official logo file"
-  },
   "enrich": {
     "file": "icons/airlines/malaysia-airlines.png",
     "title": "Malaysia Airlines",
@@ -589,12 +510,6 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file"
   },
-  "copa@white": {
-    "file": "icons/airlines/copa-airlines-white.svg",
-    "title": "Copa Airlines (white)",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
-    "license": "Trademark of its owner; official logo file"
-  },
   "status:skyteam:elite-plus": {
     "file": "icons/airlines/skyteam-elite-plus.png",
     "title": "SkyTeam Elite Plus",
@@ -604,12 +519,6 @@
   "alliance:star": {
     "file": "icons/airlines/star-alliance.png",
     "title": "Star Alliance",
-    "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
-  },
-  "alliance:star@stacked-white": {
-    "file": "icons/airlines/star-alliance-stacked-white.png",
-    "title": "Star Alliance (stacked, on black)",
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of its owner; official logo file"
   }
