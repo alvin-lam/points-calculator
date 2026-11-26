@@ -131,7 +131,7 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/logotipo-de-iberia.png",
     "circle": "icons/airlines/circle/logotipo-de-iberia.png",
-    "iconSource": "App Store icon of \"Iberia\" by IBERIA, LINEAS AEREAS DE ESPANA, SOCIEDAD ANONIMA OPERADORA"
+    "iconSource": "Built from the wing in Iberia's official logo (iberia.com, logo-iberia.svg), on Iberia red #D8192D"
   },
   "jal": {
     "file": "icons/airlines/japan-airlines.png",
@@ -391,7 +391,7 @@
     "author": "Unknown authorUnknown author",
     "square": "icons/airlines/square/aer-lingus-2022-logo.png",
     "circle": "icons/airlines/circle/aer-lingus-2022-logo.png",
-    "iconSource": "App Store icon of \"Aer Lingus\" by Aer Lingus"
+    "iconSource": "Built from the shamrock in Aer Lingus' official 2022 logo (vector), centered on white"
   },
   "icelandair": {
     "file": "icons/airlines/icelandairlogo.svg",
