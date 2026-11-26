@@ -778,5 +778,14 @@
     "square": "icons/airlines/square/scoot.png",
     "circle": "icons/airlines/circle/scoot.png",
     "iconSource": "Built from the official Scoot logo (flat yellow with the wordmark), matching the App Store icon of \"Scoot Mobile\" by Scoot Pte. Ltd."
+  },
+  "airbaltic": {
+    "file": "icons/airlines/airbaltic.svg",
+    "title": "airBaltic logo",
+    "source": "https://assets.airbaltic.com/f/260755/300x68/04eb3df12c/airbaltic.svg",
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/airbaltic.png",
+    "circle": "icons/airlines/circle/airbaltic.png",
+    "iconSource": "Official airBaltic wordmark (vector, airbaltic.com) on airBaltic lime, matching the App Store icon of \"airBaltic\" by AIR BALTIC CORPORATION AS"
   }
 }

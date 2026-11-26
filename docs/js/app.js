@@ -742,6 +742,11 @@
         : p.ratePer
           ? num.format(rate * p.ratePer) + " " + unitFor(rate * p.ratePer, p.unit) + " per " + sym + p.ratePer
           : num.format(rate) + " " + unitFor(rate, p.unit) + " per " + sym;
+      // Some fares add a fixed bonus on top (airBaltic: Flex +100).
+      if (fareType && fareType.addPoints) {
+        points += fareType.addPoints;
+        rateLabel += " + " + num.format(fareType.addPoints) + " fare bonus";
+      }
     }
 
     // Distance programs round to the nearest mile; spend programs round down
@@ -801,7 +806,8 @@
     // Aer Lingus); they still count toward the trip cost and card earning.
     // An addonsRate means extras earn their own flat rate (Air Transat).
     var earnAddons = p.addonsNoEarn || p.addonsRate ? 0 : addons;
-    var earnBase = airfare + (p.baseFareOnly ? 0 : carrier) + earnAddons;
+    // A few programs earn on taxes too (airBaltic: the ticket's total charges).
+    var earnBase = airfare + (p.baseFareOnly ? 0 : carrier) + earnAddons + (p.taxesEarn ? taxes : 0);
     var tripCost = airfare + carrier + addons + taxes;
     // GoWild!: the fare earns 1 mile, and the Early Booking Fee earns at
     // the status and fare type rate. There are no carrier-imposed fees.
@@ -924,7 +930,7 @@
       if (p.addons && !p.addonsNoEarn) row(dl, p.addonsLabel || "Seats, Bags and/or Bundles", usd.format(addons));
       if (!gowild && !p.noCarrier) row(dl, p.carrierLabel || "Carrier-imposed Fees", usd.format(carrier) + (p.baseFareOnly && carrier ? " (does not earn)" : ""));
       if (p.addons && p.addonsNoEarn) row(dl, p.addonsLabel, usd.format(addons) + (addons ? " (does not earn)" : ""));
-      row(dl, "Taxes & Airport Fees", usd.format(taxes));
+      row(dl, "Taxes & Airport Fees", usd.format(taxes) + (p.taxesEarn && taxes ? " (earns)" : ""));
       row(dl, "Total trip cost", usd.format(tripCost));
     }
     if (method === "distance" && !routeFixed) row(dl, "Distance flown", countedText(p, distance));

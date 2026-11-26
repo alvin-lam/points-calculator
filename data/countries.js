@@ -41,6 +41,7 @@ module.exports = [
   { id: "CL", label: "Chile \u{1F1E8}\u{1F1F1}", codes: ["CL", "CHL"] },
   { id: "CN", label: "China \u{1F1E8}\u{1F1F3}", codes: ["CN", "CHN"] },
   { id: "PL", label: "Poland \u{1F1F5}\u{1F1F1}", codes: ["PL", "POL"] },
+  { id: "LV", label: "Latvia \u{1F1F1}\u{1F1FB}", codes: ["LV", "LVA"] },
   { id: "HR", label: "Croatia \u{1F1ED}\u{1F1F7}", codes: ["HR", "HRV"] },
   { id: "IN", label: "India \u{1F1EE}\u{1F1F3}", codes: ["IN", "IND"] },
   { id: "TH", label: "Thailand \u{1F1F9}\u{1F1ED}", codes: ["TH", "THA"] },
