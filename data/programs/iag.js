@@ -136,7 +136,7 @@ module.exports = {
     ei: { code: "EI", color: "#006272", source: "https://www.aerlingus.com/aerclub/collecting-avios/collect-avios-in-the-air/" },
     ba: { code: "BA", color: "#075AAA", source: "https://www.britishairways.com/content/the-british-airways-club/avios/collecting-avios/flights" },
     ib: { code: "IB", color: "#D7192D", source: "https://www.iberia.com/us/iberia-club/earn-avios-when-you-fly/" },
-    level: { color: "#00AADB", source: "https://iberiaclubmagazine.iberia.com/en/collect-more-avios/flights/level/" },
+    level: { code: "LL", color: "#00AADB", source: "https://iberiaclubmagazine.iberia.com/en/collect-more-avios/flights/level/" },
     vy: { code: "VY", color: "#FFCC00", source: "https://help.vueling.com/hc/en-gb/articles/19798837592593-Avios-and-how-to-use-them" }
   },
   // Published examples. The browser tests check each one.

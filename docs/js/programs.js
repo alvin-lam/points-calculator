@@ -221,6 +221,7 @@ window.AIRLINE_CODES = {
   "iag:ei": "EI",
   "iag:ba": "BA",
   "iag:ib": "IB",
+  "iag:level": "LL",
   "iag:vy": "VY",
   "icelandair": "FI",
   "jal": "JL",
