@@ -4,6 +4,8 @@ A static web app that estimates the points or miles you earn on a flight. It cov
 
 Live site: https://points.alltripsconsidered.com/
 
+![Airline Points Calculator link preview](docs/icons/og-image.png)
+
 ## Features
 
 ### Using the calculator
@@ -291,5 +293,7 @@ Estimates only. Earning rules change often and promotions, credit cards, partner
 - **Airport data:** [OurAirports](https://ourairports.com/data/) (public domain), in `docs/js/airports.json`.
 - **Airline and alliance logos:** trademarks of their owners. `docs/icons/airlines/index.json` records each logo's source and license; some come from Wikimedia Commons.
 - **Earning rules:** from each program's published terms. Each file in `data/programs/` links its `source`.
+
+<img src="docs/icons/icon-512.png" alt="Airline Points Calculator app icon" width="96" height="96">
 
 © 2026 All Trips Considered. All rights reserved.
