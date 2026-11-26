@@ -193,21 +193,21 @@
           <select id="routeSelect"></select>
           <small id="routeHint">The airline's published distance for each route.</small>
         </div>
-        <span class="field-label">Find the distance by airport</span>
+        <span class="field-label">Find the distance by airport or city</span>
         <div class="airport-row">
           <label class="airport-input"><span class="visually-hidden">From airport</span>
-            <input id="fromAirport" type="text" list="airportList" placeholder="From (e.g. JFK)" autocomplete="off" spellcheck="false" autocapitalize="characters">
+            <input id="fromAirport" type="text" list="airportList" placeholder="From (JFK or city)" autocomplete="off" spellcheck="false" autocapitalize="words">
           </label>
           <span class="airport-arrow" aria-hidden="true">→</span>
           <label class="airport-input"><span class="visually-hidden">To airport</span>
-            <input id="toAirport" type="text" list="airportList" placeholder="To (e.g. DOH)" autocomplete="off" spellcheck="false" autocapitalize="characters">
+            <input id="toAirport" type="text" list="airportList" placeholder="To (DOH or city)" autocomplete="off" spellcheck="false" autocapitalize="words">
           </label>
         </div>
         <datalist id="airportList"></datalist>
         <small id="airportResult" class="airport-result" aria-live="polite"></small>
         <label for="distance" class="distance-label">Miles flown</label>
         <input id="distance" type="number" inputmode="numeric" min="0" step="1" placeholder="e.g. 1,200">
-        <small id="distanceHint">This program awards points by distance, not by price. Enter airports to fill this in, or type the miles yourself.</small>
+        <small id="distanceHint">This program awards points by distance, not by price. Enter airport codes or cities to fill this in, or type the miles yourself.</small>
       </div>
 
       <div class="field" id="zoneField" hidden>

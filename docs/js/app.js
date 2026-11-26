@@ -67,7 +67,7 @@
     document.querySelector('label[for="distance"]').textContent = "Kilometres flown";
     distanceEl.placeholder = "e.g. " + num.format(2000);
     var hint = $("distanceHint");
-    if (hint) hint.textContent = "This program awards points by distance, not by price. Enter airports to fill this in, or type the kilometres yourself. Airlines count miles, so it is converted.";
+    if (hint) hint.textContent = "This program awards points by distance, not by price. Enter airport codes or cities to fill this in, or type the kilometres yourself. Airlines count miles, so it is converted.";
   }
   function distText(miles) {
     return useKm
@@ -1053,8 +1053,40 @@
     if (!from.trim() || !to.trim()) { airportResult.textContent = ""; return; }
     if (!window.AIRPORTS) { airportResult.textContent = "Loading airports\u2026"; return; }
     var D = window.Distance;
-    var unknown = [from, to].filter(function (v) { var c = D.parseCode(v); return !c || !window.AIRPORTS[c]; });
-    if (unknown.length) { airportResult.textContent = "Use a three-letter airport code, such as JFK or DOH."; return; }
+    var picks = [from, to].map(function (v) { return D.resolveAirport(window.AIRPORTS, v); });
+    var unknown = [from, to].filter(function (v, i) { return !picks[i]; });
+    if (unknown.length) { airportResult.textContent = "No airport found for \u201c" + unknown[0].trim() + "\u201d. Enter a three-letter code, such as JFK, or a city name."; return; }
+    // A city with more than one airport: offer each as a button, main
+    // international airports first.
+    var si = picks[0].matches ? 0 : (picks[1].matches ? 1 : -1);
+    if (si !== -1) {
+      var A0 = window.AIRPORTS, input = si === 0 ? fromAirport : toAirport;
+      var list = picks[si].matches.slice().sort(function (a, b) {
+        var ia = /international/i.test(A0[a][3]) ? 0 : 1, ib = /international/i.test(A0[b][3]) ? 0 : 1;
+        return ia - ib || A0[a][3].localeCompare(A0[b][3]);
+      });
+      // Leaving the box fires change again; keep the same buttons so a
+      // click on one still lands.
+      var key = si + ":" + list.join(",");
+      if (airportResult.dataset.picks === key && airportResult.querySelector(".airport-pick")) return;
+      airportResult.replaceChildren(document.createTextNode((si === 0 ? "From" : "To") + ": more than one airport matches. Pick one:"));
+      airportResult.dataset.picks = key;
+      var wrap = document.createElement("span");
+      wrap.className = "airport-picks";
+      list.slice(0, 10).forEach(function (c) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "airport-pick";
+        b.textContent = c + " \u00b7 " + A0[c][3] + (A0[c][4] ? ", " + A0[c][4] : "");
+        b.addEventListener("click", function () {
+          input.value = D.airportLabel(c, A0[c]);
+          updateAirportDistance();
+        });
+        wrap.appendChild(b);
+      });
+      airportResult.appendChild(wrap);
+      return;
+    }
     var r = D.airportMiles(window.AIRPORTS, from, to);
     var A = window.AIRPORTS;
     var published = routeMiles(current(), r.from, r.to);

@@ -25,9 +25,61 @@
     return m ? m[1] : null;
   }
 
+  // Lower case without accents, so "zurich" finds "Zürich".
+  function fold(text) {
+    return String(text || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+  }
+
+  // Main airports of cities whose airports the data lists under other
+  // town names (Narita, Newark, Dulles) or that share a name with a
+  // smaller city elsewhere (London, Ontario; Sydney, Nova Scotia).
+  var METROS = {
+    "tokyo": ["HND", "NRT"], "osaka": ["KIX", "ITM"], "seoul": ["ICN", "GMP"],
+    "taipei": ["TPE", "TSA"], "shanghai": ["PVG", "SHA"], "beijing": ["PEK", "PKX"],
+    "bangkok": ["BKK", "DMK"], "jakarta": ["CGK", "HLP"], "kuala lumpur": ["KUL", "SZB"],
+    "dubai": ["DXB", "DWC"], "istanbul": ["IST", "SAW"], "moscow": ["SVO", "DME", "VKO"],
+    "london": ["LHR", "LGW", "STN", "LTN", "LCY", "SEN"], "paris": ["CDG", "ORY"],
+    "milan": ["MXP", "LIN", "BGY"], "rome": ["FCO", "CIA"], "stockholm": ["ARN", "BMA"],
+    "new york": ["JFK", "EWR", "LGA"], "washington": ["IAD", "DCA", "BWI"],
+    "chicago": ["ORD", "MDW"], "houston": ["IAH", "HOU"], "dallas": ["DFW", "DAL"],
+    "los angeles": ["LAX"], "san francisco": ["SFO"], "miami": ["MIA", "FLL"],
+    "toronto": ["YYZ", "YTZ"], "montreal": ["YUL"], "vancouver": ["YVR"],
+    "mexico city": ["MEX", "NLU"], "sao paulo": ["GRU", "CGH", "VCP"],
+    "rio de janeiro": ["GIG", "SDU"], "buenos aires": ["EZE", "AEP"],
+    "sydney": ["SYD"], "melbourne": ["MEL", "AVV"], "auckland": ["AKL"], "bali": ["DPS"]
+  };
+
+  // Find the airport for what the visitor typed: a code, a suggestion, a
+  // city name ("Tokyo") or an airport name ("Haneda"). Returns
+  // { code } for one airport, { matches: [codes] } when a city has several,
+  // or null when nothing matches.
+  function resolveAirport(airports, text) {
+    var code = parseCode(text);
+    if (code && airports[code]) return { code: code };
+    var q = fold(text);
+    if (q.length < 2) return null;
+    var metro = (METROS[q] || []).filter(function (c) { return airports[c]; });
+    if (metro.length === 1) return { code: metro[0] };
+    if (metro.length > 1) return { matches: metro };
+    var codes = Object.keys(airports);
+    var tests = [
+      function (a) { return fold(a[2]) === q; },
+      function (a) { return fold(a[3]) === q; },
+      function (a) { return fold(a[2]).indexOf(q) === 0; },
+      function (a) { return (" " + fold(a[3])).indexOf(" " + q) !== -1; }
+    ];
+    for (var i = 0; i < tests.length; i++) {
+      var hits = codes.filter(function (c) { return tests[i](airports[c]); });
+      if (hits.length === 1) return { code: hits[0] };
+      if (hits.length > 1) return { matches: hits };
+    }
+    return null;
+  }
+
   // Look up both airports and return the rounded distance, or null.
   function airportMiles(airports, fromText, toText) {
-    var from = parseCode(fromText), to = parseCode(toText);
+    var a = resolveAirport(airports, fromText), b = resolveAirport(airports, toText);
+    var from = a && a.code, to = b && b.code;
     if (!from || !to || !airports[from] || !airports[to]) return null;
     return {
       from: from,
@@ -46,6 +98,7 @@
   var api = {
     greatCircleMiles: greatCircleMiles,
     parseCode: parseCode,
+    resolveAirport: resolveAirport,
     airportMiles: airportMiles,
     airportLabel: airportLabel
   };

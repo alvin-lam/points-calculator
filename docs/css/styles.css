@@ -434,11 +434,16 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .airport-row { display: flex; align-items: center; gap: 8px; }
 .airport-input { flex: 1; min-width: 0; margin: 0; font-weight: 400; }
-.airport-input input { text-transform: uppercase; }
-.airport-input input::placeholder { text-transform: none; }
 .airport-arrow { color: var(--muted); flex: none; }
 .airport-result { margin: 6px 0 12px; }
 .airport-result:empty { margin: 0 0 8px; }
+.airport-picks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.airport-pick {
+  width: auto; min-height: 0; margin: 0; font: inherit; font-size: 0.85rem; font-weight: 500; line-height: 1.3;
+  padding: 5px 12px; border-radius: 999px; text-align: left;
+  border: 1px solid var(--border); background: var(--card); color: var(--text); cursor: pointer;
+}
+.airport-pick:hover, .airport-pick:focus-visible { border-color: var(--accent); color: var(--accent); }
 .distance-label { margin-top: 4px; }
 
 /* Rules review date and source under each result. */
