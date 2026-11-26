@@ -32,11 +32,11 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "american:aa": {
-    "file": "icons/airlines/americanairlines.svg",
-    "title": "American Airlines",
-    "hex": "#0078D2",
-    "source": "https://news.aa.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/american-airlines-wordmark-2013.svg",
+    "title": "American Airlines wordmark (2013)",
+    "source": "https://commons.wikimedia.org/wiki/File:American_Airlines_wordmark_(2013).svg",
+    "license": "Public domain (Wikimedia Commons)",
+    "author": "American Airlines"
   },
   "ana": {
     "file": "icons/airlines/all-nippon-airways-logo.svg",
@@ -52,11 +52,11 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "iag:ba": {
-    "file": "icons/airlines/britishairways.svg",
-    "title": "British Airways",
-    "hex": "#2E5C99",
-    "source": "https://www.britishairways.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/british-airways-logo.svg",
+    "title": "BRITISH AIRWAYS logo",
+    "source": "https://commons.wikimedia.org/wiki/File:BRITISH_AIRWAYS_logo.svg",
+    "license": "Public domain (Wikimedia Commons)",
+    "author": "British Airways Plc."
   },
   "chinaeastern": {
     "file": "icons/airlines/chinaeasternairlines.svg",
@@ -98,11 +98,11 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "jal": {
-    "file": "icons/airlines/japanairlines.svg",
-    "title": "Japan Airlines",
-    "hex": "#C00000",
-    "source": "https://www.jal.co.jp",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/japan-airlines-wordmark-2011.svg",
+    "title": "Japan Airlines Wordmark (2011)",
+    "source": "https://commons.wikimedia.org/wiki/File:Japan_Airlines_Wordmark_(2011).svg",
+    "license": "Public domain (Wikimedia Commons)",
+    "author": "Copyright©Japan Airlines. All rights reserved."
   },
   "jetblue": {
     "file": "icons/airlines/jetblue-airways-logo.svg",
@@ -130,18 +130,18 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "norwegian": {
-    "file": "icons/airlines/norwegian.svg",
-    "title": "Norwegian",
-    "hex": "#D81939",
-    "source": "https://www.norwegian.com/ie/travel-info/on-board/in-flight-entertainment/magazine/",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/norwegian-logo-2024.svg",
+    "title": "Norwegian Logo 2024",
+    "source": "https://commons.wikimedia.org/wiki/File:Norwegian_Logo_2024.svg",
+    "license": "Public domain (Wikimedia Commons)",
+    "author": "Norwegian Air Shuttle ASA"
   },
   "qantas": {
-    "file": "icons/airlines/qantas.svg",
-    "title": "Qantas",
-    "hex": "#E40000",
-    "source": "https://www.qantas.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/qantas-wordmark-2016.svg",
+    "title": "Qantas wordmark 2016",
+    "source": "https://commons.wikimedia.org/wiki/File:Qantas_wordmark_2016.svg",
+    "license": "Public domain (Wikimedia Commons)",
+    "author": "Qantas Airways Limited"
   },
   "qatar": {
     "file": "icons/airlines/qatar-airways-logo.svg",
