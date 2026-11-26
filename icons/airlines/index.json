@@ -544,5 +544,35 @@
     "title": "SkyTeam (stacked, white on blue)",
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of SkyTeam; official logo file"
+  },
+  "enrich": {
+    "file": "icons/airlines/malaysia-airlines.png",
+    "title": "Malaysia Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "porter": {
+    "file": "icons/airlines/porter-airlines.png",
+    "title": "Porter Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "starlux": {
+    "file": "icons/airlines/starlux-airlines.png",
+    "title": "STARLUX Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "virginaustralia": {
+    "file": "icons/airlines/virgin-australia.png",
+    "title": "Virgin Australia",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "viva": {
+    "file": "icons/airlines/viva-aerobus.png",
+    "title": "Viva Aerobus",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   }
 }
