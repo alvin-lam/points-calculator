@@ -464,10 +464,10 @@
     "circle": "icons/airlines/circle/air-dolomiti-logo.png"
   },
   "milesandmore:az": {
-    "file": "icons/airlines/ita-airways-logo.svg",
-    "title": "ITA Airways Logo",
-    "source": "https://commons.wikimedia.org/wiki/File:ITA_Airways_Logo.svg",
-    "license": "Public domain (Wikimedia Commons)",
+    "file": "icons/airlines/ita-airways.png",
+    "title": "ITA Airways",
+    "source": "Extracted from the official ITA Airways app splash screen supplied by the site owner; white artwork recolored blue",
+    "license": "Trademark of its owner; official logo artwork",
     "author": "ITA Airways",
     "square": "icons/airlines/square/ita-airways-logo.png",
     "circle": "icons/airlines/circle/ita-airways-logo.png"
