@@ -217,7 +217,6 @@ Each new program needs an official, complete earning table before it is built. M
 
 ### Programs to add
 
-- [ ] **Emirates Skywards flights** (Middle East): Emirates is in the calculator for its US credit cards only (Barclays, 3 miles per dollar on Emirates purchases), and the flight itself shows as not estimated. Emirates publishes only a per-ticket miles calculator, not an earning table. Calculator results for a few routes, all fare types, would let us work out the rule.
 - [ ] **Vietnam Airlines Lotusmiles** (Asia): needs the current international and domestic accrual tables. The website is blocked here, and search results show conflicting versions.
 - [ ] **Garuda Indonesia GarudaMiles** (Asia): needs the full accrual table effective 8 September 2025, with status bonuses. The website is blocked here.
 - [ ] **Philippine Airlines Mabuhay Miles** (Asia): needs the earning table for Philippine Airlines' own flights. Only the codeshare table is published.
