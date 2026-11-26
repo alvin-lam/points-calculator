@@ -4,7 +4,7 @@ Logos and icons for the 74 airlines in the calculator, the 3 alliances (oneworld
 
 ## Logo sheet
 
-Every full logo, square icon and circular icon, grouped by country (countries and airlines A to Z), then one group per alliance with its status badges:
+Every full logo, square icon and circular icon, grouped by country (countries and airlines A to Z), then one group per alliance with its status badges. Each airline shows its brand color swatch and hex value:
 
 ![Logo sheet: the full logo, square icon and circular icon for each airline, alliance and status badge](logo-sheet.png)
 
