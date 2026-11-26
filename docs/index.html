@@ -196,14 +196,15 @@
         <span class="field-label">Find the distance by airport or city</span>
         <div class="airport-row">
           <label class="airport-input"><span class="visually-hidden">From airport</span>
-            <input id="fromAirport" type="text" list="airportList" placeholder="From (JFK or city)" autocomplete="off" spellcheck="false" autocapitalize="words">
+            <input id="fromAirport" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="fromAirportList" placeholder="From (JFK or city)" autocomplete="off" spellcheck="false" autocapitalize="words">
           </label>
           <span class="airport-arrow" aria-hidden="true">→</span>
           <label class="airport-input"><span class="visually-hidden">To airport</span>
-            <input id="toAirport" type="text" list="airportList" placeholder="To (DOH or city)" autocomplete="off" spellcheck="false" autocapitalize="words">
+            <input id="toAirport" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="toAirportList" placeholder="To (DOH or city)" autocomplete="off" spellcheck="false" autocapitalize="words">
           </label>
+          <ul id="fromAirportList" class="combo-list airport-list" role="listbox" aria-label="From airport" hidden></ul>
+          <ul id="toAirportList" class="combo-list airport-list" role="listbox" aria-label="To airport" hidden></ul>
         </div>
-        <datalist id="airportList"></datalist>
         <small id="airportResult" class="airport-result" aria-live="polite"></small>
         <label for="distance" class="distance-label">Miles flown</label>
         <input id="distance" type="number" inputmode="numeric" min="0" step="1" placeholder="e.g. 1,200">

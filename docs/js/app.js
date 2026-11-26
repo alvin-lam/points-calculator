@@ -982,20 +982,10 @@
   // Airport lookup for distance-based programs. The airport list loads the
   // first time it is needed, so other visitors never download it.
   var fromAirport = $("fromAirport"), toAirport = $("toAirport");
-  var airportResult = $("airportResult"), airportList = $("airportList");
+  var airportResult = $("airportResult");
   var airportsLoading = false;
-  function fillAirportList() {
-    if (!window.AIRPORTS || airportList.children.length) return;
-    var frag = document.createDocumentFragment();
-    Object.keys(window.AIRPORTS).forEach(function (code) {
-      var o = document.createElement("option");
-      o.value = window.Distance.airportLabel(code, window.AIRPORTS[code]);
-      frag.appendChild(o);
-    });
-    airportList.appendChild(frag);
-  }
   function ensureAirports() {
-    if (window.AIRPORTS) { fillAirportList(); return; }
+    if (window.AIRPORTS) return;
     if (airportsLoading) return;
     airportsLoading = true;
     // Data only (JSON), fetched from this site; no script is loaded.
@@ -1004,8 +994,8 @@
       .then(function (data) {
         if (!data || typeof data !== "object") throw new Error("bad data");
         window.AIRPORTS = data;
-        fillAirportList();
         updateAirportDistance();
+        [fromAirport, toAirport].forEach(function (el) { el.dispatchEvent(new Event("airports-ready")); });
       })
       .catch(function () {
         airportsLoading = false;
@@ -1103,11 +1093,96 @@
       ": " + distText(r.miles) + " (great-circle distance; airlines may count slightly differently).";
     resultEl.hidden = true;
   }
-  [fromAirport, toAirport].forEach(function (el) {
-    el.addEventListener("focus", ensureAirports);
-    el.addEventListener("input", updateAirportDistance);
-    el.addEventListener("change", updateAirportDistance);
-  });
+  // Each airport box is a searchable dropdown: typing a code, city or
+  // airport name lists the matches; a click or Enter picks one.
+  function airportCombo(input, list) {
+    var act = -1;
+    function items() { return list.querySelectorAll('[role="option"]'); }
+    function setAct(i) {
+      var all = items();
+      if (!all.length) { act = -1; input.removeAttribute("aria-activedescendant"); return; }
+      act = (i + all.length) % all.length;
+      all.forEach(function (el, n) { el.classList.toggle("active", n === act); el.setAttribute("aria-selected", n === act ? "true" : "false"); });
+      input.setAttribute("aria-activedescendant", all[act].id);
+      all[act].scrollIntoView({ block: "nearest" });
+    }
+    function close() {
+      list.hidden = true;
+      input.setAttribute("aria-expanded", "false");
+      input.removeAttribute("aria-activedescendant");
+      act = -1;
+    }
+    function open() {
+      var A = window.AIRPORTS;
+      var q = input.value.trim();
+      // A box already holding a chosen airport shows no list.
+      if (!A || !q || /^[A-Za-z]{3} - /.test(q)) { close(); return; }
+      var codes = window.Distance.searchAirports(A, q, 30);
+      list.replaceChildren();
+      codes.forEach(function (c, n) {
+        var a = A[c];
+        var li = document.createElement("li");
+        li.id = list.id + "Opt" + n;
+        li.setAttribute("role", "option");
+        li.dataset.code = c;
+        var code = document.createElement("span");
+        code.className = "airport-code";
+        code.textContent = c;
+        var place = document.createElement("span");
+        place.className = "airport-place";
+        place.textContent = (a[2] || a[3]) + (a[4] ? ", " + a[4] : "");
+        var name = document.createElement("span");
+        name.className = "airport-name";
+        name.textContent = a[3];
+        li.append(code, place, name);
+        list.appendChild(li);
+      });
+      if (!codes.length) {
+        var none = document.createElement("li");
+        none.className = "combo-empty";
+        none.setAttribute("role", "presentation");
+        none.textContent = "No airport matches \u201c" + q + "\u201d.";
+        list.appendChild(none);
+      }
+      list.hidden = false;
+      input.setAttribute("aria-expanded", "true");
+      act = -1;
+      if (codes.length) setAct(0);
+    }
+    function pick(code) {
+      var a = window.AIRPORTS[code];
+      input.value = code + " - " + (a[2] || a[3]);
+      close();
+      updateAirportDistance();
+    }
+    input.addEventListener("focus", function () { ensureAirports(); if (input.value) input.select(); });
+    input.addEventListener("input", function () {
+      open();
+      // While typing, show the distance only once both boxes name one airport.
+      var A = window.AIRPORTS, D = window.Distance;
+      var ok = A && [fromAirport, toAirport].every(function (el) { var r = D.resolveAirport(A, el.value); return r && r.code; });
+      if (ok) updateAirportDistance(); else { airportResult.textContent = ""; delete airportResult.dataset.picks; }
+    });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowDown") { e.preventDefault(); if (list.hidden) open(); setAct(act + 1); }
+      else if (e.key === "ArrowUp") { e.preventDefault(); if (list.hidden) open(); setAct(act - 1); }
+      else if (e.key === "Enter" && !list.hidden) {
+        e.preventDefault();
+        var one = items()[act >= 0 ? act : 0];
+        if (one) pick(one.dataset.code);
+      } else if (e.key === "Escape") close();
+    });
+    input.addEventListener("blur", function () { setTimeout(function () { close(); updateAirportDistance(); }, 150); });
+    list.addEventListener("mousedown", function (e) {
+      e.preventDefault();
+      var li = e.target.closest('[role="option"]');
+      if (li) pick(li.dataset.code);
+    });
+    // The list can open once the airport data arrives.
+    input.addEventListener("airports-ready", function () { if (document.activeElement === input) open(); });
+  }
+  airportCombo(fromAirport, $("fromAirportList"));
+  airportCombo(toAirport, $("toAirportList"));
 
   // Light and dark mode. "System" follows the device; Light and Dark
   // override it and are remembered on this device.

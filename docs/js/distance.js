@@ -46,7 +46,11 @@
     "toronto": ["YYZ", "YTZ"], "montreal": ["YUL"], "vancouver": ["YVR"],
     "mexico city": ["MEX", "NLU"], "sao paulo": ["GRU", "CGH", "VCP"],
     "rio de janeiro": ["GIG", "SDU"], "buenos aires": ["EZE", "AEP"],
-    "sydney": ["SYD"], "melbourne": ["MEL", "AVV"], "auckland": ["AKL"], "bali": ["DPS"]
+    "sydney": ["SYD"], "melbourne": ["MEL", "AVV"], "auckland": ["AKL"], "bali": ["DPS"],
+    "panama": ["PTY", "PAC"], "panama city": ["PTY", "PAC", "ECP"], "montevideo": ["MVD"],
+    "asuncion": ["ASU"], "la paz": ["LPB", "LAP"], "seattle": ["SEA", "BFI"],
+    "barcelona": ["BCN", "BLA"], "brussels": ["BRU", "CRL"], "johannesburg": ["JNB", "HLA"],
+    "bengaluru": ["BLR"], "okinawa": ["OKA"], "fiji": ["NAN", "SUV"]
   };
 
   // Find the airport for what the visitor typed: a code, a suggestion, a
@@ -76,6 +80,31 @@
     return null;
   }
 
+  // Airports for the dropdown, best match first: the exact code, a city's
+  // main airports, the city, code and city starts, then airport names.
+  function searchAirports(airports, text, limit) {
+    var q = fold(text);
+    if (!q) return [];
+    var metro = METROS[q] || [];
+    var hits = [];
+    Object.keys(airports).forEach(function (code) {
+      var a = airports[code], c = code.toLowerCase(), city = fold(a[2]), name = fold(a[3]);
+      var score = c === q ? 0
+        : metro.indexOf(code) !== -1 ? 1
+        : city === q ? 2
+        : q.length <= 3 && c.indexOf(q) === 0 ? 3
+        : city.indexOf(q) === 0 ? 4
+        : (" " + name).indexOf(" " + q) !== -1 ? 5
+        : city.indexOf(q) !== -1 || name.indexOf(q) !== -1 ? 6 : -1;
+      if (score === -1) return;
+      // A city's main airports keep the order listed in METROS.
+      var intl = score === 1 ? metro.indexOf(code) : (/international/.test(name) ? 0 : 1);
+      hits.push([score, intl, city || name, code]);
+    });
+    hits.sort(function (x, y) { return x[0] - y[0] || x[1] - y[1] || (x[2] < y[2] ? -1 : x[2] > y[2] ? 1 : 0); });
+    return hits.slice(0, limit || 30).map(function (h) { return h[3]; });
+  }
+
   // Look up both airports and return the rounded distance, or null.
   function airportMiles(airports, fromText, toText) {
     var a = resolveAirport(airports, fromText), b = resolveAirport(airports, toText);
@@ -99,6 +128,7 @@
     greatCircleMiles: greatCircleMiles,
     parseCode: parseCode,
     resolveAirport: resolveAirport,
+    searchAirports: searchAirports,
     airportMiles: airportMiles,
     airportLabel: airportLabel
   };
