@@ -284,6 +284,7 @@ These are not added yet. Each says what would change that.
 - Miles & More credit cards (Germany): earn 1 mile per €2 everywhere, with no bonus on Lufthansa tickets, so they are not added. Add them if a Lufthansa purchase bonus appears.
 - Sun Country Rewards: merging into Allegiant Allways Rewards, likely by about May 2028. Not added for that reason.
 - Asiana Club: merging into Korean Air SKYPASS. Not added for that reason.
+- Condor: has no frequent flyer program of its own. Its flights earn only in partner programs (Alaska Atmos Rewards and JetBlue TrueBlue); Emirates Skywards stopped earning on Condor flights from 1 May 2026. Condor has confirmed it is considering its own program (a leaked draft calls it "Stripes"). Add Condor once that program launches with a published earning table.
 - Air Transat Staria credit cards: Desjardins and Visa plan cards that earn Staria points, launching later in 2027. Fees and earning rates are not yet published. Add them to the Air Transat entry once they launch.
 
 ## Disclaimer
