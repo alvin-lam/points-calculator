@@ -677,8 +677,22 @@
     var cardPoints = card ? (p.decimals ? Math.floor(charged * cardRate * 100) / 100 : Math.floor(charged * cardRate)) : 0;
     var total = r.points + cardPoints;
 
-    $("resultProgram").textContent = (airline ? airlineLabel(selection().program, airline) : p.name) + " · " + statusLabel(status) +
-      (fareType ? " · " + fareType.name : "") + (isCardmember(p) ? " · Cardmember rate" : "") + (card ? " · " + card.name : "");
+    // One line each: airline, membership level, alliance status, fare and card.
+    var lineSel = selection();
+    var lineAlliance = lineSel.airline ? lineSel.airline.alliance : lineSel.program.alliance;
+    var lines = [
+      airline ? airlineLabel(lineSel.program, airline) : p.name,
+      status.name,
+      lineAlliance && status.alliance ? lineAlliance + " " + status.alliance : "",
+      fareType ? fareType.name : "",
+      card ? card.name + (isCardmember(p) ? " (Cardmember rate)" : "") : (isCardmember(p) ? "Cardmember rate" : "")
+    ].filter(Boolean);
+    var programLine = $("resultProgram");
+    programLine.replaceChildren();
+    lines.forEach(function (text, i) {
+      if (i) programLine.appendChild(document.createElement("br"));
+      programLine.appendChild(document.createTextNode(text));
+    });
     var resultLogo = $("resultLogo");
     var logoInfo = LOGOS[programEl.value];
     if (logoInfo) {
