@@ -54,11 +54,10 @@
     "license": "Trademark of its owner; official logo file"
   },
   "chinaeastern": {
-    "file": "icons/airlines/chinaeasternairlines.svg",
+    "file": "icons/airlines/china-eastern-airlines.png",
     "title": "China Eastern Airlines",
-    "hex": "#1A2477",
-    "source": "https://uk.ceair.com/newCMS/uk/en/content/en_Footer/Support/201904/t20190404_5763.html",
-    "license": "CC0 1.0 (Simple Icons)"
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "chinasouthern": {
     "file": "icons/airlines/china-southern-airlines.png",
@@ -321,11 +320,10 @@
     "author": "Brussels Airlines"
   },
   "milesandmore:wk": {
-    "file": "icons/airlines/edelweiss-air-wordmark.svg",
-    "title": "Edelweiss Air wordmark",
-    "source": "https://commons.wikimedia.org/wiki/File:Edelweiss_Air_wordmark.svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "Edelweiss Air AG"
+    "file": "icons/airlines/edelweiss.png",
+    "title": "Edelweiss",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "milesandmore:en": {
     "file": "icons/airlines/air-dolomiti-logo.svg",
@@ -467,6 +465,12 @@
   "breeze": {
     "file": "icons/airlines/breeze-airways.png",
     "title": "Breeze Airways",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "milesandmore:ou": {
+    "file": "icons/airlines/croatia-airlines.svg",
+    "title": "Croatia Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file"
   }

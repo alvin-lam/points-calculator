@@ -1,6 +1,6 @@
 # Airline and alliance logos
 
-Logos for 61 airlines and 1 alliance in the calculator. `index.json` maps each calculator menu value (for example `united`, `milesandmore:lh` or `alliance:oneworld`) to its file, name, source and license.
+Logos for 62 airlines and 1 alliance in the calculator. `index.json` maps each calculator menu value (for example `united`, `milesandmore:lh` or `alliance:oneworld`) to its file, name, source and license.
 
 ## Sources
 
@@ -16,8 +16,8 @@ Every logo is a trademark of its airline or alliance. The licenses above cover c
 
 ## Still missing
 
-- Simple Icons logos still to replace: China Eastern, Copa and United (no current logo on Commons), and LOT (found on Commons, download rate-limited).
+- Simple Icons logos still to replace: Copa and United (no current logo on Commons), and LOT (found on Commons, download rate-limited).
 - Alliance status badges (oneworld Ruby, Sapphire, Emerald; Star Alliance Silver, Gold; SkyTeam Elite, Elite Plus): none found on Commons; get them from each alliance's media page.
 
-- Chosen on Commons but not downloaded (Wikimedia rate-limited the requests): Croatia Airlines, Porter, STARLUX, Viva Aerobus, Volaris, Xiamen Airlines (CC BY-SA 4.0: needs attribution), Star Alliance, SkyTeam (CC BY 2.5: needs attribution).
+- Chosen on Commons but not downloaded (Wikimedia rate-limited the requests): Porter, STARLUX, Viva Aerobus, Volaris, Xiamen Airlines (CC BY-SA 4.0: needs attribution), Star Alliance, SkyTeam (CC BY 2.5: needs attribution).
 - No suitable file found: Fiji Airways, Hainan Airlines, LEVEL, Malaysia Airlines, Virgin Australia.
