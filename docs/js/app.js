@@ -332,6 +332,41 @@
   routeToEl.addEventListener("change", syncRouteZone);
   routeFareEl.addEventListener("change", syncRouteZone);
 
+  // Percentage bonuses chosen from extra menus (El Al: FLY CARD holders
+  // earn 10% or 20% more; EXECUTIVE members 20% more in Premium and
+  // Business). Each p.extras entry is { id, label, hint, options:
+  // [{ id, name, pct, premiumOnly }] }.
+  var extrasWrap = $("extrasWrap");
+  function syncExtras(p) {
+    extrasWrap.replaceChildren();
+    if (!p || !p.extras) return;
+    p.extras.forEach(function (x) {
+      var field = document.createElement("div");
+      field.className = "field";
+      var label = document.createElement("label");
+      label.htmlFor = "extra-" + x.id;
+      label.textContent = x.label;
+      var sel = document.createElement("select");
+      sel.id = "extra-" + x.id;
+      x.options.forEach(function (o) { sel.appendChild(option(o.id, o.name)); });
+      sel.addEventListener("change", function () { resultEl.hidden = true; });
+      field.append(label, sel);
+      if (x.hint) { var h = document.createElement("small"); h.textContent = x.hint; field.appendChild(h); }
+      extrasWrap.appendChild(field);
+    });
+  }
+  // The bonuses that apply: [{ name, pct }].
+  function extraBonuses(p, fareType) {
+    var out = [];
+    if (fareType && fareType.bonusPct) out.push({ name: fareType.bonusName || fareType.name, pct: fareType.bonusPct });
+    (p.extras || []).forEach(function (x) {
+      var el = $("extra-" + x.id);
+      var o = el ? find(x.options, el.value) : null;
+      if (o && o.pct && (!o.premiumOnly || (fareType && fareType.premium))) out.push({ name: o.bonusName || o.name, pct: o.pct });
+    });
+    return out;
+  }
+
   // The airport box examples: the airline's headquarters airport to PHL.
   var HQ = window.HQ_AIRPORTS || {};
   function syncAirportExamples() {
@@ -583,6 +618,7 @@
     // A single route (Transavia: any flight) needs no menu.
     var oneZone = m === "zone" && !!p.zones && p.zones.length === 1;
     zoneField.hidden = !zoneUsed || picker || oneZone;
+    syncExtras(p);
     $("zoneLabel").textContent = p.zoneLabel || "Route and distance";
     $("zoneHint").textContent = p.zoneHint || "This program awards a fixed amount per flight for each route band.";
     // A route type that pays a fixed amount needs no distance.
@@ -742,6 +778,12 @@
         : p.ratePer
           ? num.format(rate * p.ratePer) + " " + unitFor(rate * p.ratePer, p.unit) + " per " + sym + p.ratePer
           : num.format(rate) + " " + unitFor(rate, p.unit) + " per " + sym;
+      // Percentage bonuses, each figured on the base points (El Al).
+      var baseSpendPoints = points;
+      extraBonuses(p, fareType).forEach(function (b) {
+        points += baseSpendPoints * b.pct;
+        rateLabel += " + " + Math.round(b.pct * 100) + "% " + b.name;
+      });
       // Some fares add a fixed bonus on top (airBaltic: Flex +100).
       if (fareType && fareType.addPoints) {
         points += fareType.addPoints;
@@ -753,6 +795,7 @@
     // (or up, where the program says so). Airpoints keep two decimals.
     if (p.decimals) points = Math.round(points * 100) / 100;
     else if (em.id === "distance" && !p.roundUp) points = Math.round(points);
+    else if (p.roundNearest) points = Math.round(points);
     else points = p.roundUp ? Math.ceil(points - 1e-9) : Math.floor(points);
     // Some airlines guarantee a minimum per flight (Air Dolomiti: 125 miles).
     if (p.minPoints && points < p.minPoints) {
