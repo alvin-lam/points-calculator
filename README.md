@@ -294,6 +294,8 @@ Estimates only. Earning rules change often and promotions, credit cards, partner
 - **Airline and alliance logos:** trademarks of their owners. `docs/icons/airlines/index.json` records each logo's source and license; some come from Wikimedia Commons.
 - **Earning rules:** from each program's published terms. Each file in `data/programs/` links its `source`.
 
-<img src="docs/icons/icon-512.png" alt="Airline Points Calculator app icon" width="96" height="96">
+<p align="center">
+  <img src="docs/icons/icon-512.png" alt="Airline Points Calculator app icon" width="96" height="96">
+</p>
 
-© 2026 All Trips Considered. All rights reserved.
+<p align="center">© 2026 All Trips Considered. All rights reserved.</p>
