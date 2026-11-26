@@ -206,13 +206,13 @@
     "iconSource": "Official logo; background flattened to a solid color"
   },
   "krisflyer": {
-    "file": "icons/airlines/singapore-airlines.png",
+    "file": "icons/airlines/singapore-airlines.svg",
     "title": "Singapore Airlines",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "source": "https://www.singaporeair.com/ (official logo, singapore-airlines.svg)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/singapore-airlines.png",
     "circle": "icons/airlines/circle/singapore-airlines.png",
-    "iconSource": "App Store icon of \"Singapore Airlines\" by Singapore Airlines Limited"
+    "iconSource": "Bird from the official Singapore Airlines logo (vector, singaporeair.com), on white"
   },
   "southwest": {
     "file": "icons/airlines/southwest-airlines-logo-2014.svg",
@@ -485,7 +485,7 @@
     "author": "Scandinavian Airlines",
     "square": "icons/airlines/square/scandinavian-airlines-logo.png",
     "circle": "icons/airlines/circle/scandinavian-airlines-logo.png",
-    "iconSource": "App Store icon of \"SAS – Scandinavian Airlines\" by SAS AB"
+    "iconSource": "The SAS wordmark from the official logo (vector), on white"
   },
   "tap": {
     "file": "icons/airlines/tap-air-portugal-logo.svg",
@@ -545,7 +545,7 @@
     "author": "Sao Paolo, Santiago and Madrid offices of Interbrand [1]\n\nvector file: Mliu92",
     "square": "icons/airlines/square/latam-logo-v-indigo.png",
     "circle": "icons/airlines/circle/latam-logo-v-indigo.png",
-    "iconSource": "Mark from the App Store icon of \"LATAM: Flights, Hotels, Cars\" by LATAM Airlines Group S.A., set on solid LATAM indigo"
+    "iconSource": "Mark from the official LATAM logo (vector), on white"
   },
   "iag:vy": {
     "file": "icons/airlines/logo-vueling.svg",
@@ -693,13 +693,13 @@
     "iconSource": "App Store icon of \"Virgin Australia\" by VIRGIN AUSTRALIA HOLDINGS PTY LIMITED"
   },
   "viva": {
-    "file": "icons/airlines/viva-aerobus.png",
+    "file": "icons/airlines/viva-aerobus.svg",
     "title": "Viva Aerobus",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "source": "https://www.vivaaerobus.com/ (official logo, viva-logo.svg)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/viva-aerobus.png",
     "circle": "icons/airlines/circle/viva-aerobus.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Heart from the official Viva logo (vector, vivaaerobus.com), on white"
   },
   "volaris": {
     "file": "icons/airlines/volaris.svg",
