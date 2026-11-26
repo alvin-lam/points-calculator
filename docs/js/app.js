@@ -993,7 +993,8 @@
 
   // Shows a small logo image, or hides it when there is none.
   function setBadge(img, info, label) {
-    if (info && info.logo) { img.src = info.logo; img.alt = label; img.hidden = false; }
+    // Alliance logos and status badges use their square icon when there is one.
+    if (info && (info.square || info.logo)) { img.src = info.square || info.logo; img.alt = label; img.hidden = false; }
     else { img.removeAttribute("src"); img.alt = ""; img.hidden = true; }
   }
 
