@@ -23,4 +23,4 @@ Every logo is a trademark of its airline or alliance. The licenses above cover c
 
 ## Status badges
 
-Official files supplied by the site owner, keyed as `status:<alliance>:<tier>`: oneworld Emerald, Sapphire and Ruby (the "Priority" badges), Star Alliance Gold and Silver, and SkyTeam Elite Plus. SkyTeam Elite is still needed.
+Official files supplied by the site owner, keyed as `status:<alliance>:<tier>`: oneworld Emerald, Sapphire and Ruby (the "Priority" badges), Star Alliance Gold and Silver, SkyTeam Elite Plus, and SkyTeam Elite. The Elite badge was made for this site from the Elite Plus file by removing the word PLUS.

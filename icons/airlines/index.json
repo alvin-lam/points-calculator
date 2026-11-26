@@ -521,5 +521,11 @@
     "title": "Star Alliance",
     "source": "Official file supplied by the site owner (alliance media kit)",
     "license": "Trademark of its owner; official logo file"
+  },
+  "status:skyteam:elite": {
+    "file": "icons/airlines/skyteam-elite.png",
+    "title": "SkyTeam Elite",
+    "source": "Made for this site from the official SkyTeam Elite Plus badge (supplied by the site owner): the word ELITE was kept and PLUS removed",
+    "license": "Trademark of SkyTeam; adapted from an official badge"
   }
 }
