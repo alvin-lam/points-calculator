@@ -92,7 +92,8 @@
   // "1 mile", "1 point": singular only for plain English units.
   function unitFor(n, unit) {
     if (n !== 1) return unit;
-    return unit === "miles" ? "mile" : unit === "points" ? "point" : unit;
+    // "KrisFlyer miles" -> "KrisFlyer mile", "Qantas Points" -> "Qantas Point".
+    return unit.replace(/(miles|points|dollars)$/i, function (w) { return w.slice(0, -1); });
   }
   function reviewedText(ym) {
     if (!ym) return "recently";
@@ -626,8 +627,8 @@
       rateLabel = p.rateAsPercent
         ? num.format(rate * 100) + "% of the fare"
         : p.ratePer
-          ? num.format(rate * p.ratePer) + " " + p.unit + " per " + sym + p.ratePer
-          : num.format(rate) + " " + p.unit + " per " + sym;
+          ? num.format(rate * p.ratePer) + " " + unitFor(rate * p.ratePer, p.unit) + " per " + sym + p.ratePer
+          : num.format(rate) + " " + unitFor(rate, p.unit) + " per " + sym;
     }
 
     // Distance programs round to the nearest mile; spend programs round down

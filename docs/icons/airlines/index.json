@@ -779,5 +779,14 @@
     "square": "icons/airlines/square/hkexpress.png",
     "circle": "icons/airlines/circle/hkexpress.png",
     "iconSource": "App Store icon of \"HK Express\" by Hong Kong Express Airways Limited"
+  },
+  "scoot": {
+    "file": "icons/airlines/scoot.png",
+    "title": "Scoot logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Scoot_logo.svg",
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/scoot.png",
+    "circle": "icons/airlines/circle/scoot.png",
+    "iconSource": "Built from the official Scoot logo (flat yellow with the wordmark), matching the App Store icon of \"Scoot Mobile\" by Scoot Pte. Ltd."
   }
 }
