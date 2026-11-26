@@ -702,13 +702,13 @@
     "iconSource": "Official logo; background flattened to a solid color"
   },
   "volaris": {
-    "file": "icons/airlines/volaris.png",
+    "file": "icons/airlines/volaris.svg",
     "title": "Volaris",
-    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "source": "https://www.volaris.com/ (official logo, y4-large-default.svg)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/volaris.png",
     "circle": "icons/airlines/circle/volaris.png",
-    "iconSource": "Plus symbol redrawn square by square from the official Volaris logo colors, on white"
+    "iconSource": "Plus symbol from the official Volaris logo (vector), on white"
   },
   "xiamen": {
     "file": "icons/airlines/xiamen-airlines.png",
