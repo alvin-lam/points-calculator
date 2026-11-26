@@ -758,8 +758,15 @@
     // and card.
     var lineSel = selection();
     var lineAlliance = lineSel.airline ? lineSel.airline.alliance : lineSel.program.alliance;
+    // The airline's IATA code follows its name: "United Airlines (UA) | MileagePlus".
+    var firstLine = airline ? airlineLabel(lineSel.program, airline) : p.name;
+    var iata = CODES[programEl.value];
+    if (iata) {
+      var cut = firstLine.indexOf(" | ");
+      firstLine = cut === -1 ? firstLine + " (" + iata + ")" : firstLine.slice(0, cut) + " (" + iata + ")" + firstLine.slice(cut);
+    }
     var lines = [
-      airline ? airlineLabel(lineSel.program, airline) : p.name,
+      firstLine,
       status.name + (lineAlliance && status.alliance ? " | " + lineAlliance + " " + status.alliance : ""),
       fareType ? fareType.name : "",
       card ? card.name + (isCardmember(p) ? " (Cardmember rate)" : "") : (isCardmember(p) ? "Cardmember rate" : "")
