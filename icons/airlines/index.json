@@ -64,11 +64,10 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "chinasouthern": {
-    "file": "icons/airlines/chinasouthernairlines.svg",
+    "file": "icons/airlines/china-southern-airlines.png",
     "title": "China Southern Airlines",
-    "hex": "#008BCB",
-    "source": "https://www.csair.com/en/about/investor/yejibaogao/2020/",
-    "license": "CC0 1.0 (Simple Icons)"
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "copa": {
     "file": "icons/airlines/copaairlines.svg",
