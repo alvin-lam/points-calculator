@@ -147,6 +147,14 @@
     var group = value.indexOf(":") === -1 ? (p.name || "") : "";
     return [label, country.label, CODES[value] || "", p.programName || "", group].join(" ").toLowerCase();
   }
+  // Whether a typed word is one of the country's two- or three-letter
+  // ISO codes (or "UK"), compared without regard to case.
+  function countryCode(c, w) {
+    return (w.length === 2 || w.length === 3) && (c.codes || []).some(function (k) { return k.toLowerCase() === w; });
+  }
+  function isAnyCountryCode(w) {
+    return window.COUNTRIES.some(function (c) { return countryCode(c, w); });
+  }
   // Choices that match a search, grouped by country in menu order.
   function collect(filter) {
     var words = String(filter || "").toLowerCase().split(/\s+/).filter(Boolean);
@@ -161,6 +169,10 @@
           // match every name with a double a).
           var ok = words.every(function (w) {
             if (w.length === 2 && CODES[value] && CODES[value].toLowerCase() === w) return true;
+            // A country's ISO code ("JP", "JPN") lists every program there,
+            // and only those (plus an airline with that two-letter code).
+            if (countryCode(c, w)) return true;
+            if (isAnyCountryCode(w)) return false;
             return text.indexOf(w) !== -1;
           });
           if (ok) choices.push([value, label]);
