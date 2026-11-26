@@ -635,7 +635,7 @@
   "alliance:skyteam": {
     "file": "icons/airlines/skyteam.png",
     "title": "SkyTeam",
-    "source": "Official file supplied by the site owner (alliance media kit)",
+    "source": "Official SkyTeam logo supplied by the site owner; matches the logo on https://www.skyteam.com/en (November 2026)",
     "license": "Trademark of SkyTeam; official logo file",
     "square": "icons/airlines/square/skyteam.png",
     "circle": "icons/airlines/circle/skyteam.png"
@@ -730,8 +730,8 @@
   "status:skyteam:elite-plus": {
     "file": "icons/airlines/skyteam-elite-plus.png",
     "title": "SkyTeam Elite Plus",
-    "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of its owner; official logo file",
+    "source": "https://www.skyteam.com/en/frequent-flyers (official SkyTeam Elite Plus badge)",
+    "license": "Trademark of SkyTeam; official badge file",
     "square": "icons/airlines/square/skyteam-elite-plus.png",
     "circle": "icons/airlines/circle/skyteam-elite-plus.png"
   },
@@ -747,8 +747,8 @@
   "status:skyteam:elite": {
     "file": "icons/airlines/skyteam-elite.png",
     "title": "SkyTeam Elite",
-    "source": "Made for this site from the official SkyTeam Elite Plus badge (supplied by the site owner): the word ELITE was kept and PLUS removed",
-    "license": "Trademark of SkyTeam; adapted from an official badge",
+    "source": "https://www.skyteam.com/en/frequent-flyers (official SkyTeam Elite badge)",
+    "license": "Trademark of SkyTeam; official badge file",
     "square": "icons/airlines/square/skyteam-elite.png",
     "circle": "icons/airlines/circle/skyteam-elite.png"
   },
