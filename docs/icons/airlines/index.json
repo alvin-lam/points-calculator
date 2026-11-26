@@ -770,5 +770,14 @@
     "square": "icons/airlines/square/jetstar.png",
     "circle": "icons/airlines/circle/jetstar.png",
     "iconSource": "App Store icon of \"Jetstar\" by Jetstar Airways"
+  },
+  "hkexpress": {
+    "file": "icons/airlines/hkexpress.png",
+    "title": "HK Express logo",
+    "source": "https://www.hkexpress.com/edge/media/Homepage/HKE---Logo.svg",
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/hkexpress.png",
+    "circle": "icons/airlines/circle/hkexpress.png",
+    "iconSource": "App Store icon of \"HK Express\" by Hong Kong Express Airways Limited"
   }
 }

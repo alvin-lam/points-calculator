@@ -42,10 +42,12 @@ const rules = {
   // HK Express purchases.
   cards: [
     { id: "cathay-wemc", name: "Cathay World Elite Mastercard", rate: 3, currency: "USD", bank: "Synchrony (US)" },
-    // Hong Kong card: 1 Asia Mile per HK$2 on Cathay and HK Express purchases.
-    { id: "sc-cathay", name: "Standard Chartered Cathay Mastercard", rate: 0.5, bank: "Standard Chartered (Hong Kong)" }
+    // Hong Kong card: 1 Asia Mile per HK$6 on Cathay and HK Express
+    // purchases, plus extra miles that bring the first HK$8,000 in each
+    // promotion period to 1 per HK$2.
+    { id: "sc-cathay", name: "Standard Chartered Cathay Mastercard", rate: 0.5, tiers: [{ upTo: 8000, rate: 0.5 }, { rate: 1 / 6 }], rateText: "1 per HK$2 on the first HK$8,000, then 1 per HK$6", bank: "Standard Chartered (Hong Kong)" }
   ],
-  note: "Cathay Pacific awards a fixed number of Asia Miles per flight, set by fare type and distance zone from Hong Kong. Cathay's published table is the same for every status level. It covers flights marketed by Cathay Pacific and departing on or after 20 August 2025. The US Cathay World Elite Mastercard adds 3 Asia Miles per US dollar charged for the ticket, and the Hong Kong Standard Chartered Cathay Mastercard adds 1 Asia Mile per HK$2."
+  note: "Cathay Pacific awards a fixed number of Asia Miles per flight, set by fare type and distance zone from Hong Kong. Cathay's published table is the same for every status level. It covers flights marketed by Cathay Pacific and departing on or after 20 August 2025. The US Cathay World Elite Mastercard adds 3 Asia Miles per US dollar charged for the ticket, and the Hong Kong Standard Chartered Cathay Mastercard adds 1 Asia Mile per HK$2 on the first HK$8,000 of Cathay and HK Express spending in each promotion period, then 1 per HK$6. The estimate assumes this ticket is the first eligible spending in the period."
 };
 
 module.exports = {

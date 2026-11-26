@@ -44,6 +44,7 @@ Live site: https://points.alltripsconsidered.com/
 - Malaysia Airlines Enrich earns 1.5 to 2.5 points per ringgit (RM) by status.
 - Etihad Guest earns a share of the route distance by fare brand, and adds a status bonus as a share of the distance.
 - Emirates is listed for its US co-branded credit cards only. Emirates publishes no earning table, so the calculator asks for the amount charged to the card, shows the card's miles (3 per dollar on Emirates purchases) and marks the flight's own miles as not estimated. The form and the result link to Emirates' Skywards Miles Calculator for the flight. Programs like this use `method: "cardOnly"` and a `flightCalculator` link.
+- HK Express is listed for the Hong Kong Standard Chartered Cathay Mastercard only. Cathay says HK Express flights do not earn Asia Miles, so the result shows the flight as not earning and counts the card's miles: 1 per HK$2 on the first HK$8,000 of Cathay and HK Express spending in a promotion period, then 1 per HK$6. Cards with a spending tier use `tiers` in their card entry.
 - EVA Air, China Airlines, and STARLUX earn a share of the distance by booking class, so they ask for the class and the miles flown.
 - Icelandair awards fixed Saga Points per flight by fare and route, so it asks for the fare and the route.
 - Allegiant earns 1 point per dollar up to $500 and 2 per dollar above that.
@@ -292,6 +293,7 @@ These are not added yet. Each says what would change that.
 - Sun Country Rewards: merging into Allegiant Allways Rewards, likely by about May 2028. Not added for that reason.
 - Asiana Club: merging into Korean Air SKYPASS. Not added for that reason.
 - Condor: has no frequent flyer program of its own. Its flights earn only in partner programs (Alaska Atmos Rewards and JetBlue TrueBlue); Emirates Skywards stopped earning on Condor flights from 1 May 2026. Condor has confirmed it is considering its own program (a leaked draft calls it "Stripes"). Add Condor once that program launches with a published earning table.
+- HK Express: its flights do not earn Asia Miles; only the Standard Chartered Cathay Mastercard and short promotions do. Add flight earning if Cathay starts awarding Asia Miles on HK Express flights.
 - Air Transat Staria credit cards: Desjardins and Visa plan cards that earn Staria points, launching later in 2027. Fees and earning rates are not yet published. Add them to the Air Transat entry once they launch.
 
 ## Disclaimer

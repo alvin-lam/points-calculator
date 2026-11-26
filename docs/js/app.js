@@ -512,7 +512,7 @@
     if (em.id === "cardOnly") {
       // Listed only for its credit cards: the flight itself is not estimated.
       points = 0;
-      rateLabel = "not estimated";
+      rateLabel = p.flightLabel || "not estimated";
     } else if (em.id === "zone") {
       // Fixed points by route band and fare, plus the status bonus.
       var zone = find(p.zones, zoneEl.value);
@@ -729,7 +729,20 @@
     // A card's rate can depend on the fare type (Breeze Easy Visa).
     var cardRate = card ? (card.rates && fareType && card.rates[fareType.id] != null ? card.rates[fareType.id] : card.rate) : 0;
     // Programs that count in fractions (Airpoints Dollars) keep two decimals.
-    var cardPoints = card ? (p.decimals ? Math.floor(charged * cardRate * 100) / 100 : Math.floor(charged * cardRate)) : 0;
+    var cardEarn = charged * cardRate;
+    // Some cards earn a higher rate only up to a spending limit, then a
+    // lower rate (Standard Chartered Cathay Mastercard: HK$2 per mile on the
+    // first HK$8,000 per promotion period, then HK$6).
+    if (card && card.tiers) {
+      cardEarn = 0;
+      var tierFloor = 0;
+      card.tiers.forEach(function (t) {
+        var top = t.upTo != null ? t.upTo : Infinity;
+        cardEarn += Math.max(0, Math.min(charged, top) - tierFloor) * t.rate;
+        tierFloor = top;
+      });
+    }
+    var cardPoints = card ? (p.decimals ? Math.floor(cardEarn * 100) / 100 : Math.floor(cardEarn)) : 0;
     var total = r.points + cardPoints;
 
     // One line each: airline, membership level with its alliance status, fare
@@ -789,7 +802,7 @@
     if (method === "distance" && p.zones) row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "segments") row(dl, "Segments flown", num.format(segments));
     if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
-    if (method === "cardOnly") row(dl, "Flight earning", "Not estimated");
+    if (method === "cardOnly") row(dl, "Flight earning", p.flightLabel ? p.flightLabel.charAt(0).toUpperCase() + p.flightLabel.slice(1) : "Not estimated");
     else row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {
       var cardMoney = foreignCard || !fareUsed
@@ -798,7 +811,7 @@
       var sym = foreignCard || !fareUsed ? cardSymbols[cardCurrency] : symbols[p.currency || "USD"];
       // A card can state its rate as "1 per N" (Airpoints: 1 per NZ$70).
       row(dl, "Card earning", num.format(cardPoints) + " (" +
-        (card.per ? "1 per " + sym + num.format(card.per) : num.format(cardRate) + " per " + sym) + " on " + cardMoney + ")");
+        (card.rateText ? card.rateText : card.per ? "1 per " + sym + num.format(card.per) : num.format(cardRate) + " per " + sym) + " on " + cardMoney + ")");
     }
     // Skip the value rows for programs without a reliable point value.
     if (p.centsPerPoint) {
