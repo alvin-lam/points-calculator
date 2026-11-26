@@ -596,31 +596,41 @@
     "file": "icons/airlines/oneworld-emerald.png",
     "title": "oneworld Emerald",
     "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/oneworld-emerald.png",
+    "circle": "icons/airlines/circle/oneworld-emerald.png"
   },
   "status:oneworld:sapphire": {
     "file": "icons/airlines/oneworld-sapphire.png",
     "title": "oneworld Sapphire",
     "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/oneworld-sapphire.png",
+    "circle": "icons/airlines/circle/oneworld-sapphire.png"
   },
   "status:oneworld:ruby": {
     "file": "icons/airlines/oneworld-ruby.png",
     "title": "oneworld Ruby",
     "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/oneworld-ruby.png",
+    "circle": "icons/airlines/circle/oneworld-ruby.png"
   },
   "status:star:gold": {
     "file": "icons/airlines/star-alliance-gold.png",
     "title": "Star Alliance Gold",
     "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/star-alliance-gold.png",
+    "circle": "icons/airlines/circle/star-alliance-gold.png"
   },
   "status:star:silver": {
     "file": "icons/airlines/star-alliance-silver.png",
     "title": "Star Alliance Silver",
     "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/star-alliance-silver.png",
+    "circle": "icons/airlines/circle/star-alliance-silver.png"
   },
   "alliance:skyteam": {
     "file": "icons/airlines/skyteam.png",
@@ -721,7 +731,9 @@
     "file": "icons/airlines/skyteam-elite-plus.png",
     "title": "SkyTeam Elite Plus",
     "source": "Official file supplied by the site owner (alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/skyteam-elite-plus.png",
+    "circle": "icons/airlines/circle/skyteam-elite-plus.png"
   },
   "alliance:star": {
     "file": "icons/airlines/star-alliance.png",
@@ -736,6 +748,8 @@
     "file": "icons/airlines/skyteam-elite.png",
     "title": "SkyTeam Elite",
     "source": "Made for this site from the official SkyTeam Elite Plus badge (supplied by the site owner): the word ELITE was kept and PLUS removed",
-    "license": "Trademark of SkyTeam; adapted from an official badge"
+    "license": "Trademark of SkyTeam; adapted from an official badge",
+    "square": "icons/airlines/square/skyteam-elite.png",
+    "circle": "icons/airlines/circle/skyteam-elite.png"
   }
 }
