@@ -679,6 +679,16 @@
 
     $("resultProgram").textContent = (airline ? airlineLabel(selection().program, airline) : p.name) + " · " + statusLabel(status) +
       (fareType ? " · " + fareType.name : "") + (isCardmember(p) ? " · Cardmember rate" : "") + (card ? " · " + card.name : "");
+    var resultLogo = $("resultLogo");
+    var logoInfo = LOGOS[programEl.value];
+    if (logoInfo) {
+      resultLogo.src = logoInfo.logo;
+      resultLogo.alt = airline ? airline.name : p.name;
+      resultLogo.parentNode.hidden = false;
+    } else {
+      resultLogo.removeAttribute("src");
+      resultLogo.parentNode.hidden = true;
+    }
     $("resultPoints").textContent = num.format(total);
     $("resultUnit").textContent = p.unit;
 
@@ -739,6 +749,18 @@
     }
   });
 
+  // Airline logos: a small circular icon for the menu and a short logo for
+  // the result. Data only (JSON), fetched from this site.
+  var LOGOS = {};
+  fetch("js/logos.json", { credentials: "same-origin" })
+    .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(function (data) {
+      if (!data || typeof data !== "object") return;
+      LOGOS = data;
+      if (!listEl.hidden) openList(searchEl.value === chosenLabel() ? "" : searchEl.value);
+    })
+    .catch(function () { /* The menu works without logos. */ });
+
   // Airline program combobox: one box to type in and choose from. Typing
   // filters a dropdown list; a click or Enter chooses an entry.
   var searchEl = $("programSearch");
@@ -774,7 +796,16 @@
         li.id = "programOpt" + n++;
         li.setAttribute("role", "option");
         li.dataset.value = ch[0];
-        li.textContent = ch[1];
+        var logo = LOGOS[ch[0]];
+        var icon = document.createElement("img");
+        icon.className = "combo-icon";
+        icon.alt = "";
+        icon.width = 24; icon.height = 24;
+        icon.decoding = "async";
+        if (logo) icon.src = logo.icon; else icon.classList.add("blank");
+        var text = document.createElement("span");
+        text.textContent = ch[1];
+        li.append(icon, text);
         if (ch[0] === programEl.value) li.classList.add("current");
         listEl.appendChild(li);
       });
