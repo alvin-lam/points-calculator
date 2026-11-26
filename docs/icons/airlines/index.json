@@ -619,7 +619,7 @@
   "status:star:gold": {
     "file": "icons/airlines/star-alliance-gold.png",
     "title": "Star Alliance Gold",
-    "source": "Official file supplied by the site owner (alliance media kit)",
+    "source": "Official Star Alliance badge supplied by the site owner; checked against the Silver and Gold icons on https://www.staralliance.com/en/benefits-and-privileges (November 2026)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/star-alliance-gold.png",
     "circle": "icons/airlines/circle/star-alliance-gold.png"
@@ -627,7 +627,7 @@
   "status:star:silver": {
     "file": "icons/airlines/star-alliance-silver.png",
     "title": "Star Alliance Silver",
-    "source": "Official file supplied by the site owner (alliance media kit)",
+    "source": "Official Star Alliance badge supplied by the site owner; checked against the Silver and Gold icons on https://www.staralliance.com/en/benefits-and-privileges (November 2026)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/star-alliance-silver.png",
     "circle": "icons/airlines/circle/star-alliance-silver.png"
@@ -738,7 +738,7 @@
   "alliance:star": {
     "file": "icons/airlines/star-alliance.png",
     "title": "Star Alliance",
-    "source": "Official file supplied by the site owner (alliance media kit)",
+    "source": "Official Star Alliance logo supplied by the site owner; matches the logo on https://www.staralliance.com/en/ (November 2026)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/star-alliance.png",
     "circle": "icons/airlines/circle/star-alliance.png",
