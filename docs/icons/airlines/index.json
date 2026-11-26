@@ -787,5 +787,14 @@
     "square": "icons/airlines/square/airbaltic.png",
     "circle": "icons/airlines/circle/airbaltic.png",
     "iconSource": "Official airBaltic wordmark (vector, airbaltic.com) on airBaltic lime, matching the App Store icon of \"airBaltic\" by AIR BALTIC CORPORATION AS"
+  },
+  "elal": {
+    "file": "icons/airlines/el-al.png",
+    "title": "El Al logo",
+    "source": "App Store icon of \"EL AL\" by EL AL Israel Airlines Ltd.",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/el-al.png",
+    "circle": "icons/airlines/circle/el-al.png",
+    "iconSource": "App Store icon of \"EL AL\" by EL AL Israel Airlines Ltd. (current stacked logo), enlarged on white"
   }
 }

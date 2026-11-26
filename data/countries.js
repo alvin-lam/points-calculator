@@ -30,6 +30,7 @@ module.exports = [
   { id: "IS", label: "Iceland \u{1F1EE}\u{1F1F8}", codes: ["IS", "ISL"] },
   { id: "FI", label: "Finland \u{1F1EB}\u{1F1EE}", codes: ["FI", "FIN"] },
   { id: "QA", label: "Qatar \u{1F1F6}\u{1F1E6}", codes: ["QA", "QAT"] },
+  { id: "IL", label: "Israel \u{1F1EE}\u{1F1F1}", codes: ["IL", "ISR"] },
   { id: "JP", label: "Japan \u{1F1EF}\u{1F1F5}", codes: ["JP", "JPN"] },
   { id: "HK", label: "Hong Kong \u{1F1ED}\u{1F1F0}", codes: ["HK", "HKG"] },
   { id: "SG", label: "Singapore \u{1F1F8}\u{1F1EC}", codes: ["SG", "SGP"] },

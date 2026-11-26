@@ -24,7 +24,7 @@ module.exports = {
   "milesandmore:wk": "ZRH", "milesandmore:en": "VRN", "milesandmore:az": "FCO",
   "milesandmore:lo": "WAW", "milesandmore:ou": "ZAG",
   // Middle East
-  emirates: "DXB", etihad: "AUH", qatar: "DOH",
+  elal: "TLV", emirates: "DXB", etihad: "AUH", qatar: "DOH",
   // Asia
   airindia: "DEL", ana: "HND", cathay: "HKG", chinaairlines: "TPE",
   chinaeastern: "SHA", chinasouthern: "CAN", enrich: "KUL", eva: "TPE",
