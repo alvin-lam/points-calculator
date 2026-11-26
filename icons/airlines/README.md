@@ -4,9 +4,11 @@ Logos for 61 airlines and 1 alliance in the calculator. `index.json` maps each c
 
 ## Sources
 
+0. **Official files supplied by the site owner** from airline and program media kits: Aegean (SVG), American Airlines (one-line, stacked and white versions, converted from the official EPS files), British Airways, and the AAdvantage and Avios program logos. Keys such as `american:aa@white` and `program:avios` in `index.json` mark extra versions and program logos.
+
 1. **Simple Icons** (8 single-color SVGs, to be replaced with official or Wikimedia Commons versions): from [Simple Icons](https://simpleicons.org) version 16.38.1, released under CC0 1.0 (see `LICENSE.md`). They have no color set; give them a `fill` or use them as a CSS mask.
 2. **The airline's own website** (2 PNGs): Hong Kong Airlines and Frontier. The Frontier file is the white version, for dark backgrounds.
-3. **Wikimedia Commons** (52 SVGs): each file page is listed in `index.json`. The first 32 were confirmed public domain on Commons; the 15 added later replaced Simple Icons logos, and their license should be confirmed on each file page (Commons only hosts freely licensed files).
+3. **Wikimedia Commons** (49 SVGs): each file page is listed in `index.json`. The first 32 were confirmed public domain on Commons; the 15 added later replaced Simple Icons logos, and their license should be confirmed on each file page (Commons only hosts freely licensed files).
 
 ## Trademarks
 

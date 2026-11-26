@@ -32,11 +32,10 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "american:aa": {
-    "file": "icons/airlines/american-airlines-wordmark-2013.svg",
-    "title": "American Airlines wordmark (2013)",
-    "source": "https://commons.wikimedia.org/wiki/File:American_Airlines_wordmark_(2013).svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "American Airlines"
+    "file": "icons/airlines/american-airlines.png",
+    "title": "American Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "ana": {
     "file": "icons/airlines/all-nippon-airways-logo.svg",
@@ -52,11 +51,10 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "iag:ba": {
-    "file": "icons/airlines/british-airways-logo.svg",
-    "title": "BRITISH AIRWAYS logo",
-    "source": "https://commons.wikimedia.org/wiki/File:BRITISH_AIRWAYS_logo.svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "British Airways Plc."
+    "file": "icons/airlines/british-airways.png",
+    "title": "British Airways",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "chinaeastern": {
     "file": "icons/airlines/chinaeasternairlines.svg",
@@ -181,11 +179,10 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "aegean": {
-    "file": "icons/airlines/aegean-airlines-logo-2020.svg",
-    "title": "Aegean Airlines Logo 2020",
-    "source": "https://commons.wikimedia.org/wiki/File:Aegean_Airlines_Logo_2020.svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "Aegean Airlines"
+    "file": "icons/airlines/aegean-airlines.svg",
+    "title": "Aegean Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "aeromexico": {
     "file": "icons/airlines/aerom-xico-wordmark-2024.svg",
@@ -415,5 +412,41 @@
     "title": "Frontier Airlines (white, for dark backgrounds)",
     "source": "https://www.flyfrontier.com/",
     "license": "Airline's own website (trademark of Frontier Airlines)"
+  },
+  "american:aa@white": {
+    "file": "icons/airlines/american-airlines-white.png",
+    "title": "American Airlines (white, for dark backgrounds)",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "american:aa@stacked": {
+    "file": "icons/airlines/american-airlines-stacked.png",
+    "title": "American Airlines (stacked)",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "american:aa@stacked-white": {
+    "file": "icons/airlines/american-airlines-stacked-white.png",
+    "title": "American Airlines (stacked, white)",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "program:aadvantage": {
+    "file": "icons/airlines/aadvantage.png",
+    "title": "AAdvantage",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "program:aadvantage@white": {
+    "file": "icons/airlines/aadvantage-white.png",
+    "title": "AAdvantage (white)",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "program:avios": {
+    "file": "icons/airlines/avios.png",
+    "title": "Avios",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   }
 }
