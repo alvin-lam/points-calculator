@@ -460,5 +460,11 @@
     "title": "Frontier Airlines (white, for dark backgrounds)",
     "source": "https://www.flyfrontier.com/",
     "license": "Airline's own website (trademark of Frontier Airlines)"
+  },
+  "alliance:star@white": {
+    "file": "icons/airlines/star-alliance-white.png",
+    "title": "Star Alliance (white, for dark backgrounds)",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of Star Alliance; official logo file"
   }
 }
