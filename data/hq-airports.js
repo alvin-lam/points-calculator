@@ -4,12 +4,12 @@
    program id, or "program:airline" for group programs. Where the head
    office is not at a main airport, the airline's largest hub is used
    instead: Lufthansa FRA, SWISS ZRH, Virgin Atlantic LHR, JetBlue JFK,
-   Southwest DEN (most daily departures), Icelandair KEF, Korean Air ICN. */
+   Icelandair KEF, Korean Air ICN. Southwest uses DAL, its home airport. */
 module.exports = {
   // North America
   alaska: "SEA", allegiant: "LAS", "american:aa": "DFW", breeze: "SLC",
   delta: "ATL", frontier: "DEN", hawaiian: "HNL", jetblue: "JFK",
-  southwest: "DEN", united: "ORD",
+  southwest: "DAL", united: "ORD",
   aircanada: "YUL", porter: "YTZ", transat: "YUL", westjet: "YYC",
   aeromexico: "MEX", viva: "MTY", volaris: "MEX",
   // Central and South America

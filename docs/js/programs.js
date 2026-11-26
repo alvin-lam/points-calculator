@@ -273,7 +273,7 @@ window.HQ_AIRPORTS = {
   "frontier": "DEN",
   "hawaiian": "HNL",
   "jetblue": "JFK",
-  "southwest": "DEN",
+  "southwest": "DAL",
   "united": "ORD",
   "aircanada": "YUL",
   "porter": "YTZ",
