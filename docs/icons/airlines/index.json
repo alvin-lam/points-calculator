@@ -518,13 +518,13 @@
     "iconSource": "App Store icon of \"WestJet\" by WestJet Airlines Ltd"
   },
   "alliance:oneworld": {
-    "file": "icons/airlines/oneworld-logo.svg",
-    "title": "Oneworld logo",
-    "source": "https://commons.wikimedia.org/wiki/File:Oneworld_logo.svg",
-    "license": "Public domain (Wikimedia Commons)",
+    "file": "icons/airlines/oneworld-flat.png",
+    "title": "oneworld",
+    "source": "https://www.oneworld.com/ (ow_rgb_solid.png, the flat logo)",
+    "license": "Trademark of oneworld; official logo file",
     "author": "http://www.oneworld.com/",
-    "square": "icons/airlines/square/oneworld-logo.png",
-    "circle": "icons/airlines/circle/oneworld-logo.png",
+    "square": "icons/airlines/square/oneworld-flat.png",
+    "circle": "icons/airlines/circle/oneworld-flat.png",
     "iconSource": "App Store icon of \"Fly Oneworld\" by oneworld Management Company"
   },
   "milesandmore:lx": {
