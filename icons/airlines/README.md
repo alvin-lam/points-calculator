@@ -21,3 +21,7 @@ Every logo is a trademark of its airline or alliance. The licenses above cover c
 
 - Chosen on Commons but not downloaded (Wikimedia rate-limited the requests): Porter, STARLUX, Viva Aerobus, Volaris, Xiamen Airlines (CC BY-SA 4.0: needs attribution), Star Alliance, SkyTeam (CC BY 2.5: needs attribution).
 - No suitable file found: Fiji Airways, Hainan Airlines, LEVEL, Malaysia Airlines, Virgin Australia.
+
+## Status badges
+
+Official files supplied by the site owner, keyed as `status:<alliance>:<tier>`: oneworld Emerald, Sapphire and Ruby (the "Priority" badges), and Star Alliance Gold and Silver. SkyTeam Elite and Elite Plus are still needed.

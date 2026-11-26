@@ -473,5 +473,35 @@
     "title": "Croatia Airlines",
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file"
+  },
+  "status:oneworld:emerald": {
+    "file": "icons/airlines/oneworld-emerald.png",
+    "title": "oneworld Emerald",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "status:oneworld:sapphire": {
+    "file": "icons/airlines/oneworld-sapphire.png",
+    "title": "oneworld Sapphire",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "status:oneworld:ruby": {
+    "file": "icons/airlines/oneworld-ruby.png",
+    "title": "oneworld Ruby",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "status:star:gold": {
+    "file": "icons/airlines/star-alliance-gold.png",
+    "title": "Star Alliance Gold",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "status:star:silver": {
+    "file": "icons/airlines/star-alliance-silver.png",
+    "title": "Star Alliance Silver",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
   }
 }
