@@ -508,5 +508,17 @@
     "title": "SkyTeam",
     "source": "Official file supplied by the site owner (airline or alliance media kit)",
     "license": "Trademark of its owner; official logo file"
+  },
+  "american:fj": {
+    "file": "icons/airlines/fiji-airways.png",
+    "title": "Fiji Airways",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "iag:level": {
+    "file": "icons/airlines/level.png",
+    "title": "LEVEL",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   }
 }

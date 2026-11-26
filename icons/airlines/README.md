@@ -1,6 +1,6 @@
 # Airline and alliance logos
 
-Logos for 62 airlines and 2 alliances in the calculator. `index.json` maps each calculator menu value (for example `united`, `milesandmore:lh` or `alliance:oneworld`) to its file, name, source and license.
+Logos for 64 airlines and 2 alliances in the calculator. `index.json` maps each calculator menu value (for example `united`, `milesandmore:lh` or `alliance:oneworld`) to its file, name, source and license.
 
 ## Sources
 
