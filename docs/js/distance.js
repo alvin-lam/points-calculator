@@ -46,12 +46,30 @@
     "toronto": ["YYZ", "YTZ"], "montreal": ["YUL"], "vancouver": ["YVR"],
     "mexico city": ["MEX", "NLU"], "sao paulo": ["GRU", "CGH", "VCP"],
     "rio de janeiro": ["GIG", "SDU"], "buenos aires": ["EZE", "AEP"],
-    "sydney": ["SYD"], "melbourne": ["MEL", "AVV"], "auckland": ["AKL"], "bali": ["DPS"],
+    "sydney": ["SYD"], "melbourne": ["MEL", "AVV"], "auckland": ["AKL"], "bali": ["DPS"], "sapporo": ["CTS", "OKD"],
+    "reykjavik": ["KEF", "RKV"], "bucharest": ["OTP", "BBU"],
     "panama": ["PTY", "PAC"], "panama city": ["PTY", "PAC", "ECP"], "montevideo": ["MVD"],
     "asuncion": ["ASU"], "la paz": ["LPB", "LAP"], "seattle": ["SEA", "BFI"],
     "barcelona": ["BCN", "BLA"], "brussels": ["BRU", "CRL"], "johannesburg": ["JNB", "HLA"],
     "bengaluru": ["BLR"], "okinawa": ["OKA"], "fiji": ["NAN", "SUV"]
   };
+
+  // IATA metropolitan area codes for cities with several airports. Some
+  // are also an airport's own code (TPE, SHA, BKK); typing one of those
+  // still finds that airport first.
+  var METRO_CODES = {
+    NYC: "new york", TYO: "tokyo", LON: "london", PAR: "paris", MIL: "milan",
+    ROM: "rome", STO: "stockholm", MOW: "moscow", WAS: "washington", CHI: "chicago",
+    YTO: "toronto", YMQ: "montreal", SAO: "sao paulo", RIO: "rio de janeiro",
+    BUE: "buenos aires", OSA: "osaka", SEL: "seoul", BJS: "beijing", JKT: "jakarta",
+    SPK: "sapporo", REK: "reykjavik", BUH: "bucharest", SHA: "shanghai",
+    TPE: "taipei", BKK: "bangkok", DXB: "dubai", IST: "istanbul", HOU: "houston",
+    DFW: "dallas", KUL: "kuala lumpur"
+  };
+  // The main airports for a typed city name or metro code.
+  function metroFor(q) {
+    return METROS[q] || METROS[METRO_CODES[q.toUpperCase()]] || [];
+  }
 
   // Find the airport for what the visitor typed: a code, a suggestion, a
   // city name ("Tokyo") or an airport name ("Haneda"). Returns
@@ -62,7 +80,7 @@
     if (code && airports[code]) return { code: code };
     var q = fold(text);
     if (q.length < 2) return null;
-    var metro = (METROS[q] || []).filter(function (c) { return airports[c]; });
+    var metro = metroFor(q).filter(function (c) { return airports[c]; });
     if (metro.length === 1) return { code: metro[0] };
     if (metro.length > 1) return { matches: metro };
     var codes = Object.keys(airports);
@@ -85,7 +103,10 @@
   function searchAirports(airports, text, limit) {
     var q = fold(text);
     if (!q) return [];
-    var metro = METROS[q] || [];
+    var metro = metroFor(q);
+    // A code (airport or metro) lists its airports, then only names that
+    // start with it, not names that merely contain the letters.
+    var isCode = metro.length > 0 || !!airports[q.toUpperCase()];
     var hits = [];
     Object.keys(airports).forEach(function (code) {
       var a = airports[code], c = code.toLowerCase(), city = fold(a[2]), name = fold(a[3]);
@@ -96,7 +117,7 @@
         : city.indexOf(q) === 0 ? 4
         : (" " + name).indexOf(" " + q) !== -1 ? 5
         : city.indexOf(q) !== -1 || name.indexOf(q) !== -1 ? 6 : -1;
-      if (score === -1) return;
+      if (score === -1 || (isCode && score >= 5)) return;
       // A city's main airports keep the order listed in METROS.
       var intl = score === 1 ? metro.indexOf(code) : (/international/.test(name) ? 0 : 1);
       hits.push([score, intl, city || name, code]);
