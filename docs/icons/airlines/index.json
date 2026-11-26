@@ -15,7 +15,7 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/air-china.png",
     "circle": "icons/airlines/circle/air-china.png",
-    "iconSource": "App Store icon of \"Air China\" by Air China Limited"
+    "iconSource": "App Store icon of \"Air China\" by Air China Limited; phoenix flattened to the logo's solid red #E60012"
   },
   "flyingblue:af": {
     "file": "icons/airlines/air-france-logo.svg",
@@ -33,7 +33,7 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/air-india.png",
     "circle": "icons/airlines/circle/air-india.png",
-    "iconSource": "Official logo; background flattened to a solid color"
+    "iconSource": "Built from the gold window peak in Air India's official logo (vector), on Air India red"
   },
   "transat": {
     "file": "icons/airlines/air-transat-logo.svg",
