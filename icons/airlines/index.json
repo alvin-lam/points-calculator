@@ -66,11 +66,10 @@
     "license": "Trademark of its owner; official logo file"
   },
   "copa": {
-    "file": "icons/airlines/copaairlines.svg",
+    "file": "icons/airlines/copa-airlines.svg",
     "title": "Copa Airlines",
-    "hex": "#0032A0",
-    "source": "https://www.copaair.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "delta": {
     "file": "icons/airlines/delta-logo.svg",
@@ -110,11 +109,10 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "milesandmore:lo": {
-    "file": "icons/airlines/lotpolishairlines.svg",
+    "file": "icons/airlines/lot-polish-airlines.svg",
     "title": "LOT Polish Airlines",
-    "hex": "#11397E",
-    "source": "https://www.lot.com/us/en/kaleidoscope-inflight-magazine",
-    "license": "CC0 1.0 (Simple Icons)"
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "milesandmore:lh": {
     "file": "icons/airlines/lufthansa-logo-2018.svg",
@@ -583,6 +581,18 @@
   "xiamen": {
     "file": "icons/airlines/xiamen-airlines.png",
     "title": "Xiamen Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "hainan": {
+    "file": "icons/airlines/hainan-airlines.png",
+    "title": "Hainan Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "copa@white": {
+    "file": "icons/airlines/copa-airlines-white.svg",
+    "title": "Copa Airlines (white)",
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file"
   }
