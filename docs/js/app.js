@@ -524,6 +524,12 @@
       var bonus = Math.round(bonusBase * (status.bonus || 0));
       points = base + bonus;
       rateLabel = bonus ? num.format(base) + " base + " + num.format(bonus) + " status bonus" : "fixed for this fare and route";
+      // A minimum per flight by fare, after the status bonus (Jetstar).
+      var floor = zone.min ? zone.min[fi] : (p.zoneMin ? p.zoneMin[fi] : null);
+      if (floor && points < floor) {
+        points = floor;
+        rateLabel += ", raised to the " + num.format(floor) + " minimum per flight";
+      }
       // A won upgrade bid adds a fixed amount per route, plus the status bonus.
       var up = p.upgradeBonus ? find(p.upgradeBonus.options, upgradeEl.value) : null;
       if (up && up.points) {

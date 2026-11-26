@@ -31,7 +31,7 @@ const rules = {
     { id: "au-short", name: "Domestic Australia: 0 to 750 miles", points: [null, 400, 600, 1400] },
     { id: "au-medium", name: "Domestic Australia: 751 to 1,500 miles", points: [null, 700, 1100, 2100] },
     { id: "au-long", name: "Domestic Australia: 1,501 miles and over", points: [null, 1450, 2200, 3300] },
-    { id: "nz-dom", name: "Domestic New Zealand", points: [300, 450, 600, null] },
+    { id: "nz-dom", name: "Domestic New Zealand", points: [300, 450, 600, null], min: [400, 800, 1200, null] },
     { id: "au-nz", name: "Adelaide, Brisbane, Gold Coast, Melbourne or Sydney to New Zealand", points: [null, 1375, 1750, 2700] },
     { id: "au-asia", name: "Adelaide, Brisbane, Gold Coast, Melbourne or Sydney to Southeast or Northeast Asia", points: [null, 3900, 5200, 8450] },
     { id: "au-hawaii", name: "Adelaide, Brisbane, Gold Coast, Melbourne or Sydney to Hawaii", points: [null, 4500, 6000, 9750] },
@@ -44,6 +44,9 @@ const rules = {
     { id: "int-5", name: "Other international: 3,501 to 5,000 miles", points: [null, 3700, 4900, 7975] },
     { id: "int-6", name: "Other international: 5,001 to 6,500 miles", points: [null, 4350, 5800, 9425] }
   ],
+  // Minimum Points Guarantee per flight, after the status bonus, by fare.
+  // Domestic New Zealand has its own lower minimums (set on that zone).
+  zoneMin: [null, 800, 1200, 1400],
   // The status bonus on Business Max is figured on the Starter Max
   // (Flexible Economy) amount for the same route, as on Qantas.
   bonusBaseFare: "flex-y",
@@ -54,7 +57,7 @@ const rules = {
     { id: "platinum", name: "Platinum", bonus: 1 },
     { id: "platinum-one", name: "Platinum One", bonus: 1 }
   ],
-  note: "Jetstar flights earn Qantas Points by route and fare bundle. The basic Starter fare earns only on New Zealand domestic flights. Flex, Flex Plus, Max, Mega and More earn at the Economy rate (the More bundle does not earn on Australian domestic flights), Starter Max at the Flexible Economy rate, and Business Max at the Business rate. Silver, Gold, and Platinum add 50%, 75%, and 100%. A minimum points guarantee may raise short flights. Jetstar flights booked as part of a Qantas international fare in Economy do not earn."
+  note: "Jetstar flights earn Qantas Points by route and fare bundle. The basic Starter fare earns only on New Zealand domestic flights. Flex, Flex Plus, Max, Mega and More earn at the Economy rate (the More bundle does not earn on Australian domestic flights), Starter Max at the Flexible Economy rate, and Business Max at the Business rate. Silver, Gold, and Platinum add 50%, 75%, and 100%. The Minimum Points Guarantee lifts each flight to at least 800 points on Economy bundles, 1,200 on Starter Max and 1,400 on Business Max (400, 800 and 1,200 within New Zealand). Club Jetstar members with the Qantas Frequent Flyer Extra add-on can earn more; that bonus is not included. Jetstar flights booked as part of a Qantas international fare in Economy do not earn."
 };
 
 module.exports = {
