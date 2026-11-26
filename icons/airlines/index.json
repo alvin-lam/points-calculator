@@ -539,7 +539,8 @@
     "license": "Public domain (Wikimedia Commons)",
     "author": "Sao Paolo, Santiago and Madrid offices of Interbrand [1]\n\nvector file: Mliu92",
     "square": "icons/airlines/square/latam-logo-v-indigo.png",
-    "circle": "icons/airlines/circle/latam-logo-v-indigo.png"
+    "circle": "icons/airlines/circle/latam-logo-v-indigo.png",
+    "iconSource": "Mark and background from the App Store icon of \"LATAM: Flights, Hotels, Cars\" by LATAM Airlines Group S.A., with its seasonal Black Friday band removed"
   },
   "iag:vy": {
     "file": "icons/airlines/logo-vueling.svg",
