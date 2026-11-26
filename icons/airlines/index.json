@@ -559,8 +559,8 @@
   "hongkongairlines": {
     "file": "icons/airlines/hong-kong-airlines.png",
     "title": "Hong Kong Airlines",
-    "source": "https://www.hongkongairlines.com/portal/hka_logo.png",
-    "license": "Airline's own website (trademark of Hong Kong Airlines)",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/hong-kong-airlines.png",
     "circle": "icons/airlines/circle/hong-kong-airlines.png",
     "iconSource": "App Store icon of \"Hong Kong Airlines\" by Hong Kong Airlines Ltd."
