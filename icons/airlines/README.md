@@ -4,7 +4,7 @@ Logos for 61 airlines and 1 alliance in the calculator. `index.json` maps each c
 
 ## Sources
 
-0. **Official files supplied by the site owner** from airline and program media kits: Aegean (SVG), China Southern, American Airlines (one-line, stacked and white versions, converted from the official EPS files), British Airways, and the AAdvantage and Avios program logos. Keys such as `american:aa@white` and `program:avios` in `index.json` mark extra versions and program logos.
+0. **Official files supplied by the site owner** from airline and program media kits: Aegean (SVG), China Southern, American Airlines (one-line, stacked and white versions, converted from the official EPS files), British Airways, the AAdvantage and Avios program logos, and a oneworld member-airlines strip (`alliance:oneworld@members`) for oneworld status. Keys such as `american:aa@white` and `program:avios` in `index.json` mark extra versions and program logos.
 
 1. **Simple Icons** (7 single-color SVGs, to be replaced with official or Wikimedia Commons versions): from [Simple Icons](https://simpleicons.org) version 16.38.1, released under CC0 1.0 (see `LICENSE.md`). They have no color set; give them a `fill` or use them as a CSS mask.
 2. **The airline's own website** (2 PNGs): Hong Kong Airlines and Frontier. The Frontier file is the white version, for dark backgrounds.

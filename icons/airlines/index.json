@@ -447,5 +447,12 @@
     "title": "Avios",
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file"
+  },
+  "alliance:oneworld@members": {
+    "file": "icons/airlines/oneworld-members.png",
+    "title": "oneworld member airlines (Aer Lingus, American Airlines, British Airways, Finnair, Iberia, LEVEL)",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademarks of their owners; official logo file",
+    "use": "oneworld status"
   }
 }
