@@ -1260,37 +1260,16 @@
   gowildNo.addEventListener("change", syncGoWild);
   cardEl.addEventListener("change", syncCardSelect);
 
-  // Remember the last program and status on this device, and restore them
-  // on the next visit. Nothing leaves the browser.
-  function saveChoice() {
-    try {
-      if (programEl.value) localStorage.setItem("lastProgram", programEl.value);
-      if (statusEl.value) localStorage.setItem("lastStatus", statusEl.value);
-    } catch (e) {}
-  }
-  programEl.addEventListener("change", function () {
-    try { localStorage.removeItem("lastStatus"); } catch (e) {}
-    saveChoice();
-  });
-  statusEl.addEventListener("change", saveChoice);
-  function stored(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
-  (function restoreChoice() {
-    var lastProgram = stored("lastProgram");
-    var lastStatus = stored("lastStatus");
-    // A program page (such as /airlines/united-airlines/) always opens on its own program.
+  // The program menu starts empty: no program is chosen until the visitor
+  // picks one. A program page (such as /airlines/united-airlines/) opens on
+  // its own program. Earlier versions remembered the last program and
+  // status; those saved values are removed.
+  try { localStorage.removeItem("lastProgram"); localStorage.removeItem("lastStatus"); } catch (e) {}
+  (function openPreset() {
     var preset = document.documentElement.getAttribute("data-preset");
-    if (preset) {
-      if (preset !== lastProgram) lastStatus = null;
-      lastProgram = preset;
-    }
-    if (lastProgram && !programEl.value && programEl.querySelector('option[value="' + lastProgram.replace(/"/g, "") + '"]')) {
-      programEl.value = lastProgram;
+    if (preset && !programEl.value && programEl.querySelector('option[value="' + preset.replace(/"/g, "") + '"]')) {
+      programEl.value = preset;
       programEl.dispatchEvent(new Event("change"));
-      if (lastStatus && statusEl.querySelector('option[value="' + lastStatus.replace(/"/g, "") + '"]')) {
-        statusEl.value = lastStatus;
-        statusEl.dispatchEvent(new Event("change"));
-        saveChoice();
-      }
     }
   })();
 })();

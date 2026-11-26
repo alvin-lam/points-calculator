@@ -84,7 +84,7 @@ Each program has its own page at `/airlines/<name>/` (for example `/airlines/luf
 
 ## Privacy
 
-The calculator saves only the light, dark or automatic mode, the chosen color, the last program and status, and when the install message was closed. These stay in the browser's local storage on the device; fares, fees, airports and card choices are never saved, and nothing is uploaded. The full policy is in [`docs/privacy.html`](docs/privacy.html).
+The calculator saves only the light, dark or automatic mode, the chosen color, and when the install message was closed. These stay in the browser's local storage on the device; fares, fees, airports and card choices are never saved, and nothing is uploaded. The full policy is in [`docs/privacy.html`](docs/privacy.html).
 
 ## Project structure
 
