@@ -51,7 +51,7 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/american-airlines.png",
     "circle": "icons/airlines/circle/american-airlines.png",
-    "iconSource": "App Store icon of \"American Airlines\" by American Airlines, Inc.; background flattened to a solid color"
+    "iconSource": "App Store icon of \"American Airlines\" by American Airlines, Inc."
   },
   "ana": {
     "file": "icons/airlines/all-nippon-airways-logo.svg",
@@ -221,7 +221,7 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/southwest-airlines-logo-2014.png",
     "circle": "icons/airlines/circle/southwest-airlines-logo-2014.png",
-    "iconSource": "App Store icon of \"Southwest Airlines: Travel App\" by Southwest Airlines; background flattened to a solid color"
+    "iconSource": "Heart from the official Southwest logo, on white"
   },
   "turkish": {
     "file": "icons/airlines/turkish-airlines-logo-2019-compact.svg",
