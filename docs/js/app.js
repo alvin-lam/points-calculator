@@ -227,12 +227,27 @@
     applyProgram();
   }
 
+  // How the form looks before any program is chosen, so clearing the
+  // program can put it back.
+  var initialHidden = Array.prototype.map.call(form.querySelectorAll("[id]"), function (el) {
+    return [el, el.hidden];
+  });
+
   // Rebuilds the form for the current program and airline.
   function applyProgram() {
     var p = current();
     statusEl.replaceChildren();
     fareTypeEl.replaceChildren();
-    if (!p) return;
+    if (!p) {
+      // No program: back to the starting form.
+      initialHidden.forEach(function (pair) { pair[0].hidden = pair[1]; });
+      statusEl.appendChild(option("", "Choose a program first"));
+      statusEl.disabled = true;
+      usedCardNo.checked = true;
+      resultEl.hidden = true;
+      errorEl.hidden = true;
+      return;
+    }
 
     // Programs without an earning table can point to the airline's own
     // miles calculator for the flight (Emirates).
@@ -894,18 +909,33 @@
     searchEl.removeAttribute("aria-activedescendant");
     active = -1;
   }
+  // The clear button shows whenever the box has text.
+  var clearEl = $("programClear");
+  function syncClear() {
+    var show = !!searchEl.value;
+    clearEl.hidden = !show;
+    searchEl.classList.toggle("has-clear", show);
+  }
   function choose(value) {
     var changed = programEl.value !== value;
     programEl.value = value;
     searchEl.value = chosenLabel();
     searchStatus.textContent = "";
     closeList();
+    syncClear();
     if (changed) programEl.dispatchEvent(new Event("change"));
   }
   if (searchEl) {
     searchEl.addEventListener("focus", function () { searchEl.select(); openList(""); });
     searchEl.addEventListener("click", function () { if (listEl.hidden) openList(""); });
-    searchEl.addEventListener("input", function () { openList(searchEl.value); });
+    searchEl.addEventListener("input", function () { syncClear(); openList(searchEl.value); });
+    // Clearing empties the box and the chosen program, then shows the list.
+    clearEl.addEventListener("mousedown", function (e) { e.preventDefault(); });
+    clearEl.addEventListener("click", function () {
+      choose("");
+      searchEl.focus();
+      openList("");
+    });
     searchEl.addEventListener("keydown", function (e) {
       if (e.key === "ArrowDown") { e.preventDefault(); if (listEl.hidden) openList(searchEl.value); setActive(active + 1); }
       else if (e.key === "ArrowUp") { e.preventDefault(); if (listEl.hidden) openList(searchEl.value); setActive(active - 1); }
@@ -916,11 +946,11 @@
           var pick = items[active >= 0 ? active : 0];
           if (pick) choose(pick.dataset.value);
         }
-      } else if (e.key === "Escape") { closeList(); searchEl.value = chosenLabel(); }
+      } else if (e.key === "Escape") { closeList(); searchEl.value = chosenLabel(); syncClear(); }
     });
     searchEl.addEventListener("blur", function () {
       // Let a click on the list finish first.
-      setTimeout(function () { closeList(); searchEl.value = chosenLabel(); searchStatus.textContent = ""; }, 150);
+      setTimeout(function () { closeList(); searchEl.value = chosenLabel(); searchStatus.textContent = ""; syncClear(); }, 150);
     });
     listEl.addEventListener("mousedown", function (e) {
       var li = e.target.closest('[role="option"]');
@@ -928,7 +958,7 @@
       if (li) choose(li.dataset.value);
     });
     // Keep the box in step when the program changes another way.
-    programEl.addEventListener("change", function () { if (document.activeElement !== searchEl) searchEl.value = chosenLabel(); });
+    programEl.addEventListener("change", function () { if (document.activeElement !== searchEl) searchEl.value = chosenLabel(); syncClear(); });
   }
 
   // Airport lookup for distance-based programs. The airport list loads the

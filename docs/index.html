@@ -94,6 +94,9 @@
         <label for="programSearch">Airline Program</label>
         <div class="combo">
           <input id="programSearch" class="combo-input" type="text" role="combobox" placeholder="Search airline, program or code" autocomplete="off" spellcheck="false" aria-autocomplete="list" aria-expanded="false" aria-controls="programList">
+          <button type="button" id="programClear" class="combo-clear" aria-label="Clear the airline program" title="Clear" hidden>
+            <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
           <ul id="programList" class="combo-list" role="listbox" aria-label="Airline programs" hidden></ul>
         </div>
         <small id="programSearchStatus" class="visually-hidden" aria-live="polite"></small>

@@ -20,6 +20,7 @@ Live site: https://points.alltripsconsidered.com/
 ### Program menu and alliances
 
 - The program menu keeps the United States, Canada, and Mexico at the top and sorts the other countries alphabetically. Each airline has a small circular icon beside its name.
+- The menu starts empty on every visit (a program page opens on its own program). A cross in the search box clears it, removes the chosen program and resets the form.
 - Miles & More (Lufthansa Group), Flying Blue (Air France, KLM, and Transavia), and IAG are single programs. Each of their airlines is listed under its own country as "Airline | Program", such as "Lufthansa | Miles & More" under Germany. For Miles & More, the airline sets the status earning rate. For IAG, the airline picks the loyalty program: AerClub in euros, British Airways Club in pounds, Iberia Club in euros (Iberia and LEVEL), or Vueling Club in euros, each with its own status levels and cards.
 - After a program is chosen, an Alliance line shows oneworld, Star Alliance, SkyTeam, or "Not part of an alliance" for the chosen airline.
 - Status levels show the matching alliance tier when the airline is in an alliance, such as "AAdvantage Gold | Ruby" (oneworld), "Premier Silver | Silver" (Star Alliance), or "Gold Medallion | Elite Plus" (SkyTeam).

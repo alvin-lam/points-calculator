@@ -403,6 +403,15 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
   background-size: 5px 5px;
   background-repeat: no-repeat;
 }
+.combo-input.has-clear { padding-right: 64px; }
+.combo-clear {
+  position: absolute; top: 50%; right: 30px; transform: translateY(-50%);
+  display: grid; place-items: center; width: 28px; height: 28px; padding: 0;
+  border: 0; border-radius: 50%; background: transparent; color: var(--muted); cursor: pointer;
+}
+.combo-clear[hidden] { display: none; }
+.combo-clear:hover { color: var(--text); background: var(--border); }
+.combo-clear:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
 .combo-list {
   position: absolute; z-index: 20; left: 0; right: 0; top: calc(100% + 4px);
   max-height: 320px; overflow-y: auto; margin: 0; padding: 4px 0; list-style: none;
