@@ -258,6 +258,14 @@ Expected results under the quoted rates (Business / Comfort Flex / Light): ATH t
 - [ ] Europe: airBaltic Club, Pegasus BolBol, Volotea, Binter.
 - [ ] Oceania: Air Niugini Destinations, Aircalin.
 
+### Alliance members not yet in the calculator
+
+Every member of the three alliances that the calculator does not cover yet. Some already appear above; the others are new here. Each needs an official, complete earning table for its own flights.
+
+- [ ] **oneworld:** Oman Air Sindbad, Royal Air Maroc Safar Flyer (see above), Royal Jordanian Royal Club, SriLankan FlySmiLes (see lower priority). Philippine Airlines Mabuhay Miles (see above) is reported to join in 2027.
+- [ ] **Star Alliance:** EgyptAir Plus, Ethiopian ShebaMiles and South African Airways Voyager (all above), Shenzhen Airlines (see lower priority). Asiana leaves Star Alliance in December 2026 and is on the watch list.
+- [ ] **SkyTeam:** Aerolíneas Argentinas Aerolíneas Plus, Middle East Airlines Cedar Miles, TAROM (its members earn in Flying Blue, so it could join the Flying Blue entry), Garuda Indonesia GarudaMiles, Kenya Airways Asante Rewards and Vietnam Airlines Lotusmiles (all above), Saudia Alfursan (see lower priority).
+
 ### Credit cards to add
 
 Each card needs its current earning rate on airline purchases, confirmed from the issuer, before it is added. Cards are grouped by issuing bank in the card menu.
