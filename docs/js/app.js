@@ -518,7 +518,7 @@
       var zone = find(p.zones, zoneEl.value);
       var fi = p.fareTypes.indexOf(fareType);
       var base = zone.points[fi];
-      if (base == null) return { error: fareType.name + " is not sold on this route." };
+      if (base == null) return { error: fareType.name + (p.unavailableText || " is not sold on this route.") };
       var bonusBase = fareType.premium && p.bonusBaseFare
         ? zone.points[p.fareTypes.indexOf(find(p.fareTypes, p.bonusBaseFare))] : base;
       var bonus = Math.round(bonusBase * (status.bonus || 0));

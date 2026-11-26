@@ -37,6 +37,7 @@ Live site: https://points.alltripsconsidered.com/
 - Alaska and Hawaiian both use Atmos Rewards. Members choose to earn 1 point per mile, 5 points per dollar, or 500 points per segment, with elite bonuses on each.
 - Virgin Atlantic, TAP, and Qatar Airways earn a share of the miles flown set by fare, so they ask for the fare class and the miles flown, not the price paid.
 - Qantas awards a fixed number of points per flight, so it asks for the fare and the route band, not the price paid. The table is Qantas' own, for travel from 22 July 2025.
+- Jetstar Airways (JQ) earns Qantas Points from Qantas' table for Jetstar-marketed flights. Each fare bundle maps to a Qantas earn category. Starter earns only within New Zealand. Flex, Flex Plus, Max, Mega and More earn at the Economy rate, Starter Max at the Flexible Economy rate, and Business Max at the Business rate.
 - ANA, JAL, and Singapore Airlines KrisFlyer earn a share of the miles flown by booking class. Cathay Pacific awards a fixed amount by fare type and distance zone from Hong Kong. None of them ask for the price paid.
 - Malaysia Airlines Enrich earns 1.5 to 2.5 points per ringgit (RM) by status.
 - Etihad Guest earns a share of the route distance by fare brand, and adds a status bonus as a share of the distance.
@@ -221,7 +222,7 @@ Each new program needs an official, complete earning table before it is built. M
 - [ ] **Garuda Indonesia GarudaMiles** (Asia): needs the full accrual table effective 8 September 2025, with status bonuses. The website is blocked here.
 - [ ] **Philippine Airlines Mabuhay Miles** (Asia): needs the earning table for Philippine Airlines' own flights. Only the codeshare table is published.
 - [ ] **Air Tahiti Nui Club Tiare** (Oceania): needs the percentage earned by each booking class. Status bonuses (Silver 50%, Gold 75%) and non-earning classes (O, X, U, I, F, R) are known.
-- [ ] **Jetstar, Qantas Frequent Flyer** (Oceania): needs which Jetstar fares earn and at what rate. Qantas' and Jetstar's pages disagree, and the late-2025 Frequent Flyer Extra option changes the rules. Would join the Qantas entry.
+- [ ] **Jetstar Japan (GK), JAL Mileage Bank** (Asia): GK flights earn JMB miles as a share of the flight distance, but JAL's and Jetstar's pages disagree on which bundles earn 30%. Needs the current JAL table verified.
 - [ ] **Ethiopian Airlines ShebaMiles** (Africa): needs the accrual table for Ethiopian's own flights and the tier bonuses. The website is blocked here. The only published table found (25% to 100% for economy classes) appears to be for tier activity, not award miles.
 - [ ] **Royal Air Maroc Safar Flyer** (Africa): needs to know which earning table is current. Its site shows a booking-class version (Business J, C, D, I 200%; Economy Y, B 120%; other economy classes 100%) and a newer fare-family version (Eco Essential reported at 50%). Tier bonuses are reported as Silver 50%, Gold 75%, Platinum 100%. The website is blocked here.
 - [ ] **EgyptAir Plus** (Africa): needs EgyptAir Plus's own accrual table. Only partner programs' tables for EgyptAir flights were found, and they disagree.

@@ -761,5 +761,14 @@
     "square": "icons/airlines/square/emirates.png",
     "circle": "icons/airlines/circle/emirates.png",
     "iconSource": "App Store icon of \"Emirates\" by Emirates"
+  },
+  "jetstar": {
+    "file": "icons/airlines/jetstar.png",
+    "title": "Jetstar logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Jetstar_logo.svg",
+    "license": "Wikimedia Commons (see file page)",
+    "square": "icons/airlines/square/jetstar.png",
+    "circle": "icons/airlines/circle/jetstar.png",
+    "iconSource": "App Store icon of \"Jetstar\" by Jetstar Airways"
   }
 }
