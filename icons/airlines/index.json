@@ -32,7 +32,8 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/air-india.png",
-    "circle": "icons/airlines/circle/air-india.png"
+    "circle": "icons/airlines/circle/air-india.png",
+    "iconSource": "Official logo; background flattened to a solid color"
   },
   "transat": {
     "file": "icons/airlines/air-transat-logo.svg",
@@ -50,7 +51,7 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/american-airlines.png",
     "circle": "icons/airlines/circle/american-airlines.png",
-    "iconSource": "App Store icon of \"American Airlines\" by American Airlines, Inc."
+    "iconSource": "App Store icon of \"American Airlines\" by American Airlines, Inc.; background flattened to a solid color"
   },
   "ana": {
     "file": "icons/airlines/all-nippon-airways-logo.svg",
@@ -68,7 +69,7 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/avianca.png",
     "circle": "icons/airlines/circle/avianca.png",
-    "iconSource": "App Store icon of \"avianca: flights & deals\" by Aerovias del Continente Americano, S.A."
+    "iconSource": "App Store icon of \"avianca: flights & deals\" by Aerovias del Continente Americano, S.A.; background flattened to a solid color"
   },
   "iag:ba": {
     "file": "icons/airlines/british-airways.png",
@@ -77,7 +78,7 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/british-airways.png",
     "circle": "icons/airlines/circle/british-airways.png",
-    "iconSource": "App Store icon of \"British Airways\" by British Airways Plc"
+    "iconSource": "App Store icon of \"British Airways\" by British Airways Plc; background flattened to a solid color"
   },
   "chinaeastern": {
     "file": "icons/airlines/china-eastern-airlines.png",
@@ -148,7 +149,7 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/jetblue-airways-logo.png",
     "circle": "icons/airlines/circle/jetblue-airways-logo.png",
-    "iconSource": "App Store icon of \"JetBlue\" by JetBlue Airways Corporation"
+    "iconSource": "App Store icon of \"JetBlue\" by JetBlue Airways Corporation; background flattened to a solid color"
   },
   "flyingblue:kl": {
     "file": "icons/airlines/klm-logo.svg",
@@ -157,7 +158,7 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/klm-logo.png",
     "circle": "icons/airlines/circle/klm-logo.png",
-    "iconSource": "App Store icon of \"KLM - Book a flight\" by Koninklijke Luchtvaart Maatschappij N.V."
+    "iconSource": "App Store icon of \"KLM - Book a flight\" by Koninklijke Luchtvaart Maatschappij N.V.; background flattened to a solid color"
   },
   "milesandmore:lo": {
     "file": "icons/airlines/lot-polish-airlines.svg",
@@ -192,7 +193,8 @@
     "source": "Official file supplied by the site owner (airline or alliance media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/qantas.png",
-    "circle": "icons/airlines/circle/qantas.png"
+    "circle": "icons/airlines/circle/qantas.png",
+    "iconSource": "Official logo; background flattened to a solid color"
   },
   "qatar": {
     "file": "icons/airlines/qatar-airways-logo.svg",
@@ -200,7 +202,8 @@
     "source": "https://commons.wikimedia.org/wiki/File:Qatar_Airways_logo.svg",
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/qatar-airways-logo.png",
-    "circle": "icons/airlines/circle/qatar-airways-logo.png"
+    "circle": "icons/airlines/circle/qatar-airways-logo.png",
+    "iconSource": "Official logo; background flattened to a solid color"
   },
   "krisflyer": {
     "file": "icons/airlines/singapore-airlines.png",
@@ -218,7 +221,7 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/southwest-airlines-logo-2014.png",
     "circle": "icons/airlines/circle/southwest-airlines-logo-2014.png",
-    "iconSource": "App Store icon of \"Southwest Airlines: Travel App\" by Southwest Airlines"
+    "iconSource": "App Store icon of \"Southwest Airlines: Travel App\" by Southwest Airlines; background flattened to a solid color"
   },
   "turkish": {
     "file": "icons/airlines/turkish-airlines-logo-2019-compact.svg",
@@ -245,7 +248,7 @@
     "license": "Wikimedia Commons (see file page)",
     "square": "icons/airlines/square/virgin-atlantic-logo.png",
     "circle": "icons/airlines/circle/virgin-atlantic-logo.png",
-    "iconSource": "App Store icon of \"Virgin Atlantic\" by Virgin Atlantic Airways Limited"
+    "iconSource": "App Store icon of \"Virgin Atlantic\" by Virgin Atlantic Airways Limited; background flattened to a solid color"
   },
   "aegean": {
     "file": "icons/airlines/aegean-airlines.svg",
@@ -273,7 +276,7 @@
     "author": "Air Europa",
     "square": "icons/airlines/square/air-europa-logo-2015.png",
     "circle": "icons/airlines/circle/air-europa-logo-2015.png",
-    "iconSource": "App Store icon of \"AirEuropa for mobile\" by Globalia Servicios Corporativos SL"
+    "iconSource": "App Store icon of \"AirEuropa for mobile\" by Globalia Servicios Corporativos SL; background flattened to a solid color"
   },
   "airnz": {
     "file": "icons/airlines/air-new-zealand-logo.svg",
@@ -320,7 +323,7 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/china-airlines.png",
     "circle": "icons/airlines/circle/china-airlines.png",
-    "iconSource": "App Store icon of \"China Airlines App\" by China Airlines Ltd."
+    "iconSource": "App Store icon of \"China Airlines App\" by China Airlines Ltd.; background flattened to a solid color"
   },
   "eva": {
     "file": "icons/airlines/logo-eva-air.svg",
@@ -339,7 +342,8 @@
     "license": "Public domain (Wikimedia Commons)",
     "author": "Finnair, Mikael Kivelä",
     "square": "icons/airlines/square/finnair-logo.png",
-    "circle": "icons/airlines/circle/finnair-logo.png"
+    "circle": "icons/airlines/circle/finnair-logo.png",
+    "iconSource": "Official logo; background flattened to a solid color"
   },
   "flyingblue:to": {
     "file": "icons/airlines/transavia-2025-logo.svg",
@@ -415,7 +419,8 @@
     "license": "Public domain (Wikimedia Commons)",
     "author": "Eurowings GmbH",
     "square": "icons/airlines/square/eurowings-logo-2026.png",
-    "circle": "icons/airlines/circle/eurowings-logo-2026.png"
+    "circle": "icons/airlines/circle/eurowings-logo-2026.png",
+    "iconSource": "Official logo; background flattened to a solid color"
   },
   "milesandmore:de": {
     "file": "icons/airlines/logo-discover-airlines.svg",
@@ -434,7 +439,7 @@
     "author": "Austrian Airlines AG",
     "square": "icons/airlines/square/austrian-airlines-logo-2018.png",
     "circle": "icons/airlines/circle/austrian-airlines-logo-2018.png",
-    "iconSource": "App Store icon of \"Austrian\" by Lufthansa Group Digital Hangar GmbH"
+    "iconSource": "App Store icon of \"Austrian\" by Lufthansa Group Digital Hangar GmbH; background flattened to a solid color"
   },
   "milesandmore:sn": {
     "file": "icons/airlines/brussels-airlines-logo-2021.svg",
@@ -444,7 +449,7 @@
     "author": "Brussels Airlines",
     "square": "icons/airlines/square/brussels-airlines-logo-2021.png",
     "circle": "icons/airlines/circle/brussels-airlines-logo-2021.png",
-    "iconSource": "App Store icon of \"Brussels Airlines\" by Lufthansa Group Digital Hangar GmbH"
+    "iconSource": "App Store icon of \"Brussels Airlines\" by Lufthansa Group Digital Hangar GmbH; background flattened to a solid color"
   },
   "milesandmore:wk": {
     "file": "icons/airlines/edelweiss.png",
@@ -566,7 +571,8 @@
     "source": "https://www.flyfrontier.com/ (white logo recolored to Frontier green #006643, the site's brand color)",
     "license": "Airline's own website (trademark of Frontier Airlines)",
     "square": "icons/airlines/square/frontier-airlines.png",
-    "circle": "icons/airlines/circle/frontier-airlines.png"
+    "circle": "icons/airlines/circle/frontier-airlines.png",
+    "iconSource": "Official logo; background flattened to a solid color"
   },
   "breeze": {
     "file": "icons/airlines/breeze-airways.png",
@@ -574,7 +580,8 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/breeze-airways.png",
-    "circle": "icons/airlines/circle/breeze-airways.png"
+    "circle": "icons/airlines/circle/breeze-airways.png",
+    "iconSource": "Official logo; background flattened to a solid color"
   },
   "milesandmore:ou": {
     "file": "icons/airlines/croatia-airlines.svg",
@@ -654,7 +661,8 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/porter-airlines.png",
-    "circle": "icons/airlines/circle/porter-airlines.png"
+    "circle": "icons/airlines/circle/porter-airlines.png",
+    "iconSource": "Official logo; background flattened to a solid color"
   },
   "starlux": {
     "file": "icons/airlines/starlux-airlines.png",
@@ -680,7 +688,8 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/viva-aerobus.png",
-    "circle": "icons/airlines/circle/viva-aerobus.png"
+    "circle": "icons/airlines/circle/viva-aerobus.png",
+    "iconSource": "Official logo; background flattened to a solid color"
   },
   "volaris": {
     "file": "icons/airlines/volaris.png",
@@ -689,7 +698,7 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/volaris.png",
     "circle": "icons/airlines/circle/volaris.png",
-    "iconSource": "App Store icon of \"Volaris\" by Concesionaria Vuela Compania de Aviacion, S.A.P.I. de C.V."
+    "iconSource": "App Store icon of \"Volaris\" by Concesionaria Vuela Compania de Aviacion, S.A.P.I. de C.V.; background flattened to a solid color"
   },
   "xiamen": {
     "file": "icons/airlines/xiamen-airlines.png",
@@ -706,7 +715,7 @@
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/hainan-airlines.png",
     "circle": "icons/airlines/circle/hainan-airlines.png",
-    "iconSource": "App Store icon of \"Hainan Airlines\" by Hainan Airlines Holding Co., Ltd."
+    "iconSource": "App Store icon of \"Hainan Airlines\" by Hainan Airlines Holding Co., Ltd.; background flattened to a solid color"
   },
   "status:skyteam:elite-plus": {
     "file": "icons/airlines/skyteam-elite-plus.png",
