@@ -8,8 +8,8 @@ const rules = {
   unit: "miles",
   method: "distance",
   minPoints: 500,
-  // Copa rounds award miles down to a whole mile, after the PreferMember bonus.
-  roundDown: true,
+  // Award miles round to the nearest whole mile (half up), after the
+  // PreferMember bonus.
   centsPerPoint: 1.1,
   defaultFareType: "classic",
   // Award miles as a share of the distance flown, for tickets flown from
