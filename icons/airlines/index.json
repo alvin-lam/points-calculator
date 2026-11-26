@@ -130,11 +130,10 @@
     "author": "Norwegian Air Shuttle ASA"
   },
   "qantas": {
-    "file": "icons/airlines/qantas-wordmark-2016.svg",
-    "title": "Qantas wordmark 2016",
-    "source": "https://commons.wikimedia.org/wiki/File:Qantas_wordmark_2016.svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "Qantas Airways Limited"
+    "file": "icons/airlines/qantas.png",
+    "title": "Qantas",
+    "source": "Official file supplied by the site owner (airline or alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "qatar": {
     "file": "icons/airlines/qatar-airways-logo.svg",
@@ -502,6 +501,12 @@
     "file": "icons/airlines/star-alliance-silver.png",
     "title": "Star Alliance Silver",
     "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of its owner; official logo file"
+  },
+  "alliance:skyteam": {
+    "file": "icons/airlines/skyteam.png",
+    "title": "SkyTeam",
+    "source": "Official file supplied by the site owner (airline or alliance media kit)",
     "license": "Trademark of its owner; official logo file"
   }
 }
