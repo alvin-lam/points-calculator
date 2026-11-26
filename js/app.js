@@ -689,6 +689,17 @@
       resultLogo.removeAttribute("src");
       resultLogo.parentNode.hidden = true;
     }
+    // The alliance logo and, for an alliance tier, the status badge.
+    var ALLIANCE_KEYS = { "Star Alliance": "star", "SkyTeam": "skyteam", "oneworld": "oneworld" };
+    var sel = selection();
+    var allianceName = sel.airline ? sel.airline.alliance : sel.program.alliance;
+    var allianceKey = ALLIANCE_KEYS[allianceName];
+    var allianceInfo = allianceKey && LOGOS["alliance:" + allianceKey];
+    var tierInfo = allianceKey && status.alliance &&
+      LOGOS["status:" + allianceKey + ":" + status.alliance.toLowerCase().replace(/\s+/g, "-")];
+    setBadge($("resultAlliance"), allianceInfo, allianceName);
+    setBadge($("resultTier"), tierInfo, allianceName + " " + (status.alliance || ""));
+    $("resultBadges").hidden = !allianceInfo && !tierInfo;
     $("resultPoints").textContent = num.format(total);
     $("resultUnit").textContent = p.unit;
 
@@ -760,6 +771,12 @@
       if (!listEl.hidden) openList(searchEl.value === chosenLabel() ? "" : searchEl.value);
     })
     .catch(function () { /* The menu works without logos. */ });
+
+  // Shows a small logo image, or hides it when there is none.
+  function setBadge(img, info, label) {
+    if (info && info.logo) { img.src = info.logo; img.alt = label; img.hidden = false; }
+    else { img.removeAttribute("src"); img.alt = ""; img.hidden = true; }
+  }
 
   // Airline program combobox: one box to type in and choose from. Typing
   // filters a dropdown list; a click or Enter chooses an entry.
