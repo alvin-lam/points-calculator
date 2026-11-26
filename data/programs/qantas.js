@@ -37,6 +37,9 @@ const rules = {
   ],
   // The status bonus on premium cabins is figured on the Flexible
   // Economy amount for the same route.
+  // Minimum Points Guarantee per flight, after the status bonus, in
+  // fareTypes order (clause 9.3.3 of the Qantas Frequent Flyer terms).
+  zoneMin: [800, 800, 1200, 1200, 1200, 1200, 1400, 1400, 1400, 1400],
   bonusBaseFare: "flex-y",
   statuses: [
     { id: "bronze", name: "Bronze", bonus: 0 },
@@ -51,7 +54,7 @@ const rules = {
     { id: "amex-premium", name: "Qantas American Express Premium Card", rate: 2, bank: "American Express (Australia)" },
     { id: "amex-ultimate", name: "Qantas American Express Ultimate Card", rate: 2.25, bank: "American Express (Australia)" }
   ],
-  note: "Qantas awards a fixed number of points per flight by fare and distance. Silver, Gold, and Platinum add 50%, 75%, and 100%; in Premium Economy, Business, and First the bonus is figured on the Flexible Economy amount. Some routes, such as Australia to New Zealand, the USA, or Europe, have their own tables; this estimate uses the general distance bands. A minimum points guarantee may raise short flights. The Australian Qantas American Express Premium and Ultimate cards earn 2 and 2.25 points per Australian dollar on selected Qantas purchases."
+  note: "Qantas awards a fixed number of points per flight by fare and distance. Silver, Gold, and Platinum add 50%, 75%, and 100%; in Premium Economy, Business, and First the bonus is figured on the Flexible Economy amount. Some routes, such as Australia to New Zealand, the USA, or Europe, have their own tables; this estimate uses the general distance bands. The Minimum Points Guarantee lifts each flight to at least 800 points in Economy, 1,200 in Flexible Economy and Premium Economy, and 1,400 in Business and First. The Australian Qantas American Express Premium and Ultimate cards earn 2 and 2.25 points per Australian dollar on selected Qantas purchases."
 };
 
 module.exports = {
