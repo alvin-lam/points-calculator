@@ -43,10 +43,9 @@
   },
   "lifemiles": {
     "file": "icons/airlines/avianca.svg",
-    "title": "avianca",
-    "hex": "#FF0000",
-    "source": "https://www.avianca.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "title": "Avianca",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "iag:ba": {
     "file": "icons/airlines/british-airways.png",
