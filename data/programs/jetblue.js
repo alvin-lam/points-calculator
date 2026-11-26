@@ -37,7 +37,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "B6",
-  color: "#0033A0",
+  color: "#003876",
   source: "https://www.jetblue.com/trueblue/earning-points",
   // Published examples. The browser tests check each one.
   examples: [

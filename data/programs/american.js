@@ -43,7 +43,7 @@ module.exports = {
   // Two-letter code, brand color, and source page for each airline.
   airlines: {
     aa: { code: "AA", color: "#0078D2", source: "https://www.aa.com/i18n/aadvantage-program/miles/earn/earn-miles-on-american.jsp" },
-    fj: { code: "FJ", color: "#1E3A5F", source: "https://www.aa.com/i18n/travel-info/partner-airlines/fiji-airways.html" }
+    fj: { code: "FJ", color: "#2C1E16", source: "https://www.aa.com/i18n/travel-info/partner-airlines/fiji-airways.html" }
   },
   // Published examples. The browser tests check each one.
   examples: [

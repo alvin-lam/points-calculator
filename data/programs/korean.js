@@ -33,7 +33,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "KE",
-  color: "#0064DE",
+  color: "#051766",
   source: "https://cwsi.net/fares/korean-air/",
   rules
 };

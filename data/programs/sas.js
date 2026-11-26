@@ -56,7 +56,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "SK",
-  color: "#1E2D82",
+  color: "#0002BE",
   source: "https://www.flysas.com/us-en/eurobonus/partners/airlines/scandinavian-airlines/",
   // Published examples. The browser tests check each one.
   examples: [

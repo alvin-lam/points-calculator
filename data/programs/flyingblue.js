@@ -46,8 +46,8 @@ module.exports = {
   airlines: {
     af: { code: "AF", color: "#002157" },
     kl: { code: "KL", color: "#00A1DE" },
-    to: { code: "TO", color: "#00B26B" },
-    hv: { code: "HV", color: "#00B26B" }
+    to: { code: "TO", color: "#05CE78" },
+    hv: { code: "HV", color: "#05CE78" }
   },
   rules
 };

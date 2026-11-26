@@ -30,7 +30,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "TP",
-  color: "#00843D",
+  color: "#B3DB18",
   source: "https://www.flytap.com/en-us/miles-and-go/earn-miles/by-flying",
   rules
 };

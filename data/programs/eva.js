@@ -33,7 +33,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "BR",
-  color: "#00704A",
+  color: "#00A650",
   source: "https://www.evaair.com/en-us/infinity-mileagelands/mileage-award-program/earning-mileage/eva-air-and-uni-air/mileage-accrual-ratio-rule/",
   rules
 };

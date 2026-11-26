@@ -28,7 +28,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "UX",
-  color: "#0E2F69",
+  color: "#0970CB",
   source: "https://cwsi.net/fares/air-europa/",
   rules
 };

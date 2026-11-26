@@ -35,7 +35,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "MX",
-  color: "#00A3E0",
+  color: "#001633",
   source: "https://www.flybreeze.com/breezy-rewards",
   // Published examples. The browser tests check each one.
   examples: [

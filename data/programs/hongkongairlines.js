@@ -25,7 +25,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "HX",
-  color: "#8E1B3E",
+  color: "#E60012",
   source: "https://content.hongkongairlines.com/en_HK/FFP/earn/earn_hx",
   // Published examples. The browser tests check each one.
   examples: [

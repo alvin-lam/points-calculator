@@ -140,8 +140,8 @@ module.exports = {
   // Two-letter code, brand color, and source page for each airline.
   airlines: {
     lh: { code: "LH", color: "#05164D" },
-    ew: { code: "EW", color: "#A6004D" },
-    de: { code: "4Y", color: "#0B2265" },
+    ew: { code: "EW", color: "#871C54" },
+    de: { code: "4Y", color: "#1F73B0" },
     os: { code: "OS", color: "#E30613" },
     lx: { code: "LX", color: "#E2001A" },
     sn: { code: "SN", color: "#002A5C" },

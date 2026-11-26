@@ -27,7 +27,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "UA",
-  color: "#005DAA",
+  color: "#1415D1",
   source: "https://www.united.com/en/us/fly/mileageplus.html",
   rules
 };
