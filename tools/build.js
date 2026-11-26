@@ -100,7 +100,7 @@ module.exports = { compile, render };
 
 if (require.main === module) {
   const d = compile();
-  fs.writeFileSync(path.join(ROOT, "js/programs.js"), render(d));
+  fs.writeFileSync(path.join(ROOT, "docs/js/programs.js"), render(d));
   console.log("Wrote js/programs.js from " + d.programs.length + " program files.");
   require("./build-pages.js").main();
 }

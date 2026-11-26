@@ -5,7 +5,8 @@
 const fs = require("node:fs");
 const path = require("node:path");
 
-const ROOT = path.resolve(__dirname, "..");
+// The published site lives in docs/.
+const ROOT = path.resolve(__dirname, "..", "docs");
 const SITE = "https://points.alltripsconsidered.com/";
 
 function slugify(s) {
