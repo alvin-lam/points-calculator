@@ -126,7 +126,7 @@ window.BRAND_COLORS = {
   "flyingblue:kl": "#00A1DE",
   "flyingblue:to": "#00B26B",
   "flyingblue:hv": "#00B26B",
-  "frontier": "#00965E",
+  "frontier": "#006643",
   "gol": "#FF7020",
   "hainan": "#D91E18",
   "hawaiian": "#413691",

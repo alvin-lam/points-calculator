@@ -43,7 +43,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "F9",
-  color: "#00965E",
+  color: "#006643",
   source: "https://www.flyfrontier.com/frontiermiles/terms-and-conditions/",
   // Published examples. The browser tests check each one.
   examples: [

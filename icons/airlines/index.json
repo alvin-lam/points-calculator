@@ -407,9 +407,9 @@
     "license": "Airline's own website (trademark of Hong Kong Airlines)"
   },
   "frontier": {
-    "file": "icons/airlines/frontier-airlines-white.png",
-    "title": "Frontier Airlines (white, for dark backgrounds)",
-    "source": "https://www.flyfrontier.com/",
+    "file": "icons/airlines/frontier-airlines.png",
+    "title": "Frontier Airlines",
+    "source": "https://www.flyfrontier.com/ (white logo recolored to Frontier green #006643, the site's brand color)",
     "license": "Airline's own website (trademark of Frontier Airlines)"
   },
   "american:aa@white": {
@@ -454,5 +454,11 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademarks of their owners; official logo file",
     "use": "oneworld status"
+  },
+  "frontier@white": {
+    "file": "icons/airlines/frontier-airlines-white.png",
+    "title": "Frontier Airlines (white, for dark backgrounds)",
+    "source": "https://www.flyfrontier.com/",
+    "license": "Airline's own website (trademark of Frontier Airlines)"
   }
 }
