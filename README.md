@@ -46,7 +46,9 @@ Open `index.html` in a browser. No build step or server is needed. It also works
   - `js/airports.json`: about 3,200 airports with scheduled service, from [OurAirports](https://ourairports.com/data/) (public domain). It is fetched only when a distance-based program is chosen.
   - `js/install.js`: the install prompt.
 - `favicon.ico` and `icons/` hold the browser and home-screen icons.
-- `icons/airlines/` holds a full logo, a square icon and a circular icon for every airline, alliance and alliance status badge (see `icons/airlines/README.md`). `js/logos.json` lists the small copies the site loads: a circular icon beside each airline in the program menu, and on the result the airline's logo plus either the alliance logo (basic members) or the alliance status badge. The calculator works without them if they fail to load. `manifest.webmanifest` and `sw.js` let the site install as an app and open offline.
+- `icons/airlines/` holds a full logo, a square icon and a circular icon for every airline, alliance and alliance status badge (see `icons/airlines/README.md`). `js/logos.json` lists the small copies the site loads: a circular icon beside each airline in the program menu, and on the result the airline's logo plus either the alliance logo (basic members) or the alliance status badge. The calculator works without them if they fail to load.
+
+  ![Logo sheet: the full logo, square icon and circular icon for each airline, alliance and status badge](icons/airlines/logo-sheet.png) `manifest.webmanifest` and `sw.js` let the site install as an app and open offline.
 - `js/install.js` invites visitors to add the calculator to their home screen. Chrome, Edge, and Android get an Install button. iPhone and iPad get the Share, then Add to Home Screen steps. Other phones and tablets whose browser has no install button (such as Firefox or Samsung Internet) are reminded to use the browser menu's Add to Home Screen. "Close" hides it for 24 hours.
 - Installing needs HTTPS, which GitHub Pages provides. When rates change, bump `CACHE` in `sw.js` so installed copies refresh their offline cache.
 

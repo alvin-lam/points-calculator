@@ -2,6 +2,12 @@
 
 Logos and icons for the 73 airlines in the calculator, the 3 alliances (oneworld, SkyTeam and Star Alliance) and 7 alliance status badges. `index.json` maps each key to its files, name, source and license.
 
+## Logo sheet
+
+Every full logo, square icon and circular icon, airlines A to Z, then the alliances and status badges:
+
+![Logo sheet: the full logo, square icon and circular icon for each airline, alliance and status badge](logo-sheet.png)
+
 ## Keys
 
 - An airline uses its calculator menu value, for example `united`, `american:aa` or `milesandmore:lh`.
@@ -30,7 +36,7 @@ The same icons are used in light and dark mode. On the result, logos sit on a wh
 - **Cleanup.** Rounded corners and built-in frames were removed, and gradient backgrounds were flattened to one solid color.
 - **Centering.** Each mark is optically centered: placed by a balance of its outer edges and where its shape is heaviest. Marks whose official artwork runs off the edge (ANA, Allegiant, Copa, Croatia, Delta, Etihad, Finnair, LEVEL, Qatar, SAS and United) are left as designed.
 
-When you replace a full logo or icon, rebuild the matching `menu/` or `small/` copy so the site shows the change.
+When you replace a full logo or icon, rebuild the matching `menu/` or `small/` copy so the site shows the change, and remake `logo-sheet.png`.
 
 ## Sources
 
