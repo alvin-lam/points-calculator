@@ -368,7 +368,7 @@
   // Distance, segment, and route-band earning do not depend on the price,
   // so those programs skip the airfare and taxes fields.
   function usesFare(method) {
-    return method !== "distance" && method !== "segments" && method !== "zone";
+    return method !== "distance" && method !== "segments" && method !== "zone" && method !== "cardOnly";
   }
 
   // The charge field shows when a card's points cannot come from the fare
@@ -385,9 +385,16 @@
     resultEl.hidden = true;
   }
 
+  var wasCardOnly = false;
   function syncCardSelect() {
-    cardSelectField.hidden = cardField.hidden || !usedCardYes.checked;
     var p = current();
+    // A program listed only for its credit cards (Emirates) always uses one,
+    // so the card question is skipped.
+    var cardOnly = !!(p && p.method === "cardOnly");
+    if (cardOnly) { cardField.hidden = true; usedCardYes.checked = true; }
+    else if (wasCardOnly) usedCardNo.checked = true;
+    wasCardOnly = cardOnly;
+    cardSelectField.hidden = (cardField.hidden && !cardOnly) || !usedCardYes.checked;
     var card = p && p.cards && !cardSelectField.hidden ? find(p.cards, cardEl.value) : null;
     var foreign = !!(card && card.currency && card.currency !== (p.currency || "USD"));
     var noFare = !!(card && !usesFare(earnMethod(p).id));
@@ -464,7 +471,11 @@
     var points, rateLabel;
     var em = earnMethod(p);
 
-    if (em.id === "zone") {
+    if (em.id === "cardOnly") {
+      // Listed only for its credit cards: the flight itself is not estimated.
+      points = 0;
+      rateLabel = "not estimated";
+    } else if (em.id === "zone") {
       // Fixed points by route band and fare, plus the status bonus.
       var zone = find(p.zones, zoneEl.value);
       var fi = p.fareTypes.indexOf(fareType);
@@ -734,7 +745,8 @@
     if (method === "distance" && p.zones) row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "segments") row(dl, "Segments flown", num.format(segments));
     if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
-    row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
+    if (method === "cardOnly") row(dl, "Flight earning", "Not estimated");
+    else row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {
       var cardMoney = foreignCard || !fareUsed
         ? cardSymbols[cardCurrency] + charged.toLocaleString(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 })

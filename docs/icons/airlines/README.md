@@ -1,6 +1,6 @@
 # Airline and alliance logos
 
-Logos and icons for the 73 airlines in the calculator, the 3 alliances (oneworld, SkyTeam and Star Alliance) and 7 alliance status badges. `index.json` maps each key to its files, name, source and license.
+Logos and icons for the 74 airlines in the calculator, the 3 alliances (oneworld, SkyTeam and Star Alliance) and 7 alliance status badges. `index.json` maps each key to its files, name, source and license.
 
 ## Logo sheet
 

@@ -1,6 +1,6 @@
 # Airline Points Calculator
 
-A static web app that estimates the points or miles you earn on a flight. It covers 73 airlines in 55 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
+A static web app that estimates the points or miles you earn on a flight. It covers 74 airlines in 56 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
 
 Live site: https://points.alltripsconsidered.com/
 
@@ -38,6 +38,7 @@ Live site: https://points.alltripsconsidered.com/
 - ANA, JAL, and Singapore Airlines KrisFlyer earn a share of the miles flown by booking class. Cathay Pacific awards a fixed amount by fare type and distance zone from Hong Kong. None of them ask for the price paid.
 - Malaysia Airlines Enrich earns 1.5 to 2.5 points per ringgit (RM) by status.
 - Etihad Guest earns a share of the route distance by fare brand, and adds a status bonus as a share of the distance.
+- Emirates is listed for its US co-branded credit cards only. Emirates publishes no earning table, so the calculator asks for the amount charged to the card, shows the card's miles (3 per dollar on Emirates purchases) and marks the flight's own miles as not estimated. Programs like this use `method: "cardOnly"`.
 - EVA Air, China Airlines, and STARLUX earn a share of the distance by booking class, so they ask for the class and the miles flown.
 - Icelandair awards fixed Saga Points per flight by fare and route, so it asks for the fare and the route.
 - Allegiant earns 1 point per dollar up to $500 and 2 per dollar above that.
@@ -92,7 +93,7 @@ Everything the site serves lives in `docs/`, which GitHub Pages publishes. Devel
 ```text
 docs/index.html                   The calculator page
 docs/privacy.html                 Privacy policy
-docs/airlines/<name>/index.html   One generated page per program (73)
+docs/airlines/<name>/index.html   One generated page per program (74)
 docs/js/app.js                    Calculator, airline search, airport lookup and Appearance panel
 docs/js/programs.js               Earning data the browser loads (generated from data/, do not edit)
 docs/js/distance.js               Great-circle distance between two airports
@@ -214,7 +215,7 @@ Each new program needs an official, complete earning table before it is built. M
 
 ### Programs to add
 
-- [ ] **Emirates Skywards** (Middle East): Emirates publishes only a per-ticket miles calculator, not an earning table. Calculator results for a few routes, all fare types, would let us work out the rule.
+- [ ] **Emirates Skywards flights** (Middle East): Emirates is in the calculator for its US credit cards only (Barclays, 3 miles per dollar on Emirates purchases), and the flight itself shows as not estimated. Emirates publishes only a per-ticket miles calculator, not an earning table. Calculator results for a few routes, all fare types, would let us work out the rule.
 - [ ] **Vietnam Airlines Lotusmiles** (Asia): needs the current international and domestic accrual tables. The website is blocked here, and search results show conflicting versions.
 - [ ] **Garuda Indonesia GarudaMiles** (Asia): needs the full accrual table effective 8 September 2025, with status bonuses. The website is blocked here.
 - [ ] **Philippine Airlines Mabuhay Miles** (Asia): needs the earning table for Philippine Airlines' own flights. Only the codeshare table is published.
@@ -272,7 +273,7 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 - [ ] **Report a correction:** a footer link, by email or a simple form, so readers can report changed earning rules.
 - [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
 - [ ] **Visit counter:** a privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so.
-- [ ] **"70+ airlines" wording:** the page titles, descriptions and preview image say "70+ airlines" (73 today, in 55 programs). Update the wording and remake the preview image (`tools/og-image.html`) if the count passes 100.
+- [ ] **"70+ airlines" wording:** the page titles, descriptions and preview image say "70+ airlines" (74 today, in 56 programs). Update the wording and remake the preview image (`tools/og-image.html`) if the count passes 100.
 
 ### Watch list
 

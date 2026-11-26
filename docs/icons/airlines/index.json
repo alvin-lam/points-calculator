@@ -751,5 +751,14 @@
     "license": "Trademark of SkyTeam; adapted from an official badge",
     "square": "icons/airlines/square/skyteam-elite.png",
     "circle": "icons/airlines/circle/skyteam-elite.png"
+  },
+  "emirates": {
+    "file": "icons/airlines/emirates.png",
+    "title": "Emirates",
+    "source": "App Store icon of \"Emirates\" by Emirates; white logo recolored to Emirates red",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/emirates.png",
+    "circle": "icons/airlines/circle/emirates.png",
+    "iconSource": "App Store icon of \"Emirates\" by Emirates"
   }
 }
