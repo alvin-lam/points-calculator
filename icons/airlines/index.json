@@ -185,12 +185,12 @@
     "circle": "icons/airlines/circle/qatar-airways-logo.png"
   },
   "krisflyer": {
-    "file": "icons/airlines/singapore-airlines-logo.svg",
-    "title": "Singapore Airlines Logo",
-    "source": "https://commons.wikimedia.org/wiki/File:Singapore_Airlines_Logo.svg",
-    "license": "Wikimedia Commons (see file page)",
-    "square": "icons/airlines/square/singapore-airlines-logo.png",
-    "circle": "icons/airlines/circle/singapore-airlines-logo.png"
+    "file": "icons/airlines/singapore-airlines.png",
+    "title": "Singapore Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/singapore-airlines.png",
+    "circle": "icons/airlines/circle/singapore-airlines.png"
   },
   "southwest": {
     "file": "icons/airlines/southwest-airlines-logo-2014.svg",
