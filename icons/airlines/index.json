@@ -506,8 +506,8 @@
   "alliance:skyteam": {
     "file": "icons/airlines/skyteam.png",
     "title": "SkyTeam",
-    "source": "Official file supplied by the site owner (airline or alliance media kit)",
-    "license": "Trademark of its owner; official logo file"
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of SkyTeam; official logo file"
   },
   "american:fj": {
     "file": "icons/airlines/fiji-airways.png",
@@ -520,5 +520,29 @@
     "title": "LEVEL",
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file"
+  },
+  "alliance:skyteam@stacked": {
+    "file": "icons/airlines/skyteam-stacked.png",
+    "title": "SkyTeam (stacked, navy)",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of SkyTeam; official logo file"
+  },
+  "alliance:skyteam@stacked-blue": {
+    "file": "icons/airlines/skyteam-stacked-blue.png",
+    "title": "SkyTeam (stacked, blue)",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of SkyTeam; official logo file"
+  },
+  "alliance:skyteam@stacked-black": {
+    "file": "icons/airlines/skyteam-stacked-black.png",
+    "title": "SkyTeam (stacked, black)",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of SkyTeam; official logo file"
+  },
+  "alliance:skyteam@stacked-reverse": {
+    "file": "icons/airlines/skyteam-stacked-reverse.png",
+    "title": "SkyTeam (stacked, white on blue)",
+    "source": "Official file supplied by the site owner (alliance media kit)",
+    "license": "Trademark of SkyTeam; official logo file"
   }
 }
