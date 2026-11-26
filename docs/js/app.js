@@ -250,6 +250,85 @@
     return p;
   }
 
+  // Route picker (Air New Zealand): From, To and Fare choose the route
+  // group zone ("tasman-1-1"), so members never read the group lists.
+  var routePickField = $("routePickField"), routeFromEl = $("routeFrom"), routeToEl = $("routeTo");
+  var routeFareEl = $("routeFare"), routeFareWrap = $("routeFareWrap");
+  function pickerRoutes(p) {
+    // { "AKL": { "SYD": "tasman-1", ... }, ... }
+    var map = {};
+    Object.keys(p.routePicker.routes).forEach(function (g) {
+      p.routePicker.routes[g].split(" ").forEach(function (pair) {
+        var ab = pair.split("-");
+        (map[ab[0]] = map[ab[0]] || {})[ab[1]] = g;
+      });
+    });
+    return map;
+  }
+  function cityOf(p, code) { return p.routePicker.cities[code] || code; }
+  function byCity(p) { return function (a, b) { return cityOf(p, a).localeCompare(cityOf(p, b)); }; }
+  function routeGroup(p) {
+    var map = pickerRoutes(p);
+    return (map[routeFromEl.value] || {})[routeToEl.value] || null;
+  }
+  function familyFares(p, g) { return p.routePicker.fares[g.replace(/-\d+$/, "")] || null; }
+  function syncRouteZone() {
+    var p = current();
+    if (!p || !p.routePicker) return;
+    var g = routeGroup(p);
+    if (!g) return;
+    var fares = familyFares(p, g);
+    if (fares) {
+      if (routeFareEl.dataset.family !== g.replace(/-\d+$/, "")) {
+        var keep = routeFareEl.selectedIndex;
+        routeFareEl.replaceChildren();
+        fares.forEach(function (f, i) { routeFareEl.appendChild(option(String(i), f)); });
+        routeFareEl.dataset.family = g.replace(/-\d+$/, "");
+        routeFareEl.selectedIndex = keep >= 0 && keep < fares.length ? keep : 0;
+      }
+    }
+    routeFareWrap.hidden = !fares;
+    zoneEl.value = g + "-" + (fares ? routeFareEl.value : "0");
+    resultEl.hidden = true;
+  }
+  function fillRouteTo(p) {
+    var map = pickerRoutes(p);
+    var keep = routeToEl.value;
+    routeToEl.replaceChildren();
+    Object.keys(map[routeFromEl.value] || {}).sort(byCity(p)).forEach(function (c) {
+      routeToEl.appendChild(option(c, c + " \u00b7 " + cityOf(p, c)));
+    });
+    if (keep && map[routeFromEl.value] && map[routeFromEl.value][keep]) routeToEl.value = keep;
+    syncRouteZone();
+  }
+  function setupRoutePicker(p) {
+    if (!p || !p.routePicker) return;
+    var map = pickerRoutes(p);
+    routeFromEl.replaceChildren();
+    Object.keys(map).sort(byCity(p)).forEach(function (c) {
+      routeFromEl.appendChild(option(c, c + " \u00b7 " + cityOf(p, c)));
+    });
+    routeFromEl.value = map[HQ[programEl.value]] ? HQ[programEl.value] : routeFromEl.options[0].value;
+    delete routeFareEl.dataset.family;
+    fillRouteTo(p);
+    $("routePickHint").textContent = p.zoneHint || "";
+  }
+  // What the picker shows, for the result card.
+  function routePick(p) {
+    var g = routeGroup(p);
+    var z = find(p.zones, zoneEl.value);
+    var fares = g ? familyFares(p, g) : null;
+    return {
+      from: routeFromEl.value, fromCity: cityOf(p, routeFromEl.value),
+      to: routeToEl.value, toCity: cityOf(p, routeToEl.value),
+      groupName: z ? z.name.split(":")[0] : "",
+      fare: fares ? fares[+routeFareEl.value] + " fare" : ""
+    };
+  }
+  routeFromEl.addEventListener("change", function () { fillRouteTo(current()); });
+  routeToEl.addEventListener("change", syncRouteZone);
+  routeFareEl.addEventListener("change", syncRouteZone);
+
   // The airport box examples: the airline's headquarters airport to PHL.
   var HQ = window.HQ_AIRPORTS || {};
   function syncAirportExamples() {
@@ -424,6 +503,7 @@
 
     zoneEl.replaceChildren();
     if (p.zones) p.zones.forEach(function (z) { zoneEl.appendChild(option(z.id, z.name)); });
+    setupRoutePicker(p);
     earnEl.replaceChildren();
     earnField.hidden = !p.earnMethods;
     if (p.earnMethods) p.earnMethods.forEach(function (m) { earnEl.appendChild(option(m.id, m.name)); });
@@ -491,7 +571,10 @@
     distanceEl.required = m === "distance";
     segmentsField.hidden = m !== "segments";
     var zoneUsed = m === "zone" || (m === "distance" && !!p.zones);
-    zoneField.hidden = !zoneUsed;
+    // A route picker (Air New Zealand) stands in for the route group menu.
+    var picker = m === "zone" && !!p.routePicker;
+    routePickField.hidden = !picker;
+    zoneField.hidden = !zoneUsed || picker;
     $("zoneLabel").textContent = p.zoneLabel || "Route and distance";
     $("zoneHint").textContent = p.zoneHint || "This program awards a fixed amount per flight for each route band.";
     // A route type that pays a fixed amount needs no distance.
@@ -839,7 +922,11 @@
     if (method === "distance" && !routeFixed) row(dl, "Distance flown", countedText(p, distance));
     if (method === "distance" && p.zones) row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "segments") row(dl, "Segments flown", num.format(segments));
-    if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
+    if (method === "zone" && p.routePicker) {
+      var rp = routePick(p);
+      row(dl, "Route", rp.from + " " + rp.fromCity + " \u2192 " + rp.to + " " + rp.toCity + " (" + rp.groupName + ")");
+      if (rp.fare) row(dl, "Fare", rp.fare);
+    } else if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "cardOnly") row(dl, "Flight earning", p.flightLabel ? p.flightLabel.charAt(0).toUpperCase() + p.flightLabel.slice(1) : "Not estimated");
     else row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {

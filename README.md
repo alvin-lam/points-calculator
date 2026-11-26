@@ -55,7 +55,7 @@ Live site: https://points.alltripsconsidered.com/
   - Some earn a share of the distance by booking class, with a minimum per flight (Turkish, PhoenixMiles).
   - Some pay a fixed amount on certain routes (Turkish within Türkiye, LOT and Croatia within Europe).
   - Air China counts kilometres, which the calculator converts from the miles entered.
-  - Air New Zealand pays fixed Airpoints by route group, fare, and class.
+  - Air New Zealand pays fixed Airpoints by route group, fare, and class. The form asks for the route (From and To, limited to the routes Air New Zealand lists), then the fare (Seat, Seat+Bag, Flexi or The Works, shown only where it matters), then the cabin and booking class. The route group is worked out from the route, so members never pick from the group lists. Programs like this use `routePicker` in their data file.
   - Air Europa, China Eastern, and Xiamen earn on the price paid.
   - SAS EuroBonus pays a fixed number of points per flight by route region and ticket type, with 25% to 75% more for Silver, Gold, and Diamond.
   - GOL (Smiles) and LATAM (LATAM Pass) earn by category and route: GOL per real within South America and per US dollar elsewhere, LATAM per US dollar of the base fare.

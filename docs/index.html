@@ -131,6 +131,24 @@
         </div>
       </fieldset>
 
+      <div class="field" id="routePickField" hidden>
+        <span class="field-label">Route</span>
+        <div class="airport-row">
+          <label class="airport-input"><span class="visually-hidden">From</span>
+            <select id="routeFrom" aria-label="From"></select>
+          </label>
+          <span class="airport-arrow" aria-hidden="true">→</span>
+          <label class="airport-input"><span class="visually-hidden">To</span>
+            <select id="routeTo" aria-label="To"></select>
+          </label>
+        </div>
+        <div id="routeFareWrap">
+          <label for="routeFare" class="distance-label">Fare</label>
+          <select id="routeFare"></select>
+        </div>
+        <small id="routePickHint"></small>
+      </div>
+
       <div class="field" id="fareTypeField" hidden>
         <label for="fareType" id="fareTypeLabel">Fare Type</label>
         <select id="fareType"></select>

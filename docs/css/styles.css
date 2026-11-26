@@ -553,3 +553,7 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
 .scheme-swatch i { width: 9px; height: 14px; }
 .appearance-panel[hidden] { display: none; }
 .scheme-option .scheme-swatch i { width: 27px; }
+
+/* Route picker (Air New Zealand): space between the route row and the fare. */
+#routeFareWrap { margin-top: 12px; }
+#routeFareWrap[hidden] { display: none; }

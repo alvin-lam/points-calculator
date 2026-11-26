@@ -9,8 +9,44 @@ const rules = {
   method: "zone",
   decimals: true,
   defaultFareType: "y",
+  // Route picker: From, To and fare replace the long route group menu.
+  // Routes are the directed pairs Air New Zealand lists for each route
+  // group; the group and fare give the zone id ("tasman-1" + "-1").
+  routePicker: {
+    cities: {"ADL": "Adelaide", "AKL": "Auckland", "APW": "Apia", "BHE": "Blenheim", "BNE": "Brisbane", "CHC": "Christchurch", "CNS": "Cairns", "DPS": "Denpasar", "DUD": "Dunedin", "GIS": "Gisborne", "HBA": "Hobart", "HKG": "Hong Kong", "HKK": "Hokitika", "HLZ": "Hamilton", "HNL": "Honolulu", "IAH": "Houston", "ICN": "Seoul (Incheon)", "IUE": "Niue", "IVC": "Invercargill", "JFK": "New York", "KKE": "Kerikeri", "LAX": "Los Angeles", "MCY": "Sunshine Coast", "MEL": "Melbourne", "NAN": "Nadi", "NOU": "Nouméa", "NPE": "Napier", "NPL": "New Plymouth", "NRT": "Tokyo (Narita)", "NSN": "Nelson", "OOL": "Gold Coast", "ORD": "Chicago", "PEK": "Beijing", "PER": "Perth", "PMR": "Palmerston North", "PPT": "Papeete", "PVG": "Shanghai (Pudong)", "RAR": "Rarotonga", "ROT": "Rotorua", "SFO": "San Francisco", "SIN": "Singapore", "SYD": "Sydney", "TBU": "Nuku'alofa", "TIU": "Timaru", "TPE": "Taipei (Taoyuan)", "TRG": "Tauranga", "TUO": "Taupo", "WLG": "Wellington", "WRE": "Whangarei", "YVR": "Vancouver", "ZQN": "Queenstown"},
+    // Fares by route family; families with one fare show no fare menu.
+    fares: {
+      domestic: ["Seat", "Seat+Bag", "Flexi Change", "Flexi Refund"],
+      tasman: ["Seat", "Seat+Bag", "The Works or Works Flexi"],
+      "pacific-islands": ["Seat", "Seat+Bag", "The Works or Works Flexi"]
+    },
+    routes: {
+      "domestic-1": "AKL-CHC AKL-DUD AKL-WLG AKL-ZQN CHC-AKL CHC-DUD CHC-WLG CHC-ZQN DUD-AKL DUD-CHC DUD-WLG WLG-AKL WLG-CHC WLG-DUD WLG-ZQN ZQN-AKL ZQN-CHC ZQN-WLG",
+      "domestic-2": "AKL-BHE AKL-GIS AKL-KKE AKL-NPE AKL-NPL AKL-NSN AKL-PMR AKL-ROT AKL-TRG AKL-TUO AKL-WRE BHE-AKL BHE-WLG CHC-HKK CHC-HLZ CHC-IVC CHC-NPE CHC-NPL CHC-NSN CHC-PMR CHC-ROT CHC-TRG GIS-AKL GIS-WLG HKK-CHC HLZ-CHC HLZ-WLG IVC-CHC IVC-WLG KKE-AKL NPE-AKL NPE-CHC NPE-WLG NPL-AKL NPL-CHC NPL-WLG NSN-AKL NSN-CHC NSN-WLG PMR-AKL PMR-CHC ROT-AKL ROT-CHC ROT-WLG TIU-WLG TRG-AKL TRG-CHC TRG-WLG TUO-AKL WLG-BHE WLG-GIS WLG-HLZ WLG-IVC WLG-NPE WLG-NPL WLG-NSN WLG-ROT WLG-TIU WLG-TRG WRE-AKL",
+      "domestic-3": "AKL-IVC IVC-AKL",
+      "tasman-1": "AKL-BNE AKL-HBA AKL-MCY AKL-MEL AKL-OOL AKL-SYD BNE-AKL BNE-CHC BNE-WLG CHC-BNE CHC-MEL CHC-OOL CHC-SYD HBA-AKL MCY-AKL MEL-AKL MEL-CHC MEL-WLG OOL-AKL OOL-CHC SYD-AKL SYD-CHC SYD-WLG WLG-BNE WLG-MEL WLG-SYD",
+      "tasman-2": "ADL-AKL AKL-ADL AKL-CNS CNS-AKL MEL-ZQN SYD-ZQN ZQN-MEL ZQN-SYD",
+      "tasman-3": "AKL-PER CHC-PER PER-AKL PER-CHC",
+      "pacific-islands-1": "AKL-APW AKL-IUE AKL-NAN AKL-NOU AKL-RAR AKL-TBU APW-AKL IUE-AKL NAN-AKL NOU-AKL RAR-AKL TBU-AKL",
+      "pacific-islands-2": "AKL-PPT PPT-AKL",
+      "pacific-long-haul-1": "AKL-JFK JFK-AKL",
+      "pacific-long-haul-2": "AKL-LAX AKL-SFO CHC-SFO LAX-AKL SFO-AKL SFO-CHC",
+      "pacific-long-haul-3": "AKL-ORD ORD-AKL",
+      "pacific-long-haul-4": "AKL-YVR YVR-AKL",
+      "pacific-long-haul-5": "AKL-HNL HNL-AKL LAX-NAN LAX-PPT NAN-LAX PPT-LAX",
+      "pacific-long-haul-6": "AKL-IAH IAH-AKL",
+      "asia-1": "AKL-DPS DPS-AKL",
+      "asia-2": "AKL-HKG AKL-PEK HKG-AKL PEK-AKL",
+      "asia-3": "AKL-ICN ICN-AKL",
+      "asia-4": "AKL-PVG PVG-AKL",
+      "asia-5": "AKL-SIN CHC-SIN SIN-AKL SIN-CHC",
+      "asia-6": "AKL-TPE TPE-AKL",
+      "japan-1": "AKL-NRT CHC-NRT NRT-AKL NRT-CHC"
+    }
+  },
+  fareTypeLabel: "Cabin and booking class",
   zoneLabel: "Route group and fare",
-  zoneHint: "Air New Zealand pays a fixed number of Airpoints per one-way flight for each route group, fare, and booking class.",
+  zoneHint: "Air New Zealand pays a fixed number of Airpoints per one-way flight, set by route, fare and booking class.",
   fareTypes: [
     { id: "c", name: "Business Premier (C)" },
     { id: "d", name: "Business Premier (D)" },
