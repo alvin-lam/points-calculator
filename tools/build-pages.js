@@ -67,7 +67,7 @@ function breadcrumb(e, url) {
 // The airline itself, with its code, alliance and logo, for search engines.
 function airlineData(e) {
   const a = { "@type": "Airline", name: e.airline };
-  if (e.code) a.iataCode = e.code;
+  if (e.code) a.iataCode = e.code.split("/")[0];
   if (e.icon) a.logo = SITE + e.icon;
   if (e.alliance) a.memberOf = { "@type": "Organization", name: e.alliance };
   return a;
@@ -103,11 +103,24 @@ function latest(list) {
   return list.map((e) => e.reviewed).filter(Boolean).sort().pop() || null;
 }
 
+// Pages that were merged into another (old slug -> new slug).
+const REDIRECTS = {
+  "transavia-france": "transavia",
+  "transavia-netherlands": "transavia"
+};
+
 function build() {
   const html = fs.readFileSync(path.join(ROOT, "index.html"), "utf8");
   const list = entries();
   const files = {};
   list.forEach((e) => { files["airlines/" + e.slug + "/index.html"] = page(html, e); });
+  // Old addresses of merged entries point to the new page (not in the sitemap).
+  Object.entries(REDIRECTS).forEach(([from, to]) => {
+    const url = SITE + "airlines/" + to + "/";
+    files["airlines/" + from + "/index.html"] = '<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <title>Moved</title>\n' +
+      '  <meta name="robots" content="noindex">\n  <link rel="canonical" href="' + url + '">\n' +
+      '  <meta http-equiv="refresh" content="0; url=../' + to + '/">\n</head>\n<body>\n  <p>This page moved to <a href="../' + to + '/">' + url + '</a>.</p>\n</body>\n</html>\n';
+  });
   files["sitemap.xml"] = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
     [{ p: "", m: latest(list) }, { p: "privacy.html" }, ...list.map((e) => ({ p: "airlines/" + e.slug + "/", m: e.reviewed }))]
       .map((u) => "  <url><loc>" + SITE + u.p + "</loc>" + (u.m ? "<lastmod>" + u.m + "-01</lastmod>" : "") + "</url>").join("\n") + "\n</urlset>\n";

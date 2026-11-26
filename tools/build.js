@@ -27,6 +27,8 @@ function loadPrograms() {
       if (!/^#[0-9A-Fa-f]{6}$/.test(m.color || "")) fail(label + " needs a color like #005DAA");
       if (!/^https:\/\//.test(m.source || "")) fail(label + " needs a source link starting with https://");
       if (m.code !== undefined && !/^[A-Z0-9]{2}$/.test(m.code)) fail(label + " code must be two letters or digits");
+      // An airline flying under two codes lists both (Transavia: HV and TO).
+      (m.codes || []).forEach((c) => { if (!/^[A-Z0-9]{2}$/.test(c)) fail(label + " codes must be two letters or digits"); });
     };
     if (p.rules.airlines) {
       const ids = p.rules.airlines.map((a) => a.id);
@@ -64,7 +66,7 @@ function compile() {
       m = m || {};
       if (m.color) BRAND_COLORS[key] = m.color;
       if (m.source) SOURCES[key] = m.source;
-      if (m.code) AIRLINE_CODES[key] = m.code;
+      if (m.code) AIRLINE_CODES[key] = m.codes ? m.codes.join("/") : m.code;
       // Stored as YYYY-MM; the page shows it in the visitor's language.
       REVIEWED[key] = p.reviewed;
     });

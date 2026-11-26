@@ -169,7 +169,7 @@
           // A two-letter code matches only as a whole code (so "AA" does not
           // match every name with a double a).
           var ok = words.every(function (w) {
-            if (w.length === 2 && CODES[value] && CODES[value].toLowerCase() === w) return true;
+            if (w.length === 2 && CODES[value] && CODES[value].toLowerCase().split("/").indexOf(w) !== -1) return true;
             // A country's ISO code ("JP", "JPN") lists every program there,
             // and only those (plus an airline with that two-letter code).
             if (countryCode(c, w)) return true;
@@ -181,7 +181,9 @@
         if (p.airlines) {
           // Each airline sits under its own country.
           p.airlines.forEach(function (al) {
-            if ((al.country || p.country || "US") === c.id) add(key + ":" + al.id, airlineLabel(p, al));
+            // An airline can sit under several countries (Transavia: NL and FR).
+            var homes = al.countries || [al.country || p.country || "US"];
+            if (homes.indexOf(c.id) !== -1) add(key + ":" + al.id, airlineLabel(p, al));
           });
         } else if ((p.country || "US") === c.id) {
           add(key, p.name);
@@ -196,8 +198,9 @@
       var top = [];
       groups = groups.map(function (g) {
         var rest = g.items.filter(function (ch) {
-          var hit = CODES[ch[0]] && CODES[ch[0]].toLowerCase() === words[0];
-          if (hit) top.push(ch);
+          var hit = CODES[ch[0]] && CODES[ch[0]].toLowerCase().split("/").indexOf(words[0]) !== -1;
+          // An airline listed under two countries (Transavia) shows once.
+          if (hit && !top.some(function (t) { return t[0] === ch[0]; })) top.push(ch);
           return !hit;
         });
         return { label: g.label, items: rest };
@@ -382,7 +385,10 @@
     // (Eurowings, Transavia, LEVEL), or on its own (Jetstar, HK Express,
     // via sharedAlliance). Its own program (AerClub) says nothing more.
     // The status counts on member airlines, not on this airline's flights.
-    var tiered = p.statuses.some(function (s) { return s.alliance; });
+    // Use the group's own statuses: an airline with its own list (Transavia)
+    // still shares the group's alliance tiers.
+    var hasTier = function (list) { return (list || []).some(function (s) { return s.alliance; }); };
+    var tiered = hasTier(p.statuses) || hasTier(sel.program.statuses);
     var shared = alliance ? null
       : (sel.airline && tiered ? programAlliance(sel.program) : (sel.program.sharedAlliance || null));
     var allianceEl = $("allianceValue");
@@ -574,7 +580,9 @@
     // A route picker (Air New Zealand) stands in for the route group menu.
     var picker = m === "zone" && !!p.routePicker;
     routePickField.hidden = !picker;
-    zoneField.hidden = !zoneUsed || picker;
+    // A single route (Transavia: any flight) needs no menu.
+    var oneZone = m === "zone" && !!p.zones && p.zones.length === 1;
+    zoneField.hidden = !zoneUsed || picker || oneZone;
     $("zoneLabel").textContent = p.zoneLabel || "Route and distance";
     $("zoneHint").textContent = p.zoneHint || "This program awards a fixed amount per flight for each route band.";
     // A route type that pays a fixed amount needs no distance.
@@ -926,7 +934,7 @@
       var rp = routePick(p);
       row(dl, "Route", rp.from + " " + rp.fromCity + " \u2192 " + rp.to + " " + rp.toCity + " (" + rp.groupName + ")");
       if (rp.fare) row(dl, "Fare", rp.fare);
-    } else if (method === "zone") row(dl, "Route", find(p.zones, zoneEl.value).name);
+    } else if (method === "zone" && p.zones.length > 1) row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "cardOnly") row(dl, "Flight earning", p.flightLabel ? p.flightLabel.charAt(0).toUpperCase() + p.flightLabel.slice(1) : "Not estimated");
     else row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
     if (card) {

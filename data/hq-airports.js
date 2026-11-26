@@ -17,7 +17,7 @@ module.exports = {
   // Europe
   aegean: "ATH", aireuropa: "PMI", finnair: "HEL", icelandair: "KEF",
   norwegian: "OSL", sas: "ARN", tap: "LIS", turkish: "IST", virgin: "LHR",
-  "flyingblue:af": "CDG", "flyingblue:kl": "AMS", "flyingblue:to": "ORY", "flyingblue:hv": "AMS",
+  "flyingblue:af": "CDG", "flyingblue:kl": "AMS", "flyingblue:transavia": "AMS",
   "iag:ba": "LHR", "iag:ei": "DUB", "iag:ib": "MAD", "iag:level": "BCN", "iag:vy": "BCN",
   "milesandmore:lh": "FRA", "milesandmore:ew": "CGN", "milesandmore:de": "FRA",
   "milesandmore:os": "VIE", "milesandmore:lx": "ZRH", "milesandmore:sn": "BRU",

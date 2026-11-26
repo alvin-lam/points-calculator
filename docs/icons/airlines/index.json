@@ -346,17 +346,7 @@
     "circle": "icons/airlines/circle/finnair-logo.png",
     "iconSource": "Official logo; background flattened to a solid color"
   },
-  "flyingblue:to": {
-    "file": "icons/airlines/transavia-2025-logo.svg",
-    "title": "Transavia 2025 logo",
-    "source": "https://commons.wikimedia.org/wiki/File:Transavia_2025_logo.svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "Transavia Airlines C.V. / Transavia France S.A.S.",
-    "square": "icons/airlines/square/transavia-2025-logo.png",
-    "circle": "icons/airlines/circle/transavia-2025-logo.png",
-    "iconSource": "App Store icon of \"Transavia\" by Transavia Airlines C.V."
-  },
-  "flyingblue:hv": {
+  "flyingblue:transavia": {
     "file": "icons/airlines/transavia-2025-logo.svg",
     "title": "Transavia 2025 logo",
     "source": "https://commons.wikimedia.org/wiki/File:Transavia_2025_logo.svg",
