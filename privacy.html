@@ -1,47 +1,82 @@
 <!doctype html>
+<!-- Standard All Trips Considered privacy page. Keep the section order and wording in step with the other apps. -->
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Security policy fallback. Keep it in sync with SECURITY.md (the Cloudflare header). -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; require-trusted-types-for 'script'; trusted-types sw; upgrade-insecure-requests">
-  <meta name="referrer" content="strict-origin-when-cross-origin">
-  <title>Privacy | Airline Points Calculator</title>
-  <meta name="description" content="What the Airline Points Calculator stores, and what it does not.">
-    <link rel="canonical" href="https://points.alltripsconsidered.com/privacy.html">
-  <link rel="icon" href="favicon.ico" sizes="48x48">
-  <link rel="preload" href="fonts/instrument-serif-v5-latin.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/styles.css">
-  <script src="js/theme-boot.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'; require-trusted-types-for 'script'; trusted-types sw; upgrade-insecure-requests">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Privacy | Airline Points Calculator</title>
+<meta name="description" content="How Airline Points Calculator handles your information: everything you enter stays on your device.">
+<meta name="theme-color" content="#1f5fd1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0f141c" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="preload" href="fonts/instrument-serif-v5-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/privacy.css">
+<script src="js/theme-boot.js"></script>
 </head>
 <body>
-  <main class="wrap privacy">
-    <header>
-      <p class="brand"><a href="https://alltripsconsidered.com">All Trips Considered</a></p>
-      <h1>Privacy</h1>
-      <p class="lede">Airline Points Calculator</p>
-    </header>
-    <div class="card">
-      <h2>What this tool stores</h2>
-      <p>Everything you enter stays in this browser on this device. It is not sent to us or anyone else.</p>
-      <p>The calculator saves these settings in your browser's local storage:</p>
-      <ul>
-        <li>Your light, dark or automatic mode.</li>
-        <li>The last airline program and status you chose.</li>
-        <li>When you closed the "Add to Home Screen" message.</li>
-      </ul>
-      <p>Fares, fees, airports and card choices are never saved. Clearing your browser's site data removes all of it.</p>
-      <h2>What your device tells the tool</h2>
-      <p>The calculator reads your device's language and region to format numbers, money and dates, and to choose miles or kilometres. This stays on your device.</p>
-      <h2>Services we use</h2>
-      <p>Everything the page needs, including its fonts and airport list, loads from this site. Your browser does not contact any other service while you use the calculator. Links to airline websites open only when you choose them.</p>
-      <p>The calculator has no analytics, advertising or tracking cookies.</p>
-      <p class="note">Last updated: November 2026.</p>
-      <p><a href="./">Back to the Airline Points Calculator</a></p>
-    </div>
-    <footer>
-      <p class="copyright">&copy; 2026 <a href="https://alltripsconsidered.com">All Trips Considered</a>. All rights reserved.</p>
-    </footer>
-  </main>
+<main class="privacy">
+  <header class="privacy-header">
+    <p class="privacy-brand"><a href="https://alltripsconsidered.com">All Trips Considered</a></p>
+    <h1>Privacy</h1>
+    <p class="privacy-app">Airline Points Calculator</p>
+    <p class="privacy-updated">Last updated: November 26, 2026</p>
+  </header>
+
+  <section class="privacy-section" aria-labelledby="short">
+    <h2 id="short">The short version</h2>
+    <p>Everything you enter stays in this browser on this device. The calculator has no accounts, cookies, analytics, advertising or tracking. We never receive, see or store what you enter.</p>
+  </section>
+
+  <section class="privacy-section" aria-labelledby="saved">
+    <h2 id="saved">What is saved on your device</h2>
+    <p>The calculator saves the following in your browser's local storage so it is still there next time:</p>
+    <ul>
+      <li>Your light, dark or automatic mode, and your color.</li>
+      <li>The last airline program and status you chose.</li>
+      <li>When you closed the Add to Home Screen message.</li>
+    </ul>
+    <p>Fares, fees, airports and card choices are never saved.</p>
+    <p>Installing the app also keeps a copy of the site on your device so it works offline. Clearing your browser's site data or uninstalling the app removes everything, and we cannot recover it.</p>
+  </section>
+
+  <section class="privacy-section" aria-labelledby="device">
+    <h2 id="device">What your device tells the calculator</h2>
+    <p>The calculator reads your device's time zone and language setting to format dates, numbers and units. These settings are used only on your device and never leave it.</p>
+  </section>
+
+  <section class="privacy-section" aria-labelledby="links">
+    <h2 id="links">Links to other websites</h2>
+    <p>Links to airline websites open only when you choose them. Those sites have their own privacy policies.</p>
+  </section>
+
+  <section class="privacy-section" aria-labelledby="hosting">
+    <h2 id="hosting">Where the site is served from</h2>
+    <p>Every file the page uses, including its fonts and data, comes from this site. The page makes no requests to other services. <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" rel="noopener noreferrer">GitHub Pages</a> hosts the site, and <a href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer">Cloudflare</a> provides its domain name service. Like any website, these services can see your IP address and basic browser details when you visit, under their own privacy policies. Neither receives what you enter.</p>
+  </section>
+
+  <section class="privacy-section" aria-labelledby="children">
+    <h2 id="children">Children</h2>
+    <p>The calculator does not collect personal information from anyone, including children.</p>
+  </section>
+
+  <section class="privacy-section" aria-labelledby="changes">
+    <h2 id="changes">Changes</h2>
+    <p>If the calculator ever starts collecting information, such as anonymous visit counts, this page will be updated first to explain what is collected and why. Where the law requires it, you will be asked for consent first.</p>
+  </section>
+
+  <section class="privacy-section" aria-labelledby="contact">
+    <h2 id="contact">Contact</h2>
+    <p>Questions about privacy can be sent to report[at]alltripsconsidered[dot]com.</p>
+  </section>
+
+  <footer class="privacy-footer">
+    <p class="privacy-back"><a href="./">Back to the Airline Points Calculator</a></p>
+    <p class="privacy-copyright">© 2026 <a href="https://alltripsconsidered.com">All Trips Considered</a>. All rights reserved.</p>
+  </footer>
+</main>
 </body>
 </html>
