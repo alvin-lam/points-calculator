@@ -1033,6 +1033,7 @@
     if (!r) return;
     fromAirport.value = p.routes.from;
     toAirport.value = r[0];
+    [fromAirport, toAirport].forEach(function (el) { el.dispatchEvent(new Event("airports-filled")); });
     setDistanceMiles(r[2]);
     airportResult.textContent = p.routes.from + " " + p.routes.fromCity + " \u2194 " + r[0] + " " + r[1] + ": " + distText(r[2]) + " (the airline's published distance).";
     resultEl.hidden = true;
@@ -1070,6 +1071,7 @@
         b.textContent = c + " \u00b7 " + A0[c][3] + (A0[c][4] ? ", " + A0[c][4] : "");
         b.addEventListener("click", function () {
           input.value = D.airportLabel(c, A0[c]);
+          input.dispatchEvent(new Event("airports-filled"));
           updateAirportDistance();
         });
         wrap.appendChild(b);
@@ -1153,8 +1155,31 @@
       var a = window.AIRPORTS[code];
       input.value = code + " - " + (a[2] || a[3]);
       close();
+      syncClearBtn();
       updateAirportDistance();
     }
+    // The × clears this box, and the distance it filled in.
+    var clearBtn = $(input.id + "Clear");
+    function syncClearBtn() {
+      var show = !!input.value;
+      clearBtn.hidden = !show;
+      input.classList.toggle("has-clear", show);
+    }
+    clearBtn.addEventListener("mousedown", function (e) { e.preventDefault(); });
+    clearBtn.addEventListener("click", function () {
+      input.value = "";
+      close();
+      if (distanceEl.dataset.miles) { distanceEl.value = ""; delete distanceEl.dataset.miles; }
+      airportResult.textContent = "";
+      delete airportResult.dataset.picks;
+      if (routeSelect) routeSelect.value = "";
+      resultEl.hidden = true;
+      syncClearBtn();
+      input.focus();
+    });
+    input.addEventListener("input", syncClearBtn);
+    input.addEventListener("change", syncClearBtn);
+    input.addEventListener("airports-filled", syncClearBtn);
     input.addEventListener("focus", function () { ensureAirports(); if (input.value) input.select(); });
     input.addEventListener("input", function () {
       open();

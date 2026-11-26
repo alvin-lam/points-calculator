@@ -219,10 +219,16 @@
         <div class="airport-row">
           <label class="airport-input"><span class="visually-hidden">From airport</span>
             <input id="fromAirport" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="fromAirportList" placeholder="From (JFK or city)" autocomplete="off" spellcheck="false" autocapitalize="words">
+            <button type="button" id="fromAirportClear" class="combo-clear airport-clear" aria-label="Clear the from airport" title="Clear" hidden>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
           </label>
           <span class="airport-arrow" aria-hidden="true">→</span>
           <label class="airport-input"><span class="visually-hidden">To airport</span>
             <input id="toAirport" type="text" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="toAirportList" placeholder="To (DOH or city)" autocomplete="off" spellcheck="false" autocapitalize="words">
+            <button type="button" id="toAirportClear" class="combo-clear airport-clear" aria-label="Clear the to airport" title="Clear" hidden>
+              <svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true"><path d="M4 4l8 8M12 4l-8 8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </button>
           </label>
           <ul id="fromAirportList" class="combo-list airport-list" role="listbox" aria-label="From airport" hidden></ul>
           <ul id="toAirportList" class="combo-list airport-list" role="listbox" aria-label="To airport" hidden></ul>

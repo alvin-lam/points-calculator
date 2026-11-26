@@ -433,7 +433,10 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
 /* Airport fields for distance-based programs. */
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .airport-row { position: relative; display: flex; align-items: center; gap: 8px; }
+.airport-input { position: relative; }
 .airport-input input { padding-right: 12px; }
+.airport-input input.has-clear { padding-right: 36px; }
+.airport-clear { right: 4px; }
 .airport-list [role="option"] { display: block; padding: 7px 14px; }
 .airport-code { display: inline-block; min-width: 3.2em; font-weight: 700; }
 .airport-place { font-weight: 500; }
