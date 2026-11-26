@@ -54,6 +54,6 @@ module.exports = {
   reviewed: "2026-11",
   code: "CX",
   color: "#006564",
-  source: "https://www.cathaypacific.com/cx/en_US/faqs/cathay-membership-programme/asia-miles/earn-when-you-fly/how-can-i-earn-miles-with-cathay-pacific-or-other-flights-partners.html",
+  source: "https://www.cathaypacific.com/cx/en_US/membership/news-and-updates/Changes-to-your-Status-Points-and-Asia-Miles-earnings-on-flights.html",
   rules
 };

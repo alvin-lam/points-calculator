@@ -270,7 +270,7 @@ window.SOURCES = {
   "american:fj": "https://www.aa.com/i18n/travel-info/partner-airlines/fiji-airways.html",
   "ana": "https://www.ana.co.jp/en/us/amc/ana-international-flights/",
   "breeze": "https://www.flybreeze.com/breezy-rewards",
-  "cathay": "https://www.cathaypacific.com/cx/en_US/faqs/cathay-membership-programme/asia-miles/earn-when-you-fly/how-can-i-earn-miles-with-cathay-pacific-or-other-flights-partners.html",
+  "cathay": "https://www.cathaypacific.com/cx/en_US/membership/news-and-updates/Changes-to-your-Status-Points-and-Asia-Miles-earnings-on-flights.html",
   "chinaairlines": "https://www.china-airlines.com/us/en/member/miles/earning/flight",
   "chinaeastern": "https://cwsi.net/fares/china-eastern/",
   "chinasouthern": "https://www.csair.com/mcms/mcmsNewSite/mowenglish/cn/#/skypearl/earning/hkgs/zgnfhkgs",
