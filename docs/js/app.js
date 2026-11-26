@@ -616,9 +616,11 @@
           : num.format(rate) + " " + p.unit + " per " + sym;
     }
 
-    // Distance programs round to the nearest mile; spend programs round down
-    // (or up, where the program says so). Airpoints keep two decimals.
+    // Distance programs round to the nearest mile, or down where the program
+    // says so (Copa); spend programs round down (or up, where the program says
+    // so). Airpoints keep two decimals.
     if (p.decimals) points = Math.round(points * 100) / 100;
+    else if (em.id === "distance" && p.roundDown) points = Math.floor(points + 1e-9);
     else if (em.id === "distance" && !p.roundUp) points = Math.round(points);
     else points = p.roundUp ? Math.ceil(points - 1e-9) : Math.floor(points);
     // Some airlines guarantee a minimum per flight (Air Dolomiti: 125 miles).

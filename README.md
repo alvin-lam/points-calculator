@@ -231,7 +231,6 @@ Each new program needs an official, complete earning table before it is built. M
 ### Programs to complete
 
 - [ ] **Aegean Airlines:** add the International earning table (only Domestic is built). International flights earn a share of the distance with a minimum per flight, but sources disagree on the rates (see below). Confirm the tier bonuses (read as Silver 10%, Gold 20%, Platinum 30% from a low-resolution screenshot).
-- [ ] **Copa Airlines:** confirm whether Copa rounds before or after the PreferMember bonus (can differ by one mile).
 
 ### Aegean international routes to verify
 
