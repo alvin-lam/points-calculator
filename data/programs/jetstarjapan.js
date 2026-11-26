@@ -14,8 +14,10 @@ const rules = {
   defaultFareType: "starter-flex",
   fareTypes: [
     { id: "starter-flex", name: "Starter Flex", rate: 0.3 },
-    { id: "starter-flex-plus", name: "Starter Flex Plus", rate: 0.3 }
+    { id: "starter-flex-plus", name: "Starter Flex Plus", rate: 0.3 },
+    { id: "other", name: "Starter or other fares", earn: [null] }
   ],
+  unavailableText: " do not earn JAL miles on Jetstar Japan.",
   // JAL lists no status bonus for Jetstar Japan flights.
   statuses: [
     { id: "member", name: "JMB Member", multiplier: 1 }

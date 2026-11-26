@@ -556,7 +556,7 @@
       var zi = dZone ? p.zones.indexOf(dZone) : 0;
       var specs = fareType && status.elite && fareType.eliteEarn ? fareType.eliteEarn : (fareType && fareType.earn);
       var spec = specs ? specs[zi] : (fareType ? fareType.rate : 1);
-      if (spec == null) return { error: fareType.name + " does not earn on this route." };
+      if (spec == null) return { error: fareType.name + (p.unavailableText || " does not earn on this route.") };
       if (typeof spec === "object" && spec.fixed != null) {
         // Some programs add the status bonus to fixed amounts (Aegean).
         var fixedMult = p.bonusOnFixed ? (status.multiplier || 1) : 1;
