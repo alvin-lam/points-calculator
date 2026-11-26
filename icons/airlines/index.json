@@ -265,8 +265,8 @@
     "source": "https://commons.wikimedia.org/wiki/File:Alaska_Airlines_Logo.svg",
     "license": "Public domain (Wikimedia Commons)",
     "author": "The original uploader was KUsam at English Wikipedia.",
-    "square": "icons/airlines/square/alaska-airlines-logo.png",
-    "circle": "icons/airlines/circle/alaska-airlines-logo.png"
+    "square": "icons/airlines/square/alaska-airlines.png",
+    "circle": "icons/airlines/circle/alaska-airlines.png"
   },
   "allegiant": {
     "file": "icons/airlines/allegiant-air-logo.svg",
@@ -340,13 +340,12 @@
     "circle": "icons/airlines/circle/gol-linhas-a-reas-inteligentes-logo-2015-without-the-slogan.png"
   },
   "hawaiian": {
-    "file": "icons/airlines/hawaiian-airlines-2017-wordmark.svg",
-    "title": "Hawaiian Airlines 2017 wordmark",
-    "source": "https://commons.wikimedia.org/wiki/File:Hawaiian_Airlines_2017_wordmark.svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "Hawaiian Airlines, Inc.",
-    "square": "icons/airlines/square/hawaiian-airlines-2017-wordmark.png",
-    "circle": "icons/airlines/circle/hawaiian-airlines-2017-wordmark.png"
+    "file": "icons/airlines/hawaiian-airlines.png",
+    "title": "Hawaiian Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/hawaiian-airlines.png",
+    "circle": "icons/airlines/circle/hawaiian-airlines.png"
   },
   "iag:ei": {
     "file": "icons/airlines/aer-lingus-2022-logo.svg",
