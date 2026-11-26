@@ -250,7 +250,15 @@
     return p;
   }
 
+  // The airport box examples: the airline's headquarters airport to PHL.
+  var HQ = window.HQ_AIRPORTS || {};
+  function syncAirportExamples() {
+    var from = HQ[programEl.value];
+    $("fromAirport").placeholder = "From (" + (from && from !== "PHL" ? from : "JFK") + " or city)";
+    $("toAirport").placeholder = "To (PHL or city)";
+  }
   function onProgramChange() {
+    syncAirportExamples();
     applyProgram();
   }
 

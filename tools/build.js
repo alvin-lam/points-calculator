@@ -70,8 +70,18 @@ function compile() {
     });
   });
   require(path.join(DATA, "alliances.js"))(PROGRAMS);
+  // Headquarters airports: one for every airline, each in the airport list.
+  const HQ_AIRPORTS = require(path.join(DATA, "hq-airports.js"));
+  const AIRPORTS = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "docs", "js", "airports.json"), "utf8"));
+  Object.keys(AIRLINE_CODES).forEach((key) => {
+    if (key.indexOf(":") === -1 && PROGRAMS[key] && PROGRAMS[key].airlines) return;
+    if (!HQ_AIRPORTS[key]) throw new Error("hq-airports.js has no airport for " + key);
+  });
+  Object.entries(HQ_AIRPORTS).forEach(([key, code]) => {
+    if (!AIRPORTS[code]) throw new Error("hq-airports.js: " + code + " (" + key + ") is not in airports.json");
+  });
   const COUNTRIES = require(path.join(DATA, "countries.js"));
-  return { programs, PROGRAMS, COUNTRIES, BRAND_COLORS, AIRLINE_CODES, SOURCES, REVIEWED };
+  return { programs, PROGRAMS, COUNTRIES, BRAND_COLORS, AIRLINE_CODES, SOURCES, REVIEWED, HQ_AIRPORTS };
 }
 
 // JSON, except that Infinity (an open-ended tier) is kept as Infinity.
@@ -90,6 +100,7 @@ function render(d) {
     "window.COUNTRIES = " + arr(d.COUNTRIES) + ";",
     "window.BRAND_COLORS = " + obj(d.BRAND_COLORS) + ";",
     "window.AIRLINE_CODES = " + obj(d.AIRLINE_CODES) + ";",
+    "window.HQ_AIRPORTS = " + obj(d.HQ_AIRPORTS) + ";",
     "window.SOURCES = " + obj(d.SOURCES) + ";",
     "window.REVIEWED = " + obj(d.REVIEWED) + ";",
     ""
