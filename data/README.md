@@ -1,6 +1,6 @@
 # Program data
 
-Each loyalty program lives in its own file in `programs/`. The browser never reads these files directly. `node tools/build.js` combines them into `js/programs.js` and rebuilds the program pages.
+Each loyalty program lives in its own file in `programs/`. The browser never reads these files directly. `node tools/build.js` combines them into `docs/js/programs.js` and rebuilds the program pages.
 
 ## Changing a program
 
