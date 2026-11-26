@@ -297,6 +297,8 @@ These are not added yet. Each says what would change that.
 - Asiana Club: merging into Korean Air SKYPASS. Not added for that reason.
 - Condor: has no frequent flyer program of its own. Its flights earn only in partner programs (Alaska Atmos Rewards and JetBlue TrueBlue); Emirates Skywards stopped earning on Condor flights from 1 May 2026. Condor has confirmed it is considering its own program (a leaked draft calls it "Stripes"). Add Condor once that program launches with a published earning table.
 - HK Express: its flights do not earn Asia Miles; only the Standard Chartered Cathay Mastercard and short promotions do. Add flight earning if Cathay starts awarding Asia Miles on HK Express flights.
+- Peach (MM): ANA group low-cost airline. Its own flights do not earn ANA Mileage Club miles; only flights booked under an ANA (NH) codeshare number on selected routes do. ANA miles can be traded for Peach Points, but that is redemption, not earning. Add Peach if its own flights start earning ANA miles.
+- Spring Japan (IJ): JAL group low-cost airline. JAL Mileage Bank says flights operated by Spring Airlines do not earn; miles accrue only on flights booked and flown under JAL flight numbers. Add Spring Japan if its own flights start earning JMB miles.
 - Air Transat Staria credit cards: Desjardins and Visa plan cards that earn Staria points, launching later in 2027. Fees and earning rates are not yet published. Add them to the Air Transat entry once they launch.
 
 ## Disclaimer
