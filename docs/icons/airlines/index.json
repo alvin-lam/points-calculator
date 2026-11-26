@@ -166,7 +166,8 @@
     "source": "Official file supplied by the site owner (airline or program media kit)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/lot-polish-airlines.png",
-    "circle": "icons/airlines/circle/lot-polish-airlines.png"
+    "circle": "icons/airlines/circle/lot-polish-airlines.png",
+    "iconSource": "LOT roundel redrawn with the crane from the official LOT logo (vector, from lot.com)"
   },
   "milesandmore:lh": {
     "file": "icons/airlines/lufthansa-logo-2018.svg",
