@@ -1089,7 +1089,7 @@
     var D = window.Distance;
     var picks = [from, to].map(function (v) { return D.resolveAirport(window.AIRPORTS, v); });
     var unknown = [from, to].filter(function (v, i) { return !picks[i]; });
-    if (unknown.length) { airportResult.textContent = "No airport found for \u201c" + unknown[0].trim() + "\u201d. Enter a three-letter code, such as JFK, or a city name."; return; }
+    if (unknown.length) { airportResult.textContent = "No airport found for \u201c" + unknown[0].trim() + "\u201d. Enter a three-letter code, such as PHL, or a city name."; return; }
     // A city with more than one airport: offer each as a button, main
     // international airports first.
     var si = picks[0].matches ? 0 : (picks[1].matches ? 1 : -1);
