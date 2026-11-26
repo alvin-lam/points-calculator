@@ -29,6 +29,3 @@ Official files supplied by the site owner, keyed as `status:<alliance>:<tier>`: 
 
 Each airline, alliance and status badge also has a 512 by 512 square icon (`square/`) and a circular icon with a transparent outside (`circle/`). `index.json` links them through the `square` and `circle` fields. Most use the airline's official app icon: from the Apple App Store, or supplied by the site owner. `iconSource` in `index.json` names the app. The rest were made from the full logo, with the symbol cut out and centered on white. Airlines whose logo is only a wordmark use the whole wordmark until an official icon file is supplied.
 
-## Light and dark icons
-
-`square/`, `circle/` and `menu/` hold the icons for light mode. `square-dark/`, `circle-dark/` and `menu-dark/` hold the dark-mode versions, linked in `index.json` as `squareDark` and `circleDark` and in `js/logos.json` as `iconDark`. Icons that already sit on a colored background are the same in both modes. Icons on white are inverted for dark mode: the background takes the airline's brand color (from `BRAND_COLORS`) and the mark turns white, or near-black on a light brand color. Alliances and status badges use the alliance or tier color.

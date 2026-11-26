@@ -802,7 +802,7 @@
         icon.alt = "";
         icon.width = 24; icon.height = 24;
         icon.decoding = "async";
-        if (logo) icon.src = (isDark() && logo.iconDark) || logo.icon; else icon.classList.add("blank");
+        if (logo) icon.src = logo.icon; else icon.classList.add("blank");
         var text = document.createElement("span");
         text.textContent = ch[1];
         li.append(icon, text);
