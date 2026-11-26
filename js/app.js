@@ -703,7 +703,7 @@
       resultLogo.removeAttribute("src");
       resultLogo.parentNode.hidden = true;
     }
-    // The alliance logo and, for an alliance tier, the status badge.
+    // The alliance logo or, for an alliance tier, the status badge.
     var ALLIANCE_KEYS = { "Star Alliance": "star", "SkyTeam": "skyteam", "oneworld": "oneworld" };
     var sel = selection();
     var allianceName = sel.airline ? sel.airline.alliance : sel.program.alliance;
@@ -711,7 +711,9 @@
     var allianceInfo = allianceKey && LOGOS["alliance:" + allianceKey];
     var tierInfo = allianceKey && status.alliance &&
       LOGOS["status:" + allianceKey + ":" + status.alliance.toLowerCase().replace(/\s+/g, "-")];
-    setBadge($("resultAlliance"), allianceInfo, allianceName);
+    // A member with an alliance tier sees the tier badge; otherwise the
+    // alliance logo.
+    setBadge($("resultAlliance"), tierInfo ? null : allianceInfo, allianceName);
     setBadge($("resultTier"), tierInfo, allianceName + " " + (status.alliance || ""));
     $("resultBadges").hidden = !allianceInfo && !tierInfo;
     $("resultPoints").textContent = num.format(total);
