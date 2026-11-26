@@ -233,13 +233,12 @@
     "circle": "icons/airlines/circle/aegean-airlines.png"
   },
   "aeromexico": {
-    "file": "icons/airlines/aerom-xico-wordmark-2024.svg",
-    "title": "Aeroméxico wordmark 2024",
-    "source": "https://commons.wikimedia.org/wiki/File:Aerom%C3%A9xico_wordmark_2024.svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "Aerovías de México, S.A. de C.V.",
-    "square": "icons/airlines/square/aerom-xico-wordmark-2024.png",
-    "circle": "icons/airlines/circle/aerom-xico-wordmark-2024.png"
+    "file": "icons/airlines/aeromexico.png",
+    "title": "Aeromexico",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file",
+    "square": "icons/airlines/square/aeromexico.png",
+    "circle": "icons/airlines/circle/aeromexico.png"
   },
   "aireuropa": {
     "file": "icons/airlines/air-europa-logo-2015.svg",
