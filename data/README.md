@@ -7,7 +7,6 @@ Each loyalty program lives in its own file in `programs/`. The browser never rea
 1. Edit `programs/<program>.js`.
 2. Update `reviewed` to the month you checked the rules, for example `"2026-12"`.
 3. Run `node tools/build.js`.
-4. Run the tests: `node --test tests/*.test.js`.
 
 ## Adding a program
 
@@ -18,7 +17,7 @@ Copy a similar program's file, rename it, and set `id` to the new file name. The
 - `id`: the program's key. It must match the file name.
 - `reviewed`: the month the rules were last checked, as `YYYY-MM`. The result shows it as "Rules last reviewed November 2026."
 - `code`, `color`, `source`: the two-letter airline code, the brand color, and the page the rules come from. Group programs (Flying Blue, Miles & More, IAG and others) list these per airline under `airlines`. An airline without its own value uses the program's.
-- `examples` (optional): published earning examples. The browser tests run each one and compare the points.
+- `examples` (optional): published earning examples, kept as a record of how the rules were checked.
 - `rules`: the earning rules the calculator uses. The fields are described below.
 
 Other files:
