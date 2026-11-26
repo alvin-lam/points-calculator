@@ -1,10 +1,9 @@
 {
   "aircanada": {
-    "file": "icons/airlines/aircanada.svg",
-    "title": "Air Canada",
-    "hex": "#F01428",
-    "source": "https://www.aircanada.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/air-canada-logo.svg",
+    "title": "Air Canada logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Air_Canada_logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "phoenix:ca": {
     "file": "icons/airlines/airchina.svg",
@@ -14,11 +13,10 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "flyingblue:af": {
-    "file": "icons/airlines/airfrance.svg",
-    "title": "Air France",
-    "hex": "#002157",
-    "source": "https://www.airfrance.fr",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/air-france-logo.svg",
+    "title": "Air France Logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Air_France_Logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "airindia": {
     "file": "icons/airlines/airindia.svg",
@@ -28,11 +26,10 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "transat": {
-    "file": "icons/airlines/airtransat.svg",
-    "title": "Air Transat",
-    "hex": "#172B54",
-    "source": "https://www.airtransat.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/air-transat-logo.svg",
+    "title": "Air Transat logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Air_Transat_logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "american:aa": {
     "file": "icons/airlines/americanairlines.svg",
@@ -42,11 +39,10 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "ana": {
-    "file": "icons/airlines/ana.svg",
-    "title": "ANA",
-    "hex": "#13448F",
-    "source": "https://www.ana.co.jp/en/eur/the-ana-experience/brand",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/all-nippon-airways-logo.svg",
+    "title": "All Nippon Airways Logo",
+    "source": "https://commons.wikimedia.org/wiki/File:All_Nippon_Airways_Logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "lifemiles": {
     "file": "icons/airlines/avianca.svg",
@@ -84,25 +80,22 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "delta": {
-    "file": "icons/airlines/delta.svg",
-    "title": "Delta",
-    "hex": "#003366",
-    "source": "https://news.delta.com/delta-air-lines-logos-brand-guidelines",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/delta-logo.svg",
+    "title": "Delta logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Delta_logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "etihad": {
-    "file": "icons/airlines/etihadairways.svg",
-    "title": "Etihad Airways",
-    "hex": "#BD8B13",
-    "source": "https://www.etihad.com/en-ie/manage/duty-free",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/etihad-airways-logo.svg",
+    "title": "Etihad-airways-logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Etihad-airways-logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "iag:ib": {
-    "file": "icons/airlines/iberia.svg",
-    "title": "Iberia",
-    "hex": "#D7192D",
-    "source": "https://iberia.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/logotipo-de-iberia.svg",
+    "title": "Logotipo de Iberia",
+    "source": "https://commons.wikimedia.org/wiki/File:Logotipo_de_Iberia.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "jal": {
     "file": "icons/airlines/japanairlines.svg",
@@ -112,18 +105,16 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "jetblue": {
-    "file": "icons/airlines/jetblue.svg",
-    "title": "JetBlue",
-    "hex": "#001E59",
-    "source": "https://www.jetblue.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/jetblue-airways-logo.svg",
+    "title": "JetBlue Airways Logo",
+    "source": "https://commons.wikimedia.org/wiki/File:JetBlue_Airways_Logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "flyingblue:kl": {
-    "file": "icons/airlines/klm.svg",
-    "title": "KLM",
-    "hex": "#00A1DE",
-    "source": "https://www.klm.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/klm-logo.svg",
+    "title": "KLM logo",
+    "source": "https://commons.wikimedia.org/wiki/File:KLM_logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "milesandmore:lo": {
     "file": "icons/airlines/lotpolishairlines.svg",
@@ -133,11 +124,10 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "milesandmore:lh": {
-    "file": "icons/airlines/lufthansa.svg",
-    "title": "Lufthansa",
-    "hex": "#05164D",
-    "source": "https://www.lufthansa.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/lufthansa-logo-2018.svg",
+    "title": "Lufthansa Logo 2018",
+    "source": "https://commons.wikimedia.org/wiki/File:Lufthansa_Logo_2018.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "norwegian": {
     "file": "icons/airlines/norwegian.svg",
@@ -154,32 +144,28 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "qatar": {
-    "file": "icons/airlines/qatarairways.svg",
-    "title": "Qatar Airways",
-    "hex": "#5C0D34",
-    "source": "https://www.qatarairways.com/press-releases/en-WW/media_kits",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/qatar-airways-logo.svg",
+    "title": "Qatar Airways logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Qatar_Airways_logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "krisflyer": {
-    "file": "icons/airlines/singaporeairlines.svg",
-    "title": "Singapore Airlines",
-    "hex": "#F99F1C",
-    "source": "https://www.singaporeair.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/singapore-airlines-logo.svg",
+    "title": "Singapore Airlines Logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Singapore_Airlines_Logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "southwest": {
-    "file": "icons/airlines/southwestairlines.svg",
-    "title": "Southwest Airlines",
-    "hex": "#304CB2",
-    "source": "https://www.southwest.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/southwest-airlines-logo-2014.svg",
+    "title": "Southwest Airlines logo 2014",
+    "source": "https://commons.wikimedia.org/wiki/File:Southwest_Airlines_logo_2014.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "turkish": {
-    "file": "icons/airlines/turkishairlines.svg",
-    "title": "Turkish Airlines",
-    "hex": "#C70A0C",
-    "source": "https://www.turkishairlines.com/en-int/press-room/logo-archive/index.html",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/turkish-airlines-logo-2019-compact.svg",
+    "title": "Turkish Airlines logo 2019 compact",
+    "source": "https://commons.wikimedia.org/wiki/File:Turkish_Airlines_logo_2019_compact.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "united": {
     "file": "icons/airlines/unitedairlines.svg",
@@ -189,11 +175,10 @@
     "license": "CC0 1.0 (Simple Icons)"
   },
   "virgin": {
-    "file": "icons/airlines/virginatlantic.svg",
-    "title": "Virgin Atlantic",
-    "hex": "#DA0530",
-    "source": "https://www.virginatlantic.com",
-    "license": "CC0 1.0 (Simple Icons)"
+    "file": "icons/airlines/virgin-atlantic-logo.svg",
+    "title": "Virgin Atlantic logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Virgin_Atlantic_logo.svg",
+    "license": "Wikimedia Commons (see file page)"
   },
   "aegean": {
     "file": "icons/airlines/aegean-airlines-logo-2020.svg",
