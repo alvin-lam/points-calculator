@@ -520,7 +520,7 @@
   "alliance:oneworld": {
     "file": "icons/airlines/oneworld-flat.png",
     "title": "oneworld",
-    "source": "https://www.oneworld.com/ (ow_rgb_solid.png, the flat logo)",
+    "source": "https://www.oneworld.com/media-centre (ow_rgb_solid.png, the flat logo)",
     "license": "Trademark of oneworld; official logo file",
     "author": "http://www.oneworld.com/",
     "square": "icons/airlines/square/oneworld-flat.png",
@@ -595,7 +595,7 @@
   "status:oneworld:emerald": {
     "file": "icons/airlines/oneworld-emerald.png",
     "title": "oneworld Emerald",
-    "source": "Official oneworld Priority badge supplied by the site owner, with the circle replaced by the flat oneworld logo from oneworld.com",
+    "source": "Official oneworld Priority badge supplied by the site owner, with the flat oneworld logo from oneworld.com; navy and tier colors checked against the Priority sign on https://www.oneworld.com/travel-benefits (November 2026)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/oneworld-emerald.png",
     "circle": "icons/airlines/circle/oneworld-emerald.png"
@@ -603,7 +603,7 @@
   "status:oneworld:sapphire": {
     "file": "icons/airlines/oneworld-sapphire.png",
     "title": "oneworld Sapphire",
-    "source": "Official oneworld Priority badge supplied by the site owner, with the circle replaced by the flat oneworld logo from oneworld.com",
+    "source": "Official oneworld Priority badge supplied by the site owner, with the flat oneworld logo from oneworld.com; navy and tier colors checked against the Priority sign on https://www.oneworld.com/travel-benefits (November 2026)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/oneworld-sapphire.png",
     "circle": "icons/airlines/circle/oneworld-sapphire.png"
@@ -611,7 +611,7 @@
   "status:oneworld:ruby": {
     "file": "icons/airlines/oneworld-ruby.png",
     "title": "oneworld Ruby",
-    "source": "Official oneworld Priority badge supplied by the site owner, with the circle replaced by the flat oneworld logo from oneworld.com",
+    "source": "Official oneworld Priority badge supplied by the site owner, with the flat oneworld logo from oneworld.com; navy and tier colors checked against the Priority sign on https://www.oneworld.com/travel-benefits (November 2026)",
     "license": "Trademark of its owner; official logo file",
     "square": "icons/airlines/square/oneworld-ruby.png",
     "circle": "icons/airlines/circle/oneworld-ruby.png"
