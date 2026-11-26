@@ -21,12 +21,12 @@ const rules = {
   addonsHint: "Seats, bags, meals, upgrades, fast track or priority check-in bought from airBaltic. They earn points like the fare.",
   defaultFareType: "basic",
   fareTypes: [
-    { id: "mini", name: "Economy MINI", rate: 1 },
-    { id: "basic", name: "Economy BASIC", rate: 1 },
-    { id: "classic", name: "Economy CLASSIC (airbaltic.com only)", rate: 1, addPoints: 50 },
-    { id: "flex", name: "Economy FLEX", rate: 1, addPoints: 100 },
-    { id: "experience", name: "Business EXPERIENCE", rate: 1, addPoints: 150 },
-    { id: "business", name: "BUSINESS", rate: 1, addPoints: 200 }
+    { id: "mini", name: "Economy Mini", rate: 1 },
+    { id: "basic", name: "Economy Basic", rate: 1 },
+    { id: "classic", name: "Economy Classic (airbaltic.com only)", rate: 1, addPoints: 50 },
+    { id: "flex", name: "Economy Flex", rate: 1, addPoints: 100 },
+    { id: "experience", name: "Business Experience", rate: 1, addPoints: 150 },
+    { id: "business", name: "Business", rate: 1, addPoints: 200 }
   ],
   statuses: [
     { id: "club", name: "Club", multiplier: 1 },
