@@ -10,6 +10,8 @@ const rules = {
   country: "JP",
   currency: "JPY",
   unit: "miles",
+  // Not an alliance member, but shares a oneworld airline's program.
+  sharedAlliance: "oneworld",
   method: "distance",
   defaultFareType: "starter-flex",
   fareTypes: [

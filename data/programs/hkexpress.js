@@ -4,9 +4,13 @@
 const rules = {
   name: "HK Express | Asia Miles",
   programName: "Asia Miles",
+  // Status belongs to Cathay membership; Asia Miles is the currency.
+  statusProgramName: "Cathay membership",
   country: "HK",
   currency: "HKD",
   unit: "Asia Miles",
+  // Not an alliance member, but shares a oneworld airline's program.
+  sharedAlliance: "oneworld",
   method: "cardOnly",
   flightLabel: "does not earn Asia Miles",
   statuses: [

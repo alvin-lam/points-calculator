@@ -1,8 +1,12 @@
 /* Alliance tier matching each program status, shown as "Status | Tier".
    oneworld: Ruby, Sapphire, Emerald. Star Alliance: Silver, Gold.
-   SkyTeam: Elite, Elite Plus. Airlines outside an alliance are left out,
-   and an airline that shares a program but is not a member (Eurowings,
-   Transavia) still shows the program's tier.
+   SkyTeam: Elite, Elite Plus. Airlines outside an alliance are left out.
+   An airline that shares a program but is not a member (Eurowings,
+   Transavia, or Jetstar and HK Express via sharedAlliance in their own
+   files) shows "Not part of an alliance" plus a line that the status
+   counts on member airlines, not on its own flights. Memberships checked
+   November 2026: Fiji Airways full oneworld member (2025), Hawaiian
+   oneworld (April 2026), ITA Airways Star Alliance (April 2026).
    Keys are program ids, or "program:airline" for group programs. */
 module.exports = function applyAlliances(P) {
   var ALLIANCE_TIERS = {

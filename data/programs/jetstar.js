@@ -15,6 +15,8 @@ const rules = {
   country: "AU",
   currency: "AUD",
   unit: "Qantas Points",
+  // Not an alliance member, but shares a oneworld airline's program.
+  sharedAlliance: "oneworld",
   method: "zone",
   centsPerPoint: 1.0,
   defaultFareType: "y",
