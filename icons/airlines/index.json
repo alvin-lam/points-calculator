@@ -90,11 +90,10 @@
     "license": "Wikimedia Commons (see file page)"
   },
   "jal": {
-    "file": "icons/airlines/japan-airlines-wordmark-2011.svg",
-    "title": "Japan Airlines Wordmark (2011)",
-    "source": "https://commons.wikimedia.org/wiki/File:Japan_Airlines_Wordmark_(2011).svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "Copyright©Japan Airlines. All rights reserved."
+    "file": "icons/airlines/japan-airlines.png",
+    "title": "Japan Airlines",
+    "source": "Official file supplied by the site owner (airline or program media kit)",
+    "license": "Trademark of its owner; official logo file"
   },
   "jetblue": {
     "file": "icons/airlines/jetblue-airways-logo.svg",
