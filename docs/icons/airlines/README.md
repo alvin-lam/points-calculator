@@ -40,7 +40,7 @@ When you replace a full logo or icon, rebuild the matching `menu/` or `small/` c
 
 ## Sources
 
-- **Official files supplied by the site owner** (41 full logos), from airline and alliance media kits, including the status badges. The SkyTeam Elite badge was made for this site from the official Elite Plus badge by removing the word PLUS. The ITA Airways logo was taken from its app screen and recolored from white to blue.
+- **Official files supplied by the site owner** (41 full logos), from airline and alliance media kits, including the status badges. The SkyTeam Elite and Elite Plus badges come from skyteam.com. The ITA Airways logo was taken from its app screen and recolored from white to blue.
 - **Wikimedia Commons** (41 full logos). Each file page is linked in `index.json`. 27 are marked public domain on Commons; for the others, check the license on the file page.
 - **The airline's own website** (1 full logo): Frontier, recolored to Frontier green.
 
