@@ -512,8 +512,10 @@
         " member airlines, but " + shared + " benefits are not guaranteed on " + airName + " flights."));
     }
     $("allianceValue").classList.toggle("none", !alliance);
-    // The Alliance field shows only for alliance members.
-    $("allianceField").hidden = !alliance;
+    // The Alliance field shows for alliance members, and for airlines that
+    // share an alliance airline's program (Eurowings, Transavia, Jetstar),
+    // where it explains how status counts. It is hidden otherwise.
+    $("allianceField").hidden = !alliance && !shared;
 
     setCurrency(p.currency || "USD");
     p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, statusLabel(s))); });
