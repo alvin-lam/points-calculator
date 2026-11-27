@@ -306,6 +306,15 @@
         <small id="cardSelectHint">Card points are earned on the full amount charged, taxes included.</small>
       </div>
 
+      <div class="field" id="cardFxField" hidden>
+        <label for="cardFx">Was the ticket charged in shekels or a foreign currency?</label>
+        <select id="cardFx">
+          <option value="local">Shekels</option>
+          <option value="foreign">Foreign currency (such as US dollars)</option>
+        </select>
+        <small id="cardFxHint">This card earns at a different rate on foreign-currency charges.</small>
+      </div>
+
       <div class="field" id="cardChargeField" hidden>
         <label for="cardCharge">Amount charged to card (<span id="cardChargeCurrency">US$</span>)</label>
         <div class="money wide-fixed">

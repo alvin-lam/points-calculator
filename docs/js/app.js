@@ -631,6 +631,13 @@
     var foreign = !!(card && card.currency && card.currency !== (p.currency || "USD"));
     var noFare = !!(card && !usesFare(earnMethod(p).id));
     cardChargeField.hidden = !(foreign || noFare);
+    // A card with its own foreign-currency rate asks how the ticket was
+    // charged (El Al FLY CARD PREMIUM: 1 per NIS 4 in shekels, 3 abroad).
+    $("cardFxField").hidden = !(card && card.foreignRate);
+    if (card && card.foreignRate) {
+      var fxSym = cardSymbols[card.currency || p.currency || "USD"];
+      $("cardFxHint").textContent = "1 point per " + fxSym + num.format(card.per) + " in shekels, 1 per " + fxSym + num.format(card.foreignPer) + " in a foreign currency.";
+    }
     if (card) {
       var code = card.currency || p.currency || "USD";
       $("cardChargeCurrency").textContent = cardSymbols[code];
@@ -948,6 +955,8 @@
     }
     // A card's rate can depend on the fare type (Breeze Easy Visa).
     var cardRate = card ? (card.rates && fareType && card.rates[fareType.id] != null ? card.rates[fareType.id] : card.rate) : 0;
+    var cardFx = !!(card && card.foreignRate && $("cardFx").value === "foreign");
+    if (cardFx) cardRate = card.foreignRate;
     // Programs that count in fractions (Airpoints Dollars) keep two decimals.
     var cardEarn = charged * cardRate;
     // Some cards earn a higher rate only up to a spending limit, then a
@@ -1042,7 +1051,7 @@
       var sym = foreignCard || !fareUsed ? cardSymbols[cardCurrency] : symbols[p.currency || "USD"];
       // A card can state its rate as "1 per N" (Airpoints: 1 per NZ$70).
       row(dl, "Card earning", num.format(cardPoints) + " (" +
-        (card.rateText ? card.rateText : card.per ? "1 per " + sym + num.format(card.per) : num.format(cardRate) + " per " + sym) + " on " + cardMoney + ")");
+        (cardFx ? "1 per " + sym + num.format(card.foreignPer) : card.rateText ? card.rateText : card.per ? "1 per " + sym + num.format(card.per) : num.format(cardRate) + " per " + sym) + " on " + cardMoney + (cardFx ? ", foreign currency" : "") + ")");
     }
     // Skip the value rows for programs without a reliable point value.
     if (p.centsPerPoint) {
@@ -1693,6 +1702,7 @@
   zoneEl.addEventListener("change", syncEarnFields);
   upgradeEl.addEventListener("change", function () { resultEl.hidden = true; });
   usedCardYes.addEventListener("change", syncCardSelect);
+  $("cardFx").addEventListener("change", function () { resultEl.hidden = true; });
   usedCardNo.addEventListener("change", syncCardSelect);
   cardmemberYes.addEventListener("change", syncCardmember);
   cardmemberNo.addEventListener("change", syncCardmember);

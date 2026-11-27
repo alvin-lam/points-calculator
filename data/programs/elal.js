@@ -51,8 +51,9 @@ const rules = {
   cards: [
     { id: "flycard", name: "FLY CARD (+10% on flights)", rate: 1 / 5, per: 5, currency: "ILS", flightBonusPct: 0.1, bonusName: "FLY CARD bonus", bank: "Isracard (Israel)" },
     { id: "flycard-select", name: "FLY CARD PREMIUM SELECT (+10% on flights)", rate: 1 / 4.5, per: 4.5, rateText: "1 per ₪4.50", currency: "ILS", flightBonusPct: 0.1, bonusName: "FLY CARD PREMIUM SELECT bonus", bank: "Isracard (Israel)" },
-    { id: "flycard-premium", name: "FLY CARD PREMIUM, charged in shekels (+20% on flights)", rate: 1 / 4, per: 4, currency: "ILS", flightBonusPct: 0.2, bonusName: "FLY CARD PREMIUM bonus", bank: "Isracard (Israel)" },
-    { id: "flycard-premium-fx", name: "FLY CARD PREMIUM, charged in a foreign currency (+20% on flights)", rate: 1 / 3, per: 3, currency: "ILS", flightBonusPct: 0.2, bonusName: "FLY CARD PREMIUM bonus", bank: "Isracard (Israel)" }
+    // Charged in a foreign currency, FLY CARD PREMIUM earns 1 per NIS 3; the
+    // form asks how the ticket was charged.
+    { id: "flycard-premium", name: "FLY CARD PREMIUM (+20% on flights)", rate: 1 / 4, per: 4, foreignRate: 1 / 3, foreignPer: 3, currency: "ILS", flightBonusPct: 0.2, bonusName: "FLY CARD PREMIUM bonus", bank: "Isracard (Israel)" }
   ],
   // Bonus points on eligible flights, each on the base points. EXECUTIVE
   // Member Circle eligibility and bonus: El Al's EXECUTIVE Member Circle
