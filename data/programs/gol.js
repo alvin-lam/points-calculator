@@ -8,6 +8,9 @@ const rules = {
   currency: "BRL",
   unit: "miles",
   method: "spend",
+  // Smiles rules 7.8(e): taxes, airport fees and fees "of any other nature"
+  // do not earn; miles come from the fare only.
+  noCarrier: true,
   cap: 60000,
   fareTypeLabel: "Route",
   defaultFareType: "sa",

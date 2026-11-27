@@ -33,7 +33,7 @@ Live site: https://points.alltripsconsidered.com/
 
 ### How it calculates
 
-- Points are earned on the airfare plus carrier-imposed fees (Southwest and Allegiant: airfare only). Taxes & fees are shown in the total cost but do not earn.
+- Points are earned on the airfare plus carrier-imposed fees where the program counts them (see below). Taxes & fees are shown in the total cost but do not earn, except on airBaltic and Virgin Australia.
 
 ### Carrier fees, surcharges and extras
 
@@ -49,6 +49,21 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Norwegian Reward: only the net ticket price earns; taxes, charges and optional services do not, so the fee field is hidden.
 - Air Europa SUMA: the published fare and fuel surcharge earn; management and handling fees do not.
 - airBaltic Club: the fare, eligible fees including taxes and fuel charges, and extras bought directly from airBaltic earn.
+- American AAdvantage, Fiji Airways, United MileagePlus, Air Canada Aeroplan and WestJet Rewards: carrier-imposed fees or surcharges earn. WestJet extras (seats, bags, upgrades) also earn; Aeroplan's do not.
+- Delta SkyMiles: carrier-imposed surcharges earn, and so do paid upgrades and Preferred or Comfort seats.
+- JetBlue, Southwest, LATAM Pass and GOL Smiles: only the fare earns, so the fee field is hidden. LATAM excludes bags and seats; Smiles excludes fees "of any other nature".
+- Frontier (Carrier Interface Charge) and Breeze (Technology Development Charge): the fee earns, and so do bags, seats and other add-ons. Allegiant's Carrier Usage Charge does not earn.
+- Porter VIPorter: the NAV charge and fuel, insurance and peak surcharges do not earn; seats, bags and change fees do.
+- Air Transat Staria: surcharges do not earn; extras do.
+- Aeroméxico Rewards and Avianca LifeMiles: points are on the fare without taxes and fees, so carrier surcharges are shown as not earning. Aeroméxico's wording is the less explicit of the two.
+- Volaris altitude: the base fare and Volaris Services (seats, bags, bundles, pets) earn; there is no carrier fee field.
+- Viva Aerobus Doters: 1, 1.5 or 2 points per $2 MXN of the fare for Green, Silver and Gold; Doters does not say that seats or bags earn.
+- Air India, IndiGo, China Eastern and Xiamen: the fuel surcharge (YQ) earns. IndiGo's Seat Select, Excess Baggage and Fast Forward also earn when bought on its website or app. Xiamen's ancillaries earn at a lower multiplier and are not included.
+- Malaysia Airlines Enrich, Hainan and Hong Kong Airlines: carrier-imposed surcharges (YQ/YR) earn; seats, bags, upgrades and service charges do not.
+- Virgin Australia Velocity: points are on the all-inclusive fare, so taxes, fees and carrier charges all earn; extras do not.
+- Scoot: service and processing fees do not earn; add-ons do.
+- El Al Matmid: surcharges and fees do not earn, so the fee field is hidden; baggage and SPACE seats earn.
+- South African Airways Voyager: carrier-imposed fees earn.
 - American, Delta, and United cap earning at 75,000 miles per ticket.
 - Air Canada and WestJet fares are entered in Canadian dollars (CA$). Viva Aerobus and Volaris fares are entered in Mexican pesos (MX$). British Airways and Virgin Atlantic fares are entered in pounds (£). Fares for the European airlines (Flying Blue, Miles & More, Iberia, LEVEL, Vueling, and TAP) are entered in euros (€). Aeroméxico earns per US dollar, so its fare is entered in US dollars.
 - Porter fares are entered in Canadian dollars, Finnair fares in euros, Virgin Australia fares in Australian dollars (A$), and Norwegian fares in Norwegian kroner (kr). Avianca LifeMiles earns per US dollar by fare family.

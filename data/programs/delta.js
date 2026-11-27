@@ -2,8 +2,8 @@ const rules = {
   name: "Delta Air Lines | SkyMiles",
   // Paid seat upgrades earn miles like the fare.
   addons: true,
-  addonsLabel: "Paid Upgrades",
-  addonsHint: "The price of a seat upgrade bought from Delta, such as Comfort or First. It earns miles at your status rate.",
+  addonsLabel: "Paid Upgrades and Seats",
+  addonsHint: "Paid upgrades (such as to Comfort or First) and Preferred seats bought from Delta. They earn miles at your status rate. Purchases at airport kiosks in Amsterdam and Paris do not earn.",
   unit: "miles",
   method: "spend",
   cap: 75000,
@@ -22,7 +22,7 @@ const rules = {
     { id: "plat", name: "Delta SkyMiles Platinum Amex", rate: 3, bank: "American Express (US)" },
     { id: "reserve", name: "Delta SkyMiles Reserve Amex", rate: 3, bank: "American Express (US)" }
   ],
-  note: "SkyMiles are earned on base fare and carrier-imposed surcharges, and on paid seat upgrades. Basic Economy fares earn no miles. Earning is capped at 75,000 miles per ticket."
+  note: "SkyMiles are earned on base fare and carrier-imposed surcharges, and on paid upgrades and Comfort or Preferred seats. Basic Economy fares earn no miles. Earning is capped at 75,000 miles per ticket."
 };
 
 module.exports = {

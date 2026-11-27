@@ -14,6 +14,12 @@ const rules = {
   method: "spend",
   ratePer: 100,
   carrierLabel: "Fuel Surcharge",
+  carrierHint: "IndiGo's fuel surcharge (YQ). It earns like the base fare.",
+  // Select 6E Add-ons earn base and tier BluChips when booked on IndiGo's
+  // website or app: Seat Select, Excess Baggage and Fast Forward.
+  addons: true,
+  addonsLabel: "Seat Select, Excess Baggage and/or Fast Forward",
+  addonsHint: "These 6E Add-ons, bought on goindigo.in or the IndiGo app, earn base and tier BluChips. This estimate also adds the website bonus to them. Fare Hold and other add-ons do not earn.",
   statuses: [
     { id: "blu3", name: "Blu 3", rate: 0.08 },
     { id: "blu2", name: "Blu 2", rate: 0.10 },
@@ -24,7 +30,7 @@ const rules = {
     question: "Did you book on goindigo.in or the IndiGo app?",
     rate: 0.04
   },
-  note: "BluChip earns 8 BluChips per ₹100 of the base fare and fuel surcharge on IndiGo flights. Blu 2 members earn 2 more and Blu 1 members 4 more per ₹100 as a tier bonus. Booking on IndiGo's website or app adds 4 per ₹100. Taxes and other fees do not earn. Enter fares in rupees."
+  note: "BluChip earns 8 BluChips per ₹100 of the base fare and fuel surcharge on IndiGo flights. Blu 2 members earn 2 more and Blu 1 members 4 more per ₹100 as a tier bonus. Booking on IndiGo's website or app adds 4 per ₹100. Seat Select, Excess Baggage and Fast Forward bought on IndiGo's website or app also earn. Taxes and other fees do not earn. Enter fares in rupees."
 };
 
 module.exports = {

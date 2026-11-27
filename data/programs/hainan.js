@@ -8,6 +8,11 @@ const rules = {
   currency: "CNY",
   unit: "points",
   method: "spend",
+  // "Eligible spend includes base fare and carrier-imposed surcharges paid
+  // for your ticket, such as fuel surcharges." Change fees, excess baggage,
+  // seat selection, upgrades and service charges do not earn.
+  carrierLabel: "Carrier-imposed Surcharges",
+  carrierHint: "Hainan Airlines's fuel and other carrier-imposed surcharges. They earn like the fare. Seats, bags, upgrades and service charges do not.",
   roundSpendTo: 10,
   cap: 75000,
   // 10 base points per 10 yuan, plus the status bonus per 10 yuan.

@@ -8,6 +8,11 @@ const rules = {
   currency: "HKD",
   unit: "points",
   method: "spend",
+  // "Eligible spend includes base fare and carrier-imposed surcharges paid
+  // for your ticket, such as fuel surcharges." Change fees, excess baggage,
+  // seat selection, upgrades and service charges do not earn.
+  carrierLabel: "Carrier-imposed Surcharges",
+  carrierHint: "Hong Kong Airlines's fuel and other carrier-imposed surcharges. They earn like the fare. Seats, bags, upgrades and service charges do not.",
   roundSpendTo: 10,
   // 10 base points per HK$10, plus the status bonus per HK$10.
   statuses: [

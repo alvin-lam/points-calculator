@@ -4,6 +4,12 @@ const rules = {
   currency: "USD",
   unit: "points",
   method: "spend",
+  // Points are on the "tarifa base en dólares (Costo total del boleto -
+  // impuestos y cuotas)", so carrier surcharges are treated as not earning.
+  // Aeroméxico does not say so for individual members in so many words.
+  baseFareOnly: true,
+  carrierLabel: "Carrier Surcharges (YQ)",
+  carrierHint: "Aeroméxico's carrier surcharges on the ticket. Points are earned on the base fare only, so they do not earn.",
   statuses: [
     { id: "member", name: "Aeroméxico Rewards Member", rate: 8 },
     { id: "silver", name: "Silver", rate: 8 },

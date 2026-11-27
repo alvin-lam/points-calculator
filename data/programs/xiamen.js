@@ -4,6 +4,11 @@ const rules = {
   currency: "CNY",
   unit: "miles",
   method: "spend",
+  // "Egret Miles = (Base Fare + Fuel Surcharge) x (Category Multiplier +
+  // Tier Multiplier)"; other fees such as the Airport Construction Fee do
+  // not earn. (Egret Miles earning page)
+  carrierLabel: "Fuel Surcharge",
+  carrierHint: "Xiamen Airlines' fuel surcharge (YQ). It earns like the fare. The airport construction fee and other fees do not.",
   roundUp: true,
   defaultFareType: "y-other",
   fareTypes: [
@@ -20,7 +25,7 @@ const rules = {
     { id: "platinum", name: "Egret Platinum", multiplier: 1, addRate: 0.4 },
     { id: "diamond", name: "Egret Diamond", multiplier: 1, addRate: 0.5 }
   ],
-  note: "Since 25 July 2026, Egret Miles earns on the base fare plus fuel surcharge in yuan, times the cabin multiplier (1.0 or 0.7) plus the tier multiplier (0.2 to 0.5). Miles are rounded up. Enter fares in yuan."
+  note: "Since 25 July 2026, Egret Miles earns on the base fare plus fuel surcharge in yuan, times the cabin multiplier (1.0 or 0.7) plus the tier multiplier (0.2 to 0.5). Miles are rounded up. Ancillary services earn at a 0.7 multiplier plus the tier multiplier and are not included here. Only tickets starting 731, 836 or 989 earn by spend. Enter fares in yuan."
 };
 
 module.exports = {
@@ -29,6 +34,6 @@ module.exports = {
   reviewed: "2026-11",
   code: "MF",
   color: "#0D4A8F",
-  source: "https://cwsi.net/fares/xiamen-airlines/",
+  source: "https://ffp.xiamenair.com/en-US/earnScoreByFlying",
   rules
 };
