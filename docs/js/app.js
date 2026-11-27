@@ -636,7 +636,7 @@
     $("cardFxField").hidden = !(card && card.foreignRate);
     if (card && card.foreignRate) {
       var fxSym = cardSymbols[card.currency || p.currency || "USD"];
-      $("cardFxHint").textContent = "1 point per " + fxSym + num.format(card.per) + " in shekels, 1 per " + fxSym + num.format(card.foreignPer) + " in a foreign currency.";
+      $("cardFxHint").textContent = "1 point per " + fxSym + num.format(card.per) + " in shekels, 1 per " + fxSym + num.format(card.foreignPer) + " in a foreign currency." + (p.cardFxHint ? " " + p.cardFxHint : "");
     }
     if (card) {
       var code = card.currency || p.currency || "USD";
