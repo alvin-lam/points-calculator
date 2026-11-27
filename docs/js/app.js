@@ -49,7 +49,7 @@
   var LOCALE = (navigator.languages && navigator.languages[0]) || navigator.language || "en-US";
   var num = new Intl.NumberFormat(LOCALE);
   var money = {};
-  ["USD", "CAD", "MXN", "AUD", "NOK", "MYR", "SGD", "JPY", "HKD", "TWD", "INR", "THB", "CNY", "NZD", "GBP", "EUR", "BRL"].forEach(function (c) {
+  ["USD", "CAD", "MXN", "AUD", "NOK", "MYR", "SGD", "JPY", "HKD", "TWD", "INR", "THB", "CNY", "NZD", "GBP", "EUR", "BRL", "ILS", "ZAR"].forEach(function (c) {
     money[c] = new Intl.NumberFormat(LOCALE, { style: "currency", currency: c });
   });
   // Distance unit: kilometres where the region uses them; miles in the
@@ -101,12 +101,12 @@
     return new Date(Number(parts[0]), Number(parts[1]) - 1, 1).toLocaleDateString(LOCALE, { year: "numeric", month: "long" });
   }
 
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -825,7 +825,8 @@
       if (p.roundSpendTo && spend > 0) spend = Math.max(p.roundSpendTo, Math.round(spend / p.roundSpendTo) * p.roundSpendTo);
       points = spend * rate;
       var sym = symbols[p.currency || "USD"];
-      rateLabel = p.rateAsPercent
+      // A program can state its rate in its own words (SAA: 1 mile per R1.60).
+      rateLabel = p.rateText ? p.rateText : p.rateAsPercent
         ? num.format(rate * 100) + "% of the fare"
         : p.ratePer
           ? num.format(rate * p.ratePer) + " " + unitFor(rate * p.ratePer, p.unit) + " per " + sym + p.ratePer
@@ -925,7 +926,8 @@
     if (method === "segments" && !(segments > 0)) return showError("Please enter the number of segments flown.");
 
     errorEl.hidden = true;
-    var usd = money[p.currency || "USD"];
+    var cur = p.currency || "USD";
+    var usd = money[cur] || (money[cur] = new Intl.NumberFormat(LOCALE, { style: "currency", currency: cur }));
     var status = find(p.statuses, statusEl.value);
     var fareType = p.fareTypes && !earnMethod(p).noFareType ? find(p.fareTypes, fareTypeEl.value) : null;
     var airline = selection().airline;

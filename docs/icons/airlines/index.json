@@ -796,5 +796,14 @@
     "square": "icons/airlines/square/el-al.png",
     "circle": "icons/airlines/circle/el-al.png",
     "iconSource": "App Store icon of \"EL AL\" by EL AL Israel Airlines Ltd. (current stacked logo), enlarged on white"
+  },
+  "saa": {
+    "file": "icons/airlines/south-african-airways.png",
+    "title": "South African Airways logo",
+    "source": "https://www.flysaa.com/o/saa-airways-theme/airways-legacy/images/saa_h.png",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/south-african-airways.png",
+    "circle": "icons/airlines/circle/south-african-airways.png",
+    "iconSource": "Official SAA tail and wordmark from flysaa.com (the Star Alliance line is left off), with the tail on navy as in the App Store icon of \"South African Airways\""
   }
 }

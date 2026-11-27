@@ -1,6 +1,6 @@
 # Airline Points Calculator
 
-A static web app that estimates the points or miles you earn on a flight. It covers 74 airlines in 56 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
+A static web app that estimates the points or miles you earn on a flight. It covers 80 airlines in 62 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
 
 Live site: https://points.alltripsconsidered.com/
 
@@ -46,6 +46,7 @@ Live site: https://points.alltripsconsidered.com/
 - Transavia is one entry for Transavia (HV) and Transavia France (TO), listed under both the Netherlands and France and found by either code. It earns a fixed number of Flying Blue Miles per one-way flight by fare and level, per Flying Blue's Transavia partner page: Explorer 100 on Basic, 250 on Smart or Plus, 500 on Max, with Silver, Gold and Platinum adding 50%, 75% and 100%. All fares earn, Basic included. An airline listed under two countries uses `countries` and `codes` in its data. The old pages for Transavia France and Transavia Netherlands redirect to the new one.
 - airBaltic (BT) earns airBaltic Club points on the ticket's total charges, taxes and fuel charges included, and on extra services: 1 point per euro at Club level and 3 at Executive and VIP, plus a fixed bonus on Classic (+50), Flex (+100), Business Experience (+150) and Business (+200). It is the only program where taxes earn (`taxesEarn`); fare bonuses use `addPoints`. The C airBaltic payment card (Citadele) adds 1 point per euro plus 3 from airBaltic on flight tickets.
 - El Al (LY) earns Matmid points per US dollar of the ticket price, excluding taxes, fees and surcharges, plus baggage and SPACE seats: 6 for Matmid, 8 for Silver, 9 for Gold, 11 for Platinum and 12 for Top Platinum, from El Al's points page. Bonuses add to the base points: FLEX fares +20%, FLY CARD or FLY CARD PREMIUM SELECT +10%, FLY CARD PREMIUM +20%, and EXECUTIVE Member Circle members +20% in Premium and Business (the circle is for Silver to Top Platinum members living outside Israel, and Matmid members abroad with 2,000 Diamonds or 5,000 points converted from non-Israeli cards in 12 months). Results round to the nearest point (`roundNearest`). The FLY CARD is in the card section, worded "Do you hold an EL AL FLY CARD?" (`cardQuestion`), and adds its bonus to the flight points (`flightBonusPct`) however you pay. Paying with it also earns points per shekel charged, from Isracard's FLY CARD page and April 2026 terms: 1 per ₪5 (FLY CARD), ₪4.50 (FLY CARD PREMIUM SELECT), or ₪4 in shekels and ₪3 in a foreign currency (FLY CARD PREMIUM, Isracard or American Express), per Isracard's FLY CARD page. FLY CARD PREMIUM is one card option; the form then asks whether the ticket was charged in shekels or a foreign currency (`foreignRate`). Foreign-currency charges are billed in shekels plus a 1.8% to 2.5% fee, and the fee earns no points. The shekel amount is optional; left blank, only the flight bonus applies. The EXECUTIVE Circle question uses `extras`, a menu of percentage bonuses. Connecting, package and Sundor tickets earn by destination and booking class and are not covered.
+- South African Airways (SA) earns Voyager miles on SAA-operated flights (flight numbers SA001 to SA999) at 1 mile for every R1.60 of the published base fare and carrier-imposed fees, at every status, from Voyager's Earning Miles and Earn - Airline Partners pages. Taxes earn nothing, and the miles are split across the flown sectors of the ticket. The rate shows as "1 mile per R1.60" (`rateText`). SAA codeshare flights on partner aircraft earn by distance and booking class and are not covered.
 - ANA, JAL, and Singapore Airlines KrisFlyer earn a share of the miles flown by booking class. Cathay Pacific awards a fixed amount by fare type and distance zone from Hong Kong. None of them ask for the price paid.
 - Malaysia Airlines Enrich earns 1.5 to 2.5 points per ringgit (RM) by status.
 - Etihad Guest earns a share of the route distance by fare brand, and adds a status bonus as a share of the distance.
@@ -236,7 +237,6 @@ Each new program needs an official, complete earning table before it is built. M
 - [ ] **Royal Air Maroc Safar Flyer** (Africa): needs to know which earning table is current. Its site shows a booking-class version (Business J, C, D, I 200%; Economy Y, B 120%; other economy classes 100%) and a newer fare-family version (Eco Essential reported at 50%). Tier bonuses are reported as Silver 50%, Gold 75%, Platinum 100%. The website is blocked here.
 - [ ] **EgyptAir Plus** (Africa): needs EgyptAir Plus's own accrual table. Only partner programs' tables for EgyptAir flights were found, and they disagree.
 - [ ] **Kenya Airways Asante Rewards** (Africa): needs the earning chart. Points depend on route, fare type and cabin, with a reported 500-point minimum per sector, but no table was found. The website is blocked here.
-- [ ] **South African Airways Voyager** (Africa): needs which rule applies to SAA's own flights: one mile per R1.60 of fare and carrier fees (reported by a fare-chart site), or class-based percentages (a Thai Airways table effective 1 July 2026). The website is blocked here.
 
 ### Programs to complete
 
@@ -273,7 +273,7 @@ Expected results under the quoted rates (Business / Comfort Flex / Light): ATH t
 Every member of the three alliances that the calculator does not cover yet. Some already appear above; the others are new here. Each needs an official, complete earning table for its own flights.
 
 - [ ] **oneworld:** Oman Air Sindbad, Royal Air Maroc Safar Flyer (see above), Royal Jordanian Royal Club, SriLankan FlySmiLes (see lower priority). Philippine Airlines Mabuhay Miles (see above) is reported to join in 2027.
-- [ ] **Star Alliance:** EgyptAir Plus, Ethiopian ShebaMiles and South African Airways Voyager (all above), Shenzhen Airlines (see lower priority). Asiana leaves Star Alliance in December 2026 and is on the watch list.
+- [ ] **Star Alliance:** EgyptAir Plus and Ethiopian ShebaMiles (both above), Shenzhen Airlines (see lower priority). Asiana leaves Star Alliance in December 2026 and is on the watch list.
 - [ ] **SkyTeam:** Aerolíneas Argentinas Aerolíneas Plus, Middle East Airlines Cedar Miles, TAROM (its members earn in Flying Blue, so it could join the Flying Blue entry), Garuda Indonesia GarudaMiles, Kenya Airways Asante Rewards and Vietnam Airlines Lotusmiles (all above), Saudia Alfursan (see lower priority).
 
 ### Credit cards to add
@@ -291,7 +291,7 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 - [ ] **Report a correction:** a footer link, by email or a simple form, so readers can report changed earning rules.
 - [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
 - [ ] **Visit counter:** a privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so.
-- [ ] **"70+ airlines" wording:** the page titles, descriptions and preview image say "70+ airlines" (79 today, in 61 programs). Update the wording and remake the preview image (`tools/og-image.html`) if the count passes 100.
+- [ ] **"70+ airlines" wording:** the page titles, descriptions and preview image say "70+ airlines" (80 today, in 62 programs). Update the wording and remake the preview image (`tools/og-image.html`) if the count passes 100.
 
 ### Watch list
 
