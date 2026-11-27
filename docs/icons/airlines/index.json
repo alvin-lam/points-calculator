@@ -1057,5 +1057,23 @@
     "square": "icons/airlines/square/airniugini.png",
     "circle": "icons/airlines/circle/airniugini.png",
     "iconSource": "Official site icon from airniugini.com.pg, on white"
+  },
+  "flyingblue:sb": {
+    "file": "icons/airlines/aircalin.png",
+    "title": "Aircalin 2026 logo",
+    "source": "https://www.facci.com.au/fileadmin/australie/News_Images/2026_News_Images/Press_Release_-_Aircalin_launches_new_Logo.pdf",
+    "license": "Trademark of Aircalin; logo from Aircalin's press release of 3 July 2026",
+    "square": "icons/airlines/square/aircalin.png",
+    "circle": "icons/airlines/circle/aircalin.png",
+    "iconSource": "Hibiscus mark from Aircalin's 2026 logo, centered on white"
+  },
+  "egyptair": {
+    "file": "icons/airlines/egyptair.png",
+    "title": "EgyptAir logo",
+    "source": "https://www.egyptairplus.com/images/logo.png",
+    "license": "Trademark of its owner; official logo file (EgyptAir Plus mark removed)",
+    "square": "icons/airlines/square/egyptair.png",
+    "circle": "icons/airlines/circle/egyptair.png",
+    "iconSource": "App Store icon of \"EGYPTAIR\" by EgyptAir Airlines"
   }
 }

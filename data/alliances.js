@@ -35,6 +35,7 @@ module.exports = function applyAlliances(P) {
     enrich: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     // Star Alliance
     aegean: { silver: "Silver", gold: "Gold", platinum: "Gold" },
+    egyptair: { silver: "Silver", gold: "Gold", elite: "Gold", platinum: "Gold" },
     thai: { silver: "Silver", gold: "Gold", platinum: "Gold" },
     airindia: { silver: "Silver", gold: "Gold", platinum: "Gold" },
     copa: { silver: "Silver", gold: "Gold", platinum: "Gold", presidential: "Gold" },
@@ -71,7 +72,7 @@ module.exports = function applyAlliances(P) {
     "Star Alliance": ["united", "aircanada", "milesandmore:lh", "milesandmore:lx",
       "milesandmore:os", "milesandmore:sn", "milesandmore:az", "tap", "ana",
       "krisflyer", "eva", "lifemiles", "airnz", "turkish", "phoenix:ca",
-      "milesandmore:lo", "milesandmore:ou", "copa", "aegean", "thai", "airindia", "saa", "phoenix:zh"],
+      "milesandmore:lo", "milesandmore:ou", "copa", "aegean", "thai", "airindia", "saa", "phoenix:zh", "egyptair"],
     SkyTeam: ["delta", "aeromexico", "flyingblue:af", "flyingblue:kl", "virgin", "chinaairlines",
       "korean", "aireuropa", "chinaeastern", "xiamen", "sas", "vietnam", "aerolineas"]
   };

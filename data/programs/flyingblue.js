@@ -64,6 +64,54 @@ const rules = {
           { id: "ultimate", name: "Ultimate", bonus: 1 }
         ],
         note: "Transavia earns a fixed number of Flying Blue Miles per one-way flight, set by fare and level, not by price: Explorer earns 100 on Basic, 250 on Smart or Plus and 500 on Max. Silver, Gold and Platinum earn 150, 375 and 750; 175, 438 and 875; and 200, 500 and 1,000. Ultimate is not listed separately and is shown at the Platinum amounts. All fares earn, Basic included, on Transavia (HV) and Transavia France (TO) flights. Add your Flying Blue number to the booking. Flights booked with Miles earn nothing."
+      } },
+    // Aircalin (SB) earns Flying Blue Miles by distance and booking class,
+    // not by price, from Aircalin's Flying Blue page (aircalin.nc/en/flying-blue,
+    // checked Nov 2026; the French page aircalin.com/fr/flying-blue matches).
+    // Two published class tables: regional/medium-haul and international/
+    // long-haul. Elite bonus: Silver 50%, Gold 75%, Platinum and Ultimate
+    // 100%, figured on the distance times the class share capped at 100%.
+    // So classes above 100% get the bonus on the distance (bonusOnDistance),
+    // and classes below 100% get it on the miles earned (multiplier).
+    { id: "sb", name: "Aircalin", country: "NC", noAlliance: true,
+      program: {
+        cards: null,
+        addons: false,
+        method: "distance",
+        currency: "XPF",
+        defaultFareType: "ybs",
+        fareTypeLabel: "Booking Class",
+        zoneLabel: "Aircalin network",
+        zoneHint: "Aircalin publishes one class table for its regional network and another for its long-haul network.",
+        zones: [
+          { id: "regional", name: "Regional (Australia, New Zealand, Fiji, Vanuatu, Wallis, Tahiti)" },
+          { id: "longhaul", name: "Long-haul (Singapore, Bangkok, Paris, Los Angeles)" }
+        ],
+        unavailableText: " is not in Aircalin's table for this network.",
+        fareTypes: [
+          { id: "j", name: "Business Hibiscus (J)", earn: [1.75, 1.75], bonusOnDistance: true },
+          { id: "d", name: "Business Hibiscus (D)", zones: ["regional"], earn: [1.5, null], bonusOnDistance: true },
+          { id: "cd", name: "Business Hibiscus (C, D)", zones: ["longhaul"], earn: [null, 1.5], bonusOnDistance: true },
+          { id: "zi", name: "Business Hibiscus (Z, I)", earn: [1.25, 1.25], bonusOnDistance: true },
+          { id: "wp", name: "Premium Economy (W, P)", earn: [1.25, 1.25], bonusOnDistance: true },
+          { id: "f", name: "Premium Economy (F)", earn: [1, 1] },
+          { id: "ybs", name: "Economy (Y, B, S)", earn: [1, 1] },
+          { id: "hkrl", name: "Economy (H, K, R, L)", zones: ["regional"], earn: [0.5, null] },
+          { id: "mquvtg", name: "Economy (M, U, Q, V, T, G)", zones: ["regional"], earn: [0.25, null] },
+          { id: "na", name: "Economy (N, A)", zones: ["regional"], earn: [0.1, null] },
+          { id: "kh", name: "Economy (K, H)", zones: ["longhaul"], earn: [null, 0.75] },
+          { id: "qruvl", name: "Economy (Q, R, U, V, L)", zones: ["longhaul"], earn: [null, 0.5] },
+          { id: "nm", name: "Economy (N, M)", zones: ["longhaul"], earn: [null, 0.2] },
+          { id: "a", name: "Economy (A)", zones: ["longhaul"], earn: [null, 0.1] }
+        ],
+        statuses: [
+          { id: "explorer", name: "Explorer", multiplier: 1 },
+          { id: "silver", name: "Silver", multiplier: 1.5 },
+          { id: "gold", name: "Gold", multiplier: 1.75 },
+          { id: "platinum", name: "Platinum", multiplier: 2 },
+          { id: "ultimate", name: "Ultimate", multiplier: 2 }
+        ],
+        note: "Aircalin flights earn Flying Blue Miles as a share of the distance flown, set by booking class, not by price. Aircalin publishes one table for its regional network and one for its long-haul network to Singapore, Bangkok, Paris and Los Angeles. Business Hibiscus earns 125% to 175%, Premium Economy 100% or 125%, and Economy 10% to 100%. Silver adds 50%, Gold 75%, and Platinum and Ultimate 100%. The bonus is figured on the distance times the class share, with the share capped at 100%. This applies to flights sold under an SB or AF flight number and operated by Aircalin. The tables do not apply to award tickets or to classes they do not list. Aircalin does not say which table its domestic flights within New Caledonia use. The Aircalin American Express card earns its own Aircalin Points, not Flying Blue Miles, so it is not shown."
       } }
   ],
   statuses: [
@@ -86,7 +134,13 @@ module.exports = {
   airlines: {
     af: { code: "AF", color: "#002157" },
     kl: { code: "KL", color: "#00A1DE" },
+    sb: { code: "SB", color: "#004388", source: "https://www.aircalin.nc/en/flying-blue" },
     transavia: { code: "HV", codes: ["HV", "TO"], color: "#05CE78", source: "https://www.flyingblue.com/en/earn/partners/airline-transavia" }
   },
+  examples: [
+    { name: "Aircalin Noumea-Sydney Economy (Y)", airline: "sb", input: { fare: "ybs", status: "explorer", zone: "regional", fields: { distance: 1230 } }, expect: 1230 },
+    { name: "Aircalin Noumea-Bangkok Business (J), Platinum", airline: "sb", input: { fare: "j", status: "platinum", zone: "longhaul", fields: { distance: 5073 } }, expect: 13951 },
+    { name: "Aircalin Noumea-Nadi Economy (Q), Silver", airline: "sb", input: { fare: "mquvtg", status: "silver", zone: "regional", fields: { distance: 787 } }, expect: 295 }
+  ],
   rules
 };
