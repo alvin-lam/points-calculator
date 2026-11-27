@@ -22,7 +22,7 @@ const rules = {
     { id: "gold", name: "Gold Card", rate: 1.6 },
     { id: "platinum", name: "Platinum Card", rate: 1.8 }
   ],
-  note: "Fortune Wings Club earns 10 base points per HK$10 of base fare and carrier surcharges on Hong Kong Airlines, for tickets issued on or after 20 September 2025, plus a status bonus of 1, 3, 6, or 8 points per HK$10 for Select, Silver, Gold, and Platinum. The basic Fortune Wings tier earns no bonus. Spending is rounded to the nearest HK$10. Classes R, G, O, E, A, F, and P earn nothing. Taxes do not earn, and codeshare and some special tickets follow other rules. Enter fares in Hong Kong dollars."
+  note: "Fortune Wings Club earns 10 base points per HK$10 of base fare and carrier surcharges on Hong Kong Airlines, for tickets issued on or after 20 September 2025, plus a status bonus of 1, 3, 6, or 8 points per HK$10 for Select, Silver, Gold, and Platinum. The basic Fortune Wings tier earns no bonus. Spending is rounded to the nearest HK$10. Classes R, G, O, E, A, F, and P earn nothing. Taxes, rebooking fees, seats, bags, upgrades and service charges do not earn, and codeshare flights do not earn. Tickets not issued by Hong Kong Airlines, or without a price, earn by class and distance instead, with a 50% bonus for Gold and Platinum and 25% for Silver. Fares in other currencies are converted to Hong Kong dollars at the IATA rate. Enter fares in Hong Kong dollars."
 };
 
 module.exports = {
