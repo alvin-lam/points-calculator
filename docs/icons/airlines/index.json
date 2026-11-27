@@ -805,5 +805,14 @@
     "square": "icons/airlines/square/south-african-airways.png",
     "circle": "icons/airlines/circle/south-african-airways.png",
     "iconSource": "Official SAA tail and wordmark from flysaa.com (the Star Alliance line is left off), with the tail on navy as in the App Store icon of \"South African Airways\""
+  },
+  "azul": {
+    "file": "icons/airlines/azul.png",
+    "title": "Azul logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Logo_da_Azul_Linhas_A%C3%A9reas_Brasileiras.svg",
+    "license": "Trademark of its owner; logo artwork via Wikimedia Commons",
+    "square": "icons/airlines/square/azul.png",
+    "circle": "icons/airlines/circle/azul.png",
+    "iconSource": "The Brazil map from the Azul logo on white"
   }
 }

@@ -13,7 +13,7 @@ module.exports = {
   aircanada: "YUL", porter: "YTZ", transat: "YUL", westjet: "YYC",
   aeromexico: "MEX", viva: "MTY", volaris: "MEX",
   // Central and South America
-  copa: "PTY", lifemiles: "BOG", latam: "SCL", gol: "CGH",
+  copa: "PTY", lifemiles: "BOG", latam: "SCL", gol: "CGH", azul: "VCP",
   // Europe
   aegean: "ATH", airbaltic: "RIX", aireuropa: "PMI", finnair: "HEL", icelandair: "KEF",
   norwegian: "OSL", sas: "ARN", tap: "LIS", turkish: "IST", virgin: "LHR",
