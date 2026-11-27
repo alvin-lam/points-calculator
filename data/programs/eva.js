@@ -27,16 +27,17 @@ const rules = {
   ],
   // EVA Air co-brand cards from American Express and Cathay United Bank, from
   // EVA Air's Infinity MileageLands credit card page (North America English,
-  // user-supplied PDF of November 2026). The Amex Platinum rate is confirmed
+  // user-supplied PDF of November 2026). The Amex 1 per NT$25 rate is confirmed
   // on American Express Taiwan's card page. Other cards on the page are left
   // out by choice.
   cardQuestion: "Did you pay with an EVA Air co-brand card?",
   cardHint: "These Taiwan-issued cards earn award miles directly, with a higher rate on EVA Air tickets. Enter the total charged in New Taiwan dollars.",
   cards: [
-    // 1 mile per NT$25, plus 50% (Platinum) or 67% on the first 2,000 miles
-    // each month (Gold) on EVA Air tickets and EVASION packages.
-    { id: "amex-eva-plat", name: "American Express EVA Air Platinum Charge Card (+50% on EVA Air tickets)", rate: 1.5 / 25, rateText: "1.5 per NT$25", bank: "American Express (Taiwan)" },
-    { id: "amex-eva-gold", name: "American Express EVA Air Gold Charge Card (+67% on EVA Air tickets)", rate: 1 / 15, tiers: [{ upTo: 50000, rate: 1 / 15 }, { rate: 1 / 25 }], rateText: "1 per NT$15 on the first NT$50,000 a month, then 1 per NT$25", bank: "American Express (Taiwan)" },
+    // American Express EVA Air cards: 1 point (= 1 award mile) per NT$25,
+    // kept simple. The extra 50% (Platinum) or 67% on the first 2,000 miles
+    // a month (Gold) on EVA Air tickets is not counted.
+    { id: "amex-eva-plat", name: "American Express EVA Air Platinum Charge Card", rate: 1 / 25, per: 25, bank: "American Express (Taiwan)" },
+    { id: "amex-eva-gold", name: "American Express EVA Air Gold Charge Card", rate: 1 / 25, per: 25, bank: "American Express (Taiwan)" },
     // Cathay United EVA Air co-brand cards: 1 mile per NT$10 on EVA Air
     // tickets for international EVA Air and UNI Air flights.
     { id: "cub-supreme-infinite", name: "Cathay United EVA Air Supreme Infinite Card", rate: 1 / 10, per: 10, bank: "Cathay United Bank (Taiwan)" },
