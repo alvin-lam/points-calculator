@@ -121,8 +121,24 @@
   // "Airline | Program" for an airline inside a group program.
   // "Status | Alliance tier" when the program is in an alliance. Airlines
   // that share a program show its tier too (Transavia, Eurowings).
+  // The Membership menu lists the airline's own levels; the alliance tier
+  // shows separately below it (syncAllianceStatus).
   function statusLabel(s) {
-    return s.alliance ? s.name + " | " + s.alliance : s.name;
+    return s.name;
+  }
+
+  // "[Alliance] Status" under Membership: shown only for an airline in an
+  // alliance, and only when the chosen level has an alliance tier.
+  function syncAllianceStatus() {
+    var field = $("allianceStatusField");
+    var p = current();
+    var sel = selection();
+    var alliance = p && sel.program ? (sel.airline ? sel.airline.alliance : sel.program.alliance) : null;
+    var st = p && alliance ? find(p.statuses, statusEl.value) : null;
+    if (!st || !st.alliance) { field.hidden = true; return; }
+    $("allianceStatusLabel").textContent = alliance + " Status";
+    $("allianceStatusValue").textContent = st.alliance;
+    field.hidden = false;
   }
 
   // The alliance of a group program: its own, or that of its member airlines.
@@ -520,6 +536,7 @@
     setCurrency(p.currency || "USD");
     p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, statusLabel(s))); });
     statusEl.disabled = p.statuses.length < 2;
+    syncAllianceStatus();
 
     fareTypeField.hidden = !p.fareTypes;
     if (p.fareTypes) {
@@ -1788,6 +1805,7 @@
   var yearEl = $("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
   programEl.addEventListener("change", onProgramChange);
+  statusEl.addEventListener("change", syncAllianceStatus);
   earnEl.addEventListener("change", syncEarnFields);
   zoneEl.addEventListener("change", syncEarnFields);
   upgradeEl.addEventListener("change", function () { resultEl.hidden = true; });
