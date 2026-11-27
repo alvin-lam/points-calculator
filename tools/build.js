@@ -83,6 +83,31 @@ function compile() {
     if (!AIRPORTS[code]) throw new Error("hq-airports.js: " + code + " (" + key + ") is not in airports.json");
   });
   const COUNTRIES = require(path.join(DATA, "countries.js"));
+  // Cards: each airline lists only cards issued in its home country or the
+  // US. A card's market is the bank's parenthetical, e.g. "Chase (US)".
+  const checkCards = (where, country, cards) => {
+    if (!cards) return;
+    const c = COUNTRIES.find((x) => x.id === country);
+    const names = c ? [c.label.replace(/[^\p{L} ]/gu, "").trim()].concat(c.codes || []) : [];
+    cards.forEach((card) => {
+      const m = /\(([^()]*)\)\s*$/.exec(card.bank || "");
+      if (!m) return;
+      const market = m[1];
+      if (market === "US" || names.some((n) => market.indexOf(n) !== -1)) return;
+      throw new Error(where + ": card " + card.id + " (" + card.bank + ") is not a home-market (" + (country || "US") + ") or US card");
+    });
+  };
+  programs.forEach((p) => {
+    const r = p.rules;
+    if (r.airlines) {
+      r.airlines.forEach((a) => {
+        const pr = a.program || {};
+        checkCards(p.id + ":" + a.id, a.country || pr.country || r.country, "cards" in pr ? pr.cards : r.cards);
+      });
+    } else {
+      checkCards(p.id, r.country, r.cards);
+    }
+  });
   return { programs, PROGRAMS, COUNTRIES, BRAND_COLORS, AIRLINE_CODES, SOURCES, REVIEWED, HQ_AIRPORTS };
 }
 

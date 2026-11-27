@@ -26,7 +26,8 @@ const rules = {
   // (voyager.flysaa.com/earn-financial-partners), with the issuer and the
   // Amex and Mastercard pairing from Nedbank's SAA Voyager Premium and Gold
   // card pages. The Amex credit and cheque cards earn the same rate, so each
-  // pair is one option. Voyager's page labels the R11.50 Mastercard
+  // pair is one option. The Nedbank Mozambique Visa cards (1 mile per MT60
+  // Silver, MT40 Gold) are left out: only home-market and US cards are shown. Voyager's page labels the R11.50 Mastercard
   // "Premium", but its card image reads "gold credit", and Nedbank pairs it
   // with the Gold Amex. Two "$" Mastercards on the page name no issuer or
   // country and are left out.
@@ -35,9 +36,7 @@ const rules = {
     { id: "nedbank-premium-amex", name: "SAA Voyager Premium American Express, credit or cheque card", rate: 1 / 6, per: 6, bank: "Nedbank (South Africa)" },
     { id: "nedbank-premium-mc", name: "SAA Voyager Premium Credit Mastercard", rate: 1 / 10.5, per: 10.5, rateText: "1 per R10.50", bank: "Nedbank (South Africa)" },
     { id: "nedbank-gold-amex", name: "SAA Voyager Gold American Express, credit or cheque card", rate: 1 / 6.5, per: 6.5, rateText: "1 per R6.50", bank: "Nedbank (South Africa)" },
-    { id: "nedbank-gold-mc", name: "SAA Voyager Gold Credit Mastercard", rate: 1 / 11.5, per: 11.5, rateText: "1 per R11.50", bank: "Nedbank (South Africa)" },
-    { id: "nedbank-mz-silver", name: "SAA Voyager Silver Visa Credit Card", rate: 1 / 60, per: 60, currency: "MZN", bank: "Nedbank (Mozambique)" },
-    { id: "nedbank-mz-gold", name: "SAA Voyager Gold Visa Credit Card", rate: 1 / 40, per: 40, currency: "MZN", bank: "Nedbank (Mozambique)" }
+    { id: "nedbank-gold-mc", name: "SAA Voyager Gold Credit Mastercard", rate: 1 / 11.5, per: 11.5, rateText: "1 per R11.50", bank: "Nedbank (South Africa)" }
   ],
   note: "Voyager earns 1 mile for every R1.60 spent on the base fare and carrier-imposed fees on SAA-operated flights (flight numbers SA001 to SA999), whatever your status. Taxes do not earn. Miles are split across the flown sectors of the ticket. SAA codeshare flights on partner aircraft (4-digit flight numbers) earn by distance instead and are not covered here. Tour operator, unpublished, charter, award, compensation and sponsorship tickets earn nothing. Enter fares in rand."
 };
