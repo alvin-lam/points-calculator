@@ -814,5 +814,14 @@
     "square": "icons/airlines/square/azul.png",
     "circle": "icons/airlines/circle/azul.png",
     "iconSource": "The Brazil map from the Azul logo on white"
+  },
+  "indigo": {
+    "file": "icons/airlines/indigo.png",
+    "title": "IndiGo logo",
+    "source": "https://commons.wikimedia.org/wiki/File:IndiGo_Airlines_logo.svg",
+    "license": "Trademark of its owner; logo artwork via Wikimedia Commons",
+    "square": "icons/airlines/square/indigo.png",
+    "circle": "icons/airlines/circle/indigo.png",
+    "iconSource": "App Store icon of \"IndiGo: Flight Booking App\" by INTERGLOBE AVIATION LIMITED"
   }
 }

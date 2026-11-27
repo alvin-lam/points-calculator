@@ -823,8 +823,9 @@
       if (airline && status.elite && airline.eliteRate) rate = airline.eliteRate;
       // A status can add a flat amount per unit of currency (Air Europa, Xiamen).
       if (status.addRate) rate += status.addRate;
-      // Booking direct adds a bonus by fare type (JetBlue).
-      if (p.direct && fareType && directYes.checked) rate += p.direct.rates[fareType.id] || 0;
+      // Booking direct adds a bonus by fare type (JetBlue), or a flat
+      // amount per unit of currency (IndiGo: 4 BluChips per ₹100).
+      if (p.direct && directYes.checked) rate += fareType && p.direct.rates ? (p.direct.rates[fareType.id] || 0) : (p.direct.rate || 0);
       // Some programs round the spend first (Fortune Wings: nearest HK$10,
       // with anything under HK$10 counted as HK$10).
       var spend = airfare;

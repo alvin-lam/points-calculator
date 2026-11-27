@@ -26,7 +26,7 @@ module.exports = {
   // Middle East
   elal: "TLV", saa: "JNB", emirates: "DXB", etihad: "AUH", qatar: "DOH",
   // Asia
-  airindia: "DEL", ana: "HND", cathay: "HKG", chinaairlines: "TPE",
+  airindia: "DEL", indigo: "DEL", ana: "HND", cathay: "HKG", chinaairlines: "TPE",
   chinaeastern: "SHA", chinasouthern: "CAN", enrich: "KUL", eva: "TPE",
   hainan: "HAK", hkexpress: "HKG", hongkongairlines: "HKG", jal: "HND",
   jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK",

@@ -1,6 +1,6 @@
 # Airline Points Calculator
 
-A static web app that estimates the points or miles you earn on a flight. It covers 81 airlines in 63 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
+A static web app that estimates the points or miles you earn on a flight. It covers 82 airlines in 64 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
 
 Live site: https://points.alltripsconsidered.com/
 
@@ -48,6 +48,7 @@ Live site: https://points.alltripsconsidered.com/
 - El Al (LY) earns Matmid points per US dollar of the ticket price, excluding taxes, fees and surcharges, plus baggage and SPACE seats: 6 for Matmid, 8 for Silver, 9 for Gold, 11 for Platinum and 12 for Top Platinum, from El Al's points page. Bonuses add to the base points: FLEX fares +20%, FLY CARD or FLY CARD PREMIUM SELECT +10%, FLY CARD PREMIUM +20%, and EXECUTIVE Member Circle members +20% in Premium and Business (the circle is for Silver to Top Platinum members living outside Israel, and Matmid members abroad with 2,000 Diamonds or 5,000 points converted from non-Israeli cards in 12 months). Results round to the nearest point (`roundNearest`). The FLY CARD is in the card section, worded "Do you hold an EL AL FLY CARD?" (`cardQuestion`), and adds its bonus to the flight points (`flightBonusPct`) however you pay. Paying with it also earns points per shekel charged, from Isracard's FLY CARD page and April 2026 terms: 1 per ₪5 (FLY CARD), ₪4.50 (FLY CARD PREMIUM SELECT), or ₪4 in shekels and ₪3 in a foreign currency (FLY CARD PREMIUM, Isracard or American Express), per Isracard's FLY CARD page. FLY CARD PREMIUM is one card option; the form then asks whether the ticket was charged in shekels or a foreign currency (`foreignRate`). Foreign-currency charges are billed in shekels plus a 1.8% to 2.5% fee, and the fee earns no points. The shekel amount is optional; left blank, only the flight bonus applies. The EXECUTIVE Circle question uses `extras`, a menu of percentage bonuses. Connecting, package and Sundor tickets earn by destination and booking class and are not covered.
 - South African Airways (SA) earns Voyager miles on SAA-operated flights (flight numbers SA001 to SA999) at 1 mile for every R1.60 of the published base fare and carrier-imposed fees, at every status, from Voyager's Earning Miles and Earn - Airline Partners pages. Taxes earn nothing, and the miles are split across the flown sectors of the ticket. The rate shows as "1 mile per R1.60" (`rateText`). SAA codeshare flights on partner aircraft earn by distance and booking class and are not covered. The card section lists the Voyager co-branded cards from Voyager's Earn - Financial Partners page, grouped by bank. Nedbank (South Africa) cards earn 1 mile per R6 (Premium American Express, credit or cheque card), R10.50 (Premium Credit Mastercard), R6.50 (Gold American Express, credit or cheque card) or R11.50 (Gold Credit Mastercard) on the full amount charged. Nedbank (Mozambique) Visa cards earn 1 mile per MT60 (Silver) or MT40 (Gold) and ask for the amount charged in meticais.
 - Azul (AD) earns Azul Fidelidade points per real spent on the base airfare of Azul-operated flights: 1 for Básico, 2 for Topázio, 3 for Safira and 4 for Diamante, on every fare type, domestic and international. Government taxes and airport fees do not earn, and Azul has no carrier-imposed fee field (`noCarrier`). Rules verified by the user. Azul is not in an alliance.
+- IndiGo (6E) earns BluChips per ₹100 of the base fare and fuel surcharge: 8 for Blu 3, 10 for Blu 2 and 12 for Blu 1 (`ratePer: 100`), from IndiGo's BluChip FAQ as quoted in search results, because goindigo.in blocks automated access. Booking on goindigo.in or the IndiGo app adds 4 per ₹100, asked as a yes or no question (`direct` with a flat `rate`). Taxes and other fees do not earn. IndiGo is not in an alliance. Its co-branded cards (Kotak, HDFC) are not added yet.
 - ANA, JAL, and Singapore Airlines KrisFlyer earn a share of the miles flown by booking class. Cathay Pacific awards a fixed amount by fare type and distance zone from Hong Kong. None of them ask for the price paid.
 - Malaysia Airlines Enrich earns 1.5 to 2.5 points per ringgit (RM) by status.
 - Etihad Guest earns a share of the route distance by fare brand, and adds a status bonus as a share of the distance.
@@ -266,7 +267,7 @@ Expected results under the quoted rates (Business / Comfort Flex / Light): ATH t
 
 ### Lower priority programs
 
-- [ ] Asia: IndiGo BluChip, Saudia Alfursan, SriLankan FlySmiLes, Bangkok Airways FlyerBonus, Cebu Pacific, Shenzhen Airlines (may join the Air China entry).
+- [ ] Asia: Saudia Alfursan, SriLankan FlySmiLes, Bangkok Airways FlyerBonus, Cebu Pacific, Shenzhen Airlines (may join the Air China entry).
 - [ ] Europe: Pegasus BolBol, Volotea, Binter.
 - [ ] Oceania: Air Niugini Destinations, Aircalin.
 
@@ -294,7 +295,7 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 - [ ] **Report a correction:** a footer link, by email or a simple form, so readers can report changed earning rules.
 - [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
 - [ ] **Visit counter:** a privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so.
-- [ ] **"70+ airlines" wording:** the page titles, descriptions and preview image say "70+ airlines" (81 today, in 63 programs). Update the wording and remake the preview image (`tools/og-image.html`) if the count passes 100.
+- [ ] **"70+ airlines" wording:** the page titles, descriptions and preview image say "70+ airlines" (82 today, in 64 programs). Update the wording and remake the preview image (`tools/og-image.html`) if the count passes 100.
 
 ### Watch list
 
