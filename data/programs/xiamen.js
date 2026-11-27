@@ -8,6 +8,15 @@ const rules = {
   // Tier Multiplier)"; other fees such as the Airport Construction Fee do
   // not earn. (Egret Miles earning page)
   carrierLabel: "Fuel Surcharge",
+  // Ancillaries bought from Xiamen Airlines (ticket or order number 731,
+  // 836 or 989) earn "Eligible Spending Amount x (Category Multiplier +
+  // Tier Multiplier)", with the category multiplier 0.7.
+  addons: true,
+  addonsRate: 0.7,
+  addonsAddTier: true,
+  addonsRateLabel: "ancillaries",
+  addonsLabel: "Ancillary Services",
+  addonsHint: "Upgrades, seat selection (international flights only), extra baggage, in-flight meals, insurance from official channels and single-use Xiamen Airlines lounge passes, with a ticket or order number starting 731, 836 or 989. They earn 0.7 per yuan plus your tier multiplier. Change and refund fees do not count; ancillaries bundled into the fare go in the fare field.",
   carrierHint: "Xiamen Airlines' fuel surcharge (YQ). It earns like the fare. The airport construction fee and other fees do not.",
   roundUp: true,
   defaultFareType: "y-other",
@@ -25,7 +34,7 @@ const rules = {
     { id: "platinum", name: "Egret Platinum", multiplier: 1, addRate: 0.4 },
     { id: "diamond", name: "Egret Diamond", multiplier: 1, addRate: 0.5 }
   ],
-  note: "Since 25 July 2026, Egret Miles earns on the base fare plus fuel surcharge in yuan, times the cabin multiplier (1.0 or 0.7) plus the tier multiplier (0.2 to 0.5). Miles are rounded up. Ancillary services earn at a 0.7 multiplier plus the tier multiplier and are not included here. Only tickets starting 731, 836 or 989 earn by spend. Enter fares in yuan."
+  note: "Since 25 July 2026, Egret Miles earns on the base fare plus fuel surcharge in yuan, times the cabin multiplier (1.0 or 0.7) plus the tier multiplier (0.2 to 0.5). Miles are rounded up. Ancillary services such as upgrades, seats, extra baggage and meals bought from Xiamen Airlines earn 0.7 miles per yuan plus the tier multiplier. Only tickets starting 731, 836 or 989 earn by spend. Enter fares in yuan."
 };
 
 module.exports = {

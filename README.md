@@ -42,8 +42,8 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Flying Blue (Air France, KLM): the carrier surcharge earns, and so do extra baggage, seats and à la carte meals for your own trip.
 - British Airways Club: carrier-imposed charges earn, and so do paid seats, extra bags and cabin upgrades. Service and change fees do not.
 - Iberia Club (Iberia, LEVEL with an IB flight number): carrier charges and additional services (seats, bags, upgrades) earn.
-- AerClub: extras do not earn. Whether Aer Lingus's own carrier charges earn is not stated clearly; they are counted.
-- Vueling Club: no carrier charge is published; any carrier charges are counted, as on Iberia's Vueling page.
+- AerClub: only the fare earns. The terms (clause 10.2) exclude taxes, fees and charges, so Aer Lingus's carrier imposed charge is shown as not earning, and extras do not earn.
+- Vueling Club: Avios are earned excluding taxes and fees, and Vueling shows no carrier charge, so the fee field is hidden.
 - Miles & More (Lufthansa Group airlines): the ticket price plus the international or national surcharge earns; product and service charges do not.
 - Finnair Plus: the surcharge set by Finnair and travel extras bought before the flight earn.
 - Norwegian Reward: only the net ticket price earns; taxes, charges and optional services do not, so the fee field is hidden.
@@ -58,7 +58,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Aeroméxico Rewards and Avianca LifeMiles: points are on the fare without taxes and fees, so carrier surcharges are shown as not earning. Aeroméxico's wording is the less explicit of the two.
 - Volaris altitude: the base fare and Volaris Services (seats, bags, bundles, pets) earn; there is no carrier fee field.
 - Viva Aerobus Doters: 1, 1.5 or 2 points per $2 MXN of the fare for Green, Silver and Gold; Doters does not say that seats or bags earn.
-- Air India, IndiGo, China Eastern and Xiamen: the fuel surcharge (YQ) earns. IndiGo's Seat Select, Excess Baggage and Fast Forward also earn when bought on its website or app. Xiamen's ancillaries earn at a lower multiplier and are not included.
+- Air India, IndiGo, China Eastern and Xiamen: the fuel surcharge (YQ) earns. IndiGo's Seat Select, Excess Baggage and Fast Forward also earn when bought on its website or app. Xiamen's ancillaries (upgrades, seats, bags, meals, insurance, lounge passes) earn 0.7 miles per yuan plus the tier multiplier, entered in their own field (`addonsRate` with `addonsAddTier`).
 - Malaysia Airlines Enrich, Hainan and Hong Kong Airlines: carrier-imposed surcharges (YQ/YR) earn; seats, bags, upgrades and service charges do not.
 - Virgin Australia Velocity: points are on the all-inclusive fare, so taxes, fees and carrier charges all earn; extras do not.
 - Scoot: service and processing fees do not earn; add-ons do.

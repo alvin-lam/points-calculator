@@ -941,8 +941,12 @@
     var r = calculate(p, status, fareType, earnBase, distance, airline, segments);
     if (r.error) return showError(r.error);
     if (p.addonsRate && addons) {
-      r.points += Math.round(addons * p.addonsRate);
-      r.rateLabel += " + " + p.addonsRate + " per " + (p.currency === "CAD" ? "dollar" : "unit") + " on seats and bags";
+      // The extras rate can also take the status's tier bonus (Xiamen:
+      // ancillaries earn 0.7 plus the tier multiplier).
+      var aRate = p.addonsRate + (p.addonsAddTier && status && status.addRate ? status.addRate : 0);
+      var aPts = addons * aRate;
+      r.points += p.roundUp ? Math.ceil(aPts - 1e-9) : Math.round(aPts);
+      r.rateLabel += " + " + num.format(aRate) + " per " + (p.currency === "CAD" ? "dollar" : symbols[cur] || "unit") + " on " + (p.addonsRateLabel || "seats and bags");
     }
     if (gowild) {
       r.rateLabel = "1 on the GoWild! fare + " + num.format(r.points) + " on the Early Booking Fee" + (addons ? " and seats, bags and/or bundles" : "") + " at " + r.rateLabel;

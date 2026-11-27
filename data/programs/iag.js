@@ -80,6 +80,9 @@ var levelClub = {
 };
 var vuelingClub = {
   programName: "Vueling Club",
+  // Avios are earned "per passenger, excluding taxes and fees" (Vueling
+  // help centre). Vueling shows no carrier charge on its bookings.
+  noCarrier: true,
   currency: "EUR",
   statuses: [
     { id: "basic", name: "Basic", rate: 0 },
@@ -88,11 +91,17 @@ var vuelingClub = {
     { id: "premium", name: "Premium", rate: 7 }
   ],
   cards: null,
-  note: "Since 2026, Vueling Club earns Avios on flights only from the Smart level up: 3, 5, or 7 Avios per euro of the fare. Earning starts after 3 flights or 200 euros spent in a year. Basic members earn no Avios on flights. Vueling does not publish whether carrier charges, seats, or bags earn, so this estimate counts the fare and any carrier charges only."
+  note: "Since 2026, Vueling Club earns Avios on flights only from the Smart level up: 3, 5, or 7 Avios per euro of the fare. Earning starts after 3 flights or 200 euros spent in a year. Basic members earn no Avios on flights. Taxes and fees do not earn, and Vueling does not say that seats or bags bought separately earn, so this estimate counts the fare only."
 };
 var aerClub = {
   programName: "AerClub",
-  // Extras are asked for but do not earn.
+  // AerClub terms, clause 10.2 (from 1 March 2024): Avios are awarded "on
+  // the basis of fare spend (excluding taxes, fees and charges, and any
+  // ancillary retail spend". Aer Lingus's carrier imposed charge (mainly on
+  // North Atlantic flights) therefore does not earn, and neither do extras.
+  baseFareOnly: true,
+  carrierLabel: "Carrier Imposed Charge",
+  carrierHint: "The carrier imposed charge Aer Lingus adds, mainly on flights to and from North America. It does not earn Avios.",
   addons: true,
   addonsNoEarn: true,
   addonsLabel: "Seats, Bags and/or Upgrades",
@@ -110,7 +119,7 @@ var aerClub = {
     { id: "chase-ba", name: "Chase British Airways Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
     { id: "chase-iberia", name: "Chase Iberia Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" }
   ],
-  note: "AerClub earns 3 Avios per euro of the Aer Lingus fare and carrier charges, excluding government taxes, bags, and seats. Silver, Platinum, and Concierge add a 25%, 50%, or 75% tier bonus. Enter fares in euros. The US Chase cards earn per US dollar charged."
+  note: "AerClub earns 3 Avios per euro of the Aer Lingus fare, excluding taxes, fees and charges (including the carrier imposed charge), bags, seats and other extras. Silver, Platinum, and Concierge add a 25%, 50%, or 75% tier bonus. Enter fares in euros. The US Chase cards earn per US dollar charged."
 };
 
 const rules = {

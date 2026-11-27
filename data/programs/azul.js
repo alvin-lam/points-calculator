@@ -19,7 +19,7 @@ const rules = {
     { id: "safira", name: "Safira", rate: 3 },
     { id: "diamante", name: "Diamante", rate: 4 }
   ],
-  note: "Azul Fidelidade earns 1, 2, 3 or 4 points per real spent on the base airfare of Azul-operated flights, for Básico, Topázio, Safira and Diamante, on every fare type, domestic and international. Points follow your tier on the day of the flight. Government taxes and airport fees do not earn. Your Azul Fidelidade number must be on the reservation. Points last 2 years for Básico, 3 for Topázio, 4 for Safira and 5 for Diamante. Enter fares in reais."
+  note: "Azul Fidelidade earns 1, 2, 3 or 4 points per real spent on the base airfare of Azul-operated flights, for Básico, Topázio, Safira and Diamante, on every fare type, domestic and international. Points follow your tier on the day of the flight. Government taxes and airport fees do not earn. Your Azul Fidelidade number must be on the reservation. Paid extras such as seats, upgrades and Espaço Azul earn qualifying (status) points but, as far as published, no redeemable points. Points last 2 years for Básico, 3 for Topázio, 4 for Safira and 5 for Diamante. Enter fares in reais."
 };
 
 module.exports = {
