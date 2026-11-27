@@ -54,15 +54,17 @@ const rules = {
     { id: "flycard-premium", name: "FLY CARD PREMIUM, charged in shekels (+20% on flights)", rate: 1 / 4, per: 4, currency: "ILS", flightBonusPct: 0.2, bonusName: "FLY CARD PREMIUM bonus", bank: "Isracard (Israel)" },
     { id: "flycard-premium-fx", name: "FLY CARD PREMIUM, charged in a foreign currency (+20% on flights)", rate: 1 / 3, per: 3, currency: "ILS", flightBonusPct: 0.2, bonusName: "FLY CARD PREMIUM bonus", bank: "Isracard (Israel)" }
   ],
-  // Bonus points on eligible flights, each on the base points.
+  // Bonus points on eligible flights, each on the base points. EXECUTIVE
+  // Member Circle eligibility and bonus: El Al's EXECUTIVE Member Circle
+  // page (supplied by the site owner, November 2026).
   extras: [
-    { id: "executive", label: "Are you an EL AL EXECUTIVE Circle member?", hint: "EXECUTIVE Circle members earn 20% more points on El Al flights in Premium and Business. Most members can answer No.",
+    { id: "executive", label: "Are you an EL AL EXECUTIVE Circle member?", hint: "For Silver, Gold, Platinum and Top Platinum members living outside Israel, and Matmid members abroad who earned over 2,000 Diamonds or converted at least 5,000 points from non-Israeli credit cards within 12 months. They earn 20% more points on El Al flights in Premium and Business.",
       options: [
         { id: "no", name: "No" },
         { id: "yes", name: "Yes (+20% in Premium and Business)", pct: 0.2, premiumOnly: true, bonusName: "EXECUTIVE Circle bonus" }
       ] }
   ],
-  note: "Matmid earns points per US dollar of the ticket price, excluding taxes, levies, fees, surcharges and travel agent commissions: 6 for Matmid, 8 for Silver, 9 for Gold, 11 for Platinum and 12 for Top Platinum, by your status at the time of the flight. Baggage and SPACE seats bought with the flight earn too. Fares in other currencies are converted to US dollars at the ticketing date. Tickets with connecting flights, package or wholesale tickets, and Sundor flights earn by destination and booking class instead, which this estimate does not cover. Bonuses are added to the base points and rounded to the nearest point: FLEX fares earn 20% more, FLY CARD and FLY CARD PREMIUM SELECT holders 10% more, FLY CARD PREMIUM holders 20% more, and EXECUTIVE Circle members 20% more in Premium and Business. This estimate assumes the bonuses add together. Paying with a FLY CARD also earns points on the amount charged, per Isracard: 1 per NIS 5 (FLY CARD), NIS 4.50 (FLY CARD PREMIUM SELECT), or NIS 4 in shekels and NIS 3 in a foreign currency (FLY CARD PREMIUM, including the American Express version). Enter the amount in shekels from your card statement. Points count toward awards only; status is earned with Diamonds."
+  note: "Matmid earns points per US dollar of the ticket price, excluding taxes, levies, fees, surcharges and travel agent commissions: 6 for Matmid, 8 for Silver, 9 for Gold, 11 for Platinum and 12 for Top Platinum, by your status at the time of the flight. Baggage and SPACE seats bought with the flight earn too. Fares in other currencies are converted to US dollars at the ticketing date. Tickets with connecting flights, package or wholesale tickets, and Sundor flights earn by destination and booking class instead, which this estimate does not cover. Bonuses are added to the base points and rounded to the nearest point: FLEX fares earn 20% more, FLY CARD and FLY CARD PREMIUM SELECT holders 10% more, FLY CARD PREMIUM holders 20% more, and EXECUTIVE Member Circle members, for elite members living outside Israel, 20% more in Premium and Business. This estimate assumes the bonuses add together. Paying with a FLY CARD also earns points on the amount charged, per Isracard: 1 per NIS 5 (FLY CARD), NIS 4.50 (FLY CARD PREMIUM SELECT), or NIS 4 in shekels and NIS 3 in a foreign currency (FLY CARD PREMIUM, including the American Express version). Enter the amount in shekels from your card statement. Points count toward awards only; status is earned with Diamonds."
 };
 
 module.exports = {
