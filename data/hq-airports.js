@@ -31,7 +31,7 @@ module.exports = {
   airindia: "DEL", indigo: "DEL", ana: "HND", cathay: "HKG", chinaairlines: "TPE",
   chinaeastern: "SHA", chinasouthern: "CAN", enrich: "KUL", eva: "TPE",
   hainan: "HAK", hkexpress: "HKG", hongkongairlines: "HKG", jal: "HND",
-  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", pal: "MNL", srilankan: "CMB", airtahitinui: "PPT",
+  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", vietjet: "HAN", pal: "MNL", srilankan: "CMB", airtahitinui: "PPT",
   scoot: "SIN", starlux: "TPE", thai: "BKK", xiamen: "XMN",
   // Oceania
   airnz: "AKL", "american:fj": "NAN", jetstar: "MEL", qantas: "SYD", virginaustralia: "BNE"

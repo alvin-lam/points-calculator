@@ -1,6 +1,6 @@
 # Airline Points Calculator
 
-A static web app that estimates the points or miles you earn on a flight. It covers 91 airlines in 73 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
+A static web app that estimates the points or miles you earn on a flight. It covers 93 airlines in 75 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
 
 Live site: https://points.alltripsconsidered.com/
 
@@ -84,6 +84,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - SriLankan (UL) FlySmiLes earns 60% to 225% of the distance by fare family, 50% on group (G) bookings; Gold adds 15% and Platinum 25%.
 - Royal Air Maroc (AT) Safar Flyer earns 50% to 200% of the distance by fare family; Silver, Gold and Platinum add 50%, 75% and 100%. The minimum for flights under 500 miles is not published, so none is applied.
 - Vietnam Airlines (VN) Lotusmiles earns the distance times a fare-family multiplier (from 26 August 2026), with lower Economy Classic and Lite multipliers on international routes; Titanium, Gold, and Platinum or Million Miler add 30%, 50% and 100%.
+- VietJet Air (VJ) SkyJoy earns SkyPoints per VND 10,000 of the base fare, Vietjet surcharges and ancillary services, by tier and fare (Red 0.5 to Diamond 12; Eco, Deluxe, SkyBoss, Business), from SkyJoy terms version 2.1 (30 September 2026). Taxes, VAT and airport and security fees do not earn, and Thai Vietjet flights do not earn. Cards: HDBank Vietjet Classic (3 per VND 10,000) and VPBank YOJO (1 per VND 3,000). Card and flight points are floored with a tiny allowance for floating-point error.
 - Philippine Airlines (PR) Mabuhay Miles earns a route's base miles times 10% to 150% by fare family. Elite adds 25%; Premier Elite and Million Miler add 75% to and from the US and Canada and 25% elsewhere (`multipliers` per route type), on earned miles in Economy and Premium Economy and on the distance flown in Business (`bonusOnDistance`). PAL's charts list fixed base miles per route, which can differ slightly from the distance entered.
 - Air Tahiti Nui (TN) Club Tiare earns 25% to 150% of the distance by booking class (S earns 50% on Papeete-Paris); Silver adds 50% and Gold 75%.
 - Aerolíneas Argentinas (AR) Aerolíneas Plus earns a share of the distance by route type (domestic, regional, international) and the first letter of the fare basis, 0% to 200%; Oro, Platino and Diamante add 25%, 75% and 100%.
@@ -316,7 +317,7 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 - [ ] **Report a correction:** a footer link, by email or a simple form, so readers can report changed earning rules.
 - [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
 - [ ] **Visit counter:** a privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so.
-- [ ] **"90+ airlines" wording:** the page titles, descriptions and preview image say "90+ airlines" (91 today, in 73 programs). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 100.
+- [ ] **"90+ airlines" wording:** the page titles, descriptions and preview image say "90+ airlines" (93 today, in 75 programs). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 100.
 
 ### Watch list
 

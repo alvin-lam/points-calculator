@@ -916,7 +916,7 @@
     if (p.decimals) points = Math.round(points * 100) / 100;
     else if (em.id === "distance" && !p.roundUp) points = Math.round(points);
     else if (p.roundNearest) points = Math.round(points);
-    else points = p.roundUp ? Math.ceil(points - 1e-9) : Math.floor(points);
+    else points = p.roundUp ? Math.ceil(points - 1e-9) : Math.floor(points + 1e-6);
     // Some airlines guarantee a minimum per flight (Air Dolomiti: 125 miles).
     if (p.minPoints && points < p.minPoints) {
       points = p.minPoints;
@@ -1043,7 +1043,9 @@
         tierFloor = top;
       });
     }
-    var cardPoints = card ? (p.decimals ? Math.floor(cardEarn * 100) / 100 : Math.floor(cardEarn)) : 0;
+    // A tiny allowance keeps float error from dropping a point (3,300,000 x
+    // 3/10,000 is 989.9999...).
+    var cardPoints = card ? (p.decimals ? Math.floor(cardEarn * 100 + 1e-6) / 100 : Math.floor(cardEarn + 1e-6)) : 0;
     var total = r.points + cardPoints;
 
     // One line each: airline, membership level with its alliance status, fare
