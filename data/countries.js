@@ -55,5 +55,7 @@ module.exports = [
   { id: "MA", label: "Morocco \u{1F1F2}\u{1F1E6}", codes: ["MA", "MAR"] },
   { id: "OM", label: "Oman \u{1F1F4}\u{1F1F2}", codes: ["OM", "OMN"] },
   { id: "JO", label: "Jordan \u{1F1EF}\u{1F1F4}", codes: ["JO", "JOR"] },
-  { id: "AR", label: "Argentina \u{1F1E6}\u{1F1F7}", codes: ["AR", "ARG"] }
+  { id: "AR", label: "Argentina \u{1F1E6}\u{1F1F7}", codes: ["AR", "ARG"] },
+  { id: "MT", label: "Malta \u{1F1F2}\u{1F1F9}", codes: ["MT", "MLT"] },
+  { id: "MO", label: "Macau \u{1F1F2}\u{1F1F4}", codes: ["MO", "MAC"] }
 ];
