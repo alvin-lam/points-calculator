@@ -241,6 +241,7 @@ Each new program needs an official, complete earning table before it is built. M
 ### Programs to complete
 
 - [ ] **Aegean Airlines:** add the International earning table (only Domestic is built). International flights earn a share of the distance with a minimum per flight, but sources disagree on the rates (see below). Confirm the tier bonuses (read as Silver 10%, Gold 20%, Platinum 30% from a low-resolution screenshot).
+- [ ] **AirAsia, AirAsia rewards** (Asia): AirAsia's Membership Agreement (Table E) gives points per RM1 by fare and status at the time of flight. Red, Gold, Platinum and Black (0–13, 14–23, 24–49 and 50+ qualifying sectors) earn up to 1.5, 3, 5.5 and 10 on Low Fare, and exactly 2, 4, 7 and 12 on Premium Flex or Premium Flatbed. It covers AK, FD, QZ, Z2, KT, D7 and XJ; other currencies convert to ringgit, and selected promotional fares earn nothing. Blocked on Low Fare, which is given only as a maximum ("up to"), and on confirming what counts as spend (base fare and add-ons, excluding taxes, per AirAsia's Malaysia support page, which could not be opened). Source: https://www.airasia.com/aa/rewards/en/gb/rewards-membership.html
 
 ### Aegean international routes to verify
 
@@ -263,7 +264,7 @@ Expected results under the quoted rates (Business / Comfort Flex / Light): ATH t
 
 ### Lower priority programs
 
-- [ ] Asia: IndiGo BluChip, Saudia Alfursan, SriLankan FlySmiLes, Bangkok Airways FlyerBonus, AirAsia, Cebu Pacific, Shenzhen Airlines (may join the Air China entry).
+- [ ] Asia: IndiGo BluChip, Saudia Alfursan, SriLankan FlySmiLes, Bangkok Airways FlyerBonus, Cebu Pacific, Shenzhen Airlines (may join the Air China entry).
 - [ ] Europe: airBaltic Club, Pegasus BolBol, Volotea, Binter.
 - [ ] Oceania: Air Niugini Destinations, Aircalin.
 
