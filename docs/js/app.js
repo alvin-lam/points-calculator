@@ -127,17 +127,17 @@
     return s.name;
   }
 
-  // "[Alliance] Status" under Membership: shown only for an airline in an
-  // alliance, and only when the chosen level has an alliance tier.
+  // "[Alliance] Status" beside Membership Level: shown only for an airline in
+  // an alliance. A level with no alliance tier shows "General".
   function syncAllianceStatus() {
     var field = $("allianceStatusField");
     var p = current();
     var sel = selection();
     var alliance = p && sel.program ? (sel.airline ? sel.airline.alliance : sel.program.alliance) : null;
     var st = p && alliance ? find(p.statuses, statusEl.value) : null;
-    if (!st || !st.alliance) { field.hidden = true; return; }
+    if (!st) { field.hidden = true; return; }
     $("allianceStatusLabel").textContent = alliance + " Status";
-    $("allianceStatusValue").textContent = st.alliance;
+    $("allianceStatusValue").textContent = st.alliance || "General";
     field.hidden = false;
   }
 
