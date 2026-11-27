@@ -121,6 +121,45 @@
   // "Airline | Program" for an airline inside a group program.
   // "Status | Alliance tier" when the program is in an alliance. Airlines
   // that share a program show its tier too (Transavia, Eurowings).
+  // Extra fee fields a program defines (`extraFields`), each earning its own
+  // rate per status. Built when the program changes.
+  function buildExtraFields(p) {
+    var box = $("extraFields");
+    box.textContent = "";
+    (p.extraFields || []).forEach(function (f) {
+      var div = document.createElement("div");
+      div.className = "field";
+      var label = document.createElement("label");
+      label.htmlFor = "extra-" + f.id;
+      label.textContent = f.label;
+      var money = document.createElement("div");
+      money.className = "money";
+      var sym = document.createElement("span");
+      sym.setAttribute("aria-hidden", "true");
+      sym.textContent = symbols[p.currency || "USD"] || "$";
+      var input = document.createElement("input");
+      input.id = "extra-" + f.id;
+      input.type = "number"; input.inputMode = "decimal"; input.min = "0"; input.step = "0.01"; input.placeholder = "0.00";
+      input.addEventListener("input", function () { resultEl.hidden = true; });
+      money.appendChild(sym); money.appendChild(input);
+      div.appendChild(label); div.appendChild(money);
+      if (f.hint) { var small = document.createElement("small"); small.textContent = f.hint; div.appendChild(small); }
+      box.appendChild(div);
+    });
+  }
+  function readExtraFields(p) {
+    var out = { items: [], total: 0 };
+    for (var i = 0; i < (p.extraFields || []).length; i++) {
+      var f = p.extraFields[i];
+      var el = $("extra-" + f.id);
+      var v = el ? (parseFloat(el.value) || 0) : 0;
+      if (v < 0) return { error: f.label + " cannot be negative." };
+      out.items.push({ def: f, amount: v });
+      out.total += v;
+    }
+    return out;
+  }
+
   // The Membership menu lists the airline's own levels; the alliance tier
   // shows separately below it (syncAllianceStatus).
   function statusLabel(s) {
@@ -621,6 +660,7 @@
     }
     // Seats and bags earn like the fare on some airlines (Frontier, Allegiant, Breeze).
     addonsField.hidden = !p.addons;
+    buildExtraFields(p);
     // Extras that do not earn sit after the carrier fees (IAG); extras that
     // earn sit right after the fare (Frontier, Allegiant, Breeze, WestJet).
     var carrierFieldEl = $("carrierField");
@@ -999,7 +1039,9 @@
     var earnAddons = p.addonsNoEarn || addonsRate ? 0 : addons;
     // A few programs earn on taxes too (airBaltic: the ticket's total charges).
     var earnBase = airfare + (p.baseFareOnly ? 0 : carrier) + earnAddons + (p.taxesEarn ? taxes : 0);
-    var tripCost = airfare + carrier + addons + taxes;
+    var extras = readExtraFields(p);
+    if (extras.error) return showError(extras.error);
+    var tripCost = airfare + carrier + addons + taxes + extras.total;
     // GoWild!: the fare earns 1 mile, and the Early Booking Fee earns at
     // the status and fare type rate. There are no carrier-imposed fees.
     var gowild = fareUsed && goWildOn();
@@ -1038,6 +1080,18 @@
         ? num.format(aRate * p.ratePer) + " per " + (symbols[cur] || "") + p.ratePer
         : num.format(aRate) + " per " + (p.currency === "CAD" ? "dollar" : symbols[cur] || "unit")) + " on " + (p.addonsRateLabel || "seats and bags");
     }
+    // Extra fee fields, each with its own rate per status (Cebu Pacific:
+    // partner add-ons and the admin fee).
+    extras.items.forEach(function (x) {
+      var xRate = status && x.def.rates ? (x.def.rates[status.id] || 0) : 0;
+      if (!xRate || !x.amount) return;
+      var xPts = x.amount * xRate;
+      r.points += p.decimals ? (p.decimalsFloor ? Math.floor(xPts * 100 + 1e-6) / 100 : Math.round(xPts * 100) / 100) : Math.floor(xPts + 1e-6);
+      if (p.decimals) r.points = Math.round(r.points * 100) / 100;
+      r.rateLabel += " + " + (p.ratePer
+        ? num.format(xRate * p.ratePer) + " per " + (symbols[cur] || "") + p.ratePer
+        : num.format(xRate) + " per " + (symbols[cur] || "unit")) + " on " + (x.def.rateLabel || x.def.label.toLowerCase());
+    });
     if (gowild) {
       r.rateLabel = "1 on the GoWild! fare + " + num.format(r.points) + " on the Early Booking Fee" + (addons ? " and seats, bags and/or bundles" : "") + " at " + r.rateLabel;
       r.points += 1;
@@ -1138,6 +1192,7 @@
       if (p.addons && !p.addonsNoEarn) row(dl, p.addonsLabel || "Seats, Bags and/or Bundles", usd.format(addons));
       if (!gowild && !p.noCarrier) row(dl, p.carrierLabel || "Carrier-imposed Fees", usd.format(carrier) + (p.baseFareOnly && carrier ? " (does not earn)" : ""));
       if (p.addons && p.addonsNoEarn) row(dl, p.addonsLabel, usd.format(addons) + (addons ? " (does not earn)" : ""));
+      extras.items.forEach(function (x) { if (x.amount) row(dl, x.def.label, usd.format(x.amount)); });
       row(dl, "Taxes & Airport Fees", usd.format(taxes) + (p.taxesEarn && taxes ? " (earns)" : ""));
       row(dl, "Total trip cost", usd.format(tripCost));
     }

@@ -13,6 +13,16 @@
    The base fare includes the fare and fuel surcharge; taxes do not earn. */
 const rules = {
   name: "Cebu Pacific | Go Rewards",
+  // Cebgo (DG), Cebu Pacific's regional airline, earns the same way.
+  airlines: [
+    { id: "ceb", name: "Cebu Pacific", country: "PH" },
+    { id: "cebgo", name: "Cebgo", country: "PH" }
+  ],
+  // Partner add-ons and the admin fee earn at their own rates.
+  extraFields: [
+    { id: "partner", label: "Partner Add-ons", rateLabel: "partner add-ons", hint: "Travel insurance, airport transfers and other partner services bought with the booking.", rates: { classic: 1 / 160, debit: 1 / 160, black: 1 / 40 } },
+    { id: "admin", label: "Admin Fee", rateLabel: "the admin fee", hint: "Cebu Pacific's administrative fee on the booking.", rates: { classic: 1 / 80, debit: 1 / 80, black: 1 / 20 } }
+  ],
   programName: "Go Rewards",
   country: "PH",
   currency: "PHP",
@@ -41,25 +51,29 @@ const rules = {
     { id: "debit", name: "Go Rewards or GoTyme Debit Card", rates: { regular: 1 / 40, promo: 1 / 160 }, addonsRate: 1 / 40 },
     { id: "black", name: "Black, or UnionBank co-brand credit card", rates: { regular: 1 / 20, promo: 1 / 40 }, addonsRate: 1 / 20 }
   ],
-  note: "Go Rewards points depend on the card type of the Go Rewards number entered in the booking. Classic members earn 1 point per ₱80 of the regular base fare and 1 per ₱160 of a promo base fare. The Go Rewards Debit Card (UnionBank) and GoTyme Debit Card earn 1 per ₱40 and 1 per ₱160. Black members and holders of the UnionBank Cebu Pacific or Go Rewards Gold and Platinum Visa credit cards earn 1 per ₱20 and 1 per ₱40, if they enter that card's Go Rewards number. The base fare includes the fuel surcharge; taxes do not earn. Points are counted to two decimals. Go Rewards does not say which fares count as promo fares. Core add-ons (bags, seats, meals) earn at the regular fare rate, even on a promo fare. Partner add-ons (insurance, transfers) earn at the promo fare rate, and the admin fee at 1 per ₱80 (Classic and debit) or 1 per ₱20 (Black and credit card); the calculator does not count these two items. Points earned with the co-brand cards on the amount charged are not shown, since UnionBank's card rates could not be confirmed. A double points promo applies to bookings made on Cebu Pacific's website or app from 3 November to 31 December 2026 and is not included. Enter fares in Philippine pesos."
+  note: "Go Rewards points depend on the card type of the Go Rewards number entered in the booking. Classic members earn 1 point per ₱80 of the regular base fare and 1 per ₱160 of a promo base fare. The Go Rewards Debit Card (UnionBank) and GoTyme Debit Card earn 1 per ₱40 and 1 per ₱160. Black members and holders of the UnionBank Cebu Pacific or Go Rewards Gold and Platinum Visa credit cards earn 1 per ₱20 and 1 per ₱40, if they enter that card's Go Rewards number. The base fare includes the fuel surcharge; taxes do not earn. Points are counted to two decimals. Go Rewards does not say which fares count as promo fares. Core add-ons (bags, seats, meals) earn at the regular fare rate, even on a promo fare. Partner add-ons (insurance, transfers) earn 1 per ₱160 (Classic and debit) or 1 per ₱40 (Black and credit card), and the admin fee 1 per ₱80 or 1 per ₱20. Cebgo flights earn the same as Cebu Pacific flights. Points earned with the co-brand cards on the amount charged are not shown, since UnionBank's card rates could not be confirmed. A double points promo applies to bookings made on Cebu Pacific's website or app from 3 November to 31 December 2026 and is not included. Enter fares in Philippine pesos."
 };
 
 module.exports = {
   id: "cebupacific",
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
-  code: "5J",
-  color: "#1875BB",
-  source: "https://helpcenter.gorewards.com.ph/hc/en-us/articles/4409934680857-How-to-earn-Go-Rewards-points-from-Cebu-Pacific",
+  // Two-letter code, brand color, and source page for each airline.
+  airlines: {
+    ceb: { code: "5J", color: "#1875BB", source: "https://helpcenter.gorewards.com.ph/hc/en-us/articles/4409934680857-How-to-earn-Go-Rewards-points-from-Cebu-Pacific" },
+    cebgo: { code: "DG", color: "#1875BB", source: "https://helpcenter.gorewards.com.ph/hc/en-us/articles/4409934680857-How-to-earn-Go-Rewards-points-from-Cebu-Pacific" }
+  },
   examples: [
     // Classic, regular fare ₱2,000 + ₱400 fuel surcharge: 2,400 / 80 = 30.
-    { name: "Cebu Pacific Classic regular fare", input: { status: "classic", fare: "regular", fields: { airfare: 2000, carrierFees: 400 } }, expect: 30 },
+    { name: "Cebu Pacific Classic regular fare", airline: "ceb", input: { status: "classic", fare: "regular", fields: { airfare: 2000, carrierFees: 400 } }, expect: 30 },
     // Debit card, promo fare ₱1,000 + ₱200 fuel surcharge: 1,200 / 160 = 7.5.
-    { name: "Cebu Pacific debit card promo fare", input: { status: "debit", fare: "promo", fields: { airfare: 1000, carrierFees: 200 } }, expect: 7.5 },
+    { name: "Cebu Pacific debit card promo fare", airline: "ceb", input: { status: "debit", fare: "promo", fields: { airfare: 1000, carrierFees: 200 } }, expect: 7.5 },
     // Black, regular fare ₱1,000 + ₱333 fuel surcharge: 1,333 / 20 = 66.65.
-    { name: "Cebu Pacific Black regular fare", input: { status: "black", fare: "regular", fields: { airfare: 1000, carrierFees: 333 } }, expect: 66.65 },
+    { name: "Cebu Pacific Black regular fare", airline: "ceb", input: { status: "black", fare: "regular", fields: { airfare: 1000, carrierFees: 333 } }, expect: 66.65 },
     // 1,234 / 80 = 15.425, cut to 15.42 (no rounding). Bags 500 / 80 = 6.25.
-    { name: "Cebu Pacific Classic promo fare with bags", input: { status: "classic", fare: "promo", fields: { airfare: 2468, addons: 500 } }, expect: 21.67 }
+    { name: "Cebu Pacific Classic promo fare with bags", airline: "ceb", input: { status: "classic", fare: "promo", fields: { airfare: 2468, addons: 500 } }, expect: 21.67 },
+    // Cebgo, Black: fare 1,000 / 20 = 50; insurance 400 / 40 = 10; admin fee 200 / 20 = 10.
+    { name: "Cebgo Black with partner add-ons and admin fee", airline: "cebgo", input: { status: "black", fare: "regular", fields: { airfare: 1000, "extra-partner": 400, "extra-admin": 200 } }, expect: 70 }
   ],
   rules
 };

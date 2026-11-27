@@ -18,7 +18,7 @@ module.exports = {
   ram: "CMN", omanair: "MCT", rj: "AMM",
   "condor:trueblue": "FRA", "condor:atmos": "FRA",
   aegean: "ATH", airbaltic: "RIX", aireuropa: "PMI", finnair: "HEL", icelandair: "KEF",
-  norwegian: "OSL", sas: "ARN", tap: "LIS", turkish: "IST", pegasus: "SAW", loganair: "GLA", kmmalta: "MLA", virgin: "LHR",
+  norwegian: "OSL", sas: "ARN", tap: "LIS", turkish: "IST", pegasus: "SAW", binter: "LPA", sunexpress: "AYT", egyptair: "CAI", ethiopian: "ADD", kenya: "NBO", saudia: "JED", mea: "BEY", loganair: "GLA", kmmalta: "MLA", virgin: "LHR",
   "flyingblue:af": "CDG", "flyingblue:kl": "AMS", "flyingblue:transavia": "AMS",
   "iag:ba": "LHR", "iag:ei": "DUB", "iag:ib": "MAD", "iag:level": "BCN", "iag:vy": "BCN",
   "milesandmore:lh": "FRA", "milesandmore:ew": "CGN", "milesandmore:de": "FRA",
@@ -31,7 +31,7 @@ module.exports = {
   airindia: "DEL", indigo: "DEL", ana: "HND", cathay: "HKG", chinaairlines: "TPE",
   chinaeastern: "SHA", chinasouthern: "CAN", enrich: "KUL", eva: "TPE",
   hainan: "HAK", hkexpress: "HKG", hongkongairlines: "HKG", jal: "HND",
-  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", vietjet: "HAN", jejuair: "ICN", spicejet: "DEL", tigerairtw: "TPE", "phoenix:nx": "MFM", pal: "MNL", cebupacific: "MNL", srilankan: "CMB", airtahitinui: "PPT",
+  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", vietjet: "HAN", jejuair: "ICN", airbusan: "PUS", jinair: "ICN", garuda: "CGK", airasia: "KUL", bangkokair: "BKK", airniugini: "POM", aircalin: "NOU", spicejet: "DEL", tigerairtw: "TPE", "phoenix:nx": "MFM", pal: "MNL", "cebupacific:ceb": "MNL", "cebupacific:cebgo": "MNL", srilankan: "CMB", airtahitinui: "PPT",
   scoot: "SIN", starlux: "TPE", thai: "BKK", xiamen: "XMN",
   // Oceania
   airnz: "AKL", "american:fj": "NAN", jetstar: "MEL", qantas: "SYD", virginaustralia: "BNE"

@@ -1013,7 +1013,7 @@
     "circle": "icons/airlines/circle/air-macau.png",
     "iconSource": "Official Air Macau logo mark"
   },
-  "cebupacific": {
+  "cebupacific:ceb": {
     "file": "icons/airlines/cebupacific.png",
     "title": "Cebu Pacific logo",
     "source": "https://help.cebupacificair.com/",
@@ -1021,5 +1021,23 @@
     "square": "icons/airlines/square/cebupacific.png",
     "circle": "icons/airlines/circle/cebupacific.png",
     "iconSource": "App Store icon of \"Cebu Pacific Air: Book Flights\" by CEBU AIR, INC."
+  },
+  "cebupacific:cebgo": {
+    "file": "icons/airlines/cebupacific.png",
+    "title": "Cebgo (Cebu Pacific logo)",
+    "source": "https://help.cebupacificair.com/",
+    "license": "Trademark of Cebu Air, Inc.; official artwork from Cebu Pacific's help center (tagline removed)",
+    "square": "icons/airlines/square/cebupacific.png",
+    "circle": "icons/airlines/circle/cebupacific.png",
+    "iconSource": "App Store icon of \"Cebu Pacific Air: Book Flights\" by CEBU AIR, INC."
+  },
+  "binter": {
+    "file": "icons/airlines/binter.png",
+    "title": "Binter logo",
+    "source": "https://www.bintercanarias.com/assets/icons/Logo.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/binter.png",
+    "circle": "icons/airlines/circle/binter.png",
+    "iconSource": "App Store icon of \"Binter\""
   }
 }

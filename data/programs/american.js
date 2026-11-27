@@ -44,7 +44,7 @@ const rules = {
           { id: "platpro", name: "AAdvantage Platinum Pro", rates: { basic: 0, light: 3.6, smart: 9, full: 9 } },
           { id: "exp", name: "AAdvantage Executive Platinum", rates: { basic: 0, light: 4.4, smart: 11, full: 11 } }
         ],
-        note: "JetSMART uses AAdvantage. JetSMART flights earn miles per US dollar of the fare, including the price of the pack: 2 with Light and 5 with SMART or FULL (Full Flex), with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Basic fares earn nothing. Per JetSMART's AAdvantage page, taxes, charges, and optional extras such as bags and seats do not earn, and miles round to the nearest mile. A fare paid in another currency earns on its US dollar value at the exchange rate of the purchase date, so enter the US dollar equivalent. No AAdvantage card publishes a JetSMART rate. JetSMART flights booked with an American flight number earn under American's own rates."
+        note: "JetSMART uses AAdvantage. JetSMART flights earn miles per US dollar of the fare, including the price of the pack: 2 with Light and 5 with SMART or FULL (Full Flex), with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Basic fares earn nothing. Per JetSMART's AAdvantage page, taxes, charges, and optional extras such as bags and seats do not earn, and miles round to the nearest mile. A fare paid in another currency earns on its US dollar value at the exchange rate of the purchase date, so enter the US dollar equivalent. No AAdvantage card publishes a JetSMART rate. JetSMART Chile (JA), Peru (JZ) and Argentina (WJ) earn at the same rates, per JetSMART's AAdvantage pages for each country. JetSMART flights booked with an American flight number earn under American's own rates."
       } }
   ],
   method: "spend",
@@ -75,7 +75,7 @@ module.exports = {
   airlines: {
     aa: { code: "AA", color: "#0078D2", source: "https://www.aa.com/i18n/aadvantage-program/miles/earn/earn-miles-on-american.jsp" },
     fj: { code: "FJ", color: "#2C1E16", source: "https://www.aa.com/i18n/travel-info/partner-airlines/fiji-airways.html" },
-    ja: { code: "JA", color: "#153E69", source: "https://www.aa.com/i18n/travel-info/partner-airlines/jetsmart.jsp" }
+    ja: { code: "JA", codes: ["JA", "JZ", "WJ"], color: "#153E69", source: "https://www.aa.com/i18n/travel-info/partner-airlines/jetsmart.jsp" }
   },
   // Published examples. The browser tests check each one.
   examples: [
