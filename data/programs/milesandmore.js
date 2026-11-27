@@ -23,7 +23,34 @@ const chCards = [
   { id: "swisscard-gold-amex", name: "SWISS Miles & More Gold American Express", rate: 2 / 2, rateText: "2 per CHF 2", currency: "CHF", bank: "Swisscard (Switzerland)" },
   { id: "swisscard-gold-visa-mc", name: "SWISS Miles & More Gold Visa or Mastercard", rate: 0.8 / 2, rateText: "0.8 per CHF 2", currency: "CHF", bank: "Swisscard (Switzerland)" },
   { id: "swisscard-platinum-amex", name: "SWISS Miles & More Platinum American Express", rate: 2.4 / 2, rateText: "2.4 per CHF 2", currency: "CHF", bank: "Swisscard (Switzerland)" },
-  { id: "swisscard-platinum-visa-mc", name: "SWISS Miles & More Platinum Visa or Mastercard", rate: 1 / 2, rateText: "1 per CHF 2", currency: "CHF", bank: "Swisscard (Switzerland)" }
+  { id: "swisscard-platinum-visa-mc", name: "SWISS Miles & More Platinum Visa or Mastercard", rate: 1 / 2, rateText: "1 per CHF 2", currency: "CHF", bank: "Swisscard (Switzerland)" },
+  // Cornèrcard Miles & More cards: miles per CHF 2 charged in Swiss francs,
+  // with no extra for SWISS purchases. Each package pairs a Visa or
+  // Mastercard with a Diners Club card that earns more. The Visa or
+  // Mastercard earns a little more in foreign currencies, which is left out.
+  // From https://www.cornercard.ch/de/kreditkarten/cornercard-miles-more-kombi-angebot-classic/
+  // (and the -gold/ and -platinum/ pages).
+  { id: "corner-classic-visa", name: "Cornèrcard Miles & More Classic Visa or Mastercard", rate: 0.8 / 2, rateText: "0.8 per CHF 2", currency: "CHF", bank: "Cornèrcard (Switzerland)" },
+  { id: "corner-classic-diners", name: "Cornèrcard Miles & More Classic Diners Club", rate: 2 / 2, rateText: "2 per CHF 2", currency: "CHF", bank: "Cornèrcard (Switzerland)" },
+  { id: "corner-gold-visa", name: "Cornèrcard Miles & More Gold Visa", rate: 1 / 2, rateText: "1 per CHF 2", currency: "CHF", bank: "Cornèrcard (Switzerland)" },
+  { id: "corner-gold-diners", name: "Cornèrcard Miles & More Gold Diners Club", rate: 2 / 2, rateText: "2 per CHF 2", currency: "CHF", bank: "Cornèrcard (Switzerland)" },
+  { id: "corner-platinum-visa", name: "Cornèrcard Miles & More Platinum Visa", rate: 1.2 / 2, rateText: "1.2 per CHF 2", currency: "CHF", bank: "Cornèrcard (Switzerland)" },
+  { id: "corner-platinum-diners", name: "Cornèrcard Miles & More Platinum Diners Club", rate: 2.4 / 2, rateText: "2.4 per CHF 2", currency: "CHF", bank: "Cornèrcard (Switzerland)" }
+];
+// Austrian card (Erste Bank and Sparkasse, since December 2025): 1 mile per
+// 1.50 euros charged, plus 1 bonus mile per euro spent on austrian.com.
+// From https://www.sparkasse.at/sgruppe/privatkunden/konto-karten/s-kreditkarten/s-mastercard/miles-more-kreditkarten/austrian-miles-more-premiumcard
+const atCards = [
+  { id: "erste-premiumcard", name: "Austrian Miles & More Premiumcard (booked on austrian.com)", rate: 1 / 1.5 + 1, rateText: "1 per €1.50, plus 1 per €1 on austrian.com", bank: "Erste Bank and Sparkasse (Austria)" }
+];
+// Belgian cards (Beobank): 2 miles per euro spent with Brussels Airlines on
+// all three cards. From
+// https://www.beobank.be/fr/payer/cartes-de-credit/mastercard-brussels-airlines-explore.html
+// (and the -horizon and -altitude pages).
+const beCards = [
+  { id: "beobank-explore", name: "Beobank Brussels Airlines Explore Mastercard", rate: 2, bank: "Beobank (Belgium)" },
+  { id: "beobank-horizon", name: "Beobank Brussels Airlines Horizon Mastercard", rate: 2, bank: "Beobank (Belgium)" },
+  { id: "beobank-altitude", name: "Beobank Brussels Airlines Altitude Mastercard", rate: 2, bank: "Beobank (Belgium)" }
 ];
 
 const rules = {
@@ -42,11 +69,13 @@ const rules = {
       program: { minPoints: 125, cards: usCards.concat(deCards) } },
     { id: "de", name: "Discover Airlines", country: "DE", eliteRate: 5, noAlliance: true,
       program: { cards: usCards.concat(deCards) } },
-    { id: "os", name: "Austrian Airlines", country: "AT", eliteRate: 6 },
+    { id: "os", name: "Austrian Airlines", country: "AT", eliteRate: 6,
+      program: { cards: usCards.concat(atCards) } },
     { id: "lx", name: "SWISS", country: "CH", eliteRate: 6,
       program: { cards: usCards.concat(chCards) },
       note: "SWISS fares in Swiss francs earn at the euro equivalent." },
-    { id: "sn", name: "Brussels Airlines", country: "BE", eliteRate: 6 },
+    { id: "sn", name: "Brussels Airlines", country: "BE", eliteRate: 6,
+      program: { cards: usCards.concat(beCards) } },
     { id: "wk", name: "Edelweiss", country: "CH", eliteRate: 6, noAlliance: true,
       program: { cards: usCards.concat(chCards) },
       note: "Edelweiss earns on spend only when the ticket price is available to Miles & More." },
@@ -92,7 +121,7 @@ const rules = {
   // calculator asks for the international/national surcharge separately.
   carrierLabel: "International/National Surcharge",
   carrierHint: "The surcharge levied by the airline (YQ/YR), entered separately from taxes. It earns miles like the fare.",
-  note: "Miles & More earns award miles per euro of the ticket price plus the airline's surcharges, not by distance: 4 per euro for members. Frequent Traveller, Senator, and HON Circle earn 6 per euro on Lufthansa, SWISS, Austrian, Brussels, and Air Dolomiti, and 5 on Eurowings and Discover. Eurowings and Air Dolomiti flights earn at least 125 miles. Taxes, fees and product or service charges do not earn. Enter fares in euros. The US Barclays card earns per US dollar charged. Lufthansa, Eurowings and Discover also list the German Deutsche Bank Miles & More credit cards, which earn 1 mile per 2 euros. SWISS and Edelweiss list the Swiss Swisscard SWISS Miles & More cards, which earn per CHF 2: 1.5, 2 or 2.4 miles on the Classic, Gold or Platinum American Express, and 0.6, 0.8 or 1 on the matching Visa or Mastercard."
+  note: "Miles & More earns award miles per euro of the ticket price plus the airline's surcharges, not by distance: 4 per euro for members. Frequent Traveller, Senator, and HON Circle earn 6 per euro on Lufthansa, SWISS, Austrian, Brussels, and Air Dolomiti, and 5 on Eurowings and Discover. Eurowings and Air Dolomiti flights earn at least 125 miles. Taxes, fees and product or service charges do not earn. Enter fares in euros. The US Barclays card earns per US dollar charged. Lufthansa, Eurowings and Discover also list the German Deutsche Bank Miles & More credit cards, which earn 1 mile per 2 euros. SWISS and Edelweiss list the Swiss Swisscard SWISS Miles & More cards, which earn per CHF 2: 1.5, 2 or 2.4 miles on the Classic, Gold or Platinum American Express, and 0.6, 0.8 or 1 on the matching Visa or Mastercard. They also list the Cornèrcard Miles & More cards, which earn per CHF 2 in Swiss francs: 0.8, 1 or 1.2 miles on the Classic, Gold or Platinum Visa, and 2, 2 or 2.4 on the matching Diners Club card. Austrian lists the Austrian Miles & More Premiumcard from Erste Bank and Sparkasse, which earns 1 mile per 1.50 euros plus 1 bonus mile per euro spent on austrian.com. Brussels Airlines lists the Belgian Beobank Brussels Airlines Mastercards, which earn 2 miles per euro spent with Brussels Airlines."
 };
 
 /* LOT and Croatia Airlines credit to Miles & More; they join that program

@@ -27,9 +27,13 @@ const rules = {
   // Qatar Airways purchases.
   cards: [
     { id: "cardless-signature", name: "Qatar Airways Privilege Club Visa Signature", rate: 4, currency: "USD", bank: "Cardless (US)" },
-    { id: "cardless-infinite", name: "Qatar Airways Privilege Club Visa Infinite", rate: 5, currency: "USD", bank: "Cardless (US)" }
+    { id: "cardless-infinite", name: "Qatar Airways Privilege Club Visa Infinite", rate: 5, currency: "USD", bank: "Cardless (US)" },
+    // Qatar: Avios per riyal on qatarairways.com and the app, from AlRayan Bank's
+    // card pages (alrayan.com/en/premier-banking/cards/co-infinite-card, co-signature-card).
+    { id: "alrayan-infinite", name: "AlRayan Bank Qatar Airways Visa Infinite", rate: 0.5, rateText: "2 per QAR 4", currency: "QAR", bank: "AlRayan Bank (Qatar)" },
+    { id: "alrayan-signature", name: "AlRayan Bank Qatar Airways Visa Signature", rate: 0.4, rateText: "2 per QAR 5", currency: "QAR", bank: "AlRayan Bank (Qatar)" }
   ],
-  note: "Privilege Club earns a share of the miles flown set by booking class, from 25% in Economy Lite to 300% in First. Silver, Gold, and Platinum add 25%, 75%, and 100%. The US Privilege Club Visa Signature earns 4 more Avios per dollar on Qatar Airways purchases, and the Visa Infinite earns 5."
+  note: "Privilege Club earns a share of the miles flown set by booking class, from 25% in Economy Lite to 300% in First. Silver, Gold, and Platinum add 25%, 75%, and 100%. The US Privilege Club Visa Signature earns 4 more Avios per dollar on Qatar Airways purchases, and the Visa Infinite earns 5. In Qatar, the AlRayan Bank Qatar Airways Visa Infinite earns 2 Avios per QAR 4 and the Visa Signature 2 per QAR 5 on qatarairways.com and the Qatar Airways app."
 };
 
 module.exports = {

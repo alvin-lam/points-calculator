@@ -29,11 +29,15 @@ const rules = {
   // for eligible Singapore Airlines and Scoot flights booked direct in
   // Singapore dollars from Singapore (American Express, from
   // https://www.americanexpress.com/sg/credit-cards/singapore-airlines-krisflyer-ascend-credit-card/).
+  // The American Express Singapore Airlines KrisFlyer Credit Card earns 2 per
+  // S$1 on Singapore Airlines, Scoot, KrisShop and Pelago purchases:
+  // https://www.americanexpress.com/sg/credit-cards/singapore-airlines-krisflyer-credit-card/
   cards: [
     { id: "uob-kf", name: "KrisFlyer UOB Credit Card", rate: 3, bank: "UOB (Singapore)" },
-    { id: "amex-kf-ascend", name: "American Express Singapore Airlines KrisFlyer Ascend Credit Card", rate: 2, bank: "American Express (Singapore)" }
+    { id: "amex-kf-ascend", name: "American Express Singapore Airlines KrisFlyer Ascend Credit Card", rate: 2, bank: "American Express (Singapore)" },
+    { id: "amex-kf", name: "American Express Singapore Airlines KrisFlyer Credit Card", rate: 2, bank: "American Express (Singapore)" }
   ],
-  note: "KrisFlyer earns a share of the miles flown set by booking class, from 50% to 200%. Elite Silver, Elite Gold, and PPS Club members get a 25% tier bonus, except on Economy K, N, Q, V, and G. Scoot flights do not get the tier bonus. The Singapore KrisFlyer UOB Credit Card earns 3 miles per Singapore dollar on Singapore Airlines purchases, and the American Express Singapore Airlines KrisFlyer Ascend Credit Card earns 2 on Singapore Airlines flights booked direct in Singapore dollars."
+  note: "KrisFlyer earns a share of the miles flown set by booking class, from 50% to 200%. Elite Silver, Elite Gold, and PPS Club members get a 25% tier bonus, except on Economy K, N, Q, V, and G. Scoot flights do not get the tier bonus. The Singapore KrisFlyer UOB Credit Card earns 3 miles per Singapore dollar on Singapore Airlines purchases, and the American Express Singapore Airlines KrisFlyer Ascend Credit Card earns 2 on Singapore Airlines flights booked direct in Singapore dollars. The American Express Singapore Airlines KrisFlyer Credit Card also earns 2 per Singapore dollar on Singapore Airlines purchases."
 };
 
 module.exports = {

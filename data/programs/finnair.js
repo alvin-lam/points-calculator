@@ -20,7 +20,19 @@ const rules = {
     { id: "platinum", name: "Platinum", rate: 9 },
     { id: "lumo", name: "Platinum Lumo", rate: 10 }
   ],
-  note: "Finnair Plus earns 6 to 10 Avios per euro by status on the fare, the surcharge set by Finnair and travel extras, on flights booked with Finnair. Taxes, airport and service charges do not earn. Enter fares in euros."
+  // Finnish co-branded cards (Aktia Bank): Avios per euro on all card spend,
+  // with no extra for Finnair purchases. Finnair Visa Credit earns by the
+  // holder's Finnair Plus tier, so each tier is its own option. From
+  // https://www.finnair.com/fi-en/finnair-plus/finnair-visa-credit-card
+  cards: [
+    { id: "aktia-credit-basic", name: "Finnair Visa Credit, Basic member", rate: 1, bank: "Aktia Bank (Finland)" },
+    { id: "aktia-credit-silver", name: "Finnair Visa Credit, Silver member", rate: 1.2, bank: "Aktia Bank (Finland)" },
+    { id: "aktia-credit-gold", name: "Finnair Visa Credit, Gold member", rate: 1.4, bank: "Aktia Bank (Finland)" },
+    { id: "aktia-credit-platinum", name: "Finnair Visa Credit, Platinum member", rate: 1.6, bank: "Aktia Bank (Finland)" },
+    { id: "aktia-credit-lumo", name: "Finnair Visa Credit, Platinum Lumo member", rate: 1.8, bank: "Aktia Bank (Finland)" },
+    { id: "aktia-credit-light", name: "Finnair Visa Credit Light", rate: 1 / 2, per: 2, bank: "Aktia Bank (Finland)" }
+  ],
+  note: "Finnair Plus earns 6 to 10 Avios per euro by status on the fare, the surcharge set by Finnair and travel extras, on flights booked with Finnair. Taxes, airport and service charges do not earn. Enter fares in euros. In Finland, the Finnair Visa Credit card earns 1 to 1.8 Avios per euro on all purchases by Finnair Plus tier: 1 for Basic, 1.2 for Silver, 1.4 for Gold, 1.6 for Platinum and 1.8 for Platinum Lumo. Finnair Visa Credit Light earns 1 Avios per 2 euros."
 };
 
 module.exports = {

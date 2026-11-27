@@ -29,8 +29,10 @@ const rules = {
   // pair is one option. The Nedbank Mozambique Visa cards (1 mile per MT60
   // Silver, MT40 Gold) are left out: only home-market and US cards are shown. Voyager's page labels the R11.50 Mastercard
   // "Premium", but its card image reads "gold credit", and Nedbank pairs it
-  // with the Gold Amex. Two "$" Mastercards on the page name no issuer or
-  // country and are left out.
+  // with the Gold Amex. The page's two "$" Mastercards (Gold, 1 mile per $4;
+  // Platinum, 1 mile per $1.50) are the Ecobank SAA Voyager cards from Ghana,
+  // which earn per US dollar (Voyager's former Ghana card page and SAA's 2015
+  // launch release). Ghana is not SAA's home market, so they are left out.
   cardHint: "Card miles are earned on the full amount charged, taxes included, on top of the flight miles. Nedbank Premium and Gold accounts come with an American Express card and a Mastercard that earn at different rates.",
   cards: [
     { id: "nedbank-premium-amex", name: "SAA Voyager Premium American Express, credit or cheque card", rate: 1 / 6, per: 6, bank: "Nedbank (South Africa)" },

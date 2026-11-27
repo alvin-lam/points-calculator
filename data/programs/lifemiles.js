@@ -22,12 +22,19 @@ const rules = {
     { id: "gold", name: "Gold", multiplier: 1.6 },
     { id: "diamond", name: "Diamond", multiplier: 1.8 }
   ],
-  // Co-branded card: extra LifeMiles per US dollar charged for Avianca
-  // purchases made directly with Avianca (Banco Popular Avianca Vuela Visa).
+  // US co-branded cards (Cardless, issued by First Electronic Bank): extra
+  // LifeMiles per US dollar charged for Avianca and LifeMiles purchases, from
+  // https://www.cardless.com/cards/avianca/lifemiles and
+  // https://www.cardless.com/cards/avianca/lifemiles-elite
+  // Colombian card (Bancolombia): 2 LifeMiles per US dollar equivalent at
+  // Avianca, billed in pesos, from
+  // https://www.bancolombia.com/personas/tarjetas-de-credito/visa/lifemiles
   cards: [
-    { id: "vuela-visa", name: "Avianca Vuela Visa", rate: 3, currency: "USD", bank: "Banco Popular (US)" }
+    { id: "cardless-amex", name: "Avianca LifeMiles American Express Card", rate: 2, currency: "USD", bank: "Cardless (US)" },
+    { id: "cardless-amex-elite", name: "Avianca LifeMiles American Express Elite Card", rate: 3, currency: "USD", bank: "Cardless (US)" },
+    { id: "bancolombia-visa", name: "Bancolombia Visa Avianca LifeMiles", rate: 2, bank: "Bancolombia (Colombia)" }
   ],
-  note: "LifeMiles earns on Avianca flights by the fare paid: 3, 6, 8, or 10 miles per US dollar by fare family, excluding taxes, fees and additional services. Red Plus and Silver add 10% and 20%. Gold and Diamond are shown at 60% and 80%, but sources differ on those two. The US Avianca Vuela Visa earns 3 more LifeMiles per dollar on Avianca purchases made directly with Avianca."
+  note: "LifeMiles earns on Avianca flights by the fare paid: 3, 6, 8, or 10 miles per US dollar by fare family, excluding taxes, fees and additional services. Red Plus and Silver add 10% and 20%. Gold and Diamond are shown at 60% and 80%, but sources differ on those two. The US Avianca LifeMiles American Express Card earns 2 more LifeMiles per dollar on Avianca purchases, and the Elite Card earns 3. The Elite Card also doubles the first 1,000 miles it earns each month, which this estimate leaves out. In Colombia, the Bancolombia Visa Avianca LifeMiles earns 2 per US dollar equivalent at Avianca, billed in pesos."
 };
 
 module.exports = {

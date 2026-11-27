@@ -22,7 +22,19 @@ const rules = {
     { id: "silver", name: "Silver", multiplier: 1 },
     { id: "gold", name: "Gold", multiplier: 1 }
   ],
-  note: "TAP Miles&Go earns a share of the miles flown set by fare and region. Executive rose from 150% to 175% in 2026. Silver and Gold bonuses could not be confirmed, so all levels use the base rates."
+  // US co-branded card (Cardless, issued by First Electronic Bank): 3 miles
+  // per US dollar on TAP Air Portugal purchases, from
+  // https://www.cardless.com/cards/tap
+  // Portuguese cards (Millennium bcp): miles per euro on all card spend,
+  // with no extra for TAP purchases, from TAP's partner page:
+  // https://www.flytap.com/en-pt/miles-and-go/partners/millennium-bcp
+  cards: [
+    { id: "cardless-tap", name: "TAP Miles&Go American Express Credit Card", rate: 3, currency: "USD", bank: "Cardless (US)" },
+    { id: "bcp-classic", name: "TAP Classic Credit Card", rate: 1, bank: "Millennium bcp (Portugal)" },
+    { id: "bcp-gold", name: "TAP Gold Credit Card", rate: 1.5, bank: "Millennium bcp (Portugal)" },
+    { id: "bcp-platinum", name: "TAP Platinum Credit Card", rate: 2, bank: "Millennium bcp (Portugal)" }
+  ],
+  note: "TAP Miles&Go earns a share of the miles flown set by fare and region. Executive rose from 150% to 175% in 2026. Silver and Gold bonuses could not be confirmed, so all levels use the base rates. The US TAP Miles&Go American Express Credit Card earns 3 more miles per dollar on TAP purchases. In Portugal, the Millennium bcp TAP Classic, Gold and Platinum credit cards earn 1, 1.5 and 2 miles per euro on all purchases, up to 5,000, 15,000 and 75,000 miles a month."
 };
 
 module.exports = {

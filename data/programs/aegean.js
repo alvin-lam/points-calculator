@@ -63,7 +63,16 @@ const rules = {
     { id: "gold", name: "Gold", multiplier: 1.2 },
     { id: "platinum", name: "Platinum", multiplier: 1.3 }
   ],
-  note: "Miles+Bonus awards a fixed number of miles per domestic flight, from 100 on Light (U, P, T) to 1,200 in Business. International flights, including Cyprus, earn a share of the distance with a minimum per flight: Business 250% (minimum 2,500), Business Basic 220% (2,200), Comfort Flex 100% to 200% (1,000 to 1,800), Flex or Family 75% to 150% (600 to 1,200) and Light 30% to 75% (200 to 600), by booking class. Aegean uses its own route distances, which can be up to about 1% shorter than the airport-to-airport distance shown here. Silver, Gold and Platinum add 10%, 20% and 30%. Booking classes I, X, N and R, and award, discounted and charter tickets earn nothing. Registered Together ForFamilies accounts earn 20% more."
+  // Greek co-branded debit card (Alpha Bank): 4 Bonus points per euro at
+  // AEGEAN and Olympic Air, converted to Miles+Bonus miles at 4 points = 2
+  // miles, from
+  // https://www.alpha.gr/en/personal/cards/xreostikes-kartes/aegean-bonus-visa-debit-card
+  // The Aegean Bonus Visa and Visa Premium credit cards convert at 4 = 4 and
+  // 4 = 5, but their own rate at AEGEAN was not confirmed, so they are left out.
+  cards: [
+    { id: "alpha-debit", name: "Aegean Bonus Visa Debit", kind: "debit", rate: 2, rateText: "4 Bonus points per €1, worth 2 miles", bank: "Alpha Bank (Greece)" }
+  ],
+  note: "Miles+Bonus awards a fixed number of miles per domestic flight, from 100 on Light (U, P, T) to 1,200 in Business. International flights, including Cyprus, earn a share of the distance with a minimum per flight: Business 250% (minimum 2,500), Business Basic 220% (2,200), Comfort Flex 100% to 200% (1,000 to 1,800), Flex or Family 75% to 150% (600 to 1,200) and Light 30% to 75% (200 to 600), by booking class. Aegean uses its own route distances, which can be up to about 1% shorter than the airport-to-airport distance shown here. Silver, Gold and Platinum add 10%, 20% and 30%. Booking classes I, X, N and R, and award, discounted and charter tickets earn nothing. Registered Together ForFamilies accounts earn 20% more. In Greece, the Alpha Bank Aegean Bonus Visa Debit card earns 4 Bonus points per euro at AEGEAN and Olympic Air, which convert to 2 miles."
 };
 
 module.exports = {
