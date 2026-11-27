@@ -58,7 +58,7 @@ const rules = {
   // Member Circle eligibility and bonus: El Al's EXECUTIVE Member Circle
   // page (supplied by the site owner, November 2026).
   extras: [
-    { id: "executive", label: "Are you an EL AL EXECUTIVE Circle member?", hint: "For Silver, Gold, Platinum and Top Platinum members living outside Israel, and Matmid members abroad who earned over 2,000 Diamonds or converted at least 5,000 points from non-Israeli credit cards within 12 months. They earn 20% more points on El Al flights in Premium and Business.",
+    { id: "executive", premiumOnly: true, label: "Are you an EL AL EXECUTIVE Circle member?", hint: "For Silver, Gold, Platinum and Top Platinum members living outside Israel, and Matmid members abroad who earned over 2,000 Diamonds or converted at least 5,000 points from non-Israeli credit cards within 12 months. They earn 20% more points on El Al flights in Premium and Business.",
       options: [
         { id: "no", name: "No" },
         { id: "yes", name: "Yes (+20% in Premium and Business)", pct: 0.2, premiumOnly: true, bonusName: "EXECUTIVE Circle bonus", skipNote: "Premium and Business only" }

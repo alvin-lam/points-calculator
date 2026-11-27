@@ -369,10 +369,24 @@
       x.options.forEach(function (o) { sel.appendChild(option(o.id, o.name)); });
       sel.addEventListener("change", function () { resultEl.hidden = true; });
       field.append(label, sel);
+      // A question that matters only in some cabins (EXECUTIVE Circle: Premium
+      // and Business) shows only for those fares.
+      if (x.premiumOnly) field.dataset.premiumOnly = "1";
       if (x.hint) { var h = document.createElement("small"); h.textContent = x.hint; field.appendChild(h); }
       extrasWrap.appendChild(field);
     });
   }
+  function syncExtraVisibility() {
+    var p = current();
+    var ft = p && p.fareTypes ? find(p.fareTypes, fareTypeEl.value) : null;
+    extrasWrap.querySelectorAll("[data-premium-only]").forEach(function (field) {
+      var show = !!(ft && ft.premium);
+      field.hidden = !show;
+      // Hidden questions go back to their first answer ("No").
+      if (!show) field.querySelector("select").selectedIndex = 0;
+    });
+  }
+
   // The bonuses that apply: [{ name, pct }].
   function extraBonuses(p, fareType) {
     var out = [];
@@ -649,6 +663,7 @@
     var oneZone = m === "zone" && !!p.zones && p.zones.length === 1;
     zoneField.hidden = !zoneUsed || picker || oneZone;
     syncExtras(p);
+    syncExtraVisibility();
     $("zoneLabel").textContent = p.zoneLabel || "Route and distance";
     $("zoneHint").textContent = p.zoneHint || "This program awards a fixed amount per flight for each route band.";
     // A route type that pays a fixed amount needs no distance.
@@ -1682,6 +1697,7 @@
   cardmemberYes.addEventListener("change", syncCardmember);
   cardmemberNo.addEventListener("change", syncCardmember);
   // A fare type with its own currency updates the money symbols.
+  fareTypeEl.addEventListener("change", syncExtraVisibility);
   fareTypeEl.addEventListener("change", function () {
     var p = current();
     if (p) setCurrency(p.currency || "USD");
