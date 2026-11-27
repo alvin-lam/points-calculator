@@ -62,7 +62,12 @@ const rules = {
   cards: [
     { id: "barclays", name: "Miles & More World Elite Mastercard", rate: 2, currency: "USD", bank: "Barclays (US)" }
   ],
-  note: "Miles & More earns award miles per euro of the fare, not by distance: 4 per euro for members. Frequent Traveller, Senator, and HON Circle earn 6 per euro on Lufthansa, SWISS, Austrian, Brussels, and Air Dolomiti, and 5 on Eurowings and Discover. Eurowings and Air Dolomiti flights earn at least 125 miles. Taxes do not earn. Enter fares in euros. The US Barclays card earns per US dollar charged."
+  // "miles are calculated according to the airfare, i.e. the ticket price +
+  // surcharges levied by the Miles & More airline partner." The expert
+  // calculator asks for the international/national surcharge separately.
+  carrierLabel: "International/National Surcharge",
+  carrierHint: "The surcharge levied by the airline (YQ/YR), entered separately from taxes. It earns miles like the fare.",
+  note: "Miles & More earns award miles per euro of the ticket price plus the airline's surcharges, not by distance: 4 per euro for members. Frequent Traveller, Senator, and HON Circle earn 6 per euro on Lufthansa, SWISS, Austrian, Brussels, and Air Dolomiti, and 5 on Eurowings and Discover. Eurowings and Air Dolomiti flights earn at least 125 miles. Taxes, fees and product or service charges do not earn. Enter fares in euros. The US Barclays card earns per US dollar charged."
 };
 
 /* LOT and Croatia Airlines credit to Miles & More; they join that program

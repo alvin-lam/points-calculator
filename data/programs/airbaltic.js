@@ -18,7 +18,7 @@ const rules = {
   noCarrier: true,
   addons: true,
   addonsLabel: "Extra services",
-  addonsHint: "Seats, bags, meals, upgrades, fast track or priority check-in bought from airBaltic. They earn points like the fare.",
+  addonsHint: "Seats, bags, meals, upgrades, fast track or priority check-in bought directly from airBaltic (website, app or airBaltic offices). They earn points like the fare; extras bought elsewhere do not.",
   defaultFareType: "basic",
   fareTypes: [
     { id: "mini", name: "Economy Mini", rate: 1 },

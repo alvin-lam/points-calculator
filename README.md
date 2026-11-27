@@ -34,6 +34,21 @@ Live site: https://points.alltripsconsidered.com/
 ### How it calculates
 
 - Points are earned on the airfare plus carrier-imposed fees (Southwest and Allegiant: airfare only). Taxes & fees are shown in the total cost but do not earn.
+
+### Carrier fees, surcharges and extras
+
+The second fee field takes each airline's own name for its charge (`carrierLabel`) and a hint that says whether it earns (`carrierHint`). It is hidden when the airline charges none or it never earns (`noCarrier`), and marked "does not earn" when it is charged but excluded (`baseFareOnly`). The extras field (`addons`) appears only where the program says paid extras earn, or is marked as not earning (`addonsNoEarn`). Checked against each program's own pages in November 2026:
+
+- Flying Blue (Air France, KLM): the carrier surcharge earns, and so do extra baggage, seats and à la carte meals for your own trip.
+- British Airways Club: carrier-imposed charges earn, and so do paid seats, extra bags and cabin upgrades. Service and change fees do not.
+- Iberia Club (Iberia, LEVEL with an IB flight number): carrier charges and additional services (seats, bags, upgrades) earn.
+- AerClub: extras do not earn. Whether Aer Lingus's own carrier charges earn is not stated clearly; they are counted.
+- Vueling Club: no carrier charge is published; any carrier charges are counted, as on Iberia's Vueling page.
+- Miles & More (Lufthansa Group airlines): the ticket price plus the international or national surcharge earns; product and service charges do not.
+- Finnair Plus: the surcharge set by Finnair and travel extras bought before the flight earn.
+- Norwegian Reward: only the net ticket price earns; taxes, charges and optional services do not, so the fee field is hidden.
+- Air Europa SUMA: the published fare and fuel surcharge earn; management and handling fees do not.
+- airBaltic Club: the fare, eligible fees including taxes and fuel charges, and extras bought directly from airBaltic earn.
 - American, Delta, and United cap earning at 75,000 miles per ticket.
 - Air Canada and WestJet fares are entered in Canadian dollars (CA$). Viva Aerobus and Volaris fares are entered in Mexican pesos (MX$). British Airways and Virgin Atlantic fares are entered in pounds (£). Fares for the European airlines (Flying Blue, Miles & More, Iberia, LEVEL, Vueling, and TAP) are entered in euros (€). Aeroméxico earns per US dollar, so its fare is entered in US dollars.
 - Porter fares are entered in Canadian dollars, Finnair fares in euros, Virgin Australia fares in Australian dollars (A$), and Norwegian fares in Norwegian kroner (kr). Avianca LifeMiles earns per US dollar by fare family.

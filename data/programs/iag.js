@@ -18,11 +18,13 @@ var avioUsCards = [
    its own loyalty program (currency, status levels, and cards). */
 var baClub = {
   programName: "British Airways Club",
-  // Extras are asked for but do not earn.
+  // Eligible spend is the "base fare and carrier imposed charges", and the
+  // Avios page also lists cabin upgrades, paid seats and additional baggage.
+  carrierLabel: "Carrier-imposed Charges",
+  carrierHint: "Charges British Airways adds to the fare (YQ/YR). They earn Avios like the fare. Service and change fees do not earn.",
   addons: true,
-  addonsNoEarn: true,
   addonsLabel: "Seats, Bags and/or Upgrades",
-  addonsHint: "Seat selection, bags, and upgrades bought from British Airways. They earn Tier Points but no Avios.",
+  addonsHint: "Seat selection, extra bags, and cabin upgrades bought from British Airways. They earn Avios like the fare.",
   currency: "GBP",
   unit: "Avios",
   method: "spend",
@@ -42,34 +44,39 @@ var baClub = {
     { id: "chase", name: "Chase British Airways Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
     { id: "chase-iberia", name: "Chase Iberia Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" }
   ],
-  note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier-imposed charges, by status. Taxes do not earn, and paid seats and bags earn Tier Points but no Avios. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
+  note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier-imposed charges, by status. Paid seats, extra bags and cabin upgrades also earn. Airport charges, government taxes, and service or change fees do not earn. Enter fares in pounds. The UK Amex card rates on British Airways purchases could not be confirmed."
 };
 var iberiaClub = {
   programName: "Iberia Club",
-  // Extras are asked for but do not earn.
+  // Avios apply to "net spend, including additional services and operator
+  // charges but excluding taxes and fees." (Iberia Club earning page)
+  carrierLabel: "Carrier Charges",
+  carrierHint: "Charges Iberia adds to the fare (YQ/YR). They earn Avios like the fare.",
   addons: true,
-  addonsNoEarn: true,
   addonsLabel: "Seats, Bags and/or Upgrades",
-  addonsHint: "Seat selection, bags, and upgrades bought from Iberia. They do not earn Avios.",
+  addonsHint: "Seat selection, extra bags, and upgrades bought from Iberia. They earn Avios like the fare.",
   currency: "EUR",
   unit: "Avios",
   method: "spend",
   centsPerPoint: 1.0,
   statuses: iberiaStatuses,
   cards: avioUsCards,
-  note: "Iberia Club earns 5 to 8 Avios per euro of the fare and carrier surcharges by status, plus 2 more per euro on flights within Spain and between Spain and Latin America, which this estimate does not add. The Infinita rates are not confirmed by Iberia. Taxes, seats, and bags do not earn."
+  note: "Iberia Club earns 5 to 8 Avios per euro of the fare, carrier charges and additional services (seats, bags, upgrades) by status, plus 2 more per euro on flights within Spain and between Spain and Latin America, which this estimate does not add. The Infinita rates are not confirmed by Iberia. Taxes and fees do not earn."
 };
 var levelClub = {
   programName: "Iberia Club",
-  // Extras are asked for but do not earn.
+  // On LEVEL flights with the IB code, Avios on "net spend (fare and
+  // carrier charges) excluding taxes and fees", plus additional baggage,
+  // seat selection and cabin upgrades.
+  carrierLabel: "Carrier Charges",
+  carrierHint: "Charges LEVEL adds to the fare (YQ/YR). They earn Avios like the fare.",
   addons: true,
-  addonsNoEarn: true,
   addonsLabel: "Seats, Bags and/or Upgrades",
-  addonsHint: "Seat selection, bags, and upgrades bought from LEVEL. They do not earn Avios.",
+  addonsHint: "Seat selection, extra bags, and upgrades bought from LEVEL. They earn Avios like the fare.",
   currency: "EUR",
   statuses: iberiaStatuses,
   cards: avioUsCards,
-  note: "LEVEL flights booked under an Iberia (IB) flight number earn Iberia Club Avios at the usual per-euro rates. Flights sold under LEVEL's own code earn only between Barcelona and Oakland, Los Angeles, Punta Cana, and Buenos Aires, through 31 December 2026."
+  note: "LEVEL flights booked under an Iberia (IB) flight number earn Iberia Club Avios at the usual per-euro rates, on the fare, carrier charges, extra bags, seat selection and cabin upgrades. Taxes and fees do not earn. Flights sold under LEVEL's own code earn only between Barcelona and Oakland, Los Angeles, Punta Cana, and Buenos Aires, through 31 December 2026."
 };
 var vuelingClub = {
   programName: "Vueling Club",
@@ -141,8 +148,8 @@ module.exports = {
   },
   // Published examples. The browser tests check each one.
   examples: [
-    // British Airways: extras are listed but do not earn Avios.
-    { name: "British Airways extras do not earn", airline: "ba", input: { status: "blue", fields: { airfare: 200, carrierFees: 100, addons: 80 } }, expect: 1800 }
+    // British Airways: paid seats, bags and upgrades earn Avios.
+    { name: "British Airways extras earn", airline: "ba", input: { status: "blue", fields: { airfare: 200, carrierFees: 100, addons: 80 } }, expect: 2280 }
   ],
   rules
 };

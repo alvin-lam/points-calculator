@@ -4,6 +4,10 @@ const rules = {
   currency: "EUR",
   unit: "Suma Miles",
   method: "spend",
+  // "Miles will be earned for each euro paid exclusively for the published
+  // rate and fuel surcharge." (SUMA terms and conditions)
+  carrierLabel: "Fuel Surcharge",
+  carrierHint: "The Air Europa fuel surcharge (YQ/YR) on the ticket. It earns miles like the fare. Management and handling fees do not earn.",
   roundUp: true,
   centsPerPoint: 1.0,
   defaultFareType: "y-eu",
@@ -29,6 +33,6 @@ module.exports = {
   reviewed: "2026-11",
   code: "UX",
   color: "#0970CB",
-  source: "https://cwsi.net/fares/air-europa/",
+  source: "https://www.aireuropa.com/ot/en/aea/suma/our-program/terms-and-conditions.html",
   rules
 };

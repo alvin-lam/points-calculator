@@ -6,6 +6,14 @@ const rules = {
   unit: "Miles",
   method: "spend",
   centsPerPoint: 1.2,
+  // "Miles for each euro you spend ... (including the carrier surcharge,
+  // but excluding other taxes and fees) and when you buy extra options such
+  // as extra baggage, seats, and à la carte meals." (KLM and Air France)
+  carrierLabel: "Carrier Surcharge",
+  carrierHint: "The Air France or KLM carrier surcharge (YQ/YR) on the ticket. It earns Miles like the fare.",
+  addons: true,
+  addonsLabel: "Seats, Bags and/or Meals",
+  addonsHint: "Extra baggage, seat reservations, à la carte meals and upgrades bought from Air France or KLM for your own trip. They earn Miles like the fare.",
   // The operating airline; all earn the same Flying Blue rates. Transavia
   // is not in SkyTeam, and the US card's bonus is not confirmed for it.
   airlines: [
@@ -22,6 +30,7 @@ const rules = {
     { id: "transavia", name: "Transavia", country: "NL", countries: ["NL", "FR"], noAlliance: true,
       program: {
         cards: null,
+        addons: false,
         method: "zone",
         defaultFareType: "smart",
         fareTypes: [
@@ -59,7 +68,7 @@ const rules = {
     { id: "amex-nl-gold", name: "Flying Blue American Express Gold Card", rate: 1.5, bank: "American Express (Netherlands)" },
     { id: "amex-nl-platinum", name: "Flying Blue American Express Platinum Card", rate: 2, bank: "American Express (Netherlands)" }
   ],
-  note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier charges on Air France and KLM, by status. Taxes do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged. The Dutch American Express Gold and Platinum cards earn 1.5 and 2 Miles per euro at Air France and KLM. In France, the Air France KLM American Express Silver, Gold and Platinum cards earn 1, 1.5 and 3 Miles per euro at Air France, KLM and Transavia."
+  note: "Flying Blue earns 4 to 9 Miles per euro spent on the fare and carrier surcharge on Air France and KLM, by status, and on extra baggage, seats and à la carte meals for your own trip. Government taxes and other fees do not earn. Enter fares in euros. The US Bank of America card earns per US dollar charged. The Dutch American Express Gold and Platinum cards earn 1.5 and 2 Miles per euro at Air France and KLM. In France, the Air France KLM American Express Silver, Gold and Platinum cards earn 1, 1.5 and 3 Miles per euro at Air France, KLM and Transavia."
 };
 
 module.exports = {
