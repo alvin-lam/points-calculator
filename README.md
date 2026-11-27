@@ -16,6 +16,7 @@ Live site: https://points.alltripsconsidered.com/
 4. For Alaska or Hawaiian (Atmos Rewards), choose how you earn: miles flown, price paid, or segments flown. Then enter the miles or segments if asked.
 5. Say whether you paid with the airline's co-branded credit card, and if so, which one. For distance-based programs, enter the amount charged to the card so its points can be added.
 6. The result shows the airline's logo, then one line each for the airline, the membership level with its alliance status (for example "Premier Gold | Star Alliance Gold"), the fare type and the card used. Members with alliance status see their tier badge; basic members of an alliance airline see the alliance logo.
+7. **Clear**, next to **Calculate points**, empties every field and returns the form to its starting state.
 
 ### Program menu and alliances
 

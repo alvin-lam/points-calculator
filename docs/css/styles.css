@@ -137,6 +137,19 @@ button {
 }
 button:hover { filter: brightness(1.08); }
 
+/* Calculate and Clear sit side by side; Clear is the quieter button. */
+.form-actions { display: flex; gap: 8px; }
+.form-actions button[type="submit"] { flex: 1; }
+.form-actions .secondary {
+  width: auto;
+  flex: 0 0 auto;
+  padding: 12px 20px;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.form-actions .secondary:hover { filter: none; background: var(--border); }
+
 fieldset.field { border: 0; padding: 0; margin: 0 0 16px; }
 legend { font-weight: 600; margin-bottom: 6px; padding: 0; }
 .choice { display: flex; gap: 8px; }

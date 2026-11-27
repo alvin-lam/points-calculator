@@ -1326,6 +1326,19 @@
     });
     // Keep the box in step when the program changes another way.
     programEl.addEventListener("change", function () { if (document.activeElement !== searchEl) searchEl.value = chosenLabel(); syncClear(); });
+    // Clear: empties every field and puts the form back to its starting
+    // state, with no program chosen.
+    $("clearForm").addEventListener("click", function () {
+      form.querySelectorAll('input[type="number"], input[type="text"], input[type="search"], input:not([type])').forEach(function (el) { el.value = ""; });
+      programEl.value = "";
+      searchEl.value = "";
+      closeList();
+      onProgramChange();
+      syncClear();
+      resultEl.hidden = true;
+      errorEl.hidden = true;
+      searchEl.focus();
+    });
   }
 
   // Airport lookup for distance-based programs. The airport list loads the
