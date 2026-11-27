@@ -512,7 +512,8 @@
         " member airlines, but " + shared + " benefits are not guaranteed on " + airName + " flights."));
     }
     $("allianceValue").classList.toggle("none", !alliance);
-    $("allianceField").hidden = false;
+    // The Alliance field shows only for alliance members.
+    $("allianceField").hidden = !alliance;
 
     setCurrency(p.currency || "USD");
     p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, statusLabel(s))); });
