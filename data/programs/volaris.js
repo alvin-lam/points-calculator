@@ -15,7 +15,16 @@ const rules = {
   statuses: [
     { id: "member", name: "Altitude Member", rate: 0.5 }
   ],
-  note: "Altitude by Volaris earns 10 points for every 20 Mexican pesos spent on volaris.com or the app on the base fare and Volaris Services such as seats, bags and bundles, excluding taxes and airport or government fees. It has no status tiers."
+  // Volaris INVEX Mastercard credit cards (Mexico), from Volaris' INVEX card
+  // page: altitude Points per MX$20 charged at Volaris, integrated into
+  // altitude since 20 May 2026. No US-issued Volaris card was found.
+  cardHint: "Volaris INVEX cards earn altitude Points on the full amount charged at Volaris, taxes included, on top of the flight points.",
+  cards: [
+    { id: "invex-0", name: "Volaris INVEX 0", rate: 15 / 20, rateText: "15 per MX$20", bank: "INVEX (Mexico)" },
+    { id: "invex", name: "Volaris INVEX", rate: 17 / 20, rateText: "17 per MX$20", bank: "INVEX (Mexico)" },
+    { id: "invex-2", name: "Volaris INVEX 2.0", rate: 20 / 20, rateText: "20 per MX$20", bank: "INVEX (Mexico)" }
+  ],
+  note: "Altitude by Volaris earns 10 points for every 20 Mexican pesos spent on volaris.com or the app on the base fare and Volaris Services such as seats, bags and bundles, excluding taxes and airport or government fees. It has no status tiers. The Volaris INVEX 0, INVEX and INVEX 2.0 credit cards earn 15, 17 or 20 points per MX$20 charged at Volaris."
 };
 
 module.exports = {

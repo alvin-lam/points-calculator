@@ -56,7 +56,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Porter VIPorter: the NAV charge and fuel, insurance and peak surcharges do not earn; seats, bags and change fees do.
 - Air Transat Staria: surcharges do not earn; extras do.
 - Aeroméxico Rewards and Avianca LifeMiles: points are on the fare without taxes and fees, so carrier surcharges are shown as not earning. Aeroméxico's wording is the less explicit of the two.
-- Volaris altitude: the base fare and Volaris Services (seats, bags, bundles, pets) earn; there is no carrier fee field.
+- Volaris altitude: the base fare and Volaris Services (seats, bags, bundles, pets) earn; there is no carrier fee field. The Volaris INVEX 0, INVEX and INVEX 2.0 Mastercards (INVEX, Mexico) earn 15, 17 or 20 points per MX$20 charged at Volaris; no US card exists.
 - Viva Aerobus Doters: 1, 1.5 or 2 points per $2 MXN of the fare for Green, Silver and Gold; Doters does not say that seats or bags earn.
 - Air India, IndiGo, China Eastern and Xiamen: the fuel surcharge (YQ) earns. IndiGo's Seat Select, Excess Baggage and Fast Forward also earn when bought on its website or app. Xiamen's ancillaries (upgrades, seats, bags, meals, insurance, lounge passes) earn 0.7 miles per yuan plus the tier multiplier, entered in their own field (`addonsRate` with `addonsAddTier`).
 - Malaysia Airlines Enrich, Hainan and Hong Kong Airlines: carrier-imposed surcharges (YQ/YR) earn; seats, bags, upgrades and service charges do not.
