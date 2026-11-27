@@ -86,6 +86,10 @@ h1 { font-size: 24px; margin: 0 0 4px; }
 
 .field { display: flex; flex-direction: column; margin-bottom: 16px; min-width: 0; }
 .field[hidden] { display: none; }
+/* Two fields side by side (Membership Level and alliance status). When
+   the second is hidden, the first takes the full width. */
+.field-pair { display: flex; gap: 12px; }
+.field-pair > .field { flex: 1 1 0; }
 label { font-weight: 600; margin-bottom: 6px; }
 .field-label { font-weight: 600; margin-bottom: 6px; }
 .static-value {
