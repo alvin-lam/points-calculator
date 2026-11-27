@@ -997,8 +997,8 @@
   "phoenix:nx": {
     "file": "icons/airlines/air-macau.png",
     "title": "Air Macau logo",
-    "source": "https://www.airmacau.com.mo/",
-    "license": "Trademark of its owner; official logo artwork from Air Macau's website header (small source image)",
+    "source": "https://commons.wikimedia.org/wiki/File:Air_Macau_Logo.svg",
+    "license": "Trademark of its owner; logo file from Wikimedia Commons, supplied by the site owner",
     "square": "icons/airlines/square/air-macau.png",
     "circle": "icons/airlines/circle/air-macau.png",
     "iconSource": "Official Air Macau logo mark"
@@ -1043,8 +1043,8 @@
   "norwegian:wf": {
     "file": "icons/airlines/wideroe.png",
     "title": "Widerøe logo",
-    "source": "https://apps.apple.com/no/app/wider%C3%B8e/id1263044641",
-    "license": "Trademark of its owner; official logo artwork (white logo from the official app icon, recoloured in Widerøe green)",
+    "source": "https://commons.wikimedia.org/wiki/File:Wideroe_logo_2002.svg",
+    "license": "Trademark of its owner; logo file from Wikimedia Commons, supplied by the site owner",
     "square": "icons/airlines/square/wideroe.png",
     "circle": "icons/airlines/circle/wideroe.png",
     "iconSource": "App Store icon of \"Widerøe\" by Wideroe AS"
@@ -1060,9 +1060,9 @@
   },
   "flyingblue:sb": {
     "file": "icons/airlines/aircalin.png",
-    "title": "Aircalin 2026 logo",
-    "source": "https://www.facci.com.au/fileadmin/australie/News_Images/2026_News_Images/Press_Release_-_Aircalin_launches_new_Logo.pdf",
-    "license": "Trademark of Aircalin; logo from Aircalin's press release of 3 July 2026",
+    "title": "Aircalin logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Aircalin_wordmark.svg",
+    "license": "Trademark of Aircalin; logo file from Wikimedia Commons, supplied by the site owner (the wordmark used before the July 2026 rebrand)",
     "square": "icons/airlines/square/aircalin.png",
     "circle": "icons/airlines/circle/aircalin.png",
     "iconSource": "Hibiscus mark from Aircalin's 2026 logo, centered on white"
