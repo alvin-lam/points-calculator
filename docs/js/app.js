@@ -101,12 +101,12 @@
     return new Date(Number(parts[0]), Number(parts[1]) - 1, 1).toLocaleDateString(LOCALE, { year: "numeric", month: "long" });
   }
 
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -618,7 +618,9 @@
       var code = card.currency || p.currency || "USD";
       $("cardChargeCurrency").textContent = cardSymbols[code];
       $("cardChargeSymbol").textContent = cardSymbols[code];
-      $("cardChargeHint").textContent = foreign
+      $("cardChargeHint").textContent = card.flightBonusPct
+        ? "Enter the total charged to the card in " + cardSymbols[code] + ", from your card statement. Leave it blank if you paid another way."
+        : foreign
         ? "This card earns in a different currency than the fare. Enter the total from your card statement."
         : "Enter the total charged to your card for this ticket, taxes included.";
     }
@@ -920,7 +922,10 @@
     var charged = tripCost;
     if (card && (foreignCard || !fareUsed)) {
       charged = parseFloat(cardChargeEl.value);
-      if (!(charged > 0)) return showError("Please enter the amount charged to your card in " + cardSymbols[cardCurrency] + ".");
+      // A card that earns a flight bonus just for holding it (El Al FLY
+      // CARD) can be held without paying with it: no amount, no card points.
+      if (!(charged > 0) && card.flightBonusPct) charged = 0;
+      else if (!(charged > 0)) return showError("Please enter the amount charged to your card in " + cardSymbols[cardCurrency] + ".");
     }
     // A card's rate can depend on the fare type (Breeze Easy Visa).
     var cardRate = card ? (card.rates && fareType && card.rates[fareType.id] != null ? card.rates[fareType.id] : card.rate) : 0;
@@ -1011,7 +1016,7 @@
     } else if (method === "zone" && p.zones.length > 1) row(dl, "Route", find(p.zones, zoneEl.value).name);
     if (method === "cardOnly") row(dl, "Flight earning", p.flightLabel ? p.flightLabel.charAt(0).toUpperCase() + p.flightLabel.slice(1) : "Not estimated");
     else row(dl, "Flight earning", num.format(r.points) + " (" + r.rateLabel + ")");
-    if (card && (card.rate || card.tiers || card.rates)) {
+    if (card && (card.rate || card.tiers || card.rates) && (charged > 0 || !card.flightBonusPct)) {
       var cardMoney = foreignCard || !fareUsed
         ? cardSymbols[cardCurrency] + charged.toLocaleString(LOCALE, { minimumFractionDigits: 2, maximumFractionDigits: 2 })
         : usd.format(charged);

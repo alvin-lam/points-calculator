@@ -37,13 +37,20 @@ const rules = {
     { id: "platinum", name: "Platinum", multiplier: 11 },
     { id: "top-platinum", name: "Top Platinum", multiplier: 12 }
   ],
-  // FLY CARD holders earn bonus points on eligible flights however they
-  // pay; El Al's page gives no rate for points on card spending.
+  // FLY CARD (Isracard): Matmid points per shekel charged, plus a bonus on
+  // the flight points however you pay (10% for FLY CARD and FLY CARD
+  // PREMIUM SELECT, 20% for FLY CARD PREMIUM, from El Al's points page).
+  // Rates per shekel on standard purchases: FLY CARD 1 per NIS 5, FLY CARD
+  // PREMIUM SELECT 1 per NIS 4.50, FLY CARD PREMIUM 1 per NIS 4. Source: a
+  // search summary of Isracard's rates supplied by the site owner (November
+  // 2026); the NIS 5 rate matches Blue & White Finance. To be confirmed on
+  // Isracard's FLY CARD page.
   cardQuestion: "Do you hold an EL AL FLY CARD?",
-  cardHint: "FLY CARD holders earn bonus points on eligible flights, however they pay for the ticket.",
+  cardHint: "FLY CARD holders earn bonus points on eligible flights however they pay, plus points on the amount charged to the card.",
   cards: [
-    { id: "flycard", name: "FLY CARD or FLY CARD PREMIUM SELECT (+10%)", flightBonusPct: 0.1, bonusName: "FLY CARD bonus", bank: "Isracard or CAL (Israel)" },
-    { id: "flycard-premium", name: "FLY CARD PREMIUM (+20%)", flightBonusPct: 0.2, bonusName: "FLY CARD PREMIUM bonus", bank: "Isracard or CAL (Israel)" }
+    { id: "flycard", name: "FLY CARD (+10% on flights)", rate: 1 / 5, per: 5, currency: "ILS", flightBonusPct: 0.1, bonusName: "FLY CARD bonus", bank: "Isracard (Israel)" },
+    { id: "flycard-select", name: "FLY CARD PREMIUM SELECT (+10% on flights)", rate: 1 / 4.5, per: 4.5, rateText: "1 per ₪4.50", currency: "ILS", flightBonusPct: 0.1, bonusName: "FLY CARD PREMIUM SELECT bonus", bank: "Isracard (Israel)" },
+    { id: "flycard-premium", name: "FLY CARD PREMIUM (+20% on flights)", rate: 1 / 4, per: 4, currency: "ILS", flightBonusPct: 0.2, bonusName: "FLY CARD PREMIUM bonus", bank: "Isracard (Israel)" }
   ],
   // Bonus points on eligible flights, each on the base points.
   extras: [
@@ -53,7 +60,7 @@ const rules = {
         { id: "yes", name: "Yes (+20% in Premium and Business)", pct: 0.2, premiumOnly: true, bonusName: "EXECUTIVE Circle bonus" }
       ] }
   ],
-  note: "Matmid earns points per US dollar of the ticket price, excluding taxes, levies, fees, surcharges and travel agent commissions: 6 for Matmid, 8 for Silver, 9 for Gold, 11 for Platinum and 12 for Top Platinum, by your status at the time of the flight. Baggage and SPACE seats bought with the flight earn too. Fares in other currencies are converted to US dollars at the ticketing date. Tickets with connecting flights, package or wholesale tickets, and Sundor flights earn by destination and booking class instead, which this estimate does not cover. Bonuses are added to the base points and rounded to the nearest point: FLEX fares earn 20% more, FLY CARD and FLY CARD PREMIUM SELECT holders 10% more, FLY CARD PREMIUM holders 20% more, and EXECUTIVE Circle members 20% more in Premium and Business. This estimate assumes the bonuses add together. Points count toward awards only; status is earned with Diamonds."
+  note: "Matmid earns points per US dollar of the ticket price, excluding taxes, levies, fees, surcharges and travel agent commissions: 6 for Matmid, 8 for Silver, 9 for Gold, 11 for Platinum and 12 for Top Platinum, by your status at the time of the flight. Baggage and SPACE seats bought with the flight earn too. Fares in other currencies are converted to US dollars at the ticketing date. Tickets with connecting flights, package or wholesale tickets, and Sundor flights earn by destination and booking class instead, which this estimate does not cover. Bonuses are added to the base points and rounded to the nearest point: FLEX fares earn 20% more, FLY CARD and FLY CARD PREMIUM SELECT holders 10% more, FLY CARD PREMIUM holders 20% more, and EXECUTIVE Circle members 20% more in Premium and Business. This estimate assumes the bonuses add together. Paying with a FLY CARD also earns 1 point per NIS 5 (FLY CARD), NIS 4.50 (FLY CARD PREMIUM SELECT) or NIS 4 (FLY CARD PREMIUM) charged; enter the amount in shekels. Foreign-currency charges earn at different rates, which this estimate does not use. Points count toward awards only; status is earned with Diamonds."
 };
 
 module.exports = {
