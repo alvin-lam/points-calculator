@@ -1,6 +1,6 @@
 # Airline Points Calculator
 
-A static web app that estimates the points or miles you earn on a flight. It covers 93 airlines in 75 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
+A static web app that estimates the points or miles you earn on a flight. It covers 102 airlines in 82 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
 
 Live site: https://points.alltripsconsidered.com/
 
@@ -92,7 +92,8 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - SpiceJet (SG) SpiceClub earns SC Points per ₹100 of the base fare and pre-booked add-ons: 4 for Classic, 6 for Silver, 8 for Gold and 10 for Platinum. Booking on spicejet.com or the app adds 250 SC Points per booking (`direct.points`). Taxes and fees do not earn. Cards: Axis Bank SpiceJet Voyage (6 per ₹200) and Voyage Black (12 per ₹200) on SpiceJet website or app spend, counted in whole steps of ₹200 (`spendStep`).
 - Tigerair Taiwan (IT) tigerclub earns tigerpoints equal to 1% (tigerexpert) or 2% (tigerprime) of the ticket fare. Only international flights bought on Tigerair Taiwan's own website or app earn. Taxes, booking service fees, bags, seats and meals do not earn. Card: the Rakuten Tigerair Taiwan co-branded card earns 2.5% in tigerpoints on Tigerair Taiwan purchases, up to 500 per statement, until 31 December 2026.
 - SKY Airline (H2) SKY Plus earns points per US dollar of the fare plus SKY's bags and seats: Cobre 2.5, Oro 3.3 and Platino 5.8, for SKY Airline Chile and Peru flights, from the SKY Plus page and terms (June 2024). Taxes, fees and third-party services do not earn. Fares in pesos or soles convert to dollars at SKY's rate on the purchase date, so the form asks for US dollars.
-- JetSMART (JA) earns AAdvantage miles per US dollar of the fare and pack price, from American's JetSMART page (since 24 September 2024): 0 on Basic, 2 on Light and 5 on SMART or FULL. Gold, Platinum, Platinum Pro and Executive Platinum add 40%, 60%, 80% and 120%. JetSMART is listed under AAdvantage like Fiji Airways and is not in oneworld.
+- JetSMART (JA) earns AAdvantage miles per US dollar of the fare and pack price, from JetSMART's AAdvantage earning page and American's JetSMART page (since 24 September 2024): 0 on Basic, 2 on Light and 5 on SMART or FULL. Gold, Platinum, Platinum Pro and Executive Platinum add 40%, 60%, 80% and 120%. Following JetSMART's page, taxes, charges and optional extras do not earn (`noCarrier`), and miles round to the nearest mile, as JetSMART's own calculator does (`roundNearest`). JetSMART is listed under AAdvantage like Fiji Airways and is not in oneworld.
+- Air Macau (NX) is listed under PhoenixMiles (Air China) like Shenzhen Airlines. It earns a share of the distance in kilometres by booking class, from the PhoenixMiles Air Macau table valid from 1 April 2026: 125% to 250% in Business (800 km minimum), 90% to 110% in Joyful Economy, and 25% to 110% in Economy (500 km minimum). Classes R, A, K, O, I and X earn nothing. PhoenixMiles does not say whether its tier bonuses apply to Air Macau, so only member earning is shown. Cards (Macau): Bank of China Air Card (1 km per MOP 10) and ICBC Air Macau Platinum (1 per MOP 9) and Gold (1 per MOP 10), on all card spending.
 - Philippine Airlines (PR) Mabuhay Miles earns a route's base miles times 10% to 150% by fare family. Elite adds 25%; Premier Elite and Million Miler add 75% to and from the US and Canada and 25% elsewhere (`multipliers` per route type), on earned miles in Economy and Premium Economy and on the distance flown in Business (`bonusOnDistance`). PAL's charts list fixed base miles per route, which can differ slightly from the distance entered.
 - Air Tahiti Nui (TN) Club Tiare earns 25% to 150% of the distance by booking class (S earns 50% on Papeete-Paris); Silver adds 50% and Gold 75%.
 - Aerolíneas Argentinas (AR) Aerolíneas Plus earns a share of the distance by route type (domestic, regional, international) and the first letter of the fare basis, 0% to 200%; Oro, Platino and Diamante add 25%, 75% and 100%.
@@ -324,7 +325,7 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 - [ ] **Report a correction:** a footer link, by email or a simple form, so readers can report changed earning rules.
 - [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
 - [ ] **Visit counter:** a privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so.
-- [ ] **"90+ airlines" wording:** the page titles, descriptions and preview image say "90+ airlines" (93 today, in 75 programs). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 100.
+- [ ] **"100+ airlines" wording:** the page titles, descriptions and preview image say "100+ airlines" and "80+ loyalty programs" (102 airlines in 82 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 90 programs.
 
 ### Watch list
 

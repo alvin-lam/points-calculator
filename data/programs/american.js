@@ -21,14 +21,16 @@ const rules = {
     // and JetSMART's AAdvantage page (https://jetsmart.com/cl/es/minisitios/millas-aadvantage/acumular):
     // miles per US dollar by fare, Basic 0, Light 2, SMART 5, FULL / Full
     // Flex 5, plus 40%, 60%, 80% or 120% for Gold, Platinum, Platinum Pro
-    // and Executive Platinum. American counts carrier-imposed fees;
-    // JetSMART says taxes and "cargos" do not earn. We follow American.
+    // and Executive Platinum. JetSMART's page says miles are figured on the
+    // US dollar price of the fare or pack, without extras, taxes or charges
+    // ("cargos"), and its calculator rounds to the nearest mile (status
+    // factors 1, 1.4, 1.6, 1.8 and 2.2). We follow JetSMART.
     { id: "ja", name: "JetSMART", country: "CL", program: {
         cap: null,
         cards: null,
         addons: false,
-        carrierLabel: "JetSMART Carrier Fees",
-        carrierHint: "Charges set by JetSMART, if any. American counts them; government taxes and airport fees do not earn.",
+        noCarrier: true,
+        roundNearest: true,
         fareTypes: [
           { id: "basic", name: "Basic" },
           { id: "light", name: "Light" },
@@ -42,7 +44,7 @@ const rules = {
           { id: "platpro", name: "AAdvantage Platinum Pro", rates: { basic: 0, light: 3.6, smart: 9, full: 9 } },
           { id: "exp", name: "AAdvantage Executive Platinum", rates: { basic: 0, light: 4.4, smart: 11, full: 11 } }
         ],
-        note: "JetSMART uses AAdvantage. JetSMART flights earn miles per US dollar of the fare, including the price of the pack: 2 with Light and 5 with SMART or FULL (Full Flex), with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Basic fares earn nothing. American's JetSMART page says carrier-imposed fees earn and government taxes do not, so this calculator counts carrier fees. JetSMART's own page says taxes, charges, and optional extras do not earn, so carrier fees may not earn in practice. Bags, seats, and other extras do not earn. A fare paid in another currency earns on its US dollar value at the exchange rate of the purchase date, so enter the US dollar equivalent. No AAdvantage card publishes a JetSMART rate. JetSMART flights booked with an American flight number earn under American's own rates."
+        note: "JetSMART uses AAdvantage. JetSMART flights earn miles per US dollar of the fare, including the price of the pack: 2 with Light and 5 with SMART or FULL (Full Flex), with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Basic fares earn nothing. Per JetSMART's AAdvantage page, taxes, charges, and optional extras such as bags and seats do not earn, and miles round to the nearest mile. A fare paid in another currency earns on its US dollar value at the exchange rate of the purchase date, so enter the US dollar equivalent. No AAdvantage card publishes a JetSMART rate. JetSMART flights booked with an American flight number earn under American's own rates."
       } }
   ],
   method: "spend",
@@ -82,7 +84,9 @@ module.exports = {
     { name: "Fiji Airways Executive Platinum", airline: "fj", input: { status: "exp", fields: { airfare: 600, carrierFees: 100 } }, expect: 7700 },
     // JetSMART: SMART at the Gold rate (5 x 1.4) on fare and carrier fees;
     // Light for a member earns 2 per dollar.
-    { name: "JetSMART Gold SMART Pack", airline: "ja", input: { status: "gold", fare: "smart", fields: { airfare: 100, carrierFees: 20 } }, expect: 840 },
+    { name: "JetSMART Gold SMART Pack", airline: "ja", input: { status: "gold", fare: "smart", fields: { airfare: 100 } }, expect: 700 },
+    // 81 x 2 x 1.4 = 226.8, rounded to the nearest mile as JetSMART does.
+    { name: "JetSMART Gold Light, rounded", airline: "ja", input: { status: "gold", fare: "light", fields: { airfare: 81 } }, expect: 227 },
     { name: "JetSMART Member Light", airline: "ja", input: { status: "member", fare: "light", fields: { airfare: 80 } }, expect: 160 }
   ],
   rules

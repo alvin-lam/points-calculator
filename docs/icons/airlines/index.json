@@ -1003,5 +1003,14 @@
     "square": "icons/airlines/square/pegasus.png",
     "circle": "icons/airlines/circle/pegasus.png",
     "iconSource": "App Store icon of \"Pegasus: Cheap Flight Tickets\" by Pegasus Hava Tasimaciligi A.S."
+  },
+  "phoenix:nx": {
+    "file": "icons/airlines/air-macau.png",
+    "title": "Air Macau logo",
+    "source": "https://www.airmacau.com.mo/",
+    "license": "Trademark of its owner; official logo artwork from Air Macau's website header (small source image)",
+    "square": "icons/airlines/square/air-macau.png",
+    "circle": "icons/airlines/circle/air-macau.png",
+    "iconSource": "Official Air Macau logo mark"
   }
 }
