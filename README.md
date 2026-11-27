@@ -303,6 +303,7 @@ These are not added yet. Each says what would change that.
 - HK Express: its flights do not earn Asia Miles; only the Standard Chartered Cathay Mastercard and short promotions do. Add flight earning if Cathay starts awarding Asia Miles on HK Express flights.
 - Peach (MM): ANA group low-cost airline. Its own flights do not earn ANA Mileage Club miles; only flights booked under an ANA (NH) codeshare number on selected routes do. ANA miles can be traded for Peach Points, but that is redemption, not earning. Add Peach if its own flights start earning ANA miles.
 - Spring Japan (IJ): JAL group low-cost airline. JAL Mileage Bank says flights operated by Spring Airlines do not earn; miles accrue only on flights booked and flown under JAL flight numbers. Add Spring Japan if its own flights start earning JMB miles.
+- ZIPAIR (ZG): JAL group low-cost long-haul airline. Its flights earn neither ZIPAIR Points (ZIPAIR says points are not earned for flights or ticket purchases; they come from sign-up, the app and JAL mile conversions) nor JAL Mileage Bank miles (only JAL flight numbers earn). It has no co-branded card. Add ZIPAIR if its flights start earning points or miles.
 - Air Transat Staria credit cards: Desjardins and Visa plan cards that earn Staria points, launching later in 2027. Fees and earning rates are not yet published. Add them to the Air Transat entry once they launch.
 
 ## Disclaimer
