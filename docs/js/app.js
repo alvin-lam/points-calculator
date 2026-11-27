@@ -658,7 +658,12 @@
 
   // How the chosen program earns: its fixed method, or the member's choice.
   function earnMethod(p) {
-    return p.earnMethods ? find(p.earnMethods, earnEl.value) : { id: p.method };
+    if (!p.earnMethods) return { id: p.method };
+    var e = find(p.earnMethods, earnEl.value);
+    // An earning choice can name its method separately from its own id, so
+    // two choices can use the same method (Condor on Atmos Rewards: 1 point
+    // per mile, or a share of the distance by cabin).
+    return e.method ? Object.assign({}, e, { id: e.method, choice: e.id }) : e;
   }
 
   function syncEarnFields() {

@@ -904,5 +904,23 @@
     "square": "icons/airlines/square/shenzhen-airlines.png",
     "circle": "icons/airlines/circle/shenzhen-airlines.png",
     "iconSource": "The red bird from the Shenzhen Airlines logo on white, as in the App Store icon of \"深圳航空\" by Shenzhen Airlines Co., Ltd."
+  },
+  "condor:trueblue": {
+    "file": "icons/airlines/condor.png",
+    "title": "Condor logo",
+    "source": "https://www.condor.com/ (header logo, inline SVG)",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/condor.png",
+    "circle": "icons/airlines/circle/condor.png",
+    "iconSource": "Official Condor touch icon (https://www.condor.com/siteassets/media/favicon/apple-touch-icon.png), enlarged"
+  },
+  "condor:atmos": {
+    "file": "icons/airlines/condor.png",
+    "title": "Condor logo",
+    "source": "https://www.condor.com/ (header logo, inline SVG)",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/condor.png",
+    "circle": "icons/airlines/circle/condor.png",
+    "iconSource": "Official Condor touch icon (https://www.condor.com/siteassets/media/favicon/apple-touch-icon.png), enlarged"
   }
 }

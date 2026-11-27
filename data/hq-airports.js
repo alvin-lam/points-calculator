@@ -16,6 +16,7 @@ module.exports = {
   copa: "PTY", lifemiles: "BOG", latam: "SCL", gol: "CGH", azul: "VCP", aerolineas: "AEP",
   // Europe
   ram: "CMN", omanair: "MCT", rj: "AMM",
+  "condor:trueblue": "FRA", "condor:atmos": "FRA",
   aegean: "ATH", airbaltic: "RIX", aireuropa: "PMI", finnair: "HEL", icelandair: "KEF",
   norwegian: "OSL", sas: "ARN", tap: "LIS", turkish: "IST", virgin: "LHR",
   "flyingblue:af": "CDG", "flyingblue:kl": "AMS", "flyingblue:transavia": "AMS",
