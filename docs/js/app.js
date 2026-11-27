@@ -384,6 +384,9 @@
       var el = $("extra-" + x.id);
       var o = el ? find(x.options, el.value) : null;
       if (o && o.pct && (!o.premiumOnly || (fareType && fareType.premium))) out.push({ name: o.bonusName || o.name, pct: o.pct });
+      // Chosen, but this fare does not qualify: say so instead of
+      // silently leaving the bonus out (El Al EXECUTIVE Circle in Economy).
+      else if (o && o.pct && o.premiumOnly) out.push({ name: o.bonusName || o.name, pct: 0, note: o.skipNote || "not in this cabin" });
     });
     return out;
   }
@@ -808,6 +811,7 @@
       // Percentage bonuses, each figured on the base points (El Al).
       var baseSpendPoints = points;
       extraBonuses(p, fareType).forEach(function (b) {
+        if (b.note) { rateLabel += "; no " + b.name + " (" + b.note + ")"; return; }
         points += baseSpendPoints * b.pct;
         rateLabel += " + " + Math.round(b.pct * 100) + "% " + b.name;
       });
