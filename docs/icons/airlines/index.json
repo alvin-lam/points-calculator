@@ -1048,5 +1048,14 @@
     "square": "icons/airlines/square/wideroe.png",
     "circle": "icons/airlines/circle/wideroe.png",
     "iconSource": "App Store icon of \"Widerøe\" by Wideroe AS"
+  },
+  "airniugini": {
+    "file": "icons/airlines/airniugini.png",
+    "title": "Air Niugini logo",
+    "source": "https://www.airniugini.com.pg/",
+    "license": "Trademark of Air Niugini Limited; official logo artwork from the website header",
+    "square": "icons/airlines/square/airniugini.png",
+    "circle": "icons/airlines/circle/airniugini.png",
+    "iconSource": "Official site icon from airniugini.com.pg, on white"
   }
 }
