@@ -679,6 +679,17 @@
     syncExtraVisibility();
     $("zoneLabel").textContent = p.zoneLabel || "Route and distance";
     $("zoneHint").textContent = p.zoneHint || "This program awards a fixed amount per flight for each route band.";
+    // Fare types can belong to some routes only (Aegean: booking classes
+    // group differently on domestic and international flights).
+    if (p.fareTypes && p.fareTypes.some(function (f) { return f.zones; })) {
+      var zid = zoneEl.value, prevFare = fareTypeEl.value;
+      var fares = p.fareTypes.filter(function (f) { return !f.zones || f.zones.indexOf(zid) >= 0; });
+      fareTypeEl.replaceChildren();
+      fares.forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
+      var zDefault = p.zoneDefaultFare && p.zoneDefaultFare[zid];
+      var hasFare = function (id) { return fares.some(function (f) { return f.id === id; }); };
+      fareTypeEl.value = hasFare(prevFare) ? prevFare : (zDefault && hasFare(zDefault) ? zDefault : fares[0].id);
+    }
     // A route type that pays a fixed amount needs no distance.
     var fixedZone = m === "distance" && p.zones && find(p.zones, zoneEl.value).fixed;
     if (fixedZone) { distanceField.hidden = true; distanceEl.required = false; }
