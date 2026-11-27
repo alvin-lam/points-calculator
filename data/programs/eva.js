@@ -25,17 +25,24 @@ const rules = {
     { id: "gold", name: "Gold Card", multiplier: 1.25 },
     { id: "diamond", name: "Diamond Card", multiplier: 1.25 }
   ],
-  // American Express EVA Air co-brand cards from EVA Air's Infinity
-  // MileageLands credit card page (North America English, user-supplied PDF
-  // of November 2026), confirmed for the Platinum card on American Express
-  // Taiwan's card page. Other cards on the page are left out by choice.
-  cardQuestion: "Did you pay with an American Express EVA Air card?",
-  cardHint: "These Taiwan-issued charge cards earn award miles directly: 1 per NT$25, with a bonus on EVA Air tickets. Enter the total charged in New Taiwan dollars.",
+  // EVA Air co-brand cards from American Express and Cathay United Bank, from
+  // EVA Air's Infinity MileageLands credit card page (North America English,
+  // user-supplied PDF of November 2026). The Amex Platinum rate is confirmed
+  // on American Express Taiwan's card page. Other cards on the page are left
+  // out by choice.
+  cardQuestion: "Did you pay with an EVA Air co-brand card?",
+  cardHint: "These Taiwan-issued cards earn award miles directly, with a higher rate on EVA Air tickets. Enter the total charged in New Taiwan dollars.",
   cards: [
     // 1 mile per NT$25, plus 50% (Platinum) or 67% on the first 2,000 miles
     // each month (Gold) on EVA Air tickets and EVASION packages.
     { id: "amex-eva-plat", name: "American Express EVA Air Platinum Charge Card (+50% on EVA Air tickets)", rate: 1.5 / 25, rateText: "1.5 per NT$25", bank: "American Express (Taiwan)" },
-    { id: "amex-eva-gold", name: "American Express EVA Air Gold Charge Card (+67% on EVA Air tickets)", rate: 1 / 15, tiers: [{ upTo: 50000, rate: 1 / 15 }, { rate: 1 / 25 }], rateText: "1 per NT$15 on the first NT$50,000 a month, then 1 per NT$25", bank: "American Express (Taiwan)" }
+    { id: "amex-eva-gold", name: "American Express EVA Air Gold Charge Card (+67% on EVA Air tickets)", rate: 1 / 15, tiers: [{ upTo: 50000, rate: 1 / 15 }, { rate: 1 / 25 }], rateText: "1 per NT$15 on the first NT$50,000 a month, then 1 per NT$25", bank: "American Express (Taiwan)" },
+    // Cathay United EVA Air co-brand cards: 1 mile per NT$10 on EVA Air
+    // tickets for international EVA Air and UNI Air flights.
+    { id: "cub-supreme-infinite", name: "Cathay United EVA Air Supreme Infinite Card", rate: 1 / 10, per: 10, bank: "Cathay United Bank (Taiwan)" },
+    { id: "cub-infinite", name: "Cathay United EVA Air Infinite Card", rate: 1 / 10, per: 10, bank: "Cathay United Bank (Taiwan)" },
+    { id: "cub-supreme-signature", name: "Cathay United EVA Air Supreme Signature Card", rate: 1 / 10, per: 10, bank: "Cathay United Bank (Taiwan)" },
+    { id: "cub-signature", name: "Cathay United EVA Air Signature Card", rate: 1 / 30, per: 30, bank: "Cathay United Bank (Taiwan)" }
   ],
   note: "EVA Air earns a share of the ticketed distance set by booking class, from 50% in Economy Basic to 175% in Business Up. Economy Discount (A) and group fares earn nothing. Silver Card adds 15%, and Gold and Diamond Card add 25% on international EVA Air and UNI Air flights."
 };
