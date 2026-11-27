@@ -102,14 +102,14 @@
     return new Date(Number(parts[0]), Number(parts[1]) - 1, 1).toLocaleDateString(LOCALE, { year: "numeric", month: "long" });
   }
 
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/." };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$" };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
   // Names for the "charged in ... or a foreign currency?" card question.
   var CURRENCY_NAMES = { ILS: "shekels", TWD: "New Taiwan dollars" };
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/." };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$" };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -929,6 +929,11 @@
         points += fareType.addPoints;
         rateLabel += " + " + num.format(fareType.addPoints) + " fare bonus";
       }
+      // Booking direct can add a fixed amount per booking (SpiceJet: 250).
+      if (p.direct && p.direct.points && directYes.checked) {
+        points += p.direct.points;
+        rateLabel += " + " + num.format(p.direct.points) + " direct booking bonus";
+      }
     }
 
     // Distance programs round to the nearest mile; spend programs round down
@@ -1050,7 +1055,9 @@
     var cardFx = !!(card && card.foreignRate && $("cardFx").value === "foreign");
     if (cardFx) cardRate = card.foreignRate;
     // Programs that count in fractions (Airpoints Dollars) keep two decimals.
-    var cardEarn = charged * cardRate;
+    // Some issuers count spend only in whole steps (Axis Bank: per ₹200).
+    var cardSpend = card && card.spendStep ? Math.floor(charged / card.spendStep + 1e-9) * card.spendStep : charged;
+    var cardEarn = cardSpend * cardRate;
     // Some cards earn a higher rate only up to a spending limit, then a
     // lower rate (Standard Chartered Cathay Mastercard: HK$2 per mile on the
     // first HK$8,000 per promotion period, then HK$6).

@@ -13,12 +13,12 @@ module.exports = {
   aircanada: "YUL", porter: "YTZ", transat: "YUL", westjet: "YYC",
   aeromexico: "MEX", viva: "MTY", volaris: "MEX",
   // Central and South America
-  copa: "PTY", lifemiles: "BOG", latam: "SCL", gol: "CGH", azul: "VCP", aerolineas: "AEP",
+  copa: "PTY", lifemiles: "BOG", latam: "SCL", "american:ja": "SCL", skyairline: "SCL", gol: "CGH", azul: "VCP", aerolineas: "AEP",
   // Europe
   ram: "CMN", omanair: "MCT", rj: "AMM",
   "condor:trueblue": "FRA", "condor:atmos": "FRA",
   aegean: "ATH", airbaltic: "RIX", aireuropa: "PMI", finnair: "HEL", icelandair: "KEF",
-  norwegian: "OSL", sas: "ARN", tap: "LIS", turkish: "IST", virgin: "LHR",
+  norwegian: "OSL", sas: "ARN", tap: "LIS", turkish: "IST", pegasus: "SAW", loganair: "GLA", kmmalta: "MLA", virgin: "LHR",
   "flyingblue:af": "CDG", "flyingblue:kl": "AMS", "flyingblue:transavia": "AMS",
   "iag:ba": "LHR", "iag:ei": "DUB", "iag:ib": "MAD", "iag:level": "BCN", "iag:vy": "BCN",
   "milesandmore:lh": "FRA", "milesandmore:ew": "CGN", "milesandmore:de": "FRA",
@@ -31,7 +31,7 @@ module.exports = {
   airindia: "DEL", indigo: "DEL", ana: "HND", cathay: "HKG", chinaairlines: "TPE",
   chinaeastern: "SHA", chinasouthern: "CAN", enrich: "KUL", eva: "TPE",
   hainan: "HAK", hkexpress: "HKG", hongkongairlines: "HKG", jal: "HND",
-  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", vietjet: "HAN", pal: "MNL", srilankan: "CMB", airtahitinui: "PPT",
+  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", vietjet: "HAN", jejuair: "ICN", spicejet: "DEL", tigerairtw: "TPE", "phoenix:nx": "MFM", pal: "MNL", srilankan: "CMB", airtahitinui: "PPT",
   scoot: "SIN", starlux: "TPE", thai: "BKK", xiamen: "XMN",
   // Oceania
   airnz: "AKL", "american:fj": "NAN", jetstar: "MEL", qantas: "SYD", virginaustralia: "BNE"

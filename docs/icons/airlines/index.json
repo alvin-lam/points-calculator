@@ -931,5 +931,77 @@
     "square": "icons/airlines/square/vietjet.png",
     "circle": "icons/airlines/circle/vietjet.png",
     "iconSource": "App Store icon of \"VietJet Air\" by VIETJET AVIATION JOINT STOCK COMPANY"
+  },
+  "loganair": {
+    "file": "icons/airlines/loganair.png",
+    "title": "Loganair logo",
+    "source": "https://www.loganair.co.uk/media/hhifqk1z/loganair-logo.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/loganair.png",
+    "circle": "icons/airlines/circle/loganair.png",
+    "iconSource": "App Store icon of \"Loganair\" by Videcom International Limited"
+  },
+  "skyairline": {
+    "file": "icons/airlines/skyairline.png",
+    "title": "SKY Airline logo",
+    "source": "https://www.skyairline.com/es/chile/skyplus",
+    "license": "Trademark of its owner; official logo artwork (white lettering recoloured in SKY purple)",
+    "square": "icons/airlines/square/skyairline.png",
+    "circle": "icons/airlines/circle/skyairline.png",
+    "iconSource": "App Store icon of \"SKY Airline\" by Skyairline S.A."
+  },
+  "kmmalta": {
+    "file": "icons/airlines/kmmalta.png",
+    "title": "KM Malta Airlines logo",
+    "source": "https://cdn.prod.website-files.com/6adb3f6d044a055622a639b3/6adef28f94d7748e2114eba9_logo-km-malta-airlines.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/kmmalta.png",
+    "circle": "icons/airlines/circle/kmmalta.png",
+    "iconSource": "App Store icon of \"KM Malta Airlines\" by KM Malta Airlines Limited"
+  },
+  "american:ja": {
+    "file": "icons/airlines/jetsmart.png",
+    "title": "JetSMART logo",
+    "source": "https://assets-us-01.kc-usercontent.com/b2956330-c34f-0064-2c6f-27bd5c0147fc/26c92d5f-9d6e-4c4d-a629-b4bda7dcec14/jetsmart-logo-colored.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/jetsmart.png",
+    "circle": "icons/airlines/circle/jetsmart.png",
+    "iconSource": "Official JetSMART logo centered on white (no App Store app)"
+  },
+  "spicejet": {
+    "file": "icons/airlines/spicejet.png",
+    "title": "SpiceJet logo",
+    "source": "https://www.spicejet.com/v1.svg",
+    "license": "Trademark of its owner; official logo artwork (white logo recoloured in SpiceJet red)",
+    "square": "icons/airlines/square/spicejet.png",
+    "circle": "icons/airlines/circle/spicejet.png",
+    "iconSource": "Built from the dot mark in SpiceJet's official logo, on SpiceJet red"
+  },
+  "tigerairtw": {
+    "file": "icons/airlines/tigerairtw.png",
+    "title": "Tigerair Taiwan logo",
+    "source": "https://www.tigerairtw.com/assets/zh-TW-DYtL0a4x.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/tigerairtw.png",
+    "circle": "icons/airlines/circle/tigerairtw.png",
+    "iconSource": "App Store icon of \"Tigerair Taiwan\" by TIGERAIR TAIWAN CO., LTD."
+  },
+  "jejuair": {
+    "file": "icons/airlines/jejuair.png",
+    "title": "Jeju Air logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Jeju_Air_Logo.svg",
+    "license": "Wikimedia Commons vectorization of Jeju Air's official logo, orange recoloured to the current #FF5000",
+    "square": "icons/airlines/square/jejuair.png",
+    "circle": "icons/airlines/circle/jejuair.png",
+    "iconSource": "App Store icon of \"제주항공\" by Jeju Air Co., Ltd."
+  },
+  "pegasus": {
+    "file": "icons/airlines/pegasus.png",
+    "title": "Pegasus Airlines logo",
+    "source": "https://cdnp.flypgs.com/files/pegasus-logo.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/pegasus.png",
+    "circle": "icons/airlines/circle/pegasus.png",
+    "iconSource": "App Store icon of \"Pegasus: Cheap Flight Tickets\" by Pegasus Hava Tasimaciligi A.S."
   }
 }
