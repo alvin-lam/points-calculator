@@ -25,14 +25,14 @@ const rules = {
     { id: "gold", name: "Gold Card", multiplier: 1.25 },
     { id: "diamond", name: "Diamond Card", multiplier: 1.25 }
   ],
-  // Cards from EVA Air's Infinity MileageLands credit card page (North
-  // America English, user-supplied PDF of November 2026). Co-brand cards earn
-  // award miles directly; bank reward cards are shown after conversion to
-  // EVA miles at the bank's published ratio. Cards whose earning rate the
-  // page does not give (Cathay United points, Taishin, E.Sun) and Union Bank
-  // of Taiwan (cut off in the PDF) are left out.
+  // American Express and Cathay United Bank cards from EVA Air's Infinity
+  // MileageLands credit card page (North America English, user-supplied PDF
+  // of November 2026). Co-brand cards earn award miles directly; Amex
+  // Membership Rewards points convert 1:1. Other Taiwan banks on the page
+  // are left out by choice, and Cathay United's general points card because
+  // the page gives only a conversion ratio.
   cardQuestion: "Did you pay with a card that earns EVA Air miles?",
-  cardHint: "Co-brand cards earn award miles directly. Bank reward cards are shown after converting their points to EVA Air miles at the bank's ratio; minimum transfers apply. Enter the total charged in New Taiwan dollars.",
+  cardHint: "Co-brand cards earn award miles directly. American Express Membership Rewards points convert 1:1 (minimum 1,000). Enter the total charged in New Taiwan dollars.",
   cards: [
     // American Express EVA Air cards: 1 mile per NT$25, plus 50% (Platinum)
     // or 67% on the first 2,000 miles each month (Gold) on EVA Air tickets.
@@ -44,19 +44,9 @@ const rules = {
     { id: "cub-infinite", name: "Cathay United EVA Air Infinite Card", rate: 1 / 10, per: 10, bank: "Cathay United Bank (Taiwan)" },
     { id: "cub-supreme-signature", name: "Cathay United EVA Air Supreme Signature Card", rate: 1 / 10, per: 10, bank: "Cathay United Bank (Taiwan)" },
     { id: "cub-signature", name: "Cathay United EVA Air Signature Card", rate: 1 / 30, per: 30, bank: "Cathay United Bank (Taiwan)" },
-    // Bank reward cards, converted to EVA Air miles.
+    // American Express Taiwan Membership Rewards, 1 point = 1 award mile.
     { id: "amex-mr-plat", name: "American Express Platinum or Centurion Card (Membership Rewards)", rate: 1 / 30, per: 30, foreignRate: 2 / 30, foreignPer: 15, bank: "American Express (Taiwan)" },
-    { id: "amex-mr", name: "Other American Express cards (Membership Rewards)", rate: 1 / 30, per: 30, bank: "American Express (Taiwan)" },
-    { id: "dbs-elite", name: "DBS Travel World Elite Card", rate: 1 / 18, per: 18, foreignRate: 1 / 15, foreignPer: 15, bank: "DBS (Taiwan)" },
-    { id: "dbs-business", name: "DBS Travel World Business Card", rate: 1 / 20, per: 20, foreignRate: 1 / 15, foreignPer: 15, bank: "DBS (Taiwan)" },
-    { id: "dbs-titanium", name: "DBS Travel Titanium Card", rate: 1 / 35, per: 35, foreignRate: 1 / 20, foreignPer: 20, bank: "DBS (Taiwan)" },
-    { id: "far-eastern", name: "Far Eastern International Bank credit cards", rate: 1 / 90, per: 90, bank: "Far Eastern International Bank (Taiwan)" },
-    { id: "fubon", name: "Taipei Fubon Bank credit cards", rate: 1 / 140, per: 140, bank: "Taipei Fubon Bank (Taiwan)" },
-    { id: "ctbc", name: "CTBC credit cards", rate: 1 / 150, per: 150, bank: "CTBC Bank (Taiwan)" },
-    { id: "ctbc-business", name: "CTBC Business Card", rate: 300 / 20000, rateText: "1 per NT$66.67", bank: "CTBC Bank (Taiwan)" },
-    { id: "yuanta-infinite", name: "Yuanta Bank Infinite Card", rate: 600 / 110000, rateText: "1 per NT$183.33", bank: "Yuanta Bank (Taiwan)" },
-    { id: "scsb", name: "Shanghai Commercial & Savings Bank credit cards", rate: 1 / 200, per: 200, bank: "Shanghai Commercial & Savings Bank (Taiwan)" },
-    { id: "sinopac", name: "Bank SinoPac credit cards (invited cardholders only)", rate: 1 / 600, per: 600, bank: "Bank SinoPac (Taiwan)" }
+    { id: "amex-mr", name: "Other American Express cards (Membership Rewards)", rate: 1 / 30, per: 30, bank: "American Express (Taiwan)" }
   ],
   note: "EVA Air earns a share of the ticketed distance set by booking class, from 50% in Economy Basic to 175% in Business Up. Economy Discount (A) and group fares earn nothing. Silver Card adds 15%, and Gold and Diamond Card add 25% on international EVA Air and UNI Air flights."
 };
