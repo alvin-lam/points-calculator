@@ -106,6 +106,8 @@
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
+  // Names for the "charged in ... or a foreign currency?" card question.
+  var CURRENCY_NAMES = { ILS: "shekels", TWD: "New Taiwan dollars" };
   var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT" };
 
   function option(value, label) {
@@ -635,8 +637,12 @@
     // charged (El Al FLY CARD PREMIUM: 1 per NIS 4 in shekels, 3 abroad).
     $("cardFxField").hidden = !(card && card.foreignRate);
     if (card && card.foreignRate) {
-      var fxSym = cardSymbols[card.currency || p.currency || "USD"];
-      $("cardFxHint").textContent = "1 point per " + fxSym + num.format(card.per) + " in shekels, 1 per " + fxSym + num.format(card.foreignPer) + " in a foreign currency." + (p.cardFxHint ? " " + p.cardFxHint : "");
+      var fxCode = card.currency || p.currency || "USD";
+      var fxSym = cardSymbols[fxCode];
+      var fxName = CURRENCY_NAMES[fxCode] || fxCode;
+      $("cardFxLabel").textContent = "Was the ticket charged in " + fxName + " or a foreign currency?";
+      $("cardFxLocal").textContent = fxName.charAt(0).toUpperCase() + fxName.slice(1);
+      $("cardFxHint").textContent = "1 per " + fxSym + num.format(card.per) + " in " + fxName + ", 1 per " + fxSym + num.format(card.foreignPer) + " in a foreign currency." + (p.cardFxHint ? " " + p.cardFxHint : "");
     }
     if (card) {
       var code = card.currency || p.currency || "USD";
