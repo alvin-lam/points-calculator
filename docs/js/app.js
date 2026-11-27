@@ -8,6 +8,7 @@
   var programEl = $("program");
   var statusEl = $("status");
   var fareTypeEl = $("fareType");
+  var creditEl = $("creditTo");
   var fareTypeField = $("fareTypeField");
   var distanceField = $("distanceField");
   var airfareEl = $("airfare");
@@ -187,7 +188,10 @@
           p.airlines.forEach(function (al) {
             // An airline can sit under several countries (Transavia: NL and FR).
             var homes = al.countries || [al.country || p.country || "US"];
-            if (homes.indexOf(c.id) !== -1) add(key + ":" + al.id, airlineLabel(p, al));
+            // An airline credited to a choice of programs (Condor) is listed
+            // once; the form then asks which program (creditChoice).
+            if (al.menuHidden) return;
+            if (homes.indexOf(c.id) !== -1) add(key + ":" + al.id, al.menuLabel || airlineLabel(p, al));
           });
         } else if ((p.country || "US") === c.id) {
           add(key, p.name);
@@ -238,6 +242,20 @@
       group.label = g.label;
       g.items.forEach(function (ch) { group.appendChild(option(ch[0], ch[1])); });
       programEl.appendChild(group);
+    });
+    // Airlines left out of the menu (menuHidden) still need an option, so
+    // the credited-program question can select them; they show the label
+    // of the entry that stands for them.
+    Object.keys(PROGRAMS).forEach(function (key) {
+      var p = PROGRAMS[key];
+      if (!p.airlines) return;
+      var shown = p.airlines.filter(function (a) { return !a.menuHidden; })[0];
+      p.airlines.forEach(function (al) {
+        if (!al.menuHidden) return;
+        var o = option(key + ":" + al.id, shown && shown.menuLabel ? shown.menuLabel : airlineLabel(p, al));
+        o.hidden = true;
+        programEl.appendChild(o);
+      });
     });
     programEl.value = "";
   }
@@ -428,6 +446,21 @@
   // Rebuilds the form for the current program and airline.
   function applyProgram() {
     var p = current();
+    // A program credited to a choice of partner programs (Condor: TrueBlue
+    // or Atmos Rewards) asks which one; each choice is one of its airlines.
+    var credit = selection();
+    var creditField = $("creditField");
+    if (credit.program && credit.program.creditChoice) {
+      var cc = credit.program.creditChoice;
+      $("creditLabel").textContent = cc.label;
+      $("creditHint").textContent = cc.hint || "";
+      creditEl.replaceChildren();
+      credit.program.airlines.forEach(function (a) { creditEl.appendChild(option(a.id, (a.program && a.program.programName) || a.name)); });
+      creditEl.value = credit.airline ? credit.airline.id : credit.program.airlines[0].id;
+      creditField.hidden = false;
+    } else {
+      creditField.hidden = true;
+    }
     statusEl.replaceChildren();
     fareTypeEl.replaceChildren();
     if (!p) {
@@ -1746,6 +1779,12 @@
   cardmemberYes.addEventListener("change", syncCardmember);
   cardmemberNo.addEventListener("change", syncCardmember);
   // A fare type with its own currency updates the money symbols.
+  // Switching the credited program swaps the menu value to that airline.
+  creditEl.addEventListener("change", function () {
+    var key = programEl.value.split(":")[0];
+    programEl.value = key + ":" + creditEl.value;
+    onProgramChange();
+  });
   fareTypeEl.addEventListener("change", syncExtraVisibility);
   fareTypeEl.addEventListener("change", function () {
     var p = current();

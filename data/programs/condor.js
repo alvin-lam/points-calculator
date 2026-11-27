@@ -74,11 +74,18 @@ const rules = {
   unit: "points",
   method: "distance",
   airlines: [
-    { id: "trueblue", name: "Condor", country: "DE", noAlliance: true, program: trueBlue },
-    { id: "atmos", name: "Condor", country: "DE", noAlliance: true, program: atmos }
+    { id: "trueblue", name: "Condor", menuLabel: "Condor", country: "DE", noAlliance: true, program: trueBlue },
+    { id: "atmos", name: "Condor", menuHidden: true, country: "DE", noAlliance: true, program: atmos }
   ],
-  // Defaults before a program is chosen (TrueBlue).
-  programName: trueBlue.programName,
+  // One menu entry; the form asks which partner program the flight is
+  // credited to.
+  creditChoice: {
+    label: "Which program do you credit Condor flights to?",
+    hint: "Condor has no program of its own. Its flights earn in JetBlue TrueBlue or Alaska Atmos Rewards."
+  },
+  // Defaults before a program is chosen (TrueBlue). The group name lets a
+  // search for either program find Condor.
+  programName: "TrueBlue or Atmos Rewards",
   fareTypes: trueBlue.fareTypes,
   defaultFareType: trueBlue.defaultFareType,
   statuses: trueBlue.statuses,
