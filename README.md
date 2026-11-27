@@ -265,7 +265,7 @@ Expected results under the quoted rates (Business / Comfort Flex / Light): ATH t
 ### Lower priority programs
 
 - [ ] Asia: IndiGo BluChip, Saudia Alfursan, SriLankan FlySmiLes, Bangkok Airways FlyerBonus, Cebu Pacific, Shenzhen Airlines (may join the Air China entry).
-- [ ] Europe: airBaltic Club, Pegasus BolBol, Volotea, Binter.
+- [ ] Europe: Pegasus BolBol, Volotea, Binter.
 - [ ] Oceania: Air Niugini Destinations, Aircalin.
 
 ### Alliance members not yet in the calculator
@@ -291,7 +291,7 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 - [ ] **Report a correction:** a footer link, by email or a simple form, so readers can report changed earning rules.
 - [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
 - [ ] **Visit counter:** a privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so.
-- [ ] **"70+ airlines" wording:** the page titles, descriptions and preview image say "70+ airlines" (74 today, in 56 programs). Update the wording and remake the preview image (`tools/og-image.html`) if the count passes 100.
+- [ ] **"70+ airlines" wording:** the page titles, descriptions and preview image say "70+ airlines" (79 today, in 61 programs). Update the wording and remake the preview image (`tools/og-image.html`) if the count passes 100.
 
 ### Watch list
 
