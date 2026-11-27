@@ -13,6 +13,8 @@ module.exports = function applyAlliances(P) {
     // oneworld
     american: { gold: "Ruby", platinum: "Sapphire", platpro: "Sapphire", exp: "Emerald" },
     alaska: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
+    // Condor credited to Atmos Rewards: Atmos tiers, Condor not a member.
+    "condor:atmos": { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
     omanair: { silver: "Ruby", gold: "Sapphire" },
     rj: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     srilankan: { classic: "Ruby", gold: "Sapphire", platinum: "Emerald" },

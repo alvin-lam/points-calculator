@@ -38,6 +38,10 @@ const trueBlue = {
 
 const atmos = {
   programName: "Atmos Rewards",
+  // Condor is not in an alliance, but Atmos Rewards is Alaska's program
+  // (oneworld): Atmos status shows its oneworld tier, and the Alliance line
+  // says the status counts on oneworld airlines, not on Condor's flights.
+  sharedAlliance: "oneworld",
   unit: "points",
   method: "distance",
   currency: "USD",

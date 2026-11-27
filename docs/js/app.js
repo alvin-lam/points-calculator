@@ -498,7 +498,7 @@
     var hasTier = function (list) { return (list || []).some(function (s) { return s.alliance; }); };
     var tiered = hasTier(p.statuses) || hasTier(sel.program.statuses);
     var shared = alliance ? null
-      : (sel.airline && tiered ? programAlliance(sel.program) : (sel.program.sharedAlliance || null));
+      : (p.sharedAlliance || (sel.airline && tiered ? programAlliance(sel.program) : (sel.program.sharedAlliance || null)));
     var allianceEl = $("allianceValue");
     // A non-member that shares an alliance airline's program names that
     // alliance ("Not part of Star Alliance."); others say "an alliance".
