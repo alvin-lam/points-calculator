@@ -938,7 +938,7 @@
 
     // Distance programs round to the nearest mile; spend programs round down
     // (or up, where the program says so). Airpoints keep two decimals.
-    if (p.decimals) points = Math.round(points * 100) / 100;
+    if (p.decimals) points = p.decimalsFloor ? Math.floor(points * 100 + 1e-6) / 100 : Math.round(points * 100) / 100;
     else if (em.id === "distance" && !p.roundUp) points = Math.round(points);
     else if (p.roundNearest) points = Math.round(points);
     else points = p.roundUp ? Math.ceil(points - 1e-9) : Math.floor(points + 1e-6);
@@ -993,7 +993,10 @@
     // Some airlines list extras that do not earn (British Airways, Iberia,
     // Aer Lingus); they still count toward the trip cost and card earning.
     // An addonsRate means extras earn their own flat rate (Air Transat).
-    var earnAddons = p.addonsNoEarn || p.addonsRate ? 0 : addons;
+    // A status can set its own extras rate (Cebu Pacific: by card type).
+    var addonsStatus = find(p.statuses, statusEl.value);
+    var addonsRate = addonsStatus && addonsStatus.addonsRate != null ? addonsStatus.addonsRate : p.addonsRate;
+    var earnAddons = p.addonsNoEarn || addonsRate ? 0 : addons;
     // A few programs earn on taxes too (airBaltic: the ticket's total charges).
     var earnBase = airfare + (p.baseFareOnly ? 0 : carrier) + earnAddons + (p.taxesEarn ? taxes : 0);
     var tripCost = airfare + carrier + addons + taxes;
@@ -1024,13 +1027,16 @@
     var airline = selection().airline;
     var r = calculate(p, status, fareType, earnBase, distance, airline, segments);
     if (r.error) return showError(r.error);
-    if (p.addonsRate && addons) {
+    if (addonsRate && addons) {
       // The extras rate can also take the status's tier bonus (Xiamen:
       // ancillaries earn 0.7 plus the tier multiplier).
-      var aRate = p.addonsRate + (p.addonsAddTier && status && status.addRate ? status.addRate : 0);
+      var aRate = addonsRate + (p.addonsAddTier && status && status.addRate ? status.addRate : 0);
       var aPts = addons * aRate;
-      r.points += p.roundUp ? Math.ceil(aPts - 1e-9) : Math.round(aPts);
-      r.rateLabel += " + " + num.format(aRate) + " per " + (p.currency === "CAD" ? "dollar" : symbols[cur] || "unit") + " on " + (p.addonsRateLabel || "seats and bags");
+      r.points += p.decimals ? (p.decimalsFloor ? Math.floor(aPts * 100 + 1e-6) / 100 : Math.round(aPts * 100) / 100) : p.roundUp ? Math.ceil(aPts - 1e-9) : Math.round(aPts);
+      if (p.decimals) r.points = Math.round(r.points * 100) / 100;
+      r.rateLabel += " + " + (p.ratePer
+        ? num.format(aRate * p.ratePer) + " per " + (symbols[cur] || "") + p.ratePer
+        : num.format(aRate) + " per " + (p.currency === "CAD" ? "dollar" : symbols[cur] || "unit")) + " on " + (p.addonsRateLabel || "seats and bags");
     }
     if (gowild) {
       r.rateLabel = "1 on the GoWild! fare + " + num.format(r.points) + " on the Early Booking Fee" + (addons ? " and seats, bags and/or bundles" : "") + " at " + r.rateLabel;

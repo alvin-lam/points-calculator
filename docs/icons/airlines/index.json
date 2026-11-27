@@ -1012,5 +1012,14 @@
     "square": "icons/airlines/square/air-macau.png",
     "circle": "icons/airlines/circle/air-macau.png",
     "iconSource": "Official Air Macau logo mark"
+  },
+  "cebupacific": {
+    "file": "icons/airlines/cebupacific.png",
+    "title": "Cebu Pacific logo",
+    "source": "https://help.cebupacificair.com/",
+    "license": "Trademark of Cebu Air, Inc.; official artwork from Cebu Pacific's help center (tagline removed)",
+    "square": "icons/airlines/square/cebupacific.png",
+    "circle": "icons/airlines/circle/cebupacific.png",
+    "iconSource": "App Store icon of \"Cebu Pacific Air: Book Flights\" by CEBU AIR, INC."
   }
 }
