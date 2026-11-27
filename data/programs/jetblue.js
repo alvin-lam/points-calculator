@@ -27,11 +27,9 @@ const rules = {
   cards: [
     { id: "card", name: "JetBlue Card", rate: 3, bank: "Barclays (US)" },
     { id: "plus", name: "JetBlue Plus Card", rate: 6, bank: "Barclays (US)" },
-    { id: "premier", name: "JetBlue Premier Card", rate: 6, bank: "Barclays (US)" },
-    // https://cards.barclaycardus.com/banking/cards/jetblue-business-card/
-    { id: "business", name: "JetBlue Business Card", rate: 6, bank: "Barclays (US)" }
+    { id: "premier", name: "JetBlue Premier Card", rate: 6, bank: "Barclays (US)" }
   ],
-  note: "TrueBlue earns per dollar of the pre-tax fare: 3 points on Main, EvenMore, BlueFirst, and Mint, or 1 on Base fares. Booking on jetblue.com or the JetBlue app adds 3 (1 on Base). Mosaic 1 and 2 add 3, Mosaic 3 adds 4, and Mosaic 4 adds 5. The JetBlue Card adds 3, and the Plus, Premier and Business Cards 6. Subscription bonuses are not included."
+  note: "TrueBlue earns per dollar of the pre-tax fare: 3 points on Main, EvenMore, BlueFirst, and Mint, or 1 on Base fares. Booking on jetblue.com or the JetBlue app adds 3 (1 on Base). Mosaic 1 and 2 add 3, Mosaic 3 adds 4, and Mosaic 4 adds 5. The JetBlue Card adds 3, and the Plus and Premier Cards 6. Subscription bonuses are not included."
 };
 
 module.exports = {

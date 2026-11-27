@@ -35,10 +35,9 @@ const rules = {
   cards: [
     { id: "esun-world-elite", name: "E.SUN STARLUX World Elite Card", rate: 1 / 7.5, per: 7.5, rateText: "1 per NT$7.50", bank: "E.SUN Bank (Taiwan)" },
     { id: "esun-world", name: "E.SUN STARLUX World Card", rate: 1 / 10, per: 10, bank: "E.SUN Bank (Taiwan)" },
-    { id: "esun-business-titanium", name: "E.SUN STARLUX Business Titanium Card", rate: 1 / 12.5, per: 12.5, rateText: "1 per NT$12.50", bank: "E.SUN Bank (Taiwan)" },
     { id: "esun-titanium", name: "E.SUN STARLUX Titanium Card", rate: 1 / 14, per: 14, bank: "E.SUN Bank (Taiwan)" }
   ],
-  note: "COSMILE earns a share of the ticketed distance set by booking class, from 60% in Economy Saving to 200% in First. Economy Limited (Q) earns nothing. ADVENTURER adds 15%, and EXPLORER and INSIGHTER add 25%, on flights operated by STARLUX. E.SUN STARLUX cards earn 1 mile per NT$7.50 (World Elite), NT$10 (World), NT$12.50 (Business Titanium) or NT$14 (Titanium) on tickets bought on the STARLUX website or app."
+  note: "COSMILE earns a share of the ticketed distance set by booking class, from 60% in Economy Saving to 200% in First. Economy Limited (Q) earns nothing. ADVENTURER adds 15%, and EXPLORER and INSIGHTER add 25%, on flights operated by STARLUX. E.SUN STARLUX cards earn 1 mile per NT$7.50 (World Elite), NT$10 (World) or NT$14 (Titanium) on tickets bought on the STARLUX website or app."
 };
 
 module.exports = {
