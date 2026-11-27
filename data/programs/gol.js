@@ -25,7 +25,15 @@ const rules = {
     { id: "diamante", name: "Diamante", rates: { sa: 5, intl: 11 } },
     { id: "magno", name: "Magno", rates: { sa: 6, intl: 12 } }
   ],
-  note: "Smiles earns on the GOL fare by category, for tickets bought from 16 June 2026: 1, 2, 3, 5, or 6 miles per real within South America, including Brazil, and 5, 8, 10, 11, or 12 miles per US dollar on other routes, for Smiles, Prata, Ouro, Diamante, and Magno. Earning is capped at 60,000 miles. Favorite Route bonuses are not included, and codeshare flights booked through another airline do not earn."
+  // Brazilian co-branded card: Smiles miles per US dollar equivalent of
+  // card spend (billed in reais), from https://www.smiles.com.br/cartao-de-credito
+  // Clube Smiles or Diamante members earn 5.5. Smiles publishes no extra
+  // for GOL purchases.
+  cardHint: "Card miles are earned on the US dollar equivalent of the amount charged, taxes included. Enter the charge in US dollars. Clube Smiles and Diamante members earn 5.5 miles per US dollar instead of 3.",
+  cards: [
+    { id: "smiles-infinite", name: "GOL Smiles Visa Infinite", rate: 3, currency: "USD", bank: "Banco do Brasil, Bradesco or Santander (Brazil)" }
+  ],
+  note: "Smiles earns on the GOL fare by category, for tickets bought from 16 June 2026: 1, 2, 3, 5, or 6 miles per real within South America, including Brazil, and 5, 8, 10, 11, or 12 miles per US dollar on other routes, for Smiles, Prata, Ouro, Diamante, and Magno. Earning is capped at 60,000 miles. Favorite Route bonuses are not included, and codeshare flights booked through another airline do not earn. The GOL Smiles Visa Infinite card earns 3 miles per US dollar equivalent charged, or 5.5 for Clube Smiles or Diamante members."
 };
 
 module.exports = {

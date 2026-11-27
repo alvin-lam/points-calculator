@@ -134,7 +134,17 @@ const rules = {
     { id: "platinum", name: "Platinum", multiplier: 1.75 },
     { id: "presidential", name: "Presidential Platinum", multiplier: 2 }
   ],
-  note: "ConnectMiles earns a share of the distance flown by fare family: 300% on Business Full, 175% on Business Promo and Economy Full, 100% on Economy Classic and Classic Flex, and 50% on Economy Basic. Flights under 500 miles count as 500, and every flight earns at least 500 miles. Classes G, I, N, P, X and Z earn nothing. PreferMember status adds 25% (Silver), 50% (Gold), 75% (Platinum), or 100% (Presidential Platinum) more award miles. The bonus does not count toward status."
+  // Panamanian co-branded cards: miles per US dollar charged at Copa
+  // (bought direct from Copa for BAC Credomatic). Sources:
+  // https://www.baccredomatic.com/es-pa/personas/tarjetas/destacadas/connectmiles-infinite/visa/infinite
+  // https://www.baccredomatic.com/es-pa/personas/tarjetas/destacadas/connectmiles-platinum/visa/platinum
+  // https://www.bgeneral.com/personas/tarjetas-de-credito/ (1 mile per dollar on all purchases)
+  cards: [
+    { id: "bac-infinite", name: "ConnectMiles Visa Infinite", rate: 3, bank: "BAC Credomatic (Panama)" },
+    { id: "bac-platinum", name: "ConnectMiles Visa Platinum", rate: 2, bank: "BAC Credomatic (Panama)" },
+    { id: "bgeneral", name: "Banco General ConnectMiles Card", rate: 1, bank: "Banco General (Panama)" }
+  ],
+  note: "ConnectMiles earns a share of the distance flown by fare family: 300% on Business Full, 175% on Business Promo and Economy Full, 100% on Economy Classic and Classic Flex, and 50% on Economy Basic. Flights under 500 miles count as 500, and every flight earns at least 500 miles. Classes G, I, N, P, X and Z earn nothing. PreferMember status adds 25% (Silver), 50% (Gold), 75% (Platinum), or 100% (Presidential Platinum) more award miles. The bonus does not count toward status. In Panama, the BAC Credomatic ConnectMiles Visa Infinite earns 3 miles and the Visa Platinum 2 per US dollar bought direct from Copa, and the Banco General ConnectMiles card earns 1."
 };
 
 module.exports = {

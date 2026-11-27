@@ -121,13 +121,22 @@ const rules = {
     { id: "black", name: "Koru Black", bonus: 0 }
   ],
   // New Zealand cards: Airpoints Dollars per NZ dollar charged. None has
-  // a higher rate for Air New Zealand purchases.
+  // a higher rate for Air New Zealand purchases. Rates from Air New
+  // Zealand's card comparison (November 2026):
+  // https://www.airnewzealand.co.nz/airpoints-direct-earn-credit-card-comparison-table
+  // Westpac says its rate can depend on monthly spend; the table rate is used.
   cards: [
     { id: "amex-airpoints", name: "American Express Airpoints Card", rate: 1 / 100, per: 100, bank: "American Express (New Zealand)" },
     { id: "amex-airpoints-plat", name: "American Express Airpoints Platinum Card", rate: 1 / 70, per: 70, bank: "American Express (New Zealand)" },
-    { id: "anz-airpoints-plat", name: "ANZ Airpoints Visa Platinum", rate: 1 / 110, per: 110, bank: "ANZ (New Zealand)" }
+    { id: "anz-airpoints-plat", name: "ANZ Airpoints Visa Platinum", rate: 1 / 110, per: 110, bank: "ANZ (New Zealand)" },
+    { id: "anz-airpoints", name: "ANZ Airpoints Visa", rate: 1 / 170, per: 170, bank: "ANZ (New Zealand)" },
+    { id: "anz-business-airpoints", name: "ANZ Visa Business Airpoints", rate: 1 / 85, per: 85, bank: "ANZ (New Zealand)" },
+    { id: "westpac-koru-world", name: "Westpac Koru World Mastercard", rate: 1 / 95, per: 95, bank: "Westpac (New Zealand)" },
+    { id: "westpac-koru-platinum", name: "Westpac Koru Platinum Mastercard", rate: 1 / 110, per: 110, bank: "Westpac (New Zealand)" },
+    { id: "westpac-koru", name: "Westpac Koru Mastercard", rate: 1 / 150, per: 150, bank: "Westpac (New Zealand)" },
+    { id: "westpac-koru-business", name: "Westpac Koru Business Mastercard", rate: 1 / 85, per: 85, bank: "Westpac (New Zealand)" }
   ],
-  note: "Koru pays a fixed number of Airpoints per one-way flight, set by route group, fare, and booking class; one Airpoint is worth NZ$1. Tiers earn bonus Status Points, not extra Airpoints. Domestic flights are Economy only. Airpoints are not earned on Grabaseat Greenlight fares (booking class F is used for Grabaseat Greenlight fares available through grabaseat.co.nz) or full redemption tickets. Booking classes N, I, R, and X earn nothing. Airpoints credit cards earn 1 Airpoints Dollar per NZ$100 (American Express Airpoints Card), NZ$70 (American Express Airpoints Platinum) or NZ$110 (ANZ Airpoints Visa Platinum) charged."
+  note: "Koru pays a fixed number of Airpoints per one-way flight, set by route group, fare, and booking class; one Airpoint is worth NZ$1. Tiers earn bonus Status Points, not extra Airpoints. Domestic flights are Economy only. Airpoints are not earned on Grabaseat Greenlight fares (booking class F is used for Grabaseat Greenlight fares available through grabaseat.co.nz) or full redemption tickets. Booking classes N, I, R, and X earn nothing. Airpoints credit cards earn 1 Airpoints Dollar per NZ$70 (American Express Airpoints Platinum), NZ$85 (ANZ Visa Business Airpoints, Westpac Koru Business Mastercard), NZ$95 (Westpac Koru World Mastercard), NZ$100 (American Express Airpoints Card), NZ$110 (ANZ Airpoints Visa Platinum, Westpac Koru Platinum Mastercard), NZ$150 (Westpac Koru Mastercard) or NZ$170 (ANZ Airpoints Visa) charged."
 };
 
 module.exports = {

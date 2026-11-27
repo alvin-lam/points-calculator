@@ -13,8 +13,9 @@ module.exports = {
   aircanada: "YUL", porter: "YTZ", transat: "YUL", westjet: "YYC",
   aeromexico: "MEX", viva: "MTY", volaris: "MEX",
   // Central and South America
-  copa: "PTY", lifemiles: "BOG", latam: "SCL", gol: "CGH", azul: "VCP",
+  copa: "PTY", lifemiles: "BOG", latam: "SCL", gol: "CGH", azul: "VCP", aerolineas: "AEP",
   // Europe
+  ram: "CMN", omanair: "MCT", rj: "AMM",
   aegean: "ATH", airbaltic: "RIX", aireuropa: "PMI", finnair: "HEL", icelandair: "KEF",
   norwegian: "OSL", sas: "ARN", tap: "LIS", turkish: "IST", virgin: "LHR",
   "flyingblue:af": "CDG", "flyingblue:kl": "AMS", "flyingblue:transavia": "AMS",
@@ -29,7 +30,7 @@ module.exports = {
   airindia: "DEL", indigo: "DEL", ana: "HND", cathay: "HKG", chinaairlines: "TPE",
   chinaeastern: "SHA", chinasouthern: "CAN", enrich: "KUL", eva: "TPE",
   hainan: "HAK", hkexpress: "HKG", hongkongairlines: "HKG", jal: "HND",
-  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK",
+  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", pal: "MNL", srilankan: "CMB", airtahitinui: "PPT",
   scoot: "SIN", starlux: "TPE", thai: "BKK", xiamen: "XMN",
   // Oceania
   airnz: "AKL", "american:fj": "NAN", jetstar: "MEL", qantas: "SYD", virginaustralia: "BNE"

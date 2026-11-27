@@ -15,7 +15,14 @@ const rules = {
     { id: "gold", name: "Gold", rate: 2.2 },
     { id: "platinum", name: "Platinum", rate: 2.5 }
   ],
-  note: "Since 1 January 2026, Enrich earns 1.5 to 2.5 points per ringgit spent on Malaysia Airlines and Firefly flights, by status, on the base fare and carrier-imposed surcharges (YQ and YR). Government and airport taxes and fees do not earn. Enter fares in ringgit."
+  // Malaysian co-branded cards (AmBank): Enrich Points per ringgit on
+  // Malaysia Airlines and overseas spend (local spend earns less). From
+  // AmBank's Enrich card page: https://www.ambank.com.my/MH
+  cards: [
+    { id: "ambank-infinite", name: "AmBank Enrich Visa Infinite", rate: 1 / 2, per: 2, bank: "AmBank (Malaysia)" },
+    { id: "ambank-platinum", name: "AmBank Enrich Visa Platinum", rate: 1 / 3, per: 3, bank: "AmBank (Malaysia)" }
+  ],
+  note: "Since 1 January 2026, Enrich earns 1.5 to 2.5 points per ringgit spent on Malaysia Airlines and Firefly flights, by status, on the base fare and carrier-imposed surcharges (YQ and YR). Government and airport taxes and fees do not earn. Enter fares in ringgit. The AmBank Enrich Visa Infinite earns 1 point per RM2 and the Visa Platinum 1 per RM3 charged at Malaysia Airlines."
 };
 
 module.exports = {

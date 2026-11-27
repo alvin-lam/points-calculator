@@ -24,7 +24,19 @@ const rules = {
     { id: "silver", name: "Saga Silver", bonus: 0 },
     { id: "gold", name: "Saga Gold", bonus: 0 }
   ],
-  note: "Icelandair awards a fixed number of Saga Points per flight, set by fare and route. A trip between North America and Europe through Iceland earns both flights. Saga Silver and Gold add 10% or 20% Tier Credits toward status, not Saga Points. Icelandair has not updated this table in several years, so check a recent booking if the numbers look off."
+  // Icelandic co-branded cards (Íslandsbanki): Saga Points per ISK 1,000
+  // charged with Icelandair. From Íslandsbanki's card pages, e.g.
+  // https://www.islandsbanki.is/en/product/cards/premium
+  // https://www.islandsbanki.is/en/product/cards/platinum-card-icelandair
+  // https://www.islandsbanki.is/en/product/cards/gold-icelandair-eng
+  // https://www.islandsbanki.is/en/product/cards/classic-icelandair-eng
+  cards: [
+    { id: "isb-premium", name: "Premium Icelandair", rate: 20 / 1000, rateText: "20 per ISK 1,000", currency: "ISK", bank: "Íslandsbanki (Iceland)" },
+    { id: "isb-platinum", name: "Platinum Icelandair", rate: 20 / 1000, rateText: "20 per ISK 1,000", currency: "ISK", bank: "Íslandsbanki (Iceland)" },
+    { id: "isb-gold", name: "Gold Icelandair", rate: 10 / 1000, rateText: "10 per ISK 1,000", currency: "ISK", bank: "Íslandsbanki (Iceland)" },
+    { id: "isb-classic", name: "Classic Icelandair", rate: 10 / 1000, rateText: "10 per ISK 1,000", currency: "ISK", bank: "Íslandsbanki (Iceland)" }
+  ],
+  note: "Icelandair awards a fixed number of Saga Points per flight, set by fare and route. A trip between North America and Europe through Iceland earns both flights. Saga Silver and Gold add 10% or 20% Tier Credits toward status, not Saga Points. Icelandair has not updated this table in several years, so check a recent booking if the numbers look off. Íslandsbanki's Premium Icelandair and Platinum Icelandair cards earn 20 Saga Points per ISK 1,000 charged with Icelandair, and Gold Icelandair and Classic Icelandair earn 10."
 };
 
 module.exports = {

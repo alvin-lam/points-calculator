@@ -101,14 +101,14 @@
     return new Date(Number(parts[0]), Number(parts[1]) - 1, 1).toLocaleDateString(LOCALE, { year: "numeric", month: "long" });
   }
 
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT" };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/." };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
   // Names for the "charged in ... or a foreign currency?" card question.
   var CURRENCY_NAMES = { ILS: "shekels", TWD: "New Taiwan dollars" };
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT" };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/." };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -809,8 +809,18 @@
           rateLabel = num.format(share + status.bonus) + " " + unitFor(share + status.bonus, p.unit) + " per " + unitName;
         } else {
           var mult = fareType && fareType.noBonus ? 1 : (status.multiplier || 1);
-          points = base * mult;
-          rateLabel = num.format(share * mult) + " " + unitFor(share * mult, p.unit) + " per " + unitName;
+          // A status can set its multiplier per route type (Philippine
+          // Airlines: 75% more to and from the US and Canada, 25% elsewhere).
+          if (status.multipliers && dZone && status.multipliers[dZone.id] != null) mult = status.multipliers[dZone.id];
+          if (fareType && fareType.bonusOnDistance && mult !== 1) {
+            // The status bonus is a share of the distance flown, not of the
+            // earned miles (Philippine Airlines Business Class).
+            points = base + dist * (mult - 1);
+            rateLabel = num.format(share + mult - 1) + " " + unitFor(share + mult - 1, p.unit) + " per " + unitName;
+          } else {
+            points = base * mult;
+            rateLabel = num.format(share * mult) + " " + unitFor(share * mult, p.unit) + " per " + unitName;
+          }
         }
         if (minUsed) rateLabel += ", with the " + num.format(min) + " minimum per flight";
         if (minDistUsed) rateLabel += ", counted as the " + num.format(p.minDistance) + " km minimum";

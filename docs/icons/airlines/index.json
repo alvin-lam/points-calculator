@@ -823,5 +823,86 @@
     "square": "icons/airlines/square/indigo.png",
     "circle": "icons/airlines/circle/indigo.png",
     "iconSource": "App Store icon of \"IndiGo: Flight Booking App\" by INTERGLOBE AVIATION LIMITED"
+  },
+  "vietnam": {
+    "file": "icons/airlines/vietnam-airlines.png",
+    "title": "Vietnam Airlines logo",
+    "source": "https://www.vietnamairlines.com/etc.clientlibs/vna/clientlibs/clientlib-site/resources/images/logo_text.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/vietnam-airlines.png",
+    "circle": "icons/airlines/circle/vietnam-airlines.png",
+    "iconSource": "App Store icon of \"Vietnam Airlines\" by VIETNAM AIRLINES JSC"
+  },
+  "pal": {
+    "file": "icons/airlines/philippine-airlines.png",
+    "title": "Philippine Airlines logo",
+    "source": "https://www.philippineairlines.com/content/dam/palportal/images/header/PAL%20Logo-160x37px_Full-Color-Rev.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/philippine-airlines.png",
+    "circle": "icons/airlines/circle/philippine-airlines.png",
+    "iconSource": "App Store icon of \"Philippine Airlines\" by Philippine Airlines, Inc."
+  },
+  "airtahitinui": {
+    "file": "icons/airlines/air-tahiti-nui.png",
+    "title": "Air Tahiti Nui logo",
+    "source": "https://www.airtahitinui.com/themes/custom/atn/assets/images/logo/logo_airtahitinui_flower.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/air-tahiti-nui.png",
+    "circle": "icons/airlines/circle/air-tahiti-nui.png",
+    "iconSource": "App Store icon of \"Air Tahiti Nui\" by Air Tahiti Nui (tiare flower on navy)"
+  },
+  "ram": {
+    "file": "icons/airlines/royal-air-maroc.png",
+    "title": "Royal Air Maroc logo",
+    "source": "https://www.royalairmaroc.com/o/ram-airways-theme/2025/assets/images/logo_ram.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/royal-air-maroc.png",
+    "circle": "icons/airlines/circle/royal-air-maroc.png",
+    "iconSource": "The crown, star and wings emblem from the official royalairmaroc.com logo, in white on Royal Air Maroc red as in its App Store icon"
+  },
+  "omanair": {
+    "file": "icons/airlines/oman-air.png",
+    "title": "Oman Air logo",
+    "source": "https://www.omanair.com/build/images/WY_logo_light.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/oman-air.png",
+    "circle": "icons/airlines/circle/oman-air.png",
+    "iconSource": "The wing symbol from the official omanair.com logo on white, as in the App Store icon of \"Oman Air\""
+  },
+  "rj": {
+    "file": "icons/airlines/royal-jordanian.png",
+    "title": "Royal Jordanian logo",
+    "source": "https://www.rj.com/-/media/OTHERS/RJ/Identity/RJ-logo-new.png",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/royal-jordanian.png",
+    "circle": "icons/airlines/circle/royal-jordanian.png",
+    "iconSource": "The crown and RJ crest from rj.com in gold on white, as in the App Store icon of \"Royal Jordanian Airlines\""
+  },
+  "srilankan": {
+    "file": "icons/airlines/srilankan-airlines.png",
+    "title": "SriLankan Airlines logo",
+    "source": "https://www.srilankan.com/assets/img/logo-with-oneword.png",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/srilankan-airlines.png",
+    "circle": "icons/airlines/circle/srilankan-airlines.png",
+    "iconSource": "The peacock from the official srilankan.com logo on white, as in the App Store icon of \"SriLankan Airlines\""
+  },
+  "aerolineas": {
+    "file": "icons/airlines/aerolineas-argentinas.png",
+    "title": "Aerolíneas Argentinas logo",
+    "source": "https://content-dcgkfvd6gkbhdhg9.a01.azurefd.net/media/2025-10/AR_horiz_0.svg",
+    "license": "Trademark of its owner; official logo artwork",
+    "square": "icons/airlines/square/aerolineas-argentinas.png",
+    "circle": "icons/airlines/circle/aerolineas-argentinas.png",
+    "iconSource": "App Store icon of \"Aerolíneas Argentinas\" by Aerolineas Argentinas S.A."
+  },
+  "phoenix:zh": {
+    "file": "icons/airlines/shenzhen-airlines.png",
+    "title": "Shenzhen Airlines logo",
+    "source": "https://en.wikipedia.org/wiki/File:Shenzhen_Airlines_logo.svg",
+    "license": "Trademark of its owner; logo artwork via Wikipedia",
+    "square": "icons/airlines/square/shenzhen-airlines.png",
+    "circle": "icons/airlines/circle/shenzhen-airlines.png",
+    "iconSource": "The red bird from the Shenzhen Airlines logo on white, as in the App Store icon of \"深圳航空\" by Shenzhen Airlines Co., Ltd."
   }
 }

@@ -17,7 +17,30 @@ const rules = {
     { id: "intl", name: "International and regional" }
   ],
   airlines: [
-    { id: "ca", name: "Air China" }
+    { id: "ca", name: "Air China" },
+    // Shenzhen Airlines: PhoenixMiles partner page "深圳航空公司", accrual
+    // table effective 29 October 2023. Same rates as Air China, except that
+    // Shenzhen has no First class and A is an Economy class at 25%.
+    { id: "zh", name: "Shenzhen Airlines", country: "CN",
+      program: {
+        fareTypes: [
+          { id: "j", name: "Business (J)", earn: [{ share: 3, min: 800 }, { share: 2.5, min: 800 }] },
+          { id: "c", name: "Business (C)", earn: [{ share: 2, min: 800 }, { share: 2, min: 800 }] },
+          { id: "d", name: "Business (D)", earn: [{ share: 1.5, min: 800 }, { share: 1.5, min: 800 }] },
+          { id: "z", name: "Business (Z)", earn: [{ share: 1.25, min: 800 }, { share: 1.25, min: 800 }] },
+          { id: "r", name: "Business (R)", earn: [{ share: 1.1, min: 800 }, { share: 1.25, min: 800 }] },
+          { id: "g", name: "Premium Economy (G)", earn: [{ share: 1.1, min: 500 }, { share: 1.1, min: 500 }] },
+          { id: "e", name: "Premium Economy (E)", earn: [{ share: 0.9, min: 500 }, { share: 0.9, min: 500 }] },
+          { id: "y", name: "Economy (Y)", earn: [{ share: 1.1, min: 500 }, { share: 1.1, min: 500 }] },
+          { id: "b", name: "Economy (B)", earn: [{ share: 1, min: 500 }, { share: 1.1, min: 500 }] },
+          { id: "m", name: "Economy (M)", earn: [{ share: 1, min: 500 }, { share: 1, min: 500 }] },
+          { id: "u", name: "Economy (U)", earn: [{ share: 1, min: 500 }, { share: 0.75, min: 500 }] },
+          { id: "hqv", name: "Economy (H, Q, V)", earn: [{ share: 0.75, min: 500 }, { share: 0.75, min: 500 }] },
+          { id: "wst", name: "Economy (W, S, T)", earn: [{ share: 0.5, min: 500 }, { share: 0.5, min: 500 }] },
+          { id: "lpak", name: "Economy (L, P, A, K)", earn: [{ share: 0.25, min: 500 }, { share: 0.25, min: 500 }] }
+        ],
+        note: "PhoenixMiles earns a share of the distance in kilometres by booking class on Shenzhen Airlines flights, with a minimum per flight (500 km in Economy, 800 km in Business), from the PhoenixMiles Shenzhen Airlines table effective 29 October 2023. Classes I, X and N earn nothing. The Silver, Gold and Platinum bonuses shown (25%, 30% and 50%) are Air China's and are not confirmed for Shenzhen Airlines."
+      } }
   ],
   fareTypes: [
     { id: "f", name: "First (F)", earn: [{ share: 3, min: 1000 }, { share: 3, min: 1000 }] },
@@ -53,7 +76,8 @@ module.exports = {
   source: "https://cwsi.net/fares/air-china/",
   // Two-letter code, brand color, and source page for each airline.
   airlines: {
-    ca: { code: "CA", color: "#E30613" }
+    ca: { code: "CA", color: "#E30613" },
+    zh: { code: "ZH", color: "#CC0327", source: "https://ffp.airchina.com.cn/phxplan/#/airlinepartners/airpartnerdetails?categoryId=310&airlineId=229" }
   },
   rules
 };

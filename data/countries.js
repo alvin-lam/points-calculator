@@ -47,5 +47,13 @@ module.exports = [
   { id: "HR", label: "Croatia \u{1F1ED}\u{1F1F7}", codes: ["HR", "HRV"] },
   { id: "IN", label: "India \u{1F1EE}\u{1F1F3}", codes: ["IN", "IND"] },
   { id: "TH", label: "Thailand \u{1F1F9}\u{1F1ED}", codes: ["TH", "THA"] },
-  { id: "MY", label: "Malaysia \u{1F1F2}\u{1F1FE}", codes: ["MY", "MYS"] }
+  { id: "MY", label: "Malaysia \u{1F1F2}\u{1F1FE}", codes: ["MY", "MYS"] },
+  { id: "VN", label: "Vietnam \u{1F1FB}\u{1F1F3}", codes: ["VN", "VNM"] },
+  { id: "PH", label: "Philippines \u{1F1F5}\u{1F1ED}", codes: ["PH", "PHL"] },
+  { id: "LK", label: "Sri Lanka \u{1F1F1}\u{1F1F0}", codes: ["LK", "LKA"] },
+  { id: "PF", label: "French Polynesia \u{1F1F5}\u{1F1EB}", codes: ["PF", "PYF"] },
+  { id: "MA", label: "Morocco \u{1F1F2}\u{1F1E6}", codes: ["MA", "MAR"] },
+  { id: "OM", label: "Oman \u{1F1F4}\u{1F1F2}", codes: ["OM", "OMN"] },
+  { id: "JO", label: "Jordan \u{1F1EF}\u{1F1F4}", codes: ["JO", "JOR"] },
+  { id: "AR", label: "Argentina \u{1F1E6}\u{1F1F7}", codes: ["AR", "ARG"] }
 ];

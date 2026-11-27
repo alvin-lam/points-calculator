@@ -27,9 +27,14 @@ const rules = {
   // US co-branded card (First Electronic Bank, serviced by Imprint): extra
   // miles per US dollar charged for Turkish Airlines purchases.
   cards: [
-    { id: "imprint-premier", name: "Miles&Smiles Premier Visa Signature", rate: 3, currency: "USD", bank: "First Electronic Bank (US)" }
+    { id: "imprint-premier", name: "Miles&Smiles Premier Visa Signature", rate: 3, currency: "USD", bank: "First Electronic Bank (US)" },
+    // Turkish card (Garanti BBVA): 1 mile per TRY 7 on Turkish Airlines
+    // tickets bought at THY sales offices in Türkiye, the THY app, the 0850
+    // call center or turkishairlines.com. From
+    // https://www.garantibbva.com.tr/kartlar/miles-and-smiles
+    { id: "garanti-ms", name: "Miles&Smiles Garanti BBVA Credit Card", rate: 1 / 7, per: 7, currency: "TRY", bank: "Garanti BBVA (Türkiye)" }
   ],
-  note: "Miles&Smiles earns a share of the distance by booking class on international flights, with a minimum per flight, and a fixed amount within Türkiye. Classic Plus, Elite, and Elite Plus earn more in Business. The US Miles&Smiles Premier Visa Signature earns 3 more miles per dollar on Turkish Airlines purchases."
+  note: "Miles&Smiles earns a share of the distance by booking class on international flights, with a minimum per flight, and a fixed amount within Türkiye. Classic Plus, Elite, and Elite Plus earn more in Business. The US Miles&Smiles Premier Visa Signature earns 3 more miles per dollar on Turkish Airlines purchases. In Türkiye, the Miles&Smiles Garanti BBVA credit card earns 1 mile per 7 lira on Turkish Airlines tickets bought from Turkish Airlines' own website, app, call center or sales offices."
 };
 
 module.exports = {

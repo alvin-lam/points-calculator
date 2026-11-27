@@ -13,6 +13,14 @@ module.exports = function applyAlliances(P) {
     // oneworld
     american: { gold: "Ruby", platinum: "Sapphire", platpro: "Sapphire", exp: "Emerald" },
     alaska: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
+    omanair: { silver: "Ruby", gold: "Sapphire" },
+    rj: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
+    srilankan: { classic: "Ruby", gold: "Sapphire", platinum: "Emerald" },
+    ram: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
+    // SkyTeam (Vietnam Airlines' tier page: Titanium and Gold are Elite,
+    // Platinum and Million Miler Elite Plus)
+    vietnam: { titanium: "Elite", gold: "Elite", platinum: "Elite Plus", million: "Elite Plus" },
+    aerolineas: { oro: "Elite", platino: "Elite Plus", diamante: "Elite Plus" },
     hawaiian: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
     "iag:ba": { bronze: "Ruby", silver: "Sapphire", gold: "Emerald" },
     "iag:ib": { plata: "Ruby", oro: "Sapphire", platino: "Emerald", infinita: "Emerald", "infinita-prime": "Emerald" },
@@ -57,13 +65,13 @@ module.exports = function applyAlliances(P) {
   // Anything not listed is not part of an alliance.
   var ALLIANCES = {
     oneworld: ["american:aa", "american:fj", "alaska", "hawaiian", "iag:ba", "iag:ib", "finnair", "qatar",
-      "qantas", "cathay", "jal", "enrich"],
+      "qantas", "cathay", "jal", "enrich", "omanair", "rj", "srilankan", "ram"],
     "Star Alliance": ["united", "aircanada", "milesandmore:lh", "milesandmore:lx",
       "milesandmore:os", "milesandmore:sn", "milesandmore:az", "tap", "ana",
       "krisflyer", "eva", "lifemiles", "airnz", "turkish", "phoenix:ca",
-      "milesandmore:lo", "milesandmore:ou", "copa", "aegean", "thai", "airindia", "saa"],
+      "milesandmore:lo", "milesandmore:ou", "copa", "aegean", "thai", "airindia", "saa", "phoenix:zh"],
     SkyTeam: ["delta", "aeromexico", "flyingblue:af", "flyingblue:kl", "virgin", "chinaairlines",
-      "korean", "aireuropa", "chinaeastern", "xiamen", "sas"]
+      "korean", "aireuropa", "chinaeastern", "xiamen", "sas", "vietnam", "aerolineas"]
   };
   Object.keys(ALLIANCES).forEach(function (name) {
     ALLIANCES[name].forEach(function (key) {

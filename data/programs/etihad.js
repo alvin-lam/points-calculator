@@ -30,9 +30,17 @@ const rules = {
   // 2026): extra miles per US dollar charged for Etihad purchases.
   cards: [
     { id: "fnbo-visa", name: "Etihad Guest Visa Signature", rate: 3, currency: "USD", bank: "First National Bank of Omaha (US)" },
-    { id: "fnbo-premier", name: "Etihad Guest Premier Visa Signature", rate: 5, currency: "USD", bank: "First National Bank of Omaha (US)" }
+    { id: "fnbo-premier", name: "Etihad Guest Premier Visa Signature", rate: 5, currency: "USD", bank: "First National Bank of Omaha (US)" },
+    // UAE cards (First Abu Dhabi Bank): Etihad Guest Miles per AED 10 spent
+    // on Etihad, without the optional Miles Accelerator. From
+    // https://bankfab.com/personal/rewards/etihad-guest-miles/program
+    { id: "fab-infinite", name: "FAB Etihad Guest Infinite Credit Card", rate: 0.7, rateText: "7 per AED 10", currency: "AED", bank: "First Abu Dhabi Bank (United Arab Emirates)" },
+    { id: "fab-signature", name: "FAB Etihad Guest Signature Credit Card", rate: 0.55, rateText: "5.5 per AED 10", currency: "AED", bank: "First Abu Dhabi Bank (United Arab Emirates)" },
+    { id: "fab-platinum", name: "FAB Etihad Guest Platinum Credit Card", rate: 0.4, rateText: "4 per AED 10", currency: "AED", bank: "First Abu Dhabi Bank (United Arab Emirates)" },
+    { id: "fab-signature-debit", name: "FAB Etihad Guest Signature Debit Card", kind: "debit", rate: 0.5, rateText: "5 per AED 10", currency: "AED", bank: "First Abu Dhabi Bank (United Arab Emirates)" },
+    { id: "fab-platinum-debit", name: "FAB Etihad Guest Platinum Debit Card", kind: "debit", rate: 0.4, rateText: "4 per AED 10", currency: "AED", bank: "First Abu Dhabi Bank (United Arab Emirates)" }
   ],
-  note: "Etihad Guest earns a share of the route's base distance set by fare brand, from 5% in Economy Basic to 300% in First Deluxe. Silver, Gold, and Platinum or Emerald add 25%, 50%, or 100% of the base distance. Etihad's base distance for a route can differ slightly from the miles flown. Economy Basic earned 15% on tickets issued before 18 June 2026. The US Etihad Guest Visa Signature earns 3 more miles per dollar on Etihad purchases, and the Premier Visa Signature earns 5."
+  note: "Etihad Guest earns a share of the route's base distance set by fare brand, from 5% in Economy Basic to 300% in First Deluxe. Silver, Gold, and Platinum or Emerald add 25%, 50%, or 100% of the base distance. Etihad's base distance for a route can differ slightly from the miles flown. Economy Basic earned 15% on tickets issued before 18 June 2026. The US Etihad Guest Visa Signature earns 3 more miles per dollar on Etihad purchases, and the Premier Visa Signature earns 5. In the UAE, FAB Etihad Guest cards earn per AED 10 spent on Etihad: 7 (Infinite), 5.5 (Signature) and 4 (Platinum) credit cards, and 5 (Signature) and 4 (Platinum) debit cards. FAB's optional Miles Accelerator adds more, which this estimate leaves out."
 };
 
 module.exports = {

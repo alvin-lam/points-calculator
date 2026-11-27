@@ -13,7 +13,13 @@ const rules = {
     { id: "silver", name: "Doters Silver", rate: 0.75 },
     { id: "gold", name: "Doters Gold", rate: 1 }
   ],
-  note: "Doters earns 1 point for every 2 Mexican pesos of the Viva Aerobus fare at Green, 1.5 at Silver and 2 at Gold, excluding taxes. Doters does not say that paid seats or bags earn, so they are not counted. Smart fares earn 50% more and flight-count bonuses apply, which this estimate does not add. HSBC Viva card earning is not included because its rate could not be confirmed."
+  // Mexican co-branded cards (HSBC): Doters points per MX$10 charged at
+  // Viva Aerobus. From https://www.hsbc.com.mx/tarjetas-de-credito/productos/viva/
+  cards: [
+    { id: "hsbc-viva", name: "HSBC VIVA", rate: 2 / 10, rateText: "2 per MX$10", bank: "HSBC (Mexico)" },
+    { id: "hsbc-viva-plus", name: "HSBC VIVA PLUS", rate: 3 / 10, rateText: "3 per MX$10", bank: "HSBC (Mexico)" }
+  ],
+  note: "Doters earns 1 point for every 2 Mexican pesos of the Viva Aerobus fare at Green, 1.5 at Silver and 2 at Gold, excluding taxes. Doters does not say that paid seats or bags earn, so they are not counted. Smart fares earn 50% more and flight-count bonuses apply, which this estimate does not add. The HSBC VIVA card earns 2 points per MX$10 charged, and the HSBC VIVA PLUS 3 per MX$10 at Viva Aerobus."
 };
 
 module.exports = {

@@ -48,13 +48,29 @@ const rules = {
     { id: "platinum", name: "Platinum", bonus: 1 },
     { id: "platinum-one", name: "Platinum One", bonus: 1 }
   ],
-  // Australian co-branded card (American Express): Qantas Points per
-  // Australian dollar charged for selected Qantas products and services.
+  // Australian co-branded cards: Qantas Points per Australian dollar
+  // charged for selected Qantas products and services, card points plus the
+  // Qantas bonus. Sources (November 2026):
+  // https://www.americanexpress.com/au/credit-cards/qantas-discovery-card/
+  // https://www.anz.com.au/personal/credit-cards/frequent-flyer-black/
+  // https://www.anz.com.au/personal/credit-cards/frequent-flyer-platinum/
+  // https://www.westpac.com.au/credit-cards/reward/altitude-qantas-black
+  // https://www.qantasmoney.com/credit-cards
+  // ANZ: 1 (Black) or 0.75 (Platinum) per A$ plus 1 bonus on Qantas.
+  // Westpac: 0.8 everyday plus up to 1 bonus on Qantas. Qantas Money:
+  // 0.75, 1 or 1.25 plus 1, 1 or 2 bonus on Qantas.
   cards: [
     { id: "amex-premium", name: "Qantas American Express Premium Card", rate: 2, bank: "American Express (Australia)" },
-    { id: "amex-ultimate", name: "Qantas American Express Ultimate Card", rate: 2.25, bank: "American Express (Australia)" }
+    { id: "amex-ultimate", name: "Qantas American Express Ultimate Card", rate: 2.25, bank: "American Express (Australia)" },
+    { id: "amex-discovery", name: "Qantas American Express Discovery Card", rate: 1.75, bank: "American Express (Australia)" },
+    { id: "anz-ff-black", name: "ANZ Frequent Flyer Black", rate: 2, bank: "ANZ (Australia)" },
+    { id: "anz-ff-platinum", name: "ANZ Frequent Flyer Platinum", rate: 1.75, bank: "ANZ (Australia)" },
+    { id: "westpac-altitude-qantas-black", name: "Westpac Altitude Qantas Black", rate: 1.8, rateText: "up to 1.8 per A$", bank: "Westpac (Australia)" },
+    { id: "qantas-money-everyday", name: "Qantas Money Everyday Credit Card", rate: 1.75, bank: "Qantas Money (Australia)" },
+    { id: "qantas-money-platinum", name: "Qantas Money Platinum Credit Card", rate: 2, bank: "Qantas Money (Australia)" },
+    { id: "qantas-money-titanium", name: "Qantas Money Titanium Credit Card", rate: 3.25, bank: "Qantas Money (Australia)" }
   ],
-  note: "Qantas awards a fixed number of points per flight by fare and distance. Silver, Gold, and Platinum add 50%, 75%, and 100%; in Premium Economy, Business, and First the bonus is figured on the Flexible Economy amount. Some routes, such as Australia to New Zealand, the USA, or Europe, have their own tables; this estimate uses the general distance bands. The Minimum Points Guarantee lifts each flight to at least 800 points in Economy, 1,200 in Flexible Economy and Premium Economy, and 1,400 in Business and First. The Australian Qantas American Express Premium and Ultimate cards earn 2 and 2.25 points per Australian dollar on selected Qantas purchases."
+  note: "Qantas awards a fixed number of points per flight by fare and distance. Silver, Gold, and Platinum add 50%, 75%, and 100%; in Premium Economy, Business, and First the bonus is figured on the Flexible Economy amount. Some routes, such as Australia to New Zealand, the USA, or Europe, have their own tables; this estimate uses the general distance bands. The Minimum Points Guarantee lifts each flight to at least 800 points in Economy, 1,200 in Flexible Economy and Premium Economy, and 1,400 in Business and First. On selected Qantas purchases, Australian cards earn per Australian dollar: Qantas American Express Discovery 1.75, Premium 2 and Ultimate 2.25; ANZ Frequent Flyer Black 2 and Platinum 1.75; Westpac Altitude Qantas Black up to 1.8; and Qantas Money Everyday 1.75, Platinum 2 and Titanium 3.25."
 };
 
 module.exports = {

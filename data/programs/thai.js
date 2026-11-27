@@ -29,7 +29,14 @@ const rules = {
     { id: "gold", name: "Gold", multiplier: 1.1 },
     { id: "platinum", name: "Platinum", multiplier: 1.2 }
   ],
-  note: "Royal Orchid Plus earns a share of the distance flown by booking class, from 25% (W) to 250% (F). Flights under 500 miles count as 500. Silver adds 5%, Gold 10% and Platinum 20%. Classes L, O, I, X, E, N and R earn nothing."
+  // Thai co-branded card (American Express Thailand): 2 points per THB 25,
+  // and 2 points make 1 mile, doubled on THAI tickets bought at THAI
+  // offices in Thailand or on the THAI website, so 2 miles per THB 25.
+  // https://americanexpress.com/th/en/thai-amex-card
+  cards: [
+    { id: "amex-thai-platinum", name: "THAI American Express Platinum Card", rate: 2 / 25, rateText: "2 per ฿25", bank: "American Express (Thailand)" }
+  ],
+  note: "Royal Orchid Plus earns a share of the distance flown by booking class, from 25% (W) to 250% (F). Flights under 500 miles count as 500. Silver adds 5%, Gold 10% and Platinum 20%. Classes L, O, I, X, E, N and R earn nothing. The THAI American Express Platinum Card earns 2 miles per 25 baht on THAI tickets bought on the THAI website or at THAI offices in Thailand."
 };
 
 module.exports = {

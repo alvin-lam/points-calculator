@@ -17,12 +17,21 @@ const rules = {
     { id: "platinum", name: "Platinum", rate: 8 },
     { id: "titanium", name: "Titanium", rate: 16 }
   ],
-  // Co-branded card: extra points per US dollar charged for Aeroméxico tickets
-  // bought from Aeroméxico (U.S. Bank AeroMexico Visa Signature).
+  // Co-branded cards: extra points per US dollar charged for Aeroméxico
+  // tickets bought from Aeroméxico (U.S. Bank AeroMexico Visa Signature),
+  // or per US dollar equivalent of Aeroméxico tickets and aeromexico.com
+  // purchases on the Mexican American Express cards, which bill in pesos.
+  // From the American Express Mexico terms, e.g.
+  // https://www.americanexpress.com/content/dam/amex/es-mx/tarjetas-de-credito/aeromexico/TC_Platinum_Aeromexico.pdf
+  // (TC_Blue_Aeromexico.pdf and TC_Gold_Aeromexico.pdf for the others).
+  cardHint: "Card points are earned on the full amount charged, taxes included. The Mexican American Express Aeroméxico cards bill in pesos and earn per US dollar equivalent, so they are figured here on the amount in US dollars.",
   cards: [
-    { id: "usbank-visa", name: "AeroMexico Visa Signature", rate: 2, currency: "USD", bank: "U.S. Bank (US)" }
+    { id: "usbank-visa", name: "AeroMexico Visa Signature", rate: 2, currency: "USD", bank: "U.S. Bank (US)" },
+    { id: "amex-mx", name: "American Express Aeroméxico Card", rate: 2.4, bank: "American Express (Mexico)" },
+    { id: "amex-mx-gold", name: "The Gold Card American Express Aeroméxico", rate: 3.2, bank: "American Express (Mexico)" },
+    { id: "amex-mx-platinum", name: "The Platinum Card American Express Aeroméxico", rate: 4.8, bank: "American Express (Mexico)" }
   ],
-  note: "Aeroméxico Rewards earns 8 points per US dollar of base fare, excluding taxes. Enter the fare in US dollars. Titanium earns 8 more points per dollar. Bonuses for Silver, Gold, and Platinum were not confirmed, so those tiers are shown at the base rate. The U.S. Bank AeroMexico Visa Signature earns 2 more points per dollar on tickets bought from Aeroméxico."
+  note: "Aeroméxico Rewards earns 8 points per US dollar of base fare, excluding taxes. Enter the fare in US dollars. Titanium earns 8 more points per dollar. Bonuses for Silver, Gold, and Platinum were not confirmed, so those tiers are shown at the base rate. The U.S. Bank AeroMexico Visa Signature earns 2 more points per dollar on tickets bought from Aeroméxico. In Mexico, the American Express Aeroméxico, Gold Card and Platinum Card Aeroméxico earn 2.4, 3.2 and 4.8 points per US dollar equivalent on Aeroméxico tickets, billed in pesos."
 };
 
 module.exports = {

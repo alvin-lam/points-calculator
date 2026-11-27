@@ -42,11 +42,14 @@ var baClub = {
     // Amex UK: a flat 1.25 Avios per pound since the 3x on British Airways
     // purchases ended on 7 October 2026.
     { id: "amex-pp", name: "British Airways American Express Premium Plus", rate: 1.25, bank: "American Express (UK)" },
+    // 1.25 Avios per pound on all purchases, from
+    // https://www.americanexpress.com/en-gb/credit-cards/british-airways-accelerating-card/
+    { id: "amex-accelerating", name: "British Airways American Express Accelerating Business Card", rate: 1.25, bank: "American Express (UK)" },
     { id: "chase-aerlingus", name: "Chase Aer Lingus Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
     { id: "chase", name: "Chase British Airways Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" },
     { id: "chase-iberia", name: "Chase Iberia Visa Signature", rate: 3, currency: "USD", bank: "Chase (US)" }
   ],
-  note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier-imposed charges, by status. Paid seats, extra bags and cabin upgrades also earn. Airport charges, government taxes, and service or change fees do not earn. Enter fares in pounds. The UK British Airways American Express earns 1 Avios per pound and the Premium Plus 1.25 per pound on all purchases, including British Airways; the Premium Plus 3 Avios per pound on British Airways ended on 7 October 2026."
+  note: "British Airways Club earns 6 to 9 Avios per pound spent on the fare and carrier-imposed charges, by status. Paid seats, extra bags and cabin upgrades also earn. Airport charges, government taxes, and service or change fees do not earn. Enter fares in pounds. The UK British Airways American Express earns 1 Avios per pound and the Premium Plus 1.25 per pound on all purchases, including British Airways; the Premium Plus 3 Avios per pound on British Airways ended on 7 October 2026. The British Airways American Express Accelerating Business Card also earns 1.25 Avios per pound."
 };
 var iberiaClub = {
   programName: "Iberia Club",
