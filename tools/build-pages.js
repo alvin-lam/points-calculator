@@ -10,7 +10,9 @@ const ROOT = path.resolve(__dirname, "..", "docs");
 const SITE = "https://points.alltripsconsidered.com/";
 
 function slugify(s) {
-  return s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
+  // Letters that do not decompose get their usual spelling (Widerøe: wideroe, as on wideroe.no).
+  return s.replace(/ø/g, "o").replace(/Ø/g, "O").replace(/æ/g, "ae").replace(/Æ/g, "Ae").replace(/ß/g, "ss")
+    .normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
     .replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 }
 function esc(s) {

@@ -178,16 +178,6 @@
     "circle": "icons/airlines/circle/lufthansa-logo-2018.png",
     "iconSource": "App Store icon of \"Lufthansa\" by Lufthansa Group Digital Hangar GmbH"
   },
-  "norwegian": {
-    "file": "icons/airlines/norwegian-logo-2024.svg",
-    "title": "Norwegian Logo 2024",
-    "source": "https://commons.wikimedia.org/wiki/File:Norwegian_Logo_2024.svg",
-    "license": "Public domain (Wikimedia Commons)",
-    "author": "Norwegian Air Shuttle ASA",
-    "square": "icons/airlines/square/norwegian-logo-2024.png",
-    "circle": "icons/airlines/circle/norwegian-logo-2024.png",
-    "iconSource": "App Store icon of \"Norwegian Travel Assistant\" by Norwegian Air Shuttle ASA"
-  },
   "qantas": {
     "file": "icons/airlines/qantas.png",
     "title": "Qantas",
@@ -1039,5 +1029,24 @@
     "square": "icons/airlines/square/binter.png",
     "circle": "icons/airlines/circle/binter.png",
     "iconSource": "App Store icon of \"Binter\""
+  },
+  "norwegian:dy": {
+    "file": "icons/airlines/norwegian-logo-2024.svg",
+    "title": "Norwegian Logo 2024",
+    "source": "https://commons.wikimedia.org/wiki/File:Norwegian_Logo_2024.svg",
+    "license": "Public domain (Wikimedia Commons)",
+    "author": "Norwegian Air Shuttle ASA",
+    "square": "icons/airlines/square/norwegian-logo-2024.png",
+    "circle": "icons/airlines/circle/norwegian-logo-2024.png",
+    "iconSource": "App Store icon of \"Norwegian Travel Assistant\" by Norwegian Air Shuttle ASA"
+  },
+  "norwegian:wf": {
+    "file": "icons/airlines/wideroe.png",
+    "title": "Widerøe logo",
+    "source": "https://apps.apple.com/no/app/wider%C3%B8e/id1263044641",
+    "license": "Trademark of its owner; official logo artwork (white logo from the official app icon, recoloured in Widerøe green)",
+    "square": "icons/airlines/square/wideroe.png",
+    "circle": "icons/airlines/circle/wideroe.png",
+    "iconSource": "App Store icon of \"Widerøe\" by Wideroe AS"
   }
 }

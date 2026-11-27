@@ -18,7 +18,7 @@ module.exports = {
   ram: "CMN", omanair: "MCT", rj: "AMM",
   "condor:trueblue": "FRA", "condor:atmos": "FRA",
   aegean: "ATH", airbaltic: "RIX", aireuropa: "PMI", finnair: "HEL", icelandair: "KEF",
-  norwegian: "OSL", sas: "ARN", tap: "LIS", turkish: "IST", pegasus: "SAW", binter: "LPA", sunexpress: "AYT", egyptair: "CAI", ethiopian: "ADD", kenya: "NBO", saudia: "JED", mea: "BEY", loganair: "GLA", kmmalta: "MLA", virgin: "LHR",
+  "norwegian:dy": "OSL", "norwegian:wf": "BOO", sas: "ARN", tap: "LIS", turkish: "IST", pegasus: "SAW", binter: "LPA", sunexpress: "AYT", egyptair: "CAI", ethiopian: "ADD", kenya: "NBO", saudia: "JED", mea: "BEY", loganair: "GLA", kmmalta: "MLA", virgin: "LHR",
   "flyingblue:af": "CDG", "flyingblue:kl": "AMS", "flyingblue:transavia": "AMS",
   "iag:ba": "LHR", "iag:ei": "DUB", "iag:ib": "MAD", "iag:level": "BCN", "iag:vy": "BCN",
   "milesandmore:lh": "FRA", "milesandmore:ew": "CGN", "milesandmore:de": "FRA",
