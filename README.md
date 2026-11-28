@@ -65,7 +65,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Scoot: service and processing fees do not earn; add-ons do.
 - El Al Matmid: surcharges and fees do not earn, so the fee field is hidden; baggage and SPACE seats earn.
 - South African Airways Voyager: carrier-imposed fees earn.
-- American, Delta, and United cap earning at 75,000 miles per ticket.
+- United caps earning at 75,000 miles per ticket per member, excluding promotional bonuses and purchased miles. American has no cap on its own flights and caps partner flights (Fiji Airways, JetSMART) at 25,000 miles per ticket. Delta has no cap.
 - Air Canada and WestJet fares are entered in Canadian dollars (CA$). Viva Aerobus and Volaris fares are entered in Mexican pesos (MX$). British Airways and Virgin Atlantic fares are entered in pounds (£). Fares for the European airlines (Flying Blue, Miles & More, Iberia, LEVEL, Vueling, and TAP) are entered in euros (€). Aeroméxico earns per US dollar, so its fare is entered in US dollars.
 - Porter fares are entered in Canadian dollars, Finnair fares in euros, Virgin Australia fares in Australian dollars (A$), and Norwegian fares in Norwegian kroner (kr). Avianca LifeMiles earns per US dollar by fare family.
 - Alaska and Hawaiian both use Atmos Rewards. In 2026, flights earn 1 point per mile plus a fare class bonus (J 200%, C 175%, D, I, Y and B 150%, H and K 125%), and Saver (X) fares booked from 11 June and flown from 1 August 2026 earn nothing. From 2027, members choose to earn 1 point per mile, 5 points per dollar, or 500 points per segment. Elite bonuses apply in every case.

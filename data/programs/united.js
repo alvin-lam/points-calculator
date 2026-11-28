@@ -2,6 +2,8 @@ const rules = {
   name: "United Airlines | MileagePlus",
   unit: "miles",
   method: "spend",
+  // 75,000 miles per ticket per member, excluding promotional bonuses and
+  // purchased miles.
   cap: 75000,
   centsPerPoint: 1.3,
   statuses: [
@@ -19,7 +21,7 @@ const rules = {
     { id: "club", name: "United Club Card", rate: 5, bank: "Chase (US)" },
     { id: "debit", name: "United MileagePlus Debit Rewards Card", rate: 1, kind: "debit" }
   ],
-  note: "MileagePlus miles are earned on base fare and carrier-imposed surcharges. Taxes do not earn miles. Earning is capped at 75,000 miles per ticket."
+  note: "MileagePlus miles are earned on base fare and carrier-imposed surcharges. Taxes do not earn miles. Earning is capped at 75,000 miles per ticket per member, excluding promotional bonuses and purchased miles."
 };
 
 module.exports = {

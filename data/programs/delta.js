@@ -6,7 +6,7 @@ const rules = {
   addonsHint: "Paid upgrades (such as to Comfort or First) and Preferred seats bought from Delta. They earn miles at your status rate. Purchases at airport kiosks in Amsterdam and Paris do not earn.",
   unit: "miles",
   method: "spend",
-  cap: 75000,
+  // No earning cap.
   centsPerPoint: 1.2,
   // Miles per dollar by fare (Delta, July 2026): Main Basic earns none,
   // Main Classic and the other fares earn the status rate, and Main Extra
@@ -32,7 +32,7 @@ const rules = {
     { id: "plat", name: "Delta SkyMiles Platinum Amex", rate: 3, bank: "American Express (US)" },
     { id: "reserve", name: "Delta SkyMiles Reserve Amex", rate: 3, bank: "American Express (US)" }
   ],
-  note: "SkyMiles are earned on base fare and carrier-imposed surcharges, and on paid upgrades and Comfort or Preferred seats. Delta Main Basic fares earn no miles, and Delta Main Extra earns 2 more miles per dollar than Main Classic (7 instead of 5 for members). Earning is capped at 75,000 miles per ticket."
+  note: "SkyMiles are earned on base fare and carrier-imposed surcharges, and on paid upgrades and Comfort or Preferred seats. Delta Main Basic fares earn no miles, and Delta Main Extra earns 2 more miles per dollar than Main Classic (7 instead of 5 for members). There is no earning cap."
 };
 
 module.exports = {
