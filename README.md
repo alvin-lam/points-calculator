@@ -29,7 +29,7 @@ Live site: https://points.alltripsconsidered.com/
 - Miles & More (Lufthansa Group), Flying Blue (Air France, KLM, and Transavia), and IAG are single programs. Each of their airlines is listed under its own country as "Airline | Program", such as "Lufthansa | Miles & More" under Germany. For Miles & More, the airline sets the status earning rate. For IAG, the airline picks the loyalty program: AerClub in euros, British Airways Club in pounds, Iberia Club in euros (Iberia and LEVEL), or Vueling Club in euros, each with its own status levels and cards.
 - After a program is chosen, an Alliance line shows oneworld, Star Alliance or SkyTeam for an alliance member. An airline that shares an alliance airline's program without being a member (Eurowings, Air Dolomiti, Edelweiss, Discover, Transavia, LEVEL, Jetstar, Jetstar Japan, HK Express, JetSMART, Scoot, Air Macau, Aircalin, and Condor on Atmos Rewards) shows "Not part of [alliance]." with a line that its status is recognized on member airlines but not on its own flights. For any other airline the Alliance line is hidden.
 - The level menu is named after the program ("AAdvantage Level", "MileagePlus Level") and lists the airline's own status levels without repeating the program name ("Member", not "MileagePlus Member"; "Gold", not "Egret Gold"). Tier names that need the word stay whole, such as "Breezy 1" and "Sky Pearl". For an airline in an alliance, a field beside it shows the matching alliance tier, such as "oneworld Status: Ruby" for AAdvantage Gold or "Star Alliance Status: Silver" for Premier Silver. A level with no alliance tier shows "General". The field is hidden for airlines outside an alliance.
-- United, Southwest and Aeroméxico also list their debit cards, grouped under Debit cards in the card menu.
+- United, Southwest, Aeroméxico, Aegean, Royal Jordanian and Etihad also list their debit cards, grouped under Debit cards in the card menu.
 - Each program shows the month its rules were last reviewed, for example "Rules last reviewed November 2026."
 
 ### How it calculates
@@ -66,7 +66,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Scoot: service and processing fees do not earn; add-ons do.
 - El Al Matmid: surcharges and fees do not earn, so the fee field is hidden; baggage and SPACE seats earn.
 - South African Airways Voyager: carrier-imposed fees earn.
-- United caps earning at 75,000 miles per ticket per member, excluding promotional bonuses and purchased miles. American has no cap, nor do the airlines that use AAdvantage as their own program (Fiji Airways, JetSMART). Delta has no cap.
+- United caps earning at 75,000 miles per ticket per member, excluding promotional bonuses and purchased miles. Hainan caps at 75,000 points per ticket, and GOL and LATAM at 60,000 miles. American has no cap, nor do the airlines that use AAdvantage as their own program (Fiji Airways, JetSMART). Delta has no cap.
 - Air Canada and WestJet fares are entered in Canadian dollars (CA$). Viva Aerobus and Volaris fares are entered in Mexican pesos (MX$). British Airways and Virgin Atlantic fares are entered in pounds (£). Fares for the European airlines (Flying Blue, Miles & More, Iberia, LEVEL, Vueling, and TAP) are entered in euros (€). Aeroméxico earns per US dollar, so its fare is entered in US dollars.
 - Porter fares are entered in Canadian dollars, Finnair fares in euros, Virgin Australia fares in Australian dollars (A$), and Norwegian fares in Norwegian kroner (kr). Avianca LifeMiles earns per US dollar by fare family.
 - Alaska and Hawaiian both use Atmos Rewards. In 2026, flights earn 1 point per mile plus a fare class bonus (J 200%, C 175%, D, I, Y and B 150%, H and K 125%), and Saver (X) fares booked from 11 June and flown from 1 August 2026 earn nothing. From 2027, members choose to earn 1 point per mile, 5 points per dollar, or 500 points per segment. Elite bonuses apply in every case.
@@ -137,7 +137,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 
 ### Airport distances
 
-Distance-based programs can work out the miles flown from two airports. The airport list (about 3,500 airports with scheduled service) is fetched only when a distance-based program is chosen, and `docs/js/distance.js` computes the great-circle distance. New airport codes (such as RMO for Chișinău and SAI for Siem Reap) were added in November 2026. The old codes (KIV, FRU, KVD, PBI, REP) still work and lead to the same airport, so an old and a new code for one airport count as the same airport. A distance found from the airport boxes is cleared as soon as the boxes stop naming two airports, for example while a city name is still being typed. On a phone the two boxes stack. Choosing the same airport for From and To says so. A distance under 1 mile or over 25,000 miles, a segment count that is not a whole number from 1 to 100, and amounts that add up to more than 1,000,000,000 are rejected as likely typos. Searching Sydney, Mumbai, Delhi or Bucharest lists each city's second airport too.
+Distance-based programs can work out the miles flown from two airports. The airport list (about 3,500 airports, nearly all with scheduled service) is fetched only when a distance-based program is chosen, and `docs/js/distance.js` computes the great-circle distance. New airport codes (such as RMO for Chișinău and SAI for Siem Reap) were added in November 2026. The old codes (KIV, FRU, KVD, PBI, REP) still work and lead to the same airport, so an old and a new code for one airport count as the same airport. A distance found from the airport boxes is cleared as soon as the boxes stop naming two airports, for example while a city name is still being typed. One or two letters do not count as an airport, and "No airport found" waits until you leave the box. On a phone the two boxes stack. Choosing the same airport for From and To says so. A distance that rounds to less than 1 mile (or 1 kilometre) or is over 25,000 miles (40,000 km), a segment count that is not a whole number from 1 to 100, and amounts that add up to more than 1,000,000,000 are rejected as likely typos. Searching Sydney, Mumbai, Delhi or Bucharest lists each city's second airport too.
 
 ### Airline logos
 
@@ -177,7 +177,7 @@ docs/airlines/<name>/index.html   One generated page per program (109)
 docs/js/app.js                    Calculator, airline search, airport lookup and Appearance panel
 docs/js/programs.js               Earning data the browser loads (generated from data/, do not edit)
 docs/js/distance.js               Great-circle distance between two airports
-docs/js/airports.json             About 3,500 airports with scheduled service (OurAirports)
+docs/js/airports.json             About 3,500 airports, nearly all with scheduled service (OurAirports)
 docs/js/logos.json                Logo and icon files the site loads
 docs/js/install.js                Install message and service worker registration
 docs/js/theme-boot.js             Applies the saved light or dark mode before the page paints

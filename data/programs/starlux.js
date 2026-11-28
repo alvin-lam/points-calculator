@@ -31,6 +31,8 @@ const rules = {
   // channels earn double the domestic base rate (NT$15, 20, 25 or 28 per
   // mile). From E.SUN's STARLUX card page:
   // https://www.esunbank.com/zh-tw/personal/credit-card/intro/co-branded-card/starlux-card
+  // The Business Titanium card (商務鈦金卡, NT$25) is left out on purpose,
+  // like other business cards.
   cardHint: "E.SUN STARLUX cards earn COSMILE miles on the full amount charged for STARLUX tickets bought on the STARLUX website or app, on top of the flight miles.",
   cards: [
     { id: "esun-world-elite", name: "E.SUN STARLUX World Elite Card", rate: 1 / 7.5, per: 7.5, rateText: "1 per NT$7.50", bank: "E.SUN Bank (Taiwan)" },
