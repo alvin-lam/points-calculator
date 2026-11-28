@@ -51,7 +51,7 @@ const atmos = {
     { id: "distance", name: "Miles flown: 1 point per mile", noFareType: true },
     { id: "price", name: "Price paid, booked on alaskaair.com or Hawaiian: 5 points per dollar", rate: 5, noFareType: true },
     { id: "partner", method: "distance", name: "Price paid, booked with Condor or elsewhere: share of the distance by cabin" },
-    { id: "segments", name: "Segments flown: 500 points per segment", perSegment: 500 }
+    { id: "segments", name: "Segments flown: 500 points per segment", perSegment: 500, noFareType: true }
   ],
   defaultFareType: "economy",
   fareTypeLabel: "Cabin",
