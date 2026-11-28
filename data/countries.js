@@ -58,7 +58,6 @@ module.exports = [
   { id: "AR", label: "Argentina \u{1F1E6}\u{1F1F7}", codes: ["AR", "ARG"] },
   { id: "MT", label: "Malta \u{1F1F2}\u{1F1F9}", codes: ["MT", "MLT"] },
   { id: "MO", label: "Macau \u{1F1F2}\u{1F1F4}", codes: ["MO", "MAC"] },
-  { id: "PG", label: "Papua New Guinea \u{1F1F5}\u{1F1EC}", codes: ["PG", "PNG"] },
   { id: "NC", label: "New Caledonia \u{1F1F3}\u{1F1E8}", codes: ["NC", "NCL"] },
   { id: "EG", label: "Egypt \u{1F1EA}\u{1F1EC}", codes: ["EG", "EGY"] },
   { id: "PE", label: "Peru \u{1F1F5}\u{1F1EA}", codes: ["PE", "PER"] },

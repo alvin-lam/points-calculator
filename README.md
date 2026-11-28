@@ -1,6 +1,6 @@
 # Airline Points Calculator
 
-A static web app that estimates the points or miles you earn on a flight. It covers 111 airlines in 88 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
+A static web app that estimates the points or miles you earn on a flight. It covers 110 airlines in 87 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
 
 Live site: https://points.alltripsconsidered.com/
 
@@ -101,7 +101,6 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Air Macau (NX) is listed under PhoenixMiles (Air China) like Shenzhen Airlines. It earns a share of the distance in kilometres by booking class, from the PhoenixMiles Air Macau table valid from 1 April 2026: 125% to 250% in Business (800 km minimum), 90% to 110% in Joyful Economy, and 25% to 110% in Economy (500 km minimum). Classes R, A, K, O, I and X earn nothing. PhoenixMiles does not say whether its tier bonuses apply to Air Macau, so only member earning is shown. Cards (Macau): Bank of China Air Card (1 km per MOP 10) and ICBC Air Macau Platinum (1 per MOP 9) and Gold (1 per MOP 10), on all card spending.
 - Philippine Airlines (PR) Mabuhay Miles earns a route's base miles times 10% to 150% by fare family. Elite adds 25%; Premier Elite and Million Miler add 75% to and from the US and Canada and 25% elsewhere (`multipliers` per route type), on earned miles in Economy and Premium Economy and on the distance flown in Business (`bonusOnDistance`). PAL's charts list fixed base miles per route, which can differ slightly from the distance entered.
 - Cebu Pacific (5J) and Cebgo (DG) Go Rewards earn points per peso of the base fare and fuel surcharge, set by the card type of the Go Rewards number entered in the booking, from the Go Rewards earn rate table (from 22 October 2026) and terms: Classic 1 per ₱80 (promo fares 1 per ₱160), Go Rewards or GoTyme debit card 1 per ₱40 (₱160), and Black or a UnionBank co-brand credit card 1 per ₱20 (₱40). Bags, seats and meals earn at the regular fare rate for the card type, even on a promo fare (`addonsRate` per status). Partner add-ons (1 per ₱160, or ₱40 for Black) and the admin fee (1 per ₱80, or ₱20 for Black) have their own fields (`extraFields`, each with a rate per status). Points are counted to two decimals without rounding (`decimalsFloor`). UnionBank card spend points and the double points promo (3 November to 31 December 2026) are not counted. Go Rewards does not define which fares are promo fares.
-- Air Niugini (PX) Destinations earns 1 point per kina of the fare, from the Destinations terms (2 December 2025) and FAQ. Taxes, fees and surcharges do not earn. The terms' tier table (Silver 1.5, Gold 2, Platinum 1.75 per kina) looks inconsistent, so every tier uses the base rate.
 - Aircalin (SB) is listed under Flying Blue. It earns a share of the distance by booking class, with separate regional and long-haul tables, from Aircalin's Flying Blue page. Silver adds 50%, Gold 75%, and Platinum and Ultimate 100%, figured on a class share capped at 100% (`bonusOnDistance` on classes above 100%). The New Caledonian Aircalin Amex earns Aircalin Points, not Flying Blue Miles, so it is not shown.
 - Air Tahiti Nui (TN) Club Tiare earns 25% to 150% of the distance by booking class (S earns 50% on Papeete-Paris); Silver adds 50% and Gold 75%.
 - Aerolíneas Argentinas (AR) Aerolíneas Plus earns a share of the distance by route type (domestic, regional, international) and the first letter of the fare basis, 0% to 200%; Oro, Platino and Diamante add 25%, 75% and 100%.
@@ -310,6 +309,7 @@ Researched in November 2026. Each one is blocked on an official source, so a scr
 - [ ] **Azores Airlines SATA IMAGINE** (Portugal): a fare-family share (10% to 200%) of each route's base miles, with Silversky +20% and Goldsky +30%. The base miles appear only in the member calculator, and no official rule ties them to distance.
 - [ ] **AirAsia rewards** (Asia): Table E of the Membership Agreement gives Premium Flex and Premium Flatbed exactly (2, 4, 7 and 12 per RM1 for Red, Gold, Platinum and Black), but Low Fare only as a maximum ("up to" 1.5, 3, 5.5 and 10). The earning components are not stated. Covers AK, FD, QZ, Z2, KT, D7, and XJ from 1 January 2026. Source: https://www.airasia.com/aa/rewards/en/gb/rewards-membership.html
 - [ ] **Binter BinterMás** (Spain): removed in November 2026. Inter-island flights earn fixed points by fare (SuperPromo 0, Promo 50, Económica 75, Flexible 100, FlexiMás 200), but mainland and international points vary by route with no complete table, and Binter's fares page (Madrid 150, 300, 900, 1,200) conflicts with its booking engine (150, 600, 1,000, 1,600).
+- [ ] **Air Niugini Destinations** (Papua New Guinea): removed in November 2026. The terms give 1 point per kina of the fare, but the tier table (Silver 1.5, Gold 2, Platinum 1.75 per kina) is inconsistent.
 
 ### No earning program (checked November 2026)
 
@@ -336,8 +336,7 @@ The two South African Airways Voyager "$" Mastercards are Ecobank Ghana cards th
 
 - [ ] **Report a correction:** a footer link, by email or a simple form, so readers can report changed earning rules.
 - [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
-- [ ] **Visit counter:** a privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so.
-- [ ] **"100+ airlines" wording:** the page titles, descriptions and preview image say "100+ airlines" and "80+ loyalty programs" (111 airlines in 88 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 90 programs.
+- [ ] **"100+ airlines" wording:** the page titles, descriptions and preview image say "100+ airlines" and "80+ loyalty programs" (110 airlines in 87 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 90 programs.
 
 ### Watch list
 
