@@ -31,7 +31,7 @@ module.exports = {
   airindia: "DEL", indigo: "DEL", ana: "HND", cathay: "HKG", chinaairlines: "TPE",
   chinaeastern: "SHA", chinasouthern: "CAN", enrich: "KUL", eva: "TPE",
   hainan: "HAK", hkexpress: "HKG", hongkongairlines: "HKG", jal: "HND",
-  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", vietjet: "HAN", jejuair: "ICN", airpremia: "ICN", airbusan: "PUS", jinair: "ICN", garuda: "CGK", airasia: "KUL", bangkokair: "BKK", "flyingblue:sb": "NOU", spicejet: "DEL", tigerairtw: "TPE", "phoenix:nx": "MFM", pal: "MNL", "cebupacific:ceb": "MNL", "cebupacific:cebgo": "MNL", srilankan: "CMB", airtahitinui: "PPT",
+  jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", vietjet: "HAN", jejuair: "ICN", airpremia: "ICN", airbusan: "PUS", jinair: "ICN", garuda: "CGK", bangkokair: "BKK", "flyingblue:sb": "NOU", spicejet: "DEL", tigerairtw: "TPE", "phoenix:nx": "MFM", pal: "MNL", "cebupacific:ceb": "MNL", "cebupacific:cebgo": "MNL", srilankan: "CMB", airtahitinui: "PPT",
   scoot: "SIN", starlux: "TPE", thai: "BKK", xiamen: "XMN",
   // Oceania
   airnz: "AKL", "american:fj": "NAN", jetstar: "MEL", qantas: "SYD", virginaustralia: "BNE"

@@ -477,7 +477,6 @@ window.HQ_AIRPORTS = {
   "airbusan": "PUS",
   "jinair": "ICN",
   "garuda": "CGK",
-  "airasia": "KUL",
   "bangkokair": "BKK",
   "flyingblue:sb": "NOU",
   "spicejet": "DEL",
