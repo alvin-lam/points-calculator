@@ -1558,6 +1558,8 @@
   // Airport lookup for distance-based programs. The airport list loads the
   // first time it is needed, so other visitors never download it.
   var fromAirport = $("fromAirport"), toAirport = $("toAirport");
+  // Typed codes that are not airports, and the airport to suggest instead.
+  var AIRPORT_ASK = { DJT: "PBI" };
   var airportResult = $("airportResult");
   var airportsLoading = false;
   function ensureAirports() {
@@ -1697,6 +1699,16 @@
       if (!A || !q || /^[A-Za-z]{3} - /.test(q)) { close(); return; }
       var codes = window.Distance.searchAirports(A, q, 30);
       list.replaceChildren();
+      // Some typed codes are not airports but point to one ("DJT": PBI).
+      var meant = AIRPORT_ASK[q.trim().toUpperCase()];
+      if (meant && A[meant]) {
+        codes = [meant].concat(codes.filter(function (c) { return c !== meant; }));
+        var ask = document.createElement("li");
+        ask.className = "combo-empty";
+        ask.setAttribute("role", "presentation");
+        ask.textContent = "Did you mean " + meant + "?";
+        list.appendChild(ask);
+      }
       codes.forEach(function (c, n) {
         var a = A[c];
         var li = document.createElement("li");

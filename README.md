@@ -209,6 +209,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 
 Distance-based programs can work out the miles flown from two airports. The airport list (about 3,200 airports with scheduled service) is fetched only when a distance-based program is chosen, and `docs/js/distance.js` computes the great-circle distance.
 
+- Typing "DJT" in an airport box asks "Did you mean PBI?" and lists Palm Beach International first (`AIRPORT_ASK` in `app.js`).
 ### Airline logos
 
 Every airline, alliance and alliance status badge has a full logo, a square icon and a circular icon (see [`docs/icons/airlines/README.md`](docs/icons/airlines/README.md)). The calculator works without them if they fail to load.
