@@ -1303,7 +1303,11 @@
     // Skip the value rows for programs without a reliable point value.
     if (p.centsPerPoint) {
       var value = total * p.centsPerPoint / 100;
-      row(dl, "Approximate value", usd.format(value) + " (at " + p.centsPerPoint + minorUnit[p.currency || "USD"] + " each)");
+      // Currencies without a cents sign show the value per point in whole
+      // units (Aircalin: "at 1.43 XPF each").
+      var vCur = p.currency || "USD";
+      var perPoint = minorUnit[vCur] ? p.centsPerPoint + minorUnit[vCur] : num.format(p.centsPerPoint / 100) + " " + vCur;
+      row(dl, "Approximate value", usd.format(value) + " (at " + perPoint + " each)");
       if (tripCost > 0) {
         row(dl, "Return on total cost", (value / tripCost * 100).toFixed(1) + "%");
       }

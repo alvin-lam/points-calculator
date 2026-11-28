@@ -79,6 +79,9 @@ const rules = {
         addons: false,
         method: "distance",
         currency: "XPF",
+        // Flying Blue's 1.2 euro cents a Mile in CFP francs (pegged at
+        // 1 EUR = 119.33 XPF): about 1.43 XPF, written in hundredths.
+        centsPerPoint: 143.2,
         defaultFareType: "ybs",
         fareTypeLabel: "Booking Class",
         zoneLabel: "Aircalin network",
