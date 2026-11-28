@@ -9,7 +9,9 @@
    - Tier bonus on the base points: Silver 50%, Gold 75%, Platinum 100%
      (official example: Nairobi to London, Economy Flex, Ruby 5,000,
      Silver 7,500, Gold 8,750, Platinum 10,000).
-   - Minimum 250 points per flight.
+   - The page also states a minimum of 250 points per flight, but the chart
+     lists less on some routes (Lubumbashi - Ndola Best Buy: 150); the chart
+     is used, as the site owner decided.
    Travel agency rebated and staff tickets do not earn. */
 const rules = {
   name: "Kenya Airways | Asante Rewards",
@@ -62,8 +64,6 @@ const rules = {
     { id: "lun-hre", name: "5th freedom: Lusaka - Harare", points: [1000, 750, 500, 625, 500, 375, 250] },
     { id: "bkk-can", name: "5th freedom: Bangkok Suvarnabhumi - Guangzhou", points: [2400, 1800, 1200, 1500, 1200, 900, 600] }
   ],
-  // "Minimum: 250 points per flight", after the tier bonus.
-  zoneMin: [250, 250, 250, 250, 250, 250, 250],
   statuses: [
     { id: "ruby", name: "Ruby", bonus: 0 },
     { id: "silver", name: "Silver", bonus: 0.5 },
@@ -78,7 +78,7 @@ const rules = {
     { id: "absa-signature", name: "Asante Global Signature Credit Card", rate: 2 / 200, rateText: "2 per KSh 200", currency: "KES", bank: "Absa Bank (Kenya)" },
     { id: "absa-platinum", name: "Asante Global Platinum Credit Card", rate: 2 / 200, rateText: "2 per KSh 200", currency: "KES", bank: "Absa Bank (Kenya)" }
   ],
-  note: "Asante Rewards earns a fixed number of points per Kenya Airways flight, set by the region flown to or from Kenya (or the fifth-freedom route) and the fare. Business Super Flex (J, C) earns 200%, Flex (I, D) 150% and Lite (Z) 100%; Economy Super Flex (Y, B) earns 125%, Flex (M, U, K, H) 100%, Standard (L, Q, T, E, N) 75% and Best Buy (V, R, G, W) 50% of the route's Economy Flex amount. Silver adds 50%, Gold 75% and Platinum 100% to the base points. Every flight earns at least 250 points. Tier points, which count toward levels, are the distance times the fare share and are not shown. Travel agency rebated and staff tickets do not earn. The Absa Bank Kenya Asante Global Signature and Platinum credit cards earn 2 points per KSh 200 on Kenya Airways purchases and 1 per KSh 200 elsewhere, rounded down per transaction."
+  note: "Asante Rewards earns a fixed number of points per Kenya Airways flight, set by the region flown to or from Kenya (or the fifth-freedom route) and the fare. Business Super Flex (J, C) earns 200%, Flex (I, D) 150% and Lite (Z) 100%; Economy Super Flex (Y, B) earns 125%, Flex (M, U, K, H) 100%, Standard (L, Q, T, E, N) 75% and Best Buy (V, R, G, W) 50% of the route's Economy Flex amount. Silver adds 50%, Gold 75% and Platinum 100% to the base points. Tier points, which count toward levels, are the distance times the fare share and are not shown. Travel agency rebated and staff tickets do not earn. The Absa Bank Kenya Asante Global Signature and Platinum credit cards earn 2 points per KSh 200 on Kenya Airways purchases and 1 per KSh 200 elsewhere, rounded down per transaction."
 };
 
 module.exports = {
@@ -96,8 +96,8 @@ module.exports = {
     { name: "Kenya Airways NBO-LHR Economy Flex, Platinum (official example)", input: { status: "platinum", fare: "y-flex", zone: "europe" }, expect: 10000 },
     // Card: KSh 100,000 at Kenya Airways x 2 / 200 = 1,000, plus 5,000 flight.
     { name: "Kenya Airways Europe Economy Flex with the Asante Global card", input: { status: "ruby", fare: "y-flex", zone: "europe", radios: { usedCard: "Yes" }, fields: { cardCharge: 100000 } }, expect: 6000 },
-    // Lubumbashi - Ndola Best Buy lists 150, raised to the 250 minimum.
-    { name: "Kenya Airways Lubumbashi-Ndola Best Buy (minimum)", input: { status: "ruby", fare: "y-bestbuy", zone: "fbm-nla" }, expect: 250 }
+    // Lubumbashi - Ndola Best Buy: 150, as the chart lists.
+    { name: "Kenya Airways Lubumbashi-Ndola Best Buy (chart)", input: { status: "ruby", fare: "y-bestbuy", zone: "fbm-nla" }, expect: 150 }
   ],
   rules
 };
