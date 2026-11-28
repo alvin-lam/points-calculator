@@ -165,8 +165,33 @@
 
   // The Membership menu lists the airline's own levels; the alliance tier
   // shows separately below it (syncAllianceStatus).
-  function statusLabel(s) {
-    return s.name;
+  function statusLabel(s, p) {
+    return levelName(p || current(), s);
+  }
+
+  // Level names without the program's name, since the menu is already
+  // labelled "[program] Level": "MileagePlus Member" shows as "Member" and
+  // "Egret Gold" as "Gold". Only the full program name, or its first word
+  // followed by a usual tier word, is removed, so "Breezy 1", "Sky Pearl
+  // Card" and base tiers named after the program ("Matmid") stay whole.
+  var TIER_WORDS = /^(member|silver|gold|platinum|diamond|titanium|blue|green|red|black|bronze|extra|priority|elite)\b/i;
+  function levelName(p, s) {
+    var name = s.name;
+    var prog = p ? (p.programName || ((p.name || "").split(" | ")[1] || "")) : "";
+    if (!prog) return name;
+    var lower = name.toLowerCase();
+    var full = prog.toLowerCase() + " ";
+    if (lower.indexOf(full) === 0) {
+      var rest = name.slice(full.length).trim();
+      if (rest && !/^or\b/i.test(rest) && !/^\d+$/.test(rest)) return rest.charAt(0).toUpperCase() + rest.slice(1);
+      return name;
+    }
+    var first = prog.split(/\s+/)[0];
+    if (first !== prog && lower.indexOf(first.toLowerCase() + " ") === 0) {
+      var rest2 = name.slice(first.length + 1).trim();
+      if (TIER_WORDS.test(rest2)) return rest2;
+    }
+    return name;
   }
 
   // "[Alliance] Status" beside Membership Level: shown only for an airline in
@@ -579,7 +604,7 @@
     $("allianceField").hidden = !alliance && !shared;
 
     setCurrency(p.currency || "USD");
-    p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, statusLabel(s))); });
+    p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, statusLabel(s, p))); });
     statusEl.disabled = p.statuses.length < 2;
     // The level menu is named after the program ("AAdvantage Level").
     var progName = p.programName || ((p.name || "").split(" | ")[1] || "");
@@ -1164,7 +1189,7 @@
     }
     var lines = [
       firstLine,
-      status.name + (lineAlliance && status.alliance ? " | " + lineAlliance + " " + status.alliance : ""),
+      levelName(p, status) + (lineAlliance && status.alliance ? " | " + lineAlliance + " " + status.alliance : ""),
       fareType ? fareType.name : "",
       card ? card.name + (isCardmember(p) ? " (Cardmember rate)" : "") : (isCardmember(p) ? "Cardmember rate" : "")
     ].filter(Boolean);
