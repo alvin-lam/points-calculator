@@ -62,7 +62,8 @@ module.exports = function applyAlliances(P) {
     aireuropa: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus" },
     chinaeastern: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus" },
     xiamen: { silver: "Elite", gold: "Elite", platinum: "Elite Plus", diamond: "Elite Plus" },
-    sas: { silver: "Elite", gold: "Elite Plus", diamond: "Elite Plus" }
+    sas: { silver: "Elite", gold: "Elite Plus", diamond: "Elite Plus" },
+    kenya: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus" }
   };
 
   // Alliance of each program, or of each airline for group programs.
@@ -75,7 +76,7 @@ module.exports = function applyAlliances(P) {
       "krisflyer", "eva", "lifemiles", "airnz", "turkish", "phoenix:ca",
       "milesandmore:lo", "milesandmore:ou", "copa", "aegean", "thai", "airindia", "saa", "phoenix:zh", "egyptair", "ethiopian"],
     SkyTeam: ["delta", "aeromexico", "flyingblue:af", "flyingblue:kl", "virgin", "chinaairlines",
-      "korean", "aireuropa", "chinaeastern", "xiamen", "sas", "vietnam", "aerolineas"]
+      "korean", "aireuropa", "chinaeastern", "xiamen", "sas", "vietnam", "aerolineas", "kenya"]
   };
   Object.keys(ALLIANCES).forEach(function (name) {
     ALLIANCES[name].forEach(function (key) {

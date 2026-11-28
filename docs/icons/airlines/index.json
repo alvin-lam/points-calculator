@@ -1084,5 +1084,14 @@
     "square": "icons/airlines/square/ethiopian.png",
     "circle": "icons/airlines/circle/ethiopian.png",
     "iconSource": "App Store icon of \"Ethiopian Airlines\" by Ethiopian Airlines"
+  },
+  "kenya": {
+    "file": "icons/airlines/kenya.png",
+    "title": "Kenya Airways logo",
+    "source": "https://asante.kenya-airways.com/ (portal header logo, SVG)",
+    "license": "Trademark of Kenya Airways PLC; official logo artwork (Asante and SkyTeam marks removed)",
+    "square": "icons/airlines/square/kenya.png",
+    "circle": "icons/airlines/circle/kenya.png",
+    "iconSource": "App Store icon of \"Kenya Airways\" by KENYA AIRWAYS LTD"
   }
 }
