@@ -323,13 +323,11 @@ Each card needs its current earning rate on airline purchases, confirmed from th
 
 Added in November 2026: Amex KrisFlyer Credit Card (Singapore Airlines and Scoot); Inbursa Aeroméxico Ascend, Elevate, Horizon and debit; Cardless TAP Miles&Go and Millennium bcp TAP Classic, Gold and Platinum; Cardless Avianca LifeMiles Amex and Amex Elite, and Bancolombia Visa LifeMiles (the Banco Popular Avianca Vuela Visa was removed, as Banco Popular closed its Avianca cards in 2022); Aktia Finnair Visa Credit by tier and Credit Light; Alpha Bank Aegean Bonus Visa Debit; Cornèrcard Miles & More (SWISS and Edelweiss); Erste and Sparkasse Austrian Miles & More Premiumcard; Beobank Brussels Airlines Explore, Horizon and Altitude; and AlRayan Bank Qatar Airways Visa Infinite and Signature.
 
-- [ ] **Future US cards:** for any program in the calculator, check for new US co-branded cards from time to time. As of November 2026, the US cards for Etihad, Turkish, Qatar, LATAM, Emirates, ANA, Miles & More, TAP and Avianca are current.
 
 The two South African Airways Voyager "$" Mastercards are Ecobank Ghana cards that earn per US dollar, so they are not home-market cards and are not shown.
 
 ### Site improvements
 
-- [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
 - [ ] **"100+ airlines" wording:** the page titles, descriptions and preview image say "100+ airlines" and "80+ loyalty programs" (110 airlines in 87 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 90 programs.
 
 ### Watch list
