@@ -28,8 +28,8 @@ module.exports = {
   // Middle East
   elal: "TLV", saa: "JNB", emirates: "DXB", etihad: "AUH", qatar: "DOH",
   // Asia
-  airindia: "DEL", indigo: "DEL", ana: "HND", cathay: "HKG", chinaairlines: "TPE",
-  chinaeastern: "SHA", chinasouthern: "CAN", enrich: "KUL", eva: "TPE",
+  airindia: "DEL", indigo: "DEL", ana: "HND", cathay: "HKG", "chinaairlines:ci": "TPE", "chinaairlines:ae": "RMQ",
+  chinaeastern: "SHA", chinasouthern: "CAN", enrich: "KUL", "eva:br": "TPE", "eva:b7": "TSA",
   hainan: "HAK", hkexpress: "HKG", hongkongairlines: "HKG", jal: "HND",
   jetstarjapan: "NRT", korean: "ICN", krisflyer: "SIN", "phoenix:ca": "PEK", "phoenix:zh": "SZX", vietnam: "HAN", vietjet: "HAN", jejuair: "ICN", airpremia: "ICN", airbusan: "PUS", jinair: "ICN", garuda: "CGK", bangkokair: "BKK", "flyingblue:sb": "NOU", "flyingblue:tarom": "OTP", spicejet: "DEL", tigerairtw: "TPE", "phoenix:nx": "MFM", pal: "MNL", "cebupacific:ceb": "MNL", "cebupacific:cebgo": "MNL", srilankan: "CMB", airtahitinui: "PPT",
   scoot: "SIN", starlux: "TPE", thai: "BKK", xiamen: "XMN",

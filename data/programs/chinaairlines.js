@@ -1,5 +1,12 @@
 const rules = {
   name: "China Airlines | Dynasty Flyer",
+  programName: "Dynasty Flyer",
+  // Mandarin Airlines (AE), China Airlines' regional airline, earns on the
+  // same table.
+  airlines: [
+    { id: "ci", name: "China Airlines", country: "TW" },
+    { id: "ae", name: "Mandarin Airlines", country: "TW" }
+  ],
   country: "TW",
   currency: "TWD",
   unit: "miles",
@@ -25,15 +32,17 @@ const rules = {
     { id: "emerald", name: "Emerald", multiplier: 1.25 },
     { id: "paragon", name: "Paragon", multiplier: 1.3 }
   ],
-  note: "Dynasty Flyer earns a share of the distance flown set by booking class, from 50% in Economy Basic to 175% in Business Flex. Economy Discount (L) earns nothing. Gold, Emerald, and Paragon receive 15%, 25%, or 30% incentive miles; China Airlines does not say whether these apply to the class miles or the distance, so this estimate applies them to the class miles."
+  note: "Dynasty Flyer earns a share of the distance flown set by booking class, from 50% in Economy Basic to 175% in Business Flex. Economy Discount (L) earns nothing. Gold, Emerald, and Paragon receive 15%, 25%, or 30% incentive miles; China Airlines does not say whether these apply to the class miles or the distance, so this estimate applies them to the class miles. Mandarin Airlines flights earn on the same table."
 };
 
 module.exports = {
   id: "chinaairlines",
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
-  code: "CI",
-  color: "#D6006E",
-  source: "https://www.china-airlines.com/us/en/member/miles/earning/flight",
+  // Two-letter code, brand color, and source page for each airline.
+  airlines: {
+    ci: { code: "CI", color: "#D6006E", source: "https://www.china-airlines.com/us/en/member/miles/earning/flight" },
+    ae: { code: "AE", color: "#0B4EA2", source: "https://www.china-airlines.com/us/en/member/miles/earning/flight" }
+  },
   rules
 };

@@ -1,6 +1,6 @@
 # Airline Points Calculator
 
-A static web app that estimates the points or miles you earn on a flight. It covers 115 airlines in 91 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
+A static web app that estimates the points or miles you earn on a flight. It covers 117 airlines in 91 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
 
 Live site: https://points.alltripsconsidered.com/
 
@@ -8,7 +8,7 @@ Live site: https://points.alltripsconsidered.com/
 
 ## Airlines covered
 
-115 airlines in 91 programs, grouped by country as in the program menu. Each entry shows the airline, its code and the program its flights earn in. Airlines that fly from several countries (JetSMART, LATAM, Transavia) appear under each.
+117 airlines in 91 programs, grouped by country as in the program menu. Each entry shows the airline, its code and the program its flights earn in. Airlines that fly from several countries (JetSMART, LATAM, Transavia) appear under each.
 
 - **United States:** Alaska Airlines (AS): Atmos Rewards; Allegiant Air (G4): Allways Rewards; American Airlines (AA): AAdvantage; Breeze Airways (MX): Breezy Rewards; Delta Air Lines (DL): SkyMiles; Frontier Airlines (F9): Frontier Miles; Hawaiian Airlines (HA): Atmos Rewards; JetBlue Airways (B6): TrueBlue; Southwest Airlines (WN): Rapid Rewards; United Airlines (UA): MileagePlus
 - **Canada:** Air Canada (AC): Aeroplan; Air Transat (TS): Staria; Porter Airlines (PD): VIPorter; WestJet (WS): WestJet Rewards
@@ -65,7 +65,7 @@ Live site: https://points.alltripsconsidered.com/
 - **Spain:** Air Europa (UX): SUMA; Iberia (IB): Iberia Club; LEVEL (LL): Iberia Club; Vueling (VY): Vueling Club
 - **Sri Lanka:** SriLankan Airlines (UL): FlySmiLes
 - **Switzerland:** Edelweiss (WK): Miles & More; SWISS (LX): Miles & More
-- **Taiwan:** China Airlines (CI): Dynasty Flyer; EVA Air (BR): Infinity MileageLands; STARLUX Airlines (JX): COSMILE; Tigerair Taiwan (IT): tigerclub
+- **Taiwan:** China Airlines (CI): Dynasty Flyer; EVA Air (BR): Infinity MileageLands; Mandarin Airlines (AE): Dynasty Flyer; STARLUX Airlines (JX): COSMILE; Tigerair Taiwan (IT): tigerclub; UNI Air (B7): Infinity MileageLands
 - **Thailand:** Bangkok Airways (PG): FlyerBonus; Thai Airways (TG): Royal Orchid Plus
 - **Türkiye:** Pegasus Airlines (PC): BolBol; SunExpress (XQ): SunExpress your benefits; Turkish Airlines (TK): Miles&Smiles
 - **United Arab Emirates:** Emirates (EK): Emirates Skywards; Etihad Airways (EY): Etihad Guest
@@ -189,7 +189,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Emirates is listed for its US co-branded credit cards only. Emirates publishes no earning table, so the calculator asks for the amount charged to the card, shows the card's miles (3 per dollar on Emirates purchases) and marks the flight's own miles as not estimated. The form and the result link to Emirates' Skywards Miles Calculator for the flight. Programs like this use `method: "cardOnly"` and a `flightCalculator` link.
 - HK Express is listed for its Cathay co-branded cards only: the US Cathay World Elite Mastercard (3 Asia Miles per US dollar on HK Express travel) and the Hong Kong Standard Chartered Cathay Mastercard. Cathay says HK Express flights do not earn Asia Miles, so the result shows the flight as not earning and counts the card's miles. The Standard Chartered card earns 1 per HK$2 on the first HK$8,000 of Cathay and HK Express spending in a promotion period, then 1 per HK$6. Cards with a spending tier use `tiers` in their card entry.
   - Direct HK Express booking vs. Cathay codeshare: a flight booked directly with HK Express (UO flight number) earns no Asia Miles or Status Points, and bags, seats and meals cost extra. The same flight booked as a Cathay Pacific codeshare (CX flight number, on the same ticket as a Cathay Pacific flight) earns Asia Miles and Status Points by distance and Cathay fare type, with Cathay's baggage, meal and lounge benefits. Both notes appear in the HK Express and Cathay Pacific results. Co-branded card earning is the same either way.
-- EVA Air, China Airlines, and STARLUX earn a share of the distance by booking class, so they ask for the class and the miles flown.
+- EVA Air, China Airlines, and STARLUX earn a share of the distance by booking class, so they ask for the class and the miles flown. UNI Air (EVA's regional airline) and Mandarin Airlines (China Airlines' regional airline) have their own menu entries and earn on their parent's table.
 - EVA Air's card section, worded "Did you pay with an EVA Air co-brand card?", lists the EVA Air co-brand cards from American Express and Cathay United Bank on EVA's Infinity MileageLands credit card page. The American Express Platinum and Gold charge cards are kept simple at 1 point (1 award mile) per NT$25; their extra miles on EVA Air tickets (50% for Platinum, 67% on the first 2,000 miles a month for Gold) are not counted. Cathay United's Supreme Infinite, Infinite and Supreme Signature cards earn 1 per NT$10 on EVA Air tickets for international EVA Air and UNI Air flights, and its Signature card earns 1 per NT$30. The other cards on EVA's page are left out by choice.
 - Icelandair awards fixed Saga Points per flight by fare and route, so it asks for the fare and the route.
 - Allegiant earns 1 point per dollar up to $500 and 2 per dollar above that.
@@ -399,7 +399,7 @@ The two South African Airways Voyager "$" Mastercards are Ecobank Ghana cards th
 
 ### Site improvements
 
-- [ ] **"100+ airlines" wording:** the descriptions, share titles and preview image say "100+ airlines" and "90+ loyalty programs" (115 airlines in 91 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 100 programs.
+- [ ] **"100+ airlines" wording:** the descriptions, share titles and preview image say "100+ airlines" and "90+ loyalty programs" (117 airlines in 91 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 100 programs.
 
 ### Watch list
 

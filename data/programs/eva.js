@@ -1,5 +1,11 @@
 const rules = {
   name: "EVA Air | Infinity MileageLands",
+  programName: "Infinity MileageLands",
+  // UNI Air (B7), EVA's regional airline, earns on the same table.
+  airlines: [
+    { id: "br", name: "EVA Air", country: "TW" },
+    { id: "b7", name: "UNI Air", country: "TW" }
+  ],
   country: "TW",
   currency: "TWD",
   unit: "Award Miles",
@@ -45,15 +51,17 @@ const rules = {
     { id: "cub-supreme-signature", name: "Cathay United EVA Air Supreme Signature Card", rate: 1 / 10, per: 10, bank: "Cathay United Bank (Taiwan)" },
     { id: "cub-signature", name: "Cathay United EVA Air Signature Card", rate: 1 / 30, per: 30, bank: "Cathay United Bank (Taiwan)" }
   ],
-  note: "EVA Air earns a share of the ticketed distance set by booking class, from 50% in Economy Basic to 175% in Business Up. Economy Discount (A) and group fares earn nothing. Silver adds 15%, and Gold and Diamond add 25% on international EVA Air and UNI Air flights."
+  note: "EVA Air earns a share of the ticketed distance set by booking class, from 50% in Economy Basic to 175% in Business Up. Economy Discount (A) and group fares earn nothing. Silver adds 15%, and Gold and Diamond add 25% on international EVA Air and UNI Air flights. UNI Air flights earn on the same table."
 };
 
 module.exports = {
   id: "eva",
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
-  code: "BR",
-  color: "#00A650",
-  source: "https://www.evaair.com/en-us/infinity-mileagelands/mileage-award-program/earning-mileage/eva-air-and-uni-air/mileage-accrual-ratio-rule/",
+  // Two-letter code, brand color, and source page for each airline.
+  airlines: {
+    br: { code: "BR", color: "#00A650", source: "https://www.evaair.com/en-us/infinity-mileagelands/mileage-award-program/earning-mileage/eva-air-and-uni-air/mileage-accrual-ratio-rule/" },
+    b7: { code: "B7", color: "#00A650", source: "https://www.evaair.com/en-us/infinity-mileagelands/mileage-award-program/earning-mileage/eva-air-and-uni-air/mileage-accrual-ratio-rule/" }
+  },
   rules
 };
