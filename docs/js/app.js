@@ -202,11 +202,43 @@
     });
     // A program whose fares cannot all be measured keeps its own order.
     if (vals.some(function (v) { return v === null; })) return list;
-    // Fares that earn the same keep cabin order (most lists start with the
-    // highest cabin, so the later entry comes first).
+    // Fares that earn the same keep the program's own order.
     return list.map(function (f, i) { return { f: f, v: vals[i], i: i }; })
-      .sort(function (a, b) { return a.v - b.v || b.i - a.i; })
+      .sort(function (a, b) { return a.v - b.v || a.i - b.i; })
       .map(function (x) { return x.f; });
+  }
+
+  // The cabin a fare belongs to, from its name: 0 Economy, 1 Premium
+  // Economy, 2 Business, 3 First. Null when the name does not say.
+  var CABINS = ["Economy", "Premium Economy", "Business", "First"];
+  function cabinOf(name) {
+    var n = name.toLowerCase();
+    if (/\bfirst\b|suites|royal first/.test(n)) return 3;
+    if (/business|executive|upper class|prestige|crown|royal silk|poerava|hibiscus|\bmint\b/.test(n)) return 2;
+    if (/premium economy|^premium|m\u0101nava|comfort class|saga premium/.test(n)) return 1;
+    if (/economy|\beco\b/.test(n)) return 0;
+    return null;
+  }
+  // Fills the fare menu: grouped by cabin (Economy to First) when the fare
+  // names say the cabin, and lowest to highest earning within each group.
+  function fillFares(p, list) {
+    var sorted = sortFares(p, list);
+    var cabins = sorted.map(function (f) { return cabinOf(f.name); });
+    // Group only when some names show a cabin above Economy; fares whose
+    // name does not say the cabin count as Economy (PAL: Group Booking;
+    // LifeMiles: Basic, Classic and Flex beside Business).
+    if (!cabins.some(function (c) { return c > 0; })) {
+      sorted.forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
+      return;
+    }
+    cabins = cabins.map(function (c) { return c === null ? 0 : c; });
+    var distinct = cabins.filter(function (c, i) { return cabins.indexOf(c) === i; });
+    distinct.sort(function (a, b) { return a - b; }).forEach(function (c) {
+      var group = document.createElement("optgroup");
+      group.label = CABINS[c];
+      sorted.forEach(function (f, i) { if (cabins[i] === c) group.appendChild(option(f.id, f.name)); });
+      fareTypeEl.appendChild(group);
+    });
   }
 
   function statusLabel(s, p) {
@@ -657,7 +689,7 @@
 
     fareTypeField.hidden = !p.fareTypes;
     if (p.fareTypes) {
-      sortFares(p, p.fareTypes).forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
+      fillFares(p, p.fareTypes);
       if (p.defaultFareType) fareTypeEl.value = p.defaultFareType;
       else fareTypeEl.value = p.fareTypes[1 < p.fareTypes.length ? 1 : 0].id;
       setCurrency(current().currency || "USD");
@@ -868,7 +900,7 @@
       var zid = zoneEl.value, prevFare = fareTypeEl.value;
       var fares = p.fareTypes.filter(function (f) { return !f.zones || f.zones.indexOf(zid) >= 0; });
       fareTypeEl.replaceChildren();
-      sortFares(p, fares).forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
+      fillFares(p, fares);
       var zDefault = p.zoneDefaultFare && p.zoneDefaultFare[zid];
       var hasFare = function (id) { return fares.some(function (f) { return f.id === id; }); };
       fareTypeEl.value = hasFare(prevFare) ? prevFare : (zDefault && hasFare(zDefault) ? zDefault : fares[0].id);
