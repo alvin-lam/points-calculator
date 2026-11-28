@@ -22,7 +22,7 @@ const rules = {
     { id: "gold", name: "Gold", rates: { direct: 0.11, other: 0.09 } },
     { id: "platinum", name: "Platinum", rates: { direct: 0.12, other: 0.1 } }
   ],
-  note: "Maharaja Club earns per 100 rupees of base fare and fuel surcharge: 6 points for Red, 8 for Silver, 9 for Gold and 10 for Platinum. Booking on Air India's own website or app adds 2 points per 100 rupees. Taxes and fees do not earn. Enter fares in rupees."
+  note: "Maharaja Club earns per 100 rupees of base fare and fuel surcharge: 6 points for Red, 8 for Silver, 9 for Gold and 10 for Platinum. Booking on Air India's own website or app adds 2 points per 100 rupees. Taxes and fees do not earn. Since 26 May 2026, Air India Express flights also earn Maharaja Points at the same rates. Enter fares in rupees."
 };
 
 module.exports = {

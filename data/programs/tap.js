@@ -14,6 +14,8 @@ const rules = {
     { id: "classic-ic", name: "Classic, intercontinental", rate: 1 },
     { id: "plus-eu", name: "Plus, Europe and North Africa", rate: 1 },
     { id: "plus-ic", name: "Plus, intercontinental", rate: 1.5 },
+    { id: "prime", name: "Prime (intercontinental)", rate: 1.5 },
+    { id: "top-prime", name: "Top Prime (intercontinental)", rate: 1.75 },
     { id: "executive", name: "Executive", rate: 1.75 },
     { id: "top-executive", name: "Top Executive", rate: 2 }
   ],
@@ -34,7 +36,7 @@ const rules = {
     { id: "bcp-gold", name: "TAP Gold Credit Card", rate: 1.5, bank: "Millennium bcp (Portugal)" },
     { id: "bcp-platinum", name: "TAP Platinum Credit Card", rate: 2, bank: "Millennium bcp (Portugal)" }
   ],
-  note: "TAP Miles&Go earns a share of the miles flown set by fare and region. Executive rose from 150% to 175% in 2026. Silver and Gold bonuses could not be confirmed, so all levels use the base rates. The US TAP Miles&Go American Express Credit Card earns 3 more miles per dollar on TAP purchases. In Portugal, the Millennium bcp TAP Classic, Gold and Platinum credit cards earn 1, 1.5 and 2 miles per euro on all purchases, up to 5,000, 15,000 and 75,000 miles a month."
+  note: "TAP Miles&Go earns a share of the miles flown set by fare and region. Executive rose from 150% to 175% in 2026. The intercontinental Prime and Top Prime fares earn 150% and 175%. Silver and Gold bonuses could not be confirmed, so all levels use the base rates. The US TAP Miles&Go American Express Credit Card earns 3 more miles per dollar on TAP purchases. In Portugal, the Millennium bcp TAP Classic, Gold and Platinum credit cards earn 1, 1.5 and 2 miles per euro on all purchases, up to 5,000, 15,000 and 75,000 miles a month."
 };
 
 module.exports = {

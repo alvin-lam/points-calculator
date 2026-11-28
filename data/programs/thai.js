@@ -13,10 +13,12 @@ const rules = {
   // Classes L, O, I, X, E, N and R earn nothing.
   fareTypes: [
     { id: "f", name: "Royal First (F)", rate: 2.5 },
-    { id: "ap", name: "Royal First (A, P)", rate: 2 },
+    // Class A moved from Royal First to Premium Economy for flights from
+    // 1 July 2026.
+    { id: "ap", name: "Royal First (P)", rate: 2 },
     { id: "cd", name: "Royal Silk (C, D)", rate: 1.5 },
-    { id: "jz", name: "Royal Silk (J, Z)", rate: 1.25 },
-    { id: "u", name: "Premium Economy (U)", rate: 1.1 },
+    { id: "jz", name: "Royal Silk (J, Z) or Premium Economy Plus (Z)", rate: 1.25 },
+    { id: "u", name: "Premium Economy (A, U)", rate: 1.1 },
     { id: "y-ybm", name: "Economy (Y, B, M)", rate: 1.1 },
     { id: "y-hqt", name: "Economy (H, Q, T)", rate: 1 },
     { id: "y-ksv", name: "Economy (K, S, V)", rate: 0.75 },
@@ -36,7 +38,7 @@ const rules = {
   cards: [
     { id: "amex-thai-platinum", name: "THAI American Express Platinum Card", rate: 2 / 25, rateText: "2 per ฿25", bank: "American Express (Thailand)" }
   ],
-  note: "Royal Orchid Plus earns a share of the distance flown by booking class, from 25% (W) to 250% (F). Flights under 500 miles count as 500. Silver adds 5%, Gold 10% and Platinum 20%. Classes L, O, I, X, E, N and R earn nothing. The THAI American Express Platinum Card earns 2 miles per 25 baht on THAI tickets bought on the THAI website or at THAI offices in Thailand."
+  note: "Royal Orchid Plus earns a share of the distance flown by booking class, from 25% (W) to 250% (F). From 1 July 2026, class A earns 110% as Premium Economy instead of 200% as Royal First. Premium Economy Plus (Z, on some A330-300 flights) earns 125%. Flights under 500 miles count as 500. Silver adds 5%, Gold 10% and Platinum 20%. Classes L, O, I, X, E, N and R earn nothing. The THAI American Express Platinum Card earns 2 miles per 25 baht on THAI tickets bought on the THAI website or at THAI offices in Thailand."
 };
 
 module.exports = {

@@ -17,6 +17,7 @@ const rules = {
     { id: "member", name: "SKYPASS Member", multiplier: 1 },
     { id: "morning-calm", name: "Morning Calm", multiplier: 1 },
     { id: "morning-calm-select", name: "Morning Calm Select", multiplier: 1 },
+    { id: "morning-calm-premium", name: "Morning Calm Premium", multiplier: 1 },
     { id: "million-miler", name: "Million Miler", multiplier: 1 }
   ],
   // US cards (U.S. Bank): miles per dollar on Korean Air tickets.

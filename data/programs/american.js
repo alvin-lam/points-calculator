@@ -73,7 +73,7 @@ module.exports = {
   reviewed: "2026-11",
   // Two-letter code, brand color, and source page for each airline.
   airlines: {
-    aa: { code: "AA", color: "#0078D2", source: "https://www.aa.com/i18n/aadvantage-program/miles/earn/earn-miles-on-american.jsp" },
+    aa: { code: "AA", color: "#0078D2", source: "https://www.aa.com/web/i18n/aadvantage-program/earn-miles/american-airlines-flights.html" },
     fj: { code: "FJ", color: "#2C1E16", source: "https://www.aa.com/i18n/travel-info/partner-airlines/fiji-airways.html" },
     ja: { code: "JA", codes: ["JA", "JZ", "WJ", "J6"], color: "#153E69", source: "https://www.aa.com/i18n/travel-info/partner-airlines/jetsmart.jsp" }
   },

@@ -31,6 +31,6 @@ module.exports = {
   reviewed: "2026-11",
   code: "MH",
   color: "#1F4E9C",
-  source: "https://enrich.malaysiaairlines.com/enrich/news/enrich-2026/new-updates.html",
+  source: "https://enrich.malaysiaairlines.com/EnrichUpdates2026.html",
   rules
 };

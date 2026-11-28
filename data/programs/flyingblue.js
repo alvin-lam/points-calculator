@@ -79,6 +79,9 @@ const rules = {
         addons: false,
         method: "distance",
         currency: "XPF",
+        // Flying Blue's 1.2 euro cents a mile, in Pacific francs (fixed at
+        // 119.33 to the euro), since the franc has no hundredths.
+        valuePerPoint: 1.43,
         defaultFareType: "ybs",
         fareTypeLabel: "Booking Class",
         zoneLabel: "Aircalin network",

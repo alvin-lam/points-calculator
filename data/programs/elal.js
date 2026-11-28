@@ -22,6 +22,8 @@ const rules = {
   // The fare sets the cabin and whether it is a FLEX fare (+20% points).
   defaultFareType: "economy",
   fareTypeLabel: "Cabin and fare",
+  // Keep each cabin next to its FLEX fare instead of sorting by earning.
+  keepFareOrder: true,
   fareTypes: [
     { id: "economy", name: "Economy", rate: 1 },
     { id: "economy-flex", name: "Economy FLEX fare", rate: 1, bonusPct: 0.2, bonusName: "FLEX fare bonus" },

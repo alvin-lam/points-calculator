@@ -57,7 +57,7 @@ module.exports = function applyAlliances(P) {
     flyingblue: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus", ultimate: "Elite Plus" },
     virgin: { silver: "Elite", gold: "Elite Plus" },
     chinaairlines: { gold: "Elite", emerald: "Elite Plus", paragon: "Elite Plus" },
-    korean: { "morning-calm": "Elite", "morning-calm-select": "Elite Plus", "million-miler": "Elite Plus" },
+    korean: { "morning-calm": "Elite", "morning-calm-select": "Elite Plus", "morning-calm-premium": "Elite Plus", "million-miler": "Elite Plus" },
     aireuropa: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus" },
     chinaeastern: { silver: "Elite", gold: "Elite Plus", platinum: "Elite Plus" },
     xiamen: { silver: "Elite", gold: "Elite", platinum: "Elite Plus", diamond: "Elite Plus" },

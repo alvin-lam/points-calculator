@@ -26,7 +26,7 @@ const rules = {
   statuses: [
     { id: "member", name: "Staria Member", multiplier: 1 }
   ],
-  note: "Staria earns per Canadian dollar of fare, before taxes and airport fees: 3 points on Eco Budget, 5 on Eco Standard and Club Standard, and 7 on Eco Flex and Club Flex. Extras bought before the airport earn 5 points per dollar. Only flights booked on Air Transat's Canadian website earn."
+  note: "Staria earns per Canadian dollar of fare, before taxes and airport fees: 3 points on Eco Budget, 5 on Eco Standard and Club Standard, and 7 on Eco Flex and Club Flex. Extras bought before the airport earn 5 points per dollar. Flights operated by Air Transat or Porter earn. Only flights booked on Air Transat's Canadian website earn."
 };
 
 module.exports = {

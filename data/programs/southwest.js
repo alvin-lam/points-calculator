@@ -25,7 +25,7 @@ const rules = {
     { id: "priority", name: "Southwest Rapid Rewards Priority", rate: 4, bank: "Chase (US)" },
     { id: "debit", name: "Southwest Rapid Rewards Debit Card", rate: 1, kind: "debit" }
   ],
-  note: "Rapid Rewards earns per dollar of base fare only: 2 points on Basic, 6 on Choice, 10 on Choice Preferred, and 14 on Choice Extra. A-List adds a 25% bonus and A-List Preferred adds a 100% bonus. From 1 January 2027, Choice Preferred drops to 8 and Choice Extra to 10."
+  note: "Rapid Rewards earns per dollar of base fare only: 2 points on Basic, 6 on Choice, 10 on Choice Preferred, and 14 on Choice Extra. A-List adds a 25% bonus and A-List Preferred adds a 100% bonus. From 1 January 2027, Choice Preferred drops to 8 and Choice Extra to 10, A-List becomes Silver with a 40% bonus, A-List Preferred becomes Gold with a 60% bonus, and a new Platinum level earns a 120% bonus."
 };
 
 module.exports = {

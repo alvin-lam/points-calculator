@@ -14,6 +14,9 @@ const rules = {
   carrierLabel: "Carrier-imposed Surcharges",
   carrierHint: "Hainan Airlines's fuel and other carrier-imposed surcharges. They earn like the fare. Seats, bags, upgrades and service charges do not.",
   roundSpendTo: 10,
+  // "Portions of the eligible spend that are less than 10 RMB will be
+  // treated as 10 RMB": the spend rounds up to the next 10 yuan.
+  roundSpendUp: true,
   cap: 75000,
   // 10 base points per 10 yuan, plus the status bonus per 10 yuan.
   statuses: [
@@ -23,7 +26,7 @@ const rules = {
     { id: "gold", name: "Gold", rate: 1.6 },
     { id: "platinum", name: "Platinum", rate: 1.8 }
   ],
-  note: "Fortune Wings Club earns 10 base points per 10 yuan of eligible spend on Hainan Airlines domestic flights, for flight dates from 28 March 2026, plus a status bonus of 1, 3, 6, or 8 points per 10 yuan for Select, Silver, Gold, and Platinum. The basic Fortune Wings tier earns no bonus. Spending is rounded to the nearest 10 yuan. Classes J, S, O, G, A, U, T, F, P, and B earn nothing. Earning is capped at 75,000 points per segment. Enter fares in yuan."
+  note: "Fortune Wings Club earns 10 base points per 10 yuan of eligible spend on Hainan Airlines domestic flights, for flight dates from 28 March 2026, plus a status bonus of 1, 3, 6, or 8 points per 10 yuan for Select, Silver, Gold, and Platinum. The basic Fortune Wings tier earns no bonus. Any part of the spend under 10 yuan counts as a full 10 yuan. Classes J, S, O, G, A, U, T, F, P, and B earn nothing. Earning is capped at 75,000 points per ticket, including the status bonus. Enter fares in yuan."
 };
 
 module.exports = {

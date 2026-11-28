@@ -15,7 +15,7 @@ const rules = {
     { id: "pe-low", name: "Premium Economy (N)", rate: 0.7 },
     { id: "y", name: "Economy (Y, B, M)", rate: 1 },
     { id: "y-mid", name: "Economy (U, H, Q)", rate: 0.7 },
-    { id: "y-low", name: "Economy (V, W, S)", rate: 0.5 },
+    { id: "y-low", name: "Economy (V, W, S, T)", rate: 0.5 },
     { id: "y-lowest", name: "Economy (L, K)", rate: 0.3 }
   ],
   statuses: [

@@ -79,6 +79,6 @@ module.exports = {
   reviewed: "2026-11",
   code: "QF",
   color: "#E40000",
-  source: "https://www.qantas.com/us/en/frequent-flyer/earning-points/flights/qantas.html",
+  source: "https://www.qantas.com/en-us/frequent-flyer/calculators/earning-tables/qantas-jetstar",
   rules
 };
