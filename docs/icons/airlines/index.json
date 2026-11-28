@@ -1141,9 +1141,9 @@
   },
   "chinaairlines:ae": {
     "file": "icons/airlines/mandarin.png",
-    "title": "Mandarin Airlines app icon",
-    "source": "App Store icon of Mandarin Airlines",
-    "license": "Trademark of its owner; official app icon (no wordmark file available yet)",
+    "title": "Mandarin Airlines logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Mandarin_Airlines_logo.svg",
+    "license": "Trademark of its owner; logo file from Wikimedia Commons",
     "square": "icons/airlines/square/mandarin.png",
     "circle": "icons/airlines/circle/mandarin.png",
     "iconSource": "App Store icon by Mandarin Airlines"
