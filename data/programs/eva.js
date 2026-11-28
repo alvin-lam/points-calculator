@@ -20,10 +20,10 @@ const rules = {
     { id: "y-discount", name: "Economy Discount (A)", rate: 0 }
   ],
   statuses: [
-    { id: "green", name: "Green Card", multiplier: 1 },
-    { id: "silver", name: "Silver Card", multiplier: 1.15 },
-    { id: "gold", name: "Gold Card", multiplier: 1.25 },
-    { id: "diamond", name: "Diamond Card", multiplier: 1.25 }
+    { id: "green", name: "Green", multiplier: 1 },
+    { id: "silver", name: "Silver", multiplier: 1.15 },
+    { id: "gold", name: "Gold", multiplier: 1.25 },
+    { id: "diamond", name: "Diamond", multiplier: 1.25 }
   ],
   // EVA Air co-brand cards from American Express and Cathay United Bank, from
   // EVA Air's Infinity MileageLands credit card page (North America English,
@@ -45,7 +45,7 @@ const rules = {
     { id: "cub-supreme-signature", name: "Cathay United EVA Air Supreme Signature Card", rate: 1 / 10, per: 10, bank: "Cathay United Bank (Taiwan)" },
     { id: "cub-signature", name: "Cathay United EVA Air Signature Card", rate: 1 / 30, per: 30, bank: "Cathay United Bank (Taiwan)" }
   ],
-  note: "EVA Air earns a share of the ticketed distance set by booking class, from 50% in Economy Basic to 175% in Business Up. Economy Discount (A) and group fares earn nothing. Silver Card adds 15%, and Gold and Diamond Card add 25% on international EVA Air and UNI Air flights."
+  note: "EVA Air earns a share of the ticketed distance set by booking class, from 50% in Economy Basic to 175% in Business Up. Economy Discount (A) and group fares earn nothing. Silver adds 15%, and Gold and Diamond add 25% on international EVA Air and UNI Air flights."
 };
 
 module.exports = {

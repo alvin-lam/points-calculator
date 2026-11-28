@@ -18,10 +18,10 @@ const rules = {
   // 10 base points per 10 yuan, plus the status bonus per 10 yuan.
   statuses: [
     { id: "member", name: "Fortune Wings", rate: 1 },
-    { id: "select", name: "Select Card", rate: 1.1 },
-    { id: "silver", name: "Silver Card", rate: 1.3 },
-    { id: "gold", name: "Gold Card", rate: 1.6 },
-    { id: "platinum", name: "Platinum Card", rate: 1.8 }
+    { id: "select", name: "Select", rate: 1.1 },
+    { id: "silver", name: "Silver", rate: 1.3 },
+    { id: "gold", name: "Gold", rate: 1.6 },
+    { id: "platinum", name: "Platinum", rate: 1.8 }
   ],
   note: "Fortune Wings Club earns 10 base points per 10 yuan of eligible spend on Hainan Airlines domestic flights, for flight dates from 28 March 2026, plus a status bonus of 1, 3, 6, or 8 points per 10 yuan for Select, Silver, Gold, and Platinum. The basic Fortune Wings tier earns no bonus. Spending is rounded to the nearest 10 yuan. Classes J, S, O, G, A, U, T, F, P, and B earn nothing. Earning is capped at 75,000 points per segment. Enter fares in yuan."
 };

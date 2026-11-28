@@ -22,9 +22,9 @@ const rules = {
     { id: "4-star", name: "4-star member", rates: { direct: 0.792, other: 0.72 } },
     { id: "5-star", name: "5-star member", rates: { direct: 0.88, other: 0.8 } },
     { id: "6-star", name: "6-star member", rates: { direct: 0.968, other: 0.88 } },
-    { id: "silver", name: "Silver card", rates: { direct: 1.056, other: 0.96 } },
-    { id: "gold", name: "Gold card", rates: { direct: 1.144, other: 1.04 } },
-    { id: "platinum", name: "Platinum card", rates: { direct: 1.232, other: 1.12 } }
+    { id: "silver", name: "Silver", rates: { direct: 1.056, other: 0.96 } },
+    { id: "gold", name: "Gold", rates: { direct: 1.144, other: 1.04 } },
+    { id: "platinum", name: "Platinum", rates: { direct: 1.232, other: 1.12 } }
   ],
   note: "Eastern Miles earns on the price paid, fare plus fuel surcharge, on China Eastern, Shanghai Airlines, and China United tickets: 0.24 to 1.232 miles per yuan by level and sales channel. Taxes, insurance, preferred seats, change fees and paid upgrades do not earn. Enter fares in yuan."
 };
