@@ -1087,9 +1087,9 @@
   },
   "airbusan": {
     "file": "icons/airlines/airbusan.png",
-    "title": "Air Busan app icon",
-    "source": "App Store icon of Air Busan",
-    "license": "Trademark of its owner; official app icon (no wordmark file available yet)",
+    "title": "Air Busan logo",
+    "source": "https://commons.wikimedia.org/wiki/File:Air_Busan_logo.svg",
+    "license": "Trademark of its owner; logo file from Wikimedia Commons",
     "square": "icons/airlines/square/airbusan.png",
     "circle": "icons/airlines/circle/airbusan.png",
     "iconSource": "App Store icon by Airbusan"
