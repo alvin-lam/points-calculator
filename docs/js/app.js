@@ -94,6 +94,11 @@
     return num.format(Math.round(miles)) + (Math.round(miles) === 1 ? " mile" : " miles") + (useKm ? " (" + num.format(Math.round(miles * KM_PER_MILE)) + " km)" : "");
   }
   // "1 mile", "1 point": singular only for plain English units.
+  // A rate for a label, rounded half up at three decimals like the points,
+  // so floating point (1.3224999) does not show 1.322 beside 1,323.
+  function rateText(x) {
+    return num.format(Math.round(x * 1000 + 1e-7) / 1000);
+  }
   function unitFor(n, unit) {
     if (n !== 1) return unit;
     // "KrisFlyer miles" -> "KrisFlyer mile", "Qantas Points" -> "Qantas Point".
@@ -281,8 +286,12 @@
   var CODES = window.AIRLINE_CODES || {};
   // Lower case without accents, so "aeromexico" finds "Aeroméxico" and
   // "turkiye" finds "Türkiye".
+  // Letters that do not split into a base letter and an accent are spelled
+  // out, so "wideroe" finds "Widerøe".
+  var SPELLED = { "ø": "o", "æ": "ae", "œ": "oe", "ß": "ss", "ł": "l", "đ": "d", "ı": "i" };
   function foldText(text) {
-    return String(text || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    return String(text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/[øæœßłđı]/g, function (ch) { return SPELLED[ch]; });
   }
   function searchText(value, label, country, p) {
     // Grouped airlines match on their own name, program, and code, not the
@@ -303,6 +312,14 @@
   // Choices that match a search, grouped by country in menu order.
   function collect(filter) {
     var words = foldText(filter).split(/\s+/).filter(Boolean);
+    // In a phrase, small joining words do not have to match ("miles and
+    // more"), and short words must start a word, so "and" does not find
+    // "Poland" and "al" does not find "Australia".
+    var phrase = words.length > 1;
+    if (phrase) {
+      var kept = words.filter(function (w) { return ["and", "&", "of", "the"].indexOf(w) === -1; });
+      if (kept.length) words = kept;
+    }
     var groups = [];
     countryOrder.forEach(function (c) {
       var choices = [];
@@ -318,6 +335,7 @@
             // and only those (plus an airline with that two-letter code).
             if (countryCode(c, w)) return true;
             if (isAnyCountryCode(w)) return false;
+            if (phrase && w.length <= 3) return (" " + text).indexOf(" " + w) !== -1;
             return text.indexOf(w) !== -1;
           });
           if (ok) choices.push([value, label]);
@@ -610,7 +628,18 @@
       statusEl.appendChild(option("", "Choose a program first"));
       statusEl.disabled = true;
       $("statusLabel").textContent = "Membership Level";
+      // Undo what the last program set up: its questions, labels and
+      // currency, so the empty form matches a fresh page.
+      extrasWrap.replaceChildren();
+      $("extraFields").textContent = "";
+      setCurrency("USD");
+      $("carrierLabel").textContent = "Carrier-imposed Fees";
+      $("carrierHint").textContent = "Fuel or other airline surcharges (YQ/YR), if any. Leave blank if none.";
+      $("fareTypeLabel").textContent = "Fare Type";
+      cardEl.replaceChildren();
+      upgradeEl.replaceChildren();
       usedCardNo.checked = true;
+      cardmemberNo.checked = true;
       resultEl.hidden = true;
       errorEl.hidden = true;
       return;
@@ -735,7 +764,9 @@
         });
       });
     }
-    if (!p.cards) usedCardNo.checked = true;
+    // Each program starts at "No": a card answered for the last program is
+    // not an answer for this one, and a hidden "Yes" would still add points.
+    usedCardNo.checked = true;
     // Some airlines name their carrier fee (Frontier: Carrier Interface Fee).
     $("carrierLabel").textContent = p.carrierLabel || "Carrier-imposed Fees";
     $("carrierHint").textContent = p.carrierHint || "Fuel or other airline surcharges (YQ/YR), if any. Leave blank if none.";
@@ -1013,7 +1044,7 @@
         // bonus can also be added on top of the fare share (Etihad).
         if (status.bonus != null) {
           points = base + dist * status.bonus;
-          rateLabel = num.format(share + status.bonus) + " " + unitFor(share + status.bonus, p.unit) + " per " + unitName;
+          rateLabel = rateText(share + status.bonus) + " " + unitFor(share + status.bonus, p.unit) + " per " + unitName;
         } else {
           var mult = fareType && fareType.noBonus ? 1 : (status.multiplier || 1);
           // A status can set its multiplier per route type (Philippine
@@ -1023,10 +1054,10 @@
             // The status bonus is a share of the distance flown, not of the
             // earned miles (Philippine Airlines Business Class).
             points = base + dist * (mult - 1);
-            rateLabel = num.format(share + mult - 1) + " " + unitFor(share + mult - 1, p.unit) + " per " + unitName;
+            rateLabel = rateText(share + mult - 1) + " " + unitFor(share + mult - 1, p.unit) + " per " + unitName;
           } else {
             points = base * mult;
-            rateLabel = num.format(share * mult) + " " + unitFor(share * mult, p.unit) + " per " + unitName;
+            rateLabel = rateText(share * mult) + " " + unitFor(share * mult, p.unit) + " per " + unitName;
           }
         }
         if (minUsed) rateLabel += ", with the " + num.format(min) + " minimum per flight";
@@ -1178,8 +1209,14 @@
     if (fareUsed && (!(airfare >= 0) || airfareEl.value === "")) return showError("Please enter your airfare.");
     if (carrier < 0) return showError("Carrier-imposed fees cannot be negative.");
     if (taxes < 0) return showError("Taxes and airport fees cannot be negative.");
+    // A billion of any currency (even dong or won) is far beyond a real
+    // fare, so a larger total is almost surely a typo, such as 1e12.
+    if (tripCost > 1e9) return showError("The amounts add up to more than 1,000,000,000. Please check the airfare, fees and taxes.");
     var routeFixed = method === "distance" && p.zones && find(p.zones, zoneEl.value).fixed;
     if (method === "distance" && !routeFixed && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
+    // Under half a mile would show as "0 miles"; the shortest flights are
+    // a mile or more.
+    if (method === "distance" && !routeFixed && Math.round(distance) < 1) return showError("Please enter at least 1 mile flown.");
     // About once around the world: a longer trip is almost surely a typo.
     if (method === "distance" && !routeFixed && distance > 25000) return showError("That is more than 25,000 miles, longer than a trip around the world. Please check the miles flown.");
     if (method === "segments" && !(segments > 0)) return showError("Please enter the number of segments flown.");
@@ -1187,7 +1224,15 @@
 
     errorEl.hidden = true;
     var cur = p.currency || "USD";
-    var usd = money[cur] || (money[cur] = new Intl.NumberFormat(LOCALE, { style: "currency", currency: cur }));
+    // Amounts use the same sign as the rates and the input boxes ("₺", "RM",
+    // "XPF"), with the currency's own number of decimals.
+    var usd = money[cur] || (money[cur] = (function () {
+      var digits = new Intl.NumberFormat("en", { style: "currency", currency: cur }).resolvedOptions().maximumFractionDigits;
+      var nf = new Intl.NumberFormat(LOCALE, { minimumFractionDigits: digits, maximumFractionDigits: digits });
+      var sign = symbols[cur] || cur + " ";
+      if (/[A-Za-z]$/.test(sign)) sign += " ";
+      return { format: function (v) { return (v < 0 ? "-" : "") + sign + nf.format(Math.abs(v)); } };
+    })());
     var status = find(p.statuses, statusEl.value);
     var fareType = p.fareTypes && !earnMethod(p).noFareType ? find(p.fareTypes, fareTypeEl.value) : null;
     var airline = selection().airline;
@@ -1233,6 +1278,7 @@
       // CARD) can be held without paying with it: no amount, no card points.
       if (!(charged > 0) && card.flightBonusPct) charged = 0;
       else if (!(charged > 0)) return showError("Please enter the amount charged to your card in " + cardSymbols[cardCurrency] + ".");
+      else if (charged > 1e9) return showError("The amount charged to your card is more than 1,000,000,000. Please check it.");
     }
     // A card's rate can depend on the fare type (Breeze Easy Visa).
     var cardRate = card ? (card.rates && fareType && card.rates[fareType.id] != null ? card.rates[fareType.id] : card.rate) : 0;
@@ -1306,7 +1352,7 @@
     setBadge($("resultTier"), tierInfo, allianceName + " " + (status.alliance || ""));
     $("resultBadges").hidden = !allianceInfo && !tierInfo;
     $("resultPoints").textContent = num.format(total);
-    $("resultUnit").textContent = p.unit;
+    $("resultUnit").textContent = unitFor(total, p.unit);
 
     var dl = $("breakdown");
     dl.replaceChildren();
@@ -1557,7 +1603,8 @@
       programEl.value = "";
       searchEl.value = "";
       closeList();
-      onProgramChange();
+      // The change event also puts back the site colours (applyAirlineColors).
+      programEl.dispatchEvent(new Event("change"));
       syncClear();
       resultEl.hidden = true;
       errorEl.hidden = true;
@@ -1625,18 +1672,26 @@
     resultEl.hidden = true;
   });
 
+  // A distance filled from the airport boxes only stands while the boxes
+  // name two airports. When they stop doing so (a city is still being typed,
+  // an airport is unknown, a city needs a pick), the old figure goes, so
+  // Calculate never uses a route the boxes no longer show.
+  function clearAirportMiles() {
+    if (distanceEl.dataset.miles) { distanceEl.value = ""; delete distanceEl.dataset.miles; }
+  }
   function updateAirportDistance() {
     var from = fromAirport.value, to = toAirport.value;
-    if (!from.trim() || !to.trim()) { airportResult.textContent = ""; return; }
-    if (!window.AIRPORTS) { airportResult.textContent = "Loading airports\u2026"; return; }
+    if (!from.trim() || !to.trim()) { airportResult.textContent = ""; clearAirportMiles(); return; }
+    if (!window.AIRPORTS) { airportResult.textContent = "Loading airports\u2026"; clearAirportMiles(); return; }
     var D = window.Distance;
     var picks = [from, to].map(function (v) { return D.resolveAirport(window.AIRPORTS, v); });
     var unknown = [from, to].filter(function (v, i) { return !picks[i]; });
-    if (unknown.length) { airportResult.textContent = "No airport found for \u201c" + unknown[0].trim() + "\u201d. Enter a three-letter code, such as PHL, or a city name."; return; }
+    if (unknown.length) { clearAirportMiles(); airportResult.textContent = "No airport found for \u201c" + unknown[0].trim() + "\u201d. Enter a three-letter code, such as PHL, or a city name."; return; }
     // A city with more than one airport: offer each as a button, main
     // international airports first.
     var si = picks[0].matches ? 0 : (picks[1].matches ? 1 : -1);
     if (si !== -1) {
+      clearAirportMiles();
       var A0 = window.AIRPORTS, input = si === 0 ? fromAirport : toAirport;
       var list = picks[si].matches.slice().sort(function (a, b) {
         var ia = /international/i.test(A0[a][3]) ? 0 : 1, ib = /international/i.test(A0[b][3]) ? 0 : 1;
@@ -1779,7 +1834,7 @@
       // While typing, show the distance only once both boxes name one airport.
       var A = window.AIRPORTS, D = window.Distance;
       var ok = A && [fromAirport, toAirport].every(function (el) { var r = D.resolveAirport(A, el.value); return r && r.code; });
-      if (ok) updateAirportDistance(); else { airportResult.textContent = ""; delete airportResult.dataset.picks; }
+      if (ok) updateAirportDistance(); else { airportResult.textContent = ""; delete airportResult.dataset.picks; clearAirportMiles(); }
     });
     input.addEventListener("keydown", function (e) {
       if (e.key === "ArrowDown") { e.preventDefault(); if (list.hidden) open(); setAct(act + 1); }

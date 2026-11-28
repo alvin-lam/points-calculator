@@ -472,6 +472,12 @@ footer .copyright { margin-top: 1.5em; letter-spacing: 0.01em; }
 .airport-list [role="option"]:hover .airport-name, .airport-list [role="option"].active .airport-name { color: inherit; opacity: .85; }
 .airport-input { flex: 1; min-width: 0; margin: 0; font-weight: 400; }
 .airport-arrow { color: var(--muted); flex: none; }
+/* On a phone the two boxes stack, so each has the full width for
+   "From (NOU or city)" or a chosen "JFK - New York (...)". */
+@media (max-width: 480px) {
+  .airport-row { flex-direction: column; align-items: stretch; gap: 4px; }
+  .airport-arrow { align-self: center; transform: rotate(90deg); line-height: 1; }
+}
 .airport-result { margin: 6px 0 12px; }
 .airport-result:empty { margin: 0 0 8px; }
 .airport-picks { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }

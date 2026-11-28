@@ -27,7 +27,10 @@
 
   // Lower case without accents, so "zurich" finds "Zürich".
   function fold(text) {
-    return String(text || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/\s+/g, " ").trim();
+    // Letters with no separate accent are spelled out ("tromso" finds Tromsø).
+    return String(text || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/[øæœßłđı]/g, function (ch) { return { "ø": "o", "æ": "ae", "œ": "oe", "ß": "ss", "ł": "l", "đ": "d", "ı": "i" }[ch]; })
+      .replace(/\s+/g, " ").trim();
   }
 
   // Main airports of cities whose airports the data lists under other
@@ -69,6 +72,14 @@
     DFW: "dallas", KUL: "kuala lumpur"
   };
   // The main airports for a typed city name or metro code.
+  // Codes that were retired and given to a new code for the same airport
+  // (Chișinău KIV is now RMO) or for the airport that replaced it (Siem
+  // Reap REP is now SAI). Typing the old code still finds the airport.
+  var OLD_CODES = { KIV: "RMO", FRU: "BSZ", KVD: "GNJ", PBI: "DJT", REP: "SAI" };
+  function currentCode(airports, code) {
+    if (code && !airports[code] && OLD_CODES[code] && airports[OLD_CODES[code]]) return OLD_CODES[code];
+    return code;
+  }
   function metroFor(q) {
     return METROS[q] || METROS[METRO_CODES[q.toUpperCase()]] || [];
   }
@@ -78,7 +89,7 @@
   // { code } for one airport, { matches: [codes] } when a city has several,
   // or null when nothing matches.
   function resolveAirport(airports, text) {
-    var code = parseCode(text);
+    var code = currentCode(airports, parseCode(text));
     if (code && airports[code]) return { code: code };
     var q = fold(text);
     if (q.length < 2) return null;
@@ -108,11 +119,12 @@
     var metro = metroFor(q);
     // A code (airport or metro) lists its airports, then only names that
     // start with it, not names that merely contain the letters.
-    var isCode = metro.length > 0 || !!airports[q.toUpperCase()];
+    var oldTo = OLD_CODES[q.toUpperCase()];
+    var isCode = metro.length > 0 || !!airports[q.toUpperCase()] || !!oldTo;
     var hits = [];
     Object.keys(airports).forEach(function (code) {
       var a = airports[code], c = code.toLowerCase(), city = fold(a[2]), name = fold(a[3]);
-      var score = c === q ? 0
+      var score = c === q || code === oldTo ? 0
         : metro.indexOf(code) !== -1 ? 1
         : city === q ? 2
         : q.length <= 3 && c.indexOf(q) === 0 ? 3
