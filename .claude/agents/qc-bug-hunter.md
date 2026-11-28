@@ -67,6 +67,8 @@ light and dark mode. Look for:
 Take screenshots only as evidence for a finding.
 
 ### 2. Calculation bugs
+An example input `rules: "upcoming"` means: choose the "(Coming Soon)" option in
+the "Which rules?" menu right after choosing the program.
 Run every entry in every program's `examples` through the real page and
 compare the shown total with `expect`. Read `docs/index.html` and
 `docs/js/app.js` to learn how each input maps to a form field. Choosing a
@@ -91,6 +93,8 @@ Compare what the airline publishes today with the file:
   or zone earning, or added a method.
 - **Co-branded cards**: a card was launched, discontinued or renamed, or
   its earning rate changed.
+Also check each program's `upcoming` rules (marked Coming Soon) against what
+the airline has announced, and flag any start date that has passed.
 Also flag any program whose `reviewed` month is more than six months old.
 Quote the airline's wording and give the URL for every change you report.
 If a site blocks automated visits, list it under "Could not verify" and

@@ -135,6 +135,19 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - The Fare Type menu lists fares from lowest to highest earning (by rate, share of distance, fixed points or the base level's rate, compared within one route column). A fare bonus in percent, such as El Al FLEX, counts toward the order. Fares that earn the same keep cabin order: a list that starts with the highest cabin puts the later fare first, and one that starts with the lowest keeps its order. El Al keeps each cabin next to its FLEX fare (`keepFareOrder`). The default fare is unchanged. On a route where a fare is not sold (Jetstar, Qantas, ITA, LOT), the menu leaves it out.
 - Co-branded card points are added on top of flight points. They are earned on the full amount charged, taxes included, and are not subject to the per-ticket cap. A card billed in another currency than the fare, such as the US Chase Aeroplan Card, asks for the amount charged in its own currency.
 
+### Coming Soon rules
+
+Some programs have announced rules that start later. Until then, a "Which rules?" menu offers the current rules or the new ones marked "(Coming Soon)", and the result shows a Rules line when the new ones are used. From the start date the new rules apply on their own and the menu disappears, so nothing needs changing on the site that day. The dates follow the visitor's own calendar.
+
+- Southwest (1 January 2027): Choice Preferred earns 8 and Choice Extra 10; Silver (formerly A-List) adds 40%, Gold (formerly A-List Preferred) 60%, and the new Platinum 120%.
+- Avianca LifeMiles (1 January 2027): a base of 2, 3, 5, 8, 9 or 10 miles per dollar for Red to Magno, plus 1 on Classic and 2 on Flex or Business. From a travel news report, not yet from LifeMiles.
+- Cathay Pacific (1 January 2027): the new Diamond Exec level, at oneworld Emerald, earning like Diamond.
+- JAL (flights from 1 January 2027): JGC Premier becomes JMB Premier.
+- Alaska and Hawaiian: the 2027 earning choices are marked (Coming Soon), and the 2026 fare class option disappears on 1 January 2027.
+- Miles & More: the rename to Lufthansa Group Miles & More has no date yet, so it is only mentioned in the notes.
+
+In a program file, `upcoming: { from, label, rules }` holds the new rules (any fields that replace today's, such as `statuses`, `fareTypes` or `note`), and an earning option can carry `from` or `until`. Alliance tiers in `data/alliances.js` also apply to levels that exist only in the upcoming rules.
+
 ### Airport distances
 
 Distance-based programs can work out the miles flown from two airports. The airport list (about 3,500 airports, nearly all with scheduled service) is fetched only when a distance-based program is chosen, and `docs/js/distance.js` computes the great-circle distance. New airport codes (such as RMO for Chișinău and SAI for Siem Reap) were added in November 2026. Retired codes were removed: GWY, YJT, HOD, PIF and ZHH, which have no successor, and KIV, FRU, KVD and REP, now RMO, BSZ, GNJ and SAI. Only PBI still works, leading to DJT (West Palm Beach), so PBI and DJT count as the same airport. A distance found from the airport boxes is cleared as soon as the boxes stop naming two airports, for example while a city name is still being typed. One or two letters do not count as an airport, and "No airport found" waits until you leave the box. On a phone the two boxes stack. Choosing the same airport for From and To says so. A distance that rounds to less than 1 mile (or 1 kilometre) or is over 25,000 miles (40,000 km), a segment count that is not a whole number from 1 to 100, and amounts that add up to more than 1,000,000,000 are rejected as likely typos. Searching Sydney, Mumbai, Delhi or Bucharest lists each city's second airport too.
