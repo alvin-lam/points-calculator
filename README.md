@@ -13,7 +13,7 @@ Live site: https://points.alltripsconsidered.com/
 1. Choose an airline program.
 2. Choose your current status (and fare type for Southwest, Breeze, Frontier, Avianca, and Norwegian).
 3. Enter the airfare, the carrier-imposed fees, and the taxes & fees separately. Programs that earn by distance or route (Virgin Atlantic, TAP, Qatar, Qantas, and Atmos Rewards when earning by miles or segments) skip these fields.
-4. For Alaska or Hawaiian (Atmos Rewards), choose how you earn: miles flown, price paid, or segments flown. Then enter the miles or segments if asked.
+4. For Alaska or Hawaiian (Atmos Rewards), choose how you earn. Flights in 2026 earn by miles flown with a fare class bonus, so choose the fare class too. Flights from 2027 earn by miles flown, price paid, or segments flown. Then enter the miles or segments if asked.
 5. Say whether you paid with the airline's co-branded credit card, and if so, which one. For distance-based programs, enter the amount charged to the card so its points can be added.
 6. The result shows the airline's logo, then one line each for the airline, the membership level with its alliance status (for example "Premier Gold | Star Alliance Gold"), the fare type and the card used. Members with alliance status see their tier badge; basic members of an alliance airline see the alliance logo.
 7. **Clear**, next to **Calculate points**, empties every field and returns the form to its starting state.
@@ -51,7 +51,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Air Europa SUMA: the published fare and fuel surcharge earn; management and handling fees do not.
 - airBaltic Club: the fare, eligible fees including taxes and fuel charges, and extras bought directly from airBaltic earn.
 - American AAdvantage, Fiji Airways, United MileagePlus, Air Canada Aeroplan and WestJet Rewards: carrier-imposed fees or surcharges earn. WestJet extras (seats, bags, upgrades) also earn; Aeroplan's do not.
-- Delta SkyMiles: carrier-imposed surcharges earn, and so do paid upgrades and Preferred or Comfort seats.
+- Delta SkyMiles: carrier-imposed surcharges earn, and so do paid upgrades and Preferred or Comfort seats. The fare type sets the rate: Delta Main Basic earns nothing, and Delta Main Extra earns 2 more miles per dollar than the other fares (7 instead of 5 for members).
 - JetBlue, Southwest, LATAM Pass and GOL Smiles: only the fare earns, so the fee field is hidden. LATAM excludes bags and seats; Smiles excludes fees "of any other nature".
 - Frontier (Carrier Interface Charge) and Breeze (Technology Development Charge): the fee earns, and so do bags, seats and other add-ons. Allegiant's Carrier Usage Charge does not earn.
 - Porter VIPorter: the NAV charge and fuel, insurance and peak surcharges do not earn; seats, bags and change fees do.
@@ -68,7 +68,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - American, Delta, and United cap earning at 75,000 miles per ticket.
 - Air Canada and WestJet fares are entered in Canadian dollars (CA$). Viva Aerobus and Volaris fares are entered in Mexican pesos (MX$). British Airways and Virgin Atlantic fares are entered in pounds (£). Fares for the European airlines (Flying Blue, Miles & More, Iberia, LEVEL, Vueling, and TAP) are entered in euros (€). Aeroméxico earns per US dollar, so its fare is entered in US dollars.
 - Porter fares are entered in Canadian dollars, Finnair fares in euros, Virgin Australia fares in Australian dollars (A$), and Norwegian fares in Norwegian kroner (kr). Avianca LifeMiles earns per US dollar by fare family.
-- Alaska and Hawaiian both use Atmos Rewards. Members choose to earn 1 point per mile, 5 points per dollar, or 500 points per segment, with elite bonuses on each.
+- Alaska and Hawaiian both use Atmos Rewards. In 2026, flights earn 1 point per mile plus a fare class bonus (J 200%, C 175%, D, I, Y and B 150%, H and K 125%), and Saver (X) fares booked from 11 June and flown from 1 August 2026 earn nothing. From 2027, members choose to earn 1 point per mile, 5 points per dollar, or 500 points per segment. Elite bonuses apply in every case.
 - Virgin Atlantic, TAP, and Qatar Airways earn a share of the miles flown set by fare, so they ask for the fare class and the miles flown, not the price paid.
 - Qantas awards a fixed number of points per flight, so it asks for the fare and the route band, not the price paid. The table is Qantas' own, for travel from 22 July 2025.
 - Jetstar Airways (JQ) earns Qantas Points from Qantas' table for Jetstar-marketed flights. Each fare bundle maps to a Qantas earn category. Starter earns only within New Zealand. Flex, Flex Plus, Max, Mega and More earn at the Economy rate, Starter Max at the Flexible Economy rate, and Business Max at the Business rate. The Minimum Points Guarantee then lifts each flight to at least 800, 1,200 or 1,400 points by fare (400, 800 or 1,200 within New Zealand).

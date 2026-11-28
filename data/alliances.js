@@ -11,7 +11,7 @@
 module.exports = function applyAlliances(P) {
   var ALLIANCE_TIERS = {
     // oneworld
-    american: { gold: "Ruby", platinum: "Sapphire", platpro: "Sapphire", exp: "Emerald" },
+    american: { gold: "Ruby", platinum: "Sapphire", platpro: "Emerald", exp: "Emerald" },
     alaska: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
     // Condor credited to Atmos Rewards: Atmos tiers, Condor not a member.
     "condor:atmos": { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", titanium: "Emerald" },
