@@ -1102,7 +1102,8 @@
 
     // Distance in miles: the exact figure when it came from an airport or
     // route lookup, otherwise the typed value (converted from km if needed).
-    var distance = distanceEl.dataset.miles ? Number(distanceEl.dataset.miles)
+    // The exact figure only counts while the box still shows it.
+    var distance = distanceEl.dataset.miles && distanceEl.value !== "" ? Number(distanceEl.dataset.miles)
       : parseFloat(distanceEl.value) / (useKm ? KM_PER_MILE : 1);
     var segments = parseInt(segmentsEl.value, 10);
     var method = earnMethod(p).id;
@@ -1505,6 +1506,11 @@
     // state, with no program chosen.
     $("clearForm").addEventListener("click", function () {
       form.querySelectorAll('input[type="number"], input[type="text"], input[type="search"], input:not([type])').forEach(function (el) { el.value = ""; });
+      // Forget the exact miles from the last airport lookup, so the next
+      // calculation cannot use a distance the box no longer shows.
+      delete distanceEl.dataset.miles;
+      airportResult.textContent = "";
+      delete airportResult.dataset.picks;
       programEl.value = "";
       searchEl.value = "";
       closeList();
