@@ -91,7 +91,7 @@
       var km = Math.round(miles * p.distanceFactor);
       return num.format(km) + " km" + (useKm ? "" : " (" + num.format(Math.round(miles)) + " miles)");
     }
-    return num.format(Math.round(miles)) + " miles" + (useKm ? " (" + num.format(Math.round(miles * KM_PER_MILE)) + " km)" : "");
+    return num.format(Math.round(miles)) + (Math.round(miles) === 1 ? " mile" : " miles") + (useKm ? " (" + num.format(Math.round(miles * KM_PER_MILE)) + " km)" : "");
   }
   // "1 mile", "1 point": singular only for plain English units.
   function unitFor(n, unit) {
@@ -182,6 +182,9 @@
     return null;
   }
   function sortFares(p, list) {
+    // A program can keep its fares in cabin order (El Al: each cabin, then
+    // its FLEX fare, which earns 20% more).
+    if (p.keepFareOrder) return list;
     var cols = list.map(function (f) { return fareColumns(p, f); });
     var col = -1;
     if (cols.every(function (c) { return c; })) {
@@ -198,14 +201,18 @@
         v = p.statuses[0].rates[f.id];
       }
       if (v !== null && f.addPoints) v += f.addPoints / 1e6;
+      // A fare bonus in percent (El Al FLEX) earns more than the bare rate.
+      if (v !== null && f.bonusPct) v *= 1 + f.bonusPct;
       return v;
     });
     // A program whose fares cannot all be measured keeps its own order.
     if (vals.some(function (v) { return v === null; })) return list;
-    // Fares that earn the same keep cabin order (most lists start with the
-    // highest cabin, so the later entry comes first).
+    // Fares that earn the same keep cabin order. A list that starts with
+    // the highest cabin puts the later entry first; a list that starts with
+    // the lowest (Breeze: Nicer, then Nicest) keeps its own order.
+    var ascending = vals[0] <= vals[vals.length - 1];
     return list.map(function (f, i) { return { f: f, v: vals[i], i: i }; })
-      .sort(function (a, b) { return a.v - b.v || b.i - a.i; })
+      .sort(function (a, b) { return a.v - b.v || (ascending ? a.i - b.i : b.i - a.i); })
       .map(function (x) { return x.f; });
   }
 
@@ -272,13 +279,18 @@
     .sort(function (a, b) { return a.label.localeCompare(b.label); });
   var countryOrder = pinned.concat(others);
   var CODES = window.AIRLINE_CODES || {};
+  // Lower case without accents, so "aeromexico" finds "Aeroméxico" and
+  // "turkiye" finds "Türkiye".
+  function foldText(text) {
+    return String(text || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  }
   function searchText(value, label, country, p) {
     // Grouped airlines match on their own name, program, and code, not the
     // group's name ("Lufthansa Group"), so "luft" finds only Lufthansa.
     var group = value.indexOf(":") === -1 ? (p.name || "") : "";
     // The airline name without spaces too, so "elal" finds "El Al".
     var compact = label.split(" | ")[0].replace(/\s+/g, "");
-    return [label, compact, country.label, CODES[value] || "", p.programName || "", group].join(" ").toLowerCase();
+    return foldText([label, compact, country.label, CODES[value] || "", p.programName || "", group].join(" "));
   }
   // Whether a typed word is one of the country's two- or three-letter
   // ISO codes (or "UK"), compared without regard to case.
@@ -290,7 +302,7 @@
   }
   // Choices that match a search, grouped by country in menu order.
   function collect(filter) {
-    var words = String(filter || "").toLowerCase().split(/\s+/).filter(Boolean);
+    var words = foldText(filter).split(/\s+/).filter(Boolean);
     var groups = [];
     countryOrder.forEach(function (c) {
       var choices = [];
@@ -334,7 +346,7 @@
       var best = [];
       groups = groups.map(function (g) {
         var rest = g.items.filter(function (ch) {
-          var name = ch[1].split(" | ")[0].toLowerCase();
+          var name = foldText(ch[1].split(" | ")[0]);
           var hit = name.indexOf(q) === 0 || name.replace(/\s+/g, "").indexOf(q.replace(/\s+/g, "")) === 0;
           if (hit && !best.some(function (t) { return t[0] === ch[0]; })) best.push(ch);
           return !hit;
@@ -863,15 +875,27 @@
     $("zoneLabel").textContent = p.zoneLabel || "Route and distance";
     $("zoneHint").textContent = p.zoneHint || "This program awards a fixed amount per flight for each route band.";
     // Fare types can belong to some routes only (Aegean: booking classes
-    // group differently on domestic and international flights).
-    if (p.fareTypes && p.fareTypes.some(function (f) { return f.zones; })) {
-      var zid = zoneEl.value, prevFare = fareTypeEl.value;
-      var fares = p.fareTypes.filter(function (f) { return !f.zones || f.zones.indexOf(zid) >= 0; });
+    // group differently on domestic and international flights). A fare with
+    // no amount for the chosen route is not sold there (Jetstar, Qantas,
+    // ITA, LOT), so it is left out of the menu too.
+    var zid = zoneEl.value;
+    var zIdx = zoneUsed && p.zones ? p.zones.map(function (z) { return z.id; }).indexOf(zid) : -1;
+    var soldOn = function (f) {
+      if (f.zones) return f.zones.indexOf(zid) >= 0;
+      if (zIdx < 0) return true;
+      if (m === "distance" && f.earn) return f.earn[zIdx] != null;
+      if (m === "zone" && p.zones[zIdx].points) return p.zones[zIdx].points[p.fareTypes.indexOf(f)] != null;
+      return true;
+    };
+    if (p.fareTypes && !earnMethod(p).noFareType && (p.fareTypes.some(function (f) { return f.zones; }) || p.fareTypes.some(function (f) { return !soldOn(f); }) || fareTypeEl.options.length !== p.fareTypes.length)) {
+      var prevFare = fareTypeEl.value;
+      var fares = p.fareTypes.filter(soldOn);
+      if (!fares.length) fares = p.fareTypes;
       fareTypeEl.replaceChildren();
       sortFares(p, fares).forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
       var zDefault = p.zoneDefaultFare && p.zoneDefaultFare[zid];
       var hasFare = function (id) { return fares.some(function (f) { return f.id === id; }); };
-      fareTypeEl.value = hasFare(prevFare) ? prevFare : (zDefault && hasFare(zDefault) ? zDefault : fares[0].id);
+      fareTypeEl.value = hasFare(prevFare) ? prevFare : (zDefault && hasFare(zDefault) ? zDefault : (p.defaultFareType && hasFare(p.defaultFareType) ? p.defaultFareType : fares[0].id));
     }
     // A route type that pays a fixed amount needs no distance.
     var fixedZone = m === "distance" && p.zones && find(p.zones, zoneEl.value).fixed;
@@ -1027,13 +1051,23 @@
       if (airline && status.elite && airline.eliteRate) rate = airline.eliteRate;
       // A status can add a flat amount per unit of currency (Air Europa, Xiamen).
       if (status.addRate) rate += status.addRate;
+      // So can an extra question (Porter: linked BMO Blue Rewards booster).
+      (p.extras || []).forEach(function (x) {
+        var xel = $("extra-" + x.id);
+        var xo = xel ? find(x.options, xel.value) : null;
+        if (xo && xo.addRate) rate += xo.addRate;
+      });
       // Booking direct adds a bonus by fare type (JetBlue), or a flat
       // amount per unit of currency (IndiGo: 4 BluChips per ₹100).
       if (p.direct && directYes.checked) rate += fareType && p.direct.rates ? (p.direct.rates[fareType.id] || 0) : (p.direct.rate || 0);
       // Some programs round the spend first (Fortune Wings: nearest HK$10,
       // with anything under HK$10 counted as HK$10).
       var spend = airfare;
-      if (p.roundSpendTo && spend > 0) spend = Math.max(p.roundSpendTo, Math.round(spend / p.roundSpendTo) * p.roundSpendTo);
+      // Hainan counts any part under 10 yuan as a full 10 (roundSpendUp);
+      // fractions of a yuan do not count.
+      if (p.roundSpendTo && spend > 0) spend = p.roundSpendUp
+        ? Math.ceil(Math.floor(spend + 1e-9) / p.roundSpendTo) * p.roundSpendTo
+        : Math.max(p.roundSpendTo, Math.round(spend / p.roundSpendTo) * p.roundSpendTo);
       points = spend * rate;
       var sym = symbols[p.currency || "USD"];
       // A program can state its rate in its own words (SAA: 1 mile per R1.60).
@@ -1105,7 +1139,8 @@
     // The exact figure only counts while the box still shows it.
     var distance = distanceEl.dataset.miles && distanceEl.value !== "" ? Number(distanceEl.dataset.miles)
       : parseFloat(distanceEl.value) / (useKm ? KM_PER_MILE : 1);
-    var segments = parseInt(segmentsEl.value, 10);
+    // Whole segments only: "2.5" or "1e6" is not read as 2 or 1.
+    var segments = segmentsEl.value.trim() === "" ? NaN : Number(segmentsEl.value);
     var method = earnMethod(p).id;
     var fareUsed = usesFare(method);
     var airfare = fareUsed ? parseFloat(airfareEl.value) : 0;
@@ -1145,7 +1180,10 @@
     if (taxes < 0) return showError("Taxes and airport fees cannot be negative.");
     var routeFixed = method === "distance" && p.zones && find(p.zones, zoneEl.value).fixed;
     if (method === "distance" && !routeFixed && !(distance > 0)) return showError("Please enter the miles flown for this trip.");
+    // About once around the world: a longer trip is almost surely a typo.
+    if (method === "distance" && !routeFixed && distance > 25000) return showError("That is more than 25,000 miles, longer than a trip around the world. Please check the miles flown.");
     if (method === "segments" && !(segments > 0)) return showError("Please enter the number of segments flown.");
+    if (method === "segments" && (!Number.isInteger(segments) || segments > 100)) return showError("Please enter a whole number of segments, from 1 to 100.");
 
     errorEl.hidden = true;
     var cur = p.currency || "USD";
@@ -1302,9 +1340,13 @@
         (cardFx ? "1 per " + sym + num.format(card.foreignPer) : card.rateText ? card.rateText : card.per ? "1 per " + sym + num.format(card.per) : num.format(cardRate) + " per " + sym) + " on " + cardMoney + (cardFx ? ", foreign currency" : "") + ")");
     }
     // Skip the value rows for programs without a reliable point value.
-    if (p.centsPerPoint) {
-      var value = total * p.centsPerPoint / 100;
-      row(dl, "Approximate value", usd.format(value) + " (at " + p.centsPerPoint + minorUnit[p.currency || "USD"] + " each)");
+    // A currency without hundredths (the Pacific franc) states the value in
+    // whole units instead (valuePerPoint, Aircalin: XPF 1.43 a mile).
+    var valueCur = p.currency || "USD";
+    var perPoint = p.valuePerPoint != null ? p.valuePerPoint : minorUnit[valueCur] ? p.centsPerPoint / 100 : null;
+    if (p.centsPerPoint && perPoint != null) {
+      var value = total * perPoint;
+      row(dl, "Approximate value", usd.format(value) + " (at " + (p.valuePerPoint != null ? symbols[valueCur] + num.format(p.valuePerPoint) : p.centsPerPoint + minorUnit[valueCur]) + " each)");
       if (tripCost > 0) {
         row(dl, "Return on total cost", (value / tripCost * 100).toFixed(1) + "%");
       }
@@ -1474,9 +1516,10 @@
     searchEl.addEventListener("input", function () { syncClear(); openList(searchEl.value); });
     // Clearing empties the box and the chosen program, then shows the list.
     clearEl.addEventListener("mousedown", function (e) { e.preventDefault(); });
+    // It resets the whole form like the Clear button, so amounts from the
+    // last program do not carry over to the next one.
     clearEl.addEventListener("click", function () {
-      choose("");
-      searchEl.focus();
+      $("clearForm").click();
       openList("");
     });
     searchEl.addEventListener("keydown", function (e) {
@@ -1624,6 +1667,13 @@
     }
     var r = D.airportMiles(window.AIRPORTS, from, to);
     var A = window.AIRPORTS;
+    if (r.from === r.to) {
+      distanceEl.value = "";
+      delete distanceEl.dataset.miles;
+      airportResult.textContent = "From and To are the same airport (" + r.from + "). Choose a different destination.";
+      resultEl.hidden = true;
+      return;
+    }
     var published = routeMiles(current(), r.from, r.to);
     if (routeSelect) routeSelect.value = published != null ? (r.from === current().routes.from ? r.to : r.from) : "";
     if (published != null) {
@@ -1934,7 +1984,8 @@
     syncToTop();
     toTop.addEventListener("click", function () {
       window.scrollTo({ top: 0, behavior: reduceMotion.matches ? "auto" : "smooth" });
-      var first = $("program");
+      // The visible program search box; the program select itself is hidden.
+      var first = $("programSearch") || $("program");
       if (first) first.focus({ preventScroll: true });
     });
   }
