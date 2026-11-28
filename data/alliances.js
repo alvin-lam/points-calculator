@@ -76,7 +76,7 @@ module.exports = function applyAlliances(P) {
       "krisflyer", "eva", "lifemiles", "airnz", "turkish", "phoenix:ca",
       "milesandmore:lo", "milesandmore:ou", "copa", "aegean", "thai", "airindia", "saa", "phoenix:zh", "egyptair", "ethiopian"],
     SkyTeam: ["delta", "aeromexico", "flyingblue:af", "flyingblue:kl", "virgin", "chinaairlines",
-      "korean", "aireuropa", "chinaeastern", "xiamen", "sas", "vietnam", "aerolineas", "kenya"]
+      "korean", "aireuropa", "chinaeastern", "xiamen", "sas", "vietnam", "aerolineas", "kenya", "flyingblue:tarom"]
   };
   Object.keys(ALLIANCES).forEach(function (name) {
     ALLIANCES[name].forEach(function (key) {

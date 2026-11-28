@@ -1084,5 +1084,50 @@
     "square": "icons/airlines/square/kenya.png",
     "circle": "icons/airlines/circle/kenya.png",
     "iconSource": "App Store icon of \"Kenya Airways\" by KENYA AIRWAYS LTD"
+  },
+  "airbusan": {
+    "file": "icons/airlines/airbusan.png",
+    "title": "Air Busan app icon",
+    "source": "App Store icon of Air Busan",
+    "license": "Trademark of its owner; official app icon (no wordmark file available yet)",
+    "square": "icons/airlines/square/airbusan.png",
+    "circle": "icons/airlines/circle/airbusan.png",
+    "iconSource": "App Store icon by Airbusan"
+  },
+  "jinair": {
+    "file": "icons/airlines/jinair.png",
+    "title": "Jin Air app icon",
+    "source": "App Store icon of Jin Air",
+    "license": "Trademark of its owner; official app icon (no wordmark file available yet)",
+    "square": "icons/airlines/square/jinair.png",
+    "circle": "icons/airlines/circle/jinair.png",
+    "iconSource": "App Store icon by JINAIR CO.,LTD"
+  },
+  "sunexpress": {
+    "file": "icons/airlines/sunexpress.png",
+    "title": "SunExpress app icon",
+    "source": "App Store icon of SunExpress",
+    "license": "Trademark of its owner; official app icon (no wordmark file available yet)",
+    "square": "icons/airlines/square/sunexpress.png",
+    "circle": "icons/airlines/circle/sunexpress.png",
+    "iconSource": "App Store icon by GUNES EKSPRES HAVACILIK ANONIM SIRKETI"
+  },
+  "flyingblue:tarom": {
+    "file": "icons/airlines/tarom.png",
+    "title": "TAROM logo",
+    "source": "https://www.tarom.ro/images/white-logo.svg",
+    "license": "Trademark of its owner; official logo artwork (white logo recoloured in TAROM navy)",
+    "square": "icons/airlines/square/tarom.png",
+    "circle": "icons/airlines/circle/tarom.png",
+    "iconSource": "App Store icon of \"TAROM\" by Compania Nationala de Transporturi Aeriene Romane TAROM S.A."
+  },
+  "bangkokair": {
+    "file": "icons/airlines/bangkokair.png",
+    "title": "Bangkok Airways app icon",
+    "source": "App Store icon of Bangkok Airways",
+    "license": "Trademark of its owner; official app icon (no wordmark file available yet)",
+    "square": "icons/airlines/square/bangkokair.png",
+    "circle": "icons/airlines/circle/bangkokair.png",
+    "iconSource": "App Store icon of \"Bangkok Airways\" by Bangkok Airways Co., Ltd"
   }
 }

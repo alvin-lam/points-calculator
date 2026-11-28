@@ -105,14 +105,14 @@
     return new Date(Number(parts[0]), Number(parts[1]) - 1, 1).toLocaleDateString(LOCALE, { year: "numeric", month: "long" });
   }
 
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$", PGK: "K", QAR: "QAR ", ETB: "Br ", KES: "KSh " };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$", PGK: "K", QAR: "QAR ", ETB: "Br ", KES: "KSh ", RON: "lei " };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
   // Names for the "charged in ... or a foreign currency?" card question.
   var CURRENCY_NAMES = { ILS: "shekels", TWD: "New Taiwan dollars" };
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$", PGK: "K", QAR: "QAR ", ETB: "Br ", KES: "KSh " };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$", PGK: "K", QAR: "QAR ", ETB: "Br ", KES: "KSh ", RON: "lei " };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -1011,8 +1011,10 @@
         var dist = distance * (p.distanceFactor || 1);
         var unitName = p.distanceFactor ? "km" : "mile flown";
         // A minimum distance per flight, before the class share (Sky Pearl).
-        var minDistUsed = p.minDistance && dist < p.minDistance;
-        if (minDistUsed) dist = p.minDistance;
+        // A route type can set its own minimum (TAROM: 500 domestic, 750 international).
+        var minDist = (dZone && dZone.minDistance) || p.minDistance;
+        var minDistUsed = minDist && dist < minDist;
+        if (minDistUsed) dist = minDist;
         var base = dist * share;
         var minUsed = min != null && base < min;
         if (minUsed) base = min;
@@ -1039,7 +1041,7 @@
           }
         }
         if (minUsed) rateLabel += ", with the " + num.format(min) + " minimum per flight";
-        if (minDistUsed) rateLabel += ", counted as the " + num.format(p.minDistance) + (p.distanceFactor ? " km" : " miles") + " minimum";
+        if (minDistUsed) rateLabel += ", counted as the " + num.format(minDist) + (p.distanceFactor ? " km" : " miles") + " minimum";
       }
     } else if (em.id === "tiered") {
       points = 0;

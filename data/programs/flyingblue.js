@@ -35,6 +35,42 @@ const rules = {
   airlines: [
     { id: "af", name: "Air France", country: "FR", program: { cards: usCards.concat(frCards) } },
     { id: "kl", name: "KLM", country: "NL", program: { cards: usCards.concat(nlCards) } },
+    // TAROM (RO) earns Flying Blue Miles by distance and booking class, from
+    // Flying Blue's TAROM page (supplied by the site owner, November 2026):
+    // J, C, D 150%; I, Z 100%; Y, B, M, L 80%; U, K, Q, H, R, N, A 40%;
+    // F, T, V, S, E, P, G 20%. Flights count as at least 500 miles within
+    // Romania and 750 miles abroad. The page mentions elite bonus Miles but
+    // gives no rates. Cards: Banca Transilvania's BT Flying Blue cards
+    // (tarom.ro card comparison).
+    { id: "tarom", name: "TAROM", country: "RO",
+      program: {
+        method: "distance", currency: "RON",
+        defaultFareType: "ybml", fareTypeLabel: "Booking Class",
+        zoneLabel: "Route Type",
+        zoneHint: "Flights count as at least 500 miles within Romania and 750 miles abroad.",
+        zoneAfterFare: true,
+        defaultZone: "intl",
+        zones: [
+          { id: "intl", name: "International", minDistance: 750 },
+          { id: "domestic", name: "Within Romania", minDistance: 500 }
+        ],
+        fareTypes: [
+          { id: "jcd", name: "Business (J, C, D)", earn: [1.5, 1.5] },
+          { id: "iz", name: "Business (I, Z)", earn: [1, 1] },
+          { id: "ybml", name: "Economy (Y, B, M, L)", earn: [0.8, 0.8] },
+          { id: "ukqhrna", name: "Economy (U, K, Q, H, R, N, A)", earn: [0.4, 0.4] },
+          { id: "ftvsepg", name: "Economy (F, T, V, S, E, P, G)", earn: [0.2, 0.2] }
+        ],
+        statuses: [
+          { id: "any", name: "Any level", multiplier: 1 }
+        ],
+        cardHint: "BT Flying Blue cards earn Miles on the amount charged at Air France, KLM or TAROM, in lei, on top of the flight Miles.",
+        cards: [
+          { id: "bt-classic", name: "BT Flying Blue Classic Card", rate: 1.5 / 5, rateText: "1.5 per 5 lei", currency: "RON", bank: "Banca Transilvania (Romania)" },
+          { id: "bt-premium", name: "BT Flying Blue Premium Card", rate: 2 / 5, rateText: "2 per 5 lei", currency: "RON", bank: "Banca Transilvania (Romania)" }
+        ],
+        note: "TAROM flights earn Flying Blue Miles as a share of the distance flown, by booking class: 150% in J, C, D; 100% in I, Z; 80% in Y, B, M, L; 40% in U, K, Q, H, R, N, A; and 20% in F, T, V, S, E, P, G. Flights count as at least 500 miles within Romania and 750 miles abroad. This covers flights marketed as TAROM (RO), on any SkyTeam airline; reward tickets, charter flights (RO3000 to RO8999) and unlisted classes earn nothing. Flying Blue's TAROM page mentions elite bonus Miles but gives no rates, so none are added. Banca Transilvania's BT Flying Blue Classic card earns 1.5 Miles and the Premium card 2 Miles per 5 lei spent with Air France, KLM or TAROM."
+      } },
     // Transavia France (TO) and Transavia (HV) are one entry, listed under
     // both France and the Netherlands.
     // Transavia earns a fixed number of Miles per one-way flight by fare
@@ -137,10 +173,14 @@ module.exports = {
   airlines: {
     af: { code: "AF", color: "#002157" },
     kl: { code: "KL", color: "#00A1DE" },
+    tarom: { code: "RO", color: "#1B2A5C", source: "https://www.flyingblue.com/en/earn/partners/airline-tarom" },
     sb: { code: "SB", color: "#004388", source: "https://www.aircalin.nc/en/flying-blue" },
     transavia: { code: "HV", codes: ["HV", "TO"], color: "#05CE78", source: "https://www.flyingblue.com/en/earn/partners/airline-transavia" }
   },
   examples: [
+    // TAROM: 1,000 miles in Y at 80%; and 274 miles domestic counted as 500.
+    { name: "TAROM Economy (Y), international", airline: "tarom", input: { status: "any", fare: "ybml", zone: "intl", fields: { distance: 1000 } }, expect: 800 },
+    { name: "TAROM Economy (Y), domestic minimum", airline: "tarom", input: { status: "any", fare: "ybml", zone: "domestic", fields: { distance: 274 } }, expect: 400 },
     { name: "Aircalin Noumea-Sydney Economy (Y)", airline: "sb", input: { fare: "ybs", status: "explorer", zone: "regional", fields: { distance: 1230 } }, expect: 1230 },
     { name: "Aircalin Noumea-Bangkok Business (J), Platinum", airline: "sb", input: { fare: "j", status: "platinum", zone: "longhaul", fields: { distance: 5073 } }, expect: 13951 },
     { name: "Aircalin Noumea-Nadi Economy (Q), Silver", airline: "sb", input: { fare: "mquvtg", status: "silver", zone: "regional", fields: { distance: 787 } }, expect: 295 }
