@@ -165,6 +165,50 @@
 
   // The Membership menu lists the airline's own levels; the alliance tier
   // shows separately below it (syncAllianceStatus).
+  // How much a fare type earns, to list fares from lowest to highest: its
+  // rate, its share of the distance or fixed amount, its points in a route
+  // band, or the first level's rate. Fares are compared in one route column
+  // (the first that covers them all); otherwise each uses its best value.
+  function earnValue(e) {
+    if (e == null) return null;
+    return typeof e === "number" ? e * 1000 : e.share != null ? e.share * 1000 : e.fixed != null ? e.fixed : null;
+  }
+  function fareColumns(p, f) {
+    if (f.earn) return f.earn.map(earnValue);
+    if (p.zones && p.zones.length && p.zones[0].points) {
+      var idx = p.fareTypes.indexOf(f);
+      return p.zones.map(function (z) { return z.points && z.points[idx] != null ? z.points[idx] : null; });
+    }
+    return null;
+  }
+  function sortFares(p, list) {
+    var cols = list.map(function (f) { return fareColumns(p, f); });
+    var col = -1;
+    if (cols.every(function (c) { return c; })) {
+      var n = Math.max.apply(null, cols.map(function (c) { return c.length; }));
+      for (var k = 0; k < n && col < 0; k++) if (cols.every(function (c) { return c[k] != null; })) col = k;
+    }
+    var vals = list.map(function (f, i) {
+      var v = null;
+      if (typeof f.rate === "number") v = f.rate;
+      else if (cols[i]) {
+        if (col >= 0) v = cols[i][col];
+        else cols[i].forEach(function (x) { if (x != null && (v === null || x > v)) v = x; });
+      } else if (p.statuses && p.statuses[0] && p.statuses[0].rates && p.statuses[0].rates[f.id] != null) {
+        v = p.statuses[0].rates[f.id];
+      }
+      if (v !== null && f.addPoints) v += f.addPoints / 1e6;
+      return v;
+    });
+    // A program whose fares cannot all be measured keeps its own order.
+    if (vals.some(function (v) { return v === null; })) return list;
+    // Fares that earn the same keep cabin order (most lists start with the
+    // highest cabin, so the later entry comes first).
+    return list.map(function (f, i) { return { f: f, v: vals[i], i: i }; })
+      .sort(function (a, b) { return a.v - b.v || b.i - a.i; })
+      .map(function (x) { return x.f; });
+  }
+
   function statusLabel(s, p) {
     return levelName(p || current(), s);
   }
@@ -613,9 +657,9 @@
 
     fareTypeField.hidden = !p.fareTypes;
     if (p.fareTypes) {
-      p.fareTypes.forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
+      sortFares(p, p.fareTypes).forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
       if (p.defaultFareType) fareTypeEl.value = p.defaultFareType;
-      else fareTypeEl.selectedIndex = 1 < p.fareTypes.length ? 1 : 0;
+      else fareTypeEl.value = p.fareTypes[1 < p.fareTypes.length ? 1 : 0].id;
       setCurrency(current().currency || "USD");
     }
 
@@ -824,7 +868,7 @@
       var zid = zoneEl.value, prevFare = fareTypeEl.value;
       var fares = p.fareTypes.filter(function (f) { return !f.zones || f.zones.indexOf(zid) >= 0; });
       fareTypeEl.replaceChildren();
-      fares.forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
+      sortFares(p, fares).forEach(function (f) { fareTypeEl.appendChild(option(f.id, f.name)); });
       var zDefault = p.zoneDefaultFare && p.zoneDefaultFare[zid];
       var hasFare = function (id) { return fares.some(function (f) { return f.id === id; }); };
       fareTypeEl.value = hasFare(prevFare) ? prevFare : (zDefault && hasFare(zDefault) ? zDefault : fares[0].id);

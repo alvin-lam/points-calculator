@@ -131,6 +131,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
   - China Southern earns on the price paid for tickets it issues (number 784). For tickets issued by other airlines, it earns on kilometres by booking class, with a 500 km minimum.
 - Only personal co-branded cards are listed; business and corporate cards are left out.
 - Empty amount fields show the program's currency code (USD, EUR, TRY) as a placeholder, next to its symbol.
+- The Fare Type menu lists fares from lowest to highest earning (by rate, share of distance, fixed points or the base level's rate, compared within one route column). Fares that earn the same keep cabin order, and the default fare is unchanged.
 - Co-branded card points are added on top of flight points. They are earned on the full amount charged, taxes included, and are not subject to the per-ticket cap. A card billed in another currency than the fare, such as the US Chase Aeroplan Card, asks for the amount charged in its own currency. Breeze and Viva Aerobus have no card option because their card rates could not be confirmed.
 
 ### Airport distances
