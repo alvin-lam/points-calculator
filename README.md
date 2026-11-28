@@ -1,6 +1,6 @@
 # Airline Points Calculator
 
-A static web app that estimates the points or miles you earn on a flight. It covers 109 airlines in 86 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
+A static web app that estimates the points or miles you earn on a flight. It covers 108 airlines in 85 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
 
 Live site: https://points.alltripsconsidered.com/
 
@@ -86,7 +86,6 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Vietnam Airlines (VN) Lotusmiles earns the distance times a fare-family multiplier (from 26 August 2026), with lower Economy Classic and Lite multipliers on international routes; Titanium, Gold, and Platinum or Million Miler add 30%, 50% and 100%.
 - VietJet Air (VJ) SkyJoy earns SkyPoints per VND 10,000 of the base fare, Vietjet surcharges and ancillary services, by tier and fare (Red 0.5 to Diamond 12; Eco, Deluxe, SkyBoss, Business), from SkyJoy terms version 2.1 (30 September 2026). Taxes, VAT and airport and security fees do not earn, and Thai Vietjet flights do not earn. Cards: HDBank Vietjet Classic (3 per VND 10,000) and VPBank YOJO (1 per VND 3,000). Card and flight points are floored with a tiny allowance for floating-point error.
 - Loganair (LM) Loganair Loyalty earns a fixed number of Avios per Loganair-operated flight, whatever the distance: 410 on Fly, 650 on Fly Flex and 1,300 on Fly Flex +, since 31 March 2025 (`method: "zone"` with one hidden zone). Each flight of a connection earns, but a through-flight on the same aircraft counts as one. Codeshare flights on other airlines, Orkney inter-isles services, and corporate, negotiated and tour fares do not earn. There are no tiers and no co-branded card.
-- Binter (NT) BinterMás earns a fixed number of points per inter-island flight in the Canary Islands by fare: SuperPromo 0, Promo 50, Económica 75, Flexible 100 and FlexiMás 200, from Binter's booking engine fare comparison. Flights to mainland Spain and abroad are not covered, because their points vary by route and Binter publishes no complete table. Tiers (Verde, Plata, Oro, Cumbre) add no flight bonus.
 - Widerøe (WF) is listed under Norwegian Reward. It earns Spenn on the fare, excluding taxes and fees: 1, 2 or 3 per 10 kroner on Mini, Smart and Flex or Full Flex, from Widerøe's help centre. The Extra Spenn benefit (after 8 flights) adds 2 per 10 kroner, and Priority adds 6. Tender (PSO) routes earn nothing, and the CashPoints rates for members outside the Nordics are not published.
 - EgyptAir (MS) EgyptAir Plus earns a share of the distance on international flights by booking class, from 25% (E, G, W, T, S) to 200% (C, D, J, Z), with a minimum per flight of 150 to 1,000 miles; P earns 75%. Domestic flights earn that minimum as a fixed amount. Silver, Gold, Elite and Platinum add 20%, 30%, 35% and 40%, from EgyptAir Plus's Earning Miles Policy and Membership Levels pages. The CIB co-brand card rates conflict between EgyptAir and CIB, so they are left out.
 - Pegasus Airlines (PC) BolBol earns 1 BolPoint per ₺2 of the total paid for the flight, taxes included, from the Pegasus BolBol General Rules and FAQ. Package upgrades, extra baggage, seats, Pegasus Cafe, Free Cancellation and pets earn at the same rate (`addonsRate`). BolBol Extra doubles the points on the lowest package fare only. Flights bought from online travel agencies and codeshare flights do not earn. Cards: ING Pegasus BolBol Premium and Classic (1 per ₺1 at Pegasus, from ING's card page).
@@ -308,7 +307,7 @@ Researched in November 2026. Each one is blocked on an official source, so a scr
 - [ ] **Air Busan FLY & STAMP** (Korea): stamps per one-way flight by route group (official rules PDF), but the route table is behind Cloudflare and snippets conflict. Merges into Jin Air on 17 March 2027.
 - [ ] **Azores Airlines SATA IMAGINE** (Portugal): a fare-family share (10% to 200%) of each route's base miles, with Silversky +20% and Goldsky +30%. The base miles appear only in the member calculator, and no official rule ties them to distance.
 - [ ] **AirAsia rewards** (Asia): Table E of the Membership Agreement gives Premium Flex and Premium Flatbed exactly (2, 4, 7 and 12 per RM1 for Red, Gold, Platinum and Black), but Low Fare only as a maximum ("up to" 1.5, 3, 5.5 and 10). The earning components are not stated. Covers AK, FD, QZ, Z2, KT, D7, and XJ from 1 January 2026. Source: https://www.airasia.com/aa/rewards/en/gb/rewards-membership.html
-- [ ] **Binter, other routes:** only inter-island flights are in the calculator. Mainland and international points vary by route, and Binter's fares page (Madrid 150, 300, 900, 1,200) conflicts with its booking engine (150, 600, 1,000, 1,600).
+- [ ] **Binter BinterMás** (Spain): removed in November 2026. Inter-island flights earn fixed points by fare (SuperPromo 0, Promo 50, Económica 75, Flexible 100, FlexiMás 200), but mainland and international points vary by route with no complete table, and Binter's fares page (Madrid 150, 300, 900, 1,200) conflicts with its booking engine (150, 600, 1,000, 1,600).
 
 ### No earning program (checked November 2026)
 
@@ -336,7 +335,7 @@ The two South African Airways Voyager "$" Mastercards are Ecobank Ghana cards th
 - [ ] **Report a correction:** a footer link, by email or a simple form, so readers can report changed earning rules.
 - [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
 - [ ] **Visit counter:** a privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so.
-- [ ] **"100+ airlines" wording:** the page titles, descriptions and preview image say "100+ airlines" and "80+ loyalty programs" (109 airlines in 86 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 90 programs.
+- [ ] **"100+ airlines" wording:** the page titles, descriptions and preview image say "100+ airlines" and "80+ loyalty programs" (108 airlines in 85 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 90 programs.
 
 ### Watch list
 

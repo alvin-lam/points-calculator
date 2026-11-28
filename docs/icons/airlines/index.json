@@ -1021,15 +1021,6 @@
     "circle": "icons/airlines/circle/cebupacific.png",
     "iconSource": "App Store icon of \"Cebu Pacific Air: Book Flights\" by CEBU AIR, INC."
   },
-  "binter": {
-    "file": "icons/airlines/binter.png",
-    "title": "Binter logo",
-    "source": "https://www.bintercanarias.com/assets/icons/Logo.svg",
-    "license": "Trademark of its owner; official logo artwork",
-    "square": "icons/airlines/square/binter.png",
-    "circle": "icons/airlines/circle/binter.png",
-    "iconSource": "App Store icon of \"Binter\""
-  },
   "norwegian:dy": {
     "file": "icons/airlines/norwegian-logo-2024.svg",
     "title": "Norwegian Logo 2024",
