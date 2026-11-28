@@ -25,7 +25,7 @@ const rules = {
     // US dollar price of the fare or pack, without extras, taxes or charges
     // ("cargos"), and its calculator rounds to the nearest mile (status
     // factors 1, 1.4, 1.6, 1.8 and 2.2). We follow JetSMART.
-    { id: "ja", name: "JetSMART", country: "CL", program: {
+    { id: "ja", name: "JetSMART", country: "CL", countries: ["CL", "PE", "AR", "CO"], program: {
         cap: null,
         cards: null,
         addons: false,
