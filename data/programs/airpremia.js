@@ -12,9 +12,10 @@
    - Worked examples on a KRW 300,000 fare: Blue 2,100, Gold 2,100 + 1,200
      and Diamond 2,100 + 2,400.
    - Fares on flights departing outside Korea are converted to won.
-   The pages do not show a Gold or Diamond example on a Lite or Flex fare;
-   since the tiers earn "more points", the fare share is applied to the
-   tier rate (Gold Lite: 11 x 70% per KRW 1,000). */
+   The worked examples show the tier bonus as a separate extra on top of
+   the base ("2,100 points + extra 1,200 points"), so the fare class share
+   applies to the base 7 points, and Gold adds a flat 4 and Diamond 8
+   points per KRW 1,000 of the fare (Gold Lite: 7 x 70% + 4 = 8.9). */
 const rules = {
   name: "Air Premia | Premia Members",
   programName: "Premia Members",
@@ -34,14 +35,15 @@ const rules = {
     { id: "standard", name: "Standard", rate: 1 },
     { id: "flex", name: "Flex", rate: 1.2 }
   ],
-  // Points per won: the tier rate times the fare class share.
+  // Points per won: the base 7 per KRW 1,000 times the fare class share,
+  // plus the tier's extra points per KRW 1,000 (addRate).
   statuses: [
     { id: "blue", name: "Blue", multiplier: 7 / 1000 },
-    { id: "gold", name: "Gold", multiplier: 11 / 1000 },
-    { id: "diamond", name: "Diamond", multiplier: 15 / 1000 }
+    { id: "gold", name: "Gold", multiplier: 7 / 1000, addRate: 4 / 1000 },
+    { id: "diamond", name: "Diamond", multiplier: 7 / 1000, addRate: 8 / 1000 }
   ],
   cards: null,
-  note: "Premia Members earns 7 points per KRW 1,000 of the fare paid, after discounts, for Blue members; Gold earns 11 and Diamond 15 per KRW 1,000. Lite fares earn 70% of that rate, Standard 100% and Flex 120%. Airport tax, the fuel surcharge, other taxes and additional services such as bags and seats do not earn. Fares on flights departing outside Korea are converted to Korean won, so enter the fare in won. Air Premia does not show a Gold or Diamond example on a Lite or Flex fare, so this estimate applies the fare class share to the tier rate. Award tickets, ineligible discount fares and infants under two without a seat do not earn."
+  note: "Premia Members earns 7 points per KRW 1,000 of the fare paid, after discounts, for Blue members; Lite fares earn 70% of that, Standard 100% and Flex 120%. Gold members earn an extra 4 and Diamond members an extra 8 per KRW 1,000, for 11 and 15 on a Standard fare. Airport tax, the fuel surcharge, other taxes and additional services such as bags and seats do not earn. Fares on flights departing outside Korea are converted to Korean won, so enter the fare in won. Award tickets, ineligible discount fares and infants under two without a seat do not earn."
 };
 
 module.exports = {
@@ -57,7 +59,9 @@ module.exports = {
     { name: "Air Premia Gold, KRW 300,000 (official example)", input: { status: "gold", fare: "standard", fields: { airfare: 300000 } }, expect: 3300 },
     { name: "Air Premia Diamond, KRW 300,000 (official example)", input: { status: "diamond", fare: "standard", fields: { airfare: 300000 } }, expect: 4500 },
     // Lite: 300 x 7 x 70% = 1,470.
-    { name: "Air Premia Blue Lite, KRW 300,000", input: { status: "blue", fare: "lite", fields: { airfare: 300000 } }, expect: 1470 }
+    { name: "Air Premia Blue Lite, KRW 300,000", input: { status: "blue", fare: "lite", fields: { airfare: 300000 } }, expect: 1470 },
+    // Gold Lite: 1,470 + extra 300 x 4 = 2,670.
+    { name: "Air Premia Gold Lite, KRW 300,000", input: { status: "gold", fare: "lite", fields: { airfare: 300000 } }, expect: 2670 }
   ],
   rules
 };
