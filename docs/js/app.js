@@ -298,10 +298,11 @@
     var st = p && alliance ? find(p.statuses, statusEl.value) : null;
     if (!st) { field.hidden = true; return; }
     $("allianceStatusLabel").textContent = alliance + " Status";
-    // The alliance tier shows as its circle badge; "General" stays text.
-    var key = st.alliance && ALLIANCE_KEYS[alliance];
-    showLogo($("allianceStatusValue"), key ? "status:" + key + ":" + st.alliance.toLowerCase().replace(/\s+/g, "-") : null,
-      "circle", alliance + " " + (st.alliance || ""), st.alliance || "General");
+    // The alliance tier shows as its circle badge; a level with no tier
+    // ("General") shows the alliance's own circle icon.
+    var key = ALLIANCE_KEYS[alliance];
+    var logoKey = !key ? null : st.alliance ? "status:" + key + ":" + st.alliance.toLowerCase().replace(/\s+/g, "-") : "alliance:" + key;
+    showLogo($("allianceStatusValue"), logoKey, "circle", alliance + " " + (st.alliance || "General"), st.alliance || "General");
     field.hidden = false;
   }
 
