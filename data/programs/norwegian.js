@@ -13,7 +13,11 @@
    (https://help.wideroe.no/hc/no/articles/30806690961554): the first
    benefit after 8 flights is 2 extra Spenn per 10 kr, and Norwegian Reward
    Priority (32 flights in 12 months) gives 6 extra Spenn per 10 kr. Neither
-   applies on tender routes. Widerøe publishes no CashPoints rates for
+   applies on tender routes. Widerøe's Norwegian Reward page
+   (wideroe.no/en/reward, supplied by the site owner) names the levels:
+   Member (0 to 7 flights), Traveller (8 to 15: 2 extra Spenn per NOK 10),
+   Bronze (16 to 23) and Silver (24 to 31), which keep that benefit, and
+   Gold (32 or more), the former Priority level with 6 extra Spenn. Widerøe publishes no CashPoints rates for
    members outside the Nordic countries. */
 
 const rules = {
@@ -38,11 +42,13 @@ const rules = {
           { id: "flex", name: "Flex / Full Flex", rate: 0.3 }
         ],
         statuses: [
-          { id: "member", name: "Norwegian Reward Member", multiplier: 1 },
-          { id: "extra", name: "Extra Spenn benefit (after 8 flights)", multiplier: 1, addRate: 0.2 },
-          { id: "priority", name: "Norwegian Reward Priority", multiplier: 1, addRate: 0.6 }
+          { id: "member", name: "Member", multiplier: 1 },
+          { id: "traveller", name: "Traveller", multiplier: 1, addRate: 0.2 },
+          { id: "bronze", name: "Bronze", multiplier: 1, addRate: 0.2 },
+          { id: "silver", name: "Silver", multiplier: 1, addRate: 0.2 },
+          { id: "gold", name: "Gold", multiplier: 1, addRate: 0.6 }
         ],
-        note: "Widerøe flights earn Spenn on the ticket price excluding taxes and fees: 1 Spenn per 10 kroner with Mini, 2 with Smart, and 3 with Flex or Full Flex. The Extra Spenn benefit, which members get after their first 8 flights, adds 2 Spenn per 10 kroner. Norwegian Reward Priority adds 6 Spenn per 10 kroner. Routes in the tender (PSO) network earn nothing. Widerøe publishes these rates in Spenn, which members living in Norway, Sweden, Denmark, or Finland earn. It does not publish CashPoints rates for members living elsewhere. Enter the fare in kroner."
+        note: "Widerøe flights earn Spenn on the ticket price excluding taxes and fees: 1 Spenn per 10 kroner with Mini, 2 with Smart, and 3 with Flex or Full Flex. Traveller (8 to 15 flights in 12 months), Bronze (16 to 23) and Silver (24 to 31) members get 2 extra Spenn per 10 kroner, and Gold members (32 or more flights) 6 extra. Routes in the tender (PSO) network earn nothing. Widerøe publishes these rates in Spenn, which members living in Norway, Sweden, Denmark, or Finland earn. It does not publish CashPoints rates for members living elsewhere. Enter the fare in kroner."
       } }
   ],
   // "CashPoints are calculated based on the net ticket price (excl. taxes,
@@ -79,10 +85,10 @@ module.exports = {
     { name: "Norwegian LowFare+", airline: "dy", input: { status: "member", fare: "lowfare-plus", fields: { airfare: 1500 } }, expect: 30 },
     // Widerøe Mini: 1 Spenn per 10 kroner of 1,000 kroner.
     { name: "Widerøe Mini", airline: "wf", input: { status: "member", fare: "mini", fields: { airfare: 1000 } }, expect: 100 },
-    // Widerøe Smart with the Extra Spenn benefit: (2 + 2) per 10 kroner.
-    { name: "Widerøe Smart with Extra Spenn", airline: "wf", input: { status: "extra", fare: "smart", fields: { airfare: 1000 } }, expect: 400 },
-    // Widerøe Flex for a Priority member: (3 + 6) per 10 kroner.
-    { name: "Widerøe Flex, Priority", airline: "wf", input: { status: "priority", fare: "flex", fields: { airfare: 1000 } }, expect: 900 }
+    // Widerøe Smart for a Traveller: (2 + 2) per 10 kroner.
+    { name: "Widerøe Smart, Traveller", airline: "wf", input: { status: "traveller", fare: "smart", fields: { airfare: 1000 } }, expect: 400 },
+    // Widerøe Flex for a Gold member: (3 + 6) per 10 kroner.
+    { name: "Widerøe Flex, Gold", airline: "wf", input: { status: "gold", fare: "flex", fields: { airfare: 1000 } }, expect: 900 }
   ],
   rules
 };
