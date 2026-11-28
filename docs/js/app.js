@@ -528,6 +528,7 @@
       initialHidden.forEach(function (pair) { pair[0].hidden = pair[1]; });
       statusEl.appendChild(option("", "Choose a program first"));
       statusEl.disabled = true;
+      $("statusLabel").textContent = "Membership Level";
       usedCardNo.checked = true;
       resultEl.hidden = true;
       errorEl.hidden = true;
@@ -580,6 +581,9 @@
     setCurrency(p.currency || "USD");
     p.statuses.forEach(function (s) { statusEl.appendChild(option(s.id, statusLabel(s))); });
     statusEl.disabled = p.statuses.length < 2;
+    // The level menu is named after the program ("AAdvantage Level").
+    var progName = p.programName || ((p.name || "").split(" | ")[1] || "");
+    $("statusLabel").textContent = progName ? progName + " Level" : "Membership Level";
     syncAllianceStatus();
 
     fareTypeField.hidden = !p.fareTypes;
