@@ -72,6 +72,8 @@ Live site: https://points.alltripsconsidered.com/
 
 ## Features
 
+Every page, including each airline's page, uses the browser title "Points Calculator | All Trips Considered". Share titles and descriptions stay specific to each page.
+
 ### Using the calculator
 
 1. Choose an airline program.
@@ -232,7 +234,7 @@ The site installs as an app and opens offline. `docs/js/install.js` invites visi
 
 ### Program pages
 
-Each program has its own page at `/airlines/<name>/` (for example `/airlines/lufthansa/`). The page opens the calculator with that program chosen. It has its own title, description and share-image text, and the description names the airline's alliance when it has one. Each page also gives search engines structured data about the airline: its name, two-letter code, alliance and square logo.
+Each program has its own page at `/airlines/<name>/` (for example `/airlines/lufthansa/`). The page opens the calculator with that program chosen. It has its own description and share title, description and share-image text, and the description names the airline's alliance when it has one. Each page also gives search engines structured data about the airline: its name, two-letter code, alliance and square logo.
 
 ## Privacy
 
@@ -394,7 +396,7 @@ The two South African Airways Voyager "$" Mastercards are Ecobank Ghana cards th
 
 ### Site improvements
 
-- [ ] **"100+ airlines" wording:** the page titles, descriptions and preview image say "100+ airlines" and "90+ loyalty programs" (115 airlines in 91 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 100 programs.
+- [ ] **"100+ airlines" wording:** the descriptions, share titles and preview image say "100+ airlines" and "90+ loyalty programs" (115 airlines in 91 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 100 programs.
 
 ### Watch list
 

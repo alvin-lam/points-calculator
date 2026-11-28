@@ -83,7 +83,7 @@ function page(html, e) {
   const url = SITE + "airlines/" + e.slug + "/";
   return html
     .replace(/<head>/, '<head>\n  <base href="../../">')
-    .replace(/<title>[^<]*<\/title>/, "<title>" + esc(title) + "</title>")
+    // Every page uses the same browser title; the share title stays specific.
     .replace(/(<meta name="description" content=")[^"]*/, "$1" + esc(desc))
     .replace(/(<link rel="canonical" href=")[^"]*/, "$1" + url)
     .replace(/(<meta property="og:url" content=")[^"]*/, "$1" + url)
@@ -119,7 +119,7 @@ function build() {
   // Old addresses of merged entries point to the new page (not in the sitemap).
   Object.entries(REDIRECTS).forEach(([from, to]) => {
     const url = SITE + "airlines/" + to + "/";
-    files["airlines/" + from + "/index.html"] = '<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <title>Moved</title>\n' +
+    files["airlines/" + from + "/index.html"] = '<!doctype html>\n<html lang="en">\n<head>\n  <meta charset="utf-8">\n  <title>Points Calculator | All Trips Considered</title>\n' +
       '  <meta name="robots" content="noindex">\n  <link rel="canonical" href="' + url + '">\n' +
       '  <meta http-equiv="refresh" content="0; url=../' + to + '/">\n</head>\n<body>\n  <p>This page moved to <a href="../' + to + '/">' + url + '</a>.</p>\n</body>\n</html>\n';
   });
