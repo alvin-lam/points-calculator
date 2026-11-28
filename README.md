@@ -144,7 +144,6 @@ Some programs have announced rules that start later. Until then, a "Which rules?
 - Cathay Pacific (1 January 2027): the new Diamond Exec level, at oneworld Emerald, earning like Diamond.
 - JAL (flights from 1 January 2027): JGC Premier becomes JMB Premier.
 - Alaska and Hawaiian: the 2027 earning choices are marked (Coming Soon), and the 2026 fare class option disappears on 1 January 2027.
-- Miles & More: the rename to Lufthansa Group Miles & More has no date yet, so it is only mentioned in the notes.
 
 In a program file, `upcoming: { from, label, rules }` holds the new rules (any fields that replace today's, such as `statuses`, `fareTypes` or `note`), and an earning option can carry `from` or `until`. Alliance tiers in `data/alliances.js` also apply to levels that exist only in the upcoming rules.
 
