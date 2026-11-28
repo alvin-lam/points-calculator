@@ -6,6 +6,70 @@ Live site: https://points.alltripsconsidered.com/
 
 ![Airline Points Calculator link preview](docs/icons/og-image.png)
 
+## Airlines covered
+
+115 airlines in 91 programs, grouped by country as in the program menu. Each entry shows the airline, its code and the program its flights earn in.
+
+- **United States:** Alaska Airlines (AS): Atmos Rewards; Allegiant Air (G4): Allways Rewards; American Airlines (AA): AAdvantage; Breeze Airways (MX): Breezy Rewards; Delta Air Lines (DL): SkyMiles; Frontier Airlines (F9): Frontier Miles; Hawaiian Airlines (HA): Atmos Rewards; JetBlue Airways (B6): TrueBlue; Southwest Airlines (WN): Rapid Rewards; United Airlines (UA): MileagePlus
+- **Canada:** Air Canada (AC): Aeroplan; Air Transat (TS): Staria; Porter Airlines (PD): VIPorter; WestJet (WS): WestJet Rewards
+- **Mexico:** Aeroméxico (AM): Aeroméxico Rewards; Viva Aerobus (VB): Doters; Volaris (Y4): Altitude
+- **Argentina:** Aerolíneas Argentinas (AR): Aerolíneas Plus; JetSMART (JA/JZ/WJ/J6): AAdvantage
+- **Australia:** Jetstar Airways (JQ): Qantas Frequent Flyer; Qantas (QF): Qantas Frequent Flyer; Virgin Australia (VA): Velocity
+- **Austria:** Austrian Airlines (OS): Miles & More
+- **Belgium:** Brussels Airlines (SN): Miles & More
+- **Brazil:** Azul (AD): Azul Fidelidade; GOL (G3): Smiles
+- **Chile:** JetSMART (JA/JZ/WJ/J6): AAdvantage; LATAM Airlines (LA): LATAM Pass; SKY Airline (H2): SKY Plus
+- **China:** Air China (CA): PhoenixMiles; China Eastern (MU): Eastern Miles; China Southern (CZ): Sky Pearl Club; Hainan Airlines (HU): Fortune Wings Club; Shenzhen Airlines (ZH): PhoenixMiles; Xiamen Airlines (MF): Egret Miles
+- **Colombia:** Avianca (AV): LifeMiles; JetSMART (JA/JZ/WJ/J6): AAdvantage
+- **Croatia:** Croatia Airlines (OU): Miles & More
+- **Egypt:** EgyptAir (MS): EgyptAir Plus
+- **Ethiopia:** Ethiopian Airlines (ET): ShebaMiles
+- **Fiji:** Fiji Airways (FJ): AAdvantage
+- **Finland:** Finnair (AY): Finnair Plus
+- **France:** Air France (AF): Flying Blue; Transavia (HV/TO): Flying Blue
+- **French Polynesia:** Air Tahiti Nui (TN): Club Tiare
+- **Germany:** Condor (DE): TrueBlue or Atmos Rewards; Discover Airlines (4Y): Miles & More; Eurowings (EW): Miles & More; Lufthansa (LH): Miles & More
+- **Greece:** Aegean Airlines (A3): Miles+Bonus
+- **Hong Kong:** Cathay Pacific (CX): Asia Miles; HK Express (UO): Asia Miles; Hong Kong Airlines (HX): Fortune Wings Club
+- **Iceland:** Icelandair (FI): Saga Club
+- **India:** Air India (AI): Maharaja Club; IndiGo (6E): BluChip; SpiceJet (SG): SpiceClub
+- **Ireland:** Aer Lingus (EI): AerClub
+- **Israel:** El Al (LY): Matmid
+- **Italy:** Air Dolomiti (EN): Miles & More; ITA Airways (AZ): Miles & More
+- **Japan:** ANA (NH): ANA Mileage Club; Japan Airlines (JL): JAL Mileage Bank; Jetstar Japan (GK): JAL Mileage Bank
+- **Jordan:** Royal Jordanian (RJ): Royal Club
+- **Kenya:** Kenya Airways (KQ): Asante Rewards
+- **Latvia:** airBaltic (BT): airBaltic Club
+- **Macau:** Air Macau (NX): PhoenixMiles
+- **Malaysia:** Malaysia Airlines (MH): Enrich
+- **Malta:** KM Malta Airlines (KM): KMrewards
+- **Morocco:** Royal Air Maroc (AT): Safar Flyer
+- **Netherlands:** KLM (KL): Flying Blue; Transavia (HV/TO): Flying Blue
+- **New Caledonia:** Aircalin (SB): Flying Blue
+- **New Zealand:** Air New Zealand (NZ): Koru
+- **Norway:** Norwegian (DY): Norwegian Reward; Widerøe (WF): Norwegian Reward
+- **Oman:** Oman Air (WY): Sindbad
+- **Panama:** Copa Airlines (CM): ConnectMiles
+- **Peru:** JetSMART (JA/JZ/WJ/J6): AAdvantage
+- **Philippines:** Cebgo (DG): Go Rewards; Cebu Pacific (5J): Go Rewards; Philippine Airlines (PR): Mabuhay Miles
+- **Poland:** LOT Polish Airlines (LO): Miles & More
+- **Portugal:** TAP Air Portugal (TP): Miles&Go
+- **Qatar:** Qatar Airways (QR): Privilege Club
+- **Romania:** TAROM (RO): Flying Blue
+- **Scandinavia:** SAS Scandinavian Airlines (SK): EuroBonus
+- **Singapore:** Scoot (TR): KrisFlyer; Singapore Airlines (SQ): KrisFlyer
+- **South Africa:** South African Airways (SA): Voyager
+- **South Korea:** Air Busan (BX): FLY & STAMP; Air Premia (YP): Premia Members; Jeju Air (7C): J Point; Jin Air (LJ): Nabi Points; Korean Air (KE): SKYPASS
+- **Spain:** Air Europa (UX): SUMA; Iberia (IB): Iberia Club; LEVEL (LL): Iberia Club; Vueling (VY): Vueling Club
+- **Sri Lanka:** SriLankan Airlines (UL): FlySmiLes
+- **Switzerland:** Edelweiss (WK): Miles & More; SWISS (LX): Miles & More
+- **Taiwan:** China Airlines (CI): Dynasty Flyer; EVA Air (BR): Infinity MileageLands; STARLUX Airlines (JX): COSMILE; Tigerair Taiwan (IT): tigerclub
+- **Thailand:** Bangkok Airways (PG): FlyerBonus; Thai Airways (TG): Royal Orchid Plus
+- **Türkiye:** Pegasus Airlines (PC): BolBol; SunExpress (XQ): SunExpress your benefits; Turkish Airlines (TK): Miles&Smiles
+- **United Arab Emirates:** Emirates (EK): Emirates Skywards; Etihad Airways (EY): Etihad Guest
+- **United Kingdom:** British Airways (BA): British Airways Club; Loganair (LM): Loganair Loyalty; Virgin Atlantic (VS): Flying Club
+- **Vietnam:** VietJet Air (VJ): SkyJoy; Vietnam Airlines (VN): Lotusmiles
+
 ## Features
 
 ### Using the calculator
