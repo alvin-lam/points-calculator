@@ -11,11 +11,11 @@ const rules = {
   airlines: [
     { id: "aa", name: "American Airlines", country: "US" },
     { id: "fj", name: "Fiji Airways", country: "FJ", program: {
-        // Partner flights are capped at 25,000 miles per ticket.
-        cap: 25000,
+        // No earning cap: the airline uses AAdvantage as its own program.
+        cap: null,
         cards: null,
         addons: false,
-        note: "Fiji Airways uses AAdvantage. Flights sold by Fiji Airways earn like American flights: 5 miles per US dollar of the base fare and carrier-imposed fees, with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Government taxes do not earn. LITE fares bought on or after 17 December 2025 earn nothing. Fiji fares are often priced in Fiji dollars, so enter the US dollar equivalent. Earning on partner flights is capped at 25,000 miles per ticket."
+        note: "Fiji Airways uses AAdvantage. Flights sold by Fiji Airways earn like American flights: 5 miles per US dollar of the base fare and carrier-imposed fees, with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Government taxes do not earn. LITE fares bought on or after 17 December 2025 earn nothing. Fiji fares are often priced in Fiji dollars, so enter the US dollar equivalent. There is no earning cap."
       } },
     // JetSMART (since 24 September 2024): American's JetSMART page
     // (https://www.aa.com/i18n/travel-info/partner-airlines/jetsmart.jsp)
@@ -27,8 +27,8 @@ const rules = {
     // ("cargos"), and its calculator rounds to the nearest mile (status
     // factors 1, 1.4, 1.6, 1.8 and 2.2). We follow JetSMART.
     { id: "ja", name: "JetSMART", country: "CL", program: {
-        // Partner flights are capped at 25,000 miles per ticket.
-        cap: 25000,
+        // No earning cap: the airline uses AAdvantage as its own program.
+        cap: null,
         cards: null,
         addons: false,
         noCarrier: true,
@@ -46,7 +46,7 @@ const rules = {
           { id: "platpro", name: "AAdvantage Platinum Pro", rates: { basic: 0, light: 3.6, smart: 9, full: 9 } },
           { id: "exp", name: "AAdvantage Executive Platinum", rates: { basic: 0, light: 4.4, smart: 11, full: 11 } }
         ],
-        note: "JetSMART uses AAdvantage. JetSMART flights earn miles per US dollar of the fare, including the price of the pack: 2 with Light and 5 with SMART or FULL (Full Flex), with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Basic fares earn nothing. Per JetSMART's AAdvantage page, taxes, charges, and optional extras such as bags and seats do not earn, and miles round to the nearest mile. A fare paid in another currency earns on its US dollar value at the exchange rate of the purchase date, so enter the US dollar equivalent. No AAdvantage card publishes a JetSMART rate. JetSMART Chile (JA), Peru (JZ), Argentina (WJ) and Colombia (J6) earn at the same rates, per JetSMART's AAdvantage pages for each country. JetSMART flights booked with an American flight number earn under American's own rates. Earning on partner flights is capped at 25,000 miles per ticket."
+        note: "JetSMART uses AAdvantage. JetSMART flights earn miles per US dollar of the fare, including the price of the pack: 2 with Light and 5 with SMART or FULL (Full Flex), with a 40%, 60%, 80%, or 120% bonus for Gold, Platinum, Platinum Pro, and Executive Platinum. Basic fares earn nothing. Per JetSMART's AAdvantage page, taxes, charges, and optional extras such as bags and seats do not earn, and miles round to the nearest mile. A fare paid in another currency earns on its US dollar value at the exchange rate of the purchase date, so enter the US dollar equivalent. No AAdvantage card publishes a JetSMART rate. JetSMART Chile (JA), Peru (JZ), Argentina (WJ) and Colombia (J6) earn at the same rates, per JetSMART's AAdvantage pages for each country. JetSMART flights booked with an American flight number earn under American's own rates. There is no earning cap."
       } }
   ],
   method: "spend",
