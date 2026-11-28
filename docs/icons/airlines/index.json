@@ -1066,5 +1066,14 @@
     "square": "icons/airlines/square/egyptair.png",
     "circle": "icons/airlines/circle/egyptair.png",
     "iconSource": "App Store icon of \"EGYPTAIR\" by EgyptAir Airlines"
+  },
+  "airpremia": {
+    "file": "icons/airlines/airpremia.png",
+    "title": "Air Premia mark",
+    "source": "App Store icon of \"Air Premia\"",
+    "license": "Trademark of its owner; the mark from the official app icon (no wordmark file was available)",
+    "square": "icons/airlines/square/airpremia.png",
+    "circle": "icons/airlines/circle/airpremia.png",
+    "iconSource": "App Store icon of \"Air Premia\""
   }
 }
