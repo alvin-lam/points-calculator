@@ -684,6 +684,8 @@
 
     zoneEl.replaceChildren();
     if (p.zones) p.zones.forEach(function (z) { zoneEl.appendChild(option(z.id, z.name)); });
+    // A program can preselect a route (Turkish: within Türkiye).
+    if (p.defaultZone) zoneEl.value = p.defaultZone;
     setupRoutePicker(p);
     earnEl.replaceChildren();
     earnField.hidden = !p.earnMethods;

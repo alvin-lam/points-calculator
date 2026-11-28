@@ -7,6 +7,7 @@ const rules = {
   zoneLabel: "Route Type",
   // The route menu sits right under Fare Type.
   zoneAfterFare: true,
+  defaultZone: "domestic",
   zoneHint: "International flights earn a share of the distance; flights within Türkiye earn a fixed amount.",
   zones: [
     { id: "intl", name: "International" },
