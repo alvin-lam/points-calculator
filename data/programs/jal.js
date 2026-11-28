@@ -34,6 +34,18 @@ const rules = {
   note: "JAL earns a share of the flight distance set by booking class, and status adds a 35% to 130% mile-up bonus. Fare classes not listed do not earn miles. The US JAL USA Card earns 2 more miles per US dollar on JAL purchases with Premium Rewards, or 1 per 2 dollars with Basic Rewards. Only tickets bought directly from JAL count. Japanese JAL cards are not included."
 };
 
+// Announced for flights from 1 January 2027 (Traveling for Miles): JGC
+// Premier no longer needs JAL Global Club membership and becomes JMB
+// Premier, with the same 105% bonus and oneworld Emerald.
+rules.upcoming = {
+  from: "2027-01-01",
+  label: "Flights from 1 January 2027",
+  rules: {
+    statuses: rules.statuses.map(function (st) { return st.id === "jgc-premier" ? Object.assign({}, st, { name: "JMB Premier" }) : st; }),
+    note: rules.note + " For flights from 1 January 2027, JGC Premier becomes JMB Premier and no longer requires JAL Global Club membership."
+  }
+};
+
 module.exports = {
   id: "jal",
   // Month the earning rules were last checked against the source.
