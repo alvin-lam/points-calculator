@@ -306,10 +306,6 @@ Researched in November 2026. Each one is blocked on an official source, so a scr
 - [ ] **SunExpress** (Türkiye): sunexpress.com is behind Cloudflare. Snippets show 1 point per euro on the total including taxes and extras for own-channel bookings, Silver 1.5 and Gold 1.75 per euro on extras, and 100 points per one-way agency booking. The Silver threshold conflicts, and rounding is not published.
 - [ ] **Jin Air Nabi Points** (Korea): fixed points per one-way flight by route (domestic 10, Japan 15 to 20) times a fare percentage. The per-route table is behind Cloudflare. Merges with Air Busan and Air Seoul on 17 March 2027.
 - [ ] **Air Busan FLY & STAMP** (Korea): stamps per one-way flight by route group (official rules PDF), but the route table is behind Cloudflare and snippets conflict. Merges into Jin Air on 17 March 2027.
-- [ ] **Azores Airlines SATA IMAGINE** (Portugal): a fare-family share (10% to 200%) of each route's base miles, with Silversky +20% and Goldsky +30%. The base miles appear only in the member calculator, and no official rule ties them to distance.
-- [ ] **AirAsia rewards** (Asia): Table E of the Membership Agreement gives Premium Flex and Premium Flatbed exactly (2, 4, 7 and 12 per RM1 for Red, Gold, Platinum and Black), but Low Fare only as a maximum ("up to" 1.5, 3, 5.5 and 10). The earning components are not stated. Covers AK, FD, QZ, Z2, KT, D7, and XJ from 1 January 2026. Source: https://www.airasia.com/aa/rewards/en/gb/rewards-membership.html
-- [ ] **Binter BinterMás** (Spain): removed in November 2026. Inter-island flights earn fixed points by fare (SuperPromo 0, Promo 50, Económica 75, Flexible 100, FlexiMás 200), but mainland and international points vary by route with no complete table, and Binter's fares page (Madrid 150, 300, 900, 1,200) conflicts with its booking engine (150, 600, 1,000, 1,600).
-- [ ] **Air Niugini Destinations** (Papua New Guinea): removed in November 2026. The terms give 1 point per kina of the fare, but the tier table (Silver 1.5, Gold 2, Platinum 1.75 per kina) is inconsistent.
 
 ### No earning program (checked November 2026)
 
