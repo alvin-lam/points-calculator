@@ -19,6 +19,9 @@
   var earnEl = $("earnMethod");
   var segmentsField = $("segmentsField");
   var zoneField = $("zoneField");
+  // Marks the route menu's usual place, so it can move back.
+  var zoneHome = document.createComment("zone field home");
+  zoneField.before(zoneHome);
   var fareFields = $("fareFields");
   var zoneEl = $("zone");
   var segmentsEl = $("segments");
@@ -773,6 +776,10 @@
     // A single route (Transavia: any flight) needs no menu.
     var oneZone = m === "zone" && !!p.zones && p.zones.length === 1;
     zoneField.hidden = !zoneUsed || picker || oneZone;
+    // A program can show the route menu right under the fare type (Turkish);
+    // otherwise it stays in its usual place, after the amounts.
+    if (p.zoneAfterFare) $("fareTypeField").after(zoneField);
+    else zoneHome.after(zoneField);
     syncExtras(p);
     syncExtraVisibility();
     $("zoneLabel").textContent = p.zoneLabel || "Route and distance";
