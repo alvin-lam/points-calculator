@@ -1,6 +1,6 @@
 # Airline Points Calculator
 
-A static web app that estimates the points or miles you earn on a flight. It covers 109 airlines in 86 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
+A static web app that estimates the points or miles you earn on a flight. It covers 110 airlines in 87 loyalty programs, with status levels, alliance tiers and co-branded credit cards.
 
 Live site: https://points.alltripsconsidered.com/
 
@@ -88,6 +88,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Loganair (LM) Loganair Loyalty earns a fixed number of Avios per Loganair-operated flight, whatever the distance: 410 on Fly, 650 on Fly Flex and 1,300 on Fly Flex +, since 31 March 2025 (`method: "zone"` with one hidden zone). Each flight of a connection earns, but a through-flight on the same aircraft counts as one. Codeshare flights on other airlines, Orkney inter-isles services, and corporate, negotiated and tour fares do not earn. There are no tiers and no co-branded card.
 - Widerøe (WF) is listed under Norwegian Reward. It earns Spenn on the fare, excluding taxes and fees: 1, 2 or 3 per 10 kroner on Mini, Smart and Flex or Full Flex, from Widerøe's help centre. The Extra Spenn benefit (after 8 flights) adds 2 per 10 kroner, and Priority adds 6. Tender (PSO) routes earn nothing, and the CashPoints rates for members outside the Nordics are not published.
 - EgyptAir (MS) EgyptAir Plus earns a share of the distance on international flights by booking class, from 25% (E, G, W, T, S) to 200% (C, D, J, Z), with a minimum per flight of 150 to 1,000 miles; P earns 75%. Domestic flights earn that minimum as a fixed amount. Silver, Gold, Elite and Platinum add 20%, 30%, 35% and 40%, from EgyptAir Plus's Earning Miles Policy and Membership Levels pages. The CIB co-brand card rates conflict between EgyptAir and CIB, so they are left out.
+- Ethiopian Airlines (ET) ShebaMiles follows Ethiopian's official Earn Miles calculator, since no written chart is published (approved as the source by the site owner). International flights earn the distance, counted as at least 500 miles (`minDistance`), times the class share: C 200%, J 150%, D 125%, P and Y, G, S, B 100%, L, V, M, K 75%, H, U, Q, T 50% and E, O, W 25%. Silver, Gold and Platinum add 25%, 75% and 100% of that distance in every class (`status.bonus`), rounded separately as the calculator does (`roundParts`). Flights within Ethiopia earn a fixed 300 (Business), 150 (Y, G, S, B) or 100 (other Economy), raised by the same share (`bonusOnFixed`). Status miles are not shown. Cards (Ethiopia): Bank of Abyssinia (50 per Br 1,000), Awash (3 per Br 100) and Hibir (5 per Br 100). Five calculator results are tests.
 - Pegasus Airlines (PC) BolBol earns 1 BolPoint per ₺2 of the total paid for the flight, taxes included, from the Pegasus BolBol General Rules and FAQ. Package upgrades, extra baggage, seats, Pegasus Cafe, Free Cancellation and pets earn at the same rate (`addonsRate`). BolBol Extra doubles the points on the lowest package fare only. Flights bought from online travel agencies and codeshare flights do not earn. Cards: ING Pegasus BolBol Premium and Classic (1 per ₺1 at Pegasus, from ING's card page).
 - KM Malta Airlines (KM) KMrewards earns SkyBux (1 SkyBux = EUR 0.01) as a percentage of the base fare, excluding taxes, fees and charges, by fare family: Economy Basic 1.5%, Value 2%, Plus 3% and Flex 4.5%, and Business 5.25% to 8.25%. KM Elite adds 4% (Traveller), 8% (Explorer) or 14% (Pioneer) on those SkyBux. Extras earn 2% with no tier bonus. Results round to the nearest SkyBux, as in KMrewards' Collecting Scenarios.
 - Jeju Air (7C) J Point (1 point = KRW 1) earns a percentage of the air fare, excluding fuel surcharges, airport fees and taxes. Booking on Jeju Air's website or app earns 5% (Silver) to 10% (VIP); other channels earn a 2% base plus the same tier bonus (`direct.rate`). Pre-paid bags and seats earn 2%. The KB Kookmin J Point card adds 20 points per ₩1,200 at Jeju Air, from Jeju Air's card benefits page.
@@ -298,7 +299,6 @@ Each new program needs an official, complete earning table before it is built. M
 Researched in November 2026. Each one is blocked on an official source, so a screenshot or PDF of the earning page is the quickest way to add it.
 
 - [ ] **Garuda Indonesia GarudaMiles** (Asia): the 8 September 2025 class table (F, A, P 400% down to E, U, Z 2%) and the Gold and Platinum +25% bonus are known only from search summaries. Needs the distance basis, rounding and the BNI card rates. garuda-indonesia.com and bni.co.id are behind Cloudflare.
-- [ ] **Ethiopian Airlines ShebaMiles** (Africa): the terms cite a Miles Chart that is not online, and the official calculator works on the server. The written status bonus (Silver 25%, Gold 75%, Platinum 100% of base miles) also does not match the calculator, which adds those shares of the distance. Ethiopian co-brand cards (Abyssinia, Awash, Hibir) are confirmed.
 - [ ] **Kenya Airways Asante Rewards** (Africa): the terms say points depend on route and fare class or cabin, but no chart is published; the portal loads its text from an API that could not be read. The Absa Asante Global Visa (September 2026) has no published rate.
 - [ ] **Saudia Alfursan** (Middle East, SkyTeam): saudia.com blocks automated access. Search snippets show a newer fare-family table (Guest Saver 0%, Basic 60%, Semi Flex 80%, Flex 110%; Business Basic 175%, Semi Flex 225% and Flex 250% international, 125%, 150% and 175% domestic) that conflicts with two older tables. First class, status bonuses and the effective date are unconfirmed. Card: ANB AlFursan Infinite earns 1 mile per SAR 3 domestic and SAR 2 abroad (official).
 - [ ] **Middle East Airlines Cedar Miles** (SkyTeam): both MEA sites are behind Cloudflare, and search snippets give three conflicting class tables. Status bonuses are Silver 25%, Gold 50% and Platinum 75%.
@@ -318,7 +318,7 @@ Researched in November 2026. Each one is blocked on an official source, so a scr
 ### Alliance members not yet in the calculator
 
 - [ ] **oneworld:** none left. Philippine Airlines (in the calculator) is reported to join in 2027.
-- [ ] **Star Alliance:** Ethiopian ShebaMiles (above). Asiana leaves Star Alliance in December 2026 and is on the watch list.
+- [ ] **Star Alliance:** none left. Asiana leaves Star Alliance in December 2026 and is on the watch list.
 - [ ] **SkyTeam:** Middle East Airlines, TAROM, Saudia, Garuda Indonesia and Kenya Airways (all above).
 
 ### Credit cards to add
@@ -337,7 +337,7 @@ The two South African Airways Voyager "$" Mastercards are Ecobank Ghana cards th
 - [ ] **Report a correction:** a footer link, by email or a simple form, so readers can report changed earning rules.
 - [ ] **Review schedule:** a reminder every six months listing programs whose `reviewed` month is older than six months, so the "Rules last reviewed" dates stay current.
 - [ ] **Visit counter:** a privacy-friendly counter (for example Plausible or GoatCounter, with no cookies or consent banner) to see which programs people use. If added, the footer should say so.
-- [ ] **"100+ airlines" wording:** the page titles, descriptions and preview image say "100+ airlines" and "80+ loyalty programs" (109 airlines in 86 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 90 programs.
+- [ ] **"100+ airlines" wording:** the page titles, descriptions and preview image say "100+ airlines" and "80+ loyalty programs" (110 airlines in 87 programs today). Update the wording and remake the preview image (`tools/og-image.html`) when the count passes 150 airlines or 90 programs.
 
 ### Watch list
 

@@ -105,14 +105,14 @@
     return new Date(Number(parts[0]), Number(parts[1]) - 1, 1).toLocaleDateString(LOCALE, { year: "numeric", month: "long" });
   }
 
-  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$", PGK: "K", QAR: "QAR " };
+  var symbols = { USD: "$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$", PGK: "K", QAR: "QAR ", ETB: "Br " };
   // Name of the currency's hundredth, for the point value label.
   var minorUnit = { USD: "¢", CAD: "¢", MXN: "¢", AUD: "¢", GBP: "p", EUR: "¢" };
   var moneyEls = document.querySelectorAll(".money:not(.wide-fixed)");
   // Labels for a card billed in another currency than the fare.
   // Names for the "charged in ... or a foreign currency?" card question.
   var CURRENCY_NAMES = { ILS: "shekels", TWD: "New Taiwan dollars" };
-  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$", PGK: "K", QAR: "QAR " };
+  var cardSymbols = { USD: "US$", CAD: "CA$", MXN: "MX$", AUD: "A$", NOK: "kr", MYR: "RM", SGD: "S$", JPY: "¥", HKD: "HK$", TWD: "NT$", INR: "₹", THB: "฿", CNY: "CN¥", NZD: "NZ$", GBP: "£", EUR: "€", BRL: "R$", ILS: "₪", ZAR: "R", MZN: "MT", AED: "AED ", TRY: "₺", CHF: "CHF ", ISK: "ISK ", PHP: "₱", VND: "₫", XPF: "XPF ", MAD: "MAD ", OMR: "OMR ", JOD: "JOD ", LKR: "LKR ", ARS: "AR$", PAB: "B/.", KRW: "₩", MOP: "MOP$", PGK: "K", QAR: "QAR ", ETB: "Br " };
 
   function option(value, label) {
     var o = document.createElement("option");
@@ -988,7 +988,8 @@
         // Some fares are excluded from the status bonus (KrisFlyer). A status
         // bonus can also be added on top of the fare share (Etihad).
         if (status.bonus != null) {
-          points = base + dist * status.bonus;
+          // Some programs round the base and the bonus separately (ShebaMiles).
+          points = p.roundParts ? Math.round(base) + Math.round(dist * status.bonus) : base + dist * status.bonus;
           rateLabel = num.format(share + status.bonus) + " " + unitFor(share + status.bonus, p.unit) + " per " + unitName;
         } else {
           var mult = fareType && fareType.noBonus ? 1 : (status.multiplier || 1);
@@ -1006,7 +1007,7 @@
           }
         }
         if (minUsed) rateLabel += ", with the " + num.format(min) + " minimum per flight";
-        if (minDistUsed) rateLabel += ", counted as the " + num.format(p.minDistance) + " km minimum";
+        if (minDistUsed) rateLabel += ", counted as the " + num.format(p.minDistance) + (p.distanceFactor ? " km" : " miles") + " minimum";
       }
     } else if (em.id === "tiered") {
       points = 0;
