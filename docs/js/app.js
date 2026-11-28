@@ -142,7 +142,7 @@
       sym.textContent = symbols[p.currency || "USD"] || "$";
       var input = document.createElement("input");
       input.id = "extra-" + f.id;
-      input.type = "number"; input.inputMode = "decimal"; input.min = "0"; input.step = "0.01"; input.placeholder = "0.00";
+      input.type = "number"; input.inputMode = "decimal"; input.min = "0"; input.step = "0.01"; input.placeholder = p.currency || "USD";
       input.addEventListener("input", function () { resultEl.hidden = true; });
       money.appendChild(sym); money.appendChild(input);
       div.appendChild(label); div.appendChild(money);
@@ -323,6 +323,8 @@
     moneyEls.forEach(function (el) {
       el.querySelector("span").textContent = symbols[code];
       el.classList.toggle("wide", symbols[code].length > 1);
+      // The empty field shows the currency code (USD, EUR, TRY), not 0.00.
+      el.querySelector("input").placeholder = code;
     });
   }
 
@@ -746,6 +748,7 @@
       var code = card.currency || p.currency || "USD";
       $("cardChargeCurrency").textContent = cardSymbols[code];
       $("cardChargeSymbol").textContent = cardSymbols[code];
+      $("cardCharge").placeholder = code;
       $("cardChargeHint").textContent = card.flightBonusPct
         ? "Enter the total charged to the card in " + cardSymbols[code] + ", from your card statement. Leave it blank if you paid another way."
         : foreign

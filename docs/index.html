@@ -183,7 +183,7 @@
           <label for="airfare">Airfare</label>
           <div class="money">
             <span aria-hidden="true">$</span>
-            <input id="airfare" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00" required>
+            <input id="airfare" type="number" inputmode="decimal" min="0" step="0.01" placeholder="USD" required>
           </div>
           <small id="airfareHint">Base fare, before fees and taxes.</small>
         </div>
@@ -191,7 +191,7 @@
           <label for="gowildFee">GoWild Early Booking Fee</label>
           <div class="money">
             <span aria-hidden="true">$</span>
-            <input id="gowildFee" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+            <input id="gowildFee" type="number" inputmode="decimal" min="0" step="0.01" placeholder="USD">
           </div>
           <small>The fee for booking a GoWild! flight early. It earns miles by status and fare type.</small>
         </div>
@@ -199,7 +199,7 @@
           <label for="addons" id="addonsLabel">Seats, Bags and/or Bundles</label>
           <div class="money">
             <span aria-hidden="true">$</span>
-            <input id="addons" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+            <input id="addons" type="number" inputmode="decimal" min="0" step="0.01" placeholder="USD">
           </div>
           <small id="addonsHint">Seat selection, carry-on and checked bags, or a bundle, bought on this booking. They earn points like the fare.</small>
         </div>
@@ -209,7 +209,7 @@
           <label for="carrierFees" id="carrierLabel">Carrier-imposed Fees</label>
           <div class="money">
             <span aria-hidden="true">$</span>
-            <input id="carrierFees" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+            <input id="carrierFees" type="number" inputmode="decimal" min="0" step="0.01" placeholder="USD">
           </div>
           <small id="carrierHint">Fuel or other airline surcharges (YQ/YR), if any. Leave blank if none.</small>
         </div>
@@ -217,7 +217,7 @@
           <label for="taxes">Taxes &amp; Airport Fees</label>
           <div class="money">
             <span aria-hidden="true">$</span>
-            <input id="taxes" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+            <input id="taxes" type="number" inputmode="decimal" min="0" step="0.01" placeholder="USD">
           </div>
           <small>Government taxes and airport fees.</small>
         </div>
@@ -313,7 +313,7 @@
         <label for="cardCharge">Amount charged to card (<span id="cardChargeCurrency">US$</span>)</label>
         <div class="money wide-fixed">
           <span aria-hidden="true" id="cardChargeSymbol">US$</span>
-          <input id="cardCharge" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00">
+          <input id="cardCharge" type="number" inputmode="decimal" min="0" step="0.01" placeholder="USD">
         </div>
         <small id="cardChargeHint">This card earns in a different currency than the fare. Enter the total from your card statement.</small>
       </div>
