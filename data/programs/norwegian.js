@@ -61,10 +61,19 @@ const rules = {
     { id: "lowfare-plus", name: "LowFare+", rate: 0.02 },
     { id: "flex", name: "Flex", rate: 0.05 }
   ],
+  // Norwegian's "Norwegian Reward levels" page (supplied by the site
+  // owner): Traveller (8 to 15 flights in 12 months) gets "2% extra
+  // CashPoints" as its first benefit; Bronze (16 to 23) and Silver (24 to
+  // 31) keep it; Gold (32 or more) gets "all the benefits". The page gives
+  // no separate CashPoints rate for Gold, so Gold uses the 2% extra.
   statuses: [
-    { id: "member", name: "Norwegian Reward Member", multiplier: 1 }
+    { id: "member", name: "Member", multiplier: 1 },
+    { id: "traveller", name: "Traveller", multiplier: 1, addRate: 0.02 },
+    { id: "bronze", name: "Bronze", multiplier: 1, addRate: 0.02 },
+    { id: "silver", name: "Silver", multiplier: 1, addRate: 0.02 },
+    { id: "gold", name: "Gold", multiplier: 1, addRate: 0.02 }
   ],
-  note: "Norwegian Reward pays CashPoints worth 1%, 2%, or 5% of the net ticket price, by fare. Taxes, charges and optional services do not earn. One CashPoint is worth 1 Norwegian krone, so enter the fare in kroner. Members living in Norway, Sweden, Denmark, or Finland earn Spenn instead. Paying with a Bank Norwegian card raises LowFare to 3% and LowFare+ to 4%."
+  note: "Norwegian Reward pays CashPoints worth 1%, 2%, or 5% of the net ticket price, by fare. Taxes, charges and optional services do not earn. Traveller (8 to 15 flights in 12 months), Bronze (16 to 23), Silver (24 to 31) and Gold (32 or more) members earn 2% extra CashPoints; Norwegian does not state a higher rate for Gold. One CashPoint is worth 1 Norwegian krone, so enter the fare in kroner. Members living in Norway, Sweden, Denmark, or Finland earn Spenn instead. Paying with a Bank Norwegian card raises LowFare to 3% and LowFare+ to 4%."
 };
 
 module.exports = {
@@ -83,6 +92,8 @@ module.exports = {
   examples: [
     // Norwegian LowFare+: 2% of 1,500 kroner.
     { name: "Norwegian LowFare+", airline: "dy", input: { status: "member", fare: "lowfare-plus", fields: { airfare: 1500 } }, expect: 30 },
+    // Traveller: (2% + 2% extra) of 1,500 kroner.
+    { name: "Norwegian LowFare+, Traveller", airline: "dy", input: { status: "traveller", fare: "lowfare-plus", fields: { airfare: 1500 } }, expect: 60 },
     // Widerøe Mini: 1 Spenn per 10 kroner of 1,000 kroner.
     { name: "Widerøe Mini", airline: "wf", input: { status: "member", fare: "mini", fields: { airfare: 1000 } }, expect: 100 },
     // Widerøe Smart for a Traveller: (2 + 2) per 10 kroner.

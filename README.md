@@ -47,7 +47,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Vueling Club: Avios are earned excluding taxes and fees, and Vueling shows no carrier charge, so the fee field is hidden.
 - Miles & More (Lufthansa Group airlines): the ticket price plus the international or national surcharge earns; product and service charges do not.
 - Finnair Plus: the surcharge set by Finnair and travel extras bought before the flight earn.
-- Norwegian Reward: only the net ticket price earns; taxes, charges and optional services do not, so the fee field is hidden.
+- Norwegian Reward: only the net ticket price earns; taxes, charges and optional services do not, so the fee field is hidden. Norwegian flights earn CashPoints of 1% (LowFare), 2% (LowFare+) or 5% (Flex); Traveller, Bronze, Silver and Gold members (8 or more flights in 12 months) earn 2% extra, from Norwegian's Norwegian Reward levels page, which states no higher rate for Gold.
 - Air Europa SUMA: the published fare and fuel surcharge earn; management and handling fees do not.
 - airBaltic Club: the fare, eligible fees including taxes and fuel charges, and extras bought directly from airBaltic earn.
 - American AAdvantage, Fiji Airways, United MileagePlus, Air Canada Aeroplan and WestJet Rewards: carrier-imposed fees or surcharges earn. WestJet extras (seats, bags, upgrades) also earn; Aeroplan's do not.
