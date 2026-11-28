@@ -270,6 +270,24 @@
     return name;
   }
 
+  var ALLIANCE_KEYS = { "Star Alliance": "star", "SkyTeam": "skyteam", "oneworld": "oneworld" };
+
+  // Shows a logo in a static field, or the text when there is no logo (or
+  // the logos have not loaded yet; they are shown once they load).
+  function showLogo(el, key, kind, label, text) {
+    var info = key && LOGOS[key];
+    var src = info && info[kind];
+    el.replaceChildren();
+    el.classList.toggle("logo-value", !!src);
+    el.classList.toggle("logo-" + kind, !!src);
+    if (key) el.setAttribute("data-logo", JSON.stringify([key, kind, label, text]));
+    else el.removeAttribute("data-logo");
+    if (!src) { el.textContent = text; return; }
+    var img = document.createElement("img");
+    img.src = src; img.alt = label; img.decoding = "async";
+    el.appendChild(img);
+  }
+
   // "[Alliance] Status" beside Membership Level: shown only for an airline in
   // an alliance. A level with no alliance tier shows "General".
   function syncAllianceStatus() {
@@ -280,7 +298,10 @@
     var st = p && alliance ? find(p.statuses, statusEl.value) : null;
     if (!st) { field.hidden = true; return; }
     $("allianceStatusLabel").textContent = alliance + " Status";
-    $("allianceStatusValue").textContent = st.alliance || "General";
+    // The alliance tier shows as its circle badge; "General" stays text.
+    var key = st.alliance && ALLIANCE_KEYS[alliance];
+    showLogo($("allianceStatusValue"), key ? "status:" + key + ":" + st.alliance.toLowerCase().replace(/\s+/g, "-") : null,
+      "circle", alliance + " " + (st.alliance || ""), st.alliance || "General");
     field.hidden = false;
   }
 
@@ -665,7 +686,9 @@
     var allianceEl = $("allianceValue");
     // A non-member that shares an alliance airline's program names that
     // alliance ("Not part of Star Alliance."); others say "an alliance".
-    allianceEl.textContent = alliance || (shared ? "Not part of " + shared + "." : "Not part of an alliance.");
+    // A member shows the alliance logo, with the name as its text.
+    showLogo(allianceEl, alliance && ALLIANCE_KEYS[alliance] ? "alliance:" + ALLIANCE_KEYS[alliance] : null, "logo", alliance,
+      alliance || (shared ? "Not part of " + shared + "." : "Not part of an alliance."));
     if (shared) {
       var progName = sel.airline ? airlineLabel(sel.program, sel.airline).split(" | ")[1] : (sel.program.statusProgramName || sel.program.programName || "");
       var airName = sel.airline ? sel.airline.name : sel.program.name.split(" | ")[0];
@@ -1385,6 +1408,10 @@
     .then(function (data) {
       if (!data || typeof data !== "object") return;
       LOGOS = data;
+      Array.prototype.forEach.call(document.querySelectorAll("[data-logo]"), function (el) {
+        var a = JSON.parse(el.getAttribute("data-logo"));
+        showLogo(el, a[0], a[1], a[2], a[3]);
+      });
       if (!listEl.hidden) openList(searchEl.value === chosenLabel() ? "" : searchEl.value);
     })
     .catch(function () { /* The menu works without logos. */ });

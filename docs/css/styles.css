@@ -101,6 +101,10 @@ label { font-weight: 600; margin-bottom: 6px; }
   font-weight: 500;
 }
 .static-value.none { color: var(--muted); font-weight: 400; }
+/* Alliance logo and alliance tier badge in place of their names. */
+.static-value.logo-value { display: flex; align-items: center; padding: 4px 10px; }
+.static-value.logo-logo img { display: block; height: 40px; width: auto; max-width: 100%; padding: 4px 10px; box-sizing: border-box; border-radius: 6px; background: #fff; }
+.static-value.logo-circle img { display: block; width: 48px; height: 48px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12); }
 small { color: var(--muted); margin-top: 4px; font-size: 0.85rem; }
 
 
