@@ -1105,9 +1105,9 @@
   },
   "sunexpress": {
     "file": "icons/airlines/sunexpress.png",
-    "title": "SunExpress app icon",
-    "source": "App Store icon of SunExpress",
-    "license": "Trademark of its owner; official app icon (no wordmark file available yet)",
+    "title": "SunExpress logo",
+    "source": "https://commons.wikimedia.org/wiki/File:SunExpress_Logo.svg",
+    "license": "Trademark of its owner; logo file from Wikimedia Commons",
     "square": "icons/airlines/square/sunexpress.png",
     "circle": "icons/airlines/circle/sunexpress.png",
     "iconSource": "App Store icon by GUNES EKSPRES HAVACILIK ANONIM SIRKETI"
