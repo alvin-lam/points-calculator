@@ -17,6 +17,7 @@
   var distanceEl = $("distance");
   var earnField = $("earnField");
   var earnEl = $("earnMethod");
+  var rulesEl = $("rulesFor");
   var segmentsField = $("segmentsField");
   var zoneField = $("zoneField");
   // Marks the route menu's usual place, so it can move back.
@@ -51,6 +52,15 @@
 
   // Numbers, money and dates follow the device's language and region.
   var LOCALE = (navigator.languages && navigator.languages[0]) || navigator.language || "en-US";
+  // Today's date on the visitor's calendar (YYYY-MM-DD). Announced rules
+  // with a start date are marked (Coming Soon) before it and apply on their
+  // own from that day, so nothing has to change on the site then.
+  var TODAY = (function () {
+    var d = new Date();
+    return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  })();
+  function isLive(from) { return !from || TODAY >= from; }
+  function soonText(from) { return isLive(from) ? "" : " (Coming Soon)"; }
   var num = new Intl.NumberFormat(LOCALE);
   // Money formatters, made on first use with the site's currency signs.
   var money = {};
@@ -444,6 +454,11 @@
     var s = selection();
     var p = s.program;
     if (p && s.airline && s.airline.program) p = Object.assign({}, p, s.airline.program);
+    // Announced rules (upcoming): chosen as "(Coming Soon)", or in force
+    // once their start date has come.
+    if (p && p.upcoming && (isLive(p.upcoming.from) || rulesEl.value === "upcoming")) {
+      p = Object.assign({}, p, p.upcoming.rules, { upcomingActive: true });
+    }
     // A fare type can set its own currency (GOL: reais within South
     // America, US dollars elsewhere).
     if (p && p.fareTypes) {
@@ -596,7 +611,22 @@
     $("fromAirport").placeholder = "From (" + (from && from !== "PHL" ? from : "JFK") + " or city)";
     $("toAirport").placeholder = "To (PHL or city)";
   }
+  // The "Which rules?" choice: today's rules or announced ones that start
+  // later, marked (Coming Soon). Hidden once those rules are in force.
+  function syncRulesField() {
+    var s = selection();
+    var raw = s.program && s.airline && s.airline.program ? Object.assign({}, s.program, s.airline.program) : s.program;
+    var up = raw && raw.upcoming;
+    rulesEl.replaceChildren();
+    $("rulesField").hidden = !up || isLive(up.from);
+    if (!up || isLive(up.from)) return;
+    rulesEl.appendChild(option("", up.currentLabel || "Current rules"));
+    rulesEl.appendChild(option("upcoming", up.label + soonText(up.from)));
+    rulesEl.value = "";
+    $("rulesHint").textContent = up.hint || "These rules are announced but not yet in force. Choose them to see what the trip would earn then.";
+  }
   function onProgramChange() {
+    syncRulesField();
     syncAirportExamples();
     applyProgram();
   }
@@ -637,6 +667,7 @@
       // currency, so the empty form matches a fresh page.
       extrasWrap.replaceChildren();
       $("extraFields").textContent = "";
+      rulesEl.replaceChildren();
       setCurrency("USD");
       $("carrierLabel").textContent = "Carrier-imposed Fees";
       $("carrierHint").textContent = "Fuel or other airline surcharges (YQ/YR), if any. Leave blank if none.";
@@ -819,7 +850,11 @@
     setupRoutePicker(p);
     earnEl.replaceChildren();
     earnField.hidden = !p.earnMethods;
-    if (p.earnMethods) p.earnMethods.forEach(function (m) { earnEl.appendChild(option(m.id, m.name)); });
+    // An option can start later (from: marked Coming Soon) or end (until).
+    if (p.earnMethods) p.earnMethods.forEach(function (m) {
+      if (m.until && TODAY >= m.until) return;
+      earnEl.appendChild(option(m.id, m.name + soonText(m.from)));
+    });
     $("earnLabel").textContent = p.earnLabel || "How you earn";
     $("earnHint").textContent = p.earnHint || "The way you chose in your account.";
     syncEarnFields();
@@ -1380,6 +1415,7 @@
 
     var dl = $("breakdown");
     dl.replaceChildren();
+    if (p.upcomingActive && !isLive(p.upcoming.from)) row(dl, "Rules", p.upcoming.label + soonText(p.upcoming.from));
     if (fareUsed) {
       row(dl, "Airfare", usd.format(airfare) + (gowild ? " (GoWild!)" : ""));
       if (gowild) row(dl, "GoWild Early Booking Fee", usd.format(gowildFee));
@@ -2105,6 +2141,9 @@
   programEl.addEventListener("change", onProgramChange);
   statusEl.addEventListener("change", syncAllianceStatus);
   earnEl.addEventListener("change", syncEarnFields);
+  // Switching between current and Coming Soon rules rebuilds the levels,
+  // fares and notes for the chosen rules.
+  rulesEl.addEventListener("change", applyProgram);
   zoneEl.addEventListener("change", syncEarnFields);
   upgradeEl.addEventListener("change", function () { resultEl.hidden = true; });
   usedCardYes.addEventListener("change", syncCardSelect);

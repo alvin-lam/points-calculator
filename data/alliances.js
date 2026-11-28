@@ -30,7 +30,7 @@ module.exports = function applyAlliances(P) {
     finnair: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", lumo: "Emerald" },
     qatar: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     qantas: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", "platinum-one": "Emerald" },
-    cathay: { silver: "Ruby", gold: "Sapphire", diamond: "Emerald" },
+    cathay: { silver: "Ruby", gold: "Sapphire", diamond: "Emerald", "diamond-exec": "Emerald" },
     jal: { crystal: "Ruby", jgc: "Sapphire", sapphire: "Sapphire", "jgc-premier": "Emerald", diamond: "Emerald" },
     enrich: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     // Star Alliance
@@ -46,7 +46,7 @@ module.exports = function applyAlliances(P) {
     ana: { bronze: "Silver", platinum: "Gold", diamond: "Gold" },
     krisflyer: { "elite-silver": "Silver", "elite-gold": "Gold", pps: "Gold", solitaire: "Gold" },
     eva: { silver: "Silver", gold: "Gold", diamond: "Gold" },
-    lifemiles: { silver: "Silver", gold: "Gold", diamond: "Gold" },
+    lifemiles: { silver: "Silver", gold: "Gold", diamond: "Gold", magno: "Gold" },
     airnz: { silver: "Silver", gold: "Gold", platinum: "Gold", black: "Gold" },
     turkish: { "classic-plus": "Silver", elite: "Gold", "elite-plus": "Gold" },
     phoenix: { silver: "Silver", gold: "Gold", platinum: "Gold" },
@@ -95,8 +95,14 @@ module.exports = function applyAlliances(P) {
     }
     var tiers = ALLIANCE_TIERS[key];
     // Copy the list so shared status lists (Iberia and LEVEL) stay separate.
-    holder.statuses = holder.statuses.map(function (s) {
-      return tiers[s.id] ? Object.assign({}, s, { alliance: tiers[s.id] }) : s;
-    });
+    var withTier = function (list) {
+      return list.map(function (s) { return tiers[s.id] ? Object.assign({}, s, { alliance: tiers[s.id] }) : s; });
+    };
+    holder.statuses = withTier(holder.statuses);
+    // Announced levels (upcoming rules, such as Cathay's Diamond Exec) get
+    // their tiers too.
+    if (holder.upcoming && holder.upcoming.rules && holder.upcoming.rules.statuses) {
+      holder.upcoming.rules.statuses = withTier(holder.upcoming.rules.statuses);
+    }
   });
 };
