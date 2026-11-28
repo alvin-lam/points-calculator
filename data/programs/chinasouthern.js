@@ -33,10 +33,10 @@ const rules = {
     { id: "tn", name: "Economy (T, N)", rate: 0.25 }
   ],
   statuses: [
-    { id: "member", name: "Sky Pearl Card", multiplier: 1 },
-    { id: "silver", name: "Silver Card", multiplier: 1.2 },
-    { id: "gold", name: "Gold Card", multiplier: 1.3 },
-    { id: "platinum", name: "Platinum Card", multiplier: 1.5 }
+    { id: "member", name: "Sky Pearl", multiplier: 1 },
+    { id: "silver", name: "Silver", multiplier: 1.2 },
+    { id: "gold", name: "Gold", multiplier: 1.3 },
+    { id: "platinum", name: "Platinum", multiplier: 1.5 }
   ],
   note: "Sky Pearl Club tickets issued by China Southern (ticket number 784) earn 0.8 miles per yuan of fare plus fuel surcharge, excluding taxes, times the level factor: 1.0, 1.2 for Silver, 1.3 for Gold, and 1.5 for Platinum. Tickets issued by another airline earn the kilometres flown times the booking class percentage and the level factor, with a 500 km minimum. Miles are rounded up. Group, award, and special discount tickets do not earn. Enter fares in yuan."
 };
