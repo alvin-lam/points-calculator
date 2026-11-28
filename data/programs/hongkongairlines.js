@@ -16,7 +16,7 @@ const rules = {
   roundSpendTo: 10,
   // 10 base points per HK$10, plus the status bonus per HK$10.
   statuses: [
-    { id: "member", name: "Fortune Wings", rate: 1 },
+    { id: "member", name: "Member", rate: 1 },
     { id: "select", name: "Select", rate: 1.1 },
     { id: "silver", name: "Silver", rate: 1.3 },
     { id: "gold", name: "Gold", rate: 1.6 },

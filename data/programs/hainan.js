@@ -17,7 +17,7 @@ const rules = {
   cap: 75000,
   // 10 base points per 10 yuan, plus the status bonus per 10 yuan.
   statuses: [
-    { id: "member", name: "Fortune Wings", rate: 1 },
+    { id: "member", name: "Member", rate: 1 },
     { id: "select", name: "Select", rate: 1.1 },
     { id: "silver", name: "Silver", rate: 1.3 },
     { id: "gold", name: "Gold", rate: 1.6 },
