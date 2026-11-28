@@ -1289,19 +1289,6 @@
       resultLogo.removeAttribute("src");
       resultLogo.parentNode.hidden = true;
     }
-    // The alliance logo or, for an alliance tier, the status badge.
-    var ALLIANCE_KEYS = { "Star Alliance": "star", "SkyTeam": "skyteam", "oneworld": "oneworld" };
-    var sel = selection();
-    var allianceName = sel.airline ? sel.airline.alliance : sel.program.alliance;
-    var allianceKey = ALLIANCE_KEYS[allianceName];
-    var allianceInfo = allianceKey && LOGOS["alliance:" + allianceKey];
-    var tierInfo = allianceKey && status.alliance &&
-      LOGOS["status:" + allianceKey + ":" + status.alliance.toLowerCase().replace(/\s+/g, "-")];
-    // A member with an alliance tier sees the tier badge; otherwise the
-    // alliance logo.
-    setBadge($("resultAlliance"), tierInfo ? null : allianceInfo, allianceName);
-    setBadge($("resultTier"), tierInfo, allianceName + " " + (status.alliance || ""));
-    $("resultBadges").hidden = !allianceInfo && !tierInfo;
     $("resultPoints").textContent = num.format(total);
     $("resultUnit").textContent = p.unit;
 
@@ -1414,13 +1401,6 @@
       else out.push(piece);
     }
     return out.filter(Boolean);
-  }
-
-  // Shows a small logo image, or hides it when there is none.
-  function setBadge(img, info, label) {
-    // Alliance logos and status badges use their square icon when there is one.
-    if (info && (info.square || info.logo)) { img.src = info.square || info.logo; img.alt = label; img.hidden = false; }
-    else { img.removeAttribute("src"); img.alt = ""; img.hidden = true; }
   }
 
   // Airline program combobox: one box to type in and choose from. Typing
