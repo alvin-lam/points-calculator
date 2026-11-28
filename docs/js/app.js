@@ -289,20 +289,20 @@
   }
 
   // "[Alliance] Status" beside Membership Level: shown only for an airline in
-  // an alliance. A level with no alliance tier shows "General".
+  // an alliance. A level with no alliance tier hides it.
   function syncAllianceStatus() {
     var field = $("allianceStatusField");
     var p = current();
     var sel = selection();
     var alliance = p && sel.program ? (sel.airline ? sel.airline.alliance : sel.program.alliance) : null;
     var st = p && alliance ? find(p.statuses, statusEl.value) : null;
-    if (!st) { field.hidden = true; return; }
+    // A level with no alliance tier (a basic member) shows no status.
+    if (!st || !st.alliance) { field.hidden = true; return; }
     $("allianceStatusLabel").textContent = alliance + " Status";
-    // The alliance tier shows as its circle badge; a level with no tier
-    // ("General") shows the alliance's own circle icon.
+    // The alliance tier shows as its circle badge.
     var key = ALLIANCE_KEYS[alliance];
-    var logoKey = !key ? null : st.alliance ? "status:" + key + ":" + st.alliance.toLowerCase().replace(/\s+/g, "-") : "alliance:" + key;
-    showLogo($("allianceStatusValue"), logoKey, "circle", alliance + " " + (st.alliance || "General"), st.alliance || "General");
+    showLogo($("allianceStatusValue"), key ? "status:" + key + ":" + st.alliance.toLowerCase().replace(/\s+/g, "-") : null,
+      "circle", alliance + " " + st.alliance, st.alliance);
     field.hidden = false;
   }
 
