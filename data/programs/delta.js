@@ -8,22 +8,25 @@ const rules = {
   method: "spend",
   // No earning cap.
   centsPerPoint: 1.2,
-  // Miles per dollar by fare (Delta, July 2026): Main Basic earns none,
-  // Main Classic and the other fares earn the status rate, and Main Extra
-  // earns 2 more. Delta publishes 5 and 7 for members; the Medallion Main
-  // Extra rates (status rate + 2) come from NerdWallet, not from Delta.
+  // Miles per dollar on Delta-marketed flights by experience (Delta): 5 in
+  // Classic or Refundable and 7 in Extra for General Members, 2 with the
+  // other Basic experiences (Comfort, First, Premium Select, Delta One),
+  // and none in Delta Main Basic. Medallion members earn 7, 8, 9 or 11 in
+  // Classic or Refundable (Delta's Medallion page). Their Extra rates
+  // (2 more) and Basic rates (2, as for members) are assumed.
   defaultFareType: "classic",
   fareTypes: [
     { id: "basic", name: "Delta Main Basic" },
-    { id: "classic", name: "Main Classic, Comfort, First, Premium Select or Delta One" },
-    { id: "extra", name: "Delta Main Extra" }
+    { id: "basic-other", name: "Basic in Comfort, First, Premium Select or Delta One" },
+    { id: "classic", name: "Classic or Refundable" },
+    { id: "extra", name: "Extra" }
   ],
   statuses: [
-    { id: "member", name: "SkyMiles Member", rates: { basic: 0, classic: 5, extra: 7 } },
-    { id: "silver", name: "Silver Medallion", rates: { basic: 0, classic: 7, extra: 9 } },
-    { id: "gold", name: "Gold Medallion", rates: { basic: 0, classic: 8, extra: 10 } },
-    { id: "platinum", name: "Platinum Medallion", rates: { basic: 0, classic: 9, extra: 11 } },
-    { id: "diamond", name: "Diamond Medallion", rates: { basic: 0, classic: 11, extra: 13 } }
+    { id: "member", name: "SkyMiles Member", rates: { basic: 0, "basic-other": 2, classic: 5, extra: 7 } },
+    { id: "silver", name: "Silver Medallion", rates: { basic: 0, "basic-other": 2, classic: 7, extra: 9 } },
+    { id: "gold", name: "Gold Medallion", rates: { basic: 0, "basic-other": 2, classic: 8, extra: 10 } },
+    { id: "platinum", name: "Platinum Medallion", rates: { basic: 0, "basic-other": 2, classic: 9, extra: 11 } },
+    { id: "diamond", name: "Diamond Medallion", rates: { basic: 0, "basic-other": 2, classic: 11, extra: 13 } }
   ],
   // Co-branded cards: extra points per dollar charged (fare + taxes).
   cards: [
@@ -32,7 +35,7 @@ const rules = {
     { id: "plat", name: "Delta SkyMiles Platinum Amex", rate: 3, bank: "American Express (US)" },
     { id: "reserve", name: "Delta SkyMiles Reserve Amex", rate: 3, bank: "American Express (US)" }
   ],
-  note: "SkyMiles are earned on base fare and carrier-imposed surcharges, and on paid upgrades and Comfort or Preferred seats. Delta Main Basic fares earn no miles, and Delta Main Extra earns 2 more miles per dollar than Main Classic (7 instead of 5 for members). There is no earning cap."
+  note: "SkyMiles are earned on base fare and carrier-imposed surcharges, and on paid upgrades and Comfort or Preferred seats. General SkyMiles Members earn 5 miles per dollar in Classic or Refundable and 7 in Extra on Delta-marketed flights. Other Basic experiences (Comfort, First, Premium Select or Delta One Basic) earn 2 miles per dollar, and Delta Main Basic earns none. Medallion members earn 7, 8, 9 or 11 in Classic or Refundable; their Extra and Basic rates here are estimates. There is no earning cap."
 };
 
 module.exports = {
@@ -44,10 +47,11 @@ module.exports = {
   source: "https://www.delta.com/us/en/skymiles/overview",
   // Published examples. The browser tests check each one.
   examples: [
-    // Delta agency page "Delta Main" (July 2026): 5 miles per $1 on Main Classic, 7 on Main Extra.
-    { name: "Delta Main Classic, member", input: { status: "member", fare: "classic", fields: { airfare: 200 } }, expect: 1000 },
-    { name: "Delta Main Extra, member", input: { status: "member", fare: "extra", fields: { airfare: 200 } }, expect: 1400 },
-    { name: "Delta Main Basic, member", input: { status: "member", fare: "basic", fields: { airfare: 200 } }, expect: 0 }
+    // Delta: General Members earn 5 per $1 in Classic or Refundable, 7 in Extra, 2 with other Basic experiences, none in Main Basic.
+    { name: "Delta Classic, member", input: { status: "member", fare: "classic", fields: { airfare: 200 } }, expect: 1000 },
+    { name: "Delta Extra, member", input: { status: "member", fare: "extra", fields: { airfare: 200 } }, expect: 1400 },
+    { name: "Delta Main Basic, member", input: { status: "member", fare: "basic", fields: { airfare: 200 } }, expect: 0 },
+    { name: "Delta Comfort Basic, member", input: { status: "member", fare: "basic-other", fields: { airfare: 200 } }, expect: 400 }
   ],
   rules
 };

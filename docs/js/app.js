@@ -719,7 +719,9 @@
     } else {
       cardmemberNo.checked = true;
     }
-    cardField.hidden = !p.cards || (!!p.cardmember && !cardmemberYes.checked);
+    // Frontier's cards can only be used by cardmembers; United's can be
+    // paid with before the cardmember rate applies (cardsAnyway).
+    cardField.hidden = !p.cards || (!!p.cardmember && !p.cardmember.cardsAnyway && !cardmemberYes.checked);
     if (p.cards) {
       // Group credit and debit cards when a program has both.
       var debit = p.cards.filter(function (c) { return c.kind === "debit"; });
@@ -829,7 +831,9 @@
   function syncCardmember() {
     var p = current();
     if (!p) return;
-    cardField.hidden = !p.cards || (!!p.cardmember && !cardmemberYes.checked);
+    // Frontier's cards can only be used by cardmembers; United's can be
+    // paid with before the cardmember rate applies (cardsAnyway).
+    cardField.hidden = !p.cards || (!!p.cardmember && !p.cardmember.cardsAnyway && !cardmemberYes.checked);
     if (cardField.hidden) usedCardNo.checked = true;
     syncCardSelect();
     resultEl.hidden = true;
