@@ -121,6 +121,7 @@ The second fee field takes each airline's own name for its charge (`carrierLabel
 - Alliance airlines added in November 2026 follow each airline's published table:
   - Some earn a share of the distance by booking class, with a minimum per flight (Turkish, PhoenixMiles).
   - Some pay a fixed amount on certain routes (Turkish within Türkiye, LOT and Croatia within Europe).
+  - Turkish asks for the Route Type (international or within Türkiye) right under the Fare Type (`zoneAfterFare`); other programs show the route menu after the amounts.
   - Air China counts kilometres, which the calculator converts from the miles entered.
   - Air New Zealand pays fixed Airpoints by route group, fare, and class. The form asks for the route (From and To, limited to the routes Air New Zealand lists), then the fare (Seat, Seat+Bag, Flexi or The Works, shown only where it matters), then the cabin and booking class. The route group is worked out from the route, so members never pick from the group lists. Programs like this use `routePicker` in their data file.
   - Air Europa, China Eastern, and Xiamen earn on the price paid.
