@@ -1070,8 +1070,8 @@
   "ethiopian": {
     "file": "icons/airlines/ethiopian.png",
     "title": "Ethiopian Airlines logo",
-    "source": "https://shebamiles.ethiopianairlines.com/",
-    "license": "Trademark of its owner; official logo from the ShebaMiles site header (small source image)",
+    "source": "https://commons.wikimedia.org/wiki/File:Ethiopian_Airlines_Logo.svg",
+    "license": "Trademark of its owner; logo file from Wikimedia Commons, supplied by the site owner",
     "square": "icons/airlines/square/ethiopian.png",
     "circle": "icons/airlines/circle/ethiopian.png",
     "iconSource": "App Store icon of \"Ethiopian Airlines\" by Ethiopian Airlines"
