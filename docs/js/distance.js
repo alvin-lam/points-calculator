@@ -92,16 +92,22 @@
     var code = currentCode(airports, parseCode(text));
     if (code && airports[code]) return { code: code };
     var q = fold(text);
-    if (q.length < 2) return null;
+    // One or two letters are not yet a code or a place ("LH" on the way to
+    // LHR is not Shannan, LXA), so they name no airport.
+    if (q.length < 3) return null;
     var metro = metroFor(q).filter(function (c) { return airports[c]; });
     if (metro.length === 1) return { code: metro[0] };
-    if (metro.length > 1) return { matches: metro };
+    // A city's main airports keep the order listed in METROS.
+    if (metro.length > 1) return { matches: metro, ordered: true };
     var codes = Object.keys(airports);
     var tests = [
       function (a) { return fold(a[2]) === q; },
       function (a) { return fold(a[3]) === q; },
       function (a) { return fold(a[2]).indexOf(q) === 0; },
-      function (a) { return (" " + fold(a[3])).indexOf(" " + q) !== -1; }
+      function (a) { return (" " + fold(a[3])).indexOf(" " + q) !== -1; },
+      // A word inside the city's name, as the dropdown suggests it
+      // ("palm beach" for West Palm Beach).
+      function (a) { return (" " + fold(a[2])).indexOf(" " + q) !== -1; }
     ];
     for (var i = 0; i < tests.length; i++) {
       var hits = codes.filter(function (c) { return tests[i](airports[c]); });
