@@ -1,6 +1,6 @@
 # Airline and alliance logos
 
-Logos and icons for the 74 airlines in the calculator, the 3 alliances (oneworld, SkyTeam and Star Alliance) and 7 alliance status badges. `index.json` maps each key to its files, name, source and license.
+Logos and icons for the 117 airlines in the calculator, the 3 alliances (oneworld, SkyTeam and Star Alliance) and 7 alliance status badges. `index.json` maps each key to its files, name, source and license.
 
 ## Logo sheet
 
@@ -25,9 +25,10 @@ Every full logo, square icon and circular icon, grouped by country (countries an
 The site itself loads two smaller copies, listed in `js/logos.json`:
 
 - `menu/`: 64 by 64 copies of the circular icons, shown at 24 pixels beside each airline in the program menu.
-- `small/`: the full logos (and the alliance logos and status badges) shrunk to 96 pixels tall, shown on the result.
+- `small/`: the full logos shrunk to fit 480 by 96 pixels. Airline logos show on the result card, and alliance logos show in the form's Alliance field.
+- `circle/`: the status badges' circular icons show in the form's "[Alliance] Status" field, for levels with an alliance tier.
 
-The same icons are used in light and dark mode. On the result, logos sit on a white panel so they stay readable in dark mode.
+The same icons are used in light and dark mode. On the result, logos sit on a white panel. In the form, alliance logos and badges show without a box, with a white backing only in dark mode, so they stay readable.
 
 ## How the icons were made
 
@@ -41,9 +42,10 @@ When you replace a full logo or icon, rebuild the matching `menu/` or `small/` c
 
 ## Sources
 
-- **Official files supplied by the site owner** (41 full logos), from airline and alliance media kits, including the status badges. The SkyTeam Elite and Elite Plus badges come from skyteam.com. The ITA Airways logo was taken from its app screen and recolored from white to blue.
-- **Wikimedia Commons** (41 full logos). Each file page is linked in `index.json`. 27 are marked public domain on Commons; for the others, check the license on the file page.
-- **The airline's own website** (1 full logo): Frontier, recolored to Frontier green.
+- **Official files supplied by the site owner** (38 full logos), from airline and alliance media kits, including the status badges, and the UNI Air logo. The SkyTeam Elite and Elite Plus badges come from skyteam.com. The ITA Airways logo was taken from its app screen and recolored from white to blue.
+- **Wikimedia Commons** (54 full logos, including the Shenzhen Airlines file via Wikipedia). Each file page is linked in `index.json`. 25 are marked public domain on Commons; for the others, check the license on the file page.
+- **The airline's or alliance's own website** (33 full logos). The page or file is linked in `index.json`. White logos were recolored, such as Frontier in Frontier green.
+- **Official app icons** (2 full logos): El Al and Emirates, from their App Store icons.
 
 `LICENSE.md` holds the license text for any remaining files from third-party icon sets.
 

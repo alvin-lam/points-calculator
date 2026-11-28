@@ -237,7 +237,7 @@ The site installs as an app and opens offline. `docs/js/install.js` invites visi
 
 ### Program pages
 
-Each program has its own page at `/airlines/<name>/` (for example `/airlines/lufthansa/`). The page opens the calculator with that program chosen. It uses the common browser title but has its own description and share-image text, and the description names the airline's alliance when it has one. Each page also gives search engines structured data about the airline: its name, two-letter code, alliance and square logo.
+Each program has its own page at `/airlines/<name>/` (for example `/airlines/lufthansa/`). The page opens the calculator with that program chosen. It uses the common browser title but has its own description and share-image text, such as "Estimate the Infinity MileageLands points or miles you will earn on an EVA Air flight". The description uses "a" or "an" by how the airline's name sounds ("a United Airlines flight", "an HK Express flight") and names the airline's alliance when it has one. Each page also gives search engines structured data about the airline: its name, two-letter code, alliance and square logo.
 
 ## Privacy
 

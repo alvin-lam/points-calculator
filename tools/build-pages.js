@@ -77,7 +77,7 @@ function airlineData(e) {
 
 function page(html, e) {
   const title = e.airline + " Points Calculator: " + e.program + " | All Trips Considered";
-  const desc = "Estimate the " + e.program + " points or miles you will earn on a " + e.airline + " flight" +
+  const desc = "Estimate the " + e.program + " points or miles you will earn on " + (/^(?!uni)[aeiou]|^HK /i.test(e.airline) ? "an " : "a ") + e.airline + " flight" +
     (e.alliance ? ", with your " + e.alliance + " status" : "") +
     ". Choose your status, fare and card. Free, no sign-up.";
   const url = SITE + "airlines/" + e.slug + "/";
