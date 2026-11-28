@@ -8,7 +8,7 @@ Live site: https://points.alltripsconsidered.com/
 
 ## Airlines covered
 
-115 airlines in 91 programs, grouped by country as in the program menu. Each entry shows the airline, its code and the program its flights earn in.
+115 airlines in 91 programs, grouped by country as in the program menu. Each entry shows the airline, its code and the program its flights earn in. Airlines that fly from several countries (JetSMART, LATAM, Transavia) appear under each.
 
 - **United States:** Alaska Airlines (AS): Atmos Rewards; Allegiant Air (G4): Allways Rewards; American Airlines (AA): AAdvantage; Breeze Airways (MX): Breezy Rewards; Delta Air Lines (DL): SkyMiles; Frontier Airlines (F9): Frontier Miles; Hawaiian Airlines (HA): Atmos Rewards; JetBlue Airways (B6): TrueBlue; Southwest Airlines (WN): Rapid Rewards; United Airlines (UA): MileagePlus
 - **Canada:** Air Canada (AC): Aeroplan; Air Transat (TS): Staria; Porter Airlines (PD): VIPorter; WestJet (WS): WestJet Rewards
@@ -18,10 +18,11 @@ Live site: https://points.alltripsconsidered.com/
 - **Austria:** Austrian Airlines (OS): Miles & More
 - **Belgium:** Brussels Airlines (SN): Miles & More
 - **Brazil:** Azul (AD): Azul Fidelidade; GOL (G3): Smiles
-- **Chile:** JetSMART (JA/JZ/WJ/J6): AAdvantage; LATAM Airlines (LA): LATAM Pass; SKY Airline (H2): SKY Plus
+- **Chile:** JetSMART (JA/JZ/WJ/J6): AAdvantage; LATAM Airlines (LA/LP/4C/XL/PZ): LATAM Pass; SKY Airline (H2): SKY Plus
 - **China:** Air China (CA): PhoenixMiles; China Eastern (MU): Eastern Miles; China Southern (CZ): Sky Pearl Club; Hainan Airlines (HU): Fortune Wings Club; Shenzhen Airlines (ZH): PhoenixMiles; Xiamen Airlines (MF): Egret Miles
-- **Colombia:** Avianca (AV): LifeMiles; JetSMART (JA/JZ/WJ/J6): AAdvantage
+- **Colombia:** Avianca (AV): LifeMiles; JetSMART (JA/JZ/WJ/J6): AAdvantage; LATAM Airlines (LA/LP/4C/XL/PZ): LATAM Pass
 - **Croatia:** Croatia Airlines (OU): Miles & More
+- **Ecuador:** LATAM Airlines (LA/LP/4C/XL/PZ): LATAM Pass
 - **Egypt:** EgyptAir (MS): EgyptAir Plus
 - **Ethiopia:** Ethiopian Airlines (ET): ShebaMiles
 - **Fiji:** Fiji Airways (FJ): AAdvantage
@@ -50,7 +51,8 @@ Live site: https://points.alltripsconsidered.com/
 - **Norway:** Norwegian (DY): Norwegian Reward; Widerøe (WF): Norwegian Reward
 - **Oman:** Oman Air (WY): Sindbad
 - **Panama:** Copa Airlines (CM): ConnectMiles
-- **Peru:** JetSMART (JA/JZ/WJ/J6): AAdvantage
+- **Paraguay:** LATAM Airlines (LA/LP/4C/XL/PZ): LATAM Pass
+- **Peru:** JetSMART (JA/JZ/WJ/J6): AAdvantage; LATAM Airlines (LA/LP/4C/XL/PZ): LATAM Pass
 - **Philippines:** Cebgo (DG): Go Rewards; Cebu Pacific (5J): Go Rewards; Philippine Airlines (PR): Mabuhay Miles
 - **Poland:** LOT Polish Airlines (LO): Miles & More
 - **Portugal:** TAP Air Portugal (TP): Miles&Go
@@ -92,6 +94,7 @@ Every page, including each airline's page, uses the browser title "Points Calcul
 - Typing the start of an airline's name (such as "el al", "united" or "luft") lists that airline first under "Best match". Spaces are optional, so "elal" and "hkexpress" work too.
 - Typing a country's two- or three-letter ISO code (such as JP or JPN, CA or CAN, GB, GBR or UK) lists every program in that country. A two-letter code that is also an airline's code shows that airline too (CA: Canada and Air China). The codes are in `data/countries.js`.
 - For programs that earn by distance, the airport boxes are searchable dropdowns. Their examples use the airport nearest the airline's headquarters to PHL (such as "From (ORD or city)" for United), from `data/hq-airports.js`. Typing a three-letter code (such as NRT), a metro area code (such as NYC, TYO or LON), a city name (such as Tokyo) or an airport name (such as Haneda) lists the matching airports, best match first. Major cities whose airports carry other town names (Tokyo with Narita, New York with Newark) are listed in `docs/js/distance.js`.
+- LATAM is one entry listed under Chile, Peru, Colombia, Ecuador and Paraguay (`countries` on a single program), with the codes LA, LP, 4C, XL and PZ. LATAM Brasil (JJ), whose members earn in LATAM Pass Brasil, is not added yet.
 - Miles & More (Lufthansa Group), Flying Blue (Air France, KLM, and Transavia), and IAG are single programs. Each of their airlines is listed under its own country as "Airline | Program", such as "Lufthansa | Miles & More" under Germany. For Miles & More, the airline sets the status earning rate. For IAG, the airline picks the loyalty program: AerClub in euros, British Airways Club in pounds, Iberia Club in euros (Iberia and LEVEL), or Vueling Club in euros, each with its own status levels and cards.
 - After a program is chosen, an Alliance line shows oneworld, Star Alliance or SkyTeam for an alliance member. An airline that shares an alliance airline's program without being a member (Eurowings, Air Dolomiti, Edelweiss, Discover, Transavia, LEVEL, Jetstar, HK Express) shows "Not part of [alliance]." with a line that its status is recognized on member airlines but not on its own flights. For any other airline the Alliance line is hidden.
 - The level menu is named after the program ("AAdvantage Level", "MileagePlus Level") and lists the airline's own status levels without repeating the program name ("Member", not "MileagePlus Member"; "Gold", not "Egret Gold"). Tier names that need the word stay whole, such as "Breezy 1", and base tiers named after the program ("Matmid", "Suma") are kept. China Southern, China Eastern, EVA Air, Hainan and Hong Kong Airlines drop "Card" from their levels ("Silver", not "Silver Card"), and the base Fortune Wings Club level is "Member".

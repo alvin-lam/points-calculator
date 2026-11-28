@@ -7,6 +7,9 @@ const rules = {
   // No carrier-imposed fees field: the airline adds none, or they never earn.
   noCarrier: true,
   country: "CL",
+  // LATAM's Spanish-speaking airlines (Chile, Peru, Colombia, Ecuador,
+  // Paraguay) earn the same LATAM Pass rates; LATAM Brasil is separate.
+  countries: ["CL", "PE", "CO", "EC", "PY"],
   currency: "USD",
   unit: "miles",
   method: "spend",
@@ -39,6 +42,7 @@ module.exports = {
   // Month the earning rules were last checked against the source.
   reviewed: "2026-11",
   code: "LA",
+  codes: ["LA", "LP", "4C", "XL", "PZ"],
   color: "#1B0088",
   source: "https://latampass.latam.com/us/en/tickets",
   // Published examples. The browser tests check each one.

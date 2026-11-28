@@ -63,5 +63,7 @@ module.exports = [
   { id: "PE", label: "Peru \u{1F1F5}\u{1F1EA}", codes: ["PE", "PER"] },
   { id: "ET", label: "Ethiopia \u{1F1EA}\u{1F1F9}", codes: ["ET", "ETH"] },
   { id: "KE", label: "Kenya \u{1F1F0}\u{1F1EA}", codes: ["KE", "KEN"] },
-  { id: "RO", label: "Romania \u{1F1F7}\u{1F1F4}", codes: ["RO", "ROU"] }
+  { id: "RO", label: "Romania \u{1F1F7}\u{1F1F4}", codes: ["RO", "ROU"] },
+  { id: "EC", label: "Ecuador \u{1F1EA}\u{1F1E8}", codes: ["EC", "ECU"] },
+  { id: "PY", label: "Paraguay \u{1F1F5}\u{1F1FE}", codes: ["PY", "PRY"] }
 ];

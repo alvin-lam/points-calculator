@@ -352,7 +352,8 @@
             if (al.menuHidden) return;
             if (homes.indexOf(c.id) !== -1) add(key + ":" + al.id, al.menuLabel || airlineLabel(p, al));
           });
-        } else if ((p.country || "US") === c.id) {
+        } else if ((p.countries || [p.country || "US"]).indexOf(c.id) !== -1) {
+          // A single program can sit under several countries (LATAM).
           add(key, p.name);
         }
       });
