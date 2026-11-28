@@ -48,7 +48,7 @@
     "los angeles": ["LAX"], "san francisco": ["SFO"], "miami": ["MIA", "FLL"],
     "toronto": ["YYZ", "YTZ"], "montreal": ["YUL"], "vancouver": ["YVR"],
     "mexico city": ["MEX", "NLU"], "sao paulo": ["GRU", "CGH", "VCP"],
-    "rio de janeiro": ["GIG", "SDU"], "buenos aires": ["EZE", "AEP"],
+    "rio de janeiro": ["GIG", "SDU"], "rio": ["GIG", "SDU"], "buenos aires": ["EZE", "AEP"],
     "sydney": ["SYD", "WSI"], "mumbai": ["BOM", "NMI"], "delhi": ["DEL", "DXN"], "new delhi": ["DEL", "DXN"],
     "phnom penh": ["KTI"], "siem reap": ["SAI"], "luanda": ["NBJ", "LAD"], "munich": ["MUC"], "munchen": ["MUC"],
     "melbourne": ["MEL", "AVV"], "auckland": ["AKL"], "bali": ["DPS"], "sapporo": ["CTS", "OKD"],
@@ -72,10 +72,10 @@
     DFW: "dallas", KUL: "kuala lumpur"
   };
   // The main airports for a typed city name or metro code.
-  // Codes that were retired and given to a new code for the same airport
-  // (Chișinău KIV is now RMO) or for the airport that replaced it (Siem
-  // Reap REP is now SAI). Typing the old code still finds the airport.
-  var OLD_CODES = { KIV: "RMO", FRU: "BSZ", KVD: "GNJ", PBI: "DJT", REP: "SAI" };
+  // A retired code that still leads to its airport: Palm Beach PBI became
+  // DJT on 18 August 2026, and many travelers still know it as PBI. Other
+  // retired codes (KIV, FRU, KVD, REP) are no longer recognized.
+  var OLD_CODES = { PBI: "DJT" };
   function currentCode(airports, code) {
     if (code && !airports[code] && OLD_CODES[code] && airports[OLD_CODES[code]]) return OLD_CODES[code];
     return code;
@@ -109,6 +109,10 @@
       // ("palm beach" for West Palm Beach).
       function (a) { return (" " + fold(a[2])).indexOf(" " + q) !== -1; }
     ];
+    // Three letters that look like a code but are not one (a retired code
+    // such as REP) match only a whole city or airport name, not the start
+    // of one, so "REP" does not quietly become Repulse Bay.
+    if (parseCode(text) && !airports[parseCode(text)]) tests = tests.slice(0, 2);
     for (var i = 0; i < tests.length; i++) {
       var hits = codes.filter(function (c) { return tests[i](airports[c]); });
       if (hits.length === 1) return { code: hits[0] };
