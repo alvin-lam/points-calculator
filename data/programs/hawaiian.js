@@ -5,10 +5,10 @@ const rules = {
   // Members choose one way to earn for flights from 1 January 2027.
   // Elite bonuses apply to all three.
   earnMethods: [
-    { id: "distance2026", method: "distance", name: "2026 flights: miles flown, with a fare class bonus" },
-    { id: "distance", name: "2027 flights, miles flown: 1 point per mile", noFareType: true },
-    { id: "price", name: "2027 flights, price paid: 5 points per dollar", rate: 5, noFareType: true },
-    { id: "segments", name: "2027 flights, segments flown: 500 points per segment", perSegment: 500, noFareType: true }
+    { id: "distance2026", method: "distance", name: "2026 flights: miles flown, with a fare class bonus", until: "2027-01-01" },
+    { id: "distance", name: "2027 flights, miles flown: 1 point per mile", noFareType: true, from: "2027-01-01" },
+    { id: "price", name: "2027 flights, price paid: 5 points per dollar", rate: 5, noFareType: true, from: "2027-01-01" },
+    { id: "segments", name: "2027 flights, segments flown: 500 points per segment", perSegment: 500, noFareType: true, from: "2027-01-01" }
   ],
   // 2026 flights earn by distance with a bonus by fare class (Alaska,
   // "Earning on Alaska Airlines and Hawaiian Airlines flights", valid for

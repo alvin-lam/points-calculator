@@ -50,15 +50,20 @@ const rules = {
   note: "Cathay Pacific awards a fixed number of Asia Miles per flight, set by fare type and distance zone from Hong Kong. Cathay's published table is the same for every status level. It covers flights marketed by Cathay Pacific and departing on or after 20 August 2025. The US Cathay World Elite Mastercard adds 3 Asia Miles per US dollar charged for the ticket, and the Hong Kong Standard Chartered Cathay Mastercard adds 1 Asia Mile per HK$2 on the first HK$8,000 of Cathay and HK Express spending in each promotion period, then 1 per HK$6. The estimate assumes this ticket is the first eligible spending in the period. HK Express flights earn here only when booked as a Cathay Pacific codeshare (CX flight number, on the same ticket as a Cathay Pacific flight); booked directly with HK Express (UO flight number), they earn no Asia Miles or Status Points."
 };
 
-// Announced for 1 January 2027 (Cathay FAQ; MainlyMiles, 15 October 2025):
-// a new Diamond Exec level above Diamond, at oneworld Emerald. Asia Miles
-// per flight stay the same for every level.
+// Announced for 1 January 2027 (Cathay newsroom, "Cathay membership becomes
+// smoother, simpler and better"): Diamond Exec (2,400 Status Points in a
+// year) above Diamond, and Diamond Plus, by invitation only, above Diamond
+// Exec. Both are oneworld Emerald. Asia Miles per flight stay the same for
+// every level.
 rules.upcoming = {
   from: "2027-01-01",
   label: "From 1 January 2027",
   rules: {
-    statuses: rules.statuses.concat([{ id: "diamond-exec", name: "Diamond Exec", bonus: 0 }]),
-    note: rules.note + " From 1 January 2027, a new Diamond Exec level sits above Diamond, at oneworld Emerald; it earns the same Asia Miles per flight."
+    statuses: rules.statuses.concat([
+      { id: "diamond-exec", name: "Diamond Exec", bonus: 0 },
+      { id: "diamond-plus", name: "Diamond Plus", bonus: 0 }
+    ]),
+    note: rules.note + " From 1 January 2027, two new levels sit above Diamond, both at oneworld Emerald: Diamond Exec (2,400 Status Points in a year) and Diamond Plus (by invitation). They earn the same Asia Miles per flight."
   }
 };
 

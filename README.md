@@ -141,8 +141,9 @@ Some programs have announced rules that start later. Until then, a "Which rules?
 
 - Southwest (1 January 2027): Choice Preferred earns 8 and Choice Extra 10; Silver (formerly A-List) adds 40%, Gold (formerly A-List Preferred) 60%, and the new Platinum 120%.
 - Avianca LifeMiles (1 January 2027): a base of 2, 3, 5, 8, 9 or 10 miles per dollar for Red to Magno, plus 1 on Classic and 2 on Flex or Business. From a travel news report, not yet from LifeMiles.
-- Cathay Pacific (1 January 2027): the new Diamond Exec level, at oneworld Emerald, earning like Diamond.
+- Cathay Pacific (1 January 2027): the new Diamond Exec and Diamond Plus (by invitation) levels, at oneworld Emerald, earning like Diamond.
 - JAL (flights from 1 January 2027): JGC Premier becomes JMB Premier.
+- Alaska and Hawaiian: the 2027 earning choices are marked (Coming Soon), and the 2026 fare class option disappears on 1 January 2027.
 
 In a program file, `upcoming: { from, label, rules }` holds the new rules (any fields that replace today's, such as `statuses`, `fareTypes` or `note`), and an earning option can carry `from` or `until`. Alliance tiers in `data/alliances.js` also apply to levels that exist only in the upcoming rules.
 

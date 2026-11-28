@@ -30,7 +30,7 @@ module.exports = function applyAlliances(P) {
     finnair: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", lumo: "Emerald" },
     qatar: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     qantas: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald", "platinum-one": "Emerald" },
-    cathay: { silver: "Ruby", gold: "Sapphire", diamond: "Emerald", "diamond-exec": "Emerald" },
+    cathay: { silver: "Ruby", gold: "Sapphire", diamond: "Emerald", "diamond-exec": "Emerald", "diamond-plus": "Emerald" },
     jal: { crystal: "Ruby", jgc: "Sapphire", sapphire: "Sapphire", "jgc-premier": "Emerald", diamond: "Emerald" },
     enrich: { silver: "Ruby", gold: "Sapphire", platinum: "Emerald" },
     // Star Alliance
